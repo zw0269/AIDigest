@@ -1,0 +1,58 @@
+companies:
+  - name: Anthropic
+    type: html
+    url: https://www.anthropic.com/news
+    link_pattern: "^/news/[^/]+$"
+  - name: OpenAI
+    type: rss
+    url: https://openai.com/blog/rss.xml
+  - name: Google DeepMind
+    type: rss
+    url: https://deepmind.google/blog/rss.xml
+  - name: Transformer Circuits
+    type: html
+    url: https://transformer-circuits.pub
+    link_pattern: "^\\d{4}/[^/]+/index\\.html$"
+
+individuals:
+  - name: Andrej Karpathy
+    type: rss
+    url: https://karpathy.github.io/feed.xml
+  - name: Simon Willison
+    type: rss
+    url: https://simonwillison.net/atom/everything/
+  - name: Lilian Weng
+    type: rss
+    url: https://lilianweng.github.io/index.xml
+  - name: Sebastian Raschka
+    type: rss
+    url: https://magazine.sebastianraschka.com/feed
+  - name: Yoshua Bengio
+    type: rss
+    url: https://yoshuabengio.org/feed/
+  - name: Dario Amodei
+    type: html
+    url: https://www.darioamodei.com/
+    link_pattern: "^/(essay|post)/[^/]+$"
+
+rss_lookback_days: 14
+
+arxiv:
+  categories:
+    - cs.AI
+    - cs.CL
+    - cs.LG
+  keywords:
+    - "large language model"
+    - "LLM"
+    - "agent"
+    - "reasoning"
+    - "RLHF"
+    - "alignment"
+    - "mixture of experts"
+  authors:
+    - "Geoffrey Hinton"
+    - "Yann LeCun"
+    - "Ilya Sutskever"
+  max_results_per_query: 30
+  lookback_days: 2

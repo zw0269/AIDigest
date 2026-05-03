@@ -1,0 +1,44 @@
+# AI Digest — {{ date }}
+{% if errors %}
+
+> ⚠️ Source errors: {{ errors | join(", ") }}
+{% endif %}
+{% if not has_any %}
+
+_No new items today._
+{% endif %}
+{% if companies %}
+
+## 公司动态
+
+{% for it in companies -%}
+- **{{ it.source }}** — [{{ it.title }}]({{ it.url }}){% if it.published %} _({{ it.published.strftime("%Y-%m-%d") }})_{% endif %}
+{% endfor -%}
+{% endif %}
+{% if individuals %}
+
+## 个人 Blog
+
+{% for it in individuals -%}
+- **{{ it.source }}** — [{{ it.title }}]({{ it.url }}){% if it.published %} _({{ it.published.strftime("%Y-%m-%d") }})_{% endif %}
+{% endfor -%}
+{% endif %}
+{% if arxiv_authors %}
+
+## 新论文 — 关注作者
+
+{% for it in arxiv_authors -%}
+- **{{ it.source }}** — [{{ it.title }}]({{ it.url }}){% if it.authors %} — {{ it.authors[:3] | join(", ") }}{% if it.authors | length > 3 %} et al.{% endif %}{% endif %}{% if it.published %} _({{ it.published.strftime("%Y-%m-%d") }})_{% endif %}
+{% endfor -%}
+{% endif %}
+{% if arxiv_keywords %}
+
+## 新论文 — 关键词命中
+
+{% for it in arxiv_keywords -%}
+- [{{ it.title }}]({{ it.url }}){% if it.authors %} — {{ it.authors[:3] | join(", ") }}{% if it.authors | length > 3 %} et al.{% endif %}{% endif %}{% if it.published %} _({{ it.published.strftime("%Y-%m-%d") }})_{% endif %}
+{% endfor -%}
+{% endif %}
+
+---
+_Generated {{ generated_at }} · {{ total }} new items_

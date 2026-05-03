@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 日报索引</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --shadow-deep: rgba(0,0,0,0.01) 0 1px 3px,
+                 rgba(0,0,0,0.02) 0 3px 7px,
+                 rgba(0,0,0,0.02) 0 7px 15px,
+                 rgba(0,0,0,0.04) 0 14px 28px,
+                 rgba(0,0,0,0.05) 0 23px 52px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.hero { padding: 96px 24px 64px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 20px;
+}
+.hero p.lead {
+  font-size: 20px; font-weight: 400; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text-muted);
+  max-width: 720px; margin: 0 auto 40px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 16px 24px; min-width: 140px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 32px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 80px 0; background: var(--bg-warm); }
+section.section h2 {
+  font-size: 40px; font-weight: 700; line-height: 1.05;
+  letter-spacing: -1.25px; color: var(--text); margin-bottom: 12px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.day-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.day-card {
+  display: block; background: var(--bg); border: var(--whisper);
+  border-radius: 16px; padding: 24px 28px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.day-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-deep);
+  text-decoration: none;
+}
+.day-card .day-date {
+  font-size: 28px; font-weight: 700; line-height: 1.05;
+  letter-spacing: -0.625px; color: var(--text); margin-bottom: 4px;
+}
+.day-card .day-count {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 18px;
+}
+.day-card .day-stats {
+  font-size: 14px; font-weight: 500; color: var(--text-muted);
+  margin-bottom: 18px; line-height: 1.6;
+}
+.day-card .day-stats span {
+  display: inline-block; margin-right: 10px;
+}
+.day-card .day-preview {
+  margin-top: 14px; padding-top: 14px;
+  border-top: var(--whisper);
+  font-size: 13px; color: var(--text-muted); line-height: 1.5;
+}
+.day-card .day-preview-item {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+.day-card .cta {
+  margin-top: 18px; font-size: 14px; font-weight: 600;
+  color: var(--blue);
+}
+.day-card:hover .cta { color: var(--blue-active); }
+
+.empty {
+  background: var(--bg); border: var(--whisper); border-radius: 16px;
+  padding: 64px 32px; text-align: center;
+  font-size: 16px; color: var(--text-muted);
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  background: var(--bg);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 64px 24px 48px; }
+  .hero h1 { font-size: 40px; letter-spacing: -1.25px; }
+  .hero p.lead { font-size: 18px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .day-grid { grid-template-columns: 1fr; gap: 16px; }
+  .day-card { padding: 20px 22px; }
+  .day-card .day-date { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-eyebrow">AIDigest · 索引</span>
+  <h1>AI 日报索引</h1>
+  <p class="lead">每日抓取 AI 公司 blog、人物 blog、arXiv 论文的摘要总览。点击日期卡片查看当日全部内容。</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">天数</div></div>
+    <div class="metric"><div class="metric-value">122</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">每日信源</div></div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2>所有日期</h2>
+    <div class="section-meta">按日期倒序，最新的在前</div>
+    <div class="day-grid">
+      <a class="day-card" href="digests/digest-2026-05-03.html">
+        <div class="day-date">2026-05-03</div>
+        <div class="day-count">122 条</div>
+        <div class="day-stats"><span>公司动态 88</span><span>个人 Blog 34</span></div>
+        <div class="day-preview">
+        <div class="day-preview-item">· Enabling a new model for healthcare with AI co-clinician</div>
+        <div class="day-preview-item">· Announcing our partnership with the Republic of Korea</div>
+        <div class="day-preview-item">· Decoupled DiLoCo: A new frontier for resilient, distributed AI training</div>
+      </div>
+        <div class="cta">查看完整摘要 →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

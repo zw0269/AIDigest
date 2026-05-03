@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-03</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-03</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-03</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 122 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">122</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">88</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">34</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">88 条 · 4 个来源</div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/ai-co-clinician/" target="_blank" rel="noopener">Enabling a new model for healthcare with AI co-clinician</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Researching the path to AI-augmented care and development of an AI co-clinician.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>探索 AI 辅助医疗的路径，开发能与医生协作的 AI 共诊助手。</div>
+        <div class="item-url">https://deepmind.google/blog/ai-co-clinician/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/" target="_blank" rel="noopener">Announcing our partnership with the Republic of Korea</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Google DeepMind and Korea partner to accelerate scientific breakthroughs using frontier AI models</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>DeepMind 与韩国合作，用前沿 AI 模型加速科学突破。</div>
+        <div class="item-url">https://deepmind.google/blog/announcing-our-partnership-with-the-republic-of-korea/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/decoupled-diloco/" target="_blank" rel="noopener">Decoupled DiLoCo: A new frontier for resilient, distributed AI training</a>
+        <div class="item-summary">发布 Decoupled DiLoCo，一种分布式 AI 训练新架构，通过解耦计算岛、异步数据流实现跨数据中心训练的韧性和低带宽。</div>
+        <div class="item-url">https://deepmind.google/blog/decoupled-diloco/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/partnering-with-industry-leaders-to-accelerate-ai-transformation/" target="_blank" rel="noopener">Partnering with industry leaders to accelerate AI transformation</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Google DeepMind partners with global consultancies to bring the power of frontier AI to organizations around the world.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>DeepMind 与全球咨询公司合作，将前沿 AI 能力带给世界各地的企业。</div>
+        <div class="item-url">https://deepmind.google/blog/partnering-with-industry-leaders-to-accelerate-ai-transformation/</div>
+      </div>
+    </div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">29 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/advanced-account-security" target="_blank" rel="noopener">Introducing Advanced Account Security</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Advanced Account Security: phishing-resistant login, stronger recovery, and enhanced protections to safeguard sensitive data and prevent account takeover.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推出账户高级安全功能：抗钓鱼登录、更强的恢复机制、增强的敏感数据保护，防止账号被盗。</div>
+        <div class="item-url">https://openai.com/index/advanced-account-security</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/where-the-goblins-came-from" target="_blank" rel="noopener">Where the goblins came from</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How goblin outputs spread in AI models: timeline, root cause, and fixes behind personality-driven quirks in GPT-5 behavior.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>复盘 AI 模型中「妖怪输出」是如何扩散的：时间线、根因，以及 GPT-5 性格化怪癖背后的修复方案。</div>
+        <div class="item-url">https://openai.com/index/where-the-goblins-came-from</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age" target="_blank" rel="noopener">Building the compute infrastructure for the Intelligence Age</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI scales Stargate to build the compute infrastructure powering AGI, adding new data center capacity to meet growing AI demand.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>扩展 Stargate 项目，为 AGI 构建算力基础设施，新增数据中心容量满足 AI 需求增长。</div>
+        <div class="item-url">https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/cybersecurity-in-the-intelligence-age" target="_blank" rel="noopener">Cybersecurity in the Intelligence Age</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI outlines a five-part action plan for strengthening cybersecurity in the Intelligence Age, focused on democratizing AI-powered cyber defense and protecting critical systems.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>提出「智能时代」网络安全五点行动计划，聚焦 AI 驱动的网络防御民主化和关键系统保护。</div>
+        <div class="item-url">https://openai.com/index/cybersecurity-in-the-intelligence-age</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/our-commitment-to-community-safety" target="_blank" rel="noopener">Our commitment to community safety</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how OpenAI protects community safety in ChatGPT through model safeguards, misuse detection, policy enforcement, and collaboration with safety experts.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>通过模型护栏、滥用检测、政策执行和与安全专家合作来保护 ChatGPT 社区安全。</div>
+        <div class="item-url">https://openai.com/index/our-commitment-to-community-safety</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/openai-on-aws" target="_blank" rel="noopener">OpenAI models, Codex, and Managed Agents come to AWS</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI GPT models, Codex, and Managed Agents are now available on AWS, enabling enterprises to build secure AI in their AWS environments.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 的 GPT 模型、Codex 和 Managed Agents 上架 AWS，企业可以在 AWS 环境内构建安全 AI。</div>
+        <div class="item-url">https://openai.com/index/openai-on-aws</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/openai-available-at-fedramp-moderate" target="_blank" rel="noopener">OpenAI available at FedRAMP Moderate</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI is available at FedRAMP Moderate authorization for ChatGPT Enterprise and the OpenAI API, enabling secure AI adoption for U.S. federal agencies.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT Enterprise 和 OpenAI API 通过 FedRAMP Moderate 授权，美国联邦机构可合规使用。</div>
+        <div class="item-url">https://openai.com/index/openai-available-at-fedramp-moderate</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/next-phase-of-microsoft-partnership" target="_blank" rel="noopener">The next phase of the Microsoft OpenAI partnership</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI and Microsoft announce an amended agreement that simplifies the partnership, adds long-term clarity, and supports continued AI innovation at scale.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与微软宣布新协议，简化合作关系、明确长期方向，支持大规模 AI 创新持续推进。</div>
+        <div class="item-url">https://openai.com/index/next-phase-of-microsoft-partnership</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/open-source-codex-orchestration-symphony" target="_blank" rel="noopener">An open-source spec for orchestration: Symphony</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how Symphony, an open-source spec for Codex orchestration, turns issue trackers into always-on agent systems—boosting engineering output and reducing context switching.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Symphony 是 Codex 编排的开源规范，将工单跟踪系统转变为常驻 agent 系统，提升工程产出。</div>
+        <div class="item-url">https://openai.com/index/open-source-codex-orchestration-symphony</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/choco" target="_blank" rel="noopener">Choco automates food distribution with AI agents</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How Choco used OpenAI APIs to streamline food distribution, boost productivity, and unlock growth—an in-depth customer story on real-world AI impact.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Choco 使用 OpenAI API 简化食品配送、提升生产力、推动增长 — 一个真实 AI 落地的客户案例。</div>
+        <div class="item-url">https://openai.com/index/choco</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/our-principles" target="_blank" rel="noopener">Our principles</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Our mission is to ensure that AGI benefits all of humanity. Sam Altman shares five principles that guide our work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Sam Altman 分享指导 OpenAI 工作的五项原则，使命是让 AGI 造福全人类。</div>
+        <div class="item-url">https://openai.com/index/our-principles</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-gpt-5-5" target="_blank" rel="noopener">Introducing GPT-5.5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing GPT-5.5, our smartest model yet—faster, more capable, and built for complex tasks like coding, research, and data analysis across tools.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 GPT-5.5，迄今最聪明的模型，更快更强，专为编码、研究、跨工具数据分析等复杂任务设计。</div>
+        <div class="item-url">https://openai.com/index/introducing-gpt-5-5</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-5-system-card" target="_blank" rel="noopener">GPT-5.5 System Card</a>
+        <div class="item-summary">GPT-5.5 系统卡：模型架构、能力评估、Preparedness Framework 下的前沿风险评测与安全缓解措施汇总。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-5-system-card</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/what-is-codex" target="_blank" rel="noopener">What is Codex?</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how Codex helps you go beyond chat by automating tasks, connecting tools, and producing real outputs like docs and dashboards.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 让你超越聊天：自动化任务、连接工具，产出真实可用的文档和仪表盘。</div>
+        <div class="item-url">https://openai.com/academy/what-is-codex</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/codex-how-to-start" target="_blank" rel="noopener">How to get started with Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to get started with Codex by setting up projects, creating threads, and completing your first tasks with step-by-step guidance.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 入门教程：建项目、开线程、按步骤完成第一个任务。</div>
+        <div class="item-url">https://openai.com/academy/codex-how-to-start</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/codex-settings" target="_blank" rel="noopener">Codex settings</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to configure Codex settings, including personalization, detail level, and permissions, to run tasks smoothly and customize your workflow.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 设置指南：个性化、详尽程度、权限配置，让任务运行顺畅、工作流可定制。</div>
+        <div class="item-url">https://openai.com/academy/codex-settings</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/working-with-codex" target="_blank" rel="noopener">Working with Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to set up your Codex workspace, create threads and projects, manage files, and start completing tasks with step-by-step guidance.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 工作区使用指南：建线程和项目、管理文件、按步骤完成任务。</div>
+        <div class="item-url">https://openai.com/academy/working-with-codex</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/codex-plugins-and-skills" target="_blank" rel="noopener">Plugins and skills</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to use Codex plugins and skills to connect tools, access data, and follow repeatable workflows to automate tasks and improve results.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 插件与技能教程：连接工具、访问数据、跟随可复用工作流自动化任务。</div>
+        <div class="item-url">https://openai.com/academy/codex-plugins-and-skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/top-10-use-cases-codex-for-work" target="_blank" rel="noopener">Top 10 uses for Codex at work</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore 10 practical Codex use cases to automate tasks, create deliverables, and turn real inputs into outputs across tools, files, and workflows.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 工作场景十大实用用例：自动化任务、产出交付物、跨工具/文件/工作流转化输入。</div>
+        <div class="item-url">https://openai.com/academy/top-10-use-cases-codex-for-work</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/codex-automations" target="_blank" rel="noopener">Automations</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to automate tasks in Codex using schedules and triggers to create reports, summaries, and recurring workflows without manual effort.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex 自动化教程：用定时和触发器创建报告、摘要、定时工作流，无需手动。</div>
+        <div class="item-url">https://openai.com/academy/codex-automations</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-5-bio-bug-bounty" target="_blank" rel="noopener">GPT-5.5 Bio Bug Bounty</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore the GPT-5.5 Bio Bug Bounty: a red-teaming challenge to find universal jailbreaks for bio safety risks, with rewards up to $25,000.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>GPT-5.5 生物安全漏洞悬赏：寻找针对生物风险的通用越狱方法，奖金最高 $25,000。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-5-bio-bug-bounty</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/making-chatgpt-better-for-clinicians" target="_blank" rel="noopener">Making ChatGPT better for clinicians</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI makes ChatGPT for Clinicians free for verified U.S. physicians, nurse practitioners, and pharmacists, supporting clinical care, documentation, and research.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT for Clinicians 向已认证的美国医生、护士、药师免费开放，支持临床护理、病历和科研。</div>
+        <div class="item-url">https://openai.com/index/making-chatgpt-better-for-clinicians</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/academy/workspace-agents" target="_blank" rel="noopener">Workspace agents</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how to build, use, and scale workspace agents in ChatGPT to automate repeatable workflows, connect tools, and streamline team operations.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Workspace agents 教程：在 ChatGPT 中构建、使用和扩展，自动化重复工作流、连接工具、优化团队运作。</div>
+        <div class="item-url">https://openai.com/academy/workspace-agents</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/speeding-up-agentic-workflows-with-websockets" target="_blank" rel="noopener">Speeding up agentic workflows with WebSockets in the Responses API</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A deep dive into the Codex agent loop, showing how WebSockets and connection-scoped caching reduced API overhead and improved model latency.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>深入剖析 Codex agent 循环：用 WebSocket 和连接范围内的缓存降低 API 开销、改善模型延迟。</div>
+        <div class="item-url">https://openai.com/index/speeding-up-agentic-workflows-with-websockets</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-workspace-agents-in-chatgpt" target="_blank" rel="noopener">Introducing workspace agents in ChatGPT</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Workspace agents in ChatGPT are Codex-powered agents that automate complex workflows, run in the cloud, and help teams scale work across tools securely.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT 推出由 Codex 驱动的 Workspace agents：在云端自动化复杂工作流，帮助团队跨工具安全扩展工作。</div>
+        <div class="item-url">https://openai.com/index/introducing-workspace-agents-in-chatgpt</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-openai-privacy-filter" target="_blank" rel="noopener">Introducing OpenAI Privacy Filter</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI Privacy Filter is an open-weight model for detecting and redacting personally identifiable information (PII) in text with state-of-the-art accuracy</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI Privacy Filter 是开放权重模型，在文本中检测并脱敏个人身份信息，达到 SOTA 精度。</div>
+        <div class="item-url">https://openai.com/index/introducing-openai-privacy-filter</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-chatgpt-images-2-0" target="_blank" rel="noopener">Introducing ChatGPT Images 2.0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>ChatGPT Images 2.0 introduces a state-of-the-art image generation model with improved text rendering, multilingual support, and advanced visual reasoning.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT Images 2.0 推出 SOTA 图像生成模型：改进文字渲染、支持多语言、强化视觉推理。</div>
+        <div class="item-url">https://openai.com/index/introducing-chatgpt-images-2-0</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/scaling-codex-to-enterprises-worldwide" target="_blank" rel="noopener">Scaling Codex to enterprises worldwide</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI launches Codex Labs, partners with with Accenture, PwC, Infosys, and others to help enterprises deploy and scale Codex across the software development lifecycle, and hits 4M Codex WAU.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 Codex Labs，与埃森哲、普华永道、Infosys 等合作助企业部署和扩展 Codex，Codex 周活达 400 万。</div>
+        <div class="item-url">https://openai.com/index/scaling-codex-to-enterprises-worldwide</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise" target="_blank" rel="noopener">OpenAI helps Hyatt advance AI among colleagues</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Hyatt deploys ChatGPT Enterprise across its global workforce, using GPT-5.4 and Codex to improve productivity, operations, and guest experiences.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>凯悦集团向全球员工部署 ChatGPT Enterprise，用 GPT-5.4 和 Codex 提升生产力、运营和客户体验。</div>
+        <div class="item-url">https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">11 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank" rel="noopener">Introducing Claude Opus 4.7</a>
+        <div class="item-summary">发布 Claude Opus 4.7 模型，软件工程、视觉识别、长上下文性能显著提升，加强网络安全防护。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-opus-4-7</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-design-anthropic-labs" target="_blank" rel="noopener">Introducing Claude Design by Anthropic Labs</a>
+        <div class="item-summary">推出 Claude Design 设计工具，与 AI 协作创建设计、原型和演示文稿，支持品牌系统自动应用。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-design-anthropic-labs</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-is-a-space-to-think" target="_blank" rel="noopener">Claude is a space to think</a>
+        <div class="item-summary">宣布 Claude 永久保持无广告，靠订阅和企业合同盈利，避免广告激励对帮助性的负面影响。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-is-a-space-to-think</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-for-creative-work" target="_blank" rel="noopener">Claude for Creative Work</a>
+        <div class="item-summary">推出多个创意工具连接器，使 Claude 能在 Photoshop、Blender 等软件中扩展创意工作能力。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-for-creative-work</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/theo-hourmouzis-general-manager-australia-new-zealand" target="_blank" rel="noopener">Anthropic names Theo Hourmouzis General Manager of Australia &amp; New Zealand and officially opens Sydney office</a>
+        <div class="item-summary">任命 Theo Hourmouzis 为澳大利亚和新西兰总经理，正式开设悉尼办公室。</div>
+        <div class="item-url">https://www.anthropic.com/news/theo-hourmouzis-general-manager-australia-new-zealand</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/election-safeguards-update" target="_blank" rel="noopener">An update on our election safeguards</a>
+        <div class="item-summary">通过政治中立性训练、政策执行、安全测试，确保 Claude 在选举期间提供准确、平衡的信息。</div>
+        <div class="item-url">https://www.anthropic.com/news/election-safeguards-update</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/anthropic-nec" target="_blank" rel="noopener">Anthropic and NEC collaborate to build Japan’s largest AI engineering workforce</a>
+        <div class="item-summary">与 NEC 合作在日本建设 AI 工程队伍，向 3 万名员工提供 Claude，开发金融、制造领域 AI 产品。</div>
+        <div class="item-url">https://www.anthropic.com/news/anthropic-nec</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener">Anthropic and Amazon expand collaboration for up to 5 gigawatts of new compute</a>
+        <div class="item-summary">与亚马逊扩大合作，获 5 吉瓦算力支持，投资超千亿美元用于训练和部署 Claude。</div>
+        <div class="item-url">https://www.anthropic.com/news/anthropic-amazon-compute</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/narasimhan-board" target="_blank" rel="noopener">Anthropic’s Long-Term Benefit Trust appoints Vas Narasimhan to Board of Directors</a>
+        <div class="item-summary">长期利益信托任命诺华制药 CEO Vas Narasimhan 担任董事会成员，平衡商业与使命。</div>
+        <div class="item-url">https://www.anthropic.com/news/narasimhan-board</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener">Anthropic expands partnership with Google and Broadcom for multiple gigawatts of next-generation compute</a>
+        <div class="item-summary">与 Google + Broadcom 签约，将部署多吉瓦级下一代 TPU 算力，2027 年上线。</div>
+        <div class="item-url">https://www.anthropic.com/news/google-broadcom-partnership-compute</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/australia-MOU" target="_blank" rel="noopener">Australian government and Anthropic sign MOU for AI safety and research</a>
+        <div class="item-summary">澳大利亚政府与 Anthropic 签署谅解备忘录，开展 AI 安全研究合作，投入 300 万澳元。</div>
+        <div class="item-url">https://www.anthropic.com/news/australia-MOU</div>
+      </div>
+    </div>
+    <div class="source-group" id="transformer-circuits">
+      <div class="source-header">
+        <div class="source-name">Transformer Circuits</div>
+        <div class="source-count">44 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2026/emotions/index.html" target="_blank" rel="noopener">Emotion Concepts and their Function in a Large Language Model</a>
+        <div class="item-summary">在 Claude Sonnet 4.5 中找到情绪概念的内部表征，并通过干预实验证明这些表征会因果性地影响模型输出。</div>
+        <div class="item-url">https://transformer-circuits.pub/2026/emotions/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/november-update/index.html" target="_blank" rel="noopener">Circuits Updates — November 2025</a>
+        <div class="item-summary">11 月简报：关于 harm pressure（有害压力）的简短更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/november-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/introspection/index.html" target="_blank" rel="noopener">Emergent Introspective Awareness in Large Language Models</a>
+        <div class="item-summary">证据显示语言模型能对自身内部状态进行内省。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/introspection/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/october-update/index.html" target="_blank" rel="noopener">Circuits Updates — October 2025</a>
+        <div class="item-summary">10 月简报：关于视觉特征和字典初始化的小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/october-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/linebreaks/index.html" target="_blank" rel="noopener">When Models Manipulate Manifolds: The Geometry of a Counting Task</a>
+        <div class="item-summary">在一项基础语言模型行为的机制底层发现了几何结构。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/linebreaks/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/september-update/index.html" target="_blank" rel="noopener">Circuits Updates — September 2025</a>
+        <div class="item-summary">9 月简报：关于特征和上下文学习的小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/september-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/august-update/index.html" target="_blank" rel="noopener">Circuits Updates — August 2025</a>
+        <div class="item-summary">8 月简报：人格设定如何改变助手的回答。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/august-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/faithfulness-toy-model/index.html" target="_blank" rel="noopener">A Toy Model of Mechanistic (Un)Faithfulness</a>
+        <div class="item-summary">当 transcoder 走偏时 — 一个机制（不）忠实性的玩具模型。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/faithfulness-toy-model/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/attention-qk/index.html" target="_blank" rel="noopener">Tracing Attention Computation Through Feature Interactions</a>
+        <div class="item-summary">提出一种方法，用特征交互解释注意力模式，并将该信息整合进归因图。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/attention-qk/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/interference-weights/index.html" target="_blank" rel="noopener">A Toy Model of Interference Weights</a>
+        <div class="item-summary">更深入地解析「干扰权重」。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/interference-weights/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/bulk-update/index.html" target="_blank" rel="noopener">Sparse mixtures of linear transforms</a>
+        <div class="item-summary">研究稀疏线性变换混合（MOLT），一种新型 transcoder 方法。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/bulk-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/july-update/index.html" target="_blank" rel="noopener">Circuits Updates — July 2025</a>
+        <div class="item-summary">7 月简报：重访《数学框架》和把可解释性应用于生物学等小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/july-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/april-update/index.html" target="_blank" rel="noopener">Circuits Updates — April 2025</a>
+        <div class="item-summary">4 月简报：越狱、密集特征、可解释性入门等小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/april-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/attention-update/index.html" target="_blank" rel="noopener">Progress on Attention</a>
+        <div class="item-summary">关于注意力机制研究进展的更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/attention-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/crosscoder-diffing-update/index.html" target="_blank" rel="noopener">Insights on Crosscoder Model Diffing</a>
+        <div class="item-summary">用 crosscoder 做模型差异化的初步笔记。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/crosscoder-diffing-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2025/january-update/index.html" target="_blank" rel="noopener">Circuits Updates — January 2025</a>
+        <div class="item-summary">1 月简报：字典学习优化技术的小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2025/january-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/model-diffing/index.html" target="_blank" rel="noopener">Stage-Wise Model Diffing</a>
+        <div class="item-summary">通过字典微调进行模型差异化的初步笔记。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/model-diffing/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/crosscoders/index.html" target="_blank" rel="noopener">Sparse Crosscoders for Cross-Layer Features and Model Diffing</a>
+        <div class="item-summary">提出一种获取跨层（甚至跨模型）一致特征的方法的初步笔记。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/crosscoders/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/features-as-classifiers/index.html" target="_blank" rel="noopener">Using Dictionary Learning Features as Classifiers</a>
+        <div class="item-summary">比较基于特征 vs 基于原始激活的有害性分类器的初步笔记。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/features-as-classifiers/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/september-update/index.html" target="_blank" rel="noopener">Circuits Updates — September 2024</a>
+        <div class="item-summary">2024 年 9 月简报：研究 successor heads、SAE 中的数据过采样等小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/september-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/august-update/index.html" target="_blank" rel="noopener">Circuits Updates — August 2024</a>
+        <div class="item-summary">2024 年 8 月简报：可解释性评测、自解释复现等小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/august-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/july-update/index.html" target="_blank" rel="noopener">Circuits Updates — July 2024</a>
+        <div class="item-summary">2024 年 7 月简报：五大障碍、线性表征、暗物质、pivot tables、特征敏感性等。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/july-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/june-update/index.html" target="_blank" rel="noopener">Circuits Updates — June 2024</a>
+        <div class="item-summary">2024 年 6 月简报：topk 和 gated SAE 的研究小更新。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/june-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html" target="_blank" rel="noopener">Scaling Monosemanticity: Extracting Interpretable Features from Claude 3 Sonnet</a>
+        <div class="item-summary">用稀疏自编码器从 Claude 3 Sonnet 中提取大量可解释特征，其中部分与安全相关。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/scaling-monosemanticity/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/april-update/index.html" target="_blank" rel="noopener">Circuits Updates — April 2024</a>
+        <div class="item-summary">Anthropic 可解释性团队 2024 年 4 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/april-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/march-update/index.html" target="_blank" rel="noopener">Circuits Updates — March 2024</a>
+        <div class="item-summary">Anthropic 可解释性团队 2024 年 3 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/march-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/qualitative-essay/index.html" target="_blank" rel="noopener">Reflections on Qualitative Research</a>
+        <div class="item-summary">对可解释性研究中定性成分相比其他领域更为核心这一现象的思考。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/qualitative-essay/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/feb-update/index.html" target="_blank" rel="noopener">Circuits Updates — February 2024</a>
+        <div class="item-summary">Anthropic 可解释性团队 2024 年 2 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/feb-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2024/jan-update/index.html" target="_blank" rel="noopener">Circuits Updates — January 2024</a>
+        <div class="item-summary">Anthropic 可解释性团队 2024 年 1 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2024/jan-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/monosemantic-features/index.html" target="_blank" rel="noopener">Towards Monosemanticity: Decomposing Language Models With Dictionary Learning</a>
+        <div class="item-summary">用稀疏自编码器从单层 Transformer 中提取大量可解释特征 — 单义性研究里程碑。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/monosemantic-features/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/july-update/index.html" target="_blank" rel="noopener">Circuits Updates — July 2023</a>
+        <div class="item-summary">Anthropic 可解释性团队 2023 年 7 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/july-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/may-update/index.html" target="_blank" rel="noopener">Circuits Updates — May 2023</a>
+        <div class="item-summary">Anthropic 可解释性团队 2023 年 5 月小更新合集。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/may-update/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/interpretability-dreams/index.html" target="_blank" rel="noopener">Interpretability Dreams</a>
+        <div class="item-summary">目前的研究旨在为机制可解释性奠定基础，过程中需要清楚地认识最终目标。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/interpretability-dreams/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/superposition-composition/index.html" target="_blank" rel="noopener">Distributed Representations: Composition &amp; Superposition</a>
+        <div class="item-summary">非正式笔记：「分布式表征」可被理解为两种竞争策略 — 「组合」与「叠加」 — 二者性质迥异。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/superposition-composition/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/privileged-basis/index.html" target="_blank" rel="noopener">Privileged Bases in the Transformer Residual Stream</a>
+        <div class="item-summary">理论上 Transformer 残差流的各坐标轴不应有特殊意义，但实践相反。研究表明 Adam 优化器的逐维归一化是元凶。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/privileged-basis/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2023/toy-double-descent/index.html" target="_blank" rel="noopener">Superposition, Memorization, and Double Descent</a>
+        <div class="item-summary">扩展玩具模型工作，阐明深度学习模型如何超出训练集泛化 — 一个长期未被机制性理解的核心问题。</div>
+        <div class="item-url">https://transformer-circuits.pub/2023/toy-double-descent/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2022/toy_model/index.html" target="_blank" rel="noopener">Toy Models of Superposition</a>
+        <div class="item-summary">神经元常把多个无关概念塞进单个神经元（多义性）。本工作构建玩具模型，完整解释多义性的起源和动力学。</div>
+        <div class="item-url">https://transformer-circuits.pub/2022/toy_model/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2022/solu/index.html" target="_blank" rel="noopener">Softmax Linear Units</a>
+        <div class="item-summary">提出一种替代激活函数，提高对应人类可理解概念的神经元比例。</div>
+        <div class="item-url">https://transformer-circuits.pub/2022/solu/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2022/mech-interp-essay/index.html" target="_blank" rel="noopener">Mechanistic Interpretability, Variables, and the Importance of Interpretable Bases</a>
+        <div class="item-summary">关于机制可解释性的直觉的非正式笔记 — 重点谈变量与可解释基的重要性。</div>
+        <div class="item-url">https://transformer-circuits.pub/2022/mech-interp-essay/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html" target="_blank" rel="noopener">In-Context Learning and Induction Heads</a>
+        <div class="item-summary">探索「归纳头是上下文学习主要机制」的假设，并报告了此前未知的 Transformer 语言模型相变现象。</div>
+        <div class="item-url">https://transformer-circuits.pub/2022/in-context-learning-and-induction-heads/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2021/framework/index.html" target="_blank" rel="noopener">A Mathematical Framework for Transformer Circuits</a>
+        <div class="item-summary">早期的 Transformer 逆向工程数学框架，通过对小型玩具模型的逆向演示。</div>
+        <div class="item-url">https://transformer-circuits.pub/2021/framework/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2021/exercises/index.html" target="_blank" rel="noopener">Exercises</a>
+        <div class="item-summary">一组习题，用于提升对神经网络在参数层面实现算法的理解。</div>
+        <div class="item-url">https://transformer-circuits.pub/2021/exercises/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2021/videos/index.html" target="_blank" rel="noopener">Videos</a>
+        <div class="item-summary">在探索 Transformer 逆向工程方法过程中录制的非正式粗糙讲座。</div>
+        <div class="item-url">https://transformer-circuits.pub/2021/videos/index.html</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2021/garcon/index.html" target="_blank" rel="noopener">Garcon</a>
+        <div class="item-summary">对大模型可解释性研究工具链的描述。</div>
+        <div class="item-url">https://transformer-circuits.pub/2021/garcon/index.html</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">34 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/2/sightings/#atom-everything" target="_blank" rel="noopener">Sightings</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>/elsewhere/sightings/
+I have a new camera (a Canon R6 Mark II) so I&#x27;m taking a lot more photos of birds. I share my best wildlife photos on iNaturalist, and based on yesterday&#x27;s successful prototype  I decided to add those to my blog.
+
+I built this feature on my phone using Claude Code for web, as an extension of my beats system for syndicating ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>新买 Canon R6 Mark II 后开始大量拍鸟，把 iNaturalist 精选野生动物照同步到博客 sightings 页面。用 Claude Code 在手机上完成开发。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/2/sightings/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything" target="_blank" rel="noopener">iNaturalist Sightings</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: iNaturalist Sightings
+        I wanted to see my iNaturalist observations - across two separate accounts - grouped by when they occurred. I&#x27;m camping this weekend so I built this entirely on my phone using Claude Code for web.
+I started by building an inaturalist-clumper Python CLI for fetching and &quot;clumping&quot; observations - by default clum...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>用 Claude Code 在手机上写了 inaturalist-clumper 命令行工具，把跨账号的 iNaturalist 观测按时间聚合分组。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/30/codex-goals/#atom-everything" target="_blank" rel="noopener">Codex CLI 0.128.0 adds /goal</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Codex CLI 0.128.0 adds /goal
+The latest version of OpenAI&#x27;s Codex CLI coding agent adds their own version of the Ralph loop: you can now set a /goal and Codex will keep on looping until it evaluates that the goal has been completed... or the configured token budget has been exhausted.
+It looks like the feature is mainly implemented though the go...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Codex CLI 0.128.0 加入 /goal 命令 — OpenAI 版的 Ralph 循环：设定目标后 agent 持续循环直到完成或 token 预算用尽。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/30/codex-goals/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/#atom-everything" target="_blank" rel="noopener">Our evaluation of OpenAI&#x27;s GPT-5.5 cyber capabilities</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Our evaluation of OpenAI&#x27;s GPT-5.5 cyber capabilities
+The UK&#x27;s AI Security Institute previously evaluated Claude Mythos: now they&#x27;ve evaluated GPT-5.5 for finding security vulnerability and found it to be comparable to Mythos, but unlike Mythos it&#x27;s generally available right now.
+
+
+    Tags: ai, openai, generative-ai, llms, anthropic, claude, ai...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>英国 AI Security Institute 评估 GPT-5.5 的安全漏洞挖掘能力，与 Claude Mythos 相当，但 GPT-5.5 已普遍可用。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/30/gpt-55-cyber-capabilities/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/30/andrew-kelley/#atom-everything" target="_blank" rel="noopener">Quoting Andrew Kelley</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>It&#x27;s a common misconception that we can&#x27;t tell who is using LLM and who is not. I&#x27;m sure we didn&#x27;t catch 100% of LLM-assisted PRs over the past few months, but the kind of mistakes humans make are fundamentally different than LLM hallucinations, making them easy to spot. Furthermore, people who come from the world of agentic coding have a certai...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Andrew Kelley 引用：人们误以为无法分辨谁用了 LLM，但 LLM 幻觉与人类错误本质不同，识别并不难。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/30/andrew-kelley/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/30/rss-vibe-coded-apps/#atom-everything" target="_blank" rel="noopener">We need RSS for sharing abundant vibe-coded apps</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We need RSS for sharing abundant vibe-coded apps
+Matt Webb:
+
+I would love an RSS web feed for all those various tools and apps pages, each item with an “Install” button. (But install to where?)
+The lesson here is that when vibe-coding accelerates app development, apps become more personal, more situated, and more frequent. Shipping a tool or a m...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Matt Webb 提议：vibe-coded 应用快速增多，需要类 RSS 的订阅 + 一键安装机制让分享更高效。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/30/rss-vibe-coded-apps/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/30/zig-anti-ai/#atom-everything" target="_blank" rel="noopener">The Zig project&#x27;s rationale for their firm anti-AI contribution policy</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Zig has one of the most stringent anti-LLM policies of any major open source project:
+
+No LLMs for issues.
+No LLMs for pull requests.
+No LLMs for comments on the bug tracker, including translation. English is encouraged, but not required. You are welcome to post in your native language and rely on others to have their own translation tools of ch...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Zig 项目是开源界最严格的反 LLM 政策之一：禁止 LLM 用于 issue、PR、bug tracker 评论（含翻译）。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/30/zig-anti-ai/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/29/llm-3/#atom-everything" target="_blank" rel="noopener">llm 0.32a1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.32a1
+        
+
+Fixed a bug in 0.32a0 where tool-calling conversations were not correctly reinflated from SQLite. #1426
+
+
+    
+    
+        Tags: llm</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm 0.32a1 修复 0.32a0 中工具调用对话从 SQLite 反序列化的 bug。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/29/llm-3/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/29/llm/#atom-everything" target="_blank" rel="noopener">LLM 0.32a0  is a major backwards-compatible refactor</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I just released LLM 0.32a0, an alpha release of my LLM Python library and CLI tool for accessing LLMs, with some consequential changes that I&#x27;ve been working towards for quite a while.
+Previous versions of LLM modeled the world in terms of prompts and responses. Send the model a text prompt, get back a text response.
+import llm
+
+model = llm.get_...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm 0.32a0 alpha 发布，向后兼容的重大重构，告别原先 prompt-response 模型抽象。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/29/llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/29/llm-2/#atom-everything" target="_blank" rel="noopener">llm 0.32a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.32a0
+        See the annotated release notes.
+    
+    
+        Tags: llm</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm 0.32a0 发布说明（注释版）。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/29/llm-2/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/28/openai-codex/#atom-everything" target="_blank" rel="noopener">Quoting OpenAI Codex base_instructions</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Never talk about goblins, gremlins, raccoons, trolls, ogres, pigeons, or other animals or creatures unless it is absolutely and unambiguously relevant to the user&#x27;s query.
+— OpenAI Codex base_instructions, for GPT-5.5
+
+    Tags: openai, ai, llms, system-prompts, prompt-engineering, codex-cli, generative-ai, gpt</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI Codex 基础指令引用：除非高度相关，绝不谈论妖怪、土豹、浣熊、巨魔、食人魔、鸽子等生物。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/28/openai-codex/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/28/matthew-yglesias/#atom-everything" target="_blank" rel="noopener">Quoting Matthew Yglesias</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Five months in, I think I&#x27;ve decided that I don&#x27;t want to vibecode — I want professionally managed software companies to use AI coding assistance to make more/better/cheaper software products that they sell to me for money.
+— Matthew Yglesias
+
+    Tags: agentic-engineering, vibe-coding, ai-assisted-programming, ai</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Matthew Yglesias 五个月后表态：他不想 vibe-coding，希望专业软件公司用 AI 提供更好的产品给他买。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/28/matthew-yglesias/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/28/pip-261/#atom-everything" target="_blank" rel="noopener">What&#x27;s new in pip 26.1 - lockfiles and dependency cooldowns!</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>What&#x27;s new in pip 26.1 - lockfiles and dependency cooldowns!
+Richard Si describes an excellent set of upgrades to Python&#x27;s default pip tool for installing dependencies.
+This version drops support for Python 3.9 - fair enough, since it&#x27;s been EOL since October. macOS still ships with python3 as a default Python 3.9, so I tried out the new Python ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>pip 26.1 新增 lockfiles 和依赖冷却期；本版不再支持 EOL 的 Python 3.9。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/28/pip-261/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/28/talkie/#atom-everything" target="_blank" rel="noopener">Introducing talkie: a 13B vintage language model from 1930</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing talkie: a 13B vintage language model from 1930
+New project from Nick Levine, David Duvenaud, and Alec Radford (of GPT, GPT-2, Whisper fame).
+talkie-1930-13b-base (53.1 GB) is a &quot;13B language model trained on 260B tokens of historical pre-1931 English text&quot;. 
+talkie-1930-13b-it (26.6 GB) is a checkpoint &quot;finetuned using a novel datase...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Nick Levine、David Duvenaud、Alec Radford 新项目 talkie：基于 1931 年前 260B 历史英语 token 训练的 13B 复古语言模型。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/28/talkie/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/27/vibevoice/#atom-everything" target="_blank" rel="noopener">microsoft/VibeVoice</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>microsoft/VibeVoice
+VibeVoice is Microsoft&#x27;s Whisper-style audio model for speech-to-text, MIT licensed and with speaker diarization built into the model.
+Microsoft released it on January 21st, 2026 but I hadn&#x27;t tried it until today. Here&#x27;s a one-liner to run it on a Mac with uv, mlx-audio (by Prince Canuma) and the 5.71GB mlx-community/VibeVoic...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>微软 VibeVoice 是 Whisper 风格的语音转文字模型，MIT 协议开源，自带说话人分离。Mac 上用 mlx-audio 单行运行。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/27/vibevoice/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/27/now-deceased-agi-clause/#atom-everything" target="_blank" rel="noopener">Tracking the history of the now-deceased OpenAI Microsoft AGI clause</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>For many years, Microsoft and OpenAI&#x27;s relationship has included a weird clause saying that, should AGI be achieved, Microsoft&#x27;s commercial IP rights to OpenAI&#x27;s technology would be null and void. That clause appeared to end today. I decided to try and track its expression over time on openai.com.
+OpenAI, July 22nd 2019 in Microsoft invests in a...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与微软多年存在的「AGI 触发条款」（实现 AGI 后微软商业 IP 失效）今日终结，作者梳理 openai.com 上历年表述。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/27/now-deceased-agi-clause/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/27/speech-translation-in-google-meet-is-now-rolling-out-to-mobile-d/#atom-everything" target="_blank" rel="noopener">Speech translation in Google Meet is now rolling out to mobile devices</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Speech translation in Google Meet is now rolling out to mobile devices
+I just encountered this feature via a &quot;try this out now&quot; prompt in a Google Meet meeting. It kind-of worked!
+This is Google&#x27;s implementation of the ultimate sci-fi translation app, where two people can talk to each other in two separate languages and Meet translates from one ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Google Meet 移动端推出实时语音翻译，作者亲测大致可用，是科幻级翻译应用的实现。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/27/speech-translation-in-google-meet-is-now-rolling-out-to-mobile-d/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/25/why-are-you-like-this/#atom-everything" target="_blank" rel="noopener">WHY ARE YOU LIKE THIS</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>@scottjla on Twitter in reply to my pelican riding a bicycle benchmark:
+
+I feel like we need to stack these tests now
+
+
+I checked to confirm that the model (ChatGPT Images 2.0) added the &quot;WHY ARE YOU LIKE THIS&quot; sign of its own accord and it did - the prompt Scott used was:
+
+Create an image of a horse riding an astronaut, where the astronaut is r...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>@scottjla 用 ChatGPT Images 2.0 生成「宇航员骑马」反向图，模型自发加上「WHY ARE YOU LIKE THIS」招牌。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/25/why-are-you-like-this/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/25/romain-huet/#atom-everything" target="_blank" rel="noopener">Quoting Romain Huet</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Since GPT-5.4, we’ve unified Codex and the main model into a single system, so there’s no separate coding line anymore.
+GPT-5.5 takes this further, with strong gains in agentic coding, computer use, and any task on a computer.
+— Romain Huet, confirming OpenAI won&#x27;t release a GPT-5.5-Codex model
+
+    Tags: generative-ai, gpt, openai, ai, llms</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 的 Romain Huet 确认：自 GPT-5.4 起 Codex 与主模型已统一，不再有 GPT-5.5-Codex 分支。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/25/romain-huet/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/25/gpt-5-5-prompting-guide/#atom-everything" target="_blank" rel="noopener">GPT-5.5 prompting guide</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GPT-5.5 prompting guide
+Now that GPT-5.5 is available in the API, OpenAI have released a wealth of useful tips on how best to prompt the new model.
+Here&#x27;s a neat trick they recommend for applications that might spend considerable time thinking before returning a user-visible response:
+
+Before any tool calls for a multi-step task, send a short us...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>GPT-5.5 上线 API 后 OpenAI 发布提示词指南。一个亮点：长思考前先发简短状态信号给用户。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/25/gpt-5-5-prompting-guide/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/llm/#atom-everything" target="_blank" rel="noopener">llm 0.31</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.31
+        
+
+New GPT-5.5 OpenAI model: llm -m gpt-5.5. #1418
+New option to set the text verbosity level for GPT-5+ OpenAI models: -o verbosity low. Values are low, medium, high.
+New option for setting the image detail level used for image attachments to OpenAI models: -o image_detail low - values are low, high and auto, and GPT-5....</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm 0.31 发布：支持 GPT-5.5、新增 verbosity 和图像 detail 选项。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/the-people-do-not-yearn-for-automation/#atom-everything" target="_blank" rel="noopener">The people do not yearn for automation</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The people do not yearn for automation
+This written and video essay by Nilay Patel explores why AI is unpopular with the general public even as usage numbers for ChatGPT continue to skyrocket.
+It’s a superb piece of commentary, and something I expect I’ll be thinking about for a long time to come.
+Nilay’s core idea is that people afflicted with ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Nilay Patel 视频长评：尽管 ChatGPT 用量激增，AI 在大众中仍不受欢迎；探讨自动化与人心之间的矛盾。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/the-people-do-not-yearn-for-automation/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/deepseek-v4/#atom-everything" target="_blank" rel="noopener">DeepSeek V4 - almost on the frontier, a fraction of the price</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Chinese AI lab DeepSeek&#x27;s last model release was V3.2 (and V3.2 Speciale) last December. They just dropped the first of their hotly anticipated V4 series in the shape of two preview models, DeepSeek-V4-Pro and DeepSeek-V4-Flash.
+Both models are 1 million token context Mixture of Experts. Pro is 1.6T total parameters, 49B active. Flash is 284B to...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>DeepSeek V4 系列首批：Pro（1.6T 总参数 49B 激活）和 Flash（284B…），均为 1M token MoE，价格极低，接近前沿。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/deepseek-v4/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/milliseconds/#atom-everything" target="_blank" rel="noopener">Millisecond Converter</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Millisecond Converter
+        LLM reports prompt durations in milliseconds and I got fed up of having to think about how to convert those to seconds and minutes.
+    
+    
+        Tags: tools</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者写的小工具，把 LLM 输出的毫秒数自动转成秒/分钟。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/milliseconds/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/weekly/#atom-everything" target="_blank" rel="noopener">It&#x27;s a big one</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>This week&#x27;s edition of my email newsletter (aka content from this blog delivered to your inbox) features 4 pelicans riding bicycles, 1 possum on an e-scooter, up to 5 raccoons with ham radios hiding in crowds, 5 blog posts, 8 links, 3 quotes and a new chapter of my Agentic Engineering Patterns guide.
+
+    Tags: newsletter</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>本周邮件简讯：4 只骑自行车的鹈鹕、1 只骑滑板车的负鼠、5 只藏火腿对讲机的浣熊，加 5 篇博客 + 8 链接 + 3 引用。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/weekly/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/honker/#atom-everything" target="_blank" rel="noopener">russellromney/honker</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>russellromney/honker
+&quot;Postgres NOTIFY/LISTEN semantics&quot; for SQLite, implemented as a Rust SQLite extension and various language bindings to help make use of it.
+The design of this looks very solid. It lets you write Python code for queues that looks like this:
+import honker
+
+db = honker.open(&quot;app.db&quot;)
+emails = db.queue(&quot;emails&quot;)
+emails.enqueue({...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>honker 项目：用 Rust 写的 SQLite 扩展，给 SQLite 提供 Postgres NOTIFY/LISTEN 语义，可写出 emails.enqueue 这样的队列代码。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/honker/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/recent-claude-code-quality-reports/#atom-everything" target="_blank" rel="noopener">An update on recent Claude Code quality reports</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>An update on recent Claude Code quality reports
+It turns out the high volume of complaints that Claude Code was providing worse quality results over the past two months was grounded in real problems.
+The models themselves were not to blame, but three separate issues in the Claude Code harness caused complex but material problems which directly a...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Claude Code 最近两月质量下降的投诉确有其事：模型本身没问题，但 harness 层面 3 个独立问题导致复杂任务受影响。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/recent-claude-code-quality-reports/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/24/serving-the-for-you-feed/#atom-everything" target="_blank" rel="noopener">Serving the For You feed</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Serving the For You feed
+One of Bluesky&#x27;s most interesting features is that anyone can run their own custom &quot;feed&quot; implementation and make it available to other users - effectively enabling custom algorithms that can use any mechanism they like to recommend posts.
+spacecowboy runs the For You Feed, used by around 72,000 people. This guest post o...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Bluesky 自定义 feed 介绍：任何人可写自己的推荐算法。spacecowboy 运营的 For You Feed 服务约 7.2 万用户。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/24/serving-the-for-you-feed/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/#atom-everything" target="_blank" rel="noopener">Extract PDF text in your browser with LiteParse for the web</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>LlamaIndex have a most excellent open source project called LiteParse, which provides a Node.js CLI tool for extracting text from PDFs. I got a version of LiteParse working entirely in the browser, using most of the same libraries that LiteParse uses to run in Node.js.
+Spatial text parsing
+Refreshingly, LiteParse doesn&#x27;t use AI models to do what...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>把 LlamaIndex 的 PDF 文本抽取库 LiteParse 完整移植到浏览器运行，复用其 Node.js 大部分库，支持空间文本解析。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Apr/23/gpt-5-5/#atom-everything" target="_blank" rel="noopener">A pelican for GPT-5.5 via the semi-official Codex backdoor API</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GPT-5.5 is out. It&#x27;s available in OpenAI Codex and is rolling out to paid ChatGPT subscribers. I&#x27;ve had some preview access and found it to be a fast, effective and highly capable model. As is usually the case these days, it&#x27;s hard to put into words what&#x27;s good about it - I ask it to build things and it builds exactly what I ask for!
+There&#x27;s one...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>GPT-5.5 上线 Codex 并向付费 ChatGPT 推送。作者用 Codex 后门 API 跑了经典「骑自行车的鹈鹕」基准测试。</div>
+        <div class="item-url">https://simonwillison.net/2026/Apr/23/gpt-5-5/#atom-everything</div>
+      </div>
+    </div>
+    <div class="source-group" id="dario-amodei">
+      <div class="source-header">
+        <div class="source-name">Dario Amodei</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.darioamodei.com/essay/the-adolescence-of-technology" target="_blank" rel="noopener">The Adolescence of Technology</a>
+        <div class="item-summary">提出 AI 处于「技术青春期」，面临自主性风险、滥用、权力夺取、失业四类威胁，需宪法训练、可解释性、监管、国际合作综合应对。</div>
+        <div class="item-url">https://www.darioamodei.com/essay/the-adolescence-of-technology</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.darioamodei.com/essay/machines-of-loving-grace" target="_blank" rel="noopener">Machines of Loving Grace</a>
+        <div class="item-summary">强大 AI 将在 5-10 年内压缩一个世纪的生物学进展，加速医学突破、消除疾病、延长寿命、促进民主减贫。</div>
+        <div class="item-url">https://www.darioamodei.com/essay/machines-of-loving-grace</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.darioamodei.com/post/the-urgency-of-interpretability" target="_blank" rel="noopener">The Urgency of Interpretability</a>
+        <div class="item-summary">AI 失控前必须优先做可解释性研究，理解模型内部机制以识别风险，需投资 + 透明化 + 出口管制配合。</div>
+        <div class="item-url">https://www.darioamodei.com/post/the-urgency-of-interpretability</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.darioamodei.com/post/on-deepseek-and-export-controls" target="_blank" rel="noopener">On DeepSeek and Export Controls</a>
+        <div class="item-summary">芯片出口管制是美国保持 AI 领先的关键。DeepSeek 的成功不证明管制失效，反而需要更严格管制阻止中国获大规模算力。</div>
+        <div class="item-url">https://www.darioamodei.com/post/on-deepseek-and-export-controls</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

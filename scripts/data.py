@@ -31,6 +31,8 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "与 Google + Broadcom 签约，将部署多吉瓦级下一代 TPU 算力，2027 年上线。",
     "https://www.anthropic.com/news/australia-MOU":
         "澳大利亚政府与 Anthropic 签署谅解备忘录，开展 AI 安全研究合作，投入 300 万澳元。",
+    "https://www.anthropic.com/news/enterprise-ai-services-company":
+        "与 Blackstone、Hellman & Friedman、高盛联合成立企业 AI 服务公司，由 Anthropic 应用 AI 工程师和合作方工程团队为中型企业定制 Claude 方案并提供长期支持。",
 
     "https://www.darioamodei.com/essay/the-adolescence-of-technology":
         "提出 AI 处于「技术青春期」，面临自主性风险、滥用、权力夺取、失业四类威胁，需宪法训练、可解释性、监管、国际合作综合应对。",

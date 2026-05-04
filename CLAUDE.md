@@ -70,6 +70,15 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - If a pre-commit hook fails, fix the issue and create a new commit (don't `--amend` or `--no-verify`).
 - Don't push unless explicitly asked.
 
+## 6. 英文内容必须附中文注释
+
+**所有抓取/渲染产物中，凡有英文摘要（EN），其下方必须紧跟一行中文注释（中文：）。**
+
+- 渲染日报（`scripts/build_digest.py` 输出的 md/html）中，每条带 EN 的条目都要有对应的 `中文:` 行。
+- 新增信源或新条目时，若 RSS 给出英文 description，必须在 `scripts/data.py` 的 `TRANSLATIONS` 中补上中文翻译/概括（一句话级别即可，不必逐字翻译）。
+- 仅有中文摘要的条目（如 Anthropic、Dario Amodei 等已是中文的源）无需重复加英文。
+- 渲染前若发现某条 EN 缺中文，先补 `TRANSLATIONS` 再渲染，不要直接发出只有英文的 digest。
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

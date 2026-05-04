@@ -208,6 +208,8 @@ TRANSLATIONS: dict[str, str] = {
         "凯悦集团向全球员工部署 ChatGPT Enterprise，用 GPT-5.4 和 Codex 提升生产力、运营和客户体验。",
 
     # Simon Willison（基于其原文摘录概括）
+    "https://simonwillison.net/2026/May/3/anthropic/#atom-everything":
+        "引用 Anthropic 对 Claude 谄媚行为的评测：仅 9% 对话出现谄媚，但灵性话题 38%、感情话题 25%是例外。",
     "https://simonwillison.net/2026/May/2/sightings/#atom-everything":
         "新买 Canon R6 Mark II 后开始大量拍鸟，把 iNaturalist 精选野生动物照同步到博客 sightings 页面。用 Claude Code 在手机上完成开发。",
     "https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything":

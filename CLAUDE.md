@@ -60,6 +60,16 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Commit After Every Change
+
+**Each completed code modification ends with a git commit.**
+
+- After finishing a code change, run `git commit` to record it.
+- Stage only the files related to the change; don't sweep in unrelated edits.
+- Write a concise message describing the *why*, following the repo's existing commit style.
+- If a pre-commit hook fails, fix the issue and create a new commit (don't `--amend` or `--no-verify`).
+- Don't push unless explicitly asked.
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

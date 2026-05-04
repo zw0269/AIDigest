@@ -79,6 +79,10 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - 仅有中文摘要的条目（如 Anthropic、Dario Amodei 等已是中文的源）无需重复加英文。
 - 渲染前若发现某条 EN 缺中文，先补 `TRANSLATIONS` 再渲染，不要直接发出只有英文的 digest。
 
+## 7. 抓取信息 = 跑 `/scrape`
+
+当用户说"抓取信息"、"跑日报"、"更新 digest"或语义等价的请求时，按 `.claude/commands/scrape.md` 中的步骤执行：抓取 → 补中文 → 渲染 HTML → git commit。不要拆成手工命令一个个让用户确认。
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

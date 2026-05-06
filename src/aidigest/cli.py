@@ -1,16 +1,53 @@
 import argparse
 import logging
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
 
 import yaml
 
-from .dedupe import dedupe
+from .dedupe import canonical_id, dedupe
 from .fetchers import arxiv_fetcher, github_trending, hn_newest, html, rss
 from .models import Item
 from .render import render_report
 from .state import State
+
+
+_SECTION_TO_CATEGORY = {
+    "公司动态": "company",
+    "个人 Blog": "individual",
+    "社区动态": "community",
+    "新论文 — 关注作者": "arxiv-author",
+    "新论文 — 关键词命中": "arxiv-keyword",
+}
+_BULLET_RE = re.compile(r"^- (?:\*\*([^*]+)\*\* — )?\[(.+?)\]\(([^)]+)\)")
+
+
+def _parse_existing_report(path: Path) -> list[Item]:
+    items: list[Item] = []
+    section = ""
+    for line in path.read_text().splitlines():
+        line = line.strip()
+        if line.startswith("## "):
+            section = line[3:].strip()
+            continue
+        m = _BULLET_RE.match(line)
+        if not m:
+            continue
+        category = _SECTION_TO_CATEGORY.get(section)
+        if not category:
+            continue
+        source = m.group(1) or ("arXiv (keyword)" if category == "arxiv-keyword" else section)
+        url = m.group(3)
+        items.append(Item(
+            id=canonical_id(url),
+            title=m.group(2),
+            url=url,
+            source=source,
+            category=category,
+        ))
+    return items
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -128,11 +165,25 @@ def cmd_run(args: argparse.Namespace) -> int:
     state.mark_many([(i.id, i.source) for i in new_items])
     state.close()
 
-    body = render_report(new_items, TEMPLATES, errors)
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     out = REPORTS_DIR / f"{datetime.now().strftime('%Y-%m-%d')}.md"
+
+    # Merge with today's existing report so a same-day re-run doesn't drop entries
+    # that were already written but are now in the seen DB. Today's items =
+    # previously rendered ∪ new in this run. Prefer fresh fetched data (published,
+    # authors) over the re-parsed sparse version when both are available.
+    existing = _parse_existing_report(out) if out.exists() else []
+    fresh_by_url = {it.url: it for it in items}
+    today_urls = {it.url for it in existing} | {it.url for it in new_items}
+    parsed_by_url = {it.url: it for it in existing}
+    merged_items = [fresh_by_url.get(url) or parsed_by_url[url] for url in today_urls]
+
+    body = render_report(merged_items, TEMPLATES, errors)
     out.write_text(body)
-    print(f"Wrote {out} ({len(new_items)} new items, {len(errors)} errors)")
+    print(
+        f"Wrote {out} ({len(new_items)} new items, {len(merged_items)} total, "
+        f"{len(errors)} errors)"
+    )
     return 0
 
 

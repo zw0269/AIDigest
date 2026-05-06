@@ -70,14 +70,15 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - If a pre-commit hook fails, fix the issue and create a new commit (don't `--amend` or `--no-verify`).
 - Don't push unless explicitly asked.
 
-## 6. 英文内容必须附中文注释
+## 6. 所有英文条目必须附中文注释（含论文）
 
-**所有抓取/渲染产物中，凡有英文摘要（EN），其下方必须紧跟一行中文注释（中文：）。**
+**渲染日报中每个条目都必须有 `中文:` 行 — 包括 arXiv 论文。**
 
-- 渲染日报（`scripts/build_digest.py` 输出的 md/html）中，每条带 EN 的条目都要有对应的 `中文:` 行。
-- 新增信源或新条目时，若 RSS 给出英文 description，必须在 `scripts/data.py` 的 `TRANSLATIONS` 中补上中文翻译/概括（一句话级别即可，不必逐字翻译）。
-- 仅有中文摘要的条目（如 Anthropic、Dario Amodei 等已是中文的源）无需重复加英文。
-- 渲染前若发现某条 EN 缺中文，先补 `TRANSLATIONS` 再渲染，不要直接发出只有英文的 digest。
+- **公司动态 / 个人 Blog（RSS）**：若 RSS 给出英文 description，必须在 `scripts/data.py` 的 `TRANSLATIONS` 中补上中文翻译/概括（一句话级别，不必逐字翻译）。
+- **HTML 源（无 RSS description）**：在 `MANUAL_SUMMARIES` 中加中文摘要。
+- **arXiv 论文**：标题虽是英文但 report 不带 abstract，必须用 `arxiv` 库按 ID 拉到 `summary` 后写一句中文核心要点，加进 `TRANSLATIONS`（key 为 `result.entry_id`，含 `v1` 后缀）。
+- 仅有中文摘要的条目（Anthropic、Dario Amodei 等中文源）无需补英文。
+- 渲染前必须抽查：`grep "中文:" llm-ai/digests/digest-YYYY-MM-DD.md | wc -l` 应等于当日条目总数；缺失先补再渲染，不要发只有英文/只有标题的 digest。
 
 ## 7. 抓取信息 = 跑 `/scrape`
 

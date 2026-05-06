@@ -21,12 +21,12 @@ SQLite (`data/seen.sqlite`) 已经处理去重，跑过的不会重复入库。
 
 ### 2. 补中文翻译（CLAUDE.md 规则 6）
 
-读 `reports/YYYY-MM-DD.md` 看新条目。对每条：
+读 `reports/YYYY-MM-DD.md` 看新条目。每条都必须在渲染产物里有 `中文:` 行（包括 arXiv 论文）。
 
 - **公司动态 / 个人 Blog（RSS 源）**：检查 `scripts/data.py` 的 `TRANSLATIONS` 是否已有对应 URL。没有的话用 feedparser 拿到 RSS description（参考 `scripts/build_digest.py` 的 `rss_index()`），再写一句中文概括加进 `TRANSLATIONS`。
   - 仅有中文摘要的源（Anthropic、Dario Amodei 等）跳过。
   - HTML 源（无 RSS description）改加到 `MANUAL_SUMMARIES`。
-- **arXiv 论文**：标题已是英文，无需 description；不必补 TRANSLATIONS。
+- **arXiv 论文**：report 只存了 title/url，必须用 `arxiv` 库按 ID 批量拉 `summary`，再写一句中文核心要点加进 `TRANSLATIONS`，key 用完整 `result.entry_id`（含 `v1` 等后缀）。
 
 快速取 RSS description 的 one-liner：
 
@@ -43,6 +43,21 @@ for e in f.entries:
 "
 ```
 
+批量取 arXiv abstract 的 one-liner（把所有新论文 ID 喂进去）：
+
+```bash
+.venv/bin/python -c "
+import arxiv
+ids = ['2605.04039v1', '2605.04036v1']  # 从 reports/YYYY-MM-DD.md 复制 arxiv URL 末尾
+client = arxiv.Client(page_size=50, delay_seconds=3, num_retries=3)
+for r in client.results(arxiv.Search(id_list=ids)):
+    print('URL::', r.entry_id)
+    print('TITLE::', r.title.strip().replace(chr(10),' '))
+    print('ABS::', r.summary.strip().replace(chr(10),' '))
+    print('---')
+"
+```
+
 ### 3. 渲染 HTML
 
 ```bash
@@ -50,7 +65,7 @@ PYTHONPATH=src ./.venv/bin/python scripts/build_digest.py YYYY-MM-DD
 PYTHONPATH=src ./.venv/bin/python scripts/build_index.py
 ```
 
-抽查产物：`grep "EN\|中文" llm-ai/digests/digest-YYYY-MM-DD.md` — 每条带 EN 的下一行必须有 `中文:`。缺了回到第 2 步补。
+抽查产物：`grep -c "中文:" llm-ai/digests/digest-YYYY-MM-DD.md` 必须等于当日条目总数（含论文）。缺了回到第 2 步补。
 
 ### 4. Git commit
 

@@ -245,7 +245,7 @@ def render_index(days: list[dict]) -> str:
         parts.append('    <div class="day-grid">\n')
         for d in days:
             stats = []
-            for key in ("公司动态", "个人 Blog", "新论文 — 关注作者", "新论文 — 关键词命中"):
+            for key in ("公司动态", "个人 Blog", "社区动态", "新论文 — 关注作者", "新论文 — 关键词命中"):
                 if key in d["sections"]:
                     stats.append(f'<span>{escape(key)} {d["sections"][key]}</span>')
             preview_html = ""

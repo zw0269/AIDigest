@@ -33,6 +33,8 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "澳大利亚政府与 Anthropic 签署谅解备忘录，开展 AI 安全研究合作，投入 300 万澳元。",
     "https://www.anthropic.com/news/enterprise-ai-services-company":
         "与 Blackstone、Hellman & Friedman、高盛联合成立企业 AI 服务公司，由 Anthropic 应用 AI 工程师和合作方工程团队为中型企业定制 Claude 方案并提供长期支持。",
+    "https://www.anthropic.com/news/finance-agents":
+        "发布 10 个金融服务 AI 代理模板，覆盖 Excel/PowerPoint/Word，新增多家数据合作伙伴连接器，帮助金融机构自动化交易、合规审查等关键业务流程。",
 
     "https://www.darioamodei.com/essay/the-adolescence-of-technology":
         "提出 AI 处于「技术青春期」，面临自主性风险、滥用、权力夺取、失业四类威胁，需宪法训练、可解释性、监管、国际合作综合应对。",
@@ -50,6 +52,8 @@ MANUAL_SUMMARIES: dict[str, str] = {
     # Transformer Circuits
     "https://transformer-circuits.pub/2026/emotions/index.html":
         "在 Claude Sonnet 4.5 中找到情绪概念的内部表征，并通过干预实验证明这些表征会因果性地影响模型输出。",
+    "https://transformer-circuits.pub/2026/headvis/index.html":
+        "推出 HeadVis 交互工具，通过在完整数据分布上可视化注意力头的激活，帮助研究者解读 Claude Haiku 3.5 等模型中注意力头的行为；开源代码并提供 Gemma 3 与 Haiku 3.5 部分头的演示。",
 
     # Transformer Circuits backfill
     "https://transformer-circuits.pub/2025/november-update/index.html":
@@ -208,6 +212,16 @@ TRANSLATIONS: dict[str, str] = {
         "OpenAI 推出 Codex Labs，与埃森哲、普华永道、Infosys 等合作助企业部署和扩展 Codex，Codex 周活达 400 万。",
     "https://openai.com/index/hyatt-advances-ai-with-chatgpt-enterprise":
         "凯悦集团向全球员工部署 ChatGPT Enterprise，用 GPT-5.4 和 Codex 提升生产力、运营和客户体验。",
+    "https://openai.com/index/gpt-5-5-instant":
+        "GPT-5.5 Instant 升级 ChatGPT 默认模型：回答更聪明准确、幻觉减少、个性化控制改进。",
+    "https://openai.com/index/gpt-5-5-instant-system-card":
+        "GPT-5.5 Instant 系统卡：模型能力、安全评估与缓解措施汇总。",
+    "https://openai.com/index/new-ways-to-buy-chatgpt-ads":
+        "扩展 ChatGPT 广告：推出自助式 Ads Manager（beta）、CPC 出价、增强测量工具，注重隐私保护并将广告与对话区分。",
+    "https://openai.com/index/openai-pwc-finance-collaboration":
+        "OpenAI 与普华永道合作，帮助企业使用 AI agent 自动化财务工作流、改进预测、加强控制并现代化 CFO 职能。",
+    "https://openai.com/index/delivering-low-latency-voice-ai-at-scale":
+        "OpenAI 重构 WebRTC 栈，实现低延迟、全球规模、流畅对话轮转的实时语音 AI。",
 
     # Simon Willison（基于其原文摘录概括）
     "https://simonwillison.net/2026/May/4/redis-array/#atom-everything":
@@ -274,5 +288,23 @@ TRANSLATIONS: dict[str, str] = {
         "把 LlamaIndex 的 PDF 文本抽取库 LiteParse 完整移植到浏览器运行，复用其 Node.js 大部分库，支持空间文本解析。",
     "https://simonwillison.net/2026/Apr/23/gpt-5-5/#atom-everything":
         "GPT-5.5 上线 Codex 并向付费 ChatGPT 推送。作者用 Codex 后门 API 跑了经典「骑自行车的鹈鹕」基准测试。",
+    "https://simonwillison.net/2026/May/5/datasette-referrer-policy/#atom-everything":
+        "排查 Datasette 演示站 OpenStreetMap 瓦片不显示问题：原因是 CAPTCHA 误拦 .json 请求 + Datasette 默认 Referrer-Policy: no-referrer 被 OSM 屏蔽；用 Codex+GPT-5.5 写了新插件让用户配置该 header。",
+    "https://simonwillison.net/2026/May/5/our-ai-started-a-cafe-in-stockholm/#atom-everything":
+        "Andon Labs 在斯德哥尔摩开了 AI 运营的咖啡馆（继旧金山零售店之后），AI 闹出囤 120 个鸡蛋、22.5 公斤罐装番茄等笑话，店员设了「耻辱墙」展示 AI 的奇葩订单。",
+    "https://simonwillison.net/2026/May/5/datasette-llm/#atom-everything":
+        "datasette-llm 0.1a7：新增机制可为特定模型配置默认选项（如 enrichment 操作统一用 temperature=0.5）。",
+    "https://simonwillison.net/2026/May/5/llm-echo/#atom-everything":
+        "llm-echo 0.5a0：新增 -o thinking 1 选项，便于针对 LLM 0.32a0+ 的 reasoning block 写自动化测试。",
+    "https://simonwillison.net/2026/May/5/john-gruber/#atom-everything":
+        "引用 John Gruber：Y Combinator 持有 OpenAI 约 0.6% 股份，按 8520 亿美元估值约值 50 亿美元。",
+    "https://simonwillison.net/2026/May/4/granite-41-3b-svg-pelican-gallery/#atom-everything":
+        "IBM 发布 Apache 2.0 协议 Granite 4.1 LLM（3B/8B/30B）。作者用 unsloth 21 个量化版本对 3B 跑「骑自行车的鹈鹕」SVG 基准对比，结果意外没那么有趣。",
+    "https://simonwillison.net/2026/May/4/andy-masley/#atom-everything":
+        "引用 Andy Masley：反驳「数据中心抢农田」论 — 美国农民 2000-2024 年自愿卖出科罗拉多州大小的土地，等于 2028 年所有数据中心占地的 77 倍，并未影响食物供应。",
+    "https://simonwillison.net/2026/May/4/april-newsletter/#atom-everything":
+        "4 月赞助者邮件简讯：Opus 4.7 与 GPT-5.5 涨价、Claude Mythos 与 LLM 安全研究、ChatGPT Images 2.0、其他模型发布与博客摘录。",
+    "https://simonwillison.net/2026/May/4/tre-python-binding/#atom-everything":
+        "用 Claude Code 给 Ville Laurikari 的 TRE 正则引擎写了实验性 Python ctypes 绑定，并测试 ReDoS 攻击。TRE 因不支持回溯，比 Python 标准库表现好得多。",
 }
 

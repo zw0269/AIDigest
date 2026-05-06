@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-06</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-06</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-06</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 46 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">46</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">7</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">9</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">7 条 · 3 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-5-instant" target="_blank" rel="noopener">GPT-5.5 Instant: smarter, clearer, and more personalized</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GPT-5.5 Instant updates ChatGPT’s default model with smarter, more accurate answers, reduced hallucinations, and improved personalization controls.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>GPT-5.5 Instant 升级 ChatGPT 默认模型：回答更聪明准确、幻觉减少、个性化控制改进。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-5-instant</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-5-instant-system-card" target="_blank" rel="noopener">GPT-5.5 Instant System Card</a>
+        <div class="item-summary">GPT-5.5 Instant 系统卡：模型能力、安全评估与缓解措施汇总。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-5-instant-system-card</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/new-ways-to-buy-chatgpt-ads" target="_blank" rel="noopener">New ways to buy ChatGPT ads</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI expands ChatGPT ads with a beta self-serve Ads Manager, CPC bidding, and enhanced measurement tools—built to protect privacy and keep conversations separate from ads.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>扩展 ChatGPT 广告：推出自助式 Ads Manager（beta）、CPC 出价、增强测量工具，注重隐私保护并将广告与对话区分。</div>
+        <div class="item-url">https://openai.com/index/new-ways-to-buy-chatgpt-ads</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/openai-pwc-finance-collaboration" target="_blank" rel="noopener">OpenAI and PwC collaborate to reimagine the office of the CFO</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI and PwC are partnering to help enterprises use AI agents to automate finance workflows, improve forecasting, strengthen controls, and modernize the CFO function.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与普华永道合作，帮助企业使用 AI agent 自动化财务工作流、改进预测、加强控制并现代化 CFO 职能。</div>
+        <div class="item-url">https://openai.com/index/openai-pwc-finance-collaboration</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/delivering-low-latency-voice-ai-at-scale" target="_blank" rel="noopener">How OpenAI delivers low-latency voice AI at scale</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How OpenAI rebuilt its WebRTC stack to power real-time Voice AI with low latency, global scale, and seamless conversational turn-taking.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 重构 WebRTC 栈，实现低延迟、全球规模、流畅对话轮转的实时语音 AI。</div>
+        <div class="item-url">https://openai.com/index/delivering-low-latency-voice-ai-at-scale</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/finance-agents" target="_blank" rel="noopener">Agents for financial services</a>
+        <div class="item-summary">发布 10 个金融服务 AI 代理模板，覆盖 Excel/PowerPoint/Word，新增多家数据合作伙伴连接器，帮助金融机构自动化交易、合规审查等关键业务流程。</div>
+        <div class="item-url">https://www.anthropic.com/news/finance-agents</div>
+      </div>
+    </div>
+    <div class="source-group" id="transformer-circuits">
+      <div class="source-header">
+        <div class="source-name">Transformer Circuits</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2026/headvis/index.html" target="_blank" rel="noopener">HeadVis</a>
+        <div class="item-summary">推出 HeadVis 交互工具，通过在完整数据分布上可视化注意力头的激活，帮助研究者解读 Claude Haiku 3.5 等模型中注意力头的行为；开源代码并提供 Gemma 3 与 Haiku 3.5 部分头的演示。</div>
+        <div class="item-url">https://transformer-circuits.pub/2026/headvis/index.html</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">9 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">9 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/5/datasette-referrer-policy/#atom-everything" target="_blank" rel="noopener">datasette-referrer-policy 0.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-referrer-policy 0.1
+        The OpenStreetMap tiles on the Datasette global-power-plants demo weren&#x27;t displaying correctly. This turned out to be caused by two bugs.
+The first is that the CAPTCHA I added to that site a few weeks ago was triggering for the .json fetch requests used by the map plugin, and since those weren&#x27;t HTM...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>排查 Datasette 演示站 OpenStreetMap 瓦片不显示问题：原因是 CAPTCHA 误拦 .json 请求 + Datasette 默认 Referrer-Policy: no-referrer 被 OSM 屏蔽；用 Codex+GPT-5.5 写了新插件让用户配置该 header。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/5/datasette-referrer-policy/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/5/our-ai-started-a-cafe-in-stockholm/#atom-everything" target="_blank" rel="noopener">Our AI started a cafe in Stockholm</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Our AI started a cafe in Stockholm
+Andon Labs previously started an AI-run retail store in San Francisco. Now they&#x27;re running a similar experiment in Stockholm, Sweden, only this time it&#x27;s a cafe.
+These experiments are interesting, and often throw out amusing anecdotes:
+
+During the first week of inventory, Mona ordered 120 eggs even though the c...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Andon Labs 在斯德哥尔摩开了 AI 运营的咖啡馆（继旧金山零售店之后），AI 闹出囤 120 个鸡蛋、22.5 公斤罐装番茄等笑话，店员设了「耻辱墙」展示 AI 的奇葩订单。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/5/our-ai-started-a-cafe-in-stockholm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/5/datasette-llm/#atom-everything" target="_blank" rel="noopener">datasette-llm 0.1a7</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-llm 0.1a7
+        
+
+Mechanism for configuring default options for specific models.
+
+
+Part of Datasette&#x27;s evolving support mechanism for plugins that use LLMs. It&#x27;s now possible to configure a model with default options, e.g. to say all enrichment operations should use a specific model with temperature set to 0.5.
+    
+    
+   ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-llm 0.1a7：新增机制可为特定模型配置默认选项（如 enrichment 操作统一用 temperature=0.5）。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/5/datasette-llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/5/llm-echo/#atom-everything" target="_blank" rel="noopener">llm-echo 0.5a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-echo 0.5a0
+        
+
+New -o thinking 1 option to help test against LLM 0.32a0 and higher.
+
+
+This plugin provides a fake model called &quot;echo&quot; for LLM which doesn&#x27;t run an LLM at all - it&#x27;s useful for writing automated tests. You can now do this:
+uvx --with llm==0.32a1 --with llm-echo==0.5a0 llm -m echo hi -o thinking 1
+
+This will fake...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-echo 0.5a0：新增 -o thinking 1 选项，便于针对 LLM 0.32a0+ 的 reasoning block 写自动化测试。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/5/llm-echo/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/5/john-gruber/#atom-everything" target="_blank" rel="noopener">Quoting John Gruber</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>So it’s well known that Y Combinator owns some stake in OpenAI. But how big is that stake? This seems like devilishly difficult information to obtain. I asked around and a little birdie who knows several OpenAI investors came back with an answer: Y Combinator owns about 0.6 percent of OpenAI. At OpenAI’s current $852 billion valuation, that’s wo...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 John Gruber：Y Combinator 持有 OpenAI 约 0.6% 股份，按 8520 亿美元估值约值 50 亿美元。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/5/john-gruber/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/4/granite-41-3b-svg-pelican-gallery/#atom-everything" target="_blank" rel="noopener">Granite 4.1 3B SVG Pelican Gallery</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Granite 4.1 3B SVG Pelican Gallery
+IBM released their Granite 4.1 family of LLMs a few days ago. They&#x27;re Apache 2.0 licensed and come in 3B, 8B and 30B sizes.
+Granite 4.1 LLMs: How They’re Built by Granite team member Yousaf Shah describes the training process in detail.
+Unsloth released the unsloth/granite-4.1-3b-GGUF collection of GGUF encoded...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>IBM 发布 Apache 2.0 协议 Granite 4.1 LLM（3B/8B/30B）。作者用 unsloth 21 个量化版本对 3B 跑「骑自行车的鹈鹕」SVG 基准对比，结果意外没那么有趣。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/4/granite-41-3b-svg-pelican-gallery/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/4/andy-masley/#atom-everything" target="_blank" rel="noopener">Quoting Andy Masley</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>[...] Between 2000 and 2024, farmers sold in total a Colorado-sized chunk of land all on their own, 77 times all land on data center property in 2028, and grew more food than ever on what was left. None of this caused any problems for US food access.
+And then, in the middle of all this, a farmer in Loudoun County sells a few acres of mediocre ha...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Andy Masley：反驳「数据中心抢农田」论 — 美国农民 2000-2024 年自愿卖出科罗拉多州大小的土地，等于 2028 年所有数据中心占地的 77 倍，并未影响食物供应。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/4/andy-masley/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/4/april-newsletter/#atom-everything" target="_blank" rel="noopener">April 2026 newsletter</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I just sent out the April edition of my sponsors-only monthly newsletter. If you are a sponsor (or if you start a sponsorship now) you can access it here.
+In this month&#x27;s newsletter:
+
+Opus 4.7 and GPT-5.5, both with price increases
+Claude Mythos and LLM security research
+ChatGPT Images 2.0
+More model releases
+Other highlights from my blog
+What I...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>4 月赞助者邮件简讯：Opus 4.7 与 GPT-5.5 涨价、Claude Mythos 与 LLM 安全研究、ChatGPT Images 2.0、其他模型发布与博客摘录。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/4/april-newsletter/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/4/tre-python-binding/#atom-everything" target="_blank" rel="noopener">TRE Python binding — ReDoS robustness demo</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Research: TRE Python binding — ReDoS robustness demo
+        If it&#x27;s good enough for antirez to add to Redis I figured Ville Laurikari&#x27;s TRE regular expression engine was worth exploring in a little more detail.
+I had Claude Code build an experimental Python binding (it used ctypes) and try some malicious regular expression attacks against the l...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>用 Claude Code 给 Ville Laurikari 的 TRE 正则引擎写了实验性 Python ctypes 绑定，并测试 ReDoS 攻击。TRE 因不支持回溯，比 Python 标准库表现好得多。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/4/tre-python-binding/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04039v1" target="_blank" rel="noopener">Safety and accuracy follow different scaling laws in clinical large language models</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04039v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04036v1" target="_blank" rel="noopener">OpenSeeker-v2: Pushing the Limits of Search Agents with Informative and High-Difficulty Trajectories</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04036v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04019v1" target="_blank" rel="noopener">Redefining AI Red Teaming in the Agentic Era: From Weeks to Hours</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04019v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04018v1" target="_blank" rel="noopener">Rethinking Reasoning-Intensive Retrieval: Evaluating and Advancing Retrievers in Agentic Search Systems</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04018v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04012v1" target="_blank" rel="noopener">SymptomAI: Towards a Conversational AI Agent for Everyday Symptom Assessment</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04012v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.04003v1" target="_blank" rel="noopener">Physics-Grounded Multi-Agent Architecture for Traceable, Risk-Aware Human-AI Decision Support in Manufacturing</a>
+        <div class="item-url">http://arxiv.org/abs/2605.04003v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03998v1" target="_blank" rel="noopener">EQUITRIAGE: A Fairness Audit of Gender Bias in LLM-Based Emergency Department Triage</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03998v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03989v1" target="_blank" rel="noopener">An Agent-Oriented Pluggable Experience-RAG Skill for Experience-Driven Retrieval Strategy Orchestration</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03989v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03986v1" target="_blank" rel="noopener">From Intent to Execution: Composing Agentic Workflows with Agent Recommendation</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03986v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03971v1" target="_blank" rel="noopener">Logical Consistency as a Bridge: Improving LLM Hallucination Detection via Label Constraint Modeling between Responses and Self-Judgments</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03971v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03964v1" target="_blank" rel="noopener">Pretrained Model Representations as Acquisition Signals for Active Learning of MLIPs</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03964v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03952v1" target="_blank" rel="noopener">MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03952v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03941v1" target="_blank" rel="noopener">A Benchmark for Interactive World Models with a Unified Action Generation Framework</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03941v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03936v1" target="_blank" rel="noopener">The Counterexample Game: Iterated Conceptual Analysis and Repair in Language Models</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03936v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03916v1" target="_blank" rel="noopener">Atomic Fact-Checking Increases Clinician Trust in Large Language Model Recommendations for Oncology Decision Support: A Randomized Controlled Trial</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03916v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03914v1" target="_blank" rel="noopener">Ecologically-Constrained Task Arithmetic for Multi-Taxa Bioacoustic Classifiers Without Shared Data</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03914v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03907v1" target="_blank" rel="noopener">Steer Like the LLM: Activation Steering that Mimics Prompting</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03907v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03900v1" target="_blank" rel="noopener">Contextual Multi-Objective Optimization: Rethinking Objectives in Frontier AI Systems</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03900v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03895v1" target="_blank" rel="noopener">From Data Lifting to Continuous Risk Estimation: A Process-Aware Pipeline for Predictive Monitoring of Clinical Pathways</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03895v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03884v1" target="_blank" rel="noopener">QKVShare: Quantized KV-Cache Handoff for Multi-Agent On-Device LLMs</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03884v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03882v1" target="_blank" rel="noopener">Deco: Extending Personal Physical Objects into Pervasive AI Companion through a Dual-Embodiment Framework</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03882v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03877v1" target="_blank" rel="noopener">DMGD: Train-Free Dataset Distillation with Semantic-Distribution Matching in Diffusion Models</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03877v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03869v1" target="_blank" rel="noopener">On Adaptivity in Zeroth-Order Optimization</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03869v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03863v1" target="_blank" rel="noopener">Quantifying the human visual exposome with vision language models</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03863v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03862v1" target="_blank" rel="noopener">Correct Is Not Enough: Training Reasoning Planners with Executor-Grounded Rewards</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03862v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03858v1" target="_blank" rel="noopener">MCJudgeBench: A Benchmark for Constraint-Level Judge Evaluation in Multi-Constraint Instruction Following</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03858v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03847v1" target="_blank" rel="noopener">Mechanical Conscience: A Mathematical Framework for Dependability of Machine Intelligenc</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03847v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03842v1" target="_blank" rel="noopener">SOAR: Real-Time Joint Optimization of Order Allocation and Robot Scheduling in Robotic Mobile Fulfillment Systems</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03842v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03838v1" target="_blank" rel="noopener">TRACE: A Metrologically-Grounded Engineering Framework for Trustworthy Agentic AI Systems in Operationally Critical Domains</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03838v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.03824v1" target="_blank" rel="noopener">Reproducing Complex Set-Compositional Information Retrieval</a>
+        <div class="item-url">http://arxiv.org/abs/2605.03824v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -7,7 +7,7 @@ from pathlib import Path
 import yaml
 
 from .dedupe import dedupe
-from .fetchers import arxiv_fetcher, html, rss
+from .fetchers import arxiv_fetcher, github_trending, hn_newest, html, rss
 from .models import Item
 from .render import render_report
 from .state import State
@@ -65,6 +65,16 @@ def _collect_all(cfg: dict) -> tuple[list[Item], list[str]]:
                 )
         except Exception as e:
             logging.exception("individual source %s failed", src["name"])
+            errors.append(f"{src['name']}: {e}")
+
+    for src in cfg.get("community", []):
+        try:
+            if src["type"] == "github_trending":
+                items.extend(github_trending.fetch(src["name"], src["url"]))
+            elif src["type"] == "hn_newest":
+                items.extend(hn_newest.fetch(src["name"], src["url"]))
+        except Exception as e:
+            logging.exception("community source %s failed", src["name"])
             errors.append(f"{src['name']}: {e}")
 
     arx = cfg.get("arxiv", {})
@@ -146,6 +156,21 @@ def cmd_verify(args: argparse.Namespace) -> int:
             except Exception as e:
                 bad += 1
                 print(f"  FAIL {src['name']:25s} {e}")
+    for src in cfg.get("community", []):
+        try:
+            if src["type"] == "github_trending":
+                found = len(github_trending.fetch(src["name"], src["url"]))
+            elif src["type"] == "hn_newest":
+                found = len(hn_newest.fetch(src["name"], src["url"]))
+            else:
+                found = 0
+            status = "OK " if found else "EMPTY"
+            if not found:
+                bad += 1
+            print(f"  {status} {src['name']:25s} {found:>3} items  {src['url']}")
+        except Exception as e:
+            bad += 1
+            print(f"  FAIL {src['name']:25s} {e}")
     return 1 if bad else 0
 
 

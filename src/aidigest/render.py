@@ -19,10 +19,11 @@ def render_report(
 
     companies = [i for i in items if i.category == "company"]
     individuals = [i for i in items if i.category == "individual"]
+    community = [i for i in items if i.category == "community"]
     arxiv_authors = [i for i in items if i.category == "arxiv-author"]
     arxiv_keywords = [i for i in items if i.category == "arxiv-keyword"]
 
-    for bucket in (companies, individuals, arxiv_authors, arxiv_keywords):
+    for bucket in (companies, individuals, community, arxiv_authors, arxiv_keywords):
         bucket.sort(
             key=lambda i: i.published or datetime.min,
             reverse=True,
@@ -33,6 +34,7 @@ def render_report(
         generated_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
         companies=companies,
         individuals=individuals,
+        community=community,
         arxiv_authors=arxiv_authors,
         arxiv_keywords=arxiv_keywords,
         errors=errors,

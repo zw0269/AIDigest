@@ -142,6 +142,100 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "在探索 Transformer 逆向工程方法过程中录制的非正式粗糙讲座。",
     "https://transformer-circuits.pub/2021/garcon/index.html":
         "对大模型可解释性研究工具链的描述。",
+
+    # GitHub Trending — 2026-05-06
+    "https://github.com/Hmbown/DeepSeek-TUI":
+        "在终端里运行的 DeepSeek 模型编码 agent。",
+    "https://github.com/addyosmani/agent-skills":
+        "面向 AI 编码 agent 的生产级工程技能集合。",
+    "https://github.com/PriorLabs/TabPFN":
+        "TabPFN — 表格数据基础模型。",
+    "https://github.com/docusealco/docuseal":
+        "开源 DocuSign 替代品，支持创建、填写、签署电子文档。",
+    "https://github.com/LearningCircuit/local-deep-research":
+        "全本地加密的 deep research 工具，支持各种本地/云 LLM 与多种搜索引擎，SimpleQA 接近 95%。",
+    "https://github.com/LadybirdBrowser/ladybird":
+        "Ladybird — 不基于 Chromium/Gecko 的真正独立的开源浏览器。",
+    "https://github.com/InsForge/InsForge":
+        "为编码 agent 设计的 Postgres 后端，含鉴权、存储、计算、托管、AI 网关。",
+    "https://github.com/virattt/dexter":
+        "面向深度金融研究的自主 agent。",
+    "https://github.com/anthropics/financial-services":
+        "Anthropic 金融服务方案配套仓库。",
+    "https://github.com/ruvnet/ruflo":
+        "ruflo — Claude 多 agent 编排平台，支持自主工作流、RAG、Claude Code/Codex 原生集成。",
+    "https://github.com/cheahjs/free-llm-api-resources":
+        "免费 LLM API 推理资源清单。",
+    "https://github.com/shiyu-coder/Kronos":
+        "Kronos — 金融市场语言基础模型。",
+    "https://github.com/bwya77/vscode-dark-islands":
+        "灵感源自 easemate IDE 与 JetBrains Islands 主题的 VSCode 暗色主题。",
+    "https://github.com/bytedance/deer-flow":
+        "字节跳动开源的长任务 SuperAgent 框架，沙箱+记忆+工具+子 agent，处理分钟到小时级任务。",
+    "https://github.com/D4Vinci/Scrapling":
+        "自适应 Web 抓取框架，从单个请求到全量爬取均可适配。",
+
+    # Hacker News Newest — 2026-05-06
+    "https://news.ycombinator.com/item?id=48036468":
+        "Show HN：HideMyData — 用本地 AI 与 OCR 在 macOS 上移除个人身份信息（PII）的工具。",
+    "https://news.ycombinator.com/item?id=48036465":
+        "讨论当前 PKI 体系是否已经迈入 self-sovereign（自主主权）阶段。",
+    "https://news.ycombinator.com/item?id=48036463":
+        "主要出版商以 AI 训练版权侵权为由起诉 Meta。",
+    "https://news.ycombinator.com/item?id=48036458":
+        "某数据库供应商出现故障，影响 Lovable 云用户。",
+    "https://news.ycombinator.com/item?id=48036450":
+        "视频解释为什么新电视让电影看起来「廉价感」（运动平滑等设置导致）。",
+    "https://news.ycombinator.com/item?id=48036423":
+        "印度 SMFG 退休人员贷款申请指南（看上去是营销/广告内容）。",
+    "https://news.ycombinator.com/item?id=48036420":
+        "南非在邮轮上识别出 Andes 株汉坦病毒。",
+    "https://news.ycombinator.com/item?id=48036418":
+        "在使用 nvm 切换 Node 版本后保证 npx 仍可用的小技巧。",
+    "https://news.ycombinator.com/item?id=48036380":
+        "Bun 发布 Rust 移植指南，承认 Rust 重写仍未完成。",
+    "https://news.ycombinator.com/item?id=48036376":
+        "UserTesting 出品（标题缺上下文，疑似产品/招聘宣传）。",
+    "https://news.ycombinator.com/item?id=48036356":
+        "关于随机领带打法的研究资料。",
+    "https://news.ycombinator.com/item?id=48036345":
+        "「植物细胞内部的数学之舞」— 介绍细胞内动力学的科普长文。",
+    "https://news.ycombinator.com/item?id=48036342":
+        "Show HN：MetaLens — 在 Metabase 之上构建的可观测性 + AI agents 平台。",
+    "https://news.ycombinator.com/item?id=48036341":
+        "Ask HN：非技术创始人申请 YC？",
+    "https://news.ycombinator.com/item?id=48036330":
+        "Show HN：Recursant — 用于治理 AI agents 的开源 mesh 平台。",
+    "https://news.ycombinator.com/item?id=48036324":
+        "AI 传输的「消息追加」工程实战：三个案例。",
+    "https://news.ycombinator.com/item?id=48036323":
+        "新研究发现：几乎所有植物肉替代品都含霉菌毒素。",
+    "https://news.ycombinator.com/item?id=48036313":
+        "微软《Work Trend Index》：agents、人的能动性，以及对每个组织的机遇。",
+    "https://news.ycombinator.com/item?id=48036312":
+        "极简、无浏览器边框的 macOS Web App 查看器。",
+    "https://news.ycombinator.com/item?id=48036307":
+        "容器 / 虚拟机管理工具 Incus 7.0 LTS 发布。",
+    "https://news.ycombinator.com/item?id=48036295":
+        "走近那些坚决不用生成式 AI 的学者。",
+    "https://news.ycombinator.com/item?id=48036289":
+        "男子在垃圾箱里捡到价值约 100 万美元的游戏王卡片。",
+    "https://news.ycombinator.com/item?id=48036274":
+        "面向 agentic coding 的开发环境介绍。",
+    "https://news.ycombinator.com/item?id=48036272":
+        "「Seeing typos makes me hapy」— 故意写错字，关于错字心理 / 编辑体验的玩笑标题。",
+    "https://news.ycombinator.com/item?id=48036261":
+        "把文本编辑器当作 UI 的实现细节探讨。",
+    "https://news.ycombinator.com/item?id=48036257":
+        "《Markov chain Monte Carlo 手册》第二版资源。",
+    "https://news.ycombinator.com/item?id=48036249":
+        "Linux 下的协作式 fiber 调度器。",
+    "https://news.ycombinator.com/item?id=48036241":
+        "「老问题：又是 DNS」— 德国 .de 域名运营商 Denic 致歉，DNS 故障导致德国互联网瘫痪。",
+    "https://news.ycombinator.com/item?id=48036238":
+        "Firefox 集成了广告拦截器 — 但用途并非拦广告（推测是为隐私分析）。",
+    "https://news.ycombinator.com/item?id=48036229":
+        "Purista 出品的 TypeScript AI harness 框架。",
 }
 
 
@@ -368,5 +462,9 @@ TRANSLATIONS: dict[str, str] = {
         "TRACE：可信 agentic AI 工程框架 — 4 层参考架构 + 经典 ML/LLM-validator (L2a/L2b) 拆分 + 编排-升级策略 + 度量学接地的信任度量套件（GUM/VIM/ISO 17025），引入 Computational Parsimony Ratio (CPR) 把 LLM 用法变成显式设计选择，用临床/工业/司法 3 个实例验证。",
     "http://arxiv.org/abs/2605.03824v1":
         "可重复性研究 + LIMIT+ 控制基准：QUEST 上最佳神经检索器 Recall@100 是 BM25 两倍多（0.41 vs 0.20），但到 LIMIT+ 时强法崩溃至 <0.02 而 BM25 升至 ~0.96；按组合深度分层显示密集方法显著退化，代数稀疏/词法方法稳定。",
+
+    # OpenAI — 2026-05-06
+    "https://openai.com/index/mrc-supercomputer-networking":
+        "OpenAI 发布 MRC（Multipath Reliable Connection）— 通过 OCP 开源的新型超算网络协议，提升大规模 AI 训练集群的容错性与性能。",
 }
 

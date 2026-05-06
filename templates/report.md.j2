@@ -23,6 +23,14 @@ _No new items today._
 - **{{ it.source }}** — [{{ it.title }}]({{ it.url }}){% if it.published %} _({{ it.published.strftime("%Y-%m-%d") }})_{% endif %}
 {% endfor -%}
 {% endif %}
+{% if community %}
+
+## 社区动态
+
+{% for it in community -%}
+- **{{ it.source }}** — [{{ it.title }}]({{ it.url }})
+{% endfor -%}
+{% endif %}
 {% if arxiv_authors %}
 
 ## 新论文 — 关注作者

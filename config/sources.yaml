@@ -35,6 +35,14 @@ individuals:
     url: https://www.darioamodei.com/
     link_pattern: "^/(essay|post)/[^/]+$"
 
+community:
+  - name: GitHub Trending
+    type: github_trending
+    url: https://github.com/trending
+  - name: Hacker News Newest
+    type: hn_newest
+    url: https://news.ycombinator.com/newest
+
 rss_lookback_days: 14
 
 arxiv:

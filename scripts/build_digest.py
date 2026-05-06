@@ -184,7 +184,7 @@ footer {
 def parse_report(p: Path) -> list[dict]:
     items = []
     section = ""
-    line_re = re.compile(r"^- (?:\*\*([^*]+)\*\* — )?\[([^\]]+)\]\(([^)]+)\)")
+    line_re = re.compile(r"^- (?:\*\*([^*]+)\*\* — )?\[(.+?)\]\(([^)]+)\)")
     for line in p.read_text().splitlines():
         line = line.strip()
         if line.startswith("## "):
@@ -258,7 +258,7 @@ def render_md(date: str, items: list[dict]) -> str:
     for it in items:
         by_section.setdefault(it["section"], []).append(it)
 
-    for section in ("公司动态", "个人 Blog", "新论文 — 关注作者", "新论文 — 关键词命中"):
+    for section in ("公司动态", "个人 Blog", "社区动态", "新论文 — 关注作者", "新论文 — 关键词命中"):
         group = by_section.get(section)
         if not group:
             continue
@@ -316,7 +316,7 @@ def render_html(date: str, items: list[dict]) -> str:
   <div class="hero-meta">
     <div class="metric"><div class="metric-value">{total}</div><div class="metric-label">条目总数</div></div>
 """)
-    for sec_name in ("公司动态", "个人 Blog"):
+    for sec_name in ("公司动态", "个人 Blog", "社区动态"):
         if sec_name in by_section_count:
             parts.append(
                 f'    <div class="metric"><div class="metric-value">'
@@ -329,7 +329,7 @@ def render_html(date: str, items: list[dict]) -> str:
     )
     parts.append("  </div>\n</div>\n")
 
-    section_order = ["公司动态", "个人 Blog", "新论文 — 关注作者", "新论文 — 关键词命中"]
+    section_order = ["公司动态", "个人 Blog", "社区动态", "新论文 — 关注作者", "新论文 — 关键词命中"]
     section_idx = 0
     for section in section_order:
         if section not in by_section:

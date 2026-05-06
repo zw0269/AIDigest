@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 信源 & 规则</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --code-bg: #f4f3f1;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.6;
+  color: var(--text); background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; word-break: break-all; }
+a:hover { text-decoration: underline; }
+code {
+  background: var(--code-bg); padding: 2px 6px; border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  font-size: 0.92em;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.hero { padding: 72px 24px 48px; text-align: center; }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 700; line-height: 1.05;
+  letter-spacing: -1.75px; margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; color: var(--text-muted);
+  max-width: 720px; margin: 0 auto;
+}
+.hero-nav { margin-top: 24px; font-size: 14px; }
+.hero-nav a { margin: 0 10px; }
+
+section.section { padding: 56px 0; }
+section.section + section.section { padding-top: 0; }
+section.section h2 {
+  font-size: 32px; font-weight: 700; line-height: 1.1;
+  letter-spacing: -1px; margin-bottom: 8px;
+}
+section.section .section-meta {
+  font-size: 14px; color: var(--text-muted); margin-bottom: 28px;
+}
+
+.card-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 20px 24px; box-shadow: var(--shadow-card);
+}
+.card .card-title {
+  font-size: 18px; font-weight: 600; margin-bottom: 6px;
+}
+.card .card-meta {
+  font-size: 12px; color: var(--text-dim); margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.card .card-url {
+  font-size: 13px; color: var(--text-muted);
+}
+
+.tag {
+  display: inline-block; padding: 2px 8px; border-radius: 9999px;
+  background: var(--code-bg); color: var(--text-muted);
+  font-size: 11px; font-weight: 600;
+  margin-right: 6px; letter-spacing: 0.3px;
+}
+.tag.rss { background: #fff4e6; color: #b25c00; }
+.tag.html { background: #eaf5ff; color: #0075de; }
+.tag.gh { background: #f0f0f0; color: #24292f; }
+.tag.hn { background: #fff0e6; color: #ff6600; }
+
+.kv-list {
+  background: var(--bg-warm); border-radius: 12px;
+  padding: 20px 24px; font-size: 14px; line-height: 1.8;
+}
+.kv-list .kv { margin-bottom: 6px; }
+.kv-list .kv-key {
+  display: inline-block; min-width: 200px;
+  font-weight: 600; color: var(--text-muted);
+}
+
+.rule {
+  background: var(--bg-warm); border-radius: 12px;
+  padding: 24px 28px; margin-bottom: 16px;
+}
+.rule h3 {
+  font-size: 20px; font-weight: 700; margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+.rule p { margin-bottom: 10px; }
+.rule p strong { font-weight: 700; }
+.rule ul { padding-left: 22px; margin-bottom: 10px; }
+.rule ul li { margin-bottom: 4px; }
+.rule pre {
+  background: #1f1e1c; color: #eae6e1; padding: 14px 18px;
+  border-radius: 8px; overflow-x: auto; margin: 10px 0;
+  font-size: 13px; line-height: 1.55;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+.rule pre code { background: transparent; padding: 0; color: inherit; }
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 48px 24px; }
+  .hero h1 { font-size: 36px; letter-spacing: -1px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .kv-list .kv-key { display: block; min-width: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-eyebrow">AIDigest · 配置</span>
+  <h1>信源 & 规则</h1>
+  <p class="lead">所有抓取信源（公司动态、个人 Blog、社区动态、arXiv 论文）和 CLAUDE.md 项目规则的总览。</p>
+  <p class="lead" style="font-size:14px;margin-top:8px;color:var(--text-dim)">
+    4 公司 · 6 个人 · 2 社区 · 8 规则
+  </p>
+  <div class="hero-nav">
+    <a href="index.html">← 日报索引</a>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">4 个信源</div>
+    <div class="card-grid">    <div class="card">
+      <div class="card-meta"><span class="tag html">HTML</span></div>
+      <div class="card-title">Anthropic</div>
+      <div class="card-url"><a href="https://www.anthropic.com/news" target="_blank" rel="noopener">https://www.anthropic.com/news</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">OpenAI</div>
+      <div class="card-url"><a href="https://openai.com/blog/rss.xml" target="_blank" rel="noopener">https://openai.com/blog/rss.xml</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Google DeepMind</div>
+      <div class="card-url"><a href="https://deepmind.google/blog/rss.xml" target="_blank" rel="noopener">https://deepmind.google/blog/rss.xml</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag html">HTML</span></div>
+      <div class="card-title">Transformer Circuits</div>
+      <div class="card-url"><a href="https://transformer-circuits.pub" target="_blank" rel="noopener">https://transformer-circuits.pub</a></div>
+    </div>    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">6 个信源</div>
+    <div class="card-grid">    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Andrej Karpathy</div>
+      <div class="card-url"><a href="https://karpathy.github.io/feed.xml" target="_blank" rel="noopener">https://karpathy.github.io/feed.xml</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Simon Willison</div>
+      <div class="card-url"><a href="https://simonwillison.net/atom/everything/" target="_blank" rel="noopener">https://simonwillison.net/atom/everything/</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Lilian Weng</div>
+      <div class="card-url"><a href="https://lilianweng.github.io/index.xml" target="_blank" rel="noopener">https://lilianweng.github.io/index.xml</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Sebastian Raschka</div>
+      <div class="card-url"><a href="https://magazine.sebastianraschka.com/feed" target="_blank" rel="noopener">https://magazine.sebastianraschka.com/feed</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag rss">RSS</span></div>
+      <div class="card-title">Yoshua Bengio</div>
+      <div class="card-url"><a href="https://yoshuabengio.org/feed/" target="_blank" rel="noopener">https://yoshuabengio.org/feed/</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag html">HTML</span></div>
+      <div class="card-title">Dario Amodei</div>
+      <div class="card-url"><a href="https://www.darioamodei.com/" target="_blank" rel="noopener">https://www.darioamodei.com/</a></div>
+    </div>    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">2 个信源</div>
+    <div class="card-grid">    <div class="card">
+      <div class="card-meta"><span class="tag gh">GitHub Trending</span></div>
+      <div class="card-title">GitHub Trending</div>
+      <div class="card-url"><a href="https://github.com/trending" target="_blank" rel="noopener">https://github.com/trending</a></div>
+    </div>    <div class="card">
+      <div class="card-meta"><span class="tag hn">HN Newest</span></div>
+      <div class="card-title">Hacker News Newest</div>
+      <div class="card-url"><a href="https://news.ycombinator.com/newest" target="_blank" rel="noopener">https://news.ycombinator.com/newest</a></div>
+    </div>    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>arXiv 论文</h2>
+    <div class="section-meta">按 cs.* 分类 + 关键词 / 关注作者扫描</div>
+    <div class="kv-list">
+      <div class="kv"><span class="kv-key">分类 (categories)</span><code>cs.AI, cs.CL, cs.LG</code></div>
+      <div class="kv"><span class="kv-key">关键词 (keywords)</span><code>large language model</code>, <code>LLM</code>, <code>agent</code>, <code>reasoning</code>, <code>RLHF</code>, <code>alignment</code>, <code>mixture of experts</code></div>
+      <div class="kv"><span class="kv-key">关注作者 (authors)</span><code>Geoffrey Hinton</code>, <code>Yann LeCun</code>, <code>Ilya Sutskever</code></div>
+      <div class="kv"><span class="kv-key">每查询最大数</span><code>30</code></div>
+      <div class="kv"><span class="kv-key">回溯天数</span><code>2</code> 天</div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>全局抓取参数</h2>
+    <div class="kv-list">
+      <div class="kv"><span class="kv-key">RSS 回溯天数</span><code>14</code> 天</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <h2>项目规则（CLAUDE.md）</h2>
+    <div class="section-meta">共 8 条 — 单一来源就是 <code>CLAUDE.md</code></div>
+    <div class="rule">
+      <h3>1. Think Before Coding</h3>
+      <p><strong>Don&#x27;t assume. Don&#x27;t hide confusion. Surface tradeoffs.</strong></p>
+<p>Before implementing:</p>
+<ul>
+<li>State your assumptions explicitly. If uncertain, ask.</li>
+<li>If multiple interpretations exist, present them - don&#x27;t pick silently.</li>
+<li>If a simpler approach exists, say so. Push back when warranted.</li>
+<li>If something is unclear, stop. Name what&#x27;s confusing. Ask.</li>
+</ul>
+    </div>
+    <div class="rule">
+      <h3>2. Simplicity First</h3>
+      <p><strong>Minimum code that solves the problem. Nothing speculative.</strong></p>
+<ul>
+<li>No features beyond what was asked.</li>
+<li>No abstractions for single-use code.</li>
+<li>No &quot;flexibility&quot; or &quot;configurability&quot; that wasn&#x27;t requested.</li>
+<li>No error handling for impossible scenarios.</li>
+<li>If you write 200 lines and it could be 50, rewrite it.</li>
+</ul>
+<p>Ask yourself: &quot;Would a senior engineer say this is overcomplicated?&quot; If yes, simplify.</p>
+    </div>
+    <div class="rule">
+      <h3>3. Surgical Changes</h3>
+      <p><strong>Touch only what you must. Clean up only your own mess.</strong></p>
+<p>When editing existing code:</p>
+<ul>
+<li>Don&#x27;t &quot;improve&quot; adjacent code, comments, or formatting.</li>
+<li>Don&#x27;t refactor things that aren&#x27;t broken.</li>
+<li>Match existing style, even if you&#x27;d do it differently.</li>
+<li>If you notice unrelated dead code, mention it - don&#x27;t delete it.</li>
+</ul>
+<p>When your changes create orphans:</p>
+<ul>
+<li>Remove imports/variables/functions that YOUR changes made unused.</li>
+<li>Don&#x27;t remove pre-existing dead code unless asked.</li>
+</ul>
+<p>The test: Every changed line should trace directly to the user&#x27;s request.</p>
+    </div>
+    <div class="rule">
+      <h3>4. Goal-Driven Execution</h3>
+      <p><strong>Define success criteria. Loop until verified.</strong></p>
+<p>Transform tasks into verifiable goals:</p>
+<ul>
+<li>&quot;Add validation&quot; → &quot;Write tests for invalid inputs, then make them pass&quot;</li>
+<li>&quot;Fix the bug&quot; → &quot;Write a test that reproduces it, then make it pass&quot;</li>
+<li>&quot;Refactor X&quot; → &quot;Ensure tests pass before and after&quot;</li>
+</ul>
+<p>For multi-step tasks, state a brief plan:</p>
+<pre><code>1. [Step] → verify: [check]
+2. [Step] → verify: [check]
+3. [Step] → verify: [check]</code></pre>
+<p>Strong success criteria let you loop independently. Weak criteria (&quot;make it work&quot;) require constant clarification.</p>
+    </div>
+    <div class="rule">
+      <h3>5. Commit After Every Change</h3>
+      <p><strong>Each completed code modification ends with a git commit.</strong></p>
+<ul>
+<li>After finishing a code change, run <code>git commit</code> to record it.</li>
+<li>Stage only the files related to the change; don&#x27;t sweep in unrelated edits.</li>
+<li>Write a concise message describing the *why*, following the repo&#x27;s existing commit style.</li>
+<li>If a pre-commit hook fails, fix the issue and create a new commit (don&#x27;t <code>--amend</code> or <code>--no-verify</code>).</li>
+<li>Don&#x27;t push unless explicitly asked.</li>
+</ul>
+    </div>
+    <div class="rule">
+      <h3>6. 所有英文条目必须附中文注释（含论文）</h3>
+      <p><strong>渲染日报中每个条目都必须有 <code>中文:</code> 行 — 包括 arXiv 论文。</strong></p>
+<ul>
+<li><strong>公司动态 / 个人 Blog（RSS）</strong>：若 RSS 给出英文 description，必须在 <code>scripts/data.py</code> 的 <code>TRANSLATIONS</code> 中补上中文翻译/概括（一句话级别，不必逐字翻译）。</li>
+<li><strong>HTML 源（无 RSS description）</strong>：在 <code>MANUAL_SUMMARIES</code> 中加中文摘要。</li>
+<li><strong>arXiv 论文</strong>：标题虽是英文但 report 不带 abstract，必须用 <code>arxiv</code> 库按 ID 拉到 <code>summary</code> 后写一句中文核心要点，加进 <code>TRANSLATIONS</code>（key 为 <code>result.entry_id</code>，含 <code>v1</code> 后缀）。</li>
+<li>仅有中文摘要的条目（Anthropic、Dario Amodei 等中文源）无需补英文。</li>
+<li>渲染前必须抽查：<code>grep &quot;中文:&quot; llm-ai/digests/digest-YYYY-MM-DD.md | wc -l</code> 应等于当日条目总数；缺失先补再渲染，不要发只有英文/只有标题的 digest。</li>
+</ul>
+    </div>
+    <div class="rule">
+      <h3>7. 抓取信息 = 跑 `/scrape`</h3>
+      <p>当用户说&quot;抓取信息&quot;、&quot;跑日报&quot;、&quot;更新 digest&quot;或语义等价的请求时，按 <code>.claude/commands/scrape.md</code> 中的步骤执行：抓取 → 补中文 → 渲染 HTML → git commit。不要拆成手工命令一个个让用户确认。</p>
+    </div>
+    <div class="rule">
+      <h3>8. 改信源或规则后必须重渲染 sources-and-rules.html</h3>
+      <p><strong><code>llm-ai/sources-and-rules.html</code> 是当前信源 / 规则的对外展示页，由 <code>scripts/build_sources_rules.py</code> 自动生成。</strong></p>
+<ul>
+<li>改 <code>config/sources.yaml</code>（增删信源、调 arxiv 关键词/作者/lookback 等）后，必须跑 <code>./.venv/bin/python scripts/build_sources_rules.py</code> 重渲染。</li>
+<li>改 CLAUDE.md（新增/修改/删除规则）后，同样必须重跑该脚本。</li>
+<li>不要手工编辑 <code>sources-and-rules.html</code> — 它是产物。</li>
+<li>渲染产物和源改动一起 commit，不要分两次提交导致页面短暂跟代码不一致。</li>
+</ul>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  本页由 <code>scripts/build_sources_rules.py</code> 自动生成，改信源/规则后请重跑。
+</footer>
+</body>
+</html>

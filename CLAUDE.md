@@ -84,6 +84,15 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 当用户说"抓取信息"、"跑日报"、"更新 digest"或语义等价的请求时，按 `.claude/commands/scrape.md` 中的步骤执行：抓取 → 补中文 → 渲染 HTML → git commit。不要拆成手工命令一个个让用户确认。
 
+## 8. 改信源或规则后必须重渲染 sources-and-rules.html
+
+**`llm-ai/sources-and-rules.html` 是当前信源 / 规则的对外展示页，由 `scripts/build_sources_rules.py` 自动生成。**
+
+- 改 `config/sources.yaml`（增删信源、调 arxiv 关键词/作者/lookback 等）后，必须跑 `./.venv/bin/python scripts/build_sources_rules.py` 重渲染。
+- 改 CLAUDE.md（新增/修改/删除规则）后，同样必须重跑该脚本。
+- 不要手工编辑 `sources-and-rules.html` — 它是产物。
+- 渲染产物和源改动一起 commit，不要分两次提交导致页面短暂跟代码不一致。
+
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.

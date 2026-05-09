@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-09</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-09</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-09</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 66 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">66</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">16</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">9</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">11</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">7</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">16 条 · 4 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">13 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/running-codex-safely" target="_blank" rel="noopener">Running Codex safely at OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How OpenAI runs Codex securely with sandboxing, approvals, network policies, and agent-native telemetry to support safe and compliant coding agent adoption.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 内部如何安全运行 Codex：沙箱、审批流、网络策略和 agent 原生遥测，支撑安全合规的编码 agent 落地。</div>
+        <div class="item-url">https://openai.com/index/running-codex-safely</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber" target="_blank" rel="noopener">Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI expands Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber, helping verified defenders accelerate vulnerability research and protect critical infrastructure.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>扩大 Trusted Access for Cyber 计划，发布 GPT-5.5 与定制版 GPT-5.5-Cyber，帮助经认证的安全防御者加速漏洞研究、保护关键基础设施。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/parloa" target="_blank" rel="noopener">Parloa builds service agents customers want to talk to</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Parloa leverages OpenAI models to power scalable, voice-driven AI customer service agents, enabling enterprises to design, simulate, and deploy reliable, real-time interactions.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Parloa 基于 OpenAI 模型构建可规模化的语音 AI 客服 agent，让企业能设计、模拟并部署可靠的实时交互。</div>
+        <div class="item-url">https://openai.com/index/parloa</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api" target="_blank" rel="noopener">Advancing voice intelligence with new models in the API</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore new realtime voice models in the OpenAI API that can reason, translate, and transcribe speech, enabling more natural and intelligent voice experiences.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI API 推出新一代实时语音模型，能推理、翻译、转写语音，提供更自然、更智能的语音体验。</div>
+        <div class="item-url">https://openai.com/index/advancing-voice-intelligence-with-new-models-in-the-api</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-trusted-contact-in-chatgpt" target="_blank" rel="noopener">Introducing Trusted Contact in ChatGPT</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Trusted Contact in ChatGPT, an optional safety feature that notifies someone you trust if serious self-harm concerns are detected.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT 推出可选的「信任联系人」安全功能：检测到严重自残风险时通知用户预设的紧急联系人。</div>
+        <div class="item-url">https://openai.com/index/introducing-trusted-contact-in-chatgpt</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/testing-ads-in-chatgpt" target="_blank" rel="noopener">Testing ads in ChatGPT</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI begins testing ads in ChatGPT to support free access, with clear labeling, answer independence, strong privacy protections, and user control.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT 开始测试广告，明确标注、不影响答案中立性、强隐私保护并保留用户控制权，用于支持免费访问。</div>
+        <div class="item-url">https://openai.com/index/testing-ads-in-chatgpt</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/simplex" target="_blank" rel="noopener">Simplex rethinks software development with Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Simplex boosts software development with ChatGPT Enterprise and Codex, reducing design, build, and testing time while scaling AI-driven workflows.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simplex 借助 ChatGPT Enterprise + Codex 加速软件开发，缩短设计、构建、测试时间，规模化 AI 工作流。</div>
+        <div class="item-url">https://openai.com/index/simplex</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/how-chatgpt-protects-privacy" target="_blank" rel="noopener">How ChatGPT learns about the world while protecting privacy</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how ChatGPT safeguards your privacy, reduces personal data in training, and gives you control over whether your conversations improve AI models.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>讲解 ChatGPT 如何保护隐私、减少训练中的个人数据，并让用户可控制是否让对话用于改进模型。</div>
+        <div class="item-url">https://openai.com/index/how-chatgpt-protects-privacy</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/uber" target="_blank" rel="noopener">Uber uses OpenAI to help people earn smarter and book faster</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Uber uses OpenAI to power AI assistants and voice features that help drivers earn smarter and riders book faster across a global real-time marketplace.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Uber 用 OpenAI 构建司机助手和语音功能，帮司机更高效赚钱、乘客更快下单，覆盖全球实时交易市场。</div>
+        <div class="item-url">https://openai.com/index/uber</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-chatgpt-futures-class-of-2026" target="_blank" rel="noopener">Introducing ChatGPT Futures: Class of 2026</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Meet the ChatGPT Futures Class of 2026—26 student innovators using AI to build, research, and drive real-world impact. Discover how this generation is redefining learning, creativity, and opportunity with ChatGPT.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>公布 ChatGPT Futures 2026 届：26 名学生用 AI 推动学习、创意与现实影响，展示新一代如何借 ChatGPT 重新定义机会。</div>
+        <div class="item-url">https://openai.com/index/introducing-chatgpt-futures-class-of-2026</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-b2b-signals" target="_blank" rel="noopener">How frontier firms are pulling ahead</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI’s B2B Signals research shows how frontier enterprises deepen AI adoption, scale Codex-powered agentic workflows, and build durable competitive advantage.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 发布 B2B Signals 报告：前沿企业如何深化 AI 渗透、规模化部署 Codex agentic 工作流、构建持久竞争优势。</div>
+        <div class="item-url">https://openai.com/index/introducing-b2b-signals</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/singular-bank" target="_blank" rel="noopener">Singular Bank helps bankers move fast with ChatGPT and Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Singular Bank built Singularity, an internal assistant using ChatGPT and Codex to help bankers save 60–90 minutes daily on meeting prep, portfolio analysis, and follow-up.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>西班牙 Singular Bank 用 ChatGPT + Codex 自建 Singularity 助手，帮银行家每天节省 60-90 分钟会议准备和投资组合分析时间。</div>
+        <div class="item-url">https://openai.com/index/singular-bank</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/advancing-youth-safety-in-emea" target="_blank" rel="noopener">Advancing youth safety and wellbeing in EMEA</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore OpenAI’s European Youth Safety Blueprint and EMEA Youth &amp; Wellbeing Grants, advancing safe, responsible AI for teens, families, and educators.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布欧洲青少年安全蓝图与 EMEA 青少年与福祉资助计划，推动面向青少年、家庭、教育者的安全负责的 AI。</div>
+        <div class="item-url">https://openai.com/index/advancing-youth-safety-in-emea</div>
+      </div>
+    </div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/alphaevolve-impact/" target="_blank" rel="noopener">AlphaEvolve: How our Gemini-powered coding agent is scaling impact across fields</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore how AlphaEvolve&#x27;s Gemini-powered algorithms are driving impact across business, infrastructure, and science.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>总览 AlphaEvolve（Gemini 驱动的进化算法 agent）在商业、基础设施、科学领域的实际影响和应用案例。</div>
+        <div class="item-url">https://deepmind.google/blog/alphaevolve-impact/</div>
+      </div>
+    </div>
+    <div class="source-group" id="transformer-circuits">
+      <div class="source-header">
+        <div class="source-name">Transformer Circuits</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2026/nla/index.html" target="_blank" rel="noopener">Natural Language Autoencoders Produce Unsupervised Explanations of LLM Activations</a>
+        <div class="item-summary">提出「自然语言自编码器」(NLA)，用 LLM 自身把激活值压缩成自然语言再解码，从而对模型激活提供无监督、可读的解释。</div>
+        <div class="item-url">https://transformer-circuits.pub/2026/nla/index.html</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/higher-limits-spacex" target="_blank" rel="noopener">Higher usage limits for Claude and a compute deal with SpaceX</a>
+        <div class="item-summary">与 SpaceX 达成新算力合作大幅扩容，借此提高 Claude Code 与 Claude API 的使用配额。</div>
+        <div class="item-url">https://www.anthropic.com/news/higher-limits-spacex</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">9 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">9 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/9/luke-curley/#atom-everything" target="_blank" rel="noopener">Quoting Luke Curley</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>WebRTC is designed to degrade and drop my prompt during poor network conditions.
+wtf my dude
+WebRTC aggressively drops audio packets to keep latency low. If you’ve ever heard distorted audio on a conference call, that’s WebRTC baybee. The idea is that conference calls depend on rapid back-and-forth, so pausing to wait for audio is unacceptable.
+...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Luke Curley：WebRTC 为低延迟会激进丢包，但用户其实更愿多等 200ms 拿到准确的语音 prompt — 不该把会议软件假设套到 LLM 语音输入。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/9/luke-curley/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/#atom-everything" target="_blank" rel="noopener">Using Claude Code: The Unreasonable Effectiveness of HTML</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Using Claude Code: The Unreasonable Effectiveness of HTML
+Thought-provoking piece by Thariq Shihipar (on the Claude Code team at Anthropic) advocating for HTML over Markdown as an output format to request from Claude.
+The article is crammed with interesting examples (collected on this site) and prompt suggestions like this one:
+
+Help me review t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推荐 Anthropic Thariq Shihipar 的文章：让 Claude 输出 HTML 而非 Markdown 作为 artifact 格式，能解锁 review、探索式可视化等更强工作流。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/8/unreasonable-effectiveness-of-html/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/7/llm-gemini/#atom-everything" target="_blank" rel="noopener">llm-gemini 0.31</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-gemini 0.31
+        
+
+gemini-3.1-flash-lite is no longer a preview. 
+
+
+Here&#x27;s my write-up of the Gemini 3.1 Flash-Lite Preview model back in March. I don&#x27;t believe this new non-preview model has changed since then.
+    
+    
+        Tags: llm-release, gemini, llm, google, generative-ai, ai, llms</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 llm-gemini 0.31，将 gemini-3.1-flash-lite 从 preview 转为正式版（模型本身自 3 月 preview 起没有变动）。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/7/llm-gemini/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/7/big-words/#atom-everything" target="_blank" rel="noopener">Big Words</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Big Words
+        I&#x27;m using my vibe coded macOS presentations tool to put together a talk, and I wanted to add a slide with some text on it. The tool only accepts URLs, so I put together a quick page that accepts query string arguments and turns them into a simple slide.
+Here&#x27;s an example: https://tools.simonwillison.net/big-words?text=sim...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>用自己 vibe coded 的 macOS 演示工具搭了个简单大字幻灯：通过 URL query string 把文字渲染成 slide。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/7/big-words/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/7/firefox-claude-mythos/#atom-everything" target="_blank" rel="noopener">Behind the Scenes Hardening Firefox with Claude Mythos Preview</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Behind the Scenes Hardening Firefox with Claude Mythos Preview
+Fascinating, in-depth details on how Mozilla used their access to the Claude Mythos preview to locate and then fix hundreds of vulnerabilities in Firefox:
+
+Suddenly, the bugs are very good
+Just a few months ago, AI-generated security bug reports to open source projects were mostly kn...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Mozilla 利用 Claude Mythos 预览版找出并修复 Firefox 数百个真实漏洞 — AI 安全 bug 报告从「slop」终于变成实用工具。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/7/firefox-claude-mythos/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/7/xai-anthropic/#atom-everything" target="_blank" rel="noopener">Notes on the xAI/Anthropic data center deal</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>There weren&#x27;t a lot of big new announcements from Anthropic at yesterday&#x27;s Code w/ Claude event, but the biggest by far was the deal they&#x27;ve struck with SpaceX/xAI to use &quot;all of the capacity of their Colossus data center&quot;.
+As I mentioned in my live blog of the keynote, that&#x27;s the one with the particularly bad environmental record. The gas turbi...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>评论 Anthropic 与 SpaceX/xAI 的 Colossus 数据中心算力合作，并指出该数据中心环境记录较差（无 Clean Air Act 许可的燃气轮机）。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/7/xai-anthropic/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/7/github-repo-stats/#atom-everything" target="_blank" rel="noopener">GitHub Repo Stats</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: GitHub Repo Stats
+        One of the things I always look for when evaluating a new GitHub repository is the number of commits it has... but that number isn&#x27;t visible on GitHub&#x27;s mobile site layout. I built this tool to fix that, using this prompt:
+
+Given a GitHub repo URL or foo/bar repo ID show information about that repo absorbed via wi...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>做了个 GitHub 仓库统计小工具，通过 REST/GraphQL CORS fetch 显示 commit 数等手机端 GitHub 看不到的指标。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/7/github-repo-stats/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/6/code-w-claude-2026/#atom-everything" target="_blank" rel="noopener">Live blog: Code w/ Claude 2026</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I&#x27;m at Anthropic&#x27;s Code w/ Claude event today. Here&#x27;s my live blog of the morning keynote sessions.
+    
+        Tags: ai, generative-ai, llms, anthropic, claude, claude-code, live-blog</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>现场直播 Anthropic Code w/ Claude 2026 主题演讲。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/6/code-w-claude-2026/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/#atom-everything" target="_blank" rel="noopener">Vibe coding and agentic engineering are getting closer than I&#x27;d like</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I recently talked with Joseph Ruscio about AI coding tools for Heavybit&#x27;s High Leverage podcast: Ep. #9, The AI Coding Paradigm Shift with Simon Willison. Here are some of my highlights, including my disturbing realization that vibe coding and agentic engineering have started to converge in my own work.
+One thing I really enjoy about podcasts is...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>上 Heavybit High Leverage 播客谈 AI 编码：作者发现自己的 vibe coding 与 agentic engineering 已经悄然趋同，引发反思。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">11 条 · 1 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">11 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/playcanvas/supersplat" target="_blank" rel="noopener">playcanvas /supersplat — 3D Gaussian Splat Editor</a>
+        <div class="item-summary">PlayCanvas 出品的 3D 高斯泼溅 (Gaussian Splat) 编辑器。</div>
+        <div class="item-url">https://github.com/playcanvas/supersplat</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/oracle-devrel/oracle-ai-developer-hub" target="_blank" rel="noopener">oracle-devrel /oracle-ai-developer-hub — Technical resources for AI developers to build applications, agents, and systems using Oracle AI Database and OCI services</a>
+        <div class="item-summary">Oracle 官方资源库：用 Oracle AI Database 与 OCI 服务构建 AI 应用、agent 和系统的技术资料合集。</div>
+        <div class="item-url">https://github.com/oracle-devrel/oracle-ai-developer-hub</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/datawhalechina/hello-agents" target="_blank" rel="noopener">datawhalechina /hello-agents — 📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程</a>
+        <div class="item-summary">Datawhale 中文教程《从零开始构建智能体》— 智能体原理与实践入门。</div>
+        <div class="item-url">https://github.com/datawhalechina/hello-agents</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/rohitg00/agentmemory" target="_blank" rel="noopener">rohitg00 /agentmemory — #1 Persistent memory for AI coding agents based on real-world benchmarks</a>
+        <div class="item-summary">号称基于真实基准的 AI 编码 agent 持久化记忆方案。</div>
+        <div class="item-url">https://github.com/rohitg00/agentmemory</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/ChromeDevTools/chrome-devtools-mcp" target="_blank" rel="noopener">ChromeDevTools /chrome-devtools-mcp — Chrome DevTools for coding agents</a>
+        <div class="item-summary">把 Chrome DevTools 暴露给编码 agent 的官方 MCP server。</div>
+        <div class="item-url">https://github.com/ChromeDevTools/chrome-devtools-mcp</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/decolua/9router" target="_blank" rel="noopener">decolua /9router — Unlimited FREE AI coding. Connect Claude Code, Codex, Cursor, Cline, Copilot, Antigravity to FREE Claude/GPT/Gemini via 40+ providers. Auto-fallback, RTK -40% tokens, never hit limits.</a>
+        <div class="item-summary">免费 AI 编码路由：让 Claude Code / Codex / Cursor / Cline / Copilot / Antigravity 接入 40+ 提供商的免费 Claude / GPT / Gemini，自动 fallback，号称省 40% token、不再撞限额。</div>
+        <div class="item-url">https://github.com/decolua/9router</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/datawhalechina/easy-vibe" target="_blank" rel="noopener">datawhalechina /easy-vibe — 💻 vibe coding 2026 | Your first modern programming course for beginners to master step by step.</a>
+        <div class="item-summary">Datawhale 出品的 vibe coding 2026 入门课程，面向编程新手循序渐进掌握现代编程。</div>
+        <div class="item-url">https://github.com/datawhalechina/easy-vibe</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/masterking32/MasterDnsVPN" target="_blank" rel="noopener">masterking32 /MasterDnsVPN — Advanced DNS tunneling VPN for censorship bypass, optimized beyond DNSTT and SlipStream with low-overhead ARQ, resolver load balancing, high packet-loss stability and speed.</a>
+        <div class="item-summary">高级 DNS 隧道翻墙工具，相比 DNSTT/SlipStream 优化了低开销 ARQ、解析器负载均衡、抗丢包稳定性和速度。</div>
+        <div class="item-url">https://github.com/masterking32/MasterDnsVPN</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Lordog/dive-into-llms" target="_blank" rel="noopener">Lordog /dive-into-llms — 《动手学大模型Dive into LLMs》系列编程实践教程</a>
+        <div class="item-summary">中文系列教程《动手学大模型》— 大模型编程实践。</div>
+        <div class="item-url">https://github.com/Lordog/dive-into-llms</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/rowboatlabs/rowboat" target="_blank" rel="noopener">rowboatlabs /rowboat — Open-source AI coworker, with memory</a>
+        <div class="item-summary">开源带记忆的 AI 协作伙伴 (coworker)。</div>
+        <div class="item-url">https://github.com/rowboatlabs/rowboat</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/bytedance/UI-TARS-desktop" target="_blank" rel="noopener">bytedance /UI-TARS-desktop — The Open-Source Multimodal AI Agent Stack: Connecting Cutting-Edge AI Models and Agent Infra</a>
+        <div class="item-summary">字节出品的开源多模态 AI agent 栈：连接前沿 AI 模型与 agent 基础设施。</div>
+        <div class="item-url">https://github.com/bytedance/UI-TARS-desktop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06665v1" target="_blank" rel="noopener">UniPool: A Globally Shared Expert Pool for Mixture-of-Experts</a>
+        <div class="item-summary">UniPool — 用全局共享专家池替代 MoE「每层独立专家集」的固有规则；深层路由可被均匀随机替代而精度只掉 1.0-1.6 点，挑战每层独享专家容量的假设。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06665v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06664v1" target="_blank" rel="noopener">BAMI: Training-Free Bias Mitigation in GUI Grounding</a>
+        <div class="item-summary">BAMI：GUI grounding 的训练免费偏差缓解 — 用 Masked Prediction Distribution 归因发现误差源自「高分辨率→精度偏差」+「复杂界面→歧义偏差」，推断时纠偏。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06664v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06663v1" target="_blank" rel="noopener">EMO: Pretraining Mixture of Experts for Emergent Modularity</a>
+        <div class="item-summary">EMO — 把 MoE 设计为支持涌现模块化的预训练范式：传统 MoE 限制专家子集会严重掉点，EMO 让模型按领域激活模块化专家，缓解内存约束下的稀疏化损失。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06663v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06660v1" target="_blank" rel="noopener">Verifier-Backed Hard Problem Generation for Mathematical Reasoning</a>
+        <div class="item-summary">VHG — 三方自博弈 + verifier 的难题生成框架，避免传统 self-play 因 reward hacking 产生无效问题，用于推进 LLM 数学推理训练。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06660v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06656v1" target="_blank" rel="noopener">Why Global LLM Leaderboards Are Misleading: Small Portfolios for Heterogeneous Supervised ML</a>
+        <div class="item-summary">分析 116 语种、52 模型、约 89K 对比，发现全局 Bradley-Terry 排名约 2/3 决定性投票相互抵消，前 50 模型在统计意义上不可区分；建议小型异质投资组合排名替代单一榜。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06656v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06654v1" target="_blank" rel="noopener">Optimizer-Model Consistency: Full Finetuning with the Same Optimizer as Pretraining Forgets Less</a>
+        <div class="item-summary">在 SFT 阶段，用与预训练相同的优化器做全量微调比 LoRA、其他优化器更不易遗忘 — 提出「优化器-模型一致性」现象并理论分析。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06654v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06652v1" target="_blank" rel="noopener">When No Benchmark Exists: Validating Comparative LLM Safety Scoring Without Ground-Truth Labels</a>
+        <div class="item-summary">无基准的比较安全打分：用「instrumental-validity 链」替代 ground-truth 一致性，定义场景包/标尺/审计/采样合约，提供可解释的部署证据。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06652v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06651v1" target="_blank" rel="noopener">AI Co-Mathematician: Accelerating Mathematicians with Agentic AI</a>
+        <div class="item-summary">AI Co-Mathematician — 面向数学家的 AI 协作工作台：异步、有状态，覆盖灵感、文献检索、计算探索、定理证明、理论构建，输出原生数学产出。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06651v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06650v1" target="_blank" rel="noopener">Beyond Negative Rollouts: Positive-Only Policy Optimization with Implicit Negative Gradients</a>
+        <div class="item-summary">RLVR 中 GRPO 的负样本梯度差异度不足；提出仅用正样本+隐式负梯度的策略优化，避免对少数采样负样本过度惩罚。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06650v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06647v1" target="_blank" rel="noopener">Superintelligent Retrieval Agent: The Next Frontier of Information Retrieval</a>
+        <div class="item-summary">SIRA（超智能检索 agent）— 不再把检索当黑盒，像专家一样基于术语/证据先验定向调用，减少冗余轮次、降低延迟、提高召回。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06647v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06642v1" target="_blank" rel="noopener">StraTA: Incentivizing Agentic Reinforcement Learning with Strategic Trajectory Abstraction</a>
+        <div class="item-summary">StraTA — agentic RL 中引入显式轨迹级策略：从初始任务态采样 compact strategy 并条件化后续动作，改善长程探索与功劳分配。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06642v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06641v1" target="_blank" rel="noopener">GlazyBench: A Benchmark for Ceramic Glaze Property Prediction and Image Generation</a>
+        <div class="item-summary">GlazyBench — 首个 AI 辅助陶瓷釉料设计基准：23,148 条真实釉料配方，支持烧成后属性预测和图像生成两类任务。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06641v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06639v1" target="_blank" rel="noopener">Recursive Agent Optimization</a>
+        <div class="item-summary">Recursive Agent Optimization — 训练能递归生成自我子任务的 agent，通过分而治之实现推理时 scaling 与长上下文/难题泛化。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06639v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06638v1" target="_blank" rel="noopener">Can RL Teach Long-Horizon Reasoning to LLMs? Expressiveness Is Key</a>
+        <div class="item-summary">提出 ScaleLogic 合成逻辑推理框架 — 独立控制规划深度和逻辑表达力两个难度轴，研究 RL 训练 scaling 与任务难度的关系。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06638v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06635v1" target="_blank" rel="noopener">Cited but Not Verified: Parsing and Evaluating Source Attribution in LLM Deep Research Agents</a>
+        <div class="item-summary">首个 LLM Deep Research agent 的源溯源评估框架：用 AST parser 抽取并验证 markdown 报告里的 inline 引用，检查可达性、相关性、事实一致性。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06635v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06632v1" target="_blank" rel="noopener">Crafting Reversible SFT Behaviors in Large Language Models</a>
+        <div class="item-summary">把 SFT 引入的新行为「主动压缩」到稀疏、机械上必要的子网络中，使得在推理时可选择性开/关这些 SFT 行为，而非事后归因相关性。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06632v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06627v1" target="_blank" rel="noopener">PianoCoRe: Combined and Refined Piano MIDI Dataset</a>
+        <div class="item-summary">PianoCoRe — 整合并精炼主流开源钢琴 MIDI 语料：250,046 演奏 / 5,625 曲 / 483 作曲家 / 21,763 小时，分级子集面向不同 MIR 应用。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06627v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06623v1" target="_blank" rel="noopener">MASPO: Joint Prompt Optimization for LLM-based Multi-Agent Systems</a>
+        <div class="item-summary">MASPO — 面向 LLM 多 agent 系统的联合 prompt 优化：以系统级 holistic 评估对齐局部 agent 目标与整体目标，自动迭代精修每个 agent 的角色 prompt。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06623v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06619v1" target="_blank" rel="noopener">Algospeak, Hiding in the Open: The Trade-off Between Legible Meaning and Detection Avoidance</a>
+        <div class="item-summary">形式化 algospeak 演化动力学（联合行动模型）+ 提出「Majority Understandable Modulation」临界点：再多调侃就会让多数读者看不懂。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06619v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06614v1" target="_blank" rel="noopener">SkillOS: Learning Skill Curation for Self-Evolving Agents</a>
+        <div class="item-summary">SkillOS — 学习长期 skill curation 策略，让 agent 自我进化时不再局限于手工策划/启发式/短程操作，从间接、延迟反馈中学到长程 curation。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06614v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06612v1" target="_blank" rel="noopener">Online Bayesian Calibration under Gradual and Abrupt System Changes</a>
+        <div class="item-summary">在线贝叶斯模型校准：能同时处理系统的渐变漂移和突变，缓解传统校准的参数-差异混淆和静态假设，适合 digital twin 场景。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06612v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06611v1" target="_blank" rel="noopener">The Structural Origin of Attention Sink: Variance Discrepancy, Super Neurons, and Dimension Disparity</a>
+        <div class="item-summary">机理解释 attention sink — 自注意力 value 聚合内生方差差异，再被 FFN 中的 super neuron 显著放大，形成对初始 token 的注意力垄断。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06611v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06610v1" target="_blank" rel="noopener">SoftSAE: Dynamic Top-K Selection for Adaptive Sparse Autoencoders</a>
+        <div class="item-summary">SoftSAE — 动态 Top-K 选择的自适应稀疏自编码器：抛弃固定 K，根据输入复杂度自适应选择激活特征数，更适合机制可解释性中真实数据的多样性。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06610v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06607v1" target="_blank" rel="noopener">AI CFD Scientist: Toward Open-Ended Computational Fluid Dynamics Discovery with Physics-Aware AI Agents</a>
+        <div class="item-summary">AI CFD Scientist — 首个面向计算流体力学的开源 AI 科学家：覆盖文献 ideation → 验证执行 → 视觉物理验证（不仅 solver log）→ 开放式发现循环。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06607v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06605v1" target="_blank" rel="noopener">How Many Iterations to Jailbreak? Dynamic Budget Allocation for Multi-Turn LLM Evaluation</a>
+        <div class="item-summary">多轮 LLM 评估的动态预算分配：在 conformal survival 框架上替代静态预算，更高效预测 jailbreak / 任务完成等罕见事件触发轮次。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06605v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06601v1" target="_blank" rel="noopener">Patch2Vuln: Agentic Reconstruction of Vulnerabilities from Linux Distribution Binary Patches</a>
+        <div class="item-summary">Patch2Vuln — 仅基于本地二进制证据，用 Ghidra/Ghidriff diff 旧/新 ELF + LLM agent 重构 Linux 发行版安全更新背后的漏洞含义。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06601v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06599v1" target="_blank" rel="noopener">Weight-Decay Turns Transformer Loss Landscapes Villani: Functional-Analytic Foundations for Optimization and Generalization</a>
+        <div class="item-summary">首次严格泛函分析地证明 Transformer 交叉熵+L² 正则损失满足 Villani 强制能量函数判据（无穷可微、二次增长、高斯尾、增长条件），为优化与泛化奠基。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06599v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06597v1" target="_blank" rel="noopener">UniSD: Towards a Unified Self-Distillation Framework for Large Language Models</a>
+        <div class="item-summary">UniSD — 统一的 LLM 自蒸馏（无外部更强教师）框架：系统化研究自蒸馏中各设计选择的相互作用，整合互补机制为可控研究平台。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06597v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06596v1" target="_blank" rel="noopener">FedAttr: Towards Privacy-preserving Client-Level Attribution in Federated LLM Fine-tuning</a>
+        <div class="item-summary">FedAttr — 联邦 LLM 微调下的客户端级归因（隐私保护）：把基于水印放射性的检测扩展到 FL 场景下的安全聚合，识别哪个客户端贡献了水印数据。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06596v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2605.06595v1" target="_blank" rel="noopener">Cross-Modal Navigation with Multi-Agent Reinforcement Learning</a>
+        <div class="item-summary">CRONA — 跨模态导航多 agent RL：让轻量、模态专精 agent 协作而非训练单一大模型，灵活部署、并行执行，并保留各模态优势。</div>
+        <div class="item-url">http://arxiv.org/abs/2605.06595v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

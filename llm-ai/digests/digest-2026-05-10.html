@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-10</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-10</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-10</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 35 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">35</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">35</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">35 条 · 2 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/HKUDS/AI-Trader" target="_blank" rel="noopener">HKUDS /AI-Trader — &quot;AI-Trader: 100% Fully-Automated Agent-Native Trading&quot;</a>
+        <div class="item-summary">港大数据智能实验室出品的 100% 全自动 agent 原生交易系统。</div>
+        <div class="item-url">https://github.com/HKUDS/AI-Trader</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/lsdefine/GenericAgent" target="_blank" rel="noopener">lsdefine /GenericAgent — Self-evolving agent: grows skill tree from 3.3K-line seed, achieving full system control with 6x less token consumption</a>
+        <div class="item-summary">自演化 agent：从 3.3K 行种子起步，自行生长技能树，实现完整系统控制并节省 6 倍 token 消耗。</div>
+        <div class="item-url">https://github.com/lsdefine/GenericAgent</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/CloakHQ/CloakBrowser" target="_blank" rel="noopener">CloakHQ /CloakBrowser — Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint patches. 30/30 tests passed.</a>
+        <div class="item-summary">隐身 Chromium，宣称通过所有 bot 检测；可直接替换 Playwright，源代码层做指纹补丁，30/30 测试通过。</div>
+        <div class="item-url">https://github.com/CloakHQ/CloakBrowser</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/affaan-m/everything-claude-code" target="_blank" rel="noopener">affaan-m /everything-claude-code — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</a>
+        <div class="item-summary">面向 Claude Code / Codex / Cursor 等 agent harness 的性能优化系统：技能、直觉、记忆、安全与研究优先开发。</div>
+        <div class="item-url">https://github.com/affaan-m/everything-claude-code</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/jundot/omlx" target="_blank" rel="noopener">jundot /omlx — LLM inference server with continuous batching &amp; SSD caching for Apple Silicon — managed from the macOS menu bar</a>
+        <div class="item-summary">Apple Silicon 上的 LLM 推理服务器：连续批处理 + SSD 缓存，从 macOS 菜单栏管理。</div>
+        <div class="item-url">https://github.com/jundot/omlx</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083813" target="_blank" rel="noopener">&#x27;First contact&#x27; that may have led to complex life on Earth witnessed</a>
+        <div class="item-summary">科普：科学家观测到可能促成地球复杂生命起源的「首次接触」事件。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083813</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084086" target="_blank" rel="noopener">Ask HN: Is this the SWE workflow of the future?</a>
+        <div class="item-summary">Ask HN：当前的软件工程工作流是否就是未来的常态？</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084086</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083911" target="_blank" rel="noopener">Retainer: Autonomous agent for extended, independent operation</a>
+        <div class="item-summary">Retainer：可长时间独立运行的自主 agent。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083911</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083968" target="_blank" rel="noopener">The Changing Role of Low-Fidelity (LoFi) Signals in the AI Era</a>
+        <div class="item-summary">AI 时代下低保真 (LoFi) 信号在产品/设计中的角色变迁。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083968</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083814" target="_blank" rel="noopener">BLAS, Lapack and OpenMP</a>
+        <div class="item-summary">BLAS、LAPACK 与 OpenMP 之间的关系与使用要点。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083814</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083773" target="_blank" rel="noopener">Typing Is Being Replaced by Whispering–and It&#x27;s More Annoying</a>
+        <div class="item-summary">评论文章：键盘输入正在被语音「耳语」替代，但作者认为这更让人烦。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083773</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083919" target="_blank" rel="noopener">Academic Research Skills for Claude Code</a>
+        <div class="item-summary">面向 Claude Code 的学术研究技能集合 (Skills)。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083919</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083877" target="_blank" rel="noopener">Show HN: X/Twitter video downloader Chrome extension (Plasmo)</a>
+        <div class="item-summary">Show HN：基于 Plasmo 的 X/Twitter 视频下载 Chrome 扩展。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083877</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084080" target="_blank" rel="noopener">My Marstek B2500-D battery sends telemetry over plain HTTP</a>
+        <div class="item-summary">Marstek B2500-D 储能电池被发现用明文 HTTP 上报遥测数据。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084080</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083832" target="_blank" rel="noopener">NeuroFilter – YouTube recommendation filtering using AI, transformers.js in MV3</a>
+        <div class="item-summary">NeuroFilter：用 transformers.js 在 MV3 扩展里做 YouTube 推荐过滤。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083832</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083876" target="_blank" rel="noopener">Warning: Quantum Advances Are Compressing Timeline for Network Upgrades</a>
+        <div class="item-summary">警示：量子计算进展正在压缩网络（PQC）升级的时间表。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083876</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084063" target="_blank" rel="noopener">All 55,256 Slides of the War.gov/UFO Files Searchable and Linkable</a>
+        <div class="item-summary">War.gov UFO 文件 55,256 张幻灯片全部可搜索、可链接。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084063</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083887" target="_blank" rel="noopener">The Telbex Kernel&#x27;s Version 0.2 release is near</a>
+        <div class="item-summary">Telbex 内核 0.2 版即将发布。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083887</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084056" target="_blank" rel="noopener">A boilerplate to create a 1990s Geocities-themed website</a>
+        <div class="item-summary">用于搭建 1990 年代 Geocities 风格网站的脚手架模板。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084056</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084029" target="_blank" rel="noopener">How to use a spreadsheet for creativity</a>
+        <div class="item-summary">如何把电子表格当作创意工具使用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084029</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083969" target="_blank" rel="noopener">Cyber.md: AI-native posture that speaks agent</a>
+        <div class="item-summary">Cyber.md：用「agent 可读」格式描述安全态势的 AI 原生方案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083969</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083944" target="_blank" rel="noopener">IPic – A Match Head Sized Web-Server</a>
+        <div class="item-summary">IPic — 火柴头大小的 Web 服务器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083944</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083997" target="_blank" rel="noopener">A Declaration of the Independence of Cyberspace</a>
+        <div class="item-summary">重读《赛博空间独立宣言》(A Declaration of the Independence of Cyberspace)。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083997</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084000" target="_blank" rel="noopener">A Tour of Txtar</a>
+        <div class="item-summary">Go 社区 txtar 归档格式的入门导览。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084000</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083803" target="_blank" rel="noopener">Running local models on an M4 with 24GB memory</a>
+        <div class="item-summary">在 24GB 内存的 M4 Mac 上运行本地大模型的实操经验。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083803</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083783" target="_blank" rel="noopener">ModelDocker – OpenRouter LLM Desktop Client</a>
+        <div class="item-summary">ModelDocker：OpenRouter 桌面客户端，方便统一调用各家 LLM。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083783</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084012" target="_blank" rel="noopener">Leaving the Physical World</a>
+        <div class="item-summary">随笔《离开物理世界》— 关于线上化生活的反思。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084012</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083836" target="_blank" rel="noopener">Six Seven Six Seven</a>
+        <div class="item-summary">「Six Seven Six Seven」— 标题缺乏上下文，疑似梗/小项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083836</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083816" target="_blank" rel="noopener">Cancelling Claude subscription renewal immediately revokes Design access</a>
+        <div class="item-summary">用户反馈：取消 Claude 订阅续费后立即被吊销 Claude Design 使用权。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083816</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083792" target="_blank" rel="noopener">UCI LISP: Random Notes (1975)</a>
+        <div class="item-summary">1975 年 UCI LISP 的随笔札记。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083792</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083890" target="_blank" rel="noopener">Pomotuimer – a dependency-free Pomodoro timer for your terminal</a>
+        <div class="item-summary">Pomotuimer — 终端用、零依赖的番茄钟工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083890</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084031" target="_blank" rel="noopener">Is There a There in Cyberspace</a>
+        <div class="item-summary">重读《赛博空间里有没有「那里」?》— 早期互联网身份/场所感讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084031</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083845" target="_blank" rel="noopener">More than 92,000 tech workers have been laid off in 2026</a>
+        <div class="item-summary">2026 年迄今已有 92,000+ 名科技从业者被裁员。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083845</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48084008" target="_blank" rel="noopener">Why the Mars Probe went off course (1999)</a>
+        <div class="item-summary">回顾 1999 年火星气候探测器为何因单位换算错误偏离轨道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48084008</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48083933" target="_blank" rel="noopener">Ronald G. Wayne Is More Than Two Weeks at Apple</a>
+        <div class="item-summary">苹果第三位创始人 Ronald G. Wayne 在 Apple 的两周时间始末。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48083933</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

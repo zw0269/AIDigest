@@ -266,6 +266,80 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "开源带记忆的 AI 协作伙伴 (coworker)。",
     "https://github.com/bytedance/UI-TARS-desktop":
         "字节出品的开源多模态 AI agent 栈：连接前沿 AI 模型与 agent 基础设施。",
+
+    # 2026-05-10 — GitHub Trending
+    "https://github.com/HKUDS/AI-Trader":
+        "港大数据智能实验室出品的 100% 全自动 agent 原生交易系统。",
+    "https://github.com/lsdefine/GenericAgent":
+        "自演化 agent：从 3.3K 行种子起步，自行生长技能树，实现完整系统控制并节省 6 倍 token 消耗。",
+    "https://github.com/CloakHQ/CloakBrowser":
+        "隐身 Chromium，宣称通过所有 bot 检测；可直接替换 Playwright，源代码层做指纹补丁，30/30 测试通过。",
+    "https://github.com/affaan-m/everything-claude-code":
+        "面向 Claude Code / Codex / Cursor 等 agent harness 的性能优化系统：技能、直觉、记忆、安全与研究优先开发。",
+    "https://github.com/jundot/omlx":
+        "Apple Silicon 上的 LLM 推理服务器：连续批处理 + SSD 缓存，从 macOS 菜单栏管理。",
+
+    # 2026-05-10 — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48083813":
+        "科普：科学家观测到可能促成地球复杂生命起源的「首次接触」事件。",
+    "https://news.ycombinator.com/item?id=48084086":
+        "Ask HN：当前的软件工程工作流是否就是未来的常态？",
+    "https://news.ycombinator.com/item?id=48083911":
+        "Retainer：可长时间独立运行的自主 agent。",
+    "https://news.ycombinator.com/item?id=48083968":
+        "AI 时代下低保真 (LoFi) 信号在产品/设计中的角色变迁。",
+    "https://news.ycombinator.com/item?id=48083814":
+        "BLAS、LAPACK 与 OpenMP 之间的关系与使用要点。",
+    "https://news.ycombinator.com/item?id=48083773":
+        "评论文章：键盘输入正在被语音「耳语」替代，但作者认为这更让人烦。",
+    "https://news.ycombinator.com/item?id=48083919":
+        "面向 Claude Code 的学术研究技能集合 (Skills)。",
+    "https://news.ycombinator.com/item?id=48083877":
+        "Show HN：基于 Plasmo 的 X/Twitter 视频下载 Chrome 扩展。",
+    "https://news.ycombinator.com/item?id=48084080":
+        "Marstek B2500-D 储能电池被发现用明文 HTTP 上报遥测数据。",
+    "https://news.ycombinator.com/item?id=48083832":
+        "NeuroFilter：用 transformers.js 在 MV3 扩展里做 YouTube 推荐过滤。",
+    "https://news.ycombinator.com/item?id=48083876":
+        "警示：量子计算进展正在压缩网络（PQC）升级的时间表。",
+    "https://news.ycombinator.com/item?id=48084063":
+        "War.gov UFO 文件 55,256 张幻灯片全部可搜索、可链接。",
+    "https://news.ycombinator.com/item?id=48083887":
+        "Telbex 内核 0.2 版即将发布。",
+    "https://news.ycombinator.com/item?id=48084056":
+        "用于搭建 1990 年代 Geocities 风格网站的脚手架模板。",
+    "https://news.ycombinator.com/item?id=48084029":
+        "如何把电子表格当作创意工具使用。",
+    "https://news.ycombinator.com/item?id=48083969":
+        "Cyber.md：用「agent 可读」格式描述安全态势的 AI 原生方案。",
+    "https://news.ycombinator.com/item?id=48083944":
+        "IPic — 火柴头大小的 Web 服务器。",
+    "https://news.ycombinator.com/item?id=48083997":
+        "重读《赛博空间独立宣言》(A Declaration of the Independence of Cyberspace)。",
+    "https://news.ycombinator.com/item?id=48084000":
+        "Go 社区 txtar 归档格式的入门导览。",
+    "https://news.ycombinator.com/item?id=48083803":
+        "在 24GB 内存的 M4 Mac 上运行本地大模型的实操经验。",
+    "https://news.ycombinator.com/item?id=48083783":
+        "ModelDocker：OpenRouter 桌面客户端，方便统一调用各家 LLM。",
+    "https://news.ycombinator.com/item?id=48084012":
+        "随笔《离开物理世界》— 关于线上化生活的反思。",
+    "https://news.ycombinator.com/item?id=48083836":
+        "「Six Seven Six Seven」— 标题缺乏上下文，疑似梗/小项目。",
+    "https://news.ycombinator.com/item?id=48083816":
+        "用户反馈：取消 Claude 订阅续费后立即被吊销 Claude Design 使用权。",
+    "https://news.ycombinator.com/item?id=48083792":
+        "1975 年 UCI LISP 的随笔札记。",
+    "https://news.ycombinator.com/item?id=48083890":
+        "Pomotuimer — 终端用、零依赖的番茄钟工具。",
+    "https://news.ycombinator.com/item?id=48084031":
+        "重读《赛博空间里有没有「那里」?》— 早期互联网身份/场所感讨论。",
+    "https://news.ycombinator.com/item?id=48083845":
+        "2026 年迄今已有 92,000+ 名科技从业者被裁员。",
+    "https://news.ycombinator.com/item?id=48084008":
+        "回顾 1999 年火星气候探测器为何因单位换算错误偏离轨道。",
+    "https://news.ycombinator.com/item?id=48083933":
+        "苹果第三位创始人 Ronald G. Wayne 在 Apple 的两周时间始末。",
 }
 
 

@@ -143,6 +143,84 @@ MANUAL_SUMMARIES: dict[str, str] = {
     "https://transformer-circuits.pub/2021/garcon/index.html":
         "对大模型可解释性研究工具链的描述。",
 
+    # GitHub Trending — 2026-05-13
+    "https://github.com/anonfaded/FadCam":
+        "开源无广告 Android 多媒体录像工具，支持后台录制、屏幕录制、直播和远程摄像头控制。",
+    "https://github.com/yikart/AiToEarn":
+        "利用 AI 辅助赚钱的工具平台。",
+    "https://github.com/millionco/react-doctor":
+        "检测 AI agent 生成的劣质 React 代码的静态分析工具。",
+    "https://github.com/tinyhumansai/openhuman":
+        "私有、简洁、极为强大的个人 AI 超级智能平台。",
+    "https://github.com/apernet/hysteria":
+        "Hysteria — 基于 QUIC 协议的高速抗审查代理工具。",
+    "https://github.com/mattpocock/skills":
+        "Matt Pocock 面向真实工程师的 Claude 技能集，直接来自其 .claude 配置目录。",
+    "https://github.com/rasbt/LLMs-from-scratch":
+        "用 PyTorch 从零逐步实现类 ChatGPT 大语言模型的教程书配套代码。",
+
+    # Hacker News Newest — 2026-05-13
+    "https://news.ycombinator.com/item?id=48118988":
+        "Show HN：Recursant — 基于 mesh 架构的 AI agent 控制平面。",
+    "https://news.ycombinator.com/item?id=48118881":
+        "汉坦病毒全球分布地图可视化。",
+    "https://news.ycombinator.com/item?id=48118908":
+        "Google AluminiumOS：面向桌面端重新设计的 Android 系统。",
+    "https://news.ycombinator.com/item?id=48118816":
+        "Tep：Sinatra 风格 Web 框架，通过 Spinel 编译为原生二进制。",
+    "https://news.ycombinator.com/item?id=48119080":
+        "GitHub Launchpad 功能提案：为开源项目提供内置启动平台的提案讨论。",
+    "https://news.ycombinator.com/item?id=48119011":
+        "Alien — 项目/工具介绍（标题缺上下文）。",
+    "https://news.ycombinator.com/item?id=48118744":
+        "MIT Technology Review《The Download》：一位诺贝尔奖得主谈 AI，以及「修复一切」的理由。",
+    "https://news.ycombinator.com/item?id=48118932":
+        "Codex 计算机使用功能的演示与讨论。",
+    "https://news.ycombinator.com/item?id=48119091":
+        "Satteri：面向 JavaScript 生态的高性能 Markdown/MDX 处理库。",
+    "https://news.ycombinator.com/item?id=48118763":
+        "欧洲政府网站安全审计：3000 个追踪站点、1000 个裸露 phpMyAdmin、99% 安全配置薄弱。",
+    "https://news.ycombinator.com/item?id=48118783":
+        "Show HN：用数据生成各国电网可视化海报的工具。",
+    "https://news.ycombinator.com/item?id=48118855":
+        "泄露 16 分钟视频揭示 Google Aluminium OS 详情。",
+    "https://news.ycombinator.com/item?id=48119016":
+        "用 Claude 将 Bun 移植到 Rust，再用 GPT 进行代码审查的实验记录。",
+    "https://news.ycombinator.com/item?id=48118844":
+        "HubSpot 在非洲市场推动 CRM 普及的经验分享（营销内容）。",
+    "https://news.ycombinator.com/item?id=48119047":
+        "《布谷鸟乐园》：Tom Burgis 著，讲述权力与影响力的滥用（2024）。",
+    "https://news.ycombinator.com/item?id=48118876":
+        "原本写给人类读者的文档，如今被作者自己当作 LLM 提示词使用的感想。",
+    "https://news.ycombinator.com/item?id=48118904":
+        "Urlsify.com — 免费 URL 缩短服务，附带深度流量分析功能。",
+    "https://news.ycombinator.com/item?id=48118857":
+        "Genera OS — 操作系统相关项目介绍。",
+    "https://news.ycombinator.com/item?id=48119063":
+        "OpenAI、微软等合作开发更高性能、可扩展的以太网网络方案。",
+    "https://news.ycombinator.com/item?id=48118956":
+        "Valve 在新版 Steam 手柄中隐藏了 Wilhelm 惨叫彩蛋（视频）。",
+    "https://news.ycombinator.com/item?id=48118866":
+        "厌倦免费二维码生成器的广告，作者自己做了一个无广告版本。",
+    "https://news.ycombinator.com/item?id=48118749":
+        "Freelang：编译器本身就是 JavaScript 的小型 AOT 语言。",
+    "https://news.ycombinator.com/item?id=48118751":
+        "巴西面向小型卫星市场的航天发射系统介绍。",
+    "https://news.ycombinator.com/item?id=48119070":
+        "无需互联网即可使用 FaceTime 通话的演示（视频）。",
+    "https://news.ycombinator.com/item?id=48119000":
+        "AllSkyKamera：面向全球夜空监测的公民科学摄像头网络。",
+    "https://news.ycombinator.com/item?id=48118968":
+        "OpenCL 3.1 规范正式发布。",
+    "https://news.ycombinator.com/item?id=48119042":
+        "谷歌基于 Android 的笔记本电脑将命名为 Googlebook，计划今年上市。",
+    "https://news.ycombinator.com/item?id=48119023":
+        "Hysteria：基于 QUIC 协议、专为抗审查设计的代理工具讨论。",
+    "https://news.ycombinator.com/item?id=48118935":
+        "陶哲轩演讲视频：AI 辅助的新型数学研究工作流。",
+    "https://news.ycombinator.com/item?id=48119092":
+        "Show HN：制作苹果商业广告风格演示录屏的应用。",
+
     # GitHub Trending — 2026-05-06
     "https://github.com/Hmbown/DeepSeek-TUI":
         "在终端里运行的 DeepSeek 模型编码 agent。",
@@ -421,6 +499,50 @@ TRANSLATIONS: dict[str, str] = {
     "https://openai.com/index/delivering-low-latency-voice-ai-at-scale":
         "OpenAI 重构 WebRTC 栈，实现低延迟、全球规模、流畅对话轮转的实时语音 AI。",
 
+    # OpenAI — 2026-05-13
+    "https://openai.com/academy/how-finance-teams-use-codex":
+        "展示财务团队如何用 Codex 根据真实工作输入构建月度业务回顾、汇报包、差异桥分析和规划情景。",
+    "https://openai.com/index/what-parameter-golf-taught-us":
+        "Parameter Golf 竞赛汇聚 1000+ 参与者与 2000+ 提交，在严格约束下探索 AI 辅助 ML 研究、编码 agent、量化与新型模型设计。",
+    "https://openai.com/index/nvidia":
+        "NVIDIA 工程师与研究员借助 Codex + GPT-5.5 上线生产系统，并把研究想法转化为可运行实验。",
+    "https://openai.com/index/autoscout24":
+        "AutoScout24 集团借助 Codex 和 ChatGPT 加快开发周期、提升代码质量并扩大 AI 普及范围。",
+    "https://openai.com/signals/research/2026q1-update":
+        "2026 年 Q1 ChatGPT 用量激增，35 岁以上用户增长最快、性别比例趋于均衡，AI 正步入更广泛的主流采用阶段。",
+    "https://openai.com/business/guides-and-resources/how-enterprises-are-scaling-ai":
+        "企业 AI 规模化路径：从早期实验到复利效应，依赖信任建立、治理设计、工作流优化与规模质量管控。",
+    "https://openai.com/index/openai-campus-network-student-club-interest-form":
+        "加入 OpenAI 校园网络 — 连接全球学生社团、使用 AI 工具、举办活动、共建 AI 赋能的校园社区。",
+    "https://openai.com/index/openai-launches-the-deployment-company":
+        "OpenAI 推出 DeployCo，专门帮助企业将前沿 AI 落地生产并转化为可量化的业务成果。",
+
+    # Simon Willison — 2026-05-13
+    "https://simonwillison.net/2026/May/13/csp-allow/#atom-everything":
+        "实验：把应用加载在 CSP 保护的沙盒 iframe 中，拦截 CSP 错误传给父窗口让用户动态维护域名白名单后刷新页面，用 GPT-5.5 xhigh 在 Codex 桌面版完成。",
+    "https://simonwillison.net/2026/May/12/datasette/#atom-everything":
+        "datasette 1.0a29：新增 TokenRestrictions.abbreviated() 工具方法，修复 Mobile Safari 列操作对话框 bug 及零行表格表头不显示问题。",
+    "https://simonwillison.net/2026/May/12/mo-bitar/#atom-everything":
+        "引用 Mo Bitar：CEO 不知道「Ralph Loop」，说明你离升职只差 30 天 — 对 LLM agent 自主循环重要性的幽默评论。",
+    "https://simonwillison.net/2026/May/12/mitchell-hashimoto/#atom-everything":
+        "引用 Mitchell Hashimoto：90% 技术决策者的动机是不被解雇，他们跟随分析师与主流舆论，「AI 是未来」已成保住职位的最佳护盾。",
+    "https://simonwillison.net/2026/May/12/llm/#atom-everything":
+        "llm 0.32a2：GPT-5 级 OpenAI 模型切换至 /v1/responses 端点，支持跨工具调用的交错推理，现可在 CLI 中看到汇总推理 token。",
+    "https://simonwillison.net/2026/May/11/gitlab-act-2/#atom-everything":
+        "评析 GitLab「第二幕」：裁员 + 撤出 30% 小规模办公国家 + 结构调整，以应对 agentic 时代。",
+    "https://simonwillison.net/2026/May/11/james-shore/#atom-everything":
+        "引用 James Shore：AI 编码 agent 若不能等比例降低维护成本，编码速度提升只是用暂时加速换取永久技术债。",
+    "https://simonwillison.net/2026/May/11/zombie-internet/#atom-everything":
+        "转介 Jason Koebler 文章：AI 生成内容泛滥催生「僵尸互联网」，难以过滤且正在扭曲真实人类写作风格。",
+    "https://simonwillison.net/2026/May/11/llm-shebang/#atom-everything":
+        "探索用 LLM 命令作为脚本 shebang 行的模式，最简形式是 #!/usr/bin/env -S llm -f，让纯英文脚本由 LLM 执行。",
+    "https://simonwillison.net/2026/May/11/learning-on-the-shop-floor/#atom-everything":
+        "介绍 Shopify 内部编码 agent River：强制在公开 Slack 频道工作，让所有 AI 对话透明可见，加速组织学习。",
+    "https://simonwillison.net/2026/May/10/new-york-times-editors-note/#atom-everything":
+        "引用《纽约时报》编辑更正声明：记者误将 AI 生成的摘要作为真实引语发布，已更正为 Poilievre 原始演讲内容。",
+    "https://simonwillison.net/2026/May/10/andrew-quinn/#atom-everything":
+        "引用 Andrew Quinn：AI 消除了「已有更好实现」的罪恶感，让人可以心无旁骛地构建工具而不再焦虑造轮子。",
+
     # Simon Willison（基于其原文摘录概括）
     "https://simonwillison.net/2026/May/4/redis-array/#atom-everything":
         "Salvatore Sanfilippo 给 Redis 提了 PR 新增 array 数据类型与一组 AR* 命令；作者用 Claude Code for web 把 Redis 子集编译为 WASM 在浏览器里跑，做成可交互的 playground 试用新命令，亮点是支持服务端 grep 的 ARGREP。",
@@ -566,6 +688,68 @@ TRANSLATIONS: dict[str, str] = {
         "TRACE：可信 agentic AI 工程框架 — 4 层参考架构 + 经典 ML/LLM-validator (L2a/L2b) 拆分 + 编排-升级策略 + 度量学接地的信任度量套件（GUM/VIM/ISO 17025），引入 Computational Parsimony Ratio (CPR) 把 LLM 用法变成显式设计选择，用临床/工业/司法 3 个实例验证。",
     "http://arxiv.org/abs/2605.03824v1":
         "可重复性研究 + LIMIT+ 控制基准：QUEST 上最佳神经检索器 Recall@100 是 BM25 两倍多（0.41 vs 0.20），但到 LIMIT+ 时强法崩溃至 <0.02 而 BM25 升至 ~0.96；按组合深度分层显示密集方法显著退化，代数稀疏/词法方法稳定。",
+
+    # arXiv 论文 — 2026-05-13 抓取（关键词命中，30 篇）
+    "http://arxiv.org/abs/2605.12495v1":
+        "AlphaGRPO：把 GRPO 应用于 AR-Diffusion 统一多模态模型，无需冷启动即可解锁推理驱动的文生图和自反思纠错能力。",
+    "http://arxiv.org/abs/2605.12493v1":
+        "LongMemEval-V2：提出评估 agent 记忆系统能否积累专业环境经验（界面、状态动力学、工作流）的基准，向「经验丰富同事」目标迈进。",
+    "http://arxiv.org/abs/2605.12492v1":
+        "Pion：通过左右正交变换更新权重矩阵的优化器，训练全程保持奇异值不变，与 Adam/Muon 形成互补，在 LLM 训练中展现竞争力。",
+    "http://arxiv.org/abs/2605.12487v1":
+        "Task-Adaptive Embedding Refinement：用少量文档上的 LLM 反馈实时细化 query 嵌入，使嵌入模型无需重训即可适配零样本检索与分类任务。",
+    "http://arxiv.org/abs/2605.12484v1":
+        "Learning, Fast and Slow：提出将上下文内学习（快）与参数更新（慢）结合的 LLM 持续适应框架，避免各自局限，实现更好的持续学习。",
+    "http://arxiv.org/abs/2605.12481v1":
+        "ToolCUA：提出端到端 agent 框架，优化 GUI 操作与 API 工具调用之间的最优路径编排，解决混合动作空间中的执行低效问题。",
+    "http://arxiv.org/abs/2605.12480v1":
+        "OmniNFT：提出多目标多模态强化学习框架用于音视频联合生成，解决 RL 中多模态优势不一致和跨模态不对齐问题。",
+    "http://arxiv.org/abs/2605.12477v1":
+        "MEME：跨越多实体与演化两个维度的 6 类记忆评估任务，发现现有系统在依赖推理（级联/缺失/删除）上普遍失败。",
+    "http://arxiv.org/abs/2605.12476v1":
+        "MoE 路由几何耦合：揭示 MoE 中路由与专家之间的几何耦合机制，解释路由坍缩根因，并提出利用该几何性质改善训练稳定性的方法。",
+    "http://arxiv.org/abs/2605.12471v1":
+        "KV-Fold：无需训练的长上下文推理协议，将 KV 缓存视为序列块上的左折叠累加器，实现高效长上下文推理。",
+    "http://arxiv.org/abs/2605.12466v1":
+        "Attractor Models：提出吸引子模型替代循环 Transformer，主干提出输出嵌入后吸引子模块通过求不动点精化，用隐式微分求梯度，训练内存恒定。",
+    "http://arxiv.org/abs/2605.12460v1":
+        "Multi-Stream LLMs：提出多流 LLM 架构，让 agent 并行处理思维、输入和输出，消除单流对话范式在长程 agent 任务中的顺序瓶颈。",
+    "http://arxiv.org/abs/2605.12456v1":
+        "TextSeal：基于 Gumbel-max 采样的局部 LLM 水印，支持投机解码等推理优化，在强稀释场景下仍可检测，严格优于 SynthID-text。",
+    "http://arxiv.org/abs/2605.12452v1":
+        "Algorithmic Caricature：构建 179 万帖子的危机事件语料，发现 LLM 生成的政治话语在用词分布、情绪拓扑和传播动态上均与真实人群不同，可作为高鲁棒检测信号。",
+    "http://arxiv.org/abs/2605.12446v1":
+        "ORCE：分离 LLM 答案生成与口语化置信度生成，避免两目标互相干扰，提升置信表达的顺序感知对齐。",
+    "http://arxiv.org/abs/2605.12438v1":
+        "CLM Detour：encoder 持续预训练时先短暂切换因果语言模型再返回 MLM，在法语/英语生物医学任务上分别提升 1.2-2.8pp 和 0.3-0.8pp。",
+    "http://arxiv.org/abs/2605.12435v1":
+        "Wildfire Preference Optimization：提出环境自适应偏好优化，解决山火等极端稀有事件预测中的长尾类别失衡和分布偏移问题。",
+    "http://arxiv.org/abs/2605.12422v1":
+        "预测 LLM-as-a-Judge 难度评估中哪些评分会与人类标注者不一致，使用后处理信号而非生成时概率，实现免重评筛选。",
+    "http://arxiv.org/abs/2605.12421v1":
+        "Formalize Don't Optimize：在 100 题组合优化基准上，LLM 应优先形式化约束模型而非生成启发式搜索，CP 声明式建模大幅超越 Python 原生算法搜索。",
+    "http://arxiv.org/abs/2605.12419v1":
+        "ORBIT：生成式检索微调时通过跟踪并约束参数偏移距离，防止 LLM 语言能力灾难性遗忘的参数正则化方法。",
+    "http://arxiv.org/abs/2605.12416v1":
+        "Flow Map Policies：学习跨生成过程任意步长跳跃（含一步跳跃）的生成式策略，实现快速动作生成，适合多模态分布控制问题。",
+    "http://arxiv.org/abs/2605.12412v1":
+        "Stories in Space：提出 LLM 上下文学习对应低维概念信念空间中的轨迹，用故事理解任务验证信念随上下文动态更新的机制。",
+    "http://arxiv.org/abs/2605.12411v1":
+        "从有限交互预测未知对手 AI agent 的下一个决策，提出文本-表格联合建模框架，在受控谈判博弈中评估。",
+    "http://arxiv.org/abs/2605.12406v1":
+        "语义奖励坍缩（SRC）：解释 RLHF 中谄媚、幻觉连续性、校准漂移等现象来自标量化偏好优化对不同语义差异的压缩，并探讨保持认识完整性的路径。",
+    "http://arxiv.org/abs/2605.12400v1":
+        "OGLS-SD：在策略内自蒸馏中用可验证结果奖励引导 logit，修正因反思偏差和模板引起的 token 级监督错位，提升 LLM 推理。",
+    "http://arxiv.org/abs/2605.12398v1":
+        "Q-DAPS：用候选答案合理性分数熵估计 LLM 问题难度，不依赖生成时概率信号，适用于自动教育材料难度分级。",
+    "http://arxiv.org/abs/2605.12394v1":
+        "随机矩阵理论过拟合检测：无需训练/测试数据即可检测深度学习模型过拟合起点，在长程 grokking 场景中识别权重矩阵「相关陷阱」。",
+    "http://arxiv.org/abs/2605.12389v1":
+        "SEMIR：通过与网格解耦的拓扑图推断，解决大规模图像中小稀疏结构（如血管、细胞边界）的分割难题。",
+    "http://arxiv.org/abs/2605.12388v1":
+        "Events as Triggers：以事件为触发器的多 agent 强化学习行为多样性方法，让 agent 在特定时刻按需切换角色，克服固定身份绑定固定行为的局限。",
+    "http://arxiv.org/abs/2605.12384v1":
+        "TokenHD：token 级幻觉检测训练流水线，克服步骤级分析粒度粗和依赖步骤分割的局限，在推理密集任务中可扩展地检测幻觉。",
 
     # OpenAI — 2026-05-06
     "https://openai.com/index/mrc-supercomputer-networking":

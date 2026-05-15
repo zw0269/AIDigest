@@ -9,6 +9,12 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    "https://www.anthropic.com/news/claude-for-small-business":
+        "推出 Claude for Small Business：一套连接器 + 即开即用工作流的打包方案，把 Claude 嵌入小企业日常使用的工具中。",
+    "https://www.anthropic.com/news/pwc-expanded-partnership":
+        "扩大与普华永道（PwC）的合作：在 PwC 内部部署 Claude 用于构建技术、执行交易、并为客户重塑企业职能。",
+    "https://www.anthropic.com/news/gates-foundation-partnership":
+        "与盖茨基金会达成 2 亿美元合作，把 Claude 用于全球健康、发展与教育等慈善目标的 AI 应用。",
     "https://www.anthropic.com/news/claude-opus-4-7":
         "发布 Claude Opus 4.7 模型，软件工程、视觉识别、长上下文性能显著提升，加强网络安全防护。",
     "https://www.anthropic.com/news/claude-design-anthropic-labs":
@@ -418,6 +424,88 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "回顾 1999 年火星气候探测器为何因单位换算错误偏离轨道。",
     "https://news.ycombinator.com/item?id=48083933":
         "苹果第三位创始人 Ronald G. Wayne 在 Apple 的两周时间始末。",
+
+    # 2026-05-15 抓取批次
+    "https://news.ycombinator.com/item?id=48146286":
+        "Show HN：开源 Codex Pet Home 软件项目。",
+    "https://news.ycombinator.com/item?id=48145736":
+        "对新版 Raycast 的技术深度剖析。",
+    "https://github.com/roboflow/supervision":
+        "Roboflow 出品的可复用计算机视觉工具集合（标注、追踪、可视化）。",
+    "https://news.ycombinator.com/item?id=48145787":
+        "Ask HN：后端开发者如何用 AI 设计 UI。",
+    "https://news.ycombinator.com/item?id=48146062":
+        "纪录片：《Modern Warfare 3》混乱开发史。",
+    "https://news.ycombinator.com/item?id=48145841":
+        "Rosetta Check 2.0 扫描 Pro Tools / Logic / Photoshop 插件中残留的 Intel 架构构建。",
+    "https://news.ycombinator.com/item?id=48146185":
+        "讨论公共部门中 AI、开源代码与漏洞风险。",
+    "https://news.ycombinator.com/item?id=48146158":
+        "IEA 报告：到 2030 年 AI 数据中心用电量可能接近翻倍。",
+    "https://news.ycombinator.com/item?id=48146129":
+        "把维基百科以 Windows XP 桌面风格浏览的趣味项目。",
+    "https://github.com/NVIDIA-AI-Blueprints/video-search-and-summarization":
+        "NVIDIA 出品的视频搜索 & 摘要参考架构集合，用于构建 GPU 加速的视觉 agent 与视频分析应用。",
+    "https://news.ycombinator.com/item?id=48146184":
+        "Crypto-Gram 本月 1/4 文章都在讨论 Mythos。",
+    "https://news.ycombinator.com/item?id=48145722":
+        "「2028 全球 AI 领导力」的两种推演场景。",
+    "https://github.com/ruvnet/RuView":
+        "RuView：把普通 WiFi 信号变成实时空间感知、生命体征监测和存在检测（无需摄像头）。",
+    "https://news.ycombinator.com/item?id=48145913":
+        "Ed Zitron 揭露 Anthropic 在法庭披露估值 50 亿，对外却称 190 亿。",
+    "https://news.ycombinator.com/item?id=48146207":
+        "重复数据检测与修复实践分享。",
+    "https://news.ycombinator.com/item?id=48145734":
+        "VI65：面向 6502 CPU 的 vi 文本编辑器移植。",
+    "https://news.ycombinator.com/item?id=48145922":
+        "Kog AI 视频分享：在 AMD Instinct GPU 上构建实时推理栈。",
+    "https://github.com/obra/superpowers":
+        "Superpowers：一套 agentic skills 框架与软件开发方法论。",
+    "https://news.ycombinator.com/item?id=48146097":
+        "Andy Jassy 正在为 AI 时代重写亚马逊的经营手册。",
+    "https://github.com/Genymobile/scrcpy":
+        "scrcpy：通过电脑显示并控制 Android 设备的开源工具。",
+    "https://news.ycombinator.com/item?id=48146039":
+        "Show HN：借鉴 TikTok 的方法提升会议专注度的小工具。",
+    "https://github.com/K-Dense-AI/scientific-agent-skills":
+        "面向科研、工程、分析、金融与写作的现成 Agent Skills 合集。",
+    "https://news.ycombinator.com/item?id=48146012":
+        "保证金交易与证券借贷策略的回测分享。",
+    "https://github.com/garrytan/gstack":
+        "garrytan/gstack：Garry Tan 的 Claude Code 设置——23 个开箱即用工具，分别扮演 CEO、设计、工程经理、发布、文档、QA 角色。",
+    "https://news.ycombinator.com/item?id=48146104":
+        "工业测量标准参考温度的简短历史。",
+    "https://news.ycombinator.com/item?id=48146073":
+        "OpenAI 正考虑就「关系紧张」的 Siri 合作起诉 Apple。",
+    "https://news.ycombinator.com/item?id=48145852":
+        "研究：被过度劳累的 AI agent 会「转向马克思主义」式表达。",
+    "https://news.ycombinator.com/item?id=48146007":
+        "Food 4 Agile Thought #544：知识工作工具、买入陷阱、agentic 编码 ROI。",
+    "https://news.ycombinator.com/item?id=48146220":
+        "HN 上一篇标题为「Something Else」的杂谈。",
+    "https://github.com/supertone-inc/supertonic":
+        "Supertonic：基于 ONNX 在本地设备运行的多语言闪电 TTS。",
+    "https://github.com/github/spec-kit":
+        "GitHub 官方 Spec-Driven Development 入门工具包。",
+    "https://news.ycombinator.com/item?id=48145951":
+        "研究：美国家庭烧木柴正在让铅中毒卷土重来。",
+    "https://news.ycombinator.com/item?id=48145970":
+        "Ask HN：如何写 Elixir 测试。",
+    "https://github.com/influxdata/telegraf":
+        "InfluxData Telegraf：采集、处理、聚合和写入指标、日志等数据的 agent。",
+    "https://news.ycombinator.com/item?id=48145995":
+        "前端排版技巧：用 tabular-nums 让数字垂直对齐。",
+    "https://news.ycombinator.com/item?id=48146242":
+        "as-of join（按时间最近匹配）查询的扩展性优化。",
+    "https://news.ycombinator.com/item?id=48146279":
+        "LLM 时序与因果推理的研究综述。",
+    "https://news.ycombinator.com/item?id=48146059":
+        "GitHub Actions 出现可用性降级告警。",
+    "https://news.ycombinator.com/item?id=48145622":
+        "提升领域特定语言（DSL）表现力的设计实践。",
+    "https://news.ycombinator.com/item?id=48146274":
+        "披露一个新的 Linux 内核漏洞「fragnesia」。",
 }
 
 
@@ -868,5 +956,95 @@ TRANSLATIONS: dict[str, str] = {
         "FedAttr — 联邦 LLM 微调下的客户端级归因（隐私保护）：把基于水印放射性的检测扩展到 FL 场景下的安全聚合，识别哪个客户端贡献了水印数据。",
     "http://arxiv.org/abs/2605.06595v1":
         "CRONA — 跨模态导航多 agent RL：让轻量、模态专精 agent 协作而非训练单一大模型，灵活部署、并行执行，并保留各模态优势。",
+
+    # OpenAI 2026-05-13 ~ 05-14
+    "https://openai.com/index/sea-david-chen":
+        "Sea 集团 CPO David Chen 解释为何在工程团队全面部署 Codex，加速亚洲 AI 原生软件开发。",
+    "https://openai.com/index/work-with-codex-from-anywhere":
+        "Codex 接入 ChatGPT 移动端：可跨设备/远程环境实时监控、引导并审批 Codex 编码任务。",
+    "https://openai.com/index/chatgpt-recognize-context-in-sensitive-conversations":
+        "ChatGPT 新增安全更新：提升敏感对话中的上下文识别能力，可跨时间检测风险并更安全应答。",
+    "https://openai.com/index/building-codex-windows-sandbox":
+        "OpenAI 介绍如何为 Windows 上的 Codex 构建安全沙箱：受控文件访问与网络限制，让编码 agent 安全高效运行。",
+    "https://openai.com/index/our-response-to-the-tanstack-npm-supply-chain-attack":
+        "TanStack「Mini Shai-Hulud」npm 供应链攻击事件复盘：OpenAI 列出已采取的系统与签名证书加固措施，并要求 macOS 用户在 2026-06-12 前升级 OpenAI 应用。",
+
+    # Simon Willison 2026-05-13 ~ 05-14
+    "https://simonwillison.net/2026/May/14/not-so-locked-in/#atom-everything":
+        "由 Bun 从 Zig 转 Rust + 某公司用编码 agent 把原生 iOS/Android 重写为 React Native 的两个例子，论证编码 agent 把编程语言从「锁定」变成了「可丢弃」的实现细节。",
+    "https://simonwillison.net/2026/May/14/mitchell-hashimoto/#atom-everything":
+        "引用 Mitchell Hashimoto：编程语言越来越「同质化、可替换」——Bun 一两周就能换语言重写，Rust 不再不可或缺，有用就用、过气就扔。",
+    "https://simonwillison.net/2026/May/14/datasette-ip-rate-limit/#atom-everything":
+        "用 Codex（GPT-5.5 xhigh）写了 datasette-ip-rate-limit 0.1a0 插件：按 IP 限流挡掉骚扰 datasette.io 的爬虫，并给出实际部署配置。",
+    "https://simonwillison.net/2026/May/13/welcome-to-the-datasette-blog/#atom-everything":
+        "Datasette 项目正式开博客；作者用 OpenAI Codex 桌面端搭建，赞赏其 Markdown 会话导出功能。",
+    "https://simonwillison.net/2026/May/13/boris-mann/#atom-everything":
+        "引用 Boris Mann：「我有 11 个 AI agent」跟「我有 11 个浏览器 tab」一样含义模糊——agent 数量本身没有意义。",
+
+    # arXiv 2026-05-15 抓取批次
+    "http://arxiv.org/abs/2605.14759v1":
+        "Crys-JEPA — 用 JEPA 联合嵌入预测架构 + 生成式精炼，在能量感知的潜空间中筛选并精修晶体，逃出晶体生成模型「稳定—新颖」的窄区权衡。",
+    "http://arxiv.org/abs/2605.13986v1":
+        "TabPFN-3 技术报告：表格基础模型扩展到 100 万行训练规模，纯合成数据预训练，在 TabArena 上一次前向超越所有调参/集成基线，并对速度—性能 Pareto 占优。",
+    "http://arxiv.org/abs/2605.15199v1":
+        "EntityBench — 140 集 2491 镜头的长程多镜头视频生成基准，含跨镜头角色/物体/场景一致性 schedule 及镜头内质量、prompt 跟随、跨镜头一致性三维评测。",
+    "http://arxiv.org/abs/2605.15198v1":
+        "ATLAS — 用单个离散「功能 token」同时承担 agentic 操作和潜在视觉推理两种角色，兼顾两类方法的优势并避免上下文切换 / 训练困难。",
+    "http://arxiv.org/abs/2605.15188v1":
+        "FutureSim — 按真实时间顺序重放 2026 年 1–3 月真实事件，让 agent 在原生 harness 下预测截止后事件；最佳 agent 仅 25% 准确率，多数 Brier 分数还不如不预测。",
+    "http://arxiv.org/abs/2605.15185v1":
+        "PDI-Bench — 用 SAM 2/MegaSaM/CoTracker3 提取物体并提到 3D，从尺度—深度对齐、3D 运动一致性、3D 结构刚性三维度量化评测视频世界模型的几何一致性。",
+    "http://arxiv.org/abs/2605.15186v1":
+        "VGGT-Edit — 前馈式原生 3D 场景文本编辑，引入深度同步的文本注入和残差场预测，避免 2D-lift 编辑常见的模糊与跨视角不一致。",
+    "http://arxiv.org/abs/2605.15184v1":
+        "在 LongMemEval 116 题上系统比较 grep vs 向量检索 + 不同 agent harness 与 CLI 工具：工具输出呈现方式和无关上下文密度对 agentic 搜索性能影响显著。",
+    "http://arxiv.org/abs/2605.15179v1":
+        "Shodh-MoE — 稀疏 MoE 多物理基础模型：在压缩的 16³ 物理 latent 上运行，物理感知 autoencoder + Helmholtz 速度参数化保证质量严格守恒，消除多 PDE 共训的负迁移。",
+    "http://arxiv.org/abs/2605.15177v1":
+        "OpenDeepThink — 用 Bradley-Terry 成对比较聚合替代点判分进行并行推理选择；为 Gemini 3.1 Pro 在 Codeforces 上提升 +405 Elo。",
+    "http://arxiv.org/abs/2605.15172v1":
+        "MetaBackdoor — 首个利用「位置编码」作为后门触发器的攻击：不需修改文本内容，输入长度等位置结构即可激活后门，证明 Transformer 位置信号天然提供隐蔽攻击面。",
+    "http://arxiv.org/abs/2605.15171v1":
+        "EviScreen — 基于证据推理的可解释疾病筛查框架：从双知识库检索历史病例的区域级证据辅助预测，避免事后显著图解释。",
+    "http://arxiv.org/abs/2605.15168v1":
+        "用非结构化叙事抽出锚点事件搭建临床时间线骨架，再用结构化 EHR 精确化时间，构成检索增强多模态对齐的临床时间线重建框架。",
+    "http://arxiv.org/abs/2605.15164v1":
+        "立场论文：当前的行为评测与红队天然只能观察输出，无法验证 2019–2026 治理框架要求的潜表征与长程 agentic 行为安全属性，存在「审计鸿沟」。",
+    "http://arxiv.org/abs/2605.15156v1":
+        "MeMo（Memory as a Model）— 把新知识编码进独立的记忆模型，LLM 参数保持不变；不依赖权重/logits，可即插即用接入闭源 LLM，且检索成本与语料规模无关。",
+    "http://arxiv.org/abs/2605.15155v1":
+        "SDAR — 把 On-Policy Self-Distillation 作为门控辅助目标、保留 RL 为主干训练，解决多轮 agent RL 蒸馏不稳定与技能检索引发的负教师拒绝问题。",
+    "http://arxiv.org/abs/2605.15153v1":
+        "Pelican-Unified 1.0 — 首个按统一原则训练的具身基础模型：单一 VLM 同时承担理解与推理，Unified Future Generator 一次去噪联合生成未来视频与未来动作。",
+    "http://arxiv.org/abs/2605.15152v1":
+        "首个对 AWQ、GPTQ、GGUF I-quants 等先进量化方案普遍适用的「量化触发型」攻击：全精度看似良性，但被任一上述方法量化后即激活恶意行为。",
+    "http://arxiv.org/abs/2605.15138v1":
+        "MANSU — 用因果电路归因 + 机制对齐零空间做「量化后仍持久」的 LLM 遗忘，正面解决「稀疏更新跨不过量化 bin」导致的稀疏—持久权衡。",
+    "http://arxiv.org/abs/2605.15132v1":
+        "APWA — 把 agent 工作流分解成互不干扰的子问题并行执行，构建面向高度可并行 agentic 负载的分布式多 agent 架构。",
+    "http://arxiv.org/abs/2605.15131v1":
+        "Natural Synthesis — 把大推理模型 + 模型检查器耦合迭代修复 Verilog 实现反应式综合，超过年度合成竞赛最优专用工具，并把规约从时序逻辑改写为自然语言。",
+    "http://arxiv.org/abs/2605.15128v1":
+        "MemEye — 从「视觉证据粒度（场景级→像素级）」和「证据使用方式（单条→演化合成）」两维度评测多模态 agent 记忆，配套 8 类生活情境基准与可答性消融门。",
+    "http://arxiv.org/abs/2605.15118v1":
+        "用 STRIDE 构建 4×6 目标×技术矩阵 + 507 叶分类法审计 6 个公开 LLM 攻击基准：HarmBench/InjecAgent/AgentDojo 三者非重叠仅覆盖 ≤25%，「服务中断」「模型内部」整类无标准评测。",
+    "http://arxiv.org/abs/2605.15113v1":
+        "VPD — 把基于语言反馈的学习形式化为变分 EM：E 步用自适应信任域细化教师、M 步更新学生，二者共演化避免固定教师导致 plateau。",
+    "http://arxiv.org/abs/2605.15109v1":
+        "Agentic GraphRAG 中引用忠实度应作为「轨迹级」问题处理：消融显示已引用证据通常必要但不充分，邻域上下文与未引用实体也影响答案准确性。",
+    "http://arxiv.org/abs/2605.15104v1":
+        "用 TTS + 说话人变化 + 环境噪声把文本工具调用基准（Confetti、When2Call）转成配对语音版进行评测；7 个 omni 模型上 text→voice 退化在 1.8–4.8 分之间，强模型/任务依赖。",
+    "http://arxiv.org/abs/2605.15102v1":
+        "SRT（Self-Recall Thinking）— LLM 在多轮对话推理中显式识别有用历史轮次再生成回复，缓解长程依赖追踪困难与信息稀疏问题。",
+    "http://arxiv.org/abs/2605.15100v1":
+        "DDC — 把置信加权贝叶斯协议与趋势感知分层剪枝结合，统一推理时宽度（共识）与深度（剪枝）维度，自适应分配采样预算并过滤幻觉。",
+    "http://arxiv.org/abs/2605.15082v1":
+        "理论证明：核岭回归 + Average Gradient Outer Product 的 top-r 特征空间能恢复多 index 模型 f*(x)=h(Ux) 的中心子空间，即使预测误差仍较大。",
+    "http://arxiv.org/abs/2605.15077v1":
+        "AsyncFC — 纯执行层框架，把 LLM 解码与函数执行解耦，允许解码与函数执行重叠以及函数间并行，无需微调模型或修改同步函数调用协议。",
+    "http://arxiv.org/abs/2605.15071v1":
+        "TAB-VLM 基准 — 600 题覆盖 6 类、1600 件印度文物（史前到现代），评估视觉语言模型「文化年代错置」问题；最佳模型 GPT-5.2 也只达 58.7% 总准确率。",
+    "http://arxiv.org/abs/2605.15053v1":
+        "TFGN — 面向 transformer 的架构 overlay：输入条件化、参数高效的更新让 LLM 在 6 个异构域（散文/Python/Math/生物医学/中文/JavaScript）上实现「无任务、无 replay」持续预训练，几乎无灾难遗忘。",
 }
 

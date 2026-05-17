@@ -506,6 +506,74 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "提升领域特定语言（DSL）表现力的设计实践。",
     "https://news.ycombinator.com/item?id=48146274":
         "披露一个新的 Linux 内核漏洞「fragnesia」。",
+
+    # 2026-05-17 社区动态
+    "https://news.ycombinator.com/item?id=48166675":
+        "报道：美国正在用 AI 在 Polymarket 上追查内幕交易。",
+    "https://news.ycombinator.com/item?id=48166607":
+        "Abseil — Google 开源的 C++ 通用基础库。",
+    "https://news.ycombinator.com/item?id=48166538":
+        "Show HN：KoalaNews — 用 AI 衡量一条新闻在大趋势下的相对重要性。",
+    "https://github.com/oven-sh/bun":
+        "Bun — 极快的 JavaScript 运行时、打包器、测试运行器与包管理器一体化工具。",
+    "https://news.ycombinator.com/item?id=48166585":
+        "AI Playground — 为 AI agent 提供安全的隔离游乐场。",
+    "https://news.ycombinator.com/item?id=48166893":
+        "用 CSS 给配色做对比度防护，确保前景/背景文字始终可读。",
+    "https://github.com/Anil-matcha/Open-Generative-AI":
+        "Open-Generative-AI — 开源的 AI 图像 / 视频生成 studio，集成 Flux、Midjourney、Kling、Sora、Veo 等 200+ 模型，自托管、MIT 许可、无内容过滤。",
+    "https://news.ycombinator.com/item?id=48166812":
+        "报道：军队狙击手的工作正在被无人机取代。",
+    "https://news.ycombinator.com/item?id=48166766":
+        "Show HN：PathFinder — 映射通往目标的所有路径，再分步执行。",
+    "https://news.ycombinator.com/item?id=48166870":
+        "作者做了一个假的 Phantom 钱包生成器（钓鱼/演示用途）。",
+    "https://news.ycombinator.com/item?id=48166686":
+        "文章：Palantir「SaaS 已死」的论断是给创业者的警钟。",
+    "https://news.ycombinator.com/item?id=48166774":
+        "视频：Anthropic 刚承认 AI 是「bullshit」（标题语，HN 讨论 Anthropic 关于 LLM 幻觉性质的表态）。",
+    "https://news.ycombinator.com/item?id=48166905":
+        "UWB 移动 Suica 不止是免触闸机过闸，还能用于支付。",
+    "https://news.ycombinator.com/item?id=48166560":
+        "PyCon US 2026 Packaging Summit 回顾。",
+    "https://news.ycombinator.com/item?id=48166653":
+        "视频：古英语发音的全面重构。",
+    "https://news.ycombinator.com/item?id=48166868":
+        "Neptune — 为 QEMU 提供 Direct3D 虚拟化。",
+    "https://news.ycombinator.com/item?id=48166770":
+        "工具/项目：隐私政策变更日志（追踪各家隐私政策的版本差异）。",
+    "https://news.ycombinator.com/item?id=48166778":
+        "视频：与专家 Daniel Lemire 聊 SIMD、缓存与 CPU 内部机制。",
+    "https://news.ycombinator.com/item?id=48166832":
+        "随笔：领域知识才是真正的杠杆。",
+    "https://news.ycombinator.com/item?id=48166825":
+        "招聘：Presight.ai 的 Project Prism 全栈工程师，阿布扎比现场全职。",
+    "https://news.ycombinator.com/item?id=48166903":
+        "ConnectAI — LinkedIn 私信生成器。",
+    "https://news.ycombinator.com/item?id=48166634":
+        "Team-memory — 团队共享大脑，由 Claude Code CLI 或 UI 自动构建。",
+    "https://news.ycombinator.com/item?id=48166837":
+        "2ality 博客暂时下线，原因是「AI 在窃取内容」。",
+    "https://news.ycombinator.com/item?id=48166859":
+        "从原始日志到可编程的 EVM 执行情报。",
+    "https://news.ycombinator.com/item?id=48166664":
+        "游戏：《英雄无敌：旧时代（Heroes of Might and Magic: Olden Era）》。",
+    "https://news.ycombinator.com/item?id=48166906":
+        "Patrick Collison 写底特律印象记。",
+    "https://news.ycombinator.com/item?id=48166856":
+        "kharp — 用 C# 实现的 K 语言（v3）解释器。",
+    "https://news.ycombinator.com/item?id=48166701":
+        "Musk vs. Altman 第 3 周：马斯克与奥特曼互相隔空开炮。",
+    "https://news.ycombinator.com/item?id=48166786":
+        "一项便宜的修复：每年帮 AI 省 4 亿美元，并让 40 亿人接入互联网。",
+    "https://news.ycombinator.com/item?id=48166599":
+        "面向小白的 Gaussian Splatting 入门讲解。",
+    "https://news.ycombinator.com/item?id=48166877":
+        "评论文：法西斯主义的十大信号，美国全部具备。",
+    "https://news.ycombinator.com/item?id=48166875":
+        "ProPublica 报道：FDA 不会告诉你的药品真相（文字稿）。",
+    "https://github.com/colbymchenry/codegraph":
+        "codegraph — 面向 Claude Code 的预索引代码知识图谱，减少 token 与工具调用次数，100% 本地。",
 }
 
 
@@ -1046,5 +1114,37 @@ TRANSLATIONS: dict[str, str] = {
         "TAB-VLM 基准 — 600 题覆盖 6 类、1600 件印度文物（史前到现代），评估视觉语言模型「文化年代错置」问题；最佳模型 GPT-5.2 也只达 58.7% 总准确率。",
     "http://arxiv.org/abs/2605.15053v1":
         "TFGN — 面向 transformer 的架构 overlay：输入条件化、参数高效的更新让 LLM 在 6 个异构域（散文/Python/Math/生物医学/中文/JavaScript）上实现「无任务、无 replay」持续预训练，几乎无灾难遗忘。",
+
+    # OpenAI — 2026-05-15/16
+    "https://openai.com/index/malta-chatgpt-plus-partnership":
+        "OpenAI 与马耳他合作，向全体公民提供 ChatGPT Plus 与培训，帮助公民掌握实用 AI 技能并负责任地使用 AI。",
+    "https://openai.com/index/databricks":
+        "Databricks 将 GPT-5.5 接入企业 agent 工作流；该模型在 OfficeQA Pro 基准上取得了新的 SOTA。",
+    "https://openai.com/academy/codex-for-work/how-business-operations-teams-use-codex":
+        "Codex for Work 案例：业务运营团队用 Codex 从真实工作输入生成项目简报、战略更新、领导层决策包与进度报告。",
+    "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex":
+        "Codex for Work 案例：销售团队用 Codex 生成销售管道简报、会议准备包、预测回顾、客户计划及僵局诊断。",
+    "https://openai.com/index/personal-finance-chatgpt":
+        "ChatGPT 个人理财体验预览（面向美国 Pro 用户）：安全连接金融账户，基于用户财务上下文、目标与优先级获得 AI 洞察与建议。",
+    "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex":
+        "Codex for Work 案例：数据科学团队用 Codex 从真实工作输入生成根因简报、影响报告、KPI 备忘录、定向分析与仪表盘规格。",
+
+    # Sebastian Raschka — 2026-05-16
+    "https://magazine.sebastianraschka.com/p/recent-developments-in-llm-architectures":
+        "从 Gemma 4 到 DeepSeek V4 — 综述新一代开源权重 LLM 通过 KV 共享、mHC、压缩注意力等架构改进降低长上下文成本。",
+
+    # Simon Willison — 2026-05-15/16
+    "https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything":
+        "PyCon US lightning talk 准备：用 first_line_history.py 翻 OpenClaw README 的 Git 历史，盘点它从 11 月首个 commit 起经历的所有改名（Warelay → CLAWDIS → CLAWDBOT → Clawdbot → Moltbot → 🦞 OpenClaw）。",
+    "https://simonwillison.net/2026/May/16/julia-evans/#atom-everything":
+        "引用 Julia Evans：过去 10 年她学会真正喜欢并尊重 CSS — 「居中难」之类的挫败感其实早已被 CSS 解决，CSS 难是因为它在解一个本质难的问题。",
+    "https://simonwillison.net/2026/May/15/inaturalist-clumper/#atom-everything":
+        "发布 inaturalist-clumper 0.1 — 把 iNaturalist 观测聚合分组、用于其博客 sightings 页面的基础设施工具，已经在生产环境跑数周。",
+    "https://simonwillison.net/2026/May/15/sighting-361818285/#atom-everything":
+        "PyCon 前晨间观鸟散步：在洛杉矶拍到一只本地海鸥享用星巴克 — Western Gull、Rock Pigeon。",
+    "https://simonwillison.net/2026/May/15/qr-code-generator/#atom-everything":
+        "用 Claude vibe-code 出一个 QR 码生成工具，支持生成文本/URL 二维码和 WiFi 连接二维码。",
+    "https://simonwillison.net/2026/May/15/datasette-llm-limits/#atom-everything":
+        "datasette-llm-limits 0.1a0 — 与 datasette-llm、datasette-llm-accountant 配合，可在 Datasette 内为每个用户（或全局）配置 LLM 消费上限（如每用户每滚动 24h $1）。",
 }
 

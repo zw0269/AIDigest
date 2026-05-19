@@ -41,6 +41,8 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "与 Blackstone、Hellman & Friedman、高盛联合成立企业 AI 服务公司，由 Anthropic 应用 AI 工程师和合作方工程团队为中型企业定制 Claude 方案并提供长期支持。",
     "https://www.anthropic.com/news/finance-agents":
         "发布 10 个金融服务 AI 代理模板，覆盖 Excel/PowerPoint/Word，新增多家数据合作伙伴连接器，帮助金融机构自动化交易、合规审查等关键业务流程。",
+    "https://www.anthropic.com/news/anthropic-acquires-stainless":
+        "Anthropic 收购 Stainless（多家 AI/云服务厂商官方 SDK 的自动生成平台），以加强其面向开发者的 SDK 与 API 工具链建设。",
 
     "https://www.darioamodei.com/essay/the-adolescence-of-technology":
         "提出 AI 处于「技术青春期」，面临自主性风险、滥用、权力夺取、失业四类威胁，需宪法训练、可解释性、监管、国际合作综合应对。",

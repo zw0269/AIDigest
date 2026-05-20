@@ -576,6 +576,42 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "ProPublica 报道：FDA 不会告诉你的药品真相（文字稿）。",
     "https://github.com/colbymchenry/codegraph":
         "codegraph — 面向 Claude Code 的预索引代码知识图谱，减少 token 与工具调用次数，100% 本地。",
+
+    # 05-20 batch — Anthropic
+    "https://www.anthropic.com/news/anthropic-kpmg":
+        "与 KPMG（毕马威）达成战略联盟，将 Claude 集成到其核心业务和超 27.6 万名员工的工作流中。",
+    "https://www.anthropic.com/news/widening-conversation-ai":
+        "拓展前沿 AI 的公共对话：邀请更多利益相关方加入 Anthropic 关于 AI 风险与治理的讨论。",
+
+    # 05-20 batch — GitHub Trending
+    "https://github.com/can1357/oh-my-pi":
+        "终端 AI 编码 agent，号称用 hash 锚定的编辑机制、优化的工具调用框架，原生支持 LSP、Python、浏览器和 subagent。",
+    "https://github.com/anthropics/claude-plugins-official":
+        "Anthropic 官方维护的 Claude Code 高质量插件目录。",
+    "https://github.com/Imbad0202/academic-research-skills":
+        "为 Claude Code 准备的学术研究技能合集：research → write → review → revise → finalize 覆盖论文全流程。",
+    "https://github.com/multica-ai/andrej-karpathy-skills":
+        "一个 CLAUDE.md 文件，把 Karpathy 关于 LLM 编码常见陷阱的观察提炼成 Claude Code 的行为指导。",
+    "https://github.com/HKUDS/ViMax":
+        "港大 ViMax：导演、编剧、制片、视频生成器多智能体协作完成视频创作的 agentic 视频生成框架。",
+    "https://github.com/HKUDS/CLI-Anything":
+        "港大 CLI-Anything：把任何软件变成 agent 原生 CLI 工具的项目，配套 CLI-Hub (clianything.cc)。",
+
+    # 05-20 batch — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48209023":
+        "介绍 Microsoft Agent 365：面向 2026 年企业治理的自主 AI agent 平台。",
+    "https://news.ycombinator.com/item?id=48209323":
+        "讨论给 AI 编码循环加上「形式化验证门」——用形式化方法约束生成代码必须通过的属性，防止 agent 自由发挥引入 bug。",
+    "https://news.ycombinator.com/item?id=48209181":
+        "Show HN：发布 Google Search Console MCP server，只读、OAuth 授权、免费开放。",
+    "https://news.ycombinator.com/item?id=48209259":
+        "用 350 次跑、17 个模型的 benchmark 评测主流 AI 编码 agent 在分布式 SQL 任务上的表现。",
+    "https://news.ycombinator.com/item?id=48209045":
+        "复盘一次失败 prompt：在真正 prompt 之前就烧掉 389K Claude Code 缓存创建 token 的踩坑过程。",
+    "https://news.ycombinator.com/item?id=48209242":
+        "HN 围绕 Google DeepMind 新发布的 Co-Scientist 多智能体科研助手的讨论。",
+    "https://news.ycombinator.com/item?id=48209184":
+        "训练一个 22MB 的轻量 prompt injection 分类器，证明端侧/小模型在防御 prompt injection 上足够实用。",
 }
 
 
@@ -1148,5 +1184,41 @@ TRANSLATIONS: dict[str, str] = {
         "用 Claude vibe-code 出一个 QR 码生成工具，支持生成文本/URL 二维码和 WiFi 连接二维码。",
     "https://simonwillison.net/2026/May/15/datasette-llm-limits/#atom-everything":
         "datasette-llm-limits 0.1a0 — 与 datasette-llm、datasette-llm-accountant 配合，可在 Datasette 内为每个用户（或全局）配置 LLM 消费上限（如每用户每滚动 24h $1）。",
+
+    # 05-20 batch — OpenAI
+    "https://openai.com/index/the-next-phase-of-education-for-countries":
+        "OpenAI 推进 Education for Countries 计划：扩大校园 AI 部署，新增合作伙伴、教师培训和工具，目标改善全球学习成果。",
+    "https://openai.com/index/introducing-openai-for-singapore":
+        "推出 OpenAI for Singapore：与新加坡建立多年期 AI 合作，扩大本地部署、培养人才，支持企业和公共服务用 AI。",
+    "https://openai.com/index/advancing-content-provenance":
+        "推进 AI 内容溯源：联合 Content Credentials、SynthID 等机制，推出验证工具帮助用户识别和信任 AI 生成的媒体。",
+    "https://openai.com/index/dell-codex-enterprise-partnership":
+        "OpenAI 与 Dell 合作，将 Codex 带到混合云和本地环境，企业可在自有数据和工作流上安全部署 AI 编码 agent。",
+
+    # 05-20 batch — Google DeepMind
+    "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/":
+        "Project Genie 用 Street View 数据模拟真实地点，Google AI Ultra 订阅者全球开放访问。",
+    "https://deepmind.google/blog/introducing-gemini-omni/":
+        "发布 Gemini Omni — 面向多模态的统一模型，把 Gemini 扩展到全感官输入与输出。",
+    "https://deepmind.google/blog/introducing-google-antigravity-2-0/":
+        "发布 Google Antigravity 2.0 — 基于 Gemini 的下一代 agentic 开发平台升级版。",
+    "https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/":
+        "推出 Gemini for Science：面向科学探索的工具与实验合集，目标扩展科研规模与精度。",
+    "https://deepmind.google/blog/how-weathernext-helped-the-national-hurricane-center-better-predict-hurricane-melissas-historic-landfall-in-jamaica/":
+        "复盘 WeatherNext AI 模型如何帮 National Hurricane Center 提前预测 Melissa 飓风在牙买加的历史性登陆，为社区争取空前的准备时间。",
+    "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/":
+        "发布 Gemini 3.5 — 面向复杂 agentic 工作流的前沿智能模型，强化执行能力。",
+    "https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/":
+        "发布 Co-Scientist — 基于 Gemini 的多智能体 AI 科研伙伴，帮助研究人员加速科学突破。",
+
+    # 05-20 batch — Simon Willison
+    "https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything":
+        "llm-gemini 0.32 发布：新增 gemini-3.5-flash 模型支持，对应 Google I/O 发布的 Gemini 3.5 Flash。",
+    "https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything":
+        "Google I/O 上 Gemini 3.5 Flash 直接 GA（无 preview 阶段），同时被部署到 Gemini app、AI Mode、Search、Antigravity 等几乎所有 Google 关键产品。",
+    "https://simonwillison.net/2026/May/19/5-minute-llms/#atom-everything":
+        "PyCon US 2026 闪电演讲：用 5 分钟带注释幻灯片总结过去 6 个月 LLM 领域的关键进展。",
+    "https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything":
+        "英国政府数字服务（GDS）就 NHS 因 Project Glasswing 漏洞披露而关闭开源仓库一事发声，提醒公共部门应正确权衡 AI、开放代码与漏洞风险。",
 }
 

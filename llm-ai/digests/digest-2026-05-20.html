@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-20</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-20</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-20</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 30 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">30</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">13</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">13</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">13 条 · 3 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/the-next-phase-of-education-for-countries" target="_blank" rel="noopener">The next phase of OpenAI’s Education for Countries</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI advances Education for Countries, expanding AI adoption in schools with new partnerships, teacher training, and tools to improve global learning outcomes.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推进 Education for Countries 计划：扩大校园 AI 部署，新增合作伙伴、教师培训和工具，目标改善全球学习成果。</div>
+        <div class="item-url">https://openai.com/index/the-next-phase-of-education-for-countries</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-openai-for-singapore" target="_blank" rel="noopener">Introducing OpenAI for Singapore</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI for Singapore launches a multi-year AI partnership to expand deployment, build local talent, and support businesses and public services with AI.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推出 OpenAI for Singapore：与新加坡建立多年期 AI 合作，扩大本地部署、培养人才，支持企业和公共服务用 AI。</div>
+        <div class="item-url">https://openai.com/index/introducing-openai-for-singapore</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/advancing-content-provenance" target="_blank" rel="noopener">Advancing content provenance for a safer, more transparent AI ecosystem</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI advances AI content provenance with Content Credentials, SynthID, and a verification tool to help people identify and trust AI-generated media.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推进 AI 内容溯源：联合 Content Credentials、SynthID 等机制，推出验证工具帮助用户识别和信任 AI 生成的媒体。</div>
+        <div class="item-url">https://openai.com/index/advancing-content-provenance</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/dell-codex-enterprise-partnership" target="_blank" rel="noopener">OpenAI and Dell partner to bring Codex to hybrid and on-premise enterprise environments</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI and Dell partner to bring Codex to hybrid and on-premise environments, helping enterprises deploy AI coding agents securely across data and workflows.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与 Dell 合作，将 Codex 带到混合云和本地环境，企业可在自有数据和工作流上安全部署 AI 编码 agent。</div>
+        <div class="item-url">https://openai.com/index/dell-codex-enterprise-partnership</div>
+      </div>
+    </div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">7 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/" target="_blank" rel="noopener">Simulate real-world places with Project Genie and Street View</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We’re expanding access to Google AI Ultra subscribers globally and introducing a new capability powered by Street View.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Project Genie 用 Street View 数据模拟真实地点，Google AI Ultra 订阅者全球开放访问。</div>
+        <div class="item-url">https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/introducing-gemini-omni/" target="_blank" rel="noopener">Introducing Gemini Omni</a>
+        <div class="item-summary">发布 Gemini Omni — 面向多模态的统一模型，把 Gemini 扩展到全感官输入与输出。</div>
+        <div class="item-url">https://deepmind.google/blog/introducing-gemini-omni/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/introducing-google-antigravity-2-0/" target="_blank" rel="noopener">Introducing Google Antigravity 2.0</a>
+        <div class="item-summary">发布 Google Antigravity 2.0 — 基于 Gemini 的下一代 agentic 开发平台升级版。</div>
+        <div class="item-url">https://deepmind.google/blog/introducing-google-antigravity-2-0/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/" target="_blank" rel="noopener">Gemini for Science: AI experiments and tools for a new era of discovery</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A collection of science tools and experiments to expand the scale and precision of scientific exploration.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推出 Gemini for Science：面向科学探索的工具与实验合集，目标扩展科研规模与精度。</div>
+        <div class="item-url">https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/how-weathernext-helped-the-national-hurricane-center-better-predict-hurricane-melissas-historic-landfall-in-jamaica/" target="_blank" rel="noopener">How WeatherNext helped the National Hurricane Center better predict Hurricane Melissa’s historic landfall in Jamaica</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how our WeatherNext AI model help forecasters give communities unprecedented time to prepare ahead of  the historic Hurricane Melissa.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>复盘 WeatherNext AI 模型如何帮 National Hurricane Center 提前预测 Melissa 飓风在牙买加的历史性登陆，为社区争取空前的准备时间。</div>
+        <div class="item-url">https://deepmind.google/blog/how-weathernext-helped-the-national-hurricane-center-better-predict-hurricane-melissas-historic-landfall-in-jamaica/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/" target="_blank" rel="noopener">Gemini 3.5: frontier intelligence with action</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Gemini 3.5 is built to help you execute complex, agentic workflows.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 Gemini 3.5 — 面向复杂 agentic 工作流的前沿智能模型，强化执行能力。</div>
+        <div class="item-url">https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/" target="_blank" rel="noopener">Co-Scientist: A multi-agent AI partner to accelerate research</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Co-Scientist, a collaborative AI partner built with Gemini to help researchers accelerate scientific breakthroughs.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 Co-Scientist — 基于 Gemini 的多智能体 AI 科研伙伴，帮助研究人员加速科学突破。</div>
+        <div class="item-url">https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/anthropic-kpmg" target="_blank" rel="noopener">KPMG integrates Claude across its core business and workforce of more than 276,000 in strategic alliance</a>
+        <div class="item-summary">与 KPMG（毕马威）达成战略联盟，将 Claude 集成到其核心业务和超 27.6 万名员工的工作流中。</div>
+        <div class="item-url">https://www.anthropic.com/news/anthropic-kpmg</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/widening-conversation-ai" target="_blank" rel="noopener">Widening the conversation on frontier AI</a>
+        <div class="item-summary">拓展前沿 AI 的公共对话：邀请更多利益相关方加入 Anthropic 关于 AI 风险与治理的讨论。</div>
+        <div class="item-url">https://www.anthropic.com/news/widening-conversation-ai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">4 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything" target="_blank" rel="noopener">llm-gemini 0.32</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-gemini 0.32
+        
+
+New model gemini-3.5-flash for Gemini 3.5 Flash.
+
+
+See also my notes on Gemini 3.5 Flash, and the pelican I drew using this upgrade to the plugin.
+    
+    
+        Tags: gemini, llm</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-gemini 0.32 发布：新增 gemini-3.5-flash 模型支持，对应 Google I/O 发布的 Gemini 3.5 Flash。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything" target="_blank" rel="noopener">Gemini 3.5 Flash: more expensive, but Google plan to use it for everything</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Today at Google I/O, Google released Gemini 3.5 Flash. This one skipped the -preview modifier and went straight to general availability, and Google appear to be using it for a whole lot of their key products:
+
+3.5 Flash is available today to billions of people globally:
+
+For everyone via the Gemini app and AI Mode in Google Search
+
+For developer...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Google I/O 上 Gemini 3.5 Flash 直接 GA（无 preview 阶段），同时被部署到 Gemini app、AI Mode、Search、Antigravity 等几乎所有 Google 关键产品。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/19/5-minute-llms/#atom-everything" target="_blank" rel="noopener">The last six months in LLMs in five minutes</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I put together these annotated slides from my five minute lightning talk at PyCon US 2026, using the latest iteration of my annotated presentation tool.
+
+
+  
+  #
+  I presented this lightning talk at PyCon US 2026, attempting to summarize the last six months of developments in LLMs in five minutes.
+  
+
+
+  
+  #
+  Six months is a pretty convenient ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>PyCon US 2026 闪电演讲：用 5 分钟带注释幻灯片总结过去 6 个月 LLM 领域的关键进展。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/19/5-minute-llms/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything" target="_blank" rel="noopener">GDS weighs in on the NHS&#x27;s decision to retreat from Open Source</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GDS weighs in on the NHS&#x27;s decision to retreat from Open Source
+Terence Eden continues his coverage of the NHS&#x27; poorly considered decision to close down access to their open source repositories in response to vulnerabilities reported to them as part of Project Glasswing.
+Now the Government Digital Service have joined the conversation with AI, op...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>英国政府数字服务（GDS）就 NHS 因 Project Glasswing 漏洞披露而关闭开源仓库一事发声，提醒公共部门应正确权衡 AI、开放代码与漏洞风险。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">13 条 · 2 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/can1357/oh-my-pi" target="_blank" rel="noopener">can1357 /oh-my-pi — ⌥ AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more</a>
+        <div class="item-summary">终端 AI 编码 agent，号称用 hash 锚定的编辑机制、优化的工具调用框架，原生支持 LSP、Python、浏览器和 subagent。</div>
+        <div class="item-url">https://github.com/can1357/oh-my-pi</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/anthropics/claude-plugins-official" target="_blank" rel="noopener">anthropics /claude-plugins-official — Official, Anthropic-managed directory of high quality Claude Code Plugins.</a>
+        <div class="item-summary">Anthropic 官方维护的 Claude Code 高质量插件目录。</div>
+        <div class="item-url">https://github.com/anthropics/claude-plugins-official</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Imbad0202/academic-research-skills" target="_blank" rel="noopener">Imbad0202 /academic-research-skills — Academic Research Skills for Claude Code: research → write → review → revise → finalize</a>
+        <div class="item-summary">为 Claude Code 准备的学术研究技能合集：research → write → review → revise → finalize 覆盖论文全流程。</div>
+        <div class="item-url">https://github.com/Imbad0202/academic-research-skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank" rel="noopener">multica-ai /andrej-karpathy-skills — A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy&#x27;s observations on LLM coding pitfalls.</a>
+        <div class="item-summary">一个 CLAUDE.md 文件，把 Karpathy 关于 LLM 编码常见陷阱的观察提炼成 Claude Code 的行为指导。</div>
+        <div class="item-url">https://github.com/multica-ai/andrej-karpathy-skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/HKUDS/ViMax" target="_blank" rel="noopener">HKUDS /ViMax — &quot;ViMax: Agentic Video Generation (Director, Screenwriter, Producer, and Video Generator All-in-One)&quot;</a>
+        <div class="item-summary">港大 ViMax：导演、编剧、制片、视频生成器多智能体协作完成视频创作的 agentic 视频生成框架。</div>
+        <div class="item-url">https://github.com/HKUDS/ViMax</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/HKUDS/CLI-Anything" target="_blank" rel="noopener">HKUDS /CLI-Anything — &quot;CLI-Anything: Making ALL Software Agent-Native&quot; -- CLI-Hub:https://clianything.cc/</a>
+        <div class="item-summary">港大 CLI-Anything：把任何软件变成 agent 原生 CLI 工具的项目，配套 CLI-Hub (clianything.cc)。</div>
+        <div class="item-url">https://github.com/HKUDS/CLI-Anything</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">7 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209023" target="_blank" rel="noopener">Microsoft Agent 365: Autonomous AI for enterprise governance by 2026</a>
+        <div class="item-summary">介绍 Microsoft Agent 365：面向 2026 年企业治理的自主 AI agent 平台。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209023</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209323" target="_blank" rel="noopener">Formal Verification Gates for AI Coding Loops</a>
+        <div class="item-summary">讨论给 AI 编码循环加上「形式化验证门」——用形式化方法约束生成代码必须通过的属性，防止 agent 自由发挥引入 bug。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209323</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209181" target="_blank" rel="noopener">Show HN: Google Search Console MCP – read-only, OAuth, free</a>
+        <div class="item-summary">Show HN：发布 Google Search Console MCP server，只读、OAuth 授权、免费开放。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209181</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209259" target="_blank" rel="noopener">Benchmarking AI coding agents for distributed SQL: 350 runs, 17 models</a>
+        <div class="item-summary">用 350 次跑、17 个模型的 benchmark 评测主流 AI 编码 agent 在分布式 SQL 任务上的表现。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209259</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209045" target="_blank" rel="noopener">How I burned 389K Claude Code cache-creation tokens before the real prompt</a>
+        <div class="item-summary">复盘一次失败 prompt：在真正 prompt 之前就烧掉 389K Claude Code 缓存创建 token 的踩坑过程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209045</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209242" target="_blank" rel="noopener">Co-Scientist: A multi-agent AI partner to accelerate research</a>
+        <div class="item-summary">HN 围绕 Google DeepMind 新发布的 Co-Scientist 多智能体科研助手的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209242</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48209184" target="_blank" rel="noopener">Training a 22MB prompt injection classifier</a>
+        <div class="item-summary">训练一个 22MB 的轻量 prompt injection 分类器，证明端侧/小模型在防御 prompt injection 上足够实用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48209184</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

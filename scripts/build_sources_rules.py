@@ -111,6 +111,7 @@ section.section .section-meta {
 .tag.html { background: #eaf5ff; color: #0075de; }
 .tag.gh { background: #f0f0f0; color: #24292f; }
 .tag.hn { background: #fff0e6; color: #ff6600; }
+.tag.yt { background: #ffe6e6; color: #cc0000; }
 
 .kv-list {
   background: var(--bg-warm); border-radius: 12px;
@@ -162,12 +163,14 @@ def _type_tag(t: str) -> str:
         "html": "HTML",
         "github_trending": "GitHub Trending",
         "hn_newest": "HN Newest",
+        "youtube_search": "YouTube Search",
     }.get(t, t)
     cls = {
         "rss": "rss",
         "html": "html",
         "github_trending": "gh",
         "hn_newest": "hn",
+        "youtube_search": "yt",
     }.get(t, "")
     return f'<span class="tag {cls}">{escape(label)}</span>'
 

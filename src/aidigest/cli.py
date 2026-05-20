@@ -8,7 +8,7 @@ from pathlib import Path
 import yaml
 
 from .dedupe import canonical_id, dedupe
-from .fetchers import arxiv_fetcher, github_trending, hn_newest, html, rss
+from .fetchers import arxiv_fetcher, github_trending, hn_newest, html, rss, youtube
 from .models import Item
 from .render import render_report
 from .state import State
@@ -110,6 +110,15 @@ def _collect_all(cfg: dict) -> tuple[list[Item], list[str]]:
                 items.extend(github_trending.fetch(src["name"], src["url"]))
             elif src["type"] == "hn_newest":
                 items.extend(hn_newest.fetch(src["name"], src["url"]))
+            elif src["type"] == "youtube_search":
+                items.extend(
+                    youtube.fetch(
+                        source_name=src["name"],
+                        keywords=src.get("keywords"),
+                        max_results=src.get("max_results", 5),
+                        per_keyword=src.get("per_keyword", 50),
+                    )
+                )
         except Exception as e:
             logging.exception("community source %s failed", src["name"])
             errors.append(f"{src['name']}: {e}")
@@ -213,6 +222,15 @@ def cmd_verify(args: argparse.Namespace) -> int:
                 found = len(github_trending.fetch(src["name"], src["url"]))
             elif src["type"] == "hn_newest":
                 found = len(hn_newest.fetch(src["name"], src["url"]))
+            elif src["type"] == "youtube_search":
+                found = len(
+                    youtube.fetch(
+                        source_name=src["name"],
+                        keywords=src.get("keywords"),
+                        max_results=src.get("max_results", 5),
+                        per_keyword=src.get("per_keyword", 50),
+                    )
+                )
             else:
                 found = 0
             status = "OK " if found else "EMPTY"

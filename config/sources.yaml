@@ -42,6 +42,16 @@ community:
   - name: Hacker News Newest
     type: hn_newest
     url: https://news.ycombinator.com/newest
+  - name: YouTube AI
+    type: youtube_search
+    url: https://www.youtube.com/results?sp=EgIIAg
+    keywords:
+      - LLM
+      - GPT
+      - Claude
+      - Gemini
+    max_results: 5
+    per_keyword: 50
 
 rss_lookback_days: 14
 

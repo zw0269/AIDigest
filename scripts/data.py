@@ -597,6 +597,44 @@ MANUAL_SUMMARIES: dict[str, str] = {
     "https://github.com/HKUDS/CLI-Anything":
         "港大 CLI-Anything：把任何软件变成 agent 原生 CLI 工具的项目，配套 CLI-Hub (clianything.cc)。",
 
+    # 05-21 batch — YouTube AI
+    "https://www.youtube.com/watch?v=OMhKgQmeMhI":
+        "The Verge 把 Google I/O 2026 keynote 浓缩成 35 分钟版本。",
+    "https://www.youtube.com/watch?v=qCfARlv74jQ":
+        "CNET 用 13 分钟回顾 Google I/O 2026 所有发布。",
+    "https://www.youtube.com/watch?v=wZr5rBdczZc":
+        "9to5Google：Gemini 史上最大更新（Gemini Omni、3.5 Flash、Antigravity 等）综述。",
+    "https://www.youtube.com/watch?v=KsnXvqSbDLU":
+        "Edwin H. 用 9 分钟（中文/粤语）讲解 Google I/O 发布会 + Android 17 精华。",
+    "https://www.youtube.com/watch?v=IrA0mzZTwLo":
+        "Paul J Lipsky 测评 Gemini Omni — Google 新视频生成模型，演示其表现。",
+
+    # 05-21 batch — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48210142":
+        "讨论 Anthropic Mythos 模型被夸大的「无管制黑客」担忧——围绕 Anthropic 新模型的安全风险被媒体放大。",
+    "https://news.ycombinator.com/item?id=48210246":
+        "Granta 杂志获奖小说疑似为 AI 撰写——文学界开始遭遇生成式写作渗透。",
+    "https://news.ycombinator.com/item?id=48210239":
+        "讨论应如何在写作中政策性管控 AI 使用。",
+    "https://news.ycombinator.com/item?id=48210250":
+        "讨论面向 vector-length-agnostic ML 代码生成的可扩展 packed layouts 方案。",
+    "https://news.ycombinator.com/item?id=48210226":
+        "OpenAI 准备提交 IPO 申请——AI 行业最受瞩目的上市进程。",
+    "https://news.ycombinator.com/item?id=48210279":
+        "Show HN：Homecrew——团队共享并同步 agent skills 的工具。",
+    "https://news.ycombinator.com/item?id=48210092":
+        "讨论 OpenAI 政治游说战略的下一步。",
+    "https://news.ycombinator.com/item?id=48210117":
+        "Meta 计划裁员 10%（约 8000 人）以提升 AI 效率。",
+    "https://news.ycombinator.com/item?id=48210173":
+        "Google 即将发布自 Google Glass 失败以来的首款智能眼镜。",
+    "https://news.ycombinator.com/item?id=48210308":
+        "Cohere 发布 Command A+：把主权级 agentic 能力开放给更多用户。",
+    "https://news.ycombinator.com/item?id=48210174":
+        "讨论 AI 对音乐产业未来的影响。",
+    "https://news.ycombinator.com/item?id=48210335":
+        "论文：sycophantic（讨好型）AI 降低人的亲社会动机并促进依赖（2025）。",
+
     # 05-20 batch — Hacker News Newest
     "https://news.ycombinator.com/item?id=48209023":
         "介绍 Microsoft Agent 365：面向 2026 年企业治理的自主 AI agent 平台。",
@@ -1220,5 +1258,43 @@ TRANSLATIONS: dict[str, str] = {
         "PyCon US 2026 闪电演讲：用 5 分钟带注释幻灯片总结过去 6 个月 LLM 领域的关键进展。",
     "https://simonwillison.net/2026/May/17/gds-weighs-in/#atom-everything":
         "英国政府数字服务（GDS）就 NHS 因 Project Glasswing 漏洞披露而关闭开源仓库一事发声，提醒公共部门应正确权衡 AI、开放代码与漏洞风险。",
+
+    # 05-21 batch — Simon Willison
+    "https://simonwillison.net/2026/May/20/google-io/#atom-everything":
+        "Simon 评 Google I/O 2026：只写已 GA 的功能；亮点是 Gemini 3.5 Flash 跳过 preview 直接 GA，以及 OpenClaw 竞品 Gemini Spark（可原生连接常用工具的个人 AI agent）。",
+
+    # 05-21 batch — arXiv
+    "http://arxiv.org/abs/2605.20179v1":
+        "TIDE — MoE 架构 Diffusion LLM 的高效无损推理系统，利用专家时间稳定性做 I/O 感知 offload，在资源受限设备上跑得动。",
+    "http://arxiv.org/abs/2605.20177v1":
+        "把 VLM 训练拆成视觉感知/视觉推理/文本推理三阶段，证明 VLM 视觉任务的瓶颈是感知不足而非推理。",
+    "http://arxiv.org/abs/2605.20176v1":
+        "ClinSeekAgent — 临床推理 agent 框架，从被动接受证据转向主动搜寻和合成多模态证据。",
+    "http://arxiv.org/abs/2605.20173v1":
+        "提出生产级 LLM agent 运行时的「随机-确定边界」（SDB）原语，并按 Coordination/State/Control 三维度组织 agent 运行时设计。",
+    "http://arxiv.org/abs/2605.20170v1":
+        "KoRe — 把 LLM 不透明的参数知识替换成紧凑可编辑的知识表示（基于 KG 思路），减少幻觉、便于调试。",
+    "http://arxiv.org/abs/2605.20149v1":
+        "对比 raw / checklist 增强 / 澄清式 prompt 三种条件，证明结构化 prompt 在多 LLM、多任务上提升回答质量并减少用户反复交互。",
+    "http://arxiv.org/abs/2605.20128v1":
+        "MixRea benchmark — 借鉴「注意盲」理论，发现 LLM 也会在显式任务下漏掉关键隐式线索；2246 题、9 种推理类型。",
+    "http://arxiv.org/abs/2605.20104v1":
+        "speculative decoding 的混合树构造，避免动态深度剪枝丢候选，向 dense tree 的接受率上限靠拢。",
+    "http://arxiv.org/abs/2605.20087v1":
+        "ThoughtTrace 数据集 — 配对真实多轮对话和用户「当时在想什么」自报，1058 人、2155 对话、17K turn、10K 标注。",
+    "http://arxiv.org/abs/2605.20086v1":
+        "拆解 LLM+演化搜索 coding agent 究竟在演化什么：新算法结构、调参、重组旧知识，还是过拟合评估器。",
+    "http://arxiv.org/abs/2605.20084v1":
+        "BalanceRAG — 级联 RAG（先 LLM 自答、再 RAG 兜底、否则弃权）的联合风险校准，比逐级保守阈值更优。",
+    "http://arxiv.org/abs/2605.20075v1":
+        "CopT — Chain-of-Thought 反转：先出草稿答案再思考，减少 performative reasoning 带来的延迟和 token 浪费。",
+    "http://arxiv.org/abs/2605.20061v1":
+        "ReBel — 部分可观测环境中的过程级 RL：显式建模「信念状态」分发奖励，缓解长 horizon agent 信用分配。",
+    "http://arxiv.org/abs/2605.20025v1":
+        "AutoResearchClaw — 多 agent 自主科研流水线，含结构化辩论、跨轮经验累积，把单次失败转化为下一轮的输入。",
+    "http://arxiv.org/abs/2605.20023v1":
+        "负结果论文：分析 84 个任务中 16 个加 agent skills 反而变差的案例，指出 procedural knowledge 在攻防 CTF 中常是冗余而非增益。",
+    "http://arxiv.org/abs/2605.20022v1":
+        "FlexDraft — 并行 speculative decoding：用 attention tuning 和 bonus 校准消除 draft/verify 互等，提升内存带宽效率。",
 }
 

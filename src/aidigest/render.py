@@ -23,11 +23,15 @@ def render_report(
     arxiv_authors = [i for i in items if i.category == "arxiv-author"]
     arxiv_keywords = [i for i in items if i.category == "arxiv-keyword"]
 
+    def _sort_key(item: Item) -> datetime:
+        pub = item.published
+        if pub is None:
+            return datetime.min
+        # arXiv 给的是 tz-aware，RSS / 解析旧报告是 naive，混在同一桶里直接比较会 TypeError
+        return pub.replace(tzinfo=None) if pub.tzinfo else pub
+
     for bucket in (companies, individuals, community, arxiv_authors, arxiv_keywords):
-        bucket.sort(
-            key=lambda i: i.published or datetime.min,
-            reverse=True,
-        )
+        bucket.sort(key=_sort_key, reverse=True)
 
     return tmpl.render(
         date=datetime.now().strftime("%Y-%m-%d"),

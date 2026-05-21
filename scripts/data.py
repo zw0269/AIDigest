@@ -650,6 +650,18 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "HN 围绕 Google DeepMind 新发布的 Co-Scientist 多智能体科研助手的讨论。",
     "https://news.ycombinator.com/item?id=48209184":
         "训练一个 22MB 的轻量 prompt injection 分类器，证明端侧/小模型在防御 prompt injection 上足够实用。",
+    "https://news.ycombinator.com/item?id=48224615":
+        "Apple 公布 App Store 风控成绩：去年拦截了数十亿美元的欺诈交易和大批刷分/伪冒 App。",
+    "https://news.ycombinator.com/item?id=48224616":
+        "Show HN：Buildby，一个 CLI 工具，用来识别桌面应用是用什么框架/技术栈（Electron/Tauri/原生等）打包的。",
+    "https://news.ycombinator.com/item?id=48224623":
+        "作者复盘多年自研论坛软件的踩坑：协作建模、垃圾治理、性能权衡，反思论坛形态在 AI 时代还剩什么价值。",
+    "https://news.ycombinator.com/item?id=48224630":
+        "网络安全事件：AS202734 于 5/16–17 通过 BGP 劫持劫走多家中国电信运营商的部分流量，社区披露技术细节。",
+    "https://news.ycombinator.com/item?id=48224638":
+        "Show HN：GitVitae，基于 GitHub Profile 的免费托管简历/作品集生成器，一键拿到个人作品展示页。",
+    "https://www.youtube.com/watch?v=6DB7wFVaebs":
+        "（误命中：Gemini 关键词捞到 GMMTV 泰剧主题曲 MV，演唱者艺名为 Gemini/Fourth，与 Google Gemini 无关。）",
 }
 
 

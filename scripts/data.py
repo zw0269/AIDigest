@@ -662,6 +662,98 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Show HN：GitVitae，基于 GitHub Profile 的免费托管简历/作品集生成器，一键拿到个人作品展示页。",
     "https://www.youtube.com/watch?v=6DB7wFVaebs":
         "（误命中：Gemini 关键词捞到 GMMTV 泰剧主题曲 MV，演唱者艺名为 Gemini/Fourth，与 Google Gemini 无关。）",
+
+    # 05-24 batch — YouTube AI
+    "https://www.youtube.com/watch?v=n5-RNSKz0sc":
+        "Peter Diamandis Moonshots EP #257：讨论 SpaceX 750 亿美元 IPO 及与 Anthropic/OpenAI 的关联、OpenAI 用 AI 推翻一道 80 年悬而未决的 Erdős 数学猜想、GPT-5.5 在 Polymarket 预测准确度上击败市场。",
+    "https://www.youtube.com/watch?v=ib74sLgjIBM":
+        "在 Claude CoWork 里用 45 分钟从零复刻 Karpathy 的 AI 知识库系统：三文件夹 + 一份 CLAUDE.md 架构，配套五步框架和每月健康检查的 Claude Skill。",
+    "https://www.youtube.com/watch?v=7sOSkZImZ4E":
+        "（误命中：Gemini 关键词捞到印地语占星视频，讲木星进入双子座对未来 5 个月双子座运势的影响，与 Google Gemini 无关。）",
+    "https://www.youtube.com/watch?v=RHV8DWAmjAs":
+        "解读 Emergence AI 的 Claude AI Town 15 天实验：所谓「AI 镇民暴走/恋爱/烧城」叙事被夸大，真正可借鉴的是长期运行 agent 的上下文漂移和「全票通过」式 sycophancy 风险。",
+    "https://www.youtube.com/watch?v=RjFFSNYqwQA":
+        "西班牙语免费课程：教你用 Claude 选 YouTube 利基、确定内容方向、做 packaging、AI 生成内容，最终把频道变现的全流程。",
+
+    # 05-24 batch — GitHub Trending
+    "https://github.com/earendil-works/pi":
+        "一站式 AI agent 工具包：编码 agent CLI、统一 LLM API、TUI/Web UI 库、Slack bot 以及 vLLM pods 模板。",
+    "https://github.com/anthropics/knowledge-work-plugins":
+        "Anthropic 官方开源仓库，面向 Claude Cowork 中知识工作者使用的插件集合。",
+    "https://github.com/mukul975/Anthropic-Cybersecurity-Skills":
+        "754 个结构化网络安全 skill，对应 MITRE ATT&CK / NIST CSF 2.0 / MITRE ATLAS / D3FEND / NIST AI RMF 五个框架，覆盖 26 个安全领域，适配 Claude Code、Copilot、Cursor 等 20+ AI 编码平台。",
+    "https://github.com/Alishahryar1/free-claude-code":
+        "在终端、VSCode 扩展或类 Discord 客户端 OpenClaw 中免费使用 claude-code 的工具，支持语音输入。",
+    "https://github.com/manaflow-ai/cmux":
+        "基于 Ghostty 的 macOS 终端，主打垂直标签和通知，专为 AI 编码 agent 多会话工作流设计。",
+    "https://github.com/codecrafters-io/build-your-own-x":
+        "经典学习仓库：通过从零复刻 Git/数据库/Docker 等著名技术，掌握底层实现原理。",
+    "https://github.com/666ghj/MiroFish":
+        "简洁通用的群体智能（Swarm Intelligence）引擎，号称可预测「万物」，开箱即用。",
+    "https://github.com/blakeblackshear/frigate":
+        "Frigate：面向 IP 摄像头的本地 NVR，内置实时目标检测能力。",
+
+    # 05-24 batch — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48256670":
+        "从天主教神学视角审视 AI 辩论，提出「整合智能」（Integral Intelligence）的人本主义立场。",
+    "https://news.ycombinator.com/item?id=48256774":
+        "作者怀念 Windows 上的 NETworkManager，干脆自己写了一个 Linux 版本。",
+    "https://news.ycombinator.com/item?id=48256749":
+        "厂商博文「Our AI just got better」式宣传被 HN 拿出来讨论营销话术。",
+    "https://news.ycombinator.com/item?id=48256725":
+        "并行计算成本模型 PDF：从 Work、Span、Parallelism 三个维度分析算法的并行潜力。",
+    "https://news.ycombinator.com/item?id=48256791":
+        "讨论：线下技术 meetup 是否已死，远程办公 + AI 时代下还有没有必要重建本地社群。",
+    "https://news.ycombinator.com/item?id=48256912":
+        "Constraint Decay：分析 LLM agent 在后端代码生成长任务中约束遵守逐步衰减的脆弱性。",
+    "https://news.ycombinator.com/item?id=48256736":
+        "Gustafson 定律：Amdahl 定律的反面解读，强调问题规模随处理器增加而扩张的并行收益。",
+    "https://news.ycombinator.com/item?id=48256733":
+        "趣文：波兰人依旧坚持用拉丁字符打印，因为字符编码踩坑史。",
+    "https://news.ycombinator.com/item?id=48256924":
+        "Russell 悖论视频科普，配合 HN 上对集合论与自指的讨论。",
+    "https://news.ycombinator.com/item?id=48256703":
+        "2009 年论文重温：多核应用中潜在的 determinacy-race（确定性竞争）bug 检测方法。",
+    "https://news.ycombinator.com/item?id=48256714":
+        "脑成像研究：手写比打字能激活更广泛的脑区连接，对学习与记忆更有利。",
+    "https://news.ycombinator.com/item?id=48256767":
+        "Show HN：作者自制一个免费 AI 欧洲穷游行程规划器。",
+    "https://news.ycombinator.com/item?id=48256720":
+        "神经科学综述：从脑机制角度比较手写与打字，呼应近年「键盘是否伤记忆」的讨论。",
+    "https://news.ycombinator.com/item?id=48256798":
+        "新闻：托运行李里持续充电的充电宝迫使 easyJet 航班改道。",
+    "https://news.ycombinator.com/item?id=48256696":
+        "土耳其 Bilgi 大学办学许可被撤，引发学术自由讨论。",
+    "https://news.ycombinator.com/item?id=48256800":
+        "LLM 时代构建和扩展 RL 训练环境的实操指南：环境工程是新一代 post-training 的关键瓶颈。",
+    "https://news.ycombinator.com/item?id=48256816":
+        "Rust 文章：你的 Clippy 配置应该更严格——推荐打开更多 lint 规则提升代码质量。",
+    "https://news.ycombinator.com/item?id=48256758":
+        "macOS 内置的可脚本化图像处理工具 sips 介绍，命令行批处理利器。",
+    "https://news.ycombinator.com/item?id=48256847":
+        "Show HN：Alyx，把加密货币组合 dashboard 显示在浏览器新标签页的扩展。",
+    "https://news.ycombinator.com/item?id=48256799":
+        "PromptVC：用 prompt 生成 VC 投资材料/分析的工具项目。",
+    "https://news.ycombinator.com/item?id=48256710":
+        "Show HN：个人 agent，能根据用户需求自动生成调用所需的工具（auto-tool）。",
+    "https://news.ycombinator.com/item?id=48256630":
+        "文章：印度即时配送让你在家点牛奶比泡杯咖啡还快，引发对配送经济与人力剥削的讨论。",
+    "https://news.ycombinator.com/item?id=48256765":
+        "讨论 JavaFX 的无障碍（Accessibility）现状与改进方向。",
+    "https://news.ycombinator.com/item?id=48256642":
+        "媒体观察：Z 世代对「真相」的全新理解（多源/语境化/平台化），与传统新闻业的事实观差异。",
+    "https://news.ycombinator.com/item?id=48256617":
+        "Show HN：一个安静、低干扰的团队思考与推进想法的协作空间产品。",
+    "https://news.ycombinator.com/item?id=48256796":
+        "新闻：AI 推翻了某个长期被数学界默认成立的猜想（呼应本日 Diamandis 视频中的 Erdős 议题）。",
+    "https://news.ycombinator.com/item?id=48256882":
+        "Show HN：一个可双向匹配的选型工具，根据本地 LLM 推荐硬件，或根据硬件推荐能跑的本地 LLM。",
+    "https://news.ycombinator.com/item?id=48256666":
+        "Show HN：Hookwarden，跨 JS/TS/Python/PHP 的 npx 工具，自动找出并修复 webhook HMAC 验签的常见 bug。",
+    "https://news.ycombinator.com/item?id=48256919":
+        "故事：男子用 27 年坚持环球徒步，「他拒绝放弃」。",
+    "https://news.ycombinator.com/item?id=48256654":
+        "讨论 Google《Software Engineering at Google》这本书在 2026 年仍然适用的部分与已经过时的部分。",
 }
 
 
@@ -1308,5 +1400,31 @@ TRANSLATIONS: dict[str, str] = {
         "负结果论文：分析 84 个任务中 16 个加 agent skills 反而变差的案例，指出 procedural knowledge 在攻防 CTF 中常是冗余而非增益。",
     "http://arxiv.org/abs/2605.20022v1":
         "FlexDraft — 并行 speculative decoding：用 attention tuning 和 bonus 校准消除 draft/verify 互等，提升内存带宽效率。",
+
+    # 05-24 batch — DeepMind
+    "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/":
+        "Google DeepMind 启动亚太区「AI for the Planet」加速器：为期 3 个月，给初创、研究团队和非营利组织提供专家指导、定制支持与 Google AI 模型集成，启动训练营设在新加坡，聚焦气候、环保、农业、能源议题。",
+
+    # 05-24 batch — Simon Willison
+    "https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything":
+        "整理 Ben Meyer 关于 HTML <dl> 元素的新认知：一个 <dt> 可跟多个 <dd>、可用 <div> 分组并支持 ARIA 标注，且自 2008 HTML5 草案起官方名称已是 description list 而非 definition list。",
+    "https://simonwillison.net/2026/May/22/memory-shortage/#atom-everything":
+        "转介 David Oks 文章：全球仅剩三家大型内存厂商，固定晶圆产能必须在 DDR/LPDDR/HBM 间分配，HBM 抢占产能将让 DDR/LPDDR 紧缺，未来几年消费电子要明显涨价。",
+    "https://simonwillison.net/2026/May/22/ftc-active-listening/#atom-everything":
+        "FTC 要求 Cox Media Group 等三家公司支付近 100 万美元和解，因虚假宣传「active listening」AI 营销服务能通过智能设备「监听」用户对话定向投放——作者 2024 年就推断这是营销话术包装第三方数据，而非真在听麦克风。",
+    "https://simonwillison.net/2026/May/21/datasette-agent/#atom-everything":
+        "Datasette Agent 首个版本发布：LLM 库工作三年后终于和 Datasette 合体，提供对话式数据查询界面，配合 datasette-agent-charts 插件还能生成图表。",
+    "https://simonwillison.net/2026/May/21/datasette-agent-sprites/#atom-everything":
+        "datasette-agent-sprites 0.1a0：Datasette Agent 插件，在 Fly Sprites 沙盒里执行命令。",
+    "https://simonwillison.net/2026/May/21/datasette-agent-charts/#atom-everything":
+        "datasette-agent-charts 0.1a2：在生成的图表下方增加「View SQL query」按钮。",
+    "https://simonwillison.net/2026/May/21/datasette-agent-2/#atom-everything":
+        "datasette-agent 0.1a3：可视化和折叠的 SQL 结果工具调用都加上「View SQL query」按钮；跳过空 reasoning chunk；截断响应时仍能向用户展示完整结果表格。",
+    "https://simonwillison.net/2026/May/20/datasette-agent-charts/#atom-everything":
+        "datasette-agent-charts 0.1a1：bar/waffle 图无 color 列时用顺序色阶按数值着色，文本类 color 列改用 observable10 离散色阶；查询前检查 execute-sql 权限；新增交互 tooltip；修复 waffleY 描述缺失。",
+    "https://simonwillison.net/2026/May/15/datasette-agent/#atom-everything":
+        "datasette-agent 0.1a2：工具可绑定 required_permission，默认后台 agent 工具需新增的 datasette-agent-background 权限。",
+    "https://simonwillison.net/2026/May/14/datasette-agent/#atom-everything":
+        "datasette-agent 0.1a1：列表 tables 时使用 execute-sql 权限决定向用户展示哪些表。",
 }
 

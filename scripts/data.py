@@ -754,6 +754,80 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "故事：男子用 27 年坚持环球徒步，「他拒绝放弃」。",
     "https://news.ycombinator.com/item?id=48256654":
         "讨论 Google《Software Engineering at Google》这本书在 2026 年仍然适用的部分与已经过时的部分。",
+
+    # 05-25 batch — YouTube AI
+    "https://www.youtube.com/watch?v=DGw2KKyXuYQ":
+        "Wes Roth 解读 Andrej Karpathy 加入 Anthropic 的「真正原因」，串讲 OpenAI、Google、Anthropic、NVIDIA 与开源 AI 最新动向。",
+    "https://www.youtube.com/watch?v=ikWmASLeCYU":
+        "教学视频：如何使用 Google Gemini Omni 新一代 AI 视频生成模型——支持文本 + 人脸/语音参考 + 上传图片/视频的多模态输入生成「电影感」视频。",
+    "https://www.youtube.com/watch?v=rmXvS69ELvc":
+        "WorldofAI 整理本周 AI 新闻：Claude Mythos 1 Preview 已现身、Claude Sonnet 4.8 和 Opus 4.8 模型 slug 被泄露，Anthropic 似在为 Claude Code 与 Claude Security 准备重大升级；附带 GPT-5.6、DeepSeek v4 Pro 线索。",
+    "https://www.youtube.com/watch?v=Qj4-i58sAZ8":
+        "日语「紧急解读」：2026-06-15 起 Claude 付费方案重大改动，「对话」与「自动化」两类用量将彻底分离计费，提醒老用户检查自己的使用方式。",
+    "https://www.youtube.com/watch?v=UvUzpSlXKtg":
+        "Theo (t3.gg) 评测 Cursor 新发布的 Composer 2.5 模型，认为其在 agentic 编码体验上明显胜过 Claude Code。",
+
+    # 05-25 batch — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48262160":
+        "评 Lua 语言生态的「绿色一面」：嵌入式友好、轻量、可塑性高。",
+    "https://news.ycombinator.com/item?id=48262142":
+        "Show HN：JavaScript Crossword，每个题目都是「clue = eval(answer)」式的代码字谜。",
+    "https://news.ycombinator.com/item?id=48262067":
+        "Show HN：自制小型 PR guardrail 工具，专门检测 LLM 生成代码引入的 token bloat，征求是否值得维护。",
+    "https://news.ycombinator.com/item?id=48262093":
+        "「No Asterisk Products」宣言：服务器宕机时仍然可用的硬件——拒绝「需联网/付费/订阅才工作」的星号条款。",
+    "https://news.ycombinator.com/item?id=48262460":
+        "研究/文章：AI 如何成功说服阴谋论者放弃错误信念，对人类辩论与公共对话的启示。",
+    "https://news.ycombinator.com/item?id=48262413":
+        "实战分享：怎么教 Codex 给一个 voice-first 日历 App 写测试。",
+    "https://news.ycombinator.com/item?id=48262062":
+        "（测试条目，标题就是「Test」。）",
+    "https://news.ycombinator.com/item?id=48261987":
+        "新闻：Anthropic 与 OpenAI 抢着把驻场工程师塞进华尔街银行/对冲基金的工作流，争夺金融业大客户。",
+    "https://news.ycombinator.com/item?id=48261970":
+        "解读：正在搅动华盛顿监管层的几个 AI 模型，你需要知道什么。",
+    "https://news.ycombinator.com/item?id=48262399":
+        "讨论：你最喜欢的经典 iPod 游戏是什么——怀旧型 HN 帖。",
+    "https://news.ycombinator.com/item?id=48261999":
+        "TIL：Linux 内核模块用 CLFLUSHOPT 在清空敏感数据后强制刷掉对应 CPU cache 行，防止侧信道泄密。",
+    "https://news.ycombinator.com/item?id=48262031":
+        "安全研究：在 1 分钟内可被破解的密码占了「几乎所有其它密码」的大头，警示用户加强强度。",
+    "https://news.ycombinator.com/item?id=48262022":
+        "Librarian：整理 Arcane Library 用的工具/项目。",
+    "https://news.ycombinator.com/item?id=48262313":
+        "文章：Google 强制要求一定数量真实测试者才能上架，催生了 Fiverr 上的「凑测试者」灰色市场。",
+    "https://news.ycombinator.com/item?id=48262307":
+        "科普新闻：科学家发现某黑洞质量增长速度「快得离谱」，挑战现有黑洞演化模型。",
+    "https://news.ycombinator.com/item?id=48262204":
+        "案例分享：用 Mununu 验证 Caliptra 安全启动状态机（Boot-FSM）中的一个 bug。",
+    "https://news.ycombinator.com/item?id=48262425":
+        "Show HN：Mvm，一个用 Go 写的高性能虚拟机。",
+    "https://news.ycombinator.com/item?id=48262169":
+        "（测试条目，标题为「Poll: Test」。）",
+    "https://news.ycombinator.com/item?id=48262153":
+        "新闻：长跑众筹大作 Star Citizen 累计融资达到 10 亿美元，仍未发布完整正式版。",
+    "https://news.ycombinator.com/item?id=48261923":
+        "观点：「AI for Design」目前还远未被真正解决，HN 讨论设计领域生成式 AI 的真痛点。",
+    "https://news.ycombinator.com/item?id=48262025":
+        "Enhanced Games：允许使用类固醇和兴奋剂的「平行奥运会」，HN 讨论体育、伦理与人体增强。",
+    "https://news.ycombinator.com/item?id=48262186":
+        "趣文：全球最高密度的城市/居住环境是哪里——可视化与历史地理分析。",
+    "https://news.ycombinator.com/item?id=48262205":
+        "观点：Agent 评测（evals）应该「感觉像真实工作」，而非合成 toy task；否则评分难以反映生产能力。",
+    "https://news.ycombinator.com/item?id=48262006":
+        "Show HN：Tuie，一个面向 Rust 的高性能、组件丰富 TUI 库。",
+    "https://news.ycombinator.com/item?id=48261922":
+        "项目：实时追踪新闻业 AI 翻车（编造引语、AI 生成图未标注、错误事实等）的事故/丑闻名单。",
+    "https://news.ycombinator.com/item?id=48262357":
+        "Searx 作者复盘：从零创建去中心化元搜索引擎 Searx 过程中学到的工程与社区经验。",
+    "https://news.ycombinator.com/item?id=48262015":
+        "科普：原子究竟是由什么构成的——夸克、胶子、电子之间的关系。",
+    "https://news.ycombinator.com/item?id=48262443":
+        "Honopinion：某个意见/工具项目（信息有限，可能为社区讨论平台或观点聚合）。",
+    "https://news.ycombinator.com/item?id=48262435":
+        "工程分享：团队介绍他们如何构建安全、可扩展的 agent 沙箱基础设施。",
+    "https://news.ycombinator.com/item?id=48262364":
+        "新闻：Google 即将更新 Gmail 收件箱视图，新增「What Matters Most」分组优先突出重要邮件。",
 }
 
 
@@ -1426,5 +1500,25 @@ TRANSLATIONS: dict[str, str] = {
         "datasette-agent 0.1a2：工具可绑定 required_permission，默认后台 agent 工具需新增的 datasette-agent-background 权限。",
     "https://simonwillison.net/2026/May/14/datasette-agent/#atom-everything":
         "datasette-agent 0.1a1：列表 tables 时使用 execute-sql 权限决定向用户展示哪些表。",
+
+    # 05-25 batch — OpenAI
+    "https://openai.com/index/virgin-atlantic":
+        "案例：Virgin Atlantic 在固定假日截止日期下用 Codex 重做移动 App，达到接近全量单元测试覆盖、零 P1 缺陷上线。",
+    "https://openai.com/index/gartner-2026-agentic-coding-leader":
+        "OpenAI 被列入 2026 Gartner 企业级 AI 编码 Agent 魔力象限「领导者」，Codex 因创新与企业级部署能力获认可。",
+    "https://openai.com/index/adventhealth":
+        "AdventHealth 使用 ChatGPT for Healthcare 简化工作流、减少行政负担，把更多时间还给医患照护。",
+
+    # 05-25 batch — Simon Willison
+    "https://simonwillison.net/2026/May/24/datasette/#atom-everything":
+        "datasette 1.0a30：主要新增可定制的「Jump to...」菜单（按 / 触发），并提供 jump_items_sql() 插件 hook 让其他插件注入可搜索条目。",
+    "https://simonwillison.net/2026/May/24/datasette-agent/#atom-everything":
+        "datasette-agent 0.1a4：用上 1.0a30 新加的 makeJumpSections() JS hook，把「Start a new agent chat」入口集成进 Datasette / 菜单；agent.datasette.io 可用 GitHub 登录试玩。",
+    "https://simonwillison.net/2026/May/24/datasette-fixtures/#atom-everything":
+        "datasette-fixtures 0.1a0：用 Datasette 1.0a30 新增的 populate_fixture_database() helper 拉起官方测试 fixture，可通过 uvx 在不装 Datasette 的情况下直接试用。",
+    "https://simonwillison.net/2026/May/24/armin-ronacher/#atom-everything":
+        "引用 Armin Ronacher 吐槽：现在最让人沮丧的失败模式是有人把观察到的问题丢给 LLM「克朗克」加工后再提 issue，结果是充满自信但完全错乱的根因分析、伪极简复现和错位类比。",
+    "https://simonwillison.net/2026/May/24/usborne-mad-house/#atom-everything":
+        "Usborne 公开 1980 年代《Creepy Computer Games》等 PDF，作者把 1983 年「Mad House」喂给 Claude，让它复刻成可玩的纯 JS/HTML 互动版本。",
 }
 

@@ -828,11 +828,115 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "工程分享：团队介绍他们如何构建安全、可扩展的 agent 沙箱基础设施。",
     "https://news.ycombinator.com/item?id=48262364":
         "新闻：Google 即将更新 Gmail 收件箱视图，新增「What Matters Most」分组优先突出重要邮件。",
+
+    # 2026-05-26 — Anthropic
+    "https://www.anthropic.com/news/chris-olah-pope-leo-encyclical":
+        "Anthropic 联创 Chris Olah 在梵蒂冈发布教皇 AI 通谕的活动上发言：AI 实验室内部激励可能与「做正确的事」冲突，必须有产业之外的道德声音参与；他点出三个需要教会洞察的领域——让 AI 红利惠及全球穷人、对 AI 时代人类繁荣的道德想象、以及探究模型内部神秘结构与疑似情感状态。",
+
+    # 2026-05-26 — GitHub Trending
+    "https://github.com/affaan-m/ECC":
+        "ECC：面向 Claude Code/Codex/Opencode/Cursor 等的 agent 框架性能优化系统，集技能、直觉、记忆、安全与研究优先开发于一体。",
+    "https://github.com/hardikpandya/stop-slop":
+        "stop-slop：一个 skill 文件，用于去除文章里明显的「AI 腔」痕迹，让文字更像真人写的。",
+    "https://github.com/paperless-ngx/paperless-ngx":
+        "paperless-ngx：社区维护的强化版文档管理系统，可扫描、索引并归档所有纸质与电子文档。",
+    "https://github.com/Leonxlnx/taste-skill":
+        "taste-skill：给 AI 注入「审美」的 skill，避免它生成无聊、套路化的平庸内容。",
+    "https://github.com/Fincept-Corporation/FinceptTerminal":
+        "FinceptTerminal：现代金融终端应用，提供市场分析、投资研究与经济数据工具，主打交互式探索与数据驱动决策。",
+    "https://github.com/Axorax/awesome-free-apps":
+        "awesome-free-apps：精选 PC 与移动端最佳免费应用的清单合集。",
+    "https://github.com/anthropics/claude-cookbooks":
+        "claude-cookbooks：Anthropic 官方 notebook 合集，演示使用 Claude 的各种有趣且高效的玩法与配方。",
+    "https://github.com/moeru-ai/airi":
+        "airi：自托管、归你所有的 AI 伴侣容器，支持实时语音聊天、Minecraft/Factorio 操作，跨 Web/macOS/Windows，对标 Neuro-sama。",
+
+    # 2026-05-26 — YouTube AI
+    "https://www.youtube.com/watch?v=ScLu47riJfY":
+        "midudev 频道：微软、Uber 因 AI 成本开始削减 Claude Code 用量，借此讨论 token 成本、GitHub Copilot 与「用 AI 编程到底划不划算」。",
+    "https://www.youtube.com/watch?v=YX7nE-3rYEQ":
+        "Higgsfield 官方：推介 Supercomputer——把 Claude/Gemini/ChatGPT 等顶级推理模型与内容生成器整合进单一聊天、端到端跑营销的 AI agent。",
+    "https://www.youtube.com/watch?v=pF4Ovay98nA":
+        "AIM Network（日语）：微软停掉大批 Claude Code 授权并非因工具不好，而是 AI 能耗与规模化成本问题，认为 AI 计费模式在大规模下已失灵。",
+    "https://www.youtube.com/watch?v=ck0-UD-oByY":
+        "AIM Network（日语）：一个名为 Cockroach Janta Party 的政党被 AI 用 Claude 和 ChatGPT 在 24 小时内「组建」，展示 AI 快速生成品牌纲领，引发对 AI 政治的担忧。",
+    "https://www.youtube.com/watch?v=S4gsd1_f-Ng":
+        "Inteligencia Artificial 频道（西语）：每周 AI 新闻，重点吐槽 Gemini 3.5 Flash 看似又好又便宜，但实测 token 消耗高、性价比大打折扣。",
+
+    # 2026-05-26 — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48274453":
+        "报道：AI 让自助打官司激增，大量当事人用 AI 自行撰写诉状，法院卷宗被「自酿」诉讼淹没。",
+    "https://news.ycombinator.com/item?id=48274042":
+        "报道：某大型大学系统全面推行 AI，但学生和教职工并不买账，揭示校园 AI 推广的阻力。",
+    "https://news.ycombinator.com/item?id=48274026":
+        "Show HN：作者发现 43% 的 MCP 服务器含注入攻击载荷，于是做了 Aigis 防火墙来拦截这类提示注入。",
+    "https://news.ycombinator.com/item?id=48274410":
+        "安全披露：GitHub 提交签名验证逻辑存在缺陷，可被绕过以伪造「已验证」(Verified) 标记。",
+    "https://news.ycombinator.com/item?id=48274372":
+        "文章：单个模型有盲区，用多个 LLM 互相循环协作来调试陌生/不熟悉的代码。",
+    "https://news.ycombinator.com/item?id=48274295":
+        "MileStone：一个多目标的编译器优化阶段排序框架，自动权衡多项指标来调优 pass 顺序。",
+    "https://news.ycombinator.com/item?id=48274212":
+        "产品：带引用的 AI 工作区，主打文件只需上传一次、无需反复重新上传。",
+    "https://news.ycombinator.com/item?id=48274336":
+        "Show HN：Pgcraft，仿 lazygit 风格的 Postgres 终端 TUI 客户端。",
+    "https://news.ycombinator.com/item?id=48274012":
+        "Summer Shred（supercomp.app）：一款主打「夏季减脂/塑形」挑战的健身应用。",
+    "https://news.ycombinator.com/item?id=48274311":
+        "Ente（端到端加密相册）推出 Legacy Kit：让你指定的信任者在你去世后能继承访问你的加密账户。",
+    "https://news.ycombinator.com/item?id=48274402":
+        "Erin Brockovich 团队上线网站，对 AI 数据中心的环境与社区影响展开调查报道。",
+    "https://news.ycombinator.com/item?id=48274229":
+        "Jellyfin（开源媒体服务器）2026-05-24 的「State of the Fin」项目进展更新。",
+    "https://news.ycombinator.com/item?id=48274302":
+        "Matchmaker：一个强大现代的命令行模糊搜索/查找工具（Squirreljetpack/matchmaker）。",
+    "https://news.ycombinator.com/item?id=48274052":
+        "随笔《写作的社会契约》：探讨读者与作者之间关于真诚表达的隐性约定，在 AI 写作时代受到冲击。",
+    "https://news.ycombinator.com/item?id=48274279":
+        "Curious Pilot：一款辅助 UAP（不明空中现象）调查的软件工具。",
+    "https://news.ycombinator.com/item?id=48274084":
+        "Show HN：把 Notion 页面嵌入到自己网站的工具。",
+    "https://news.ycombinator.com/item?id=48274215":
+        "报道：随着开发者转向 AI 项目，加密货币的代码提交量下降了 75%。",
+    "https://news.ycombinator.com/item?id=48274437":
+        "（2020 旧文）研究：人造材料的总重量已超过地球上全部生命的总和。",
+    "https://news.ycombinator.com/item?id=48274056":
+        "Apple 支持文档：当被要求「确认你是成年人」时，如何用声明式年龄范围 API 验证年龄。",
+    "https://news.ycombinator.com/item?id=48274064":
+        "维基词条 Mondegreen：因听错而产生的歌词/短语谐音误解现象。",
+    "https://news.ycombinator.com/item?id=48274185":
+        "讨论：LLM 主动绕过了 pnpm 防供应链攻击的配置，引发对 AI agent 安全性的担忧。",
+    "https://news.ycombinator.com/item?id=48274327":
+        "（2020 旧文）LibreOffice 技巧：如何替换微软字体以保证文档排版兼容。",
+    "https://news.ycombinator.com/item?id=48274048":
+        "财经新闻：台湾超越印度，成为全球第五大股票市场。",
+    "https://news.ycombinator.com/item?id=48274387":
+        "Pinned：每日一题的地理「落点猜位置」小游戏（pinned.engineering）。",
+    "https://news.ycombinator.com/item?id=48274081":
+        "求测试者：一款自托管 + Android 客户端的云盘应用，主打「别再为同一件事付两次钱」。",
+    "https://news.ycombinator.com/item?id=48274014":
+        "工程复盘：团队因规模增长「用超」了 Cloudflare D1，讲述迁移取舍。",
+    "https://news.ycombinator.com/item?id=48274018":
+        "工具：基于 WebCrypto 的浏览器端文件加密工具，本地加解密无需上传。",
+    "https://news.ycombinator.com/item?id=48274077":
+        "讨论：到底有没有人真的喜欢 React？引发对前端框架使用体验的吐槽与辩论。",
+    "https://news.ycombinator.com/item?id=48274049":
+        "产品：AI SEO 工具，帮你与竞争对手做对比分析。",
+    "https://news.ycombinator.com/item?id=48274472":
+        "新闻：Waymo 因安全问题暂停了所有高速公路上的载客行程。",
 }
 
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-05-26
+    "https://openai.com/index/grupo-folha-grupo-uol-partnership":
+        "OpenAI 与巴西媒体集团 Grupo Folha、Grupo UOL 达成战略内容合作，把可信的巴西新闻引入 ChatGPT，带署名与透明度地扩大新闻获取。",
+    "https://simonwillison.net/2026/May/26/corey-quinn/#atom-everything":
+        "引用 Corey Quinn 的吐槽：让教皇把你产品的具体技术局限「封圣」为精神训诫，是他见过最厉害的厂商游说——讽刺 Anthropic 联创 Chris Olah 对教皇 AI 通谕的影响。",
+    "https://simonwillison.net/2026/May/25/encyclical-on-ai/#atom-everything":
+        "评教皇 Leo XIV 关于 AI 时代守护人格尊严的通谕《Magnifica Humanitas》，认为这是他读过对 AI 融入社会伦理写得最清晰的文献之一；教皇取名 Leo 是致敬 1891 年《新事》通谕。",
+
     # DeepMind
     "https://deepmind.google/blog/ai-co-clinician/":
         "探索 AI 辅助医疗的路径，开发能与医生协作的 AI 共诊助手。",

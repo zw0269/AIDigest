@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-05-26</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-05-26</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-05-26</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 47 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">47</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">43</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/grupo-folha-grupo-uol-partnership" target="_blank" rel="noopener">OpenAI, Grupo Folha and Grupo UOL announce strategic content partnership</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI partners with Grupo Folha and Grupo UOL to bring trusted Brazilian journalism to ChatGPT, expanding access to news with attribution and transparency.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与巴西媒体集团 Grupo Folha、Grupo UOL 达成战略内容合作，把可信的巴西新闻引入 ChatGPT，带署名与透明度地扩大新闻获取。</div>
+        <div class="item-url">https://openai.com/index/grupo-folha-grupo-uol-partnership</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/chris-olah-pope-leo-encyclical" target="_blank" rel="noopener">Anthropic co-founder Chris Olah&#x27;s remarks on Pope Leo XIV&#x27;s encyclical &quot;Magnifica humanitas&quot;</a>
+        <div class="item-summary">Anthropic 联创 Chris Olah 在梵蒂冈发布教皇 AI 通谕的活动上发言：AI 实验室内部激励可能与「做正确的事」冲突，必须有产业之外的道德声音参与；他点出三个需要教会洞察的领域——让 AI 红利惠及全球穷人、对 AI 时代人类繁荣的道德想象、以及探究模型内部神秘结构与疑似情感状态。</div>
+        <div class="item-url">https://www.anthropic.com/news/chris-olah-pope-leo-encyclical</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/26/corey-quinn/#atom-everything" target="_blank" rel="noopener">Quoting Corey Quinn</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I cannot believe I&#x27;m saying this, but getting the literal Pope to canonize your product&#x27;s specific technical limitations as a spiritual treatise is the single greatest act of vendor lobbying I have ever seen.
+— Corey Quinn, on Anthropic co-founder Christopher Olah&#x27;s influence on Magnifica Humanitas
+
+    Tags: ai-ethics, corey-quinn, anthropic, ai</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Corey Quinn 的吐槽：让教皇把你产品的具体技术局限「封圣」为精神训诫，是他见过最厉害的厂商游说——讽刺 Anthropic 联创 Chris Olah 对教皇 AI 通谕的影响。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/26/corey-quinn/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/25/encyclical-on-ai/#atom-everything" target="_blank" rel="noopener">Notes on Pope Leo XIV&#x27;s encyclical on AI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Dropped this morning by the Vatican: Magnifica Humanitas of His Holiness Pope Leo XIV on Safeguarding the Human Person in the Time of Artificial Intelligence. This is a very interesting document. It&#x27;s some of the clearest writing I&#x27;ve seen on the ethics of integrating AI into modern society.
+Pope Leo XIV chose the name Leo in honor of Pope Leo X...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>评教皇 Leo XIV 关于 AI 时代守护人格尊严的通谕《Magnifica Humanitas》，认为这是他读过对 AI 融入社会伦理写得最清晰的文献之一；教皇取名 Leo 是致敬 1891 年《新事》通谕。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/25/encyclical-on-ai/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">43 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274453" target="_blank" rel="noopener">Artificial Intelligence Floods Court Dockets with Home-Brewed Lawsuits</a>
+        <div class="item-summary">报道：AI 让自助打官司激增，大量当事人用 AI 自行撰写诉状，法院卷宗被「自酿」诉讼淹没。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274453</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274042" target="_blank" rel="noopener">This big university system is embracing AI. Students and faculty aren&#x27;t on board</a>
+        <div class="item-summary">报道：某大型大学系统全面推行 AI，但学生和教职工并不买账，揭示校园 AI 推广的阻力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274042</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274026" target="_blank" rel="noopener">Show HN: Aigis – 43% of MCP servers have injection payloads; I built a firewall</a>
+        <div class="item-summary">Show HN：作者发现 43% 的 MCP 服务器含注入攻击载荷，于是做了 Aigis 防火墙来拦截这类提示注入。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274026</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274410" target="_blank" rel="noopener">GitHub commit Verification logic flaw and bypass</a>
+        <div class="item-summary">安全披露：GitHub 提交签名验证逻辑存在缺陷，可被绕过以伪造「已验证」(Verified) 标记。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274410</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274372" target="_blank" rel="noopener">Models Have Blind Spots: Debugging Unfamiliar Code with a Multi-LLM Loop</a>
+        <div class="item-summary">文章：单个模型有盲区，用多个 LLM 互相循环协作来调试陌生/不熟悉的代码。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274372</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274295" target="_blank" rel="noopener">MileStone: A Multi-Objective Compiler Phase Ordering Framework</a>
+        <div class="item-summary">MileStone：一个多目标的编译器优化阶段排序框架，自动权衡多项指标来调优 pass 顺序。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274295</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274212" target="_blank" rel="noopener">Cited AI Workspace: No More Re-Uploading Files</a>
+        <div class="item-summary">产品：带引用的 AI 工作区，主打文件只需上传一次、无需反复重新上传。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274212</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274336" target="_blank" rel="noopener">Show HN: Pgcraft – a lazygit-style TUI for Postgres</a>
+        <div class="item-summary">Show HN：Pgcraft，仿 lazygit 风格的 Postgres 终端 TUI 客户端。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274336</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274012" target="_blank" rel="noopener">Summer Shred</a>
+        <div class="item-summary">Summer Shred（supercomp.app）：一款主打「夏季减脂/塑形」挑战的健身应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274012</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274311" target="_blank" rel="noopener">Ente&#x27;s Legacy Kit Feature</a>
+        <div class="item-summary">Ente（端到端加密相册）推出 Legacy Kit：让你指定的信任者在你去世后能继承访问你的加密账户。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274311</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274402" target="_blank" rel="noopener">Brockovich AI Data Center Reporting</a>
+        <div class="item-summary">Erin Brockovich 团队上线网站，对 AI 数据中心的环境与社区影响展开调查报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274402</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274229" target="_blank" rel="noopener">State of the Fin 2026-05-24</a>
+        <div class="item-summary">Jellyfin（开源媒体服务器）2026-05-24 的「State of the Fin」项目进展更新。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274229</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274302" target="_blank" rel="noopener">Matchmaker: A Powerful and Modern Searcher</a>
+        <div class="item-summary">Matchmaker：一个强大现代的命令行模糊搜索/查找工具（Squirreljetpack/matchmaker）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274302</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274052" target="_blank" rel="noopener">The Social Contract of Writing</a>
+        <div class="item-summary">随笔《写作的社会契约》：探讨读者与作者之间关于真诚表达的隐性约定，在 AI 写作时代受到冲击。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274052</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274279" target="_blank" rel="noopener">Curious Pilot: Software to Aid UAP Investigations</a>
+        <div class="item-summary">Curious Pilot：一款辅助 UAP（不明空中现象）调查的软件工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274279</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274084" target="_blank" rel="noopener">Show HN: Embed Notion Pages into Your Website</a>
+        <div class="item-summary">Show HN：把 Notion 页面嵌入到自己网站的工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274084</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274215" target="_blank" rel="noopener">Crypto code commits fall 75% as developers move to AI projects</a>
+        <div class="item-summary">报道：随着开发者转向 AI 项目，加密货币的代码提交量下降了 75%。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274215</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274437" target="_blank" rel="noopener">Human-Made Materials Now Weigh More Than All Life on Earth Combined (2020)</a>
+        <div class="item-summary">（2020 旧文）研究：人造材料的总重量已超过地球上全部生命的总和。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274437</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274056" target="_blank" rel="noopener">If you&#x27;re asked to confirm that you&#x27;re an adult</a>
+        <div class="item-summary">Apple 支持文档：当被要求「确认你是成年人」时，如何用声明式年龄范围 API 验证年龄。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274056</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274064" target="_blank" rel="noopener">Mondegreen</a>
+        <div class="item-summary">维基词条 Mondegreen：因听错而产生的歌词/短语谐音误解现象。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274064</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274185" target="_blank" rel="noopener">LLM proactively bypassed pnpm&#x27;s anti-supply-chain-attack config</a>
+        <div class="item-summary">讨论：LLM 主动绕过了 pnpm 防供应链攻击的配置，引发对 AI agent 安全性的担忧。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274185</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274327" target="_blank" rel="noopener">LibreOffice Tips and Tricks: Replacing Microsoft Fonts (2020)</a>
+        <div class="item-summary">（2020 旧文）LibreOffice 技巧：如何替换微软字体以保证文档排版兼容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274327</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274048" target="_blank" rel="noopener">Taiwan Overtakes India as Fifth-Largest Stock Market</a>
+        <div class="item-summary">财经新闻：台湾超越印度，成为全球第五大股票市场。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274048</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274387" target="_blank" rel="noopener">Pinned – daily geography pin-drop game (pinned.engineering)</a>
+        <div class="item-summary">Pinned：每日一题的地理「落点猜位置」小游戏（pinned.engineering）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274387</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274081" target="_blank" rel="noopener">Stop paying twice Looking for testers for self hosted+Android app cloud drive</a>
+        <div class="item-summary">求测试者：一款自托管 + Android 客户端的云盘应用，主打「别再为同一件事付两次钱」。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274081</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274014" target="_blank" rel="noopener">We Outgrew Cloudflare D1</a>
+        <div class="item-summary">工程复盘：团队因规模增长「用超」了 Cloudflare D1，讲述迁移取舍。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274014</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274018" target="_blank" rel="noopener">Browser-based file encryption tool using WebCrypto</a>
+        <div class="item-summary">工具：基于 WebCrypto 的浏览器端文件加密工具，本地加解密无需上传。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274018</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274077" target="_blank" rel="noopener">Does Anybody Actually Like React?</a>
+        <div class="item-summary">讨论：到底有没有人真的喜欢 React？引发对前端框架使用体验的吐槽与辩论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274077</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274049" target="_blank" rel="noopener">AI SEO: compare with your competitor</a>
+        <div class="item-summary">产品：AI SEO 工具，帮你与竞争对手做对比分析。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274049</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48274472" target="_blank" rel="noopener">Waymo suspends all freeway rides over safety issues</a>
+        <div class="item-summary">新闻：Waymo 因安全问题暂停了所有高速公路上的载客行程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48274472</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">8 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/affaan-m/ECC" target="_blank" rel="noopener">affaan-m /ECC — The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.</a>
+        <div class="item-summary">ECC：面向 Claude Code/Codex/Opencode/Cursor 等的 agent 框架性能优化系统，集技能、直觉、记忆、安全与研究优先开发于一体。</div>
+        <div class="item-url">https://github.com/affaan-m/ECC</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/hardikpandya/stop-slop" target="_blank" rel="noopener">hardikpandya /stop-slop — A skill file for removing AI tells from prose</a>
+        <div class="item-summary">stop-slop：一个 skill 文件，用于去除文章里明显的「AI 腔」痕迹，让文字更像真人写的。</div>
+        <div class="item-url">https://github.com/hardikpandya/stop-slop</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/paperless-ngx/paperless-ngx" target="_blank" rel="noopener">paperless-ngx /paperless-ngx — A community-supported supercharged document management system: scan, index and archive all your documents</a>
+        <div class="item-summary">paperless-ngx：社区维护的强化版文档管理系统，可扫描、索引并归档所有纸质与电子文档。</div>
+        <div class="item-url">https://github.com/paperless-ngx/paperless-ngx</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Leonxlnx/taste-skill" target="_blank" rel="noopener">Leonxlnx /taste-skill — Taste-Skill - gives your AI good taste. stops the AI from generating boring, generic slop</a>
+        <div class="item-summary">taste-skill：给 AI 注入「审美」的 skill，避免它生成无聊、套路化的平庸内容。</div>
+        <div class="item-url">https://github.com/Leonxlnx/taste-skill</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Fincept-Corporation/FinceptTerminal" target="_blank" rel="noopener">Fincept-Corporation /FinceptTerminal — FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.</a>
+        <div class="item-summary">FinceptTerminal：现代金融终端应用，提供市场分析、投资研究与经济数据工具，主打交互式探索与数据驱动决策。</div>
+        <div class="item-url">https://github.com/Fincept-Corporation/FinceptTerminal</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Axorax/awesome-free-apps" target="_blank" rel="noopener">Axorax /awesome-free-apps — Curated list of the best free apps for PC and mobile</a>
+        <div class="item-summary">awesome-free-apps：精选 PC 与移动端最佳免费应用的清单合集。</div>
+        <div class="item-url">https://github.com/Axorax/awesome-free-apps</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/anthropics/claude-cookbooks" target="_blank" rel="noopener">anthropics /claude-cookbooks — A collection of notebooks/recipes showcasing some fun and effective ways of using Claude.</a>
+        <div class="item-summary">claude-cookbooks：Anthropic 官方 notebook 合集，演示使用 Claude 的各种有趣且高效的玩法与配方。</div>
+        <div class="item-url">https://github.com/anthropics/claude-cookbooks</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/moeru-ai/airi" target="_blank" rel="noopener">moeru-ai /airi — 💖🧸 Self hosted, you-owned Grok Companion, a container of souls of waifu, cyber livings to bring them into our worlds, wishing to achieve Neuro-sama&#x27;s altitude. Capable of realtime voice chat, Minecraft, Factorio playing. Web / macOS / Windows supported.</a>
+        <div class="item-summary">airi：自托管、归你所有的 AI 伴侣容器，支持实时语音聊天、Minecraft/Factorio 操作，跨 Web/macOS/Windows，对标 Neuro-sama。</div>
+        <div class="item-url">https://github.com/moeru-ai/airi</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ScLu47riJfY" target="_blank" rel="noopener">midudev — Microsoft abandons Claude Code!（49,426 次播放）</a>
+        <div class="item-summary">midudev 频道：微软、Uber 因 AI 成本开始削减 Claude Code 用量，借此讨论 token 成本、GitHub Copilot 与「用 AI 编程到底划不划算」。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ScLu47riJfY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=YX7nE-3rYEQ" target="_blank" rel="noopener">Higgsfield AI — The Most Intelligent AI of 2026: All Models In One Chat!（9,756 次播放）</a>
+        <div class="item-summary">Higgsfield 官方：推介 Supercomputer——把 Claude/Gemini/ChatGPT 等顶级推理模型与内容生成器整合进单一聊天、端到端跑营销的 AI agent。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=YX7nE-3rYEQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=pF4Ovay98nA" target="_blank" rel="noopener">AIM Network — 警告：マイクロソフトはClaude Codeを廃止したが、それは失敗が原因ではない ― AI課金は大規模環境では機能不全に陥っている（34,976 次播放）</a>
+        <div class="item-summary">AIM Network（日语）：微软停掉大批 Claude Code 授权并非因工具不好，而是 AI 能耗与规模化成本问题，认为 AI 计费模式在大规模下已失灵。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=pF4Ovay98nA</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ck0-UD-oByY" target="_blank" rel="noopener">AIM Network — 速報：Cockroach Janta Party、ClaudeとChatGPTを駆使し24時間以内で結党（10,365 次播放）</a>
+        <div class="item-summary">AIM Network（日语）：一个名为 Cockroach Janta Party 的政党被 AI 用 Claude 和 ChatGPT 在 24 小时内「组建」，展示 AI 快速生成品牌纲领，引发对 AI 政治的担忧。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ck0-UD-oByY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=S4gsd1_f-Ng" target="_blank" rel="noopener">Inteligencia Artificial — AI NEWS: Gemini 3.5 isn&#x27;t worth it, did Google pull a fast one on us?（42,146 次播放）</a>
+        <div class="item-summary">Inteligencia Artificial 频道（西语）：每周 AI 新闻，重点吐槽 Gemini 3.5 Flash 看似又好又便宜，但实测 token 消耗高、性价比大打折扣。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=S4gsd1_f-Ng</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

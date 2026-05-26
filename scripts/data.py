@@ -924,6 +924,76 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "产品：AI SEO 工具，帮你与竞争对手做对比分析。",
     "https://news.ycombinator.com/item?id=48274472":
         "新闻：Waymo 因安全问题暂停了所有高速公路上的载客行程。",
+
+    # 2026-05-26 第二批（retry arXiv 时新增的社区动态）— YouTube AI
+    "https://www.youtube.com/watch?v=rfKzTqCygE4":
+        "ANNnewsCH（日语新闻）：读卖巨人队主帅阿部慎之助涉嫌对 18 岁女儿施暴被捕后释放，其女儿先向 ChatGPT 咨询、依其建议联系了儿童咨询所而案发。",
+    "https://www.youtube.com/watch?v=MMKDinYD5LQ":
+        "（误命中）Sun Gemini 频道的泰卢固语电视剧《Srimati Annapurna Catering》每日精彩片段，与 AI 无关——「Gemini」是电视频道名。",
+    "https://www.youtube.com/watch?v=IZOGd8LxrTQ":
+        "（误命中）西班牙语双子座（Géminis）塔罗占卜视频，与 AI 无关——「Geminis」指星座。",
+
+    # 2026-05-26 第二批 — Hacker News Newest
+    "https://news.ycombinator.com/item?id=48275198":
+        "Manticore Search 博客：讲解如何让「xt850」与「xt 850」这类带空格差异的查询互相匹配（搜索分词/规范化技巧）。",
+    "https://news.ycombinator.com/item?id=48275331":
+        "（疑似垃圾/赚钱博客）标题「If you don't know you must know it」，指向一个声称「每天赚 3 美元」的免费 PDF 博客。",
+    "https://news.ycombinator.com/item?id=48275407":
+        "《纽约客》随笔：探讨为什么「做个普通人」如此之难——关于平凡与自我价值。",
+    "https://news.ycombinator.com/item?id=48275326":
+        "（疑似软文）Yahoo 财经健康版：「Gelatine Sculpt」减肥产品的 2026 专家指南，病毒式营销内容。",
+    "https://news.ycombinator.com/item?id=48275232":
+        "Show HN：Versionparser，处理各种版本号方案的 Java 库。",
+    "https://news.ycombinator.com/item?id=48275186":
+        "美联社：科技公司 CEO 再次被传唤到国会，就社交媒体的风险举行听证。",
+    "https://news.ycombinator.com/item?id=48275092":
+        "The Little Go Book：一本免费的 Go 语言入门书（开源）。",
+    "https://news.ycombinator.com/item?id=48275201":
+        "Alex Smola 博文：你不需要所有 LLM 基准——如何有针对性地挑选评测基准。",
+    "https://news.ycombinator.com/item?id=48275047":
+        "博文：给出「Agent Endpoint（智能体端点）」的工作定义。",
+    "https://news.ycombinator.com/item?id=48275038":
+        "Ask HN：你是何时、为何开始信仰上帝的？社区讨论帖。",
+    "https://news.ycombinator.com/item?id=48275395":
+        "Ask HN：最好的免费本地语音转文字（STT）方案是什么？",
+    "https://news.ycombinator.com/item?id=48275106":
+        "新闻：瑞典一辆自动驾驶巴士在载客服务首日就与有轨电车相撞。",
+    "https://news.ycombinator.com/item?id=48275072":
+        "哈佛商学院文章：AI 更可能是「增强」还是「取代」这些岗位？",
+    "https://news.ycombinator.com/item?id=48275098":
+        "Simon Willison 评教皇 Leo XIV 的 AI 通谕《Magnifica Humanitas》（该博文被转发到 HN）。",
+    "https://news.ycombinator.com/item?id=48275053":
+        "《金融时报》：发达国家的实际工资开始缩水。",
+    "https://news.ycombinator.com/item?id=48275360":
+        "视频：John Cleese 谈管理中的创造力。",
+    "https://news.ycombinator.com/item?id=48275113":
+        "《每日电讯报》：男生们制造「AI 女友」的风潮日益兴起，引发担忧。",
+    "https://news.ycombinator.com/item?id=48275398":
+        "Marc Randolph（Netflix 联创）推文：判断早期创业公司陷入麻烦的一个可靠信号。",
+    "https://news.ycombinator.com/item?id=48275251":
+        "Show HN：nilbox，给 AI agent 与 MCP 服务器用的桌面 GUI 沙箱。",
+    "https://news.ycombinator.com/item?id=48275337":
+        "Zed 博客：为何以及如何在 Zed 编辑器里运行本地大模型。",
+    "https://news.ycombinator.com/item?id=48275257":
+        "新闻：随着屏幕充斥课堂，美国学校对数字设备的反对声浪上升。",
+    "https://news.ycombinator.com/item?id=48275059":
+        "博文《The User Is Visibly Frustrated》：关于产品/AI 用户明显受挫体验的思考。",
+    "https://news.ycombinator.com/item?id=48275336":
+        "Ask HN：是 Codex 在提供更差的模型，还是只是它的 harness 变差了？",
+    "https://news.ycombinator.com/item?id=48275295":
+        "文章：CRPG 复兴（上）——以《辐射 Fallout》为例的回顾。",
+    "https://news.ycombinator.com/item?id=48275041":
+        "讨论：Google 表格换了新 favicon——但为什么？",
+    "https://news.ycombinator.com/item?id=48275121":
+        "Show HN：作者被 GPT Image 2 惊艳又折腾，于是做了个小工具（imagesv2.ai）。",
+    "https://news.ycombinator.com/item?id=48275255":
+        "博文：为 Pandoc 写的一个新 Typst 模板。",
+    "https://news.ycombinator.com/item?id=48275288":
+        "（2007 旧文）《卫报》：MySpace 会失去它的垄断地位吗？",
+    "https://news.ycombinator.com/item?id=48275148":
+        "（疑似软文）Medium 文章 Noioaapps：「我们的工具让你保持知情」（一个梦想）。",
+    "https://news.ycombinator.com/item?id=48275069":
+        "TechCrunch：NanoClaw 创始人拒绝 2000 万美元收购要约，转而完成 1200 万美元种子轮融资。",
 }
 
 
@@ -1624,5 +1694,67 @@ TRANSLATIONS: dict[str, str] = {
         "引用 Armin Ronacher 吐槽：现在最让人沮丧的失败模式是有人把观察到的问题丢给 LLM「克朗克」加工后再提 issue，结果是充满自信但完全错乱的根因分析、伪极简复现和错位类比。",
     "https://simonwillison.net/2026/May/24/usborne-mad-house/#atom-everything":
         "Usborne 公开 1980 年代《Creepy Computer Games》等 PDF，作者把 1983 年「Mad House」喂给 Claude，让它复刻成可玩的纯 JS/HTML 互动版本。",
+
+    # arXiv — 2026-05-26
+    "http://arxiv.org/abs/2605.26114v1":
+        "MobileGym：浏览器托管的轻量可控移动端 GUI agent 仿真平台，用结构化 JSON 状态做确定性判定提供可验证奖励信号，支持低成本并行 rollout 做在线 RL。",
+    "http://arxiv.org/abs/2605.26112v1":
+        "提出 agentic AI 的下一个瓶颈是「系统扩展」而非模型扩展，主张把基础模型外层的执行框架（harness）当作可审计、可验证的一等设计对象来优化。",
+    "http://arxiv.org/abs/2605.26111v1":
+        "用多模态大模型为扩散模型提供条件做主体驱动图像生成，兼顾指令遵循与身份保持、减少 copy-paste 伪影。",
+    "http://arxiv.org/abs/2605.26110v1":
+        "Prism：可复用的插件式基础设施，解决多模态持续指令微调（MCIT）需直接改基座代码的工程瓶颈，提升可复现性与扩展性。",
+    "http://arxiv.org/abs/2605.26106v1":
+        "LoopMDM：在掩码扩散语言模型中选择性循环前中段 Transformer 层，不加参数即获得深度扩展效应，提升训练效率与性能。",
+    "http://arxiv.org/abs/2605.26100v1":
+        "用 LLM 做结构感知的代码改动标注（重命名、移动、逻辑修改等类型），而非只做摘要/评论生成，以提升代码审查效率。",
+    "http://arxiv.org/abs/2605.26099v1":
+        "提出类「睡眠」巩固机制：模型周期性把近期上下文离线转化为持久 fast weights 再清空 KV 缓存，缓解注意力随上下文增长的扩展性差问题。",
+    "http://arxiv.org/abs/2605.26093v1":
+        "GoBOED：目标驱动的贝叶斯最优实验设计，直接面向给定决策目标优化实验，而非笼统地降低参数不确定性。",
+    "http://arxiv.org/abs/2605.26092v1":
+        "OrpQuant：用几何正交残差投影做无乘法器的 2 的幂次（PoT）Transformer 量化，突破对数量化的低角分辨率瓶颈，适配边缘设备部署。",
+    "http://arxiv.org/abs/2605.26087v1":
+        "DiscoverPhysics：交互式基准，让 LLM agent 在 22 个物理规律刻意偏离现实的模拟世界里去「发现」运动定律，区分真实推理与对已知科学的记忆。",
+    "http://arxiv.org/abs/2605.26086v1":
+        "Claw-Anything：评测常开型个人助理的基准，沿长程活动、对用户数字世界更广访问等三个维度扩展 agent 可用上下文。",
+    "http://arxiv.org/abs/2605.26081v1":
+        "VeriTrace：让深度研究 agent 的「心智模型」通过显式反馈持续演化，避免中间表示被混杂质量信息污染、沿依赖传播错误。",
+    "http://arxiv.org/abs/2605.26079v1":
+        "ABA：agentic 框架，系统性审计 AI 基准任务，挖出隐藏环境依赖、规格缺口与脆弱评分逻辑等人工标注难发现的问题。",
+    "http://arxiv.org/abs/2605.26074v1":
+        "StakeBench：基于「市场承诺」的语言理解评测框架，把 Polymarket/Manifold 上 56 万条评论与真实持仓/交易记录关联，用可观测市场行为做监督。",
+    "http://arxiv.org/abs/2605.26070v1":
+        "WhoSaidIt：人机协作的多语种「从文本推断说话者属性」再标注框架，用 LLM 浮现标注理由 + 聚焦分歧采样，在资源受限下稳定标签。",
+    "http://arxiv.org/abs/2605.26061v1":
+        "NSAC：受生物启发的连续时间注意力架构，把注意力 logit 计算建模为受 C.elegans 神经回路策略门控的 OU 随机微分方程，用于量化表示学习的不确定性。",
+    "http://arxiv.org/abs/2605.26046v1":
+        "研究多目标 prompt 优化 LLM 评审器时的失效模式：文本梯度方法产出自然语言批评而非数值向量，使多任务学习的冲突消解工具（PCGrad/MGDA）失效。",
+    "http://arxiv.org/abs/2605.26040v1":
+        "L2IR：图欺诈检测中欺诈者伪造大量与正常用户的连接稀释信号，该法挖掘可疑行为背后的潜在意图来提升 GNN 检测可靠性。",
+    "http://arxiv.org/abs/2605.26038v1":
+        "DRScaffold：为轻量视觉语言模型在密集场景推理中提供推理步与视觉实体/关系的显式接地，改善多目标多关系的联合定位与多步推理。",
+    "http://arxiv.org/abs/2605.26036v1":
+        "CityRep：跨城市、任务、模态的统一城市表征基准，用避免空间泄漏的划分方式纠正以往评测城市少、性能虚高的问题。",
+    "http://arxiv.org/abs/2605.26029v1":
+        "CausaLab：可扩展环境，评测 LLM agent 的交互式因果发现——既看能否用因果证据解题，也看其答案是否由对底层因果机制的正确假设支撑。",
+    "http://arxiv.org/abs/2605.26026v1":
+        "面向光片荧光显微（LSM）的多模态 3D 基础模型，少样本即可做分割、分类与去模糊，缓解 LSM 数据标注成本高、难规模化监督学习的问题。",
+    "http://arxiv.org/abs/2605.26014v1":
+        "STORM：在视频语言模型内部「内化」时空建模，避免靠文本 CoT/抽帧/重编码等外化推理来跟踪运动与时序，降低推理延迟与工程复杂度。",
+    "http://arxiv.org/abs/2605.26012v1":
+        "为深度强化学习加一个固定正交投影瓶颈，把编码特征约束到低维子空间，无需辅助目标或预训练即提升表示效率（含线性可实现性下的理论保证）。",
+    "http://arxiv.org/abs/2605.26004v1":
+        "MAGIC：免训练、仅前向的核心集选择法，为多模态指令微调挑出紧凑却行为忠实的子集，解决数据冗余、低视觉依赖、覆盖不均的问题。",
+    "http://arxiv.org/abs/2605.26001v1":
+        "提出用 AI 辅助「系统化」，把「推理」「公平」「创造力」等宽泛有争议的概念明确为可测量的结构化表述，以改进对生成式 AI 系统的评测。",
+    "http://arxiv.org/abs/2605.25998v1":
+        "主张 LLM 开发与评测中的许多核心问题本质是因果问题（加某数据域的效应、该路由到大还是小模型等），呼吁系统性引入因果方法。",
+    "http://arxiv.org/abs/2605.25988v1":
+        "研究 checker 引导的医疗 RAG：发现决定能否提供可训练梯度的是 checker 训练期的输出分布而非其留出准确率，并诊断信号坍缩与奖励黑客。",
+    "http://arxiv.org/abs/2605.25985v1":
+        "面向含多个自由变量的复杂逻辑查询（EFO_k）的可扩展神经符号搜索框架，解决传统只对单变量做边际排序、随自由变量增多迅速不可解的问题。",
+    "http://arxiv.org/abs/2605.25984v1":
+        "SafeCtrl-RL：推理时自适应行为控制框架，把对话生成建模为序列决策，用 RL agent 按上下文动态选择 prompt 调整策略，无需重训即抑制不安全行为。",
 }
 

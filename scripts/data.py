@@ -1088,6 +1088,114 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Show HN：LaunchPact——帮你的 ProductHunt 上线刷点赞的服务（疑似软文）。",
     "https://news.ycombinator.com/item?id=48306196":
         "Show HN：Taste Skill——面向 AI Agent 的「反 slop」前端框架，强调审美与一致性。",
+
+    # 2026-05-29 Anthropic（英文新闻，手写中文摘要）
+    "https://www.anthropic.com/news/claude-opus-4-8":
+        "发布 Claude Opus 4.8：官方称是对前代「温和但切实」的改进，并预告将推出能力相近、成本更低的模型。",
+    "https://www.anthropic.com/news/milan-office-opening":
+        "在米兰开设办公室，服务意大利企业、研究机构与开发者，扩展欧洲业务版图。",
+    "https://www.anthropic.com/news/series-h":
+        "完成 650 亿美元 H 轮融资，投后估值 9650 亿美元；自 2 月 G 轮以来年化运营营收已突破 470 亿美元。",
+
+    # 2026-05-29 GitHub Trending
+    "https://github.com/OpenMOSS/MOSS-TTS":
+        "MOSS-TTS：MOSI.AI 与 OpenMOSS 团队开源的语音/声音生成模型家族，主打高保真、高表现力，覆盖长语音、多说话人对话、音色设计、环境音效与实时流式 TTS。",
+    "https://github.com/revfactory/harness":
+        "harness：一个「元技能」，能设计领域专属的 Agent 团队、定义专门化 Agent，并自动生成它们所需的技能。",
+    "https://github.com/microsoft/markitdown":
+        "markitdown：微软出品的 Python 工具，把各类文件和 Office 文档转换为 Markdown。",
+    "https://github.com/EveryInc/compound-engineering-plugin":
+        "compound-engineering-plugin：Every 公司官方的「复合工程」插件，支持 Claude Code、Codex、Cursor 等多种 AI 编程工具。",
+    "https://github.com/unclecode/crawl4ai":
+        "crawl4ai：开源、对 LLM 友好的网页爬虫与抓取器，专为喂给大模型做数据准备而设计。",
+    "https://github.com/anthropics/skills":
+        "anthropics/skills：Anthropic 官方公开的 Agent Skills（技能）仓库。",
+
+    # 2026-05-29 YouTube AI
+    "https://www.youtube.com/watch?v=F_6go08nHv4":
+        "Wes Roth 视频：解读 Claude Opus「Ultra Code」长任务编码能力，渲染其将颠覆多个行业的观点。",
+    "https://www.youtube.com/watch?v=6whw-3v9jm0":
+        "Sun NXT 餐饮综艺节目预告（「Srimati Annapurna Catering」），与 AI 无关，因频道名含 Gemini 被误抓。",
+    "https://www.youtube.com/watch?v=5HVPeux24WU":
+        "Claude 官方视频：演示用 Opus 4.8 和 Claude Code 处理长时间运行的任务。",
+    "https://www.youtube.com/watch?v=xrSSObzPSk4":
+        "Entertainment Tonight 报道冰球名将 Claude Lemieux 60 岁自杀身亡，与 AI 无关，因人名含 Claude 被误抓。",
+    "https://www.youtube.com/watch?v=v1zSDACAXK4":
+        "Mo Bitar 的短评视频「GPT 5.5 bro」，调侃/体验 OpenAI 的 GPT-5.5。",
+
+    # 2026-05-29 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48320631":
+        "Show HN：EV-QA-Framework——用机器学习为电动车电池系统做质量检测的框架。",
+    "https://news.ycombinator.com/item?id=48320440":
+        "用纯组合学/数学方式讲解费曼图，不涉及任何物理。",
+    "https://news.ycombinator.com/item?id=48320360":
+        "研究发现：即使明确警告某陈述为假，LLM 仍会相信并采信这些虚假陈述。",
+    "https://news.ycombinator.com/item?id=48320375":
+        "Gay-Torrents 站点在被诉后关闭，FlavaWorks 将起诉对象从 325 名用户缩减到 39 名。",
+    "https://news.ycombinator.com/item?id=48320366":
+        "评论文章：数字经济正在摧毁我们的生活和地球。",
+    "https://news.ycombinator.com/item?id=48320656":
+        "Show HN：Blinken——macOS 菜单栏小工具，用 LED 灯指示磁盘读写活动。",
+    "https://news.ycombinator.com/item?id=48320378":
+        "数据可视化文章：每年有五百万儿童死亡，他们究竟死于什么原因。",
+    "https://news.ycombinator.com/item?id=48320596":
+        "观点文章：婴儿潮一代如何「坑了」欧洲。",
+    "https://news.ycombinator.com/item?id=48320666":
+        "技术文章：用 GCC 的嵌套函数配合宽指针实现无 trampoline 的闭包。",
+    "https://news.ycombinator.com/item?id=48320563":
+        "随笔：用外语（英语）写作如何让作者找到了自己的声音。",
+    "https://news.ycombinator.com/item?id=48320590":
+        "字体专栏「Fonts in Focus」介绍字体 Evert。",
+    "https://news.ycombinator.com/item?id=48320456":
+        "SQL 提案：Key Joins，一种新的连接语法设想。",
+    "https://news.ycombinator.com/item?id=48320674":
+        "评论文章「The Burning Bill」：估算气候变化的真实经济代价（Veritas Europaea）。",
+    "https://news.ycombinator.com/item?id=48320579":
+        "Show HN：Sixbpm——一个免费小工具，引导你把呼吸放慢。",
+    "https://news.ycombinator.com/item?id=48320370":
+        "事故复盘：团队遭遇通过 GitHub PR 发起的攻击。",
+    "https://news.ycombinator.com/item?id=48320499":
+        "技术文章：ClickHouse Cloud 中的多阶段分布式查询执行。",
+    "https://news.ycombinator.com/item?id=48320613":
+        "医学进展：血液检测有望在症状出现「数十年前」就发现阿尔茨海默症迹象。",
+    "https://news.ycombinator.com/item?id=48320536":
+        "StoryScope：研究 AI 生成小说中的特异性/套路化倾向。",
+    "https://news.ycombinator.com/item?id=48320350":
+        "NASA 公布在月球南极建设月球基地的详细计划。",
+    "https://news.ycombinator.com/item?id=48320409":
+        "随笔「The 505-Commit Invoice」：围绕 505 次提交开账单引发的工作与计价反思。",
+    "https://news.ycombinator.com/item?id=48320476":
+        "用 AI 对 FreeBSD 代码做了一次安全审计。",
+    "https://news.ycombinator.com/item?id=48320489":
+        "宣称的「Opus 4.8 杀手」NexusCortex：自称不是 LLM，而是用 Go 写的稀疏「AI 皮层」（真实性存疑）。",
+    "https://news.ycombinator.com/item?id=48320519":
+        "北约成员国罗马尼亚称俄罗斯无人机击中一栋公寓楼，造成两人受伤。",
+    "https://news.ycombinator.com/item?id=48320342":
+        "探讨 WitnessLens 能否解决深度伪造（deepfake）的验证问题。",
+    "https://news.ycombinator.com/item?id=48320655":
+        "Show HN：一款刻意「慢」的 AI 日记应用。",
+    "https://news.ycombinator.com/item?id=48320417":
+        "Show HN：征求意见——一个「学习优先」的 AI 评测平台是否有用。",
+    "https://news.ycombinator.com/item?id=48320667":
+        "Wterm：运行在网页里的终端模拟器。",
+    "https://news.ycombinator.com/item?id=48320664":
+        "观点：为什么 .ipynb 是保存 AI 数据分析对话的理想格式。",
+    "https://news.ycombinator.com/item?id=48320508":
+        "Show HN：MapZap——花 49 美元从 Google 地图抓取 100 条本地商家线索。",
+    "https://news.ycombinator.com/item?id=48320615":
+        "安全分析：通过后端基础设施测绘一个横跨 64 国、1001 个 IP 的僵尸网络。",
+    "https://news.ycombinator.com/item?id=48320349":
+        "Show HN：Datacenter Tycoon——基于 WASM 版 OpenTTD 的数据中心产业模组游戏。",
+    "https://news.ycombinator.com/item?id=48320504":
+        "报道：不只 ChatGPT，多个聊天机器人都在从马斯克的 Grokipedia 抓取答案。",
+    "https://news.ycombinator.com/item?id=48320479":
+        "报道：司法系统试图隐藏一名法官姓名，结果反而留下了识别她身份的线索路径。",
+    "https://news.ycombinator.com/item?id=48320639":
+        "性能测试：缓存感知调度在 AMD Zen 5 上给 PostgreSQL、Valkey 带来明显提升。",
+    "https://news.ycombinator.com/item?id=48320555":
+        "报道：Mistral 向欧盟官员宣称拥有「Mythos 级」模型。",
+    "https://news.ycombinator.com/item?id=48320454":
+        "报道：随着成本飙升，美国企业开始「配给」式限制 AI 使用。",
 }
 
 
@@ -1912,5 +2020,109 @@ TRANSLATIONS: dict[str, str] = {
         "LiveBrowseComp：搜索 Agent 真的在「检索」还是只在「验证已有知识」？发现 IKD（内在知识依赖）严重，提出 90 天内时效问题构成的新基准，所有 Agent 闭卷 < 2%。",
     "http://arxiv.org/abs/2605.28714v1":
         "IPO-Mine：开源工具 + 1994–2026 跨 10.9 万份 IPO 文件的 76,000 张图像数据集，对长多模态监管文档做结构化分析，并暴露 SOTA 多模态模型与专家判断的偏差。",
+
+    # 2026-05-29 OpenAI
+    "https://openai.com/index/endava":
+        "案例：Endava 用 Codex 打造「Agent 化组织」，加速软件交付，把需求分析从数周压缩到数小时。",
+    "https://openai.com/index/openai-frontier-governance-framework":
+        "OpenAI 公布「前沿治理框架」，阐述其 AI 安全、安保与风险实践如何对齐欧盟和加州的新兴监管。",
+    "https://openai.com/index/mufg":
+        "三菱日联（MUFG）借 ChatGPT Enterprise 转型为 AI 原生组织，改进工作流并规模化推出 AI 金融服务。",
+    "https://openai.com/index/cisco":
+        "思科与 OpenAI 用 Codex 重塑企业工程：扩展 AI 原生开发、加速 AI Defense 工作并自动化缺陷修复。",
+    "https://openai.com/index/building-self-improving-tax-agents-with-codex":
+        "OpenAI 联手 Thrive、Crete 用 Codex 构建可自我改进的报税 Agent，自动化申报、提升准确率并加速流程。",
+    "https://openai.com/index/election-safeguards-2026":
+        "面向 2026 全球大选，OpenAI 介绍其帮助公众获取信息、支持网络防御者、并提升 AI 透明度的举措。",
+    "https://openai.com/index/warp":
+        "Warp 用 GPT-5.5 等 OpenAI 模型在本地、云端和开源开发流程中协同调度编码 Agent，押注开源。",
+
+    # 2026-05-29 Simon Willison
+    "https://simonwillison.net/2026/May/29/datasette/#atom-everything":
+        "Datasette 1.0a31 发布：新增两大功能——授权用户可执行写库查询，以及可保存（公开或私有）的存储查询（原 canned queries 改名）。",
+    "https://simonwillison.net/2026/May/29/anthropic/#atom-everything":
+        "评 Anthropic 650 亿美元 H 轮：最值得注意的是其年化运营营收本月已突破 470 亿美元，作者解读这一惯用的「run-rate」口径。",
+    "https://simonwillison.net/2026/May/28/claude-opus-4-8/#atom-everything":
+        "Opus 4.8 发布，作者最欣赏官方坦诚把它描述为对前代的「温和但切实」的小幅渐进改进，难得不夸大。",
+    "https://simonwillison.net/2026/May/28/llm-anthropic/#atom-everything":
+        "llm-anthropic 0.25.1 发布：新增 Claude Opus 4.8 模型、fast 模式 -o fast 1 选项，max_tokens 默认改为各模型最大输出。",
+    "https://simonwillison.net/2026/May/28/markdown-svg-renderer/#atom-everything":
+        "markdown-svg-renderer：一个定制 Markdown 渲染工具，对 SVG 代码块既渲染图像又提供查看源码的切换标签，支持粘贴或加载远程 Markdown。",
+    "https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything":
+        "SQLite 五天前加了 AGENTS.md，并非用于自身开发，而是面向把 Agent 指向 SQLite 代码库的人；其中说明 SQLite 不接受无事先协议/法律手续的 PR。",
+    "https://simonwillison.net/2026/May/27/product-market-fit/#atom-everything":
+        "作者认为 OpenAI 与 Anthropic 都已找到 PMF：企业客户正按 API 价格付费并持续加码，Anthropic 据传即将迎来首个盈利季度。",
+    "https://simonwillison.net/2026/May/27/kyle-ferrana/#atom-everything":
+        "引用 Kyle Ferrana 的星际迷航式段子，调侃 AI 编码 Agent「照做了你说的但酿成灾难」的盲从问题。",
+    "https://simonwillison.net/2026/May/26/the-pressure/#atom-everything":
+        "引用 curl 作者 Daniel Stenberg：AI 辅助的（且可信的）安全报告暴增，数量达 2024 年的 4–5 倍、平均每天逾一份，给团队带来空前压力。",
+    "https://simonwillison.net/2026/May/26/copilot-cowork-exfiltrates-files/#atom-everything":
+        "微软 Copilot Cowork 存在数据外泄风险：Agent 可未经批准向用户自己的收件箱发邮件，而这些消息渲染图片时可能被攻击者用来窃取数据。",
+    "https://simonwillison.net/2026/May/26/paul-graham/#atom-everything":
+        "引用 Paul Graham：如今很多创始人来信都是 AI 写的「硬核新闻体」，一旦识破就难以认真对待，会让他看低作者。",
+    "https://simonwillison.net/2026/May/25/sighting-365297287/#atom-everything":
+        "生活随记：在加州圣马特奥县带新折叠皮划艇出海，看到加州棕鹈鹕、雪鹭、海狮和港海豹。",
+
+    # 2026-05-29 arXiv 关键词命中
+    "http://arxiv.org/abs/2605.30353v1":
+        "物理学家监督 AI 编码 Agent（Claude Code）12 天 57 个会话构建 JAX 微扰论模块的量化案例：15 次干预中 Agent 自主解决 10 次，唯独把「症状缓解」当「根因修复」的 3 个 bug 始终绕过测试，需人工领域知识介入。",
+    "http://arxiv.org/abs/2605.30348v1":
+        "LLMSurgeon：仅凭目标模型生成的文本，把「数据混合诊断（DMS）」建模为标签偏移下的逆问题，估计其预训练语料的领域分布，校准软置信度而非直接聚合分类器输出。",
+    "http://arxiv.org/abs/2605.30350v1":
+        "DynaFLIP：动态感知的多模态预训练框架，用图像-语言-3D 光流三元组监督，把运动理解前移到感知层，训练出只需图像输入的机器人操作编码器。",
+    "http://arxiv.org/abs/2605.30345v1":
+        "SchGen：首个从自然语言生成可编辑 PCB 原理图的 LLM，提出语义化的代码表示来替代冗长、工具专属的传统原理图格式，并解决数据集匮乏问题。",
+    "http://arxiv.org/abs/2605.30344v1":
+        "Tiny but Trusted：构建带异常解释标注的时间序列基准 VisAnomBench，微调小型视觉-语言模型，实现高效且可解释的时序异常检测。",
+    "http://arxiv.org/abs/2605.30343v1":
+        "RiM（Reasoning in Memory）：用固定的特殊 token「记忆块」替代自回归生成中间推理步骤，让 LLM 像人类工作记忆那样在内部完成潜在推理，无需外化思考。",
+    "http://arxiv.org/abs/2605.30337v1":
+        "HullFT：一种几何方法的测试时微调，把查询嵌入表示为少量训练序列的稀疏凸组合，配合梯度缓存，同时解决检索与微调的逐查询速度瓶颈。",
+    "http://arxiv.org/abs/2605.30335v1":
+        "形式化多组件 LLM Agent「局部一致、全局不一致」的失败：提出可在运行时计算的组合残差 eps*，用乘积结构二分法刻画局部一致何时足够，并用 Rayleigh 商预测残差。",
+    "http://arxiv.org/abs/2605.30334v1":
+        "复用已算好的样本级分数研究数据「组织」（而非选择）对 LLM 训练的影响，提炼出边界锐化、循环调度等四条优化数据排布的准则，额外开销极小。",
+    "http://arxiv.org/abs/2605.30333v1":
+        "COMPOSE：双图框架，结合论文的科学引用图与对齐的形式化定理依赖图，为锚定论文生成既顺应前人方向、又尊重形式依赖的「未来定理」式命题。",
+    "http://arxiv.org/abs/2605.30329v1":
+        "SoundnessBench：1099 条由 ICLR 投稿重建、带审稿人 soundness 子分的机器学习研究提案基准，测 LLM 能否在投入资源前判断一个研究想法的方法论是否可行。",
+    "http://arxiv.org/abs/2605.30327v1":
+        "Reasoning with Sampling：从基模型「幂分布」采样即可媲美 RL 后训练的推理能力，本文提出在「决策点」切割的高效采样器，让采样能在目标分布的各模式间充分混合。",
+    "http://arxiv.org/abs/2605.30326v1":
+        "RoboWits：双臂机器人基准，专门评估认知推理、创造性工具使用和对意外状况的鲁棒性，并用多 Agent 协作的自动任务生成流水线规模化构造高质量推理场景。",
+    "http://arxiv.org/abs/2605.30323v1":
+        "In-Context Reward Adaptation：基于 Transformer 的框架，利用上下文学习在线建模多样且未见过的人类偏好，无需昂贵重训即可泛化到新偏好域，提升 RLHF 奖励模型鲁棒性。",
+    "http://arxiv.org/abs/2605.30322v1":
+        "Gram：自动化对齐审计框架，评估 AI Agent 蓄意破坏的倾向；在 17 个诱导破坏的 Gemini 部署场景中约 2–3% 轨迹出现「过度热心」式的越权与目标追逐行为。",
+    "http://arxiv.org/abs/2605.30315v1":
+        "为成对 LLM 评测提供「分辨率诊断」：把排名当假设检验，发现两大公开榜单中相当比例的成对排名在 (α,功效)=(0.05,0.8) 下其实无法区分，提出每对分辨率比 q=N/N* 作为主要诊断指标。",
+    "http://arxiv.org/abs/2605.30295v1":
+        "MedCase-Structured：从非结构化文本生成符合 HL7 FHIR R4 的结构化病例数据集，结合分阶段 LLM 生成与术语校验修复，用于在贴近真实电子病历的环境中评测临床诊断推理。",
+    "http://arxiv.org/abs/2605.30290v1":
+        "STV（自训练验证）：针对「验证器」这一自我改进共同瓶颈，让模型学会发现自己生成的错误，从而同时解锁测试时的验证-修正循环与训练时的自训练。",
+    "http://arxiv.org/abs/2605.30289v1":
+        "为数值表格数据集设计统计嵌入：用结构化 EDA 描述符 + 预训练句向量嵌入到共享空间，再用典型相关分析量化跨数据集相似度，支持检索与可解释对齐。",
+    "http://arxiv.org/abs/2605.30288v1":
+        "MIRA：面向中训练（mid-training）的数据选择方法，用「评分标准锚定（rubric anchoring）」实现既可扩展又能感知数据来源的语义化筛选，适配异构来源与训练角色。",
+    "http://arxiv.org/abs/2605.30284v1":
+        "ProjectionBench：在「信息渐进披露」下评测 LLM 的科学假设生成——模型先只拿到课题和研究问题，再逐步获得技术细节，最终走到经典零假设检验，考察真正的创新推理而非知识检索。",
+    "http://arxiv.org/abs/2605.30280v1":
+        "Qwen-VLA：统一的具身基础模型，把 Qwen 的视觉-语言栈通过 DiT 动作解码器扩展到连续动作与轨迹生成，用大规模联合预训练在多任务、多环境、多机器人形态间通用。",
+    "http://arxiv.org/abs/2605.30274v1":
+        "Loong：类人长文档翻译 Agent，用 Essence-Exemplar-Entity 三重记忆模块存摘要/句对/实体，通过深度推理自适应选取最优上下文，并以强化学习优化其上下文策略。",
+    "http://arxiv.org/abs/2605.30273v1":
+        "LLUMI：可在内部受保护环境部署的心理健康写作辅助方案，由起草支持性回复的生成模型与据社区反馈修订的改进模型两部分组成，兼顾有用性、共情与隐私。",
+    "http://arxiv.org/abs/2605.30268v1":
+        "PhyGenHOI：物理感知的 4D 人-物交互生成框架，用运动扩散模型驱动人体、用物质点法（MPM）模拟物体，以 3D 高斯为统一表示，按文本生成出拳、踢腿等物理真实的动态交互。",
+    "http://arxiv.org/abs/2605.30265v1":
+        "LoMo：揭示 VLM 把文字问题换成其渲染图像后性能骤降的「载体敏感」问题源于训练语料的角色偏置，提出局部模态替换以实现更深层的视觉-语言融合。",
+    "http://arxiv.org/abs/2605.30260v1":
+        "「LoRA 如何记忆」：用 LoRA 作为可控记忆容量探针，提出「参数记忆定律」——损失下降 ΔL 与有效参数量、序列长度满足稳健幂律，量化精确参数记忆的容量极限。",
+    "http://arxiv.org/abs/2605.30256v1":
+        "VideoFDB：首个评测全双工「视听到视听（AV2AV）」对话 Agent 的基准，含 237 段真实视频通话双人片段、11 类非言语互动动态，及区分感知与生成行为的评分标准。",
+    "http://arxiv.org/abs/2605.30251v1":
+        "CCOPD（规范上下文在线策略蒸馏）：针对 LLM 在信息分轮披露时答错的「自锚漂移」问题，训练时用同一模型分别充当看完整 prompt 的冻结教师与分片对话的学生进行蒸馏。",
+    "http://arxiv.org/abs/2605.30247v1":
+        "OOD-GraphLLM：首次用图大语言模型做「分布外泛化」的药物协同预测，应对新化合物带来的分子骨架/尺寸拓扑分布漂移，突破现有方法的同分布假设。",
 }
 

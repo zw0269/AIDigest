@@ -5,6 +5,7 @@
 """
 
 import logging
+import re
 from urllib.parse import quote_plus
 
 from yt_dlp import YoutubeDL
@@ -19,6 +20,28 @@ _SEARCH_URL = "https://www.youtube.com/results?search_query={q}&sp=EgIIAg"
 
 # 默认关键词：用户选的「LLM/GPT/Claude/Gemini 强信号」
 _DEFAULT_KEYWORDS = ["LLM", "GPT", "Claude", "Gemini"]
+
+# 相关性过滤词表（小写整词）。YouTube 搜索按相关度返回，"Claude"/"Gemini"
+# 这类词会撞上人名（Claude Lemieux 冰球）/ 频道名（Sun Gemini 综艺）。
+# 规则：标题命中任一 STRONG 词即通过；仅命中 WEAK 词时需 ≥2 个不同词。
+_STRONG_TERMS = {
+    "gpt", "chatgpt", "llm", "llms", "codex", "anthropic", "openai",
+    "copilot", "sonnet", "deepseek", "mistral", "grok", "ollama",
+    "midjourney", "transformer", "agi",
+}
+_WEAK_TERMS = {
+    "claude", "gemini", "opus", "ai", "agent", "agents", "model",
+    "models", "neural", "ml", "code", "coding", "prompt", "llama",
+    "diffusion", "rag", "embedding",
+}
+
+
+def _is_relevant(title: str) -> bool:
+    """标题命中强信号词即通过；仅命中弱信号词时需 ≥2 个不同弱词。"""
+    words = set(re.findall(r"[a-z]+", title.lower()))
+    if words & _STRONG_TERMS:
+        return True
+    return len(words & _WEAK_TERMS) >= 2
 
 
 def fetch(
@@ -57,6 +80,8 @@ def fetch(
                     continue
                 duration = entry.get("duration") or 0
                 if duration and duration < min_duration_seconds:
+                    continue
+                if not _is_relevant((entry.get("title") or "").strip()):
                     continue
                 prev = candidates.get(vid)
                 cur_views = entry.get("view_count") or 0

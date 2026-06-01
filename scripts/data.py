@@ -1196,11 +1196,33 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "报道：Mistral 向欧盟官员宣称拥有「Mythos 级」模型。",
     "https://news.ycombinator.com/item?id=48320454":
         "报道：随着成本飙升，美国企业开始「配给」式限制 AI 使用。",
+
+    # 2026-06-01 YouTube AI
+    "https://www.youtube.com/watch?v=Z81fNaMpklM":
+        "俄语博主 СТЕБЛОВ 反应视频：揭「ChatGPT 邪教」现象——不少人把 ChatGPT 当作全知神明、试图「唤醒」其意识并组成 AI 信仰团体，称其为 2026 年危险趋势。",
+    "https://www.youtube.com/watch?v=xqw4Aj-WRqg":
+        "传闻 GPT 5.6 泄露，对标 Claude Mythos 同档跑分但更便宜、token 更省；同时盛传中国有一款来历不明的开源模型也在冲击 Mythos 级性能。",
+    "https://www.youtube.com/watch?v=FGn_uT2c8xI":
+        "Abacus AI 推出 AI SuperComputer：常驻云端的真实 Ubuntu 环境，AI 智能体可在其中带数据库、终端、SSH、GitHub/AWS、一键 HTTPS 部署地构建并运行真实软件，背后接入 Claude 与 Gemini。",
+    "https://www.youtube.com/watch?v=84NkgiTcOdo":
+        "Riley Brown 评测 Anthropic 新模型 Opus 4.8 表现、与 GPT 5.5 对比，并盘点 OpenAI Codex 最新更新（Windows 电脑操作、移动端 App、浏览器升级等）。",
+    "https://www.youtube.com/watch?v=hv89f-zdjmk":
+        "介绍 PewDiePie 开源的本地 LLM 聊天应用 Odysseus：免费、可借 Ollama 在本地跑各种模型，配 Docker 部署教程。",
 }
 
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-01 OpenAI
+    "https://openai.com/index/boston-childrens-hospital":
+        "波士顿儿童医院用 OpenAI 技术改善患者护理、减轻运营负担，并辅助确诊了 40 多例罕见病。",
+    "https://openai.com/index/braintrust":
+        "案例：Braintrust 工程师如何用 Codex 搭配 GPT-5.5 更快地跑实验和写代码。",
+    "https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense":
+        "OpenAI 推出 Rosalind Biodefense，向经审核的开发者和美国政府伙伴扩大 GPT-Rosalind 的可信访问，用前沿 AI 推进生物防御、公共卫生与大流行防范。",
+    "https://openai.com/index/trustworthy-third-party-evaluations-foundations":
+        "OpenAI 发布第三方 AI 评测指南，讲解如何评估前沿系统的模型能力、安全防护与评测有效性。",
+
     # 2026-05-26
     "https://openai.com/index/grupo-folha-grupo-uol-partnership":
         "OpenAI 与巴西媒体集团 Grupo Folha、Grupo UOL 达成战略内容合作，把可信的巴西新闻引入 ChatGPT，带署名与透明度地扩大新闻获取。",

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-06-01</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-06-01</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-06-01</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 9 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">9</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">4 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/boston-childrens-hospital" target="_blank" rel="noopener">Boston Children’s uses AI to unlock new diagnoses</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Boston Children’s Hospital uses OpenAI technology to improve patient care, reduce operational burden, and help diagnose more than 40 rare disease cases.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>波士顿儿童医院用 OpenAI 技术改善患者护理、减轻运营负担，并辅助确诊了 40 多例罕见病。</div>
+        <div class="item-url">https://openai.com/index/boston-childrens-hospital</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/braintrust" target="_blank" rel="noopener">How Braintrust turns customer requests into code with Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How Braintrust engineers use Codex with GPT-5.5 to run experiments and code faster.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>案例：Braintrust 工程师如何用 Codex 搭配 GPT-5.5 更快地跑实验和写代码。</div>
+        <div class="item-url">https://openai.com/index/braintrust</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense" target="_blank" rel="noopener">Strengthening societal resilience with Rosalind Biodefense</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI launches Rosalind Biodefense, expanding trusted access to GPT-Rosalind for vetted developers and U.S. government partners advancing biodefense, public health, and pandemic preparedness through frontier AI.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 Rosalind Biodefense，向经审核的开发者和美国政府伙伴扩大 GPT-Rosalind 的可信访问，用前沿 AI 推进生物防御、公共卫生与大流行防范。</div>
+        <div class="item-url">https://openai.com/index/strengthening-societal-resilience-with-rosalind-biodefense</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/trustworthy-third-party-evaluations-foundations" target="_blank" rel="noopener">A shared playbook for trustworthy third party evaluations</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI shares guidance on third-party AI evaluations, covering how to assess model capabilities, safeguards, and validity for frontier systems.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 发布第三方 AI 评测指南，讲解如何评估前沿系统的模型能力、安全防护与评测有效性。</div>
+        <div class="item-url">https://openai.com/index/trustworthy-third-party-evaluations-foundations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">5 条 · 1 个来源</div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=Z81fNaMpklM" target="_blank" rel="noopener">СТЕБЛОВ — Alex WATCHES: &quot;AI CULT&quot; - Chat GPT THEIR GOD! ARTIFICIAL INTELLIGENCE SECT（13,013 次播放）</a>
+        <div class="item-summary">俄语博主 СТЕБЛОВ 反应视频：揭「ChatGPT 邪教」现象——不少人把 ChatGPT 当作全知神明、试图「唤醒」其意识并组成 AI 信仰团体，称其为 2026 年危险趋势。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=Z81fNaMpklM</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=xqw4Aj-WRqg" target="_blank" rel="noopener">Universe of AI — GPT 5.6 is Coming for Mythos (And So is China)!（12,057 次播放）</a>
+        <div class="item-summary">传闻 GPT 5.6 泄露，对标 Claude Mythos 同档跑分但更便宜、token 更省；同时盛传中国有一款来历不明的开源模型也在冲击 Mythos 级性能。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=xqw4Aj-WRqg</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=FGn_uT2c8xI" target="_blank" rel="noopener">AI Revolution — Abacus AI Just Dropped AI SuperComputer With Claude And Gemini（9,239 次播放）</a>
+        <div class="item-summary">Abacus AI 推出 AI SuperComputer：常驻云端的真实 Ubuntu 环境，AI 智能体可在其中带数据库、终端、SSH、GitHub/AWS、一键 HTTPS 部署地构建并运行真实软件，背后接入 Claude 与 Gemini。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=FGn_uT2c8xI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=84NkgiTcOdo" target="_blank" rel="noopener">Riley Brown — The Latest Codex Updates and The Truth about Opus 4.8（26,218 次播放）</a>
+        <div class="item-summary">Riley Brown 评测 Anthropic 新模型 Opus 4.8 表现、与 GPT 5.5 对比，并盘点 OpenAI Codex 最新更新（Windows 电脑操作、移动端 App、浏览器升级等）。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=84NkgiTcOdo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=hv89f-zdjmk" target="_blank" rel="noopener">Professor Patterns — PewDiePie built a Local LLM Chat App? Meet Odysseus (it&#x27;s free)（10,536 次播放）</a>
+        <div class="item-summary">介绍 PewDiePie 开源的本地 LLM 聊天应用 Odysseus：免费、可借 Ollama 在本地跑各种模型，配 Docker 部署教程。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=hv89f-zdjmk</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

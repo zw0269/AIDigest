@@ -1208,11 +1208,181 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Riley Brown 评测 Anthropic 新模型 Opus 4.8 表现、与 GPT 5.5 对比，并盘点 OpenAI Codex 最新更新（Windows 电脑操作、移动端 App、浏览器升级等）。",
     "https://www.youtube.com/watch?v=hv89f-zdjmk":
         "介绍 PewDiePie 开源的本地 LLM 聊天应用 Odysseus：免费、可借 Ollama 在本地跑各种模型，配 Docker 部署教程。",
+
+    # 2026-06-02 公司动态（HTML / 中文源）
+    "https://www.anthropic.com/news/confidential-draft-s1-sec":
+        "Anthropic 向美国 SEC 秘密递交 S-1 草案文件，启动潜在 IPO 上市流程的保密审阅阶段。",
+    "https://transformer-circuits.pub/2026/may-update/index.html":
+        "Anthropic 可解释性团队 2026 年 5 月《Circuits Updates》：机制可解释性研究月度进展合集（特征、电路、归因等多篇短文更新）。",
+
+    # 2026-06-02 GitHub Trending
+    "https://github.com/OpenBMB/VoxCPM":
+        "OpenBMB 的 VoxCPM2：免分词器（tokenizer-free）TTS 模型，支持多语种语音生成、创意音色设计与逼真声音克隆。",
+    "https://github.com/godotengine/godot":
+        "Godot 引擎：跨平台开源 2D/3D 游戏引擎。",
+    "https://github.com/supermemoryai/supermemory":
+        "supermemory：面向 AI 时代的高速可扩展记忆引擎与 Memory API，附配套应用。",
+    "https://github.com/stefan-jansen/machine-learning-for-trading":
+        "《机器学习用于算法交易（第 2 版）》配套代码库。",
+    "https://github.com/nesquena/hermes-webui":
+        "Hermes WebUI：从网页或手机使用 Hermes Agent 的前端界面。",
+    "https://github.com/dmtrKovalenko/fff":
+        "fff：面向 AI 智能体、Neovim、Rust/C/Node.js 的高速高精度文件搜索工具包。",
+    "https://github.com/TauricResearch/TradingAgents":
+        "TradingAgents：多智能体 LLM 金融交易框架。",
+    "https://github.com/FareedKhan-dev/train-llm-from-scratch":
+        "train-llm-from-scratch：从下载数据到生成文本，从零训练自己 LLM 的简明教程代码。",
+    "https://github.com/pbakaus/impeccable":
+        "impeccable：一套让 AI 编码工具更擅长做设计的「设计语言」。",
+
+    # 2026-06-02 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48367353":
+        "安全预警：通过「错误预言机（Error Oracle）」侧信道泄露信息，提醒 Maravel/Lumen 用户注意。",
+    "https://news.ycombinator.com/item?id=48367405":
+        "佛罗里达州起诉 OpenAI 和 Sam Altman，指控其存在安全疏失。",
+    "https://news.ycombinator.com/item?id=48367550":
+        "分享一款帮你省空调电费的小工具。",
+    "https://news.ycombinator.com/item?id=48367296":
+        "南非 Wonderwerk 洞穴出现早更新世人类用火的新证据。",
+    "https://news.ycombinator.com/item?id=48367491":
+        "报道：欧盟拟加入美国主导的芯片联盟「Pax Silica」，以对抗中国的 AI 竞赛。",
+    "https://news.ycombinator.com/item?id=48367464":
+        "研究：可通过测量 SSD 活动来窥探用户的浏览行为。",
+    "https://news.ycombinator.com/item?id=48367547":
+        "观点：世界模型所需数据量比 LLM 指数级地少。",
+    "https://news.ycombinator.com/item?id=48367303":
+        "批评：SAFe、LeSS、Nexus 这几套规模化敏捷框架都行不通。",
+    "https://news.ycombinator.com/item?id=48367223":
+        "报道：一所大学系统全面押注 AI，如今内部因此分崩离析。",
+    "https://news.ycombinator.com/item?id=48367260":
+        "AI 激光灭蚊防御系统 2.0 版发布。",
+    "https://news.ycombinator.com/item?id=48367256":
+        "Show HN：为厌倦劣质会议周边的开发者打造的 T 恤品牌。",
+    "https://news.ycombinator.com/item?id=48367292":
+        "黑客诱骗 Meta AI 客服机器人，借此入侵奥巴马白宫的 Instagram 账号。",
+    "https://news.ycombinator.com/item?id=48367247":
+        "工程复盘（2022）：把 Instagram 基础视频的计算耗时降低 94%。",
+    "https://news.ycombinator.com/item?id=48367355":
+        "评论文章《致美国：曾经你很了不起》。",
+    "https://news.ycombinator.com/item?id=48367211":
+        "技术分享：用 Jank（Clojure 方言）做光线追踪。",
+    "https://news.ycombinator.com/item?id=48367301":
+        "Show HN：为 Home Assistant 做的 Assist 调试卡片。",
+    "https://news.ycombinator.com/item?id=48367520":
+        "NBA 球星斯蒂芬·库里与中国品牌李宁签订球鞋代言合约。",
+    "https://news.ycombinator.com/item?id=48367294":
+        "观点：为什么合并冲突（merge conflict）成了智能体编码的新瓶颈。",
+    "https://news.ycombinator.com/item?id=48367362":
+        "大众通过 API 变更削减车主访问自己车辆数据的权限。",
+    "https://news.ycombinator.com/item?id=48367388":
+        "OpenAIRE 举办 AI 黑客松。",
+    "https://news.ycombinator.com/item?id=48367266":
+        "巴西已禁止「成瘾式设计」，但关键监管细节仍待落实。",
+    "https://news.ycombinator.com/item?id=48367540":
+        "OpsGrid：一眼总览云基础设施栈的工具。",
+    "https://news.ycombinator.com/item?id=48367393":
+        "民科式理论：用一条递归公式贯通所有尺度的「万物共振层级」。",
+    "https://news.ycombinator.com/item?id=48367497":
+        "伦敦网友求助：整理一份 AI 圈值得关注的 X（推特）账号清单。",
+    "https://news.ycombinator.com/item?id=48367412":
+        "长文：在太空中建立「帝国」的现实有多混乱。",
+    "https://news.ycombinator.com/item?id=48367253":
+        "Cloudflare CDN 2026 定价分析：每 GB 真实成本、隐藏费用与最佳替代方案。",
+    "https://news.ycombinator.com/item?id=48367553":
+        "观点：技术面试正在淘汰错误的工程师。",
+    "https://news.ycombinator.com/item?id=48367506":
+        "技巧分享：用符号链接把个人博客和书稿纳入 Obsidian 知识库。",
+    "https://news.ycombinator.com/item?id=48367245":
+        "视频：快餐业的数字化革命——快餐为何变得如此昂贵。",
+    "https://news.ycombinator.com/item?id=48367408":
+        "ChatGPhish：把网页本身当作攻击载荷的钓鱼手法。",
+
+    # 2026-06-02 YouTube AI
+    "https://www.youtube.com/watch?v=cS0Tm6ddnsQ":
+        "Wes Roth AI 资讯：盘点 GPT-5.6 即将发布的传闻，以及 OpenAI/Google/Anthropic/英伟达/开源圈近期动态。",
+    "https://www.youtube.com/watch?v=g9lnL8PLlm8":
+        "Daniel Hentschel 视频：讨论一起将儿子之死归咎于 ChatGPT 的案例（AI 与心理健康责任争议）。",
+    "https://www.youtube.com/watch?v=LWji1B_7VBo":
+        "Paul Barron 演示并采访 CEO：多资产交易平台 Liquid 推出 Co-Invest，让用户直接在 ChatGPT 和 Claude 里下真实交易，覆盖加密货币、股票、外汇、Polymarket 等。",
+    "https://www.youtube.com/watch?v=aMyubFA106U":
+        "Peter Diamandis 播客 EP#260：讨论 Anthropic Opus 4.8 发布、OpenAI 基金会、Demis Hassabis 对 AGI 的预测以及 AI 极端主义抬头。",
+    "https://www.youtube.com/watch?v=sfCm60LVVuI":
+        "코드팩토리（韩语）：13 分钟速讲 20 条 Claude Code 必备实用技巧。",
 }
 
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-02 OpenAI
+    "https://openai.com/index/our-views-on-ai-policy-and-political-advocacy":
+        "OpenAI 阐明其 AI 政策与政治游说立场：保持透明、支持审慎监管与 AI 安全，并强调没有任何外部政治团体能代表公司发声。",
+    "https://openai.com/index/stargate-michigan-data-center":
+        "作为 Stargate 计划一部分，OpenAI 在密歇根州动工建设 1GW 数据中心，扩建 AI 算力、创造就业并惠及当地社区。",
+    "https://openai.com/index/openai-frontier-models-and-codex-are-now-available-on-aws":
+        "OpenAI 前沿模型与 Codex 正式上架 AWS，企业可在自己已有的 AWS 环境、权限和采购流程中调用 OpenAI，更快从评估走向生产。",
+
+    # 2026-06-02 arXiv 关键词命中
+    "http://arxiv.org/abs/2606.02578v1":
+        "提出「感知判断偏差」概念：多模态 LLM 评委在视觉证据与文本冲突时偏向文本叙事；用感知扰动与奖励建模来缓解。",
+    "http://arxiv.org/abs/2606.02576v1":
+        "ProtoAda：用原型引导的自适应适配器扩展与几何整合，改进多模态持续指令微调中专家路由易错配的问题。",
+    "http://arxiv.org/abs/2606.02569v1":
+        "AdaCodec：为视频 MLLM 设计「预测式视觉编码」接口，仅在场景无法从上文预测时才发送完整帧，否则只传帧间变化，减少冗余视觉 token。",
+    "http://arxiv.org/abs/2606.02568v1":
+        "ClinEnv：交互式多阶段长程电子病历环境，把真实住院病例拆成有序决策阶段，评测 LLM 作为主治医生的纵向诊疗能力。",
+    "http://arxiv.org/abs/2606.02562v1":
+        "为交互式机器人提出可验证的信念空间神经安全过滤器，在人为不确定性下兼顾安全保证与任务效率。",
+    "http://arxiv.org/abs/2606.02559v1":
+        "重新审视 LLM 替换式压缩的粒度：冗余并非局限于连续整层，提出按子模块（注意力/FFN）差异化选择移除组件。",
+    "http://arxiv.org/abs/2606.02556v1":
+        "HERO'S JOURNEY 基准：用文本游戏考察 LLM 从演示中归纳隐藏规则并多步执行的能力，发现模型规则归纳有限且执行存在瓶颈。",
+    "http://arxiv.org/abs/2606.02552v1":
+        "针对深度估计的「飞点」假象，提出混合密度表示，让边界像素保留前景/背景两种深度假设，实现无飞点深度估计。",
+    "http://arxiv.org/abs/2606.02548v1":
+        "SN-WER：脚本归一化词错率，先将参考与识别文本转写到统一书写系统再算 WER，纠正多书写体印度语 ASR 评测的高估问题。",
+    "http://arxiv.org/abs/2606.02545v1":
+        "用证据增强的机器学习方法（结合 LLM 筛查）从急诊分诊记录中识别自残，并验证其在多家澳大利亚医院间的可迁移性。",
+    "http://arxiv.org/abs/2606.02544v1":
+        "SimSD：为扩散语言模型设计简单的推测解码方案，克服掩码双向注意力与传统 token 级推测解码不兼容的问题以加速推理。",
+    "http://arxiv.org/abs/2606.02540v1":
+        "SkillHarm：覆盖技能使用全生命周期的「技能投毒」攻击基准，配套技能相关风险的系统化分类。",
+    "http://arxiv.org/abs/2606.02536v1":
+        "提出用文本嵌入空间中的「特质向量」来度量智能体特质：基于技能文件改动前后的差异训练线性模型，量化编辑如何改变智能体行为。",
+    "http://arxiv.org/abs/2606.02530v1":
+        "SafeSteer：仅对稀疏的安全 token 做在线策略蒸馏的局部化对齐方法，缓解安全对齐带来的通用能力「对齐税」。",
+    "http://arxiv.org/abs/2606.02528v1":
+        "审计金融 LLM 的资产偏好：以比特币为例的三层审计协议，发现模型对比特币的排序随提示框架变化，且该内部表征会影响下游投资决策。",
+    "http://arxiv.org/abs/2606.02522v1":
+        "Moment-Video 基准：诊断视频 MLLM 对仅持续数帧的「瞬时视觉事件」的时间保真度，揭示稀疏采样/token 压缩易漏关键证据。",
+    "http://arxiv.org/abs/2606.02521v1":
+        "DrPO（漂移偏好优化）：面向确定性一步生成图像模型的在线偏好微调方法，无需策略似然或去噪轨迹即可对齐。",
+    "http://arxiv.org/abs/2606.02509v1":
+        "当评分量表不足时：用 LLM 从土耳其语教师叙述文本中挖掘结构化量表未捕捉到的 ADHD 信号。",
+    "http://arxiv.org/abs/2606.02502v1":
+        "CRAM：质心路由 + 自适应 MoE 的多模态持续指令微调方法，兼顾减少任务间干扰与参数效率。",
+    "http://arxiv.org/abs/2606.02497v1":
+        "用 LLM 智能体打通时序预测「最后一公里」：把节假日、营销活动、外部事件等弱结构化业务上下文纳入，修正统计基线得到可决策的预测。",
+    "http://arxiv.org/abs/2606.02494v1":
+        "为尚不可靠的智能体系统提出监控与分诊方法：从质量/适配性/效率三维、三种监控范围出发，用方差作为表征信号定位结构性缺陷。",
+    "http://arxiv.org/abs/2606.02493v1":
+        "FRANZ 框架：对 LLM 回答的「表达方式」做沟通式审计（文化定位、泛化措辞、拟人化暗示、对话规范），而非只看事实正确性。",
+    "http://arxiv.org/abs/2606.02488v1":
+        "RASER：面向多跳问答的「可恢复性感知选择性升级路由」，对单轮 RAG 已能答对的问题不再额外检索，节省 LLM 调用预算。",
+    "http://arxiv.org/abs/2606.02487v1":
+        "面向住院记录的多学科摘要：先用 LLM 微调做句子级临床来源归类（医生/护士/治疗师），再做结构化汇总。",
+    "http://arxiv.org/abs/2606.02484v1":
+        "Iteris：面向计算数学开放问题的智能体研究循环系统，结合证明、数值实验、对抗构造与算法设计。",
+    "http://arxiv.org/abs/2606.02483v1":
+        "「幽灵工具调用」：智能体为隐藏延迟而推测性发起的工具调用会在确定分支前向外部服务泄露用户意图；提出推测工具隐私契约运行时抽象。",
+    "http://arxiv.org/abs/2606.02470v1":
+        "MCP-Persona：首个针对个人社交类应用的 MCP 智能体基准，通过环境模拟评测智能体操作个人账户/本地数据库的实际表现。",
+    "http://arxiv.org/abs/2606.02465v1":
+        "Luar：让推理模型「学会何时翻译」的语言理解边界感知强化学习框架，仅在模型无法可靠理解原语时才译成英语，减少多语推理差距。",
+    "http://arxiv.org/abs/2606.02463v1":
+        "MASER：面向具身 3D 空间智能的模态自适应专家路由，训练共享 VLM 主干的五个模态适配器并学习神经路由策略按问题语义选模态。",
+    "http://arxiv.org/abs/2606.02461v1":
+        "AGENTCL：严格评测语言智能体「持续学习」能力的基准，考察其跨任务流积累并复用经验、随时间提升且避免无关经验干扰。",
+
     # 2026-06-01 OpenAI
     "https://openai.com/index/boston-childrens-hospital":
         "波士顿儿童医院用 OpenAI 技术改善患者护理、减轻运营负担，并辅助确诊了 40 多例罕见病。",

@@ -121,6 +121,50 @@ MANUAL_SUMMARIES: dict[str, str] = {
     "https://news.ycombinator.com/item?id=48415811":
         "音乐人 BERNTH 的 150 万订阅 YouTube 频道因漏看实体邮件被取消盈利资格（视频）。",
 
+    # 2026-06-06 社区动态（第二批刷新）
+    "https://www.youtube.com/watch?v=5oDTKkfFX8c":
+        "Trevor Prescott（日语）演示如何用 Claude AI 构建链上 AI 交易机器人，含代码、配置指南和实盘交易结果。",
+    "https://www.youtube.com/watch?v=d-pHecFIv_4":
+        "Shane Hummus 介绍 5 个能用 Claude AI 快速上手的线上工作。",
+    "https://www.youtube.com/watch?v=inu2GK77lCg":
+        "基隆迪语节目（IKOSORA MEDIA TV 第 175 集）讨论用 ChatGPT 上网获取知识。",
+    "https://news.ycombinator.com/item?id=48416218":
+        "SupXML：现代、内存安全、可直接替换 libxml2 的 XML 解析器。",
+    "https://news.ycombinator.com/item?id=48416067":
+        "随笔：在压力下弯曲，但不向无理弯曲。",
+    "https://news.ycombinator.com/item?id=48416053":
+        "Chrome 在 Speedometer 3.1 与 JetStream 3 基准上再创纪录。",
+    "https://news.ycombinator.com/item?id=48416229":
+        "报道：在与 Google 的重磅交易后，Meta 考虑大规模股权融资。",
+    "https://news.ycombinator.com/item?id=48416226":
+        "实时实验：众包推理代理、奖励表现最优者。",
+    "https://news.ycombinator.com/item?id=48416221":
+        "讨论帖：Mythos 找出了 bug，但谁来出资修复？",
+    "https://news.ycombinator.com/item?id=48416155":
+        "Azure Functions Core Tools 仓库被下架。",
+    "https://news.ycombinator.com/item?id=48416204":
+        "实时实验：众包推理代理、奖励表现最优者（与另一帖同题）。",
+    "https://news.ycombinator.com/item?id=48416044":
+        "Grub 卷土重来：无需许可地抓取网络。",
+    "https://news.ycombinator.com/item?id=48416099":
+        "Show HN：Fooglemap，本地餐厅发现地图。",
+    "https://news.ycombinator.com/item?id=48416233":
+        "用 OpenSearch 与 Elasticsearch 实现的代理式搜索模型。",
+    "https://news.ycombinator.com/item?id=48416207":
+        "用 74k 词和 CPU 玩 ZOEAE：作者如何为咬文嚼字的文字游戏迷构建字典。",
+    "https://news.ycombinator.com/item?id=48416123":
+        "Show HN：用 Veritrooper 审计任意 AI/数据配对。",
+    "https://news.ycombinator.com/item?id=48416192":
+        "征求测试：PhoenixDKIM，注重安全的 DKIM milter。",
+    "https://news.ycombinator.com/item?id=48416129":
+        "Show HN：用 MCP 工具与你的 .eml 邮件文件交互。",
+    "https://news.ycombinator.com/item?id=48416179":
+        "约会为何崩坏：恋爱数据从令人愉悦变得令人痛苦的背后。",
+    "https://news.ycombinator.com/item?id=48416093":
+        "报道：Meta 在全美搭帐篷以安置 AI 服务器。",
+    "https://news.ycombinator.com/item?id=48416134":
+        "回顾：我在 Meta（Facebook）第一年的反思。",
+
     "https://www.anthropic.com/news/claude-for-small-business":
         "推出 Claude for Small Business：一套连接器 + 即开即用工作流的打包方案，把 Claude 嵌入小企业日常使用的工具中。",
     "https://www.anthropic.com/news/pwc-expanded-partnership":
@@ -1425,6 +1469,68 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-06 arXiv 关键词命中
+    "http://arxiv.org/abs/2606.06494v1":
+        "TailLoR：参数高效持续学习——用预训练权重的奇异基作固定参考系对奇异值矩阵学低秩更新，软谱惩罚抑制主奇异方向、把精细适配导入长尾谱坐标以减少干扰。",
+    "http://arxiv.org/abs/2606.06493v1":
+        "HANDOFF：人形机器人全身控制——提出紧凑显式的任务空间接口，用蒸馏的互补教师训练单一全身控制器，让规划器能从任务语义驱动多样操作技能。",
+    "http://arxiv.org/abs/2606.06486v1":
+        "重复博弈中面对自适应对手的遗憾最小化——指出外部遗憾无法刻画对手自适应性，提出博弈论指标「重复策略遗憾」(RP-Regret)。",
+    "http://arxiv.org/abs/2606.06480v1":
+        "DNQ：面向部分可观测 n 人博弈的 Deep Nash Q 网络——以多轮同时竞价为测试床，交替进行轨迹采集、收益估计、均衡计算与策略模仿来训练竞价代理。",
+    "http://arxiv.org/abs/2606.06475v1":
+        "RREDCoT：推理模型的段级奖励再分配——针对 GRPO 中 CoT 完成后才给奖励的延迟奖励高方差问题，做段级奖励再分配以降方差。",
+    "http://arxiv.org/abs/2606.06474v1":
+        "扩散语言模型的自增强检索——发现去噪中被丢弃的低置信 token 其实是有用的前瞻信号，可在输出定稿前检索到更强证据用于 RAG。",
+    "http://arxiv.org/abs/2606.06473v1":
+        "MLEvolve：自进化的自动机器学习算法发现框架——针对现有 MLE 代理的分支信息隔离、无记忆搜索、缺层级控制问题，用多代理树搜索做端到端算法发现。",
+    "http://arxiv.org/abs/2606.06470v1":
+        "PC Layer：改善 LLM 预训练的多项式权重预条件——用低次多项式重塑权重奇异值谱保证训练稳定，训练后可合并回原架构、推理无开销，在 Llama-1B 上验证。",
+    "http://arxiv.org/abs/2606.06468v1":
+        "Goedel-Architect：用蓝图生成与精化简化 Lean 4 形式化定理证明——先生成定义/引理及依赖关系的蓝图，再用配工具的 Lean 证明器并行闭合各引理节点。",
+    "http://arxiv.org/abs/2606.06467v1":
+        "You Only Index Once：跨层共享路由的稀疏注意力——块稀疏快但掉点、token 稀疏准但 top-k 路由贵，提出跨层共享路由「只索引一次」兼顾速度与质量。",
+    "http://arxiv.org/abs/2606.06464v1":
+        "成年人与 LLM 当科学家：谁从主动探索受益？——研究「合取因果规则难学」的偏差在赋予主动探索能力后是否仍存在。",
+    "http://arxiv.org/abs/2606.06462v1":
+        "Benchmark Everything Everywhere All at Once——针对基准构建费力、发布后易饱和，提出全自主代理系统 Benchmark Agent 自动构建基准。",
+    "http://arxiv.org/abs/2606.06460v1":
+        "代理会主动回避吗？测量 LLM 代理对带内拒绝访问信号的遵从——提出轻量「Recuse Signal」（经 SSH banner、PostgreSQL NOTICE 发出）请求自动代理自愿回避禁区资源。",
+    "http://arxiv.org/abs/2606.06454v1":
+        "脚手架还是词汇？对波普尔式代码生成「技能」的两层预注册对照研究——质疑「让模型像证伪主义科学家推理」的增益究竟来自内容还是结构，且多由有偏的 LLM 评委读出。",
+    "http://arxiv.org/abs/2606.06453v1":
+        "Vortex：面向 AI 代理的高效可编程稀疏注意力服务——用嵌入 Python 的前端语言 + 页中心张量抽象表达多种稀疏注意力算法，降低部署与评估的工程量。",
+    "http://arxiv.org/abs/2606.06448v1":
+        "Agent Memory：有状态长程工作负载的特征刻画与系统启示——首个对代理记忆系统的系统级特征刻画，覆盖扁平检索、LLM 抽取、事实库整合、代理控制流等。",
+    "http://arxiv.org/abs/2606.06447v1":
+        "用归一化流做潜在推理——文本 CoT 把计算逼入离散串行的 token 流，潜在推理在紧凑连续状态里做中间计算，提供更高带宽的替代。",
+    "http://arxiv.org/abs/2606.06444v1":
+        "USAD 2.0：为通用音频理解扩展表示蒸馏——融合自监督与有监督基础模型知识的通用音频编码器，扩大多域覆盖与评估。",
+    "http://arxiv.org/abs/2606.06443v1":
+        "修改上下文、改变模拟立场：审计 LLM 在线讨论立场模拟——用反事实上下文修订框架，检验模拟是否反映用户特定信念、还是对语义无关的上下文变化过度敏感。",
+    "http://arxiv.org/abs/2606.06428v1":
+        "强化学习激发对未见语言翻译的上下文学习——主张 LLM 须习得「利用上下文语言知识」的元技能而非记忆特定语言，提出 RL 方法实现规模化的极低资源翻译。",
+    "http://arxiv.org/abs/2606.06423v1":
+        "RiskFlow：快速且忠实的安全关键交通场景生成——针对扩散方法迭代去噪贵、长滚动累积误差致抖动/越野，提出闭环安全关键多代理流式生成。",
+    "http://arxiv.org/abs/2606.06420v1":
+        "Komi-Yazva–俄语平行语料与评测协议——首个 Komi-Yazva–俄语平行语料（457 句对），用于零样本/少样本 LLM 在极低资源濒危语言上的翻译评测。",
+    "http://arxiv.org/abs/2606.06416v1":
+        "面向代理式数据分析的无监督技能发现——提出 DataCOPE，仅从无标注探索中以验证器引导，发现可复用的数据分析技能。",
+    "http://arxiv.org/abs/2606.06407v1":
+        "放射学比较推理的视觉语言框架——把放射学比较建模为实体感知的跨图推理，支持参考病例检索与时序比较解读，并构建 MedReCo-DB 数据集。",
+    "http://arxiv.org/abs/2606.06399v1":
+        "CollabSim：基于 CSCW 的方法论，用受控多代理实验研究 LLM 代理协作能力——多代理系统失败常因缺协作能力（建立共识、维持共享理解、修复错位）而非个体能力。",
+    "http://arxiv.org/abs/2606.06397v1":
+        "后 GCN 十年再审视：关系学习的曲率分层评测——指出扁平排行榜假设结构均匀会引入系统偏差，提出以内在几何（曲率）分层的评测。",
+    "http://arxiv.org/abs/2606.06391v1":
+        "Conformal 风险共担：带参与保证的认证成本分配——在有限数据无分布假设下求再分配规则、为每个参与者产出义务上限，确保无人因参与而更糟。",
+    "http://arxiv.org/abs/2606.06390v1":
+        "HomeWorld：从户型图到家具布置的统一框架——分层分解室内场景合成，生成可控、密集可交互且具仿真就绪性的全屋场景。",
+    "http://arxiv.org/abs/2606.06388v1":
+        "Humans' ALMANAC：用于代理协作的动作级心智模型标注人类协作数据集——填补代理缺乏维持/对齐心智模型能力、社区缺真实人类协作数据的空白。",
+    "http://arxiv.org/abs/2606.06380v1":
+        "涌现语言作为通向有意识 AI 的路径——提出生成式方法：在多代理 RL 中让从零（无语言、无自我概念）的代理涌现交流语言，以避开人类语言先验造成的伪影。",
+
     # 2026-06-06 OpenAI
     "https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership":
         "OpenAI 呼吁全球行动保障青少年 AI 安全，提议设立国际机构以加强针对年轻人的防护、标准与机会。",

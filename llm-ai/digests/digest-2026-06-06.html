@@ -1,0 +1,735 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-06-06</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-06-06</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-06-06</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 82 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">82</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">14</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">19</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">49</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">14 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">11 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/endava-frontiers" target="_blank" rel="noopener">How Endava is redesigning software delivery around AI agents</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how Endava is using AI agents, ChatGPT Enterprise, and Codex to accelerate software delivery, automate workflows, and build an AI-native culture across the enterprise.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Endava 用 ChatGPT Enterprise、Codex 和 AI 代理加速软件交付、自动化流程，在企业内构建 AI 原生文化。</div>
+        <div class="item-url">https://openai.com/index/endava-frontiers</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/chatgpt-memory-dreaming" target="_blank" rel="noopener">Dreaming: Better memory for a more helpful ChatGPT</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>ChatGPT introduces a new memory system to better remember preferences, keeping context fresh and relevant across conversations.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT 推出新记忆系统「Dreaming」，更好地记住用户偏好，在多轮对话间保持上下文新鲜、相关。</div>
+        <div class="item-url">https://openai.com/index/chatgpt-memory-dreaming</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/biodefense-in-the-intelligence-age" target="_blank" rel="noopener">Biodefense in the Intelligence Age</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>An action plan for AI-powered biological resilience</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布「智能时代的生物防御」行动计划，用 AI 提升生物韧性、防范生物威胁。</div>
+        <div class="item-url">https://openai.com/index/biodefense-in-the-intelligence-age</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind" target="_blank" rel="noopener">Introducing new capabilities to GPT-Rosalind</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GPT-Rosalind advances life sciences research with enhanced biological reasoning, medicinal chemistry expertise, genomics analysis, and experimental workflow capabilities.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>GPT-Rosalind 新增生物推理、药物化学、基因组分析与实验流程能力，推进生命科学研究。</div>
+        <div class="item-url">https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/wasmer" target="_blank" rel="noopener">How Wasmer used Codex to build a Node.js runtime for the edge</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>See how Wasmer used Codex with GPT-5.5 to build a Node.js runtime for the edge, accelerating development 10x to 20x and shipping in weeks instead of months.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Wasmer 用 Codex + GPT-5.5 构建面向边缘的 Node.js 运行时，开发速度提升 10–20 倍，数周内即上线。</div>
+        <div class="item-url">https://openai.com/index/wasmer</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/public-policy-agenda" target="_blank" rel="noopener">OpenAI public policy agenda</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI outlines its public policy agenda for AI, including safety, youth protection, workforce transition, and global standards to ensure AI benefits society.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 公布公共政策议程，涵盖安全、青少年保护、劳动力转型与全球标准，以确保 AI 惠及社会。</div>
+        <div class="item-url">https://openai.com/index/public-policy-agenda</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/frontier-safety-blueprint" target="_blank" rel="noopener">A blueprint for democratic governance of frontier AI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI outlines a blueprint for U.S. governance of frontier AI, proposing a federal framework for safety, resilience, and national security.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 提出前沿 AI 的美国治理蓝图，建议建立涵盖安全、韧性与国家安全的联邦框架。</div>
+        <div class="item-url">https://openai.com/index/frontier-safety-blueprint</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/travelers" target="_blank" rel="noopener">Travelers deploys AI-powered claims countrywide with OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Travelers built an AI-powered Claim Assistant with OpenAI to guide customers through filing claims, provide 24/7 support, and scale operations during peak demand.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>保险公司 Travelers 与 OpenAI 共建 AI 理赔助手，全天候引导客户报案、在需求高峰期扩展运营。</div>
+        <div class="item-url">https://openai.com/index/travelers</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/codex-for-every-role-tool-workflow" target="_blank" rel="noopener">Codex for every role, tool, and workflow</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Discover new Codex plugins, sites, and annotations that help analysts, marketers, designers, investors, and other teams get more done with AI.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>推出 Codex 新插件、站点与注释功能，帮助分析师、营销、设计、投资等各类岗位用 AI 提效。</div>
+        <div class="item-url">https://openai.com/index/codex-for-every-role-tool-workflow</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership" target="_blank" rel="noopener">Advancing youth safety and opportunity through global leadership</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI calls for global action on youth AI safety, proposing an international institute to strengthen safeguards, standards, and opportunities for young people.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 呼吁全球行动保障青少年 AI 安全，提议设立国际机构以加强针对年轻人的防护、标准与机会。</div>
+        <div class="item-url">https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/codex-for-knowledge-work" target="_blank" rel="noopener">Codex is becoming a productivity tool for everyone</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The Next Era of Knowledge Work report explores how Codex is transforming productivity through AI-powered research, data analysis, workflow automation, and content creation.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布《知识工作的下一时代》报告，探讨 Codex 如何通过 AI 研究、数据分析、流程自动化与内容创作变革生产力。</div>
+        <div class="item-url">https://openai.com/index/codex-for-knowledge-work</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/expanding-project-glasswing" target="_blank" rel="noopener">Expanding Project Glasswing</a>
+        <div class="item-summary">扩大 Project Glasswing——向合作伙伴提供前沿模型用于漏洞检测、保护关键软件，将参与组织从约 50 家扩展到约 150 家，覆盖 15+ 国家与关键基础设施领域。</div>
+        <div class="item-url">https://www.anthropic.com/news/expanding-project-glasswing</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/services-track-partner-hub" target="_blank" rel="noopener">Introducing the Services Track and Partner Hub of the Claude Partner Network</a>
+        <div class="item-summary">推出 Claude 合作伙伴网络的「服务赛道」（合作方分级资质体系）与「合作伙伴中心」门户，让合作方看到自己的达标情况、客户找到最合格的服务商。</div>
+        <div class="item-url">https://www.anthropic.com/news/services-track-partner-hub</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack" target="_blank" rel="noopener">What we learned mapping a year’s worth of AI-enabled cyber threats</a>
+        <div class="item-summary">梳理一年 AI 赋能网络威胁发现：攻击者越来越多在入侵后用 AI 编排复杂攻击，令传统风险评估指标失效、暴露 MITRE ATT&amp;CK 框架的覆盖盲区。</div>
+        <div class="item-url">https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">19 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">19 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/5/andreas-kling/#atom-everything" target="_blank" rel="noopener">Quoting Andreas Kling</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We will no longer accept public pull requests. [...]
+A substantial patch used to imply substantial effort, and that effort was a reasonable proxy for good faith. That assumption no longer holds. [...]
+Whether code was typed by hand is beside the point. What matters is who is responsible for it once it enters the browser. Ladybird is becoming a b...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Ladybird 浏览器的 Andreas Kling：将不再接受公开 PR——AI 时代「大补丁=大努力=善意」的假设已不成立，对真实用户的浏览器，改动者必须为代码负责。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/5/andreas-kling/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/4/ai-enthusiasts-ai-skeptics/#atom-everything" target="_blank" rel="noopener">AI enthusiasts are in a race against time, AI skeptics are in a race against entropy</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>AI enthusiasts are in a race against time, AI skeptics are in a race against entropy
+Charity Majors neatly captures the dynamic between AI enthusiasts and AI skeptics, both of whom are trying to build great software, often in the same teams:
+
+The enthusiasts are not wrong. We are starting to see real, non-imaginary, discontinuous leaps in capabi...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Charity Majors：AI 拥护者在与时间赛跑、怀疑者在与熵赛跑——深度拥抱 AI 的团队确实出现能力跃迁，这不像普通技术。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/4/ai-enthusiasts-ai-skeptics/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/4/a-slightly-different-version/#atom-everything" target="_blank" rel="noopener">Quoting Emanuel Maiberg, 404 Media</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>After this story was published Google&#x27;s spokesperson reached out and asked us to publish a slightly different version of that statement. The new statement no longer stated that &quot;it&#x27;s critical that we maintain humans in the loop.&quot;
+— Emanuel Maiberg, 404 Media, Google Employees Internally Share Memes About How Its AI Sucks
+
+    Tags: ai-ethics, jo...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 404 Media：Google 在报道发布后要求改稿，删掉了「保持人类在环至关重要」的表述。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/4/a-slightly-different-version/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/3/uber-caps-usage/#atom-everything" target="_blank" rel="noopener">Uber Caps Usage of AI Tools Like Claude Code to Manage Costs</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Uber Caps Usage of AI Tools Like Claude Code to Manage Costs
+I wrote the other day about Uber blowing its 2026 AI budget in four months, and how that wasn&#x27;t particularly surprising given they would have set that budget in 2025, before anyone could have predicted how popular token-burning coding agents were about to become.
+Natalie Lung for Bloom...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Uber 限制员工 AI 编码工具（如 Claude Code）每月 token 花费上限 1500 美元以控成本——其 2026 AI 预算四个月就烧光。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/3/uber-caps-usage/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything" target="_blank" rel="noopener">Microsoft&#x27;s new MAI models</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Microsoft announced two new text LLMs this morning - MAI-Thinking-1 (reasoning, 1T parameters, 35B active, available to &quot;select early partners&quot;) and MAI-Code-1-Flash (137B Parameters, 5B active, &quot;purpose-built for GitHub Copilot and VS Code to deliver high performance and lower cost [...] rolling out to GitHub Copilot individual users in Visual ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>微软发布两款新 LLM：MAI-Thinking-1（推理，1T 参数/35B 激活）与 MAI-Code-1-Flash（137B/5B 激活，为 GitHub Copilot 与 VS Code 定制）。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/datasette-agent-micropython/#atom-everything" target="_blank" rel="noopener">datasette-agent-micropython 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-agent-micropython 0.1a0
+        I want Datasette Agent to be able to generate and execute Python code safely. This alpha is looking promising so far. GPT-5.5 has so far failed to break out of the sandbox!
+    
+    
+        Tags: python, sandboxing, datasette, webassembly, datasette-agent</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 datasette-agent-micropython 0.1a0，让 Datasette Agent 在沙箱里安全生成并执行 Python；GPT-5.5 目前仍未突破沙箱。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/datasette-agent-micropython/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/micropython-wasm/#atom-everything" target="_blank" rel="noopener">micropython-wasm 0.1a1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: micropython-wasm 0.1a1
+        Fixes for some limitations that emerged while I was trying to use this to build datasette-agent-micropython.
+    
+    
+        Tags: python, sandboxing, webassembly</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 micropython-wasm 0.1a1，修复构建 datasette-agent-micropython 时暴露的若干限制。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/micropython-wasm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/sighting-367841339/#atom-everything" target="_blank" rel="noopener">California Brown Pelican</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>California Brown Pelican, in Fort Mason, CA, USI&#x27;m at the Microsoft Build conference today, held at Fort Mason in San Francisco. There are California Brown Pelicans diving into the water directly behind venue!
+    
+    
+        Tags: microsoft, ai, generative-ai, llms, llm-release</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>在旧金山 Fort Mason 参加微软 Build 大会，记录了在会场后方水里俯冲捕食的加州褐鹈鹕。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/sighting-367841339/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/pasted-file-editor/#atom-everything" target="_blank" rel="noopener">Pasted File Editor</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Pasted File Editor
+        I really like how you can paste a large volume of text into claude.ai (or the Claude desktop/mobile apps) and it will detect it as a large paste and turn it into a file attachment instead.
+I decided to have Codex desktop build me a version of that as a prototype.
+You can also open files directly - including image...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>用 Codex desktop 做了个「粘贴文件编辑器」原型，模仿 claude.ai 把大段粘贴文本自动转成文件附件的体验。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/pasted-file-editor/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/2/micropython-wasm-2/#atom-everything" target="_blank" rel="noopener">micropython-wasm 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: micropython-wasm 0.1a0
+        My latest sandboxing experiment: This alpha package bundles a lightly customized WASM build of MicroPython with a wrapper to execute code in it via wasmtime.
+    
+    
+        Tags: python, sandboxing, webassembly</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 micropython-wasm 0.1a0：把定制的 MicroPython WASM 构建打包，配合 wasmtime 执行代码的沙箱实验。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/2/micropython-wasm-2/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/1/hackers-simply-asked-meta-ai/#atom-everything" target="_blank" rel="noopener">Hackers Simply Asked Meta AI to Give Them Access to High-Profile Instagram Accounts. It Worked</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Hackers Simply Asked Meta AI to Give Them Access to High-Profile Instagram Accounts. It Worked
+I had trouble believing this story was true, but I&#x27;ve seen it verified from multiple sources now:
+
+One video shows a hacker starting a conversation with Meta’s AI support bot and asking it to link the target account with a new email address: “Just link...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>黑客只是让 Meta AI 客服机器人把目标 Instagram 账号关联到新邮箱，就成功劫持了多个高知名度账号。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/1/hackers-simply-asked-meta-ai/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/1/may-newsletter/#atom-everything" target="_blank" rel="noopener">May 2026 newsletter</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I just sent out the May edition of my sponsors-only monthly newsletter. If you are a sponsor (or if you start a sponsorship now) you can access it here.
+This month:
+
+Al got expensive, and Anthropic had a really good month
+The model releases were a little disappointing
+Conferences and podcasts
+I launched Datasette Agent and made a lot of progress...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发出 5 月赞助者月刊：AI 变贵、Anthropic 月份亮眼、模型发布略令人失望、Datasette Agent 进展等。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/1/may-newsletter/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/31/datasette/#atom-everything" target="_blank" rel="noopener">datasette 1.0a32</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette 1.0a32
+        A minor bugfix release. Fixes a bug with INSERT ... RETURNING queries via the new /db/-/execute-write endpoint and a bunch of base_url issues which showed up when I was experimenting with Service Workers yesterday.
+    
+    
+        Tags: datasette, annotated-release-notes</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 datasette 1.0a32 小修复版，修了 INSERT...RETURNING 写入端点和 base_url 的若干 bug。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/31/datasette/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/31/the-solution-might-be-cancelling-my-ai-subscription/#atom-everything" target="_blank" rel="noopener">The solution might be cancelling my AI subscription</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The solution might be cancelling my AI subscription
+I find this post by David Wilson very relatable. David lists 16+ projects he&#x27;s spun up with AI tooling, and concludes:
+
+I didn&#x27;t mean to build most of these things. Usually the Claude session started with something like &quot;write a quick script for X&quot;, and one hour later the result is not a quick ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>转述 David Wilson 的共鸣帖：用 AI 工具一不小心就 spin up 16+ 个本不想做的项目，结论是「也许该取消 AI 订阅」。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/31/the-solution-might-be-cancelling-my-ai-subscription/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/31/anthropic-run-rate/#atom-everything" target="_blank" rel="noopener">Quoting Karen Kwok for Reuters Breakingviews</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Anthropic defines “run-rate revenue” in two parts. Use the last 28 days of sales ⁠from customers charged on a consumption basis and multiply it by 13. Then, multiply the monthly subscription take by 12, ​and add the two together.
+— Karen Kwok for Reuters Breakingviews, citing &quot;a person familiar with the matter&quot;
+
+    Tags: anthropic, ai</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用路透 Breakingviews：Anthropic 定义「run-rate 营收」=（近 28 天消费制销售额×13）+（月订阅收入×12）。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/31/anthropic-run-rate/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything" target="_blank" rel="noopener">How we contain Claude across products</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How we contain Claude across products
+A complaint I often have about sandboxing products is that they are rarely thoroughly documented, and in the absence of detailed documentation it&#x27;s hard to know how much I can trust them.
+Anthropic just published a fantastic overview of how their various sandbox techniques work across Claude.ai, Claude Code,...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Anthropic 发布跨产品（Claude.ai/Claude Code/Cowork）沙箱机制综述，用进程沙箱、VM、文件系统边界约束代理行为。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/30/retiring-from-tech-to-live-offline/#atom-everything" target="_blank" rel="noopener">I Am Retiring from Tech to Live Offline</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I Am Retiring from Tech to Live Offline
+I&#x27;ve seen a lot of posts on forums from people threatening to quit their careers over AI. This is not one of those: Chad Whitacre is taking concrete steps, starting with this typewritten, scanned letter
+
+I&#x27;m retiring from tech. Well, &quot;retiring&quot; is euphemistic. I&#x27;m stepping away from tech, and that includes...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Chad Whitacre 用手写信宣布退出科技业（含开源），称 AI 是压垮他的最后一根稻草。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/30/retiring-from-tech-to-live-offline/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/30/daniel-jalkut/#atom-everything" target="_blank" rel="noopener">Quoting Daniel Jalkut</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My take on AI is, essentially, everybody who’s against it is too against it and everybody who’s for it is too for it.
+— Daniel Jalkut, via John Gruber
+
+    Tags: ai, john-gruber</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Daniel Jalkut（经 John Gruber）：反对 AI 的人太反对，支持 AI 的人太支持。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/30/daniel-jalkut/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/May/30/pyodide-asgi-browser/#atom-everything" target="_blank" rel="noopener">Running Python ASGI apps in the browser via Pyodide + a service worker</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Research: Running Python ASGI apps in the browser via Pyodide + a service worker
+        Datasette Lite is my version of Datasette that runs entirely in the browser using Pyodide in WebAssembly.
+When I first built it four years ago I used Web Workers and code that intercepts navigation operations and fetches the generated HTML by running the Pyt...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>研究：用 Pyodide + Service Worker 在浏览器里运行 Python ASGI 应用，改进了 Datasette Lite 原先 Web Worker 方案中 script 标签 JS 不执行的缺陷。</div>
+        <div class="item-url">https://simonwillison.net/2026/May/30/pyodide-asgi-browser/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">49 条 · 3 个来源</div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=bogsZSiAwmY" target="_blank" rel="noopener">AI仙人 【AI歴10年・ガチADHD男】 — 【公開間近】Claude Mythosで人間の仕事はどう変わる？24時間AIに仕事させる時代（8,943 次播放）</a>
+        <div class="item-summary">日本 AI 频道介绍 Claude Mythos，畅想 24 小时让 AI 干活、人类工作如何改变的时代。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=bogsZSiAwmY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=XzUB8_gj6xM" target="_blank" rel="noopener">Matthew Berman — Anthropic Calls for EMERGENCY Slow Down（14,617 次播放）</a>
+        <div class="item-summary">Matthew Berman 解读 Anthropic 呼吁「紧急放缓」AI 发展的表态。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=XzUB8_gj6xM</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=h6_v1IBqmNI" target="_blank" rel="noopener">WorldofAI — Claude Oceanus, Anthropic AGI Claims, GPT-5.6 Checkpoint, GLM 5.2, Nemotron 3 Ultra &amp; More! AI NEWS!（37,951 次播放）</a>
+        <div class="item-summary">WorldofAI 一周 AI 新闻汇总：Claude Oceanus、Anthropic 的 AGI 主张、GPT-5.6 检查点、GLM 5.2、Nemotron 3 Ultra 等。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=h6_v1IBqmNI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=08tL8ekwwM0" target="_blank" rel="noopener">ByteMonk — You&#x27;re Not Sending Text to an LLM. You&#x27;re Sending Money.（8,242 次播放）</a>
+        <div class="item-summary">ByteMonk 科普：你发给 LLM 的不是文本而是钱——讲 token 计费与成本机制。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=08tL8ekwwM0</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=tUeSxXHmE9w" target="_blank" rel="noopener">Greg Isenberg — OpenAI Codex: Build Apps That Work For You 24/7（30,456 次播放）</a>
+        <div class="item-summary">Greg Isenberg 演示用 OpenAI Codex 构建全天候为你工作的应用。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=tUeSxXHmE9w</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">14 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/github/copilot-sdk" target="_blank" rel="noopener">github /copilot-sdk — Multi-platform SDK for integrating GitHub Copilot Agent into apps and services</a>
+        <div class="item-summary">GitHub 官方多平台 SDK，用于把 GitHub Copilot Agent 集成进应用和服务。</div>
+        <div class="item-url">https://github.com/github/copilot-sdk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener">Panniantong /Agent-Reach — Give your AI agent eyes to see the entire internet. Read &amp; search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.</a>
+        <div class="item-summary">给 AI 代理装上「眼睛」：一个 CLI 即可读取和搜索 Twitter、Reddit、YouTube、GitHub、B 站、小红书，零 API 费用。</div>
+        <div class="item-url">https://github.com/Panniantong/Agent-Reach</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/NVIDIA/cosmos" target="_blank" rel="noopener">NVIDIA /cosmos — NVIDIA Cosmos is an open platform of world models, datasets, and tools that enables developers to build Physical AI for robots, autonomous vehicles, smart infrastructure, and more.</a>
+        <div class="item-summary">NVIDIA Cosmos：开源世界模型、数据集与工具平台，帮开发者为机器人、自动驾驶、智能基础设施构建 Physical AI。</div>
+        <div class="item-url">https://github.com/NVIDIA/cosmos</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/openai/plugins" target="_blank" rel="noopener">openai /plugins — OpenAI Plugins</a>
+        <div class="item-summary">OpenAI 官方插件仓库。</div>
+        <div class="item-url">https://github.com/openai/plugins</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/MemPalace/mempalace" target="_blank" rel="noopener">MemPalace /mempalace — The best-benchmarked open-source AI memory system. And it&#x27;s free.</a>
+        <div class="item-summary">号称基准测试表现最佳的开源 AI 记忆系统，免费。</div>
+        <div class="item-url">https://github.com/MemPalace/mempalace</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">NousResearch /hermes-agent — The agent that grows with you</a>
+        <div class="item-summary">Nous Research 的 hermes-agent：随用户一起成长的代理。</div>
+        <div class="item-url">https://github.com/NousResearch/hermes-agent</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/lfnovo/open-notebook" target="_blank" rel="noopener">lfnovo /open-notebook — An Open Source implementation of Notebook LM with more flexibility and features</a>
+        <div class="item-summary">开源版 NotebookLM，提供更高灵活性和更多功能。</div>
+        <div class="item-url">https://github.com/lfnovo/open-notebook</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/openclaw/openclaw-windows-node" target="_blank" rel="noopener">openclaw /openclaw-windows-node — Windows companion suite for OpenClaw - System Tray app, Shared library, Node, and PowerToys Command Palette extension</a>
+        <div class="item-summary">OpenClaw 的 Windows 配套套件：系统托盘应用、共享库、Node 与 PowerToys 命令面板扩展。</div>
+        <div class="item-url">https://github.com/openclaw/openclaw-windows-node</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/PaddlePaddle/PaddleOCR" target="_blank" rel="noopener">PaddlePaddle /PaddleOCR — Turn any PDF or image document into structured data for your AI. A powerful, lightweight OCR toolkit that bridges the gap between images/PDFs and LLMs. Supports 100+ languages.</a>
+        <div class="item-summary">PaddleOCR：轻量强大的 OCR 工具包，把 PDF/图片转成结构化数据喂给 LLM，支持 100+ 语言。</div>
+        <div class="item-url">https://github.com/PaddlePaddle/PaddleOCR</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/mvanhorn/last30days-skill" target="_blank" rel="noopener">mvanhorn /last30days-skill — AI agent skill that researches any topic across Reddit, X, YouTube, HN, Polymarket, and the web - then synthesizes a grounded summary</a>
+        <div class="item-summary">AI 代理技能，跨 Reddit、X、YouTube、HN、Polymarket 和网页研究任意话题并综合出有据摘要。</div>
+        <div class="item-url">https://github.com/mvanhorn/last30days-skill</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/CopilotKit/CopilotKit" target="_blank" rel="noopener">CopilotKit /CopilotKit — The Frontend Stack for Agents &amp; Generative UI. React + Angular. Makers of the AG-UI Protocol</a>
+        <div class="item-summary">面向代理与生成式 UI 的前端技术栈，支持 React/Angular，AG-UI 协议作者。</div>
+        <div class="item-url">https://github.com/CopilotKit/CopilotKit</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/jwasham/coding-interview-university" target="_blank" rel="noopener">jwasham /coding-interview-university — A complete computer science study plan to become a software engineer.</a>
+        <div class="item-summary">成为软件工程师的完整计算机科学学习计划。</div>
+        <div class="item-url">https://github.com/jwasham/coding-interview-university</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener">aquasecurity /trivy — Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more</a>
+        <div class="item-summary">Aqua Security 的 Trivy：在容器、K8s、代码仓库、云等中查找漏洞、错配、密钥和 SBOM。</div>
+        <div class="item-url">https://github.com/aquasecurity/trivy</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/chopratejas/headroom" target="_blank" rel="noopener">chopratejas /headroom — Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 60-95% fewer tokens, same answers. Library, proxy, MCP server.</a>
+        <div class="item-summary">在工具输出、日志、文件和 RAG 块进入 LLM 前压缩它们，减少 60–95% token 而答案不变，提供库/代理/MCP 服务器三种形态。</div>
+        <div class="item-url">https://github.com/chopratejas/headroom</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415944" target="_blank" rel="noopener">Buffy the Vampire Slayer, Ted Lasso, and Little Britain Actor Anthony Head Dies</a>
+        <div class="item-summary">讣告：出演《吸血鬼猎人巴菲》《足球教练》《小不列颠》的演员 Anthony Head 去世。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415944</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415987" target="_blank" rel="noopener">Cloudflare CEO Is Lying to You About the Bot Traffic Jump</a>
+        <div class="item-summary">观点文：指责 Cloudflare CEO 在机器人流量激增问题上撒谎。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415987</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415721" target="_blank" rel="noopener">The 1N4148: The Signal Diode That Ended Up Everywhere</a>
+        <div class="item-summary">技术回顾：1N4148 信号二极管如何变得无处不在。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415721</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415790" target="_blank" rel="noopener">Multimember Districts? Ranked Choice? This Is How to Fix Our Elections</a>
+        <div class="item-summary">选举改革讨论：多议员选区 + 排序选择投票如何修复选举制度。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415790</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415709" target="_blank" rel="noopener">Show HN: MimicScribe – transcriber with ~97% accurate on-device speaker IDing</a>
+        <div class="item-summary">Show HN：MimicScribe，本地说话人识别准确率约 97% 的转录工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415709</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415851" target="_blank" rel="noopener">The British Used to Sound Like We Did</a>
+        <div class="item-summary">语言学：英国人过去的口音曾和（北美）我们一样。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415851</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415863" target="_blank" rel="noopener">The Social Science Research Network Has Jumped the Shark</a>
+        <div class="item-summary">评论：社会科学研究网（SSRN）已经「自毁招牌」。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415863</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48416004" target="_blank" rel="noopener">I was laid off by Atlassian</a>
+        <div class="item-summary">个人经历：我被 Atlassian 裁员了。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48416004</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415635" target="_blank" rel="noopener">Software security in 2026 – Practical tips for the mildly paranoid</a>
+        <div class="item-summary">面向「轻度偏执」者的 2026 软件安全实用建议。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415635</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415620" target="_blank" rel="noopener">Firebase SQL Connect</a>
+        <div class="item-summary">Firebase SQL Connect 发布。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415620</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415799" target="_blank" rel="noopener">Neocities Down</a>
+        <div class="item-summary">Neocities 宕机。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415799</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415835" target="_blank" rel="noopener">Migrating from Firestore to PostgreSQL</a>
+        <div class="item-summary">从 Firestore 迁移到 PostgreSQL 的实践。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415835</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415869" target="_blank" rel="noopener">Which AI agents send Accept: text/Markdown?</a>
+        <div class="item-summary">探讨哪些 AI 代理会发送 Accept: text/markdown 请求头。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415869</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415979" target="_blank" rel="noopener">Republicans Claim Anti-Data Center Movement Is a Chinese Psy-Op</a>
+        <div class="item-summary">报道：共和党称反数据中心运动是中国的心理战。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415979</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415750" target="_blank" rel="noopener">Postgres Serials Should Be BIGINT</a>
+        <div class="item-summary">观点：Postgres 的 serial 自增主键应该用 BIGINT。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415750</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48416000" target="_blank" rel="noopener">Mac&#x27;s missing Google Calendar and Calculator in one click</a>
+        <div class="item-summary">一键找回 Mac 上缺失的 Google 日历和计算器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48416000</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48416029" target="_blank" rel="noopener">Scientists revive activity in frozen mouse brains for the first time</a>
+        <div class="item-summary">科学突破：首次在冷冻小鼠脑中恢复活动。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48416029</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415845" target="_blank" rel="noopener">Advanced micro reactor achieves criticality in only two years</a>
+        <div class="item-summary">先进微型核反应堆仅用两年达到临界。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415845</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415633" target="_blank" rel="noopener">Sakana AI&#x27;s Recursive Self-Improvement (RSI) Lab</a>
+        <div class="item-summary">Sakana AI 的递归自我改进（RSI）实验室。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415633</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415849" target="_blank" rel="noopener">How much value is AI creating?</a>
+        <div class="item-summary">讨论：AI 到底创造了多少价值。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415849</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415628" target="_blank" rel="noopener">Runcap, I built a local cost cap for coding agents</a>
+        <div class="item-summary">Runcap：作者自建的本地编码代理成本上限工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415628</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415879" target="_blank" rel="noopener">Energy Markets Limit the Hormuz Shock</a>
+        <div class="item-summary">分析：能源市场如何抑制霍尔木兹海峡冲击。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415879</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415946" target="_blank" rel="noopener">It&#x27;s a Kind of Magic: Magic Numbers and the Arithmetic of Quantum Computation</a>
+        <div class="item-summary">科普：魔数与量子计算的算术。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415946</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415951" target="_blank" rel="noopener">I built an open-source alternative to dynamic workflows: OpenFlow CLI</a>
+        <div class="item-summary">Show：OpenFlow CLI，动态工作流的开源替代品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415951</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415828" target="_blank" rel="noopener">Tiny hackable CUDA language model implementation</a>
+        <div class="item-summary">小巧可魔改的 CUDA 语言模型实现。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415828</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48416038" target="_blank" rel="noopener">TanStack AI: Your MCP, Your Way – TanStack Blog</a>
+        <div class="item-summary">TanStack AI：随心所欲用你自己的 MCP（TanStack 博客）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48416038</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415898" target="_blank" rel="noopener">A PlayStation One (PS1) Emulator Written in Jam</a>
+        <div class="item-summary">用 Jam 语言写的 PlayStation One（PS1）模拟器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415898</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48416036" target="_blank" rel="noopener">The environmental impacts of deep-sea mining</a>
+        <div class="item-summary">深海采矿的环境影响。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48416036</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415983" target="_blank" rel="noopener">Ask HN: How can we make an Open Source version of SpaceX?</a>
+        <div class="item-summary">Ask HN：如何做一个开源版 SpaceX。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415983</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48415811" target="_blank" rel="noopener">Musician BERNTH&#x27;s 1.5M-sub YouTube channel demonetized over missed physical mail [video]</a>
+        <div class="item-summary">音乐人 BERNTH 的 150 万订阅 YouTube 频道因漏看实体邮件被取消盈利资格（视频）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48415811</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -9,6 +9,118 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-06 Anthropic
+    "https://www.anthropic.com/news/expanding-project-glasswing":
+        "扩大 Project Glasswing——向合作伙伴提供前沿模型用于漏洞检测、保护关键软件，将参与组织从约 50 家扩展到约 150 家，覆盖 15+ 国家与关键基础设施领域。",
+    "https://www.anthropic.com/news/services-track-partner-hub":
+        "推出 Claude 合作伙伴网络的「服务赛道」（合作方分级资质体系）与「合作伙伴中心」门户，让合作方看到自己的达标情况、客户找到最合格的服务商。",
+    "https://www.anthropic.com/news/AI-enabled-cyber-threats-mitre-attack":
+        "梳理一年 AI 赋能网络威胁发现：攻击者越来越多在入侵后用 AI 编排复杂攻击，令传统风险评估指标失效、暴露 MITRE ATT&CK 框架的覆盖盲区。",
+
+    # 2026-06-06 GitHub Trending
+    "https://github.com/github/copilot-sdk":
+        "GitHub 官方多平台 SDK，用于把 GitHub Copilot Agent 集成进应用和服务。",
+    "https://github.com/Panniantong/Agent-Reach":
+        "给 AI 代理装上「眼睛」：一个 CLI 即可读取和搜索 Twitter、Reddit、YouTube、GitHub、B 站、小红书，零 API 费用。",
+    "https://github.com/NVIDIA/cosmos":
+        "NVIDIA Cosmos：开源世界模型、数据集与工具平台，帮开发者为机器人、自动驾驶、智能基础设施构建 Physical AI。",
+    "https://github.com/openai/plugins":
+        "OpenAI 官方插件仓库。",
+    "https://github.com/MemPalace/mempalace":
+        "号称基准测试表现最佳的开源 AI 记忆系统，免费。",
+    "https://github.com/NousResearch/hermes-agent":
+        "Nous Research 的 hermes-agent：随用户一起成长的代理。",
+    "https://github.com/lfnovo/open-notebook":
+        "开源版 NotebookLM，提供更高灵活性和更多功能。",
+    "https://github.com/openclaw/openclaw-windows-node":
+        "OpenClaw 的 Windows 配套套件：系统托盘应用、共享库、Node 与 PowerToys 命令面板扩展。",
+    "https://github.com/PaddlePaddle/PaddleOCR":
+        "PaddleOCR：轻量强大的 OCR 工具包，把 PDF/图片转成结构化数据喂给 LLM，支持 100+ 语言。",
+    "https://github.com/mvanhorn/last30days-skill":
+        "AI 代理技能，跨 Reddit、X、YouTube、HN、Polymarket 和网页研究任意话题并综合出有据摘要。",
+    "https://github.com/CopilotKit/CopilotKit":
+        "面向代理与生成式 UI 的前端技术栈，支持 React/Angular，AG-UI 协议作者。",
+    "https://github.com/jwasham/coding-interview-university":
+        "成为软件工程师的完整计算机科学学习计划。",
+    "https://github.com/aquasecurity/trivy":
+        "Aqua Security 的 Trivy：在容器、K8s、代码仓库、云等中查找漏洞、错配、密钥和 SBOM。",
+    "https://github.com/chopratejas/headroom":
+        "在工具输出、日志、文件和 RAG 块进入 LLM 前压缩它们，减少 60–95% token 而答案不变，提供库/代理/MCP 服务器三种形态。",
+
+    # 2026-06-06 YouTube AI
+    "https://www.youtube.com/watch?v=bogsZSiAwmY":
+        "日本 AI 频道介绍 Claude Mythos，畅想 24 小时让 AI 干活、人类工作如何改变的时代。",
+    "https://www.youtube.com/watch?v=XzUB8_gj6xM":
+        "Matthew Berman 解读 Anthropic 呼吁「紧急放缓」AI 发展的表态。",
+    "https://www.youtube.com/watch?v=h6_v1IBqmNI":
+        "WorldofAI 一周 AI 新闻汇总：Claude Oceanus、Anthropic 的 AGI 主张、GPT-5.6 检查点、GLM 5.2、Nemotron 3 Ultra 等。",
+    "https://www.youtube.com/watch?v=08tL8ekwwM0":
+        "ByteMonk 科普：你发给 LLM 的不是文本而是钱——讲 token 计费与成本机制。",
+    "https://www.youtube.com/watch?v=tUeSxXHmE9w":
+        "Greg Isenberg 演示用 OpenAI Codex 构建全天候为你工作的应用。",
+
+    # 2026-06-06 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48415944":
+        "讣告：出演《吸血鬼猎人巴菲》《足球教练》《小不列颠》的演员 Anthony Head 去世。",
+    "https://news.ycombinator.com/item?id=48415987":
+        "观点文：指责 Cloudflare CEO 在机器人流量激增问题上撒谎。",
+    "https://news.ycombinator.com/item?id=48415721":
+        "技术回顾：1N4148 信号二极管如何变得无处不在。",
+    "https://news.ycombinator.com/item?id=48415790":
+        "选举改革讨论：多议员选区 + 排序选择投票如何修复选举制度。",
+    "https://news.ycombinator.com/item?id=48415709":
+        "Show HN：MimicScribe，本地说话人识别准确率约 97% 的转录工具。",
+    "https://news.ycombinator.com/item?id=48415851":
+        "语言学：英国人过去的口音曾和（北美）我们一样。",
+    "https://news.ycombinator.com/item?id=48415863":
+        "评论：社会科学研究网（SSRN）已经「自毁招牌」。",
+    "https://news.ycombinator.com/item?id=48416004":
+        "个人经历：我被 Atlassian 裁员了。",
+    "https://news.ycombinator.com/item?id=48415635":
+        "面向「轻度偏执」者的 2026 软件安全实用建议。",
+    "https://news.ycombinator.com/item?id=48415620":
+        "Firebase SQL Connect 发布。",
+    "https://news.ycombinator.com/item?id=48415799":
+        "Neocities 宕机。",
+    "https://news.ycombinator.com/item?id=48415835":
+        "从 Firestore 迁移到 PostgreSQL 的实践。",
+    "https://news.ycombinator.com/item?id=48415869":
+        "探讨哪些 AI 代理会发送 Accept: text/markdown 请求头。",
+    "https://news.ycombinator.com/item?id=48415979":
+        "报道：共和党称反数据中心运动是中国的心理战。",
+    "https://news.ycombinator.com/item?id=48415750":
+        "观点：Postgres 的 serial 自增主键应该用 BIGINT。",
+    "https://news.ycombinator.com/item?id=48416000":
+        "一键找回 Mac 上缺失的 Google 日历和计算器。",
+    "https://news.ycombinator.com/item?id=48416029":
+        "科学突破：首次在冷冻小鼠脑中恢复活动。",
+    "https://news.ycombinator.com/item?id=48415845":
+        "先进微型核反应堆仅用两年达到临界。",
+    "https://news.ycombinator.com/item?id=48415633":
+        "Sakana AI 的递归自我改进（RSI）实验室。",
+    "https://news.ycombinator.com/item?id=48415849":
+        "讨论：AI 到底创造了多少价值。",
+    "https://news.ycombinator.com/item?id=48415628":
+        "Runcap：作者自建的本地编码代理成本上限工具。",
+    "https://news.ycombinator.com/item?id=48415879":
+        "分析：能源市场如何抑制霍尔木兹海峡冲击。",
+    "https://news.ycombinator.com/item?id=48415946":
+        "科普：魔数与量子计算的算术。",
+    "https://news.ycombinator.com/item?id=48415951":
+        "Show：OpenFlow CLI，动态工作流的开源替代品。",
+    "https://news.ycombinator.com/item?id=48415828":
+        "小巧可魔改的 CUDA 语言模型实现。",
+    "https://news.ycombinator.com/item?id=48416038":
+        "TanStack AI：随心所欲用你自己的 MCP（TanStack 博客）。",
+    "https://news.ycombinator.com/item?id=48415898":
+        "用 Jam 语言写的 PlayStation One（PS1）模拟器。",
+    "https://news.ycombinator.com/item?id=48416036":
+        "深海采矿的环境影响。",
+    "https://news.ycombinator.com/item?id=48415983":
+        "Ask HN：如何做一个开源版 SpaceX。",
+    "https://news.ycombinator.com/item?id=48415811":
+        "音乐人 BERNTH 的 150 万订阅 YouTube 频道因漏看实体邮件被取消盈利资格（视频）。",
+
     "https://www.anthropic.com/news/claude-for-small-business":
         "推出 Claude for Small Business：一套连接器 + 即开即用工作流的打包方案，把 Claude 嵌入小企业日常使用的工具中。",
     "https://www.anthropic.com/news/pwc-expanded-partnership":
@@ -1313,6 +1425,70 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-06 OpenAI
+    "https://openai.com/index/advancing-youth-safety-and-opportunity-through-global-leadership":
+        "OpenAI 呼吁全球行动保障青少年 AI 安全，提议设立国际机构以加强针对年轻人的防护、标准与机会。",
+    "https://openai.com/index/endava-frontiers":
+        "Endava 用 ChatGPT Enterprise、Codex 和 AI 代理加速软件交付、自动化流程，在企业内构建 AI 原生文化。",
+    "https://openai.com/index/chatgpt-memory-dreaming":
+        "ChatGPT 推出新记忆系统「Dreaming」，更好地记住用户偏好，在多轮对话间保持上下文新鲜、相关。",
+    "https://openai.com/index/biodefense-in-the-intelligence-age":
+        "发布「智能时代的生物防御」行动计划，用 AI 提升生物韧性、防范生物威胁。",
+    "https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind":
+        "GPT-Rosalind 新增生物推理、药物化学、基因组分析与实验流程能力，推进生命科学研究。",
+    "https://openai.com/index/wasmer":
+        "Wasmer 用 Codex + GPT-5.5 构建面向边缘的 Node.js 运行时，开发速度提升 10–20 倍，数周内即上线。",
+    "https://openai.com/index/public-policy-agenda":
+        "OpenAI 公布公共政策议程，涵盖安全、青少年保护、劳动力转型与全球标准，以确保 AI 惠及社会。",
+    "https://openai.com/index/frontier-safety-blueprint":
+        "OpenAI 提出前沿 AI 的美国治理蓝图，建议建立涵盖安全、韧性与国家安全的联邦框架。",
+    "https://openai.com/index/travelers":
+        "保险公司 Travelers 与 OpenAI 共建 AI 理赔助手，全天候引导客户报案、在需求高峰期扩展运营。",
+    "https://openai.com/index/codex-for-every-role-tool-workflow":
+        "推出 Codex 新插件、站点与注释功能，帮助分析师、营销、设计、投资等各类岗位用 AI 提效。",
+    "https://openai.com/index/codex-for-knowledge-work":
+        "发布《知识工作的下一时代》报告，探讨 Codex 如何通过 AI 研究、数据分析、流程自动化与内容创作变革生产力。",
+
+    # 2026-06-06 Simon Willison
+    "https://simonwillison.net/2026/Jun/5/andreas-kling/#atom-everything":
+        "引用 Ladybird 浏览器的 Andreas Kling：将不再接受公开 PR——AI 时代「大补丁=大努力=善意」的假设已不成立，对真实用户的浏览器，改动者必须为代码负责。",
+    "https://simonwillison.net/2026/Jun/4/ai-enthusiasts-ai-skeptics/#atom-everything":
+        "引用 Charity Majors：AI 拥护者在与时间赛跑、怀疑者在与熵赛跑——深度拥抱 AI 的团队确实出现能力跃迁，这不像普通技术。",
+    "https://simonwillison.net/2026/Jun/4/a-slightly-different-version/#atom-everything":
+        "引用 404 Media：Google 在报道发布后要求改稿，删掉了「保持人类在环至关重要」的表述。",
+    "https://simonwillison.net/2026/Jun/3/uber-caps-usage/#atom-everything":
+        "Uber 限制员工 AI 编码工具（如 Claude Code）每月 token 花费上限 1500 美元以控成本——其 2026 AI 预算四个月就烧光。",
+    "https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything":
+        "微软发布两款新 LLM：MAI-Thinking-1（推理，1T 参数/35B 激活）与 MAI-Code-1-Flash（137B/5B 激活，为 GitHub Copilot 与 VS Code 定制）。",
+    "https://simonwillison.net/2026/Jun/2/datasette-agent-micropython/#atom-everything":
+        "发布 datasette-agent-micropython 0.1a0，让 Datasette Agent 在沙箱里安全生成并执行 Python；GPT-5.5 目前仍未突破沙箱。",
+    "https://simonwillison.net/2026/Jun/2/micropython-wasm/#atom-everything":
+        "发布 micropython-wasm 0.1a1，修复构建 datasette-agent-micropython 时暴露的若干限制。",
+    "https://simonwillison.net/2026/Jun/2/sighting-367841339/#atom-everything":
+        "在旧金山 Fort Mason 参加微软 Build 大会，记录了在会场后方水里俯冲捕食的加州褐鹈鹕。",
+    "https://simonwillison.net/2026/Jun/2/pasted-file-editor/#atom-everything":
+        "用 Codex desktop 做了个「粘贴文件编辑器」原型，模仿 claude.ai 把大段粘贴文本自动转成文件附件的体验。",
+    "https://simonwillison.net/2026/Jun/2/micropython-wasm-2/#atom-everything":
+        "发布 micropython-wasm 0.1a0：把定制的 MicroPython WASM 构建打包，配合 wasmtime 执行代码的沙箱实验。",
+    "https://simonwillison.net/2026/Jun/1/hackers-simply-asked-meta-ai/#atom-everything":
+        "黑客只是让 Meta AI 客服机器人把目标 Instagram 账号关联到新邮箱，就成功劫持了多个高知名度账号。",
+    "https://simonwillison.net/2026/Jun/1/may-newsletter/#atom-everything":
+        "Simon 发出 5 月赞助者月刊：AI 变贵、Anthropic 月份亮眼、模型发布略令人失望、Datasette Agent 进展等。",
+    "https://simonwillison.net/2026/May/31/datasette/#atom-everything":
+        "发布 datasette 1.0a32 小修复版，修了 INSERT...RETURNING 写入端点和 base_url 的若干 bug。",
+    "https://simonwillison.net/2026/May/31/the-solution-might-be-cancelling-my-ai-subscription/#atom-everything":
+        "转述 David Wilson 的共鸣帖：用 AI 工具一不小心就 spin up 16+ 个本不想做的项目，结论是「也许该取消 AI 订阅」。",
+    "https://simonwillison.net/2026/May/31/anthropic-run-rate/#atom-everything":
+        "引用路透 Breakingviews：Anthropic 定义「run-rate 营收」=（近 28 天消费制销售额×13）+（月订阅收入×12）。",
+    "https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything":
+        "Anthropic 发布跨产品（Claude.ai/Claude Code/Cowork）沙箱机制综述，用进程沙箱、VM、文件系统边界约束代理行为。",
+    "https://simonwillison.net/2026/May/30/retiring-from-tech-to-live-offline/#atom-everything":
+        "Chad Whitacre 用手写信宣布退出科技业（含开源），称 AI 是压垮他的最后一根稻草。",
+    "https://simonwillison.net/2026/May/30/daniel-jalkut/#atom-everything":
+        "引用 Daniel Jalkut（经 John Gruber）：反对 AI 的人太反对，支持 AI 的人太支持。",
+    "https://simonwillison.net/2026/May/30/pyodide-asgi-browser/#atom-everything":
+        "研究：用 Pyodide + Service Worker 在浏览器里运行 Python ASGI 应用，改进了 Datasette Lite 原先 Web Worker 方案中 script 标签 JS 不执行的缺陷。",
+
     # 2026-06-02 OpenAI
     "https://openai.com/index/our-views-on-ai-policy-and-political-advocacy":
         "OpenAI 阐明其 AI 政策与政治游说立场：保持透明、支持审慎监管与 AI 安全，并强调没有任何外部政治团体能代表公司发声。",

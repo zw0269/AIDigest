@@ -9,6 +9,98 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-07 GitHub Trending
+    "https://github.com/TapXWorld/ChinaTextbook":
+        "收录中国所有小学、初中、高中及大学 PDF 教材的开源资料库。",
+    "https://github.com/opencv/opencv":
+        "OpenCV：老牌开源计算机视觉库，提供图像处理、特征检测、机器学习等基础能力。",
+    "https://github.com/aaif-goose/goose":
+        "goose：开源可扩展 AI 代理，超越代码补全——能用任意 LLM 安装、执行、编辑和测试。",
+    "https://github.com/microsoft/pg_durable":
+        "微软 pg_durable：在 PostgreSQL 数据库内实现持久化（durable）执行的扩展。",
+    "https://github.com/refactoringhq/tolaria":
+        "tolaria：管理 Markdown 知识库的桌面应用。",
+    "https://github.com/RyanCodrai/turbovec":
+        "turbovec：基于 TurboQuant 构建的向量索引，Rust 编写并提供 Python 绑定。",
+    "https://github.com/HunxByts/GhostTrack":
+        "GhostTrack：根据手机号或 IP 追踪定位的工具（OSINT 用途）。",
+    "https://github.com/Crosstalk-Solutions/project-nomad":
+        "Project N.O.M.A.D：自包含离线生存计算机，集成关键工具、知识库和本地 AI，随时随地保持信息畅通。",
+
+    # 2026-06-07 YouTube AI
+    "https://www.youtube.com/watch?v=CzxqQJOswvo":
+        "AI Search 一周 AI 新闻：Minimax M3、Ideogram v4、Bernini、Gemma4、Nemotron 3 Ultra、实时 AI 音乐、开源 Gemini Omni 等。",
+    "https://www.youtube.com/watch?v=XKYPlTu1c3M":
+        "Aitrepreneur 介绍 Ideogram 4 开源权重文生图模型，号称可本地运行的最强 NSFW/写实图像模型，支持区域提示精确控图。",
+    "https://www.youtube.com/watch?v=DbeFq_uoaRs":
+        "Riley Brown 解读：OpenAI Codex 新 Sites 功能 vs Cursor Canvases、DeepSeek V4 低成本追平 Opus 4.8/GPT 5.5、苹果 iMessage 代理商店等。",
+    "https://www.youtube.com/watch?v=7qmu3QmEwpE":
+        "midudev 教程：在 Hostinger VPS 上配置 SSH/防火墙/Fail2ban 并部署 Claude Code，让 AI 代理 7×24 小时为你工作。",
+    "https://www.youtube.com/watch?v=IqvnryFzZD4":
+        "Humbled Trader 演示用 Claude + TradingView（接 IBKR API）搭建盘前交易助手。",
+
+    # 2026-06-07 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48434252":
+        "博文《Realisation of Unfixable》：对某些无法修复之事的体悟与反思。",
+    "https://news.ycombinator.com/item?id=48434357":
+        "随笔《Pockets of Humanity》：探讨现代生活中残存的人性角落。",
+    "https://news.ycombinator.com/item?id=48434198":
+        "Show HN: Inbox-beam——把通知发到你收件箱但不真正发邮件的工具。",
+    "https://news.ycombinator.com/item?id=48434169":
+        "夜间在 51 区附近目击神秘「多力多滋三角形」飞行器。",
+    "https://news.ycombinator.com/item?id=48434240":
+        "Ask HN：（推理模型的）thinking effort/思考强度档位是怎么实现的？",
+    "https://news.ycombinator.com/item?id=48434195":
+        "论文：何首乌（Pleuropterus multiflorus）用于治疗雄激素性脱发的应用。",
+    "https://news.ycombinator.com/item?id=48434142":
+        "纽约下水道之谜：城市「井盖下的人」究竟在做什么。",
+    "https://news.ycombinator.com/item?id=48434204":
+        "评论：误导性的错误陈述持续瓦解美国生物医学研究。",
+    "https://news.ycombinator.com/item?id=48434484":
+        "考据 Lorem Ipsum 假文的起源。",
+    "https://news.ycombinator.com/item?id=48434258":
+        "再次警告：Steam Controller 充电底座存在起火风险。",
+    "https://news.ycombinator.com/item?id=48434342":
+        "讨论：Anthropic/OpenAI 每收你 100 美元可能要花掉超过 1000 美元（推理/训练成本远高于定价）。",
+    "https://news.ycombinator.com/item?id=48434366":
+        "Polymarket 标注注入（annotation injection）漏洞分析。",
+    "https://news.ycombinator.com/item?id=48434430":
+        "Show HN：更好用的 zsh 自动建议工具，能预测你的下一条命令。",
+    "https://news.ycombinator.com/item?id=48434242":
+        "随笔《What the wounds are telling us》：从伤口/创伤中读出的信息。",
+    "https://news.ycombinator.com/item?id=48434256":
+        "TikTok 向议员辩称自家平台「并不会让人上瘾」。",
+    "https://news.ycombinator.com/item?id=48434185":
+        "Ask HN：为什么编程语言/框架不为自己的项目提供重训练（微调）的模型？",
+    "https://news.ycombinator.com/item?id=48434154":
+        "Chrome 在 M5 MacBook Pro 上创下浏览器速度纪录。",
+    "https://news.ycombinator.com/item?id=48434317":
+        "亲历分享《What It's Like to IPO》：公司上市是种怎样的体验。",
+    "https://news.ycombinator.com/item?id=48434298":
+        "评论《AI and the Pitfalls of Innovation》：AI 与创新的陷阱。",
+    "https://news.ycombinator.com/item?id=48434230":
+        "Ask HN：你读过最棒的冷门书籍有哪些？",
+    "https://news.ycombinator.com/item?id=48434312":
+        "倾诉帖：LLM 正在侵蚀我的软件工程师职业生涯，我不知该怎么办。",
+    "https://news.ycombinator.com/item?id=48434058":
+        "评论《Beware Management Consultants》：警惕管理咨询顾问。",
+    "https://news.ycombinator.com/item?id=48434160":
+        "旧文（2018）：商店将很快在未经你同意下使用人脸识别。",
+    "https://news.ycombinator.com/item?id=48434114":
+        "观点《We Need VAT and UBI》：主张推行增值税与全民基本收入。",
+    "https://news.ycombinator.com/item?id=48434313":
+        "ASML 邀请马斯克出席内部技术活动，引发员工不满。",
+    "https://news.ycombinator.com/item?id=48434436":
+        "呼吁：Anthropic 请发布官方 Linux 版 Claude Desktop。",
+    "https://news.ycombinator.com/item?id=48434488":
+        "文章：社区/合作社如何通过「有代表的纳税」把消费转化为所有权。",
+    "https://news.ycombinator.com/item?id=48434263":
+        "近期 LLVM 哈希表性能改进。",
+    "https://news.ycombinator.com/item?id=48434236":
+        "纽约州立法者通过为期一年禁止新建数据中心的法案。",
+    "https://news.ycombinator.com/item?id=48434362":
+        "Show HN：用于测试 ESC/POS 收据的虚拟热敏打印机。",
+
     # 2026-06-06 Anthropic
     "https://www.anthropic.com/news/expanding-project-glasswing":
         "扩大 Project Glasswing——向合作伙伴提供前沿模型用于漏洞检测、保护关键软件，将参与组织从约 50 家扩展到约 150 家，覆盖 15+ 国家与关键基础设施领域。",
@@ -1469,6 +1561,16 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-07 个人 Blog
+    "https://magazine.sebastianraschka.com/p/llm-research-papers-2026-part1":
+        "Sebastian Raschka 精选盘点今年（1–5 月）值得关注的 LLM 研究论文清单。",
+    "https://simonwillison.net/2026/Jun/6/micropython-wasm/#atom-everything":
+        "发布 micropython-wasm 0.1a2：受博客草稿启发新增 CLI（issue #7），方便演示「自己试试」章节。",
+    "https://simonwillison.net/2026/Jun/6/micropython-in-a-sandbox/#atom-everything":
+        "多年试验各种代码沙箱方案后，作者觉得这版终于齐活——发布 alpha 包 micropython-wasm，并用它为 Datasette Agent 做代码执行沙箱插件 datasette-agent-micropython。",
+    "https://simonwillison.net/2026/Jun/5/openai-help-lockdown-mode/#atom-everything":
+        "OpenAI「锁定模式」正式上线（Free/Go/Plus/Pro 及自助版 Business 账号）：通过限制出站网络请求，防住提示注入攻击数据外泄的最后一环，但不阻止注入内容本身被处理。",
+
     # 2026-06-06 arXiv 关键词命中
     "http://arxiv.org/abs/2606.06494v1":
         "TailLoR：参数高效持续学习——用预训练权重的奇异基作固定参考系对奇异值矩阵学低秩更新，软谱惩罚抑制主奇异方向、把精细适配导入长尾谱坐标以减少干扰。",

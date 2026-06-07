@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-06-07</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-06-07</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-06-07</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 47 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">47</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">43</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">4 条 · 2 个来源</div>
+    <div class="source-group" id="sebastian-raschka">
+      <div class="source-header">
+        <div class="source-name">Sebastian Raschka</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://magazine.sebastianraschka.com/p/llm-research-papers-2026-part1" target="_blank" rel="noopener">LLM Research Papers: The 2026 List (January to May)</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A curated roundup of notable LLM research papers that came out this year</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Sebastian Raschka 精选盘点今年（1–5 月）值得关注的 LLM 研究论文清单。</div>
+        <div class="item-url">https://magazine.sebastianraschka.com/p/llm-research-papers-2026-part1</div>
+      </div>
+    </div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/6/micropython-wasm/#atom-everything" target="_blank" rel="noopener">micropython-wasm 0.1a2</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: micropython-wasm 0.1a2
+        I added a CLI to micropython-wasm (issue #7), inspired by the first draft of the blog entry when I realized it would be a great way to illustrate the Try it yourself section.
+    
+    
+        Tags: python, sandboxing, webassembly, micropython</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 micropython-wasm 0.1a2：受博客草稿启发新增 CLI（issue #7），方便演示「自己试试」章节。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/6/micropython-wasm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/6/micropython-in-a-sandbox/#atom-everything" target="_blank" rel="noopener">Running Python code in a sandbox with MicroPython and WASM</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I&#x27;ve been experimenting with different approaches to running code in a sandbox for several years now, but my latest attempt feels like it might finally have all of the characteristics I&#x27;ve been looking for. I&#x27;ve released it as an alpha package called micropython-wasm, and I&#x27;m using it for a code execution sandbox plugin for Datasette Agent calle...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>多年试验各种代码沙箱方案后，作者觉得这版终于齐活——发布 alpha 包 micropython-wasm，并用它为 Datasette Agent 做代码执行沙箱插件 datasette-agent-micropython。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/6/micropython-in-a-sandbox/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/5/openai-help-lockdown-mode/#atom-everything" target="_blank" rel="noopener">OpenAI Help: Lockdown Mode</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI Help: Lockdown Mode
+OpenAI first teased this in February, but now it&#x27;s live and &quot;rolling out to eligible personal accounts, including Free, Go, Plus, and Pro, and self-serve ChatGPT Business accounts&quot;:
+
+Lockdown Mode is designed to help prevent the final stage of data exfiltration from a prompt injection attack by limiting outbound networ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI「锁定模式」正式上线（Free/Go/Plus/Pro 及自助版 Business 账号）：通过限制出站网络请求，防住提示注入攻击数据外泄的最后一环，但不阻止注入内容本身被处理。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/5/openai-help-lockdown-mode/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">43 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434252" target="_blank" rel="noopener">Realisation of Unfixable</a>
+        <div class="item-summary">博文《Realisation of Unfixable》：对某些无法修复之事的体悟与反思。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434252</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434357" target="_blank" rel="noopener">Pockets of Humanity</a>
+        <div class="item-summary">随笔《Pockets of Humanity》：探讨现代生活中残存的人性角落。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434357</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434198" target="_blank" rel="noopener">Show HN: Inbox-beam – notifications in your inbox without sending email</a>
+        <div class="item-summary">Show HN: Inbox-beam——把通知发到你收件箱但不真正发邮件的工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434198</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434169" target="_blank" rel="noopener">Mysterious &#x27;Dorito-Shaped&#x27; Aircraft Spotted at Night Near Area 51</a>
+        <div class="item-summary">夜间在 51 区附近目击神秘「多力多滋三角形」飞行器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434169</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434240" target="_blank" rel="noopener">Ask HN: How are thinking efforts implemented?</a>
+        <div class="item-summary">Ask HN：（推理模型的）thinking effort/思考强度档位是怎么实现的？</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434240</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434195" target="_blank" rel="noopener">Application of Pleuropterus multiflorus for treatment of androgenetic alopecia</a>
+        <div class="item-summary">论文：何首乌（Pleuropterus multiflorus）用于治疗雄激素性脱发的应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434195</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434142" target="_blank" rel="noopener">Manhole mystery grips New York – just what are city&#x27;s &#x27;mole people&#x27; up to?</a>
+        <div class="item-summary">纽约下水道之谜：城市「井盖下的人」究竟在做什么。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434142</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434204" target="_blank" rel="noopener">Misguided Misstatements Continue to Dismantle Biomedical Research in the U.S.</a>
+        <div class="item-summary">评论：误导性的错误陈述持续瓦解美国生物医学研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434204</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434484" target="_blank" rel="noopener">The Origin of Lorem Ipsum</a>
+        <div class="item-summary">考据 Lorem Ipsum 假文的起源。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434484</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434258" target="_blank" rel="noopener">Another Warning about the Steam Controller puck. It WILL start a fire</a>
+        <div class="item-summary">再次警告：Steam Controller 充电底座存在起火风险。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434258</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434342" target="_blank" rel="noopener">Anthropic/OpenAI may be spending more than $1000 for every $100 you pay them</a>
+        <div class="item-summary">讨论：Anthropic/OpenAI 每收你 100 美元可能要花掉超过 1000 美元（推理/训练成本远高于定价）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434342</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434366" target="_blank" rel="noopener">Polymarket Annotation Injection</a>
+        <div class="item-summary">Polymarket 标注注入（annotation injection）漏洞分析。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434366</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434430" target="_blank" rel="noopener">Show HN: I made a better zsh autosuggestion tool that predicts your next command</a>
+        <div class="item-summary">Show HN：更好用的 zsh 自动建议工具，能预测你的下一条命令。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434430</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434242" target="_blank" rel="noopener">What the wounds are telling us</a>
+        <div class="item-summary">随笔《What the wounds are telling us》：从伤口/创伤中读出的信息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434242</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434256" target="_blank" rel="noopener">TikTok is not addictive, social media giant tells politicians</a>
+        <div class="item-summary">TikTok 向议员辩称自家平台「并不会让人上瘾」。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434256</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434185" target="_blank" rel="noopener">Why aren&#x27;t languages/frameworks offering retrained models for their project?</a>
+        <div class="item-summary">Ask HN：为什么编程语言/框架不为自己的项目提供重训练（微调）的模型？</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434185</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434154" target="_blank" rel="noopener">Chrome Sets Browser Speed Records on M5 MacBook Pro</a>
+        <div class="item-summary">Chrome 在 M5 MacBook Pro 上创下浏览器速度纪录。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434154</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434317" target="_blank" rel="noopener">What It&#x27;s Like to IPO</a>
+        <div class="item-summary">亲历分享《What It&#x27;s Like to IPO》：公司上市是种怎样的体验。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434317</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434298" target="_blank" rel="noopener">AI and the Pitfalls of Innovation</a>
+        <div class="item-summary">评论《AI and the Pitfalls of Innovation》：AI 与创新的陷阱。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434298</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434230" target="_blank" rel="noopener">Ask HN: What are the best unknown books you have read?</a>
+        <div class="item-summary">Ask HN：你读过最棒的冷门书籍有哪些？</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434230</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434312" target="_blank" rel="noopener">LLMs are eroding my software engineering career and I don&#x27;t know what to do</a>
+        <div class="item-summary">倾诉帖：LLM 正在侵蚀我的软件工程师职业生涯，我不知该怎么办。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434312</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434058" target="_blank" rel="noopener">Beware Management Consultants</a>
+        <div class="item-summary">评论《Beware Management Consultants》：警惕管理咨询顾问。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434058</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434160" target="_blank" rel="noopener">Stores Will Soon Use Facial Recognition without your consent (2018)</a>
+        <div class="item-summary">旧文（2018）：商店将很快在未经你同意下使用人脸识别。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434160</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434114" target="_blank" rel="noopener">We Need VAT and UBI</a>
+        <div class="item-summary">观点《We Need VAT and UBI》：主张推行增值税与全民基本收入。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434114</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434313" target="_blank" rel="noopener">ASML invites Elon Musk to internal tech event, prompting employee backlash</a>
+        <div class="item-summary">ASML 邀请马斯克出席内部技术活动，引发员工不满。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434313</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434436" target="_blank" rel="noopener">Anthropic, please ship an official Claude Desktop for Linux</a>
+        <div class="item-summary">呼吁：Anthropic 请发布官方 Linux 版 Claude Desktop。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434436</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434488" target="_blank" rel="noopener">Taxation with Representation- How Communities/Coops Turn Spending into Ownership</a>
+        <div class="item-summary">文章：社区/合作社如何通过「有代表的纳税」把消费转化为所有权。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434488</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434263" target="_blank" rel="noopener">Recent LLVM hash table improvements</a>
+        <div class="item-summary">近期 LLVM 哈希表性能改进。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434263</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434236" target="_blank" rel="noopener">New York lawmakers pass one-year ban on new data centers</a>
+        <div class="item-summary">纽约州立法者通过为期一年禁止新建数据中心的法案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434236</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48434362" target="_blank" rel="noopener">Show HN: A virtual thermal printer for testing ESC/POS receipts</a>
+        <div class="item-summary">Show HN：用于测试 ESC/POS 收据的虚拟热敏打印机。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48434362</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">8 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/TapXWorld/ChinaTextbook" target="_blank" rel="noopener">TapXWorld /ChinaTextbook — 所有小初高、大学PDF教材。</a>
+        <div class="item-summary">收录中国所有小学、初中、高中及大学 PDF 教材的开源资料库。</div>
+        <div class="item-url">https://github.com/TapXWorld/ChinaTextbook</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/opencv/opencv" target="_blank" rel="noopener">opencv /opencv — Open Source Computer Vision Library</a>
+        <div class="item-summary">OpenCV：老牌开源计算机视觉库，提供图像处理、特征检测、机器学习等基础能力。</div>
+        <div class="item-url">https://github.com/opencv/opencv</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/aaif-goose/goose" target="_blank" rel="noopener">aaif-goose /goose — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM</a>
+        <div class="item-summary">goose：开源可扩展 AI 代理，超越代码补全——能用任意 LLM 安装、执行、编辑和测试。</div>
+        <div class="item-url">https://github.com/aaif-goose/goose</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/microsoft/pg_durable" target="_blank" rel="noopener">microsoft /pg_durable — PostgreSQL in-database durable execution</a>
+        <div class="item-summary">微软 pg_durable：在 PostgreSQL 数据库内实现持久化（durable）执行的扩展。</div>
+        <div class="item-url">https://github.com/microsoft/pg_durable</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/refactoringhq/tolaria" target="_blank" rel="noopener">refactoringhq /tolaria — Desktop app to manage markdown knowledge bases</a>
+        <div class="item-summary">tolaria：管理 Markdown 知识库的桌面应用。</div>
+        <div class="item-url">https://github.com/refactoringhq/tolaria</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/RyanCodrai/turbovec" target="_blank" rel="noopener">RyanCodrai /turbovec — A vector index built on TurboQuant, written in Rust with Python bindings</a>
+        <div class="item-summary">turbovec：基于 TurboQuant 构建的向量索引，Rust 编写并提供 Python 绑定。</div>
+        <div class="item-url">https://github.com/RyanCodrai/turbovec</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/HunxByts/GhostTrack" target="_blank" rel="noopener">HunxByts /GhostTrack — Useful tool to track location or mobile number</a>
+        <div class="item-summary">GhostTrack：根据手机号或 IP 追踪定位的工具（OSINT 用途）。</div>
+        <div class="item-url">https://github.com/HunxByts/GhostTrack</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Crosstalk-Solutions/project-nomad" target="_blank" rel="noopener">Crosstalk-Solutions /project-nomad — Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowledge, and AI to keep you informed and empowered—anytime, anywhere.</a>
+        <div class="item-summary">Project N.O.M.A.D：自包含离线生存计算机，集成关键工具、知识库和本地 AI，随时随地保持信息畅通。</div>
+        <div class="item-url">https://github.com/Crosstalk-Solutions/project-nomad</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=CzxqQJOswvo" target="_blank" rel="noopener">AI Search — Full body waifus, AI dreams, realtime AI music, open-source Gemini Omni: AI NEWS（45,994 次播放）</a>
+        <div class="item-summary">AI Search 一周 AI 新闻：Minimax M3、Ideogram v4、Bernini、Gemma4、Nemotron 3 Ultra、实时 AI 音乐、开源 Gemini Omni 等。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=CzxqQJOswvo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=XKYPlTu1c3M" target="_blank" rel="noopener">Aitrepreneur — NEW MOST POWERFUL NSFW FREE AI IMAGE MODEL IS HERE!（16,069 次播放）</a>
+        <div class="item-summary">Aitrepreneur 介绍 Ideogram 4 开源权重文生图模型，号称可本地运行的最强 NSFW/写实图像模型，支持区域提示精确控图。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=XKYPlTu1c3M</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=DbeFq_uoaRs" target="_blank" rel="noopener">Riley Brown — Hermes Agent NEW Super-App and DeepSeek v4 Catches Up To Opus 4.8?（21,343 次播放）</a>
+        <div class="item-summary">Riley Brown 解读：OpenAI Codex 新 Sites 功能 vs Cursor Canvases、DeepSeek V4 低成本追平 Opus 4.8/GPT 5.5、苹果 iMessage 代理商店等。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=DbeFq_uoaRs</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=7qmu3QmEwpE" target="_blank" rel="noopener">midudev — Your AI agent working 24/7 on a VPS with Claude Code（23,008 次播放）</a>
+        <div class="item-summary">midudev 教程：在 Hostinger VPS 上配置 SSH/防火墙/Fail2ban 并部署 Claude Code，让 AI 代理 7×24 小时为你工作。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=7qmu3QmEwpE</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=IqvnryFzZD4" target="_blank" rel="noopener">Humbled Trader — I Built an AI Trading System With Claude + TradingView（39,695 次播放）</a>
+        <div class="item-summary">Humbled Trader 演示用 Claude + TradingView（接 IBKR API）搭建盘前交易助手。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=IqvnryFzZD4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

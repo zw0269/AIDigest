@@ -9,6 +9,94 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-09 GitHub Trending
+    "https://github.com/santifer/career-ops":
+        "career-ops：基于 Claude Code 的 AI 求职系统，含 14 种技能模式、Go 仪表盘、PDF 生成与批处理。",
+    "https://github.com/Andyyyy64/whichllm":
+        "whichllm：一条命令找出最适合你硬件、能实际运行且性能最好的本地 LLM，按近期真实基准排名而非参数量。",
+    "https://github.com/phuryn/pm-skills":
+        "pm-skills：产品经理技能市场，提供 100+ 智能体技能/命令/插件，覆盖发现、战略、执行、发布到增长。",
+    "https://github.com/danielmiessler/Personal_AI_Infrastructure":
+        "Personal AI Infrastructure：用于放大人类能力的个人智能体 AI 基础设施。",
+    "https://github.com/luongnv89/claude-howto":
+        "claude-howto：可视化、示例驱动的 Claude Code 指南，从基础概念到高级代理，附可复制粘贴的模板。",
+    "https://github.com/google/skills":
+        "google/skills：面向 Google 产品与技术的 Agent Skills 技能集。",
+
+    # 2026-06-09 YouTube AI
+    "https://www.youtube.com/watch?v=_KGBYfsG8Uo":
+        "tef 让 Claude Code（Opus 4.8）与 ChatGPT Codex（5.5）从零各写一个 Minecraft 对比，作者对 Codex 的表现颇感意外。",
+    "https://www.youtube.com/watch?v=6cmi7qyFwEE":
+        "Chase AI 介绍 Graphify——非 RAG 方案，把大代码库拆解并构建知识图谱，解决 Claude Code 的记忆难题。",
+    "https://www.youtube.com/watch?v=kt47kXLgeOs":
+        "Fernanda Kipper 葡语直播，用 Claude Design + Claude Code + TRAE 从零开发含订阅系统的 SaaS 并部署到生产。",
+    "https://www.youtube.com/watch?v=gNPJ94IeJRQ":
+        "Vaibhav Kadnar 给学生分享用 Claude 本月即可上手的 5 个 AI 创业/赚钱点子。",
+    "https://www.youtube.com/watch?v=3BatQW63C8g":
+        "Liam Ottley 演示用 Higgsfield + Claude 单人创办 AI 创意代理公司，把过去月耗 1.5–3 万美元的工作交给一人完成（日语标题）。",
+
+    # 2026-06-09 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48454261":
+        "基准测试 ParadeDB 与 Postgres 原生全文搜索（FTS）：同一查询给出三种不同结果。",
+    "https://news.ycombinator.com/item?id=48454292":
+        "随笔《构建软件即学习》：写软件的过程本质上是不断学习。",
+    "https://news.ycombinator.com/item?id=48454455":
+        "macOS 27 新增命令行工具，可与系统内置 Foundation Models 交互。",
+    "https://news.ycombinator.com/item?id=48454205":
+        "呼吁各平台提供过滤 AI 垃圾内容（AI slop）的选项。",
+    "https://news.ycombinator.com/item?id=48454531":
+        "热路径优化：探讨浮点除法何时会比整数除法更快。",
+    "https://news.ycombinator.com/item?id=48454536":
+        "作者记录在 macOS 27 中遇到的 URL/NSURL bug。",
+    "https://news.ycombinator.com/item?id=48454658":
+        "Waymo 以 2.2 亿美元收购苹果原自动驾驶汽车测试场。",
+    "https://news.ycombinator.com/item?id=48454232":
+        "一位中西部医生撰文谈「盐的真相」健康科普。",
+    "https://news.ycombinator.com/item?id=48454444":
+        "读巴菲特与芒格，真正让作者受益的内容其实与炒股无关。",
+    "https://news.ycombinator.com/item?id=48454642":
+        "Screenlet：直接在浏览器里录制并导出产品演示视频的工具。",
+    "https://news.ycombinator.com/item?id=48454335":
+        "macOS 27 仅支持 Apple Silicon，苹果正式终结 Intel Mac 时代。",
+    "https://news.ycombinator.com/item?id=48454210":
+        "联邦法官叫停 H1B 签证 10 万美元收费政策。",
+    "https://news.ycombinator.com/item?id=48454684":
+        "Show HN：DaysLeft——显示「区间」而非确切死亡日期的生物年龄时钟。",
+    "https://news.ycombinator.com/item?id=48454512":
+        "Ask HN：KYC 实名认证是否让你对「金钱」这个概念越来越反感。",
+    "https://news.ycombinator.com/item?id=48454417":
+        "评论文章《我们的股市坏了》。",
+    "https://news.ycombinator.com/item?id=48454564":
+        "为 Mac/Apple Silicon 实现的 lscpu，用于查看 CPU 详细信息。",
+    "https://news.ycombinator.com/item?id=48454517":
+        "Show HN：用 Rust 编写的持久化、异步 LLM 工作流引擎。",
+    "https://news.ycombinator.com/item?id=48454322":
+        "文章《如何找到咨询客户》（2015）。",
+    "https://news.ycombinator.com/item?id=48454485":
+        "视频：在 AI 时代聆听上帝之声——信仰、尊严与人类繁荣。",
+    "https://news.ycombinator.com/item?id=48454571":
+        "作者分析 Kuzu 图数据库 16.3 万行代码，解读苹果为何想要收购它。",
+    "https://news.ycombinator.com/item?id=48454475":
+        "Show HN：SnakeBaby——生成可爱符号、个人简介、颜文字和用户名创意。",
+    "https://news.ycombinator.com/item?id=48454179":
+        "同行评审论文：用真空代替氦气提供升力的货运飞艇设计。",
+    "https://news.ycombinator.com/item?id=48454357":
+        "随笔《自治不是开关》：论 AI 自主性是渐进谱系而非一键开/关。",
+    "https://news.ycombinator.com/item?id=48454584":
+        "用 OpenRouter、OpenClaw 和 MediaUse 搭建零成本网页自动化流水线。",
+    "https://news.ycombinator.com/item?id=48454314":
+        "随笔《但愿你能幸运到体会后悔》。",
+    "https://news.ycombinator.com/item?id=48454470":
+        "Show HN：让 AI 代理用 USDC 按次付费调用的网页工具，无需 API key（x402+MCP）。",
+    "https://news.ycombinator.com/item?id=48454194":
+        "标题仅为数字「1010220」的帖子。",
+    "https://news.ycombinator.com/item?id=48454657":
+        "论文：决定是否分离独立时，熟悉与未知的未来如何塑造损失厌恶。",
+    "https://news.ycombinator.com/item?id=48454461":
+        "文章《AI、阿根廷与敌基督：蒂尔的愿景正在绽放》。",
+    "https://news.ycombinator.com/item?id=48454598":
+        "评伯克希尔·哈撒韦官网堪称完美的极简主义网站。",
+
     # 2026-06-07 GitHub Trending
     "https://github.com/TapXWorld/ChinaTextbook":
         "收录中国所有小学、初中、高中及大学 PDF 教材的开源资料库。",

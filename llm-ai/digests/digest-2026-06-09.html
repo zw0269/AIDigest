@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-06-09</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-06-09</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-06-09</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 41 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">41</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">41</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">3</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">41 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454261" target="_blank" rel="noopener">Same Query, Three Results: Benchmarking ParadeDB and Postgres FTS</a>
+        <div class="item-summary">基准测试 ParadeDB 与 Postgres 原生全文搜索（FTS）：同一查询给出三种不同结果。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454261</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454292" target="_blank" rel="noopener">Building Software Is Learning</a>
+        <div class="item-summary">随笔《构建软件即学习》：写软件的过程本质上是不断学习。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454292</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454455" target="_blank" rel="noopener">New command-line in macOS 27 for interacting with Foundation Models</a>
+        <div class="item-summary">macOS 27 新增命令行工具，可与系统内置 Foundation Models 交互。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454455</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454205" target="_blank" rel="noopener">Let us filter AI slop, you cowards</a>
+        <div class="item-summary">呼吁各平台提供过滤 AI 垃圾内容（AI slop）的选项。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454205</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454531" target="_blank" rel="noopener">Hot path optimization. When float division beats integer division</a>
+        <div class="item-summary">热路径优化：探讨浮点除法何时会比整数除法更快。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454531</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454536" target="_blank" rel="noopener">My URL/NSURL bug in the OS 27</a>
+        <div class="item-summary">作者记录在 macOS 27 中遇到的 URL/NSURL bug。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454536</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454658" target="_blank" rel="noopener">Waymo bought Apple&#x27;s self-driving car proving ground for $220M</a>
+        <div class="item-summary">Waymo 以 2.2 亿美元收购苹果原自动驾驶汽车测试场。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454658</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454232" target="_blank" rel="noopener">The Truth About Salt – By a Midwestern Doctor</a>
+        <div class="item-summary">一位中西部医生撰文谈「盐的真相」健康科普。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454232</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454444" target="_blank" rel="noopener">Reading Buffett and Munger, the stuff that stuck had nothing to do with stocks</a>
+        <div class="item-summary">读巴菲特与芒格，真正让作者受益的内容其实与炒股无关。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454444</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454642" target="_blank" rel="noopener">Screenlet lets you record and export product demo videos from the browser</a>
+        <div class="item-summary">Screenlet：直接在浏览器里录制并导出产品演示视频的工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454642</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454335" target="_blank" rel="noopener">macOS 27 requires Apple Silicon, as Apple draws down the Intel Mac era</a>
+        <div class="item-summary">macOS 27 仅支持 Apple Silicon，苹果正式终结 Intel Mac 时代。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454335</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454210" target="_blank" rel="noopener">Federal judge blocks H1B visa $100K fee</a>
+        <div class="item-summary">联邦法官叫停 H1B 签证 10 万美元收费政策。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454210</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454684" target="_blank" rel="noopener">Show HN: DaysLeft – a bio-age clock that shows a range, not a death date</a>
+        <div class="item-summary">Show HN：DaysLeft——显示「区间」而非确切死亡日期的生物年龄时钟。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454684</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454512" target="_blank" rel="noopener">Ask HN: Do you also feel like KYC is turning you off to the concept of money</a>
+        <div class="item-summary">Ask HN：KYC 实名认证是否让你对「金钱」这个概念越来越反感。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454512</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454417" target="_blank" rel="noopener">Our Stock Market Is Broken</a>
+        <div class="item-summary">评论文章《我们的股市坏了》。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454417</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454564" target="_blank" rel="noopener">Lscpu for Mac / Apple Silicon</a>
+        <div class="item-summary">为 Mac/Apple Silicon 实现的 lscpu，用于查看 CPU 详细信息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454564</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454517" target="_blank" rel="noopener">Show HN: Durable, asynchronous LLM workflow engine in Rust</a>
+        <div class="item-summary">Show HN：用 Rust 编写的持久化、异步 LLM 工作流引擎。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454517</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454322" target="_blank" rel="noopener">How to Find Consulting Clients (2015)</a>
+        <div class="item-summary">文章《如何找到咨询客户》（2015）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454322</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454485" target="_blank" rel="noopener">Faith, Dignity, and Human Flourishing: Hearing God&#x27;s Voice in an Age of AI [video]</a>
+        <div class="item-summary">视频：在 AI 时代聆听上帝之声——信仰、尊严与人类繁荣。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454485</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454571" target="_blank" rel="noopener">I Analyzed 163K Lines of Kuzu&#x27;s Codebase. Here&#x27;s Why Apple Wanted It</a>
+        <div class="item-summary">作者分析 Kuzu 图数据库 16.3 万行代码，解读苹果为何想要收购它。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454571</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454475" target="_blank" rel="noopener">Show HN: SnakeBaby – Cute symbols, bios, kaomoji, and username ideas</a>
+        <div class="item-summary">Show HN：SnakeBaby——生成可爱符号、个人简介、颜文字和用户名创意。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454475</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454179" target="_blank" rel="noopener">A cargo airship lifted by vacuum instead of helium (peer-reviewed)</a>
+        <div class="item-summary">同行评审论文：用真空代替氦气提供升力的货运飞艇设计。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454179</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454357" target="_blank" rel="noopener">Autonomy Is Not a Switch</a>
+        <div class="item-summary">随笔《自治不是开关》：论 AI 自主性是渐进谱系而非一键开/关。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454357</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454584" target="_blank" rel="noopener">Build a ZeroCost Web Automation Pipeline with OpenRouter, OpenClaw, and MediaUse</a>
+        <div class="item-summary">用 OpenRouter、OpenClaw 和 MediaUse 搭建零成本网页自动化流水线。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454584</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454314" target="_blank" rel="noopener">If only you could be so lucky as to feel regret</a>
+        <div class="item-summary">随笔《但愿你能幸运到体会后悔》。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454314</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454470" target="_blank" rel="noopener">Show HN: Web tools an AI agent pays for per call in USDC, no API key (x402+MCP)</a>
+        <div class="item-summary">Show HN：让 AI 代理用 USDC 按次付费调用的网页工具，无需 API key（x402+MCP）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454470</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454194" target="_blank" rel="noopener">1010220</a>
+        <div class="item-summary">标题仅为数字「1010220」的帖子。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454194</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454657" target="_blank" rel="noopener">Deciding on secession: how familiar and unknown futures shape loss aversion</a>
+        <div class="item-summary">论文：决定是否分离独立时，熟悉与未知的未来如何塑造损失厌恶。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454657</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454461" target="_blank" rel="noopener">AI, Argentina and the Antichrist: Thiel&#x27;s Vision Blooms</a>
+        <div class="item-summary">文章《AI、阿根廷与敌基督：蒂尔的愿景正在绽放》。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454461</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48454598" target="_blank" rel="noopener">Berkshirehathaway.com – The Perfect Minimalist Website</a>
+        <div class="item-summary">评伯克希尔·哈撒韦官网堪称完美的极简主义网站。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48454598</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=_KGBYfsG8Uo" target="_blank" rel="noopener">tef — Claude Code vs ChatGPT Codex Make Minecraft From Scratch（25,971 次播放）</a>
+        <div class="item-summary">tef 让 Claude Code（Opus 4.8）与 ChatGPT Codex（5.5）从零各写一个 Minecraft 对比，作者对 Codex 的表现颇感意外。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=_KGBYfsG8Uo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=6cmi7qyFwEE" target="_blank" rel="noopener">Chase AI — the most POWERFUL claude code feature in months（17,777 次播放）</a>
+        <div class="item-summary">Chase AI 介绍 Graphify——非 RAG 方案，把大代码库拆解并构建知识图谱，解决 Claude Code 的记忆难题。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=6cmi7qyFwEE</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=kt47kXLgeOs" target="_blank" rel="noopener">Fernanda Kipper | Dev — Building a SaaS from SCRATCH to PRODUCTION | Claude Design + Claude Code + TRAE（10,910 次播放）</a>
+        <div class="item-summary">Fernanda Kipper 葡语直播，用 Claude Design + Claude Code + TRAE 从零开发含订阅系统的 SaaS 并部署到生产。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=kt47kXLgeOs</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=gNPJ94IeJRQ" target="_blank" rel="noopener">Vaibhav Kadnar — 5 AI Businesses You Can Start This Month Using Claude! (Easiest Way)（16,940 次播放）</a>
+        <div class="item-summary">Vaibhav Kadnar 给学生分享用 Claude 本月即可上手的 5 个 AI 创业/赚钱点子。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=gNPJ94IeJRQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=3BatQW63C8g" target="_blank" rel="noopener">Liam Ottley — Higgsfield + Claude と共に、1人体制のAIクリエイティブエージェンシーを立ち上げよう（11,373 次播放）</a>
+        <div class="item-summary">Liam Ottley 演示用 Higgsfield + Claude 单人创办 AI 创意代理公司，把过去月耗 1.5–3 万美元的工作交给一人完成（日语标题）。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=3BatQW63C8g</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/santifer/career-ops" target="_blank" rel="noopener">santifer /career-ops — AI-powered job search system built on Claude Code. 14 skill modes, Go dashboard, PDF generation, batch processing.</a>
+        <div class="item-summary">career-ops：基于 Claude Code 的 AI 求职系统，含 14 种技能模式、Go 仪表盘、PDF 生成与批处理。</div>
+        <div class="item-url">https://github.com/santifer/career-ops</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Andyyyy64/whichllm" target="_blank" rel="noopener">Andyyyy64 /whichllm — Find the local LLM that actually runs and performs best on your hardware. Ranked by real, recency-aware benchmarks, not parameter count. One command, run it instantly.</a>
+        <div class="item-summary">whichllm：一条命令找出最适合你硬件、能实际运行且性能最好的本地 LLM，按近期真实基准排名而非参数量。</div>
+        <div class="item-url">https://github.com/Andyyyy64/whichllm</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/phuryn/pm-skills" target="_blank" rel="noopener">phuryn /pm-skills — PM Skills Marketplace: 100+ agentic skills, commands, and plugins — from discovery to strategy, execution, launch, and growth.</a>
+        <div class="item-summary">pm-skills：产品经理技能市场，提供 100+ 智能体技能/命令/插件，覆盖发现、战略、执行、发布到增长。</div>
+        <div class="item-url">https://github.com/phuryn/pm-skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/danielmiessler/Personal_AI_Infrastructure" target="_blank" rel="noopener">danielmiessler /Personal_AI_Infrastructure — Agentic AI Infrastructure for magnifying HUMAN capabilities.</a>
+        <div class="item-summary">Personal AI Infrastructure：用于放大人类能力的个人智能体 AI 基础设施。</div>
+        <div class="item-url">https://github.com/danielmiessler/Personal_AI_Infrastructure</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/luongnv89/claude-howto" target="_blank" rel="noopener">luongnv89 /claude-howto — A visual, example-driven guide to Claude Code — from basic concepts to advanced agents, with copy-paste templates that bring immediate value.</a>
+        <div class="item-summary">claude-howto：可视化、示例驱动的 Claude Code 指南，从基础概念到高级代理，附可复制粘贴的模板。</div>
+        <div class="item-url">https://github.com/luongnv89/claude-howto</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/google/skills" target="_blank" rel="noopener">google /skills — Agent Skills for Google products and technologies</a>
+        <div class="item-summary">google/skills：面向 Google 产品与技术的 Agent Skills 技能集。</div>
+        <div class="item-url">https://github.com/google/skills</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

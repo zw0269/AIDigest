@@ -96,6 +96,18 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "文章《AI、阿根廷与敌基督：蒂尔的愿景正在绽放》。",
     "https://news.ycombinator.com/item?id=48454598":
         "评伯克希尔·哈撒韦官网堪称完美的极简主义网站。",
+    "https://news.ycombinator.com/item?id=48454729":
+        "评伯克希尔·哈撒韦官网堪称完美的极简主义网站。",
+    "https://news.ycombinator.com/item?id=48454718":
+        "苹果 WWDC 2026「平台联盟演讲」（Platforms State of the Union）视频。",
+    "https://news.ycombinator.com/item?id=48454721":
+        "评论文章《埃隆·马斯克如何害死了数十万人》。",
+    "https://news.ycombinator.com/item?id=48454722":
+        "Track Political Stories Across the Web：跨网站追踪政治新闻报道的工具。",
+
+    # 2026-06-09 YouTube AI（补抓）
+    "https://www.youtube.com/watch?v=Hth_tLaC2j8":
+        "Claude 官方回顾 Claude Code 上线一周年，Boris Cherny 与 Cat Wu 讲述它从内部项目成长为全球开发者与组织使用的工具（日语标题）。",
 
     # 2026-06-07 GitHub Trending
     "https://github.com/TapXWorld/ChinaTextbook":
@@ -1649,6 +1661,20 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-09 OpenAI
+    "https://openai.com/index/openai-submits-confidential-s-1":
+        "OpenAI 确认已向 SEC 秘密递交 S-1 招股文件，但尚未确定后续行动的时间表。",
+    "https://openai.com/index/built-to-benefit-everyone-our-plan":
+        "OpenAI 发布 AI 未来愿景，聚焦可及性、安全与共享繁荣，致力于让 AGI 惠及所有人。",
+    "https://openai.com/index/economic-research-exchange":
+        "OpenAI 设立「经济研究交流」（Economic Research Exchange），研究 AI 对就业、生产力与经济的影响，现已开放研究项目申请。",
+
+    # 2026-06-09 Simon Willison
+    "https://simonwillison.net/2026/Jun/8/wwdc/#atom-everything":
+        "评苹果 WWDC 2026：鉴于 2024 年 Apple Intelligence 跳票的教训，作者对今年发布的新 Siri AI 持「眼见为实」态度，但认为其依托定制 Gemini 衍生模型在 Private Cloud Compute 上运行、用视觉 LLM 提取信息，技术上确实可行。",
+    "https://simonwillison.net/2026/Jun/7/datasette-agent-edit/#atom-everything":
+        "发布 datasette-agent-edit 0.1a0：为 Datasette Agent 做的文本编辑插件（协作式 Markdown 编辑、改大型 SQL、编辑 SVG），借鉴 Claude 文本编辑器的 view / str_replace 等工具设计。",
+
     # 2026-06-07 个人 Blog
     "https://magazine.sebastianraschka.com/p/llm-research-papers-2026-part1":
         "Sebastian Raschka 精选盘点今年（1–5 月）值得关注的 LLM 研究论文清单。",

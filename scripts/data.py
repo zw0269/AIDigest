@@ -1668,6 +1668,16 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Wes Roth 评 Mythos 5（Fable 5）发布：盘点其新能力并讨论「这是不是 AGI」的争论。",
     "https://www.youtube.com/watch?v=Kb9A6riFJDo":
         "Tin 3 Phút Bí Ẩn（越南语社会新闻）：男生因 ChatGPT 使用问题与母亲争吵后深夜离家出走，最终酿成苦果。",
+
+    # 2026-06-10 补抓 GitHub Trending + YouTube
+    "https://github.com/maziyarpanahi/openmed":
+        "OpenMed：开源医疗 AI 项目，提供面向医疗健康场景的开源模型与工具。",
+    "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools":
+        "汇集 Claude Code、Cursor、Devin、Manus、Windsurf、v0 等数十款 AI 工具的完整系统提示词、内部工具与模型信息的大全仓库。",
+    "https://github.com/francescopace/espectre":
+        "ESPectre：基于 Wi-Fi 频谱分析（CSI）的运动检测系统，无需摄像头或传感器即可感知人体移动，支持 Home Assistant 集成。",
+    "https://www.youtube.com/watch?v=AW3TJDuViF8":
+        "AsapGuide 对比实测 Claude Fable 5 与 Opus 4.8：在 UI 重建、3D 游戏制作、文档分析等真实任务上逐项对比，结论是 Fable 5 在几乎所有基准上高于 Opus、GPT-5.5 与 Gemini 3.1 Pro。",
 }
 
 

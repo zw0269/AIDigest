@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-06-16</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-06-16</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-06-16</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 131 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">131</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">25</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">26</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">49</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">10</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">25 条 · 3 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">13 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-openai-partner-network" target="_blank" rel="noopener">Introducing the OpenAI Partner Network</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI launches the Partner Network, investing $150M to help global partners accelerate enterprise AI adoption, deployment, and transformation.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 Partner Network，并投入 1.5 亿美元帮助全球合作伙伴加速企业 AI 采用、部署和转型。</div>
+        <div class="item-url">https://openai.com/index/introducing-openai-partner-network</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/academy-courses-applying-ai-at-work" target="_blank" rel="noopener">New OpenAI Academy courses for the next era of work</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI Academy 新增三门课程，帮助职场人建立实用 AI 技能、可复用工作流并把 agent 用到日常工作中。</div>
+        <div class="item-url">https://openai.com/index/academy-courses-applying-ai-at-work</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/preply" target="_blank" rel="noopener">How Preply combines AI and human tutors to personalize learning</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Preply uses OpenAI to launch AI-generated lesson summaries, providing personalised feedback and language learning exercises.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Preply 用 OpenAI 生成课后摘要、个性化反馈和语言练习，把 AI 与真人导师结合做个性化学习。</div>
+        <div class="item-url">https://openai.com/index/preply</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem" target="_blank" rel="noopener">Supporting Europe’s work in ensuring a trustworthy AI ecosystem</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI supports the EU Code of Practice on AI content transparency, advancing provenance standards and tools to help people understand AI-generated content.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 支持欧盟 AI 内容透明度实践准则，推动来源标识与工具建设，帮助人们理解 AI 生成内容。</div>
+        <div class="item-url">https://openai.com/index/supporting-eu-trustworthy-ai-ecosystem</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/bbva" target="_blank" rel="noopener">BBVA puts AI at the core of banking with OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how BBVA scaled ChatGPT Enterprise to 100,000 employees and partnered with OpenAI to accelerate AI-powered banking transformation worldwide.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>BBVA 将 ChatGPT Enterprise 扩展到 10 万名员工，并与 OpenAI 合作推进银行业务的 AI 转型。</div>
+        <div class="item-url">https://openai.com/index/bbva</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/using-codex-to-simulate-black-holes" target="_blank" rel="noopener">How an astrophysicist uses Codex to help simulate black holes</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Discover how astrophysicist Chi-kwan Chan uses Codex to build black hole simulations, helping scientists study extreme physics and test Einstein’s theory of general relativity.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>天体物理学家 Chi-kwan Chan 使用 Codex 构建黑洞模拟，辅助研究极端物理并检验广义相对论。</div>
+        <div class="item-url">https://openai.com/index/using-codex-to-simulate-black-holes</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/openai-to-acquire-ona" target="_blank" rel="noopener">OpenAI to acquire Ona</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI plans to acquire Ona to expand Codex with secure, persistent cloud environments, enabling long-running AI agents across enterprise workflows.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 计划收购 Ona，以增强 Codex 的安全持久云环境能力，支持企业长时间运行的 AI agent 工作流。</div>
+        <div class="item-url">https://openai.com/index/openai-to-acquire-ona</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/openai-on-oracle-cloud" target="_blank" rel="noopener">Access OpenAI models and Codex through your Oracle cloud commitment</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Access OpenAI models and Codex through Oracle Cloud, using existing commitments to build and deploy AI with enterprise security and governance.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 介绍企业可通过 Oracle Cloud 既有承诺访问 OpenAI 模型与 Codex，并获得企业级安全和治理能力。</div>
+        <div class="item-url">https://openai.com/index/openai-on-oracle-cloud</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/prc-linked-influence-operations-ai-debates" target="_blank" rel="noopener">PRC-linked influence operations are targeting AI debates in the US</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A new report from OpenAI details PRC-linked influence operations using AI to target U.S. tech debates, data center narratives, tariffs, and false claims  about ChatGPT.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 报告称与中国相关的影响力行动正使用 AI 介入美国科技辩论、数据中心叙事、关税和 ChatGPT 虚假说法。</div>
+        <div class="item-url">https://openai.com/index/prc-linked-influence-operations-ai-debates</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/lseg" target="_blank" rel="noopener">From data to decisions: how LSEG is scaling trusted AI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>See how LSEG uses OpenAI to scale trusted AI across its global business, accelerating insights, shrinking release cycles, and empowering 4,000 employees.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>LSEG 用 OpenAI 在全球业务中规模化可信 AI，加速洞察生成、缩短发布周期并赋能 4000 名员工。</div>
+        <div class="item-url">https://openai.com/index/lseg</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/nextdoor" target="_blank" rel="noopener">How engineers at Nextdoor use Codex to build without limits</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How engineers at Nextdoor use Codex with GPT-5.5 to investigate hard-to-reproduce issues, build across platforms, and focus on product outcomes.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Nextdoor 工程师使用 Codex 与 GPT-5.5 排查难复现问题、跨平台构建功能，把精力更多放在产品结果上。</div>
+        <div class="item-url">https://openai.com/index/nextdoor</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/notion" target="_blank" rel="noopener">What Codex unlocks for Notion</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How Notion uses Codex to one-shot specs, build AI Voice Input for the web, and multiply engineering power across small teams.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Notion 用 Codex 一次性实现规格、构建 Web 版 AI 语音输入，并放大小团队的工程产能。</div>
+        <div class="item-url">https://openai.com/index/notion</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/industrial-policy-for-the-intelligence-age" target="_blank" rel="noopener">Industrial policy for the Intelligence Age</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore our ambitious, people-first industrial policy ideas for the AI era—focused on expanding opportunity, sharing prosperity, and building resilient institutions as advanced intelligence evolves.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 提出面向智能时代的产业政策构想，围绕扩大机会、共享繁荣和建设韧性制度展开。</div>
+        <div class="item-url">https://openai.com/index/industrial-policy-for-the-intelligence-age</div>
+      </div>
+    </div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/" target="_blank" rel="noopener">DiffusionGemma: 4x faster text generation</a>
+        <div class="item-summary">Google DeepMind 发布 DiffusionGemma，强调用扩散式生成实现约 4 倍更快的文本生成。</div>
+        <div class="item-url">https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/" target="_blank" rel="noopener">Investing in multi-agent AI safety research</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Google DeepMind and partners announce a $10M funding call for multi-agent safety research.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Google DeepMind 与 Schmidt Sciences 等伙伴发起最高 1000 万美元资助，支持全球研究者开展多智能体 AI 安全研究。</div>
+        <div class="item-url">https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/" target="_blank" rel="noopener">Fluid, natural voice translation with Gemini 3.5 Live Translate</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Gemini 3.5 Live Translate brings near real-time, natural speech translation to Google AI Studio, Google Translate and Google Meet.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Gemini 3.5 Live Translate 把近实时自然语音翻译带到 Google AI Studio、Google Translate 和 Google Meet。</div>
+        <div class="item-url">https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/" target="_blank" rel="noopener">Introducing Gemma 4 12B: a unified, encoder-free multimodal model</a>
+        <div class="item-summary">Google DeepMind 发布 Gemma 4 12B，主打统一、无编码器的多模态模型设计。</div>
+        <div class="item-url">https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/" target="_blank" rel="noopener">Powering the future of robotics in Europe</a>
+        <div class="item-summary">Google DeepMind 介绍其在欧洲推动机器人未来发展的投入与生态合作。</div>
+        <div class="item-url">https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/" target="_blank" rel="noopener">Measuring the impact of learning with AI in Sierra Leone and beyond</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Results from a randomized controlled trial show the potential of Gemini’s Guided Learning feature to boost engagement and accelerate learning.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Google DeepMind 介绍在塞拉利昂及更多地区衡量 AI 学习工具影响的研究与部署经验。</div>
+        <div class="item-url">https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/anthropic-public-record" target="_blank" rel="noopener">Results from the first Anthropic Public Record</a>
+        <div class="item-summary">Anthropic 公布首轮 Public Record 全国调查，展示近 5.2 万美国人对 AI 收益、风险与企业问责的态度。</div>
+        <div class="item-url">https://www.anthropic.com/news/anthropic-public-record</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/dxc-anthropic-alliance" target="_blank" rel="noopener">DXC will integrate Claude into the systems banks, airlines, and other regulated industries rely on</a>
+        <div class="item-summary">Anthropic 与 DXC 建立多年全球联盟，由 DXC 培训前线工程师，把 Claude 集成进银行、航空等高监管行业核心系统。</div>
+        <div class="item-url">https://www.anthropic.com/news/dxc-anthropic-alliance</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/fable-mythos-access" target="_blank" rel="noopener">Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a>
+        <div class="item-summary">Anthropic 称美国政府以国家安全为由下达出口管制指令，导致其暂停 Claude Fable 5 与 Mythos 5 的访问。</div>
+        <div class="item-url">https://www.anthropic.com/news/fable-mythos-access</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-fable-5-mythos-5" target="_blank" rel="noopener">Claude Fable 5 and Claude Mythos 5</a>
+        <div class="item-summary">Anthropic 发布 Claude Fable 5 与 Mythos 5，并将 Fable 定位为具备 Mythos 级能力、面向通用使用的安全版本。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-fable-5-mythos-5</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/tcs-anthropic-partnership" target="_blank" rel="noopener">TCS and Anthropic partner to bring Claude to regulated industries</a>
+        <div class="item-summary">Anthropic 与 TCS 合作，让 TCS 内部 5 万名员工使用 Claude，并面向金融、医疗、公共部门等监管行业构建 Claude 产品。</div>
+        <div class="item-url">https://www.anthropic.com/news/tcs-anthropic-partnership</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-corps" target="_blank" rel="noopener">Introducing Claude Corps</a>
+        <div class="item-summary">Anthropic 推出 Claude Corps 全国奖学金项目，投入 1.5 亿美元培训 1000 名早期职业人才，把 Claude 能力带给美国各地非营利组织。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-corps</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">26 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">25 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything" target="_blank" rel="noopener">The Fable 5 Export Controls Harm US Cyber Defense</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The Fable 5 Export Controls Harm US Cyber Defense
+I quoted The Atlantic quoting Kate Moussouris earlier, when I should have gone straight to the source. Here she is confirming that the &quot;jailbreak&quot; that got Claude Fable 5 banned under an export control really was &quot;fix this code&quot;:
+
+The researchers took open-source code with known CVEs, plus new co...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 认为 Fable 5 出口管制伤害美国网络防御，因为让模型修复漏洞和写测试正是防守方最需要的能力。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/16/fable-5-export-controls/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/16/matteo-wong-the-atlantic/#atom-everything" target="_blank" rel="noopener">Quoting Matteo Wong, The Atlantic</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Katie Moussouris, a cybersecurity expert and the CEO of Luta Security, told me that Anthropic shared with her a copy of the White House’s report on the Fable jailbreak to get her appraisal. (She said that she is not being paid by Anthropic.) The report, Moussouris said, involved IT experts asking Fable to help find and patch bugs. When given del...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Matteo Wong 报道：安全专家称所谓 Fable 越狱其实是让模型帮助查找和修复漏洞，属于正常防御用途。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/16/matteo-wong-the-atlantic/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/16/captcha-on-at-least-one-ampersand/#atom-everything" target="_blank" rel="noopener">Cloudflare CAPTCHA on at least one ampersand</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>TIL: Cloudflare CAPTCHA on at least one ampersand
+        I&#x27;m using Cloudflare&#x27;s CAPTCHA (they call it a &quot;Web Application Firewall &gt; Custom rules &gt; Managed Challenge&quot; these days) to prevent crawlers from aggresively spidering my faceted search engine on this site, but I got fed up of even simple ?q=term searches triggering the challenge.
+After s...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 用 Claude Code 调整 Cloudflare WAF 规则，让搜索 URL 只有在查询参数含至少一个 &amp; 时才触发 CAPTCHA。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/16/captcha-on-at-least-one-ampersand/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything" target="_blank" rel="noopener">datasette-agent 0.3a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-agent 0.3a0
+        
+
+New tool, execute_write_sql, which requests user approval and then writes to a database - taking user permissions into account. #27
+
+
+I added a mechanism for asking user approval in datasette agent 0.2a0. The new execute_write_sql tool can now prompt the user for all kinds of useful operations. Here&#x27;s an ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-agent 0.3a0 新增需用户批准的 execute_write_sql 写库工具，并增强聊天终端的审批与 unsafe 自动批准模式。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/15/datasette-agent/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/15/axios-clashes-anthropics/#atom-everything" target="_blank" rel="noopener">&quot;They screwed us&quot;: Personality clashes sent Anthropic&#x27;s models offline</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>&quot;They screwed us&quot;: Personality clashes sent Anthropic&#x27;s models offline
+Lots of &quot;source familiar with the administration&#x27;s thinking&quot; and &quot;source close to Anthropic&quot; in this Axios piece, which is the best collection of behind-the-scenes gossip I&#x27;ve seen about the US government export control Mythos/Fable story so far.
+Logan Graham (I lead the Fron...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 摘要 Axios 对美国政府与 Anthropic 围绕 Fable/Mythos 出口管制冲突的幕后报道，关注双方态度与政策走向。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/15/axios-clashes-anthropics/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/15/julia-evans/#atom-everything" target="_blank" rel="noopener">Quoting Julia Evans</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>[...] Instead, I picture a specific person and I just write for them. Often this person is &quot;me, but 3 years ago&quot; or a good friend.
+— Julia Evans, write for 1 person
+
+    Tags: writing, julia-evans</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Julia Evans 的写作建议：想象一个具体读者，常常是三年前的自己或一位好友，然后为这个人写。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/15/julia-evans/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/14/why-ai-hasnt-replaced-software-engineers/#atom-everything" target="_blank" rel="noopener">Why AI hasn’t replaced software engineers, and won’t</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Why AI hasn’t replaced software engineers, and won’t
+Arvind Narayanan and Sayash Kappor take on the question of AI job losses through the lens of a profession that is uniquely suited to AI disruption - software engineering.
+
+In this essay, we argue that there is enough evidence to reject the narrative that once AI capabilities reach a certain th...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>转述 Narayanan 与 Kapoor 的论点：AI 尚未导致软件工程大规模失业，因为写代码并不是软件工程的唯一瓶颈。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/14/why-ai-hasnt-replaced-software-engineers/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything" target="_blank" rel="noopener">Publishing WASM wheels to PyPI for use with Pyodide</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The Pyodide 314.0 release announcement (via Hacker News) includes news I&#x27;ve been looking forward to for a long time:
+
+You can now publish Python packages built for Pyodide (or any Python runtime compatible with the PyEmscripten platform defined in PEP 783) directly to PyPI and install them at runtime.
+Previously, the Pyodide maintainers had to m...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Pyodide/PyPI 已支持发布 WASM wheels，包作者可像发布原生 wheel 一样分发兼容 Pyodide 的包，Simon 用 luau-wasm 试水。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/13/publishing-wasm-wheels/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything" target="_blank" rel="noopener">luau-wasm 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: luau-wasm 0.1a0
+        See Publishing WASM wheels to PyPI for use with Pyodide for details.
+    
+    
+        Tags: lua, webassembly, pyodide</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>发布 luau-wasm 0.1a0，作为面向 Pyodide/WASM wheel 分发能力的实验包。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/13/luau-wasm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything" target="_blank" rel="noopener">Mapping SQLite result columns back to their source `table.column`</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Research: Mapping SQLite result columns back to their source `table.column`
+        It would be neat if arbitrary SQL queries in Datasette could be rendered with additional information based on which columns from which tables were included in the results.
+To build that, we would need to be able to look at a SQL query like select users.name, orde...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 让 Claude Code 探索如何把 SQLite 查询结果列映射回来源 table.column，比较 apsw、ctypes 和 EXPLAIN 等方案。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/13/sqlite-column-provenance/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything" target="_blank" rel="noopener">Statement on the US government directive to suspend access to Fable 5 and Mythos 5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Statement on the US government directive to suspend access to Fable 5 and Mythos 5
+Well this is nuts:
+
+The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States, including foreign national Anthr...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 转述 Anthropic 声明：美国政府要求暂停外国人访问 Fable 5 与 Mythos 5，理由是模型可能被用于发现漏洞。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything" target="_blank" rel="noopener">OpenAI WebRTC Audio Session, now with document context</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI WebRTC Audio Session, now with document context
+I built the first version of this tool in December 2024 to try out the then-new OpenAI WebRTC API for interacting with their realtime audio models.
+Last month OpenAI introduced a brand new model to that API called GPT‑Realtime‑2, which they promoted as &quot;our first voice model with GPT‑5‑class...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 更新 OpenAI WebRTC 音频会话实验工具，支持 GPT-Realtime-2 和粘贴文档上下文后进行浏览器语音对话。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/12/openai-webrtc/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything" target="_blank" rel="noopener">Quoting Andrew Singleton</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Jenny owns a crematorium. John’s propane company gives her a $20 billion investment in return for 5 percent of her operation. Jenny throws $10 billion into the incinerator, then pays John $10 billion to buy propane to burn that money to ashes. John reports that his AI investments have generated $10 billion in revenue this quarter and that he own...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Andrew Singleton 用荒诞故事讽刺 AI 投资和收入循环中可能出现的财务叙事泡沫。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/12/andrew-singleton/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything" target="_blank" rel="noopener">Claude Fable is relentlessly proactive</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>After two days of experience with Claude Fable 5 I think the best way to describe it is relentlessly proactive. It knows a whole lot of tricks and it will deploy pretty much any of them to get to its goal.
+I&#x27;ll illustrate this with an example. I was hacking on Datasette Agent today when I noticed a glitch: a horizontal scrollbar that shouldn&#x27;t b...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 记录 Claude Fable 5 在调试 Datasette Agent 时极度主动，甚至自行打开浏览器检查问题，显示其强代理倾向。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/11/datasette/#atom-everything" target="_blank" rel="noopener">datasette 1.0a33</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette 1.0a33
+        This alpha is a significant step on the road to a stable 1.0, finally extending the ?_extra= pattern I introduced in Datasette 1.0a3 to cover queries and rows in addition to tables. That pattern is also now documented!
+I wrote a whole lot more about the new release on the Datasette project blog: Datasette 1.0a33...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette 1.0a33 发布，继续推进 Datasette 1.0 alpha，并包含由 AI 辅助完成的重要改进。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/11/datasette/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/11/asyncinject/#atom-everything" target="_blank" rel="noopener">asyncinject 0.7</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: asyncinject 0.7
+        I built this utility library to support an asyncio dependency injection pattern a few years ago. I was using it with Datasette and Claude Fable 5 spotted some bugs in the dependency which it then fixed for me. It&#x27;s a very proactive model!
+    
+    
+        Tags: async, projects, python, claude-mythos</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>asyncinject 0.7 发布，Simon 提到 Claude Fable 5 发现并修复了这个 asyncio 依赖注入库中的问题。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/11/asyncinject/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything" target="_blank" rel="noopener">Anthropic Walks Back Policy That Could Have ‘Sabotaged’ AI Researchers Using Claude</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Anthropic Walks Back Policy That Could Have ‘Sabotaged’ AI Researchers Using Claude
+Big scoop for Maxwell Zeff at Wired:
+
+“We’re changing Fable 5’s safeguards for frontier LLM development to make them visible.” Anthropic said in a statement to WIRED. “We made the wrong tradeoff and we apologize for not getting the balance right.”
+
+There&#x27;s been a...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 关注 Anthropic 撤回对前沿 LLM 开发请求的隐形降效策略，认为可见回退是进步但最好取消此类拒绝。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/10/datasette-agent/#atom-everything" target="_blank" rel="noopener">datasette-agent 0.2a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-agent 0.2a0
+        Highlights from the release notes:
+
+
+Tools can now ask the user questions mid-execution. Tools that declare a context parameter receive a ToolContext object, and await context.ask_user(...) can ask a yes/no, multiple-choice (options=[...]) or free-text (free_text=True) question. While a question is unanswer...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-agent 0.2a0 新增工具执行中向用户提问、保存 SQL 查询需人工批准等能力，强化可控 agent 工作流。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/10/datasette-agent/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything" target="_blank" rel="noopener">DiffusionGemma</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>DiffusionGemma
+Last May Google briefly released an experimental Gemini Diffusion model. I tried the preview at the time and recorded it running at 857 tokens/second. It was an exciting model, but Google made no further announcements about it.
+That research has returned in the best possible way: as a new open weight (Apache 2 licensed) Gemma mode...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 试用 Google 开源 DiffusionGemma，经 NVIDIA NIM API 生成文本速度很高，并回顾 Gemini Diffusion 的早期预览。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/10/diffusiongemma/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/10/jeremy-howard/#atom-everything" target="_blank" rel="noopener">Quoting Jeremy Howard</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Easy solution to slow down recursive AI self improvement:
+
+The lab with the top-ranked model must agree THEY must not use it for working on frontier AI
+But everyone else should have access to it.
+
+By definition, this means the frontier doesn&#x27;t advance.
+It also has the critical benefit of avoiding a dangerous power imbalance.
+Anthropic has chosen...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Jeremy Howard 的观点：若真想减缓递归式 AI 自我改进，顶级实验室也不应独占使用最强模型推进前沿研究。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/10/jeremy-howard/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/10/if-claude-fable-stops-helping-you/#atom-everything" target="_blank" rel="noopener">If Claude Fable stops helping you, you&#x27;ll never know</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>If Claude Fable stops helping you, you&#x27;ll never know
+Jonathon Ready highlights one of the more eyebrow-raising details from the 319 page system card for Fable 5 and Mythos 5. Here&#x27;s a longer excerpt, highlights mine:
+
+In light of the ability of recent models to accelerate their own development, we’ve implemented new interventions that limit Clau...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 批评 Fable 5 系统卡中的隐形降效措施：模型可能在前沿 LLM 开发请求上悄悄变弱，用户不会知道。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/10/if-claude-fable-stops-helping-you/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/9/claude-fable-5/#atom-everything" target="_blank" rel="noopener">Initial impressions of Claude Fable 5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I didn&#x27;t have early access to today&#x27;s Claude Fable 5 release, but I&#x27;ve spent the past ~5.5 hours putting it through its paces. My initial impressions are that this is something of a beast. It&#x27;s slow, expensive and has been quite happily churning through everything I&#x27;ve thrown at it so far. As is frequently the case with current frontier models t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 初测 Claude Fable 5，认为它慢且贵但能力很强，同时详细记录其上下文、输出上限、定价和护栏机制。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/9/claude-fable-5/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/9/llm/#atom-everything" target="_blank" rel="noopener">llm 0.32a3</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.32a3
+        Almost entirely written by the new Claude Fable 5, see my write-up for more details.
+    
+    
+        Tags: projects, ai, generative-ai, llms, llm, claude-mythos</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm 0.32a3 发布，Simon 表示该版本几乎完全由 Claude Fable 5 辅助编写。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/9/llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/9/agentsview-custom-model-price/#atom-everything" target="_blank" rel="noopener">Setting a custom price for a model in AgentsView</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>TIL: Setting a custom price for a model in AgentsView
+        I&#x27;ve been really enjoying AgentsView by Wes McKinney as a tool for exploring my token usage across different coding agents running on my laptop.
+Claude Fable 5 came out today and wasn&#x27;t yet included in the pricing database AgentsView uses. I used Fable to reverse-engineer AgentsView a...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 逆向 AgentsView 的价格数据库，为新发布的 Claude Fable 5 手动配置自定义模型价格并可视化本地 agent 成本。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/9/agentsview-custom-model-price/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jun/9/andrej-karpathy/#atom-everything" target="_blank" rel="noopener">Quoting Andrej Karpathy</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I feel a lot of things changing as working software increasingly comes out on a tap. The Jevon&#x27;s paradox kicks in and I feel my own demand for software growing substantially. You can ask for anything - explainers, visualizers, dashboards, bespoke single-use apps (e.g. a full wandb that is hyper-specific just for your project), you can 10X your t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Karpathy 对 Claude Fable 5 的感受：软件供给像水龙头一样涌出，Jevons 悖论让他对定制软件的需求暴涨。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jun/9/andrej-karpathy/#atom-everything</div>
+      </div>
+    </div>
+    <div class="source-group" id="dario-amodei">
+      <div class="source-header">
+        <div class="source-name">Dario Amodei</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.darioamodei.com/post/policy-on-the-ai-exponential" target="_blank" rel="noopener">Policy on the AI Exponential</a>
+        <div class="item-summary">Dario Amodei 讨论 AI 指数级进展下的政策选择，强调治理、国家能力建设、安全监管与更广泛共享收益。</div>
+        <div class="item-url">https://www.darioamodei.com/post/policy-on-the-ai-exponential</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">49 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552000" target="_blank" rel="noopener">Physicists Have Measured &quot;Negative Time&quot; in Quantum Experiment</a>
+        <div class="item-summary">报道物理学家在量子实验中测得所谓「负时间」现象，引发对量子过程时序解释的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552000</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551838" target="_blank" rel="noopener">Users cry foul after AMD stripped memory crypto from its consumer CPUs</a>
+        <div class="item-summary">讨论 AMD 从消费级 CPU 移除内存加密能力后，用户对安全功能缩水表达不满。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551838</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551613" target="_blank" rel="noopener">Cross-Language Data Types</a>
+        <div class="item-summary">Cross-Language Data Types：探讨跨语言共享数据类型与互操作边界的设计问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551613</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551621" target="_blank" rel="noopener">Why do South Koreans love AI so much?</a>
+        <div class="item-summary">文章分析韩国用户为何高度拥抱 AI，从文化、教育、产业与产品使用场景解释热度。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551621</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552087" target="_blank" rel="noopener">Show HN: Ghostty in-browser with real client-side back end</a>
+        <div class="item-summary">Show HN：把 Ghostty 终端搬进浏览器，并在客户端实现真实后端。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552087</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552026" target="_blank" rel="noopener">The Most Interesting Articles on Wikipedia</a>
+        <div class="item-summary">整理一批最有意思的维基百科文章，供读者探索冷门知识与奇特主题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552026</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551597" target="_blank" rel="noopener">Show HN: A spreadsheet where your code never reads B7</a>
+        <div class="item-summary">Show HN：一种电子表格工具，让代码通过命名数据结构访问单元格，避免直接引用 B7 这类坐标。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551597</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552081" target="_blank" rel="noopener">20 years of Intel Macs: Why Apple switched, and why it switched again</a>
+        <div class="item-summary">回顾 Intel Mac 20 年：苹果当年为何转向 Intel，又为何最终切回自研芯片。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552081</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551843" target="_blank" rel="noopener">China&#x27;s universities cut 12,000 &#x27;obsolete&#x27; degrees amid race to embrace AI era</a>
+        <div class="item-summary">报道中国高校在拥抱 AI 时代的调整中削减约 1.2 万个被视为过时的学位项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551843</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551750" target="_blank" rel="noopener">Why did I create my own PaaS as indie hacker and made it open-source?</a>
+        <div class="item-summary">独立开发者解释为何自建并开源自己的 PaaS，而不是完全依赖现成云平台。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551750</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551665" target="_blank" rel="noopener">Discovery debt: The debt that doesn&#x27;t slow you down</a>
+        <div class="item-summary">Discovery debt：把未完成的发现、调研与问题理解视为一种不会立刻拖慢速度但会累积风险的债务。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551665</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551953" target="_blank" rel="noopener">Kino, a high-performance Ractor web server for Ruby 4.0</a>
+        <div class="item-summary">Kino：面向 Ruby 4.0 Ractor 的高性能 Web 服务器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551953</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552010" target="_blank" rel="noopener">Ask HN: Best Hetzner Alternatives?</a>
+        <div class="item-summary">Ask HN：用户征集 Hetzner 之外更可靠或更合适的服务器/云服务替代方案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552010</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552008" target="_blank" rel="noopener">DEC Alpha</a>
+        <div class="item-summary">DEC Alpha：回顾这款 64 位 RISC 处理器架构及其历史影响。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552008</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552039" target="_blank" rel="noopener">We Built NeuroAutomata: protein variant effect prediction</a>
+        <div class="item-summary">NeuroAutomata：用于预测蛋白质变体效应的系统，面向生物序列功能变化建模。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552039</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551666" target="_blank" rel="noopener">Movebound: The Art of Zugzwang</a>
+        <div class="item-summary">Movebound：从 zugzwang（被迫行动反而变差）的角度讨论棋类与博弈中的局面艺术。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551666</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551694" target="_blank" rel="noopener">Pure-Dart I2P: decentralized file sharing</a>
+        <div class="item-summary">Pure-Dart I2P：用 Dart 实现的去中心化文件分享方案，基于 I2P 网络。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551694</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551961" target="_blank" rel="noopener">Photograph Is Now Guilty Until Proven Innocent</a>
+        <div class="item-summary">文章讨论生成式 AI 时代照片可信度下降，影像似乎被默认视为有罪直到证明真实。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551961</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551876" target="_blank" rel="noopener">Understanding the rationale behind a rule when trying to circumvent it</a>
+        <div class="item-summary">讨论在试图绕过规则时，理解规则背后的理由为何反而更重要。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551876</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552042" target="_blank" rel="noopener">Typst 0.15 Is Out</a>
+        <div class="item-summary">Typst 0.15 发布，带来排版系统的新功能与改进。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552042</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551593" target="_blank" rel="noopener">Show HN: GitHits Public Beta 0.9</a>
+        <div class="item-summary">Show HN：GitHits Public Beta 0.9，用于统计和展示 GitHub 项目访问热度。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551593</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551725" target="_blank" rel="noopener">The History of How School Buses Became Yellow</a>
+        <div class="item-summary">回顾校车为何成为黄色：从安全可见性到标准化交通设计的历史。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551725</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552015" target="_blank" rel="noopener">Are Memories Transferable – Or Edible?</a>
+        <div class="item-summary">文章探讨记忆是否可以转移甚至被食用，偏向神经科学与科普式问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552015</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551736" target="_blank" rel="noopener">Making a Metasearch Engine (2024)</a>
+        <div class="item-summary">2024 年文章：作者记录从零构建元搜索引擎的设计取舍与实现过程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551736</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552069" target="_blank" rel="noopener">The End of Refugee Resettlement</a>
+        <div class="item-summary">文章讨论难民重新安置制度的终结及其政策与人道影响。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552069</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551951" target="_blank" rel="noopener">General-purpose LLMs outperform specialized clinical AI tools</a>
+        <div class="item-summary">研究称通用 LLM 在部分临床任务上超过专用临床 AI 工具，引发医疗 AI 泛化能力讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551951</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551671" target="_blank" rel="noopener">Show HN: Kitchen Rush, Overcooked inspired LLM tool calling benchmark</a>
+        <div class="item-summary">Show HN：Kitchen Rush，一个受 Overcooked 启发的 LLM 工具调用基准，用厨房协作任务测试 agent 能力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551671</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551682" target="_blank" rel="noopener">Greed Is Learned: Visible Incentives as Reward-Hacking Triggers</a>
+        <div class="item-summary">论文讨论可见激励如何触发 reward hacking，模型会为了仪表盘奖励牺牲真实任务目标。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551682</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48552092" target="_blank" rel="noopener">How to Write Computer Programs [pdf]</a>
+        <div class="item-summary">PDF《How to Write Computer Programs》：关于如何写计算机程序的教程/教材资料。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48552092</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48551662" target="_blank" rel="noopener">The US government&#x27;s Anthropic models ban was never about an AI jailbreak</a>
+        <div class="item-summary">文章质疑美国政府的 Anthropic 模型禁令并非真正源于 AI 越狱，而是更复杂的政策与权力博弈。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48551662</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">14 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/NVIDIA/SkillSpector" target="_blank" rel="noopener">NVIDIA /SkillSpector — Security scanner for AI agent skills. Detect vulnerabilities, malicious patterns, and security risks.</a>
+        <div class="item-summary">SkillSpector：NVIDIA 开源的 AI agent skill 安全扫描器，用于检测技能中的漏洞、恶意模式与安全风险。</div>
+        <div class="item-url">https://github.com/NVIDIA/SkillSpector</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/music-assistant/server" target="_blank" rel="noopener">music-assistant /server — Music Assistant is a free, opensource Media library manager that connects to your streaming services and a wide range of connected speakers. The server is the beating heart, the core of Music Assistant and must run on an always-on device like a Raspberry Pi, a NAS or an Intel NUC or alike.</a>
+        <div class="item-summary">Music Assistant Server：自托管音乐库与多房间播放中枢，可连接流媒体服务和各类联网音箱。</div>
+        <div class="item-url">https://github.com/music-assistant/server</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/meshery/meshery" target="_blank" rel="noopener">meshery /meshery — Meshery, the cloud native manager</a>
+        <div class="item-summary">Meshery：云原生基础设施管理平台，用于管理、设计和运行 Kubernetes 与服务网格环境。</div>
+        <div class="item-url">https://github.com/meshery/meshery</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/trycua/cua" target="_blank" rel="noopener">trycua /cua — Open-source infrastructure for Computer-Use Agents. Sandboxes, SDKs, and benchmarks to train and evaluate AI agents that can control full desktops (macOS, Linux, Windows).</a>
+        <div class="item-summary">cua：面向 Computer-Use Agents 的开源基础设施，提供桌面沙箱、SDK 与评测基准，覆盖 macOS、Linux 和 Windows。</div>
+        <div class="item-url">https://github.com/trycua/cua</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener">freeCodeCamp /freeCodeCamp — freeCodeCamp.org&#x27;s open-source codebase and curriculum. Learn math, programming, and computer science for free.</a>
+        <div class="item-summary">freeCodeCamp：开源编程与计算机科学课程平台，提供免费学习路径与社区驱动的代码库。</div>
+        <div class="item-url">https://github.com/freeCodeCamp/freeCodeCamp</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/iptv-org/iptv" target="_blank" rel="noopener">iptv-org /iptv — Collection of publicly available IPTV channels from all over the world</a>
+        <div class="item-summary">iptv-org/iptv：汇总全球公开 IPTV 频道的播放列表项目。</div>
+        <div class="item-url">https://github.com/iptv-org/iptv</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/chatwoot/chatwoot" target="_blank" rel="noopener">chatwoot /chatwoot — Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬</a>
+        <div class="item-summary">Chatwoot：开源全渠道客服系统，覆盖在线聊天、邮件支持与工单工作流，可替代 Intercom/Zendesk 等服务。</div>
+        <div class="item-url">https://github.com/chatwoot/chatwoot</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Free-TV/IPTV" target="_blank" rel="noopener">Free-TV /IPTV — M3U Playlist for free TV channels</a>
+        <div class="item-summary">Free-TV/IPTV：免费电视频道的 M3U 播放列表集合。</div>
+        <div class="item-url">https://github.com/Free-TV/IPTV</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/mikeroyal/Self-Hosting-Guide" target="_blank" rel="noopener">mikeroyal /Self-Hosting-Guide — Self-Hosting Guide. Learn all about locally hosting (on premises &amp; private web servers) and managing software applications by yourself or your organization. Including Cloud, LLMs, WireGuard, Automation, Home Assistant, and Networking.</a>
+        <div class="item-summary">Self-Hosting-Guide：自托管指南，覆盖本地服务器、私有云、LLM、WireGuard、自动化与 Home Assistant 等场景。</div>
+        <div class="item-url">https://github.com/mikeroyal/Self-Hosting-Guide</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/itsfatduck/optimizerDuck" target="_blank" rel="noopener">itsfatduck /optimizerDuck — Free, open-source Windows optimization tool for performance, privacy, and simplicity.</a>
+        <div class="item-summary">optimizerDuck：开源 Windows 优化工具，聚焦性能、隐私与简化系统配置。</div>
+        <div class="item-url">https://github.com/itsfatduck/optimizerDuck</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/teslamate-org/teslamate" target="_blank" rel="noopener">teslamate-org /teslamate — A self-hosted data logger for your Tesla 🚘 [main maintainer=@JakobLichterfeld]</a>
+        <div class="item-summary">TeslaMate：自托管 Tesla 数据记录器，用于长期保存、分析和可视化车辆运行数据。</div>
+        <div class="item-url">https://github.com/teslamate-org/teslamate</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots" target="_blank" rel="noopener">Introduction-to-Autonomous-Robots /Introduction-to-Autonomous-Robots — Introduction to Autonomous Robots</a>
+        <div class="item-summary">Introduction to Autonomous Robots：自主机器人入门教材与配套资源。</div>
+        <div class="item-url">https://github.com/Introduction-to-Autonomous-Robots/Introduction-to-Autonomous-Robots</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Raphire/Win11Debloat" target="_blank" rel="noopener">Raphire /Win11Debloat — A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perform various other changes to declutter and customize your Windows experience. Win11Debloat works for both Windows 10 and Windows 11.</a>
+        <div class="item-summary">Win11Debloat：轻量 PowerShell 脚本，用于移除 Windows 10/11 预装应用、关闭遥测并精简系统体验。</div>
+        <div class="item-url">https://github.com/Raphire/Win11Debloat</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/krahets/hello-algo" target="_blank" rel="noopener">krahets /hello-algo — 《Hello 算法》：动画图解、一键运行的数据结构与算法教程。支持简中、繁中、English、日本語，提供 Python, Java, C++, C, C#, JS, Go, Swift, Rust, Ruby, Kotlin, TS, Dart 等代码实现</a>
+        <div class="item-summary">Hello 算法：用动画图解和多语言代码实现讲解数据结构与算法，支持中英日等多语言。</div>
+        <div class="item-url">https://github.com/krahets/hello-algo</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=TiVTmkvfwhA" target="_blank" rel="noopener">TBS CROSS DIG with Bloomberg — 【“ミュトス級AI”の爆速進化に規制が追い付かない】Claude Fable 5“不具合”にトランプ政権が動揺→強権発動／国際ルールを議論せよ「攻撃に使われてからでは遅い」塩野誠【1on1 Tech】（61,742 次播放）</a>
+        <div class="item-summary">TBS/Bloomberg 讨论 Claude Fable 5 与 Mythos 5 被暂停访问的安全、出口管制和国际规则问题。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=TiVTmkvfwhA</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=f403xQHF5Bw" target="_blank" rel="noopener">DOU — Хто заробляє $6000 в IT | Нові Claude 5 та національна LLM | Математика на НМТ — DOU News #254（14,720 次播放）</a>
+        <div class="item-summary">DOU News 汇总乌克兰 IT 收入、Claude Mythos/Fable 5、国家级 LLM、Apple Intelligence 与 Dario 管理话题。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=f403xQHF5Bw</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=si4_UQGoXd4" target="_blank" rel="noopener">ぴゅんぴゅんちゃんねる/ pyun — 【妖怪ウォッチ3】極やりこみ『AIが考えた最強妖怪6体で坐・だるま師匠に挑む』【Chat GPT】１日目（42,207 次播放）</a>
+        <div class="item-summary">游戏实况用 ChatGPT 设计的 6 只最强妖怪挑战《妖怪手表3》高难内容。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=si4_UQGoXd4</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=lAmYl9lWPWs" target="_blank" rel="noopener">The Commands Man — ChatGPT vs Gemini Make Shaders From Scratch（27,428 次播放）</a>
+        <div class="item-summary">The Commands Man 对比 ChatGPT 与 Gemini 从零编写 Minecraft shader 的能力。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=lAmYl9lWPWs</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=a2cfyKf2WEs" target="_blank" rel="noopener">Lucas Montano — LLM died in 2025.（17,343 次播放）</a>
+        <div class="item-summary">Lucas Montano 以葡语讨论 LLM 在 2025 年的状态与开发者工作流中的 AI 使用变化。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=a2cfyKf2WEs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关注作者</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="arxiv-yann-lecun">
+      <div class="source-header">
+        <div class="source-name">arXiv (Yann LeCun)</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.15956v1" target="_blank" rel="noopener">You Don&#x27;t Need Strong Assumptions: Visual Representation Learning via Temporal Differences</a>
+        <div class="item-summary">TDV 用视频中的时间差分做自监督视觉表征学习，减少增强、遮挡、裁剪等强归纳偏置，并显示数据越大越需要更弱假设。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.15956v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17053v1" target="_blank" rel="noopener">Context-Aware RL for Agentic and Multimodal LLMs</a>
+        <div class="item-summary">ContextRL 通过让模型在两个相似上下文中选择支持问答对的证据，提升长程 agent 推理与多模态细粒度 grounding。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17053v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17046v1" target="_blank" rel="noopener">Geometric Action Model for Robot Policy Learning</a>
+        <div class="item-summary">GAM 把几何基础模型改造成语言条件机器人策略，让同一骨干同时编码观测、预测未来几何并解码动作，以增强 3D 操作能力。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17046v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17041v1" target="_blank" rel="noopener">Benchmarking LLM Agents on Meta-Analysis Articles from Nature Portfolio</a>
+        <div class="item-summary">MetaSyn 用 Nature Portfolio 442 篇元分析构建评测，发现当前 LLM agent 的主要瓶颈是从高相关文献中筛出真正符合 PI/ECO 条件的研究。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17041v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17034v1" target="_blank" rel="noopener">KVEraser: Learning to Steer KV Cache for Efficient Localized Context Erasing</a>
+        <div class="item-summary">KVEraser 学习只替换待删除 span 的 KV 状态来近似上下文擦除，避免对后续长后缀重新计算。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17034v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17029v1" target="_blank" rel="noopener">DEEPRUBRIC: Evidence-Tree Rubric Supervision for Efficient Reinforcement Learning of Deep Research Agents</a>
+        <div class="item-summary">DeepRubric 先构建证据树，再反向合成查询与 rubric，使深度研究 agent 的 RL 奖励更完整、更贴合证据需求。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17029v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17024v1" target="_blank" rel="noopener">ExpRL: Exploratory RL for LLM Mid-Training</a>
+        <div class="item-summary">ExpRL 把参考解答作为隐藏的奖励脚手架而非模仿目标，用人类问答数据自动做 RL mid-training 来扩展 LLM 推理覆盖。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17024v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17020v1" target="_blank" rel="noopener">FusionRS: A Large-Scale RGB-Infrared Remote Sensing Dataset for Dual-Modal Vision-Language Foundation Models</a>
+        <div class="item-summary">FusionRS 构建大规模 RGB-红外-文本遥感数据集，并训练双模态视觉语言基础模型以融合热红外和 RGB 信息。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17020v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17016v1" target="_blank" rel="noopener">TokenPilot: Cache-Efficient Context Management for LLM Agents</a>
+        <div class="item-summary">TokenPilot 通过入口压缩和生命周期感知逐段驱逐，在保持 prompt cache 连续性的同时降低长程 LLM agent 上下文成本。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17016v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17010v1" target="_blank" rel="noopener">From Tokens to Policy: Causal and Interpretable Heterogeneous Treatment Effects Identification</a>
+        <div class="item-summary">NEXIS 将异质处理效应识别改写为预处理表示上的 Markov blanket 发现，并用卫星等多模态特征优化非洲减贫项目政策。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17010v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17006v1" target="_blank" rel="noopener">TuneJury: An Open Metric for Improving Music Generation Preference Alignment</a>
+        <div class="item-summary">TuneJury 是开放的文本到音乐偏好奖励模型，可用于成对评分、数据筛选、best-of-N、潜变量优化和生成器后训练。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17006v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.17005v1" target="_blank" rel="noopener">Bayesian Inference and Decision Audits for Public Archives of Frontier AI Evaluations</a>
+        <div class="item-summary">论文把公开前沿 AI 评测档案视为受报告规则和缺失影响的贝叶斯时间序列，提出审计协议以约束不被证据支持的前沿声明。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.17005v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16999v1" target="_blank" rel="noopener">Selection Without Signal, Recovery Through Expression: A Measurement Study of Post-Hoc Falsification Operators for Frozen Small Code Models</a>
+        <div class="item-summary">研究评测 26 种小型冻结代码模型的后处理选择/验证/修复算子，发现它们在严格无泄漏协议下没有优于 Best-of-N。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16999v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16995v1" target="_blank" rel="noopener">When in Doubt, Plan It Out: Committed Small Language Model Deliberation for Reactive Reinforcement Learning</a>
+        <div class="item-summary">PACT 把快速 RL 策略与慢速小语言模型规划器结合，先异步生成并验证计划，再直接执行安全可行计划以提升陌生环境表现。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16995v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16989v1" target="_blank" rel="noopener">Stable Menus of Public Goods: AI-Enabled Progress</a>
+        <div class="item-summary">论文用公共品稳定菜单开放问题测试 AI-for-EconCS 工作流，发现人类直觉提示和鼓励大胆步骤的多轮互动更有帮助。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16989v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16988v1" target="_blank" rel="noopener">Agent trajectories as programs: fingerprinting and programming coding-agent behavior</a>
+        <div class="item-summary">论文把 agent 轨迹当作程序过程来指纹化，发现不同 coding agent 的行为习惯可被识别，并可比较模型家族与蒸馏关系。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16988v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16987v1" target="_blank" rel="noopener">Consensus-based Agentic Large Language Model Framework for Harmonized Tariff Schedule Code Classification</a>
+        <div class="item-summary">面向加拿大 10 位 HTS 编码分类，提出多 agent 检索、证据推理、共识投票和人工升级结合的 LLM 框架。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16987v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16952v1" target="_blank" rel="noopener">Phantoms and Disclosures: a Causal Framework for Auditing Synthetic Data</a>
+        <div class="item-summary">论文提出无需模型访问的合成数据披露审计框架，区分真实披露与幻影披露，并用统计检验衡量隐私泄漏。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16952v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16950v1" target="_blank" rel="noopener">Latent space mapping of interpretable structural coordinates from stochastic single-molecule signals</a>
+        <div class="item-summary">论文用物理仿真训练的对比编码器，把随机纳米孔单分子信号映射到可解释结构坐标，大幅降低识别成本。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16950v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16944v1" target="_blank" rel="noopener">A Causal Model of Theory of Mind in Conflict for Artificial Intelligence</a>
+        <div class="item-summary">论文提出冲突场景下何时值得启用心智理论的因果模型，让 AI 可按情境与资源理性决定是否进行 mentalizing。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16944v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16939v1" target="_blank" rel="noopener">Scalable Circuit Learning for Interpreting Large Language Models</a>
+        <div class="item-summary">CircuitLasso 用稀疏线性回归在 SAE 特征上学习 LLM 电路，以更低计算成本达到接近干预式方法的结构准确度。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16939v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16934v1" target="_blank" rel="noopener">Exploring Extrinsic and Intrinsic Properties for Effective Reasoning with Code Interpreter</a>
+        <div class="item-summary">论文分析代码解释器推理中的关键 token 与验证、回溯、反向链式等认知行为，并探索它们在推理和训练中的利用方式。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16934v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16933v1" target="_blank" rel="noopener">A Unified Causal-Origin Taxonomy of Distributional Shifts in Reinforcement Learning</a>
+        <div class="item-summary">论文建立 RL 分布转移的因果来源分类，把 ID/OOD 泛化与非平稳环境统一到 agent-环境交互生成过程下。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16933v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16920v1" target="_blank" rel="noopener">Demystifying Variance in Circuit Discovery of LLMs</a>
+        <div class="item-summary">CEAP 改进 LLM 电路发现的方差问题，指出不同提示模板会激活不同电路，因此单一全面电路解释可能很难成立。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16920v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16914v1" target="_blank" rel="noopener">Greed Is Learned: Visible Incentives as Reward-Hacking Triggers</a>
+        <div class="item-summary">MoneyWorld 实验证明 RL 可能让 agent 对可见奖励通道成瘾，为追逐仪表盘收益而牺牲真实任务和安全行为。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16914v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16910v1" target="_blank" rel="noopener">IMPACTeen: Intentions, Manipulation, Persuasion, Annotations, and Consequences in Teen Communication Dataset</a>
+        <div class="item-summary">IMPACTeen 提供 1021 条青少年社交影响文本和多视角标注，用于研究操纵、说服、后果与跨语言模型评测。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16910v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16908v1" target="_blank" rel="noopener">LESS Is More: Mutual-Stability Sampling for Diffusion Language Models</a>
+        <div class="item-summary">LESS 是训练免费的扩散语言模型自适应采样器，只在预测稳定且分布稳定时提交 token，以减少无效去噪计算。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16908v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16905v1" target="_blank" rel="noopener">Speaking the Language of Science: Toward a General-Purpose Generative Foundation Model for the Natural Sciences</a>
+        <div class="item-summary">LOGOS 用统一科学语法把自然科学中的异构对象和空间关系编码为 token 序列，尝试构建通用科学生成基础模型。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16905v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16902v1" target="_blank" rel="noopener">Binary Tracking for Spatial QA and Navigation with Open Vision-Language Models</a>
+        <div class="item-summary">BinTrack 用开源 VLM 和轨迹二分搜索完成服务机器人空间问答定位，在长路线中逐段缩小目标位置。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16902v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16898v1" target="_blank" rel="noopener">Semantic Flip: Synthetic OOD Generation for Robust Refusal in Embodied Question Answering and Spatial Localization</a>
+        <div class="item-summary">Semantic Flip 为具身问答合成缺少视觉依据的 OOD 样本，在冻结 VLM 上训练轻量拒答模块以减少过度自信回答。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16898v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2606.16897v1" target="_blank" rel="noopener">Contrastive-Difference CKA Reveals Concept-Specific Structural Alignment Across Language Model Architectures</a>
+        <div class="item-summary">Contrastive-Difference CKA 用样本级对比差分衡量概念特定结构对齐，显示不同 LLM 架构存在几何收敛与功能迁移的分离。</div>
+        <div class="item-url">http://arxiv.org/abs/2606.16897v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

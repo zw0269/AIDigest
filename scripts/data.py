@@ -9,6 +9,94 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-17 GitHub Trending
+    "https://github.com/swc-project/swc":
+        "swc：基于 Rust 的 Web 编译与工具平台，面向 JavaScript/TypeScript 转译、打包和开发工具链。",
+    "https://github.com/cypress-io/cypress":
+        "Cypress：面向浏览器应用的快速、可靠端到端测试框架。",
+    "https://github.com/alibaba/zvec":
+        "zvec：阿里开源的轻量级进程内向量数据库，主打低延迟和快速本地检索。",
+    "https://github.com/n0-computer/iroh":
+        "iroh：Rust 模块化网络栈，用稳定的 dial key 取代脆弱 IP 地址连接。",
+    "https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation":
+        "Universal Android Debloater Next Generation：跨平台 Rust GUI，通过 ADB 精简免 root 安卓设备以改善隐私、安全和续航。",
+    "https://github.com/puppeteer/puppeteer":
+        "Puppeteer：用于自动化 Chrome 和 Firefox 的 JavaScript API，常用于测试、抓取和浏览器自动化。",
+
+    # 2026-06-17 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48566860":
+        "作者反思一次 bug 排查：真正的问题不是发现的 bug，而是自己预设的规则限制了判断。",
+    "https://news.ycombinator.com/item?id=48566728":
+        "Get Detach：HN 讨论一个名为 Detach 的工具/产品及其使用场景。",
+    "https://news.ycombinator.com/item?id=48566623":
+        "实测 M3 Mac 上同时打开 50 个 GitHub issue 对电池续航和资源占用的影响。",
+    "https://news.ycombinator.com/item?id=48566559":
+        "报道 Meta CTO Andrew Bosworth 承认公司 AI 重组过程非常糟糕。",
+    "https://news.ycombinator.com/item?id=48566809":
+        "电子书讨论 AI 如何逐步成为军事决策和作战规划中的新型顾问。",
+    "https://news.ycombinator.com/item?id=48566605":
+        "介绍 ClickHouse 的自定义 memcpy 实现，关注高性能数据库底层内存拷贝优化。",
+    "https://news.ycombinator.com/item?id=48566688":
+        "Origin：被称为 Cursor 的 GitHub 竞争产品，围绕代码托管与 AI 开发工作流展开。",
+    "https://news.ycombinator.com/item?id=48566541":
+        "HN 用户对不同 AI 编码 agent 的能力、稳定性和实际开发体验进行评分和讨论。",
+    "https://news.ycombinator.com/item?id=48566824":
+        "系列文章讲解如何在 Linux/x86-64 上用 memory-indirect calls 做系统调用插桩。",
+    "https://news.ycombinator.com/item?id=48566727":
+        "从 Chesterton's fence 延伸到 Chesterton's gap，讨论规则、缺口和改动前理解背景的重要性。",
+    "https://news.ycombinator.com/item?id=48566792":
+        "Show HN：Registry for Ant and Everyone Else，一个面向 Ant 及更多用户的注册表项目。",
+    "https://news.ycombinator.com/item?id=48566534":
+        "Loop Engineering：讨论以反馈循环、迭代和系统闭环为中心的工程实践。",
+    "https://news.ycombinator.com/item?id=48566772":
+        "Native Inference Engine：面向 macOS 14 及更新系统的本地推理引擎。",
+    "https://news.ycombinator.com/item?id=48566549":
+        "Dream Appearance Notification：围绕梦境出现提醒或梦境记录通知的实验性项目/想法。",
+    "https://news.ycombinator.com/item?id=48566882":
+        "Maven Central 开始正式施加发布限制，以控制包发布规模和生态资源压力。",
+    "https://news.ycombinator.com/item?id=48566581":
+        "R 语言获得统计领域奖项，体现其在统计计算和数据分析生态中的持续影响力。",
+    "https://news.ycombinator.com/item?id=48566585":
+        "作者记录自己的博客登上 Hacker News 首页后的流量、评论和心理体验。",
+    "https://news.ycombinator.com/item?id=48566897":
+        "一个节拍同步的 instanced-mesh 音乐可视化器，用 FFT 驱动实时视觉效果。",
+    "https://news.ycombinator.com/item?id=48566678":
+        "Ask HN：开发者讨论近年来移动开发在工具链、平台政策和用户期望上的变化。",
+    "https://news.ycombinator.com/item?id=48566891":
+        "面向医生解释患者为何使用 ChatGPT：可访问性、解释需求和医疗沟通缺口共同推动使用。",
+    "https://news.ycombinator.com/item?id=48566837":
+        "MediaUse Site Skills：围绕网站技能、媒体使用和用户能力表达的项目或文章。",
+    "https://news.ycombinator.com/item?id=48566587":
+        "Fearless Concurrency on the GPU：讨论在 GPU 上实现更安全、更可控并发的编程方法。",
+    "https://news.ycombinator.com/item?id=48566812":
+        "Show HN：ParaMetal，一个实时 3D 热传导仿真项目。",
+    "https://news.ycombinator.com/item?id=48566794":
+        "Show HN：Mini-film，开源 RAW 照片批处理和审片工具。",
+    "https://news.ycombinator.com/item?id=48566690":
+        "一个面向长时间 Claude 工作流的可恢复编排系统，支持任务中断后继续执行。",
+    "https://news.ycombinator.com/item?id=48566791":
+        "文章探讨商业空间长期空置的经济、租约、监管和市场激励原因。",
+    "https://news.ycombinator.com/item?id=48566644":
+        "研究用 GAN 与忆阻器分类器处理非正面人脸识别问题。",
+    "https://news.ycombinator.com/item?id=48566832":
+        "创始人手册：讨论如何从组织、产品和工程流程上构建 AI-native startup。",
+    "https://news.ycombinator.com/item?id=48566531":
+        "Simon Willison 文章在 HN 讨论：Fable 5 出口管制可能损害美国网络防御能力。",
+    "https://news.ycombinator.com/item?id=48566744":
+        "fastai: Style：讨论 fastai 项目或文档中的风格、约定与实践。",
+
+    # 2026-06-17 YouTube AI
+    "https://www.youtube.com/watch?v=1Lg7eOmNT-A":
+        "日语游戏实况第二天继续用 ChatGPT 设计的 6 只最强妖怪挑战《妖怪手表3》高难内容。",
+    "https://www.youtube.com/watch?v=DacI6UhfOD8":
+        "Wall Street Millennial 讨论 OpenAI 争取政府支持或救助的策略与商业风险。",
+    "https://www.youtube.com/watch?v=E71uw7csF_Y":
+        "零度解说围绕 Claude 强模型被禁，实测三款无审查本地模型并主张部署本地 AI。",
+    "https://www.youtube.com/watch?v=T-EScj1GEKY":
+        "WorldofAI 汇总 Fable 5 可能回归、DeepSeek v4.1、GPT-5.6 泄露、Fusion API 和 Kimi K2.7 代码速度等 AI 新闻。",
+    "https://www.youtube.com/watch?v=l72ufA-4SzE":
+        "Two Minute Papers 解读 Anthropic 自然语言自编码器研究，展示用自然语言窥探 Claude 内部表征的结果。",
+
     # 2026-06-16 Anthropic / Dario Amodei
     "https://www.anthropic.com/news/anthropic-public-record":
         "Anthropic 公布首轮 Public Record 全国调查，展示近 5.2 万美国人对 AI 收益、风险与企业问责的态度。",
@@ -1803,6 +1891,84 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-17 OpenAI / Google DeepMind / Simon Willison
+    "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/":
+        "英国政府与 Google DeepMind 合作构建 AI 原型，目标是加速住房规划审批和建房决策。",
+    "https://openai.com/index/deployment-simulation":
+        "OpenAI 介绍 Deployment Simulation，用真实对话数据在发布前模拟部署行为，以提前预测模型表现并改进安全评估。",
+    "https://simonwillison.net/2026/Jun/17/click-to-play-component/#atom-everything":
+        "Simon 发布 click-to-play Web Component，把 GIF 先显示为静态帧，用户点击后才按需加载播放。",
+    "https://simonwillison.net/2026/Jun/17/netnewswire-status/#atom-everything":
+        "Simon 称赞 Brent Simmons 退休后专注把开源 RSS 阅读器 NetNewsWire 做好，并分享自己多年使用体验。",
+    "https://simonwillison.net/2026/Jun/16/datasette/#atom-everything":
+        "datasette 1.0a34 新增在界面中插入、编辑和删除行的能力，灵感来自 Datasette Agent 的 SQL 写入支持。",
+    "https://simonwillison.net/2026/Jun/16/datasette-tailscale/#atom-everything":
+        "datasette-tailscale 0.1a0 是实验插件，可用 Tailscale sidecar 把本地 Datasette 服务接入 Tailnet。",
+    "https://simonwillison.net/2026/Jun/16/georgi-gerganov/#atom-everything":
+        "引用 Georgi Gerganov：Qwen3.6-27B 已是很能干的本地编码模型，适合维护者处理日常小任务。",
+
+    # 2026-06-17 arXiv
+    "http://arxiv.org/abs/2606.18237v1":
+        "ReproRepo 利用 GitHub 仓库 issue 扩展可复现性审计，把复现实验中的问题、证据和修复过程系统化记录。",
+    "http://arxiv.org/abs/2606.18235v1":
+        "EvolveNav 通过从历史轨迹抽取规则记忆、UCB 检索和行动前 preflection，让零样本目标导航 agent 在测试时自我改进。",
+    "http://arxiv.org/abs/2606.18223v1":
+        "论文用模仿学习从部分可观测网络状态中学习红队策略，帮助神经符号网络防御 agent 预测攻击者动作。",
+    "http://arxiv.org/abs/2606.18222v1":
+        "Darshana Graph 汇集印度哲学多传统平行注释语料，并用风格计量和图分析支持跨学派比较研究。",
+    "http://arxiv.org/abs/2606.18216v1":
+        "Zone of Proximal Policy Optimization 将教师知识放入提示而非梯度，让策略在接近自身能力边界的任务上获得引导。",
+    "http://arxiv.org/abs/2606.18206v1":
+        "FPRM 用预归一化、残差缩放和固定点收敛作为循环 Transformer 的停止机制，使模型按任务难度自适应计算量。",
+    "http://arxiv.org/abs/2606.18205v1":
+        "论文把 Al-Mawrid 阿英词典按 ISO Language Markup Framework 和 TEI Lex-0 编码，提升词典数据的标准化和复用性。",
+    "http://arxiv.org/abs/2606.18203v1":
+        "RubricsTree 为个人健康 agent 构建可扩展、可演化开放式评测，覆盖健康记忆和医学技能两类能力。",
+    "http://arxiv.org/abs/2606.18195v1":
+        "论文提出 dLLM 的 on-policy self-distillation，让扩散语言模型从自身未来状态中学习以改善采样与生成质量。",
+    "http://arxiv.org/abs/2606.18193v1":
+        "红队研究用 HackAgent 对 Anthropic Fable 5 和 Opus 4.8 做自动越狱评估，发现两者仍会在持续自适应攻击下产生有害输出。",
+    "http://arxiv.org/abs/2606.18192v1":
+        "Stanford EDGAR Filings Dataset 将 SEC 披露重构为版式忠实、token 高效的 MultiMarkdown 长上下文预训练数据。",
+    "http://arxiv.org/abs/2606.18191v1":
+        "DRFLOW 评测深度研究 agent 能否从分散企业资料中预测个性化工作流步骤，而不仅是生成报告摘要。",
+    "http://arxiv.org/abs/2606.18190v1":
+        "论文发布带 ATT&CK 标签的多源网络安全日志数据集，并评估小语言模型在安全事件分类上的表现。",
+    "http://arxiv.org/abs/2606.18181v1":
+        "IUU+DB 用 LLM 从异构文档中抽取非法捕捞、海鲜欺诈和劳工滥用事件，构建可去重和趋势分析的全球数据库。",
+    "http://arxiv.org/abs/2606.18168v1":
+        "研究 8.6 万个 agent 生成测试补丁，发现 80% 以上缺少强 oracle 信号，说明测试文件存在不等于真正验证行为。",
+    "http://arxiv.org/abs/2606.18166v1":
+        "论文评估开源 LLM 在 CTI 报告中进行多标签 MITRE ATT&CK 技术分类的能力和局限。",
+    "http://arxiv.org/abs/2606.18158v1":
+        "论文指出欧盟 AI 法下的法律自动化缺少衡量教义式法律推理的基准，使高风险司法 AI 的准确性要求难以落地。",
+    "http://arxiv.org/abs/2606.18154v1":
+        "LEADS 把心脏电生理知识形式化为结构化动作空间，让 LLM agent 发现稳定、可解释的混合数字孪生模型结构。",
+    "http://arxiv.org/abs/2606.18147v1":
+        "WEQA 用查询自适应 agent 把 LLM 与可穿戴健康数据分析工具结合，提升连续传感器数据问答的准确性和临床可信度。",
+    "http://arxiv.org/abs/2606.18144v1":
+        "论文把 embodied agent 的闪存写入寿命视为会折旧的资产，提出耐久性影子价格来决定记忆存储层级。",
+    "http://arxiv.org/abs/2606.18142v1":
+        "TAC 基准测试 AI 旅行 agent 在工具行动中是否会避开涉及动物福利风险的选项，并发现前沿模型基础表现低于随机水平。",
+    "http://arxiv.org/abs/2606.18132v1":
+        "论文提出元强化学习知识复用框架，把在简化动力学 agent 上学到的任务知识迁移到异构具身 agent。",
+    "http://arxiv.org/abs/2606.18129v1":
+        "Cognitive Atrophy Bench 衡量心理健康支持场景中 LLM 是否削弱用户持续反思、自主应对和决策能力。",
+    "http://arxiv.org/abs/2606.18124v1":
+        "研究发现隐藏地理元数据会让 LLM 在中性提示中泄露地域化输出，甚至 Unknown 占位也会改变生成分布。",
+    "http://arxiv.org/abs/2606.18120v1":
+        "论文分析 Handlebars 模板中的双花括号和三花括号插值如何影响 prompt 结构化角色注入风险，指出 HTML 转义并不能覆盖所有分隔符家族。",
+    "http://arxiv.org/abs/2606.18108v1":
+        "ALeRCE text-to-SQL 系统用分步 schema linking、查询分类、提示分解和自纠错，让天文数据库可用自然语言查询。",
+    "http://arxiv.org/abs/2606.18105v1":
+        "OmniPlan 用 LLM 解释用户偏好，并在 MIP、启发式和 DRL 专家之间动态选择，以兼顾网络规划优化的速度和近似最优性。",
+    "http://arxiv.org/abs/2606.18103v1":
+        "HistoRAG 把史学方法嵌入 RAG：分离检索与生成、做时间窗口平衡，并用可争辩的 LLM judge 评估来源相关性。",
+    "http://arxiv.org/abs/2606.18098v1":
+        "IsabeLLM 为 Isabelle 定理证明加入 RAG、错误追踪和反例生成，并用于验证比特币 PoW 共识。",
+    "http://arxiv.org/abs/2606.18092v1":
+        "EAGG 用端执行器拓扑图和几何感知 token 对齐不同具身形态，在多夹爪抓取生成中提升泛化和迁移能力。",
+
     # 2026-06-16 OpenAI / Google DeepMind
     "https://openai.com/index/introducing-openai-partner-network":
         "OpenAI 推出 Partner Network，并投入 1.5 亿美元帮助全球合作伙伴加速企业 AI 采用、部署和转型。",

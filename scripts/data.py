@@ -9,6 +9,110 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-20 Anthropic
+    "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem":
+        "Anthropic 在首尔设立办公室，并与韩国企业、初创公司和研究机构建立新合作，扩展当地 Claude 生态。",
+
+    # 2026-06-20 GitHub Trending
+    "https://github.com/DeusData/codebase-memory-mcp":
+        "codebase-memory-mcp：高性能代码智能 MCP 服务器，把代码库索引为持久知识图谱，支持 158 种语言和低 token 查询。",
+    "https://github.com/koala73/worldmonitor":
+        "worldmonitor：实时全球情报仪表盘，统一聚合 AI 新闻、地缘政治监测和基础设施追踪。",
+    "https://github.com/Kong/insomnia":
+        "Insomnia：开源跨平台 API 客户端，支持 GraphQL、REST、WebSockets、SSE 和 gRPC，并提供云端、本地和 Git 存储。",
+    "https://github.com/calesthio/OpenMontage":
+        "OpenMontage：开源 agentic 视频制作系统，提供 12 条管线、52 个工具和 500 多项 agent skills。",
+    "https://github.com/BuilderIO/agent-native":
+        "agent-native：Builder.io 用于构建 agent-native 应用的框架。",
+    "https://github.com/google-research/timesfm":
+        "TimesFM：Google Research 开发的预训练时间序列基础模型，用于时间序列预测。",
+    "https://github.com/palmier-io/palmier-pro":
+        "Palmier Pro：为 AI 工作流打造的 macOS 视频编辑器。",
+    "https://github.com/withastro/flue":
+        "flue：用于构建和运行沙箱 agent 的框架。",
+    "https://github.com/penpot/penpot":
+        "Penpot：面向设计与代码协作的开源设计工具。",
+    "https://github.com/aishwaryanr/awesome-generative-ai-guide":
+        "awesome-generative-ai-guide：汇总生成式 AI 研究动态、面试资料、notebook 和学习资源。",
+    "https://github.com/zai-org/GLM-5":
+        "GLM-5：智谱开源模型项目，定位从 vibe coding 走向 agentic engineering。",
+    "https://github.com/Lightricks/LTX-2":
+        "LTX-2：Lightricks 音视频生成模型的官方 Python 推理与 LoRA 训练包。",
+
+    # 2026-06-20 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48606639":
+        "报道 SpaceX IPO 前，中国投资者如何取得相关股份。",
+    "https://news.ycombinator.com/item?id=48606619":
+        "作者把一个完整网站存进 favicon，展示极端体积压缩与浏览器技巧。",
+    "https://news.ycombinator.com/item?id=48606397":
+        "旧金山乘客讲述 Waymo 车辆在施工区受困时的惊险经历。",
+    "https://news.ycombinator.com/item?id=48606315":
+        "随笔讨论人们不断记录，是否恰恰因为已经忘记如何依靠自身记忆。",
+    "https://news.ycombinator.com/item?id=48606282":
+        "法院允许一宗针对 Amazon 的诉讼进入审判，案件涉及与某种化学品相关的自杀事件。",
+    "https://news.ycombinator.com/item?id=48606300":
+        "文章讨论 AI 如何拆分传统 CMS 的内容生产、管理、分发和界面层。",
+    "https://news.ycombinator.com/item?id=48606554":
+        "Bun 宣布 1.4 版本将于 7 月 7 日发布。",
+    "https://news.ycombinator.com/item?id=48606287":
+        "视频讨论一种监控杆装置，认为其隐私影响甚至比 Flock 摄像头更严重。",
+    "https://news.ycombinator.com/item?id=48606654":
+        "在 Rust 类型系统中实现 Lisp，探索类型级计算能力。",
+    "https://news.ycombinator.com/item?id=48606222":
+        "SSH 隧道实用指南，讲解本地端口转发与远程端口转发。",
+    "https://news.ycombinator.com/item?id=48606392":
+        "Bureaulogy：研究官僚体系如何形成、演化并持续存在。",
+    "https://news.ycombinator.com/item?id=48606545":
+        "Show HN：一本 Rust 教程书，最终项目是从零实现 Redis clone。",
+    "https://news.ycombinator.com/item?id=48606451":
+        "研究称美国保守派人群的死亡率高于自由派，并讨论可能的社会与健康因素。",
+    "https://news.ycombinator.com/item?id=48606326":
+        "一个专门播放火箭发射直播的电视播放器。",
+    "https://news.ycombinator.com/item?id=48606413":
+        "作者记录为自家后院设计露台的过程和工程取舍。",
+    "https://news.ycombinator.com/item?id=48606533":
+        "Ask HN：如果只有一个周末，你会开发什么简单应用？",
+    "https://news.ycombinator.com/item?id=48606238":
+        "文章讨论游戏 Spirit Crossing 面临的 AI 内容或开发问题。",
+    "https://news.ycombinator.com/item?id=48606387":
+        "Chromium Embedded Framework：用于在原生应用中嵌入 Chromium 浏览器能力的框架。",
+    "https://news.ycombinator.com/item?id=48606475":
+        "GenAIDojo：面向生成式 AI 学习、练习或实验的项目。",
+    "https://news.ycombinator.com/item?id=48606411":
+        "工具在送入 LLM 前压缩工具输出、日志、文件和 RAG chunks，目标是减少 60% 至 95% token。",
+    "https://news.ycombinator.com/item?id=48606466":
+        "报道巴西黑客导致午夜触发 EAS 紧急警报的事件。",
+    "https://news.ycombinator.com/item?id=48606585":
+        "Gizmodo 遭入侵并托管恶意软件，数小时内未及时处置。",
+    "https://news.ycombinator.com/item?id=48606434":
+        "文章重新计算 AI 编码的成本收益，讨论代码生成变便宜后工程约束如何变化。",
+    "https://news.ycombinator.com/item?id=48606640":
+        "Bevy 0.19 发布，更新这款 Rust 游戏引擎的功能和开发体验。",
+    "https://news.ycombinator.com/item?id=48606377":
+        "文章从 punctum 与 blind field 概念讨论摄影观看、细节和画面之外的想象。",
+    "https://news.ycombinator.com/item?id=48606364":
+        "预测中国将在明年前推出达到 Fable 5 级别的 AI 模型。",
+    "https://news.ycombinator.com/item?id=48606396":
+        "Show HN：把股票投资组合编码进 URL 和 favicon，便于分享和快速查看。",
+    "https://news.ycombinator.com/item?id=48606271":
+        "卫星观测揭示 GPS 信号干扰和欺骗活动的巨大规模。",
+    "https://news.ycombinator.com/item?id=48606243":
+        "Moebius：仅 0.2B 参数的轻量图像修复框架，宣称达到 10B 级模型效果。",
+    "https://news.ycombinator.com/item?id=48606560":
+        "一个用于绘制手绘风格图表的虚拟白板工具。",
+
+    # 2026-06-20 YouTube AI
+    "https://www.youtube.com/watch?v=gwv99NgRpbs":
+        "Lucas Montano 以葡语讨论里约热内卢的本地或城市级 LLM 话题。",
+    "https://www.youtube.com/watch?v=D6Cfjy83MQA":
+        "Duncan Rogoff 演示 Anthropic 开源的 launch-your-agent skill，如何从需求访谈到上线定时云端 agent。",
+    "https://www.youtube.com/watch?v=XzEgfmesG8c":
+        "Higgsfield AI 演示 Claude 与 Higgsfield MCP 组合，无代码生成、发布并托管多人 3D 游戏。",
+    "https://www.youtube.com/watch?v=HyDEzJztjpk":
+        "The Morpheus Tutorials 实测 GLM-5.2 等开源模型能否在部分任务上与 Claude Fable 竞争。",
+    "https://www.youtube.com/watch?v=8G4sBIVA5D0":
+        "WorldofAI 全面测试 GLM-5.2，并比较它与 GPT-5.5、Opus 4.8 等模型的表现。",
+
     # 2026-06-17 GitHub Trending
     "https://github.com/swc-project/swc":
         "swc：基于 Rust 的 Web 编译与工具平台，面向 JavaScript/TypeScript 转译、打包和开发工具链。",
@@ -1891,6 +1995,96 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-20 OpenAI / Google DeepMind / Simon Willison
+    "https://openai.com/index/chatgpt-enterprise-spend-controls":
+        "OpenAI 为 ChatGPT Enterprise 增加使用分析和支出控制，帮助组织管理成本并规模化部署 AI。",
+    "https://openai.com/index/improving-health-intelligence-in-chatgpt":
+        "GPT-5.5 Instant 改进 ChatGPT 健康与保健回答，强化推理、上下文理解、表达清晰度和医生参与评测。",
+    "https://openai.com/index/diagnose-rare-childhood-diseases":
+        "研究人员用 OpenAI 推理模型辅助诊断儿童罕见遗传病，在此前未解病例中识别出 18 个新诊断。",
+    "https://openai.com/index/ai-chemist-improves-reaction":
+        "OpenAI 与 Molecule.one 展示近自主 AI 化学家如何用 GPT-5.4 改进一种困难的药物合成反应。",
+    "https://openai.com/index/introducing-life-sci-bench":
+        "LifeSciBench 是由专家编写和复核的基准，用于评估 AI 处理真实生命科学研究任务与决策的能力。",
+    "https://deepmind.google/blog/securing-the-future-of-ai-agents/":
+        "Google DeepMind 提出 AI Control Roadmap，将传统安全措施与实时监控结合，用于保护内部 agent 系统。",
+    "https://simonwillison.net/2026/Jun/19/sean-lynch/#atom-everything":
+        "引用 Sean Lynch：MCP 相比 skills/CLI 的核心价值可能是把认证流程隔离出 agent 上下文，理想形态甚至只是 API 认证网关。",
+    "https://simonwillison.net/2026/Jun/18/datasette-apps/#atom-everything":
+        "Simon 介绍 Datasette Apps：在严格 iframe 沙箱中运行自包含 HTML/JavaScript 应用，并受控查询或写入 Datasette 数据。",
+    "https://simonwillison.net/2026/Jun/18/datasette-acl/#atom-everything":
+        "datasette-acl 0.6a0 从表级权限扩展为通用资源共享系统，为多用户 Datasette 提供细粒度访问控制。",
+    "https://simonwillison.net/2026/Jun/17/glm-52/#atom-everything":
+        "Simon 评测 MIT 许可的 GLM-5.2，认为它可能是当前最强的纯文本开放权重 LLM，并重点介绍其百万 token 上下文。",
+    "https://simonwillison.net/2026/Jun/17/charity-majors/#atom-everything":
+        "引用 Charity Majors：AI 让代码生产近乎免费并可随时重生成，因此工程团队反而需要更多纪律。",
+    "https://simonwillison.net/2026/Jun/15/datasette-apps-2/#atom-everything":
+        "datasette-apps 0.1a3 修复无 create-app 权限仍可建应用等权限漏洞，并统一私有应用的编辑删除规则。",
+    "https://simonwillison.net/2026/Jun/15/datasette-apps/#atom-everything":
+        "datasette-apps 0.1a2 加强自定义 CSP 来源权限控制，改进 stored query 选择器、片段链接和全屏模式。",
+
+    # 2026-06-20 arXiv
+    "http://arxiv.org/abs/2606.20560v1":
+        "论文把 DiffusionGemma 的推理透明度拆为变量透明度和算法透明度，研究连续潜空间计算是否更难解释。",
+    "http://arxiv.org/abs/2606.20544v1":
+        "论文研究分布转移下 MoE 的校准，分析专家级概率校准与路由机制如何共同影响整体不确定性可靠性。",
+    "http://arxiv.org/abs/2606.20537v1":
+        "Execution-State Capsules 为端侧 physical AI 保存和恢复完整执行状态，而不只复用 KV cache，以降低小批量交互延迟。",
+    "http://arxiv.org/abs/2606.20529v1":
+        "LedgerAgent 显式维护事实、约束和条件组成的结构化任务状态，减少工具调用 agent 因陈旧或缺失信息违反策略。",
+    "http://arxiv.org/abs/2606.20527v1":
+        "StylisticBias 固定人物身份、逐项改变视觉属性，发现少数外观线索驱动了多模态模型的大部分社会偏见。",
+    "http://arxiv.org/abs/2606.20526v1":
+        "DeepSWIP 为 DeepProbLog 引入单世界反事实语义，并通过转换后的加权模型计数精确计算干预结果。",
+    "http://arxiv.org/abs/2606.20523v1":
+        "SARLO-80 提供全球 80 厘米级高分辨率 SAR、光学图像与自然语言对齐数据，支持物理扎根的多模态学习。",
+    "http://arxiv.org/abs/2606.20520v1":
+        "Sovereign Execution Broker 在 agent 控制平面建立运行时强制边界，只允许符合证书绑定执行合同的真实变更。",
+    "http://arxiv.org/abs/2606.20517v1":
+        "Multi-LCB 把 LiveCodeBench 从 Python 扩展到 12 种编程语言，用于评估 LLM 的跨语言代码生成能力。",
+    "http://arxiv.org/abs/2606.20512v1":
+        "Probe-and-Refine 用合成 bug-fix 探针迭代诊断和改进 AGENTS.md，让仓库指导基于实测失败而非一次性生成。",
+    "http://arxiv.org/abs/2606.20510v1":
+        "论文把概率谓词和状态转移纳入 agent 运行时策略验证，在存在检测器误差和依赖关系时保持高效且可靠。",
+    "http://arxiv.org/abs/2606.20508v1":
+        "研究混合良性与有害合规示例如何影响安全对齐 LLM，发现不同模型反应不一且偏好优化阶段至关重要。",
+    "http://arxiv.org/abs/2606.20506v1":
+        "FreeStyle 从社区 LoRA 挖掘大规模风格与内容锚点，实现内容结构和独立风格参考的可控双参考图像生成。",
+    "http://arxiv.org/abs/2606.20502v1":
+        "CWE-Trace 用严格时间切分和 Linux 内核漏洞对诊断 LLM，显示微调可改善校准但未必形成真正漏洞理解。",
+    "http://arxiv.org/abs/2606.20493v1":
+        "Contagion Networks 量化多 agent 系统中 evaluator 偏见的传播，发现即使同一底层模型也会相互感染评估风格。",
+    "http://arxiv.org/abs/2606.20487v1":
+        "H-RePlan 为跨设备 computer-use agent 区分设备内修复与跨设备重规划，提供分层故障恢复。",
+    "http://arxiv.org/abs/2606.20485v1":
+        "论文以 agent 权力和响应函数建模多体系统，推导秩序、熵、脆弱性等宏观性质及增长与韧性的最优平衡。",
+    "http://arxiv.org/abs/2606.20482v1":
+        "IFLLM 收集用户鼠标轨迹和眼动等隐式反馈，探索在显式评分稀缺时用于 LLM 偏好对齐。",
+    "http://arxiv.org/abs/2606.20477v1":
+        "RefRad2D 从临床 CT/MR 数据自动构建 120 万双语图文对，训练可同时生成报告、回答问题和空间定位的 RadGrounder。",
+    "http://arxiv.org/abs/2606.20475v1":
+        "MAA 在多个 batch 间按记忆操作累积边际优势证据，区分稳定有效策略与偶然命中，推动 agent 自我演化。",
+    "http://arxiv.org/abs/2606.20474v1":
+        "UltraQuant 面向长上下文多轮 agent 提供 4-bit KV cache，在任务质量、缓存驻留和服务吞吐之间联合优化。",
+    "http://arxiv.org/abs/2606.20470v1":
+        "论文分析用防御性误导对抗模型引导的自动攻击，指出可预测拒绝会被高查询预算利用，并探索欺骗攻击 judge。",
+    "http://arxiv.org/abs/2606.20467v1":
+        "ASYS 让 agent 把 PDE 理论和约束转为可微符号程序，再结合进化搜索与梯度优化发现可解释数学结构。",
+    "http://arxiv.org/abs/2606.20436v1":
+        "论文同时使用 Ghidra 和 RetDec 的伪 C 视图做 LLM 恶意软件分类，检验多反编译器视角能否降低单一工具偏差。",
+    "http://arxiv.org/abs/2606.20408v1":
+        "NRT-Bench 在模拟核电控制室中对多角色 LLM agent 做多轮红队测试，用客观安全状态衡量持续攻击下的鲁棒性。",
+    "http://arxiv.org/abs/2606.20400v1":
+        "论文仅用意图定义生成无标注合成对话，并通过主题、风格属性和后处理风格化提高数据多样性与实用性。",
+    "http://arxiv.org/abs/2606.20388v1":
+        "DataMagic 把原始表格自动转为含动态图表、旁白和同步动画的数据洞察视频，同时保持数值可信和来源可追踪。",
+    "http://arxiv.org/abs/2606.20382v1":
+        "论文把联邦图学习中的客户端级和节点级模态缺失建模为图感知潜语义合成问题。",
+    "http://arxiv.org/abs/2606.20381v1":
+        "研究指出 E2M1 FP4 的几何不对称会累积收缩偏差，并提出 UFP4 训练配方改善 LLM 低精度预训练稳定性。",
+    "http://arxiv.org/abs/2606.20376v1":
+        "CRAX 基于 JAX/MJX 构建高保真安全强化学习基准，相比 CPU 基准最高加速约 100 倍。",
+
     # 2026-06-17 OpenAI / Google DeepMind / Simon Willison
     "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/":
         "英国政府与 Google DeepMind 合作构建 AI 原型，目标是加速住房规划审批和建房决策。",

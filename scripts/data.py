@@ -9,6 +9,94 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-22 GitHub Trending
+    "https://github.com/tursodatabase/turso":
+        "Turso：用 Rust 重写的进程内 SQL 数据库，与 SQLite 兼容，目标做 SQLite 的现代替代。",
+    "https://github.com/asgeirtj/system_prompts_leaks":
+        "system_prompts_leaks：汇集从各大厂商提取的系统提示词（Anthropic Claude、OpenAI、Google Gemini、xAI Grok 等），持续更新。",
+    "https://github.com/smicallef/spiderfoot":
+        "SpiderFoot：自动化 OSINT 工具，用于威胁情报收集和攻击面测绘。",
+    "https://github.com/mikumifa/biliTickerBuy":
+        "biliTickerBuy：B 站会员购抢票辅助工具。",
+    "https://github.com/ZhuLinsen/daily_stock_analysis":
+        "daily_stock_analysis：LLM 驱动的多市场股票智能分析系统，集成多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。",
+    "https://github.com/topoteretes/cognee":
+        "Cognee：面向 agent 的开源 AI 记忆平台，用自托管知识图谱引擎为 AI agent 提供跨会话的持久长期记忆。",
+
+    # 2026-06-22 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48627476":
+        "Yann LeCun 演讲视频《World Models: Enabling the Next AI Revolution》，阐述世界模型如何推动下一轮 AI 革命。",
+    "https://news.ycombinator.com/item?id=48627459":
+        "Show HN：Cyclearchive.com，一个可搜索的历史自行车文献档案库。",
+    "https://news.ycombinator.com/item?id=48627497":
+        "一篇论述自然选择最大化 Fisher 信息量的理论文章，将进化与信息论联系起来。",
+    "https://news.ycombinator.com/item?id=48627283":
+        "Show HN：图形化 SQL 构建器与调试器，可视化拼装和排查 SQL 查询。",
+    "https://news.ycombinator.com/item?id=48627512":
+        "Commodore 推出 Callback 8020 翻盖手机，定位在功能机与智能机之间。",
+    "https://news.ycombinator.com/item?id=48627538":
+        "作者分享将某券商的虚拟化平台从 Hyper-V 零停机迁移到 Proxmox 的经验。",
+    "https://news.ycombinator.com/item?id=48627492":
+        "Safebucket：开源文件分享平台，后端基础设施可插拔。",
+    "https://news.ycombinator.com/item?id=48627453":
+        "技术文章：如何在 Z80 上高效使用索引寄存器（IX/IY）。",
+    "https://news.ycombinator.com/item?id=48627396":
+        "观点文章《Disposable software》：软件正变得像纸盘子一样一次性即弃。",
+    "https://news.ycombinator.com/item?id=48627466":
+        "一款网络工具，可仅用出站连接托管 WireGuard 服务器，绕过入站端口限制。",
+    "https://news.ycombinator.com/item?id=48627586":
+        "旧文（2020）：印度米佐拉姆邦的商店没有店主，顾客自助付款，靠诚信运转。",
+    "https://news.ycombinator.com/item?id=48627509":
+        "Minia2a：一个让 AI agent 赚钱的市场平台。",
+    "https://news.ycombinator.com/item?id=48627563":
+        "文章总结为金融 AI agent 构建评测（evals）的经验教训。",
+    "https://news.ycombinator.com/item?id=48627350":
+        "技术文章：用 C++ 实现 AirPlay 2 发送端，详解加密的 RAOP/RTSP 协议配方。",
+    "https://news.ycombinator.com/item?id=48627570":
+        "在 iPhone 上把语音指令转换成 JSON 工具调用的实践分享。",
+    "https://news.ycombinator.com/item?id=48627462":
+        "文章探讨同时对 agent 和人类友好的敏捷开发与代码架构。",
+    "https://news.ycombinator.com/item?id=48627431":
+        "太阳望远镜中的超表面（metasurface）成功捕获偏振光，提升观测能力。",
+    "https://news.ycombinator.com/item?id=48627197":
+        "论文/讨论：多轮反思式掩码（Multi-Turn Reflective Masking）激发掩码扩散模型的推理能力。",
+    "https://news.ycombinator.com/item?id=48627461":
+        "技术文章：PivCo-Huffman 的「合并」（Merge）操作。",
+    "https://news.ycombinator.com/item?id=48627633":
+        "Show HN：Prismag，在终端和任意 IDE 中实现按代码块（per-block）路由不同模型。",
+    "https://news.ycombinator.com/item?id=48627226":
+        "观点文章：最有效的屏幕使用时间密码是一个你自己也记不住的密码。",
+    "https://news.ycombinator.com/item?id=48627436":
+        "新闻：英国首相 Keir Starmer 宣布辞职。",
+    "https://news.ycombinator.com/item?id=48627313":
+        "Show HN：Gingerpaw，一款语音听写与 agent 工作空间应用。",
+    "https://news.ycombinator.com/item?id=48627617":
+        "技术文章：QUIC 不只是 TCP 的替代品，还带来更多新能力。",
+    "https://news.ycombinator.com/item?id=48627499":
+        "对比文章：Databricks 与 AWS 托管服务该如何按需求选型。",
+    "https://news.ycombinator.com/item?id=48627330":
+        "观点：用 AI 审查代码，尤其是面对超大 diff 时更有价值。",
+    "https://news.ycombinator.com/item?id=48627471":
+        "技术文章：优化 sqlx test 的重新编译时间。",
+    "https://news.ycombinator.com/item?id=48627206":
+        "观点文章：工程交付变快后，真正的难题变成了决定该构建什么。",
+    "https://news.ycombinator.com/item?id=48627464":
+        "报道：Anthropic 的 Mythos 风波持续发酵、愈发复杂。",
+    "https://news.ycombinator.com/item?id=48627625":
+        "Go bug：在浏览器（GOOS=js）环境下 UUID 的 NewV7() 总是生成时间戳为 7000 的 UUID。",
+
+    # 2026-06-22 YouTube AI
+    "https://www.youtube.com/watch?v=tnIFBDyOlGE":
+        "조코딩 IT 新闻汇总：GLM-5.2 热潮、谷歌的危机、GPT-5.6 消息、Codex Record & Replay、Mythos 争议、Midjourney 近况等。",
+    "https://www.youtube.com/watch?v=Nbynj-mKcNI":
+        "盘点本周 AI agent 重大更新：SpaceX 收购 Cursor、Z.AI 开源的 GLM 5.2（性能逼近 Opus 4.8/GPT 5.5 但成本极低）、Codex 新增录屏教学的 Record & Replay 功能。",
+    "https://www.youtube.com/watch?v=Ybrl4FYM57c":
+        "Lenny 播客访谈 Anthropic 的 Fiona Fung（负责 Claude Code 和 Cowork 团队），聊最 AI 化的产品团队如何打造产品。",
+    "https://www.youtube.com/watch?v=9vsg5kSYeEg":
+        "Claude AI 完整教程：从入门到进阶，覆盖模型选择、大文件分析、Projects 组织工作、应用搭建等 2026 年实用工作流。",
+    "https://www.youtube.com/watch?v=2-8cXaRHlqI":
+        "日语教程：如何把 Claude 与 NotebookLM、Obsidian 联动，发挥 Claude 的最大能力提升工作效率。",
+
     # 2026-06-20 Anthropic
     "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem":
         "Anthropic 在首尔设立办公室，并与韩国企业、初创公司和研究机构建立新合作，扩展当地 Claude 生态。",
@@ -1995,6 +2083,16 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-22 OpenAI / Simon Willison
+    "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment":
+        "三星电子向全球员工部署 ChatGPT Enterprise 和 Codex，成为 OpenAI 规模最大的企业 AI 落地之一。",
+    "https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/#atom-everything":
+        "sqlite-utils 4.0rc1 发布：首个 v4 候选版本，新增数据库迁移（migrations）和嵌套事务支持，含少量向后不兼容改动，作者征集试用反馈。",
+    "https://simonwillison.net/2026/Jun/21/sqlite-utils/#atom-everything":
+        "sqlite-utils 4.0rc1 版本发布说明（指向迁移与嵌套事务的详细介绍）。",
+    "https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/#atom-everything":
+        "Cloudflare 推出临时账号：用 `npx wrangler deploy --temporary` 无需注册即可部署 Workers 项目，存活 60 分钟，名义上为 AI agent 设计但对所有人都好用。",
+
     # 2026-06-20 OpenAI / Google DeepMind / Simon Willison
     "https://openai.com/index/chatgpt-enterprise-spend-controls":
         "OpenAI 为 ChatGPT Enterprise 增加使用分析和支出控制，帮助组织管理成本并规模化部署 AI。",

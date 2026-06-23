@@ -9,6 +9,94 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-23 GitHub Trending
+    "https://github.com/Stirling-Tools/Stirling-PDF":
+        "Stirling-PDF：GitHub 上排名第一的 PDF 应用，可在任意设备本地完成 PDF 编辑、合并、转换、拆分、加密等操作。",
+    "https://github.com/heygen-com/hyperframes":
+        "hyperframes：HeyGen 出品，写 HTML 即可渲染视频，专为 AI agent 设计的视频生成框架。",
+    "https://github.com/JCodesMore/ai-website-cloner-template":
+        "ai-website-cloner-template：借助 AI 编码 agent，用一条命令克隆任意网站的模板项目。",
+    "https://github.com/jamiepine/voicebox":
+        "voicebox：开源 AI 语音工作室，支持声音克隆、语音口述与音频创作。",
+    "https://github.com/firecrawl/firecrawl":
+        "Firecrawl：大规模搜索、抓取并与网页交互的 API，可把网站转成适合 LLM 的结构化数据。",
+    "https://github.com/lyogavin/airllm":
+        "AirLLM：通过分层加载推理，仅用单张 4GB GPU 即可运行 70B 大模型推理的优化库。",
+
+    # 2026-06-23 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48641676":
+        "Causal Summit：聚焦因果推断与因果 AI 的行业峰会官网。",
+    "https://news.ycombinator.com/item?id=48641632":
+        "Show HN：把 PowerPoint 演示文稿当作代码来管理（版本化、可编程生成）的工具。",
+    "https://news.ycombinator.com/item?id=48641497":
+        "用单一 API 统一管理 Apple、Google 与 Stripe 三家平台的订阅与计费。",
+    "https://news.ycombinator.com/item?id=48641477":
+        "关于资优儿童（gifted）教育的经验与建议讨论。",
+    "https://news.ycombinator.com/item?id=48641537":
+        "React Parallax：实现视差滚动效果的 React 组件/示例。",
+    "https://news.ycombinator.com/item?id=48641763":
+        "Show HN：与一位前 Citadel 交易员（AI 化身）协作构思交易策略的工具。",
+    "https://news.ycombinator.com/item?id=48641786":
+        "报道：一家基于 AI 的律所在法庭诉讼中胜诉。",
+    "https://news.ycombinator.com/item?id=48641490":
+        "CoreGLP Denmark：丹麦一家 GLP-1 减重/健康相关产品的页面。",
+    "https://news.ycombinator.com/item?id=48641777":
+        "Zero Weights Language Model（MSE-GLM）：一种声称「零权重」的语言模型博客介绍。",
+    "https://news.ycombinator.com/item?id=48641583":
+        "Claude API 文档中关于 System Prompts（系统提示词）的章节被分享讨论。",
+    "https://news.ycombinator.com/item?id=48641809":
+        "英国推出 11 亿英镑新计划，扶持芯片企业、提升算力与 AI 相关技能。",
+    "https://news.ycombinator.com/item?id=48641489":
+        "可视化：如果天上有 100 万颗星链（Starlink）卫星会是什么样子。",
+    "https://news.ycombinator.com/item?id=48641725":
+        "《经济学人》文章：如何把算力（compute）变成一种可交易的金融资产。",
+    "https://news.ycombinator.com/item?id=48641774":
+        "作者用 10 天造了一个 AI 记忆引擎，随后需要一个项目来证明它确实有效。",
+    "https://news.ycombinator.com/item?id=48641500":
+        "状态通报：Claude Opus 4.8 出现错误率升高（elevated errors）。",
+    "https://news.ycombinator.com/item?id=48641741":
+        "用 Clickcast.tech 工具在 12 分钟内生成一段营销视频（带推广性质）。",
+    "https://news.ycombinator.com/item?id=48641509":
+        "Show HN：开源基准上，仅用约 1% 的 token 就匹配了全上下文召回的效果。",
+    "https://news.ycombinator.com/item?id=48641815":
+        "《36 Hours with Fable》：作者对新模型 Fable 的 36 小时实测体验。",
+    "https://news.ycombinator.com/item?id=48641682":
+        "Ask HN：在 agentic 编码时代，为何很少有人讨论编排（orchestration）工具。",
+    "https://news.ycombinator.com/item?id=48641505":
+        "《The AI Poet》：一篇关于 AI 写诗的随笔/博客。",
+    "https://news.ycombinator.com/item?id=48641615":
+        "盘点每个工程团队都该了解的 AI 编码陷阱（AI Coding Traps）。",
+    "https://news.ycombinator.com/item?id=48641604":
+        "Show HN：Multiserial，一款界面现代、不显陈旧的 macOS 串口终端。",
+    "https://news.ycombinator.com/item?id=48641553":
+        "Show HN：一个用 Seedance 模型生成视频的简易网页工作室。",
+    "https://news.ycombinator.com/item?id=48641634":
+        "观点：别浪费 Claude 用量去「看护」AI 实验（应让其自动跑）。",
+    "https://news.ycombinator.com/item?id=48641716":
+        "《How sad should I be about ChatGPT?》（2022）：对 ChatGPT 的早期反思随笔。",
+    "https://news.ycombinator.com/item?id=48641473":
+        "Meta 向 CRED 投资 9 亿美元，并任命其创始人主管 WhatsApp。",
+    "https://news.ycombinator.com/item?id=48641589":
+        "《Chattiness》：LRB 博客探讨 AI 聊天/絮叨（chattiness）现象。",
+    "https://news.ycombinator.com/item?id=48641596":
+        "《Chesterton's Middle Finger》：对「切斯特顿栅栏」原则的反思与调侃。",
+    "https://news.ycombinator.com/item?id=48641818":
+        "Ionos 警告其德国法兰克福区域出现严重的容量短缺。",
+    "https://news.ycombinator.com/item?id=48641595":
+        "Ask HN：截至 2026 年 6 月，最好的编码 harness（编码代理框架）是哪个。",
+
+    # 2026-06-23 YouTube AI
+    "https://www.youtube.com/watch?v=IXES6bn2yR0":
+        "俄语娱乐/恶搞视频，讲述「他们用 ChatGPT 把我查了出来」的整蛊故事。",
+    "https://www.youtube.com/watch?v=E17Lb3osqrw":
+        "WorldofAI 一周 AI 新闻汇总：Claude Sonnet 5、Mythos 6、本周四 GPT-5.6、Sakana Fugu 超越 Mythos 等。",
+    "https://www.youtube.com/watch?v=bC9BaY18b0o":
+        "조코딩 JoCoding AI 新闻：GLM-5.2 热潮、Google 的严峻危机、GPT-5.6 更新、Codex 录制回放等。",
+    "https://www.youtube.com/watch?v=zCeQNPp3skY":
+        "TBS×Bloomberg 节目：Gemini 的「万能机器人」无需逐项教学即可工作，靠世界模型实现快速进化（系鞋带、灌篮）。",
+    "https://www.youtube.com/watch?v=7OmzmRlJdv8":
+        "零度解说：微软 Copilot 被「破解」，号称无需 API Key 即可白嫖 GPT-5 对接本地 AI Agent。",
+
     # 2026-06-22 GitHub Trending
     "https://github.com/tursodatabase/turso":
         "Turso：用 Rust 重写的进程内 SQL 数据库，与 SQLite 兼容，目标做 SQLite 的现代替代。",
@@ -2083,6 +2171,84 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-23 OpenAI / Simon Willison
+    "https://openai.com/index/omio":
+        "旅游平台 Omio 借助 OpenAI 打造对话式出行体验、加速产品开发，向 AI 原生公司转型。",
+    "https://openai.com/index/daybreak-securing-the-world":
+        "OpenAI 推出 Daybreak 系列安全工具（含 Codex Security 与 GPT-5.5-Cyber），帮助组织规模化地发现、验证并修复漏洞。",
+    "https://openai.com/index/patch-the-planet":
+        "Patch the Planet：Daybreak 旗下倡议，用 AI 加专家评审帮助开源维护者发现、验证并修复漏洞。",
+    "https://openai.com/index/codex-maxxing-long-running-work":
+        "案例：Jason Liu 如何用 Codex 保留上下文、管理复杂项目，让工作在单次提示之外持续推进。",
+    "https://simonwillison.net/2026/Jun/22/prompt-injection-as-role-confusion/#atom-everything":
+        "Simon 介绍 Charles Ye 等人的研究：模型难以区分自身特权文本（<system>/<assistant> 等角色标签）与不可信用户输入，提示注入本质是「角色混淆」；并称赞论文配博客式可读版的做法。",
+    "https://simonwillison.net/2026/Jun/22/porting-moebius/#atom-everything":
+        "Simon 用 Claude Code 把 0.2B 的 Moebius 图像修复模型移植到浏览器（WebGPU）运行，并放出可在线试用的 demo。",
+
+    # 2026-06-23 arXiv
+    "http://arxiv.org/abs/2606.23444v1":
+        "SkyJEPA：用 JEPA 在隐空间建模四旋翼长时程动力学世界模型，实现零样本 sim-to-real 的高频控制，缓解自回归 rollout 的误差累积。",
+    "http://arxiv.org/abs/2606.23687v1":
+        "Randomized YaRN：训练时给短文本采样更大位置范围的 YaRN 编码并配长度课程，提升超长上下文推理的长度泛化能力。",
+    "http://arxiv.org/abs/2606.23679v1":
+        "Semantic Browsing：让文生图在保真之外实现可控多样性，用户可沿可解释的语义轴系统化浏览结构化图像画廊。",
+    "http://arxiv.org/abs/2606.23678v1":
+        "AIR：通过对代码增强的数值计算任务做强化学习，让多模态大模型具备自适应的「文字+代码」交错推理能力。",
+    "http://arxiv.org/abs/2606.23676v1":
+        "开放问题：在重尾梯度噪声下 AdamW 是否仍能收敛？指出 AdamW 缺乏重尾收敛理论，二阶矩累加器可能构成真正障碍。",
+    "http://arxiv.org/abs/2606.23672v1":
+        "针对位操作谜题，教 LLM 用字符串匹配、回溯与纠错来推断进制和真值表，规避算术模拟带来的幻觉与组合爆炸（NVIDIA Nemotron 推理挑战赛方案）。",
+    "http://arxiv.org/abs/2606.23671v1":
+        "考察 LLM 能否可靠自报「对抗性 prefill 攻击」：10 个开源模型均无法可靠识别自己被诱导的输出，平均仅 27.3% 声称有意图，内省信号主要来自拒答相关推理。",
+    "http://arxiv.org/abs/2606.23668v1":
+        "论 prompt 条件化语言模型作为通用学习器的局限：把人机交互建模为 cheap-talk 双层博弈，用 PAC-Bayes 界区分有限样本误差与不可约的结构性表达力限制。",
+    "http://arxiv.org/abs/2606.23664v1":
+        "MAS-PromptBench：系统研究 prompt 优化在多智能体 LLM 系统中何时、提升多少有效，应对其指数级增长的搜索空间。",
+    "http://arxiv.org/abs/2606.23654v1":
+        "EnterpriseClawBench：基于真实职场 agent 会话构建的企业级 agent 基准，含 852 个可复现任务；因数据涉密只开放构建与评测协议。",
+    "http://arxiv.org/abs/2606.23643v1":
+        "TailorMind：在无现成内容池时，将用户行为轨迹转化为生成偏好，用超图协同过滤+排序反馈做偏好对齐的多模态内容生成。",
+    "http://arxiv.org/abs/2606.23637v1":
+        "证明 Muown 的方向更新等价于归一化方向上的黎曼步，幅度仅调节角步长；据此提出显式优化角步长的 AngularMuown。",
+    "http://arxiv.org/abs/2606.23633v1":
+        "反思「AI 暴露分数」（GPTs are GPTs）：指出静态暴露分数测量的内容与政策所需之间的结构性鸿沟，及其在传播中丢失原作者警示的问题。",
+    "http://arxiv.org/abs/2606.23608v1":
+        "主张 agent 在因果发现中应只做检查数据、检索上下文、解释方法假设与澄清图输出，而不应直接提供边、方向、先验或因果结论。",
+    "http://arxiv.org/abs/2606.23607v1":
+        "提出可扩展框架，把线性模式连通性（LMC）与模型融合推广到十亿参数级预训练 Transformer，用双向学习的保功能权重变换对齐等价解。",
+    "http://arxiv.org/abs/2606.23603v1":
+        "MORL-A2C：为健康饮食推荐系统 MOPI-HFRS 引入序列决策的多目标强化学习重排器，权衡健康与用户偏好。",
+    "http://arxiv.org/abs/2606.23595v1":
+        "SPIRAL：训练语言模型在统一推理流水线中同时使用串行推理、并行采样与多轨迹聚合三种 test-time 计算原语。",
+    "http://arxiv.org/abs/2606.23591v1":
+        "量化「数据影响」与「数据相似度」两类输出溯源度量的一致性：两者排序显著一致但存在不对称，揭示廉价的相似度何时可替代昂贵的影响度量。",
+    "http://arxiv.org/abs/2606.23590v1":
+        "用持久同调（persistent homology）刻画 LLM 内部状态的拓扑，统一检测多类「病态问题」（含糊/欠定/矛盾）并据此引导回答行为。",
+    "http://arxiv.org/abs/2606.23587v1":
+        "用合适的激活函数（多项式 Kolmogorov-Arnold 网络）让神经网络更易学会康威生命游戏动力学，把搜索问题重新当作学习问题。",
+    "http://arxiv.org/abs/2606.23585v1":
+        "用多智能体强化学习实现先进空中交通（AAM）走廊网络中的去中心化交通流管理，应对自主飞行器规模化后的协调难题。",
+    "http://arxiv.org/abs/2606.23581v1":
+        "Kamera：统一的位置无关多模态 KV 缓存，让视频帧/截图在上下文滑动时免重编码复用，并补回 naive 复用丢失的跨块条件信息。",
+    "http://arxiv.org/abs/2606.23568v1":
+        "SVD-Surgeon：将最优脑外科（OBS）框架引入奇异值基的免训练 LLM 压缩，对保留奇异值做闭式二阶补偿以抵消截断损失。",
+    "http://arxiv.org/abs/2606.23567v1":
+        "Scheduling Thoughts：为掩码扩散语言模型推导解码失配的可解上界，将「思考顺序」选择转化为带冻结去噪器的策略优化（Self-Aware Scheduling）。",
+    "http://arxiv.org/abs/2606.23566v1":
+        "LangMAP：将 UnigramLM 扩展到多语言场景，从单一共享词表产出语言自适应的分词，无需改词表即可适配预训练模型。",
+    "http://arxiv.org/abs/2606.23543v1":
+        "VeriEvol：把强化学习扩展视为可验证的数据构造问题，解耦提示难度与答案可靠性，用离线假设检验证伪保证标签可靠的多模态数学推理。",
+    "http://arxiv.org/abs/2606.23537v1":
+        "SQLConductor：用 search-to-policy 学习实现逐步式 Text-to-SQL 编排，可根据中间证据动态调整步骤顺序，突破固定流水线的局限。",
+    "http://arxiv.org/abs/2606.23533v1":
+        "POTracker：优化 LLM 生成符合能源监管标准、机器可读（JSON/XML）的全美统一停电报告，兼顾语义正确与格式合规。",
+    "http://arxiv.org/abs/2606.23525v1":
+        "SelfCompact：让 agent 自己决定何时、如何压缩上下文（提供压缩工具+触发规则），避免固定阈值压缩在推理中途丢弃部分结果。",
+    "http://arxiv.org/abs/2606.23521v1":
+        "Concordia：用 JIT 编译的常驻内核检查点实现容错 LLM 推理，在设备同步点运行检查点钩子、观测真实执行的二进制内核来恢复 GPU 常驻状态。",
+    "http://arxiv.org/abs/2606.23500v1":
+        "FLKit：面向健康与生命科学的联邦学习结构化上手工具包，为临床、法律、治理、技术等不同角色提供贯穿联邦学习全生命周期的入门路径。",
+
     # 2026-06-22 OpenAI / Simon Willison
     "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment":
         "三星电子向全球员工部署 ChatGPT Enterprise 和 Codex，成为 OpenAI 规模最大的企业 AI 落地之一。",

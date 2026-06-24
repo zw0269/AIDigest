@@ -29,13 +29,13 @@ MANUAL_SUMMARIES: dict[str, str] = {
     "https://github.com/andreknieriem/headunit-revived":
         "headunit-revived：复活的车机 Headunit 应用，用于在车载屏上显示 Android Auto。",
     "https://github.com/kunchenguid/no-mistakes":
-        "no-mistakes：以『git push no-mistakes』为卖点的趣味小项目。",
+        "no-mistakes：一个 git 推送闸门工具——拦截 push 后在隔离环境运行 AI 驱动的校验流水线，全部通过才自动开一个干净的 PR。",
     "https://github.com/stablyai/orca":
         "Orca：Stably AI 出品的并行 agent 集群 ADE（agent 开发环境），可用自己的订阅运行任意编码 agent，支持桌面与移动端。",
 
     # 2026-06-25 Hacker News Newest
     "https://news.ycombinator.com/item?id=48662916":
-        "HN 帖：讨论印度送餐/食品类 App 带来的压力与相关现象。",
+        "一个用 Streamlit 做的探索性原型，通过降雨异常、土壤湿度、气温、ENSO、化肥与食品价格等指标，监测并计算印度粮食供应的综合压力指数。",
     "https://news.ycombinator.com/item?id=48662886":
         "Rust Commercial Network 启动，旨在把商业 Rust 用户聚到一起、推动商业落地。",
     "https://news.ycombinator.com/item?id=48663047":
@@ -49,7 +49,7 @@ MANUAL_SUMMARIES: dict[str, str] = {
     "https://news.ycombinator.com/item?id=48662999":
         "HN 讨论：Gemini 3.5 Flash 中的 computer use 能力。",
     "https://news.ycombinator.com/item?id=48663055":
-        "观点文『Undermining the Market』，讨论某种破坏市场机制的现象。",
+        "FEE 评论文：G7 用政府主导的价格下限与进口配额来保障关键矿产供应，违背其自身的市场原则，最终反而利好中国、损害西方生产者与消费者。",
     "https://news.ycombinator.com/item?id=48662898":
         "Fwupd 2.0.21 发布，修复 250 多个潜在安全问题。",
     "https://news.ycombinator.com/item?id=48662936":

@@ -19,6 +19,20 @@ SQLite (`data/seen.sqlite`) 已经处理去重，跑过的不会重复入库。
 
 如果 N == 0：跳到第 5 步报告"无新增"，结束。
 
+### 1.5 补 GitHub 短描述（写中文前）
+
+GitHub Trending 的描述就是仓库 About，偶尔极短或为空（如 `git push no-mistakes`），
+只看标题写中文容易臆测出错。跑下面脚本，自动给 **描述短于 30 字** 的 GitHub 条目
+抓 README 正文摘录（拿不到再用 GitHub API 兑底），写到 `reports/YYYY-MM-DD.enrich.md` 旁注：
+
+```bash
+./.venv/bin/python scripts/enrich_short_descs.py YYYY-MM-DD   # 可加 --threshold N
+```
+
+第 2 步给这些 GitHub 条目写 `MANUAL_SUMMARIES` 时，**先读这个旁注**再下笔。
+旁注落在 `reports/`（已 gitignore），不提交、不进 digest。若输出提示 `GitHub API 限流 403`，
+设 `GITHUB_TOKEN` 后重试即可（README 走 raw CDN 一般不受限）。
+
 ### 2. 补中文翻译（CLAUDE.md 规则 6）
 
 读 `reports/YYYY-MM-DD.md` 看新条目。每条都必须在渲染产物里有 `中文:` 行（包括 arXiv 论文）。
@@ -26,7 +40,7 @@ SQLite (`data/seen.sqlite`) 已经处理去重，跑过的不会重复入库。
 - **公司动态 / 个人 Blog（RSS 源）**：检查 `scripts/data.py` 的 `TRANSLATIONS` 是否已有对应 URL。没有的话用 feedparser 拿到 RSS description（参考 `scripts/build_digest.py` 的 `rss_index()`），再写一句中文概括加进 `TRANSLATIONS`。
   - 仅有中文摘要的源（Anthropic、Dario Amodei 等）跳过。
   - HTML 源（无 RSS description）改加到 `MANUAL_SUMMARIES`。
-- **社区动态（GitHub Trending / Hacker News Newest / YouTube AI）**：标题里 GitHub 已经包含英文一句话描述（`owner/repo — desc`），HN 只有标题，YouTube 已带「频道 — 标题（XXX,XXX 次播放）」。三者都没有 RSS description，每条都要写一句中文摘要加到 `MANUAL_SUMMARIES`，key 是条目 url（GitHub 是 repo 主页、HN 是 `news.ycombinator.com/item?id=N`、YouTube 是 `https://www.youtube.com/watch?v=VID`）。YouTube 标题已含频道和播放量，中文写一句视频核心内容即可。
+- **社区动态（GitHub Trending / Hacker News Newest / YouTube AI）**：标题里 GitHub 已经包含英文一句话描述（`owner/repo — desc`，描述过短的见第 1.5 步旁注），HN 只有标题，YouTube 已带「频道 — 标题（XXX,XXX 次播放）」。三者都没有 RSS description，每条都要写一句中文摘要加到 `MANUAL_SUMMARIES`，key 是条目 url（GitHub 是 repo 主页、HN 是 `news.ycombinator.com/item?id=N`、YouTube 是 `https://www.youtube.com/watch?v=VID`）。YouTube 标题已含频道和播放量，中文写一句视频核心内容即可。
 - **arXiv 论文**：report 只存了 title/url，必须用 `arxiv` 库按 ID 批量拉 `summary`，再写一句中文核心要点加进 `TRANSLATIONS`，key 用完整 `result.entry_id`（含 `v1` 等后缀）。
 
 快速取 RSS description 的 one-liner：

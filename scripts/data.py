@@ -9,6 +9,104 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-27 GitHub Trending
+    "https://github.com/NanmiCoder/MediaCrawler":
+        "MediaCrawler：覆盖小红书、抖音、快手、B 站、微博、贴吧、知乎的多平台自媒体笔记/视频/评论爬虫合集。",
+    "https://github.com/simplex-chat/simplex-chat":
+        "SimpleX Chat：号称首个不依赖任何用户标识符的消息网络，设计上完全去身份化、保护隐私，提供 iOS/Android/桌面客户端。",
+    "https://github.com/alchaincyf/zhangxuefeng-skill":
+        "张雪峰.skill：把张雪峰的认知操作系统封装成 Claude skill，给高考志愿/考研/职业规划提供实战思维框架，由『女娲.skill』生成。",
+    "https://github.com/IceWhaleTech/CasaOS":
+        "CasaOS：简单易用、界面优雅的开源个人云系统，把家用设备整合成自托管 NAS/私有云。",
+    "https://github.com/opendatalab/MinerU":
+        "MinerU：把 PDF、Office 等复杂文档转成 LLM 友好的 Markdown/JSON，专为 agentic 工作流准备的解析工具。",
+    "https://github.com/aws/agent-toolkit-for-aws":
+        "AWS Agent Toolkit：AWS 官方支持的 MCP server、skill 与插件集合，帮助 AI agent 在 AWS 上构建应用。",
+    "https://github.com/mauriceboe/TREK":
+        "TREK：自托管的旅行/行程规划器，支持实时协作、交互地图、PWA、SSO、预算与打包清单等。",
+    "https://github.com/xbtlin/ai-berkshire":
+        "ai-berkshire（AI 时代的伯克希尔）：基于 Claude Code 的价值投资研究框架，集成巴菲特/芒格/段永平/李录四大师方法论与多 agent 并行对抗式分析。",
+    "https://github.com/grafana/grafana":
+        "Grafana：开放可组合的可观测性与数据可视化平台，统一展示 Prometheus、Loki、Elasticsearch、InfluxDB、Postgres 等多源的指标、日志与链路。",
+    "https://github.com/commaai/openpilot":
+        "openpilot：comma.ai 的开源机器人操作系统，目前为 300+ 款车型升级驾驶辅助系统。",
+    "https://github.com/ripienaar/free-for-dev":
+        "free-for-dev：面向开发者/运维的 SaaS、PaaS、IaaS 免费额度服务清单合集。",
+
+    # 2026-06-27 YouTube AI
+    "https://www.youtube.com/watch?v=Zim8hNQadqc":
+        "西语博主横评 ChatGPT、Gemini、Claude 三家，讨论 2026 年自己会为哪一款付费订阅。",
+    "https://www.youtube.com/watch?v=WKv7nMyxOUk":
+        "意大利语教程：用 Claude Code 与 Codex 一分钟搭一个 agentic loop，把 90% 重复任务交给 AI 自动完成——作者称 agentic loop 将在 2027 年取代单次 prompt。",
+    "https://www.youtube.com/watch?v=UyshVdGe4UY":
+        "博主把日本 Sakana 新模型 Fugu 与被美国下架的 Claude Fable 5 做 5 轮对战，测试这款『没有政府能关停』的 AI 是否真的更强。",
+    "https://www.youtube.com/watch?v=EfYqyj5ThBc":
+        "AI 新闻汇总：种种迹象（Bedrock 上架、Claude Code 字符串改动、iOS 现身、预测市场升至 90%）暗示 Claude Fable 5 即将回归，同时 GPT-5.6、Gemini 3.5 Pro 延期、OpenAI 自研芯片、Qwen 等动态。",
+    "https://www.youtube.com/watch?v=iTY8Q449YNQ":
+        "博主让 Claude Code『尽可能帮自己赚钱』，实测 AI agent 自动化变现的可行性与流程。",
+
+    # 2026-06-27 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48689452":
+        "报道：短视频平台 Triller 拖欠并冷落员工，如今押注与 SpaceX 的合作谋求翻身。",
+    "https://news.ycombinator.com/item?id=48689135":
+        "Hallucinate.md：一个『告诉 AI 不要幻觉』的开放标准提案（项目本身带几分自嘲/调侃）。",
+    "https://news.ycombinator.com/item?id=48689088":
+        "讨论：OpenAI 将 GPT-5.6 先行开放给经美国政府审核的特定用户，引发对政府介入前沿模型发布的争论。",
+    "https://news.ycombinator.com/item?id=48689052":
+        "Taalas：把神经网络直接固化到芯片硬件、追求极致推理能效的初创公司。",
+    "https://news.ycombinator.com/item?id=48689205":
+        "一篇图形用户界面（GUI）发展史的回顾文章。",
+    "https://news.ycombinator.com/item?id=48689156":
+        "1973 年 Rosenhan 实验回顾：八名健康者假装单一幻听症状即被精神病院收治，质疑精神病诊断的可靠性。",
+    "https://news.ycombinator.com/item?id=48689050":
+        "报道：乌克兰将破坏北溪管道的行动伪装成拍摄『色情片』作为掩护。",
+    "https://news.ycombinator.com/item?id=48689021":
+        "技术文：主张任务队列直接用 Postgres 实现即可，无需引入专门的消息队列中间件。",
+    "https://news.ycombinator.com/item?id=48689394":
+        "一篇关于『为政府提供咨询建议』的随笔/经验文。",
+    "https://news.ycombinator.com/item?id=48689004":
+        "Show HN：为背诵学习内容做的闪卡 App，套用了交友软件式的滑动 UI。",
+    "https://news.ycombinator.com/item?id=48689411":
+        "评论文章：用棒球（数据/概率思维）来类比和启发对 AI 的理解。",
+    "https://news.ycombinator.com/item?id=48689223":
+        "技术文：用 Fenwick 树（树状数组）在模 2ⁿ 下计算前缀乘积。",
+    "https://news.ycombinator.com/item?id=48689072":
+        "DuckDB 的 SQLite 扩展，可在 DuckDB 中直接读写 SQLite 数据库。",
+    "https://news.ycombinator.com/item?id=48689450":
+        "OpenAI 发布 GPT-5.6 系统卡（System Card）PDF，披露模型能力与安全评估细节。",
+    "https://news.ycombinator.com/item?id=48689233":
+        "一个支持 ePub、PDF 等主流电子书格式的 MCP server，让 AI agent 读取电子书内容。",
+    "https://news.ycombinator.com/item?id=48689182":
+        "报道：被 DOGE 裁员的前 NOAA 员工自发重建了一个气候数据网站。",
+    "https://news.ycombinator.com/item?id=48689407":
+        "回顾字体设计师 Jim Parkinson 从贺卡到霓虹灯招牌的字体艺术生涯。",
+    "https://news.ycombinator.com/item?id=48689037":
+        "观点文：厌倦『算法推荐』？RSS 正是你一直在找的去算法化信息订阅工具。",
+    "https://news.ycombinator.com/item?id=48689298":
+        "科技报道：单原子相机有望窥视量子计算机内部状态。",
+    "https://news.ycombinator.com/item?id=48689374":
+        "观点文：吐槽当前 AI『skill』分发生态的混乱与不成熟。",
+    "https://news.ycombinator.com/item?id=48689243":
+        "Mercury Agent：一个 AI agent 产品/项目（HN 链接讨论）。",
+    "https://news.ycombinator.com/item?id=48689091":
+        "Anthropic 经济指数报告新一期『Cadences』，分析 AI 在经济活动中的使用节奏与模式。",
+    "https://news.ycombinator.com/item?id=48689447":
+        "Ask HN：大家如何判断自己的 AI agent 输出质量出现退化？社区征集监测方法。",
+    "https://news.ycombinator.com/item?id=48689028":
+        "HN 讨论 OpenAI 预览 GPT-5.6 Sol 下一代模型的帖子。",
+    "https://news.ycombinator.com/item?id=48689315":
+        "ab-av1：基于 VMAF 采样自动计算 CRF 的 AV1 视频编码工具。",
+    "https://news.ycombinator.com/item?id=48689383":
+        "Media over QUIC（MoQ）的 Update 00 进展更新，介绍这一基于 QUIC 的低延迟实时媒体传输协议。",
+    "https://news.ycombinator.com/item?id=48689275":
+        "报道：数据中心扩张引发选民反弹，一位候选人称这『让我输掉了选举』。",
+    "https://news.ycombinator.com/item?id=48689058":
+        "半导体报道：IBM、Intel、三星、台积电在未来晶体管堆叠路线上的技术分歧。",
+    "https://news.ycombinator.com/item?id=48689277":
+        "科普文：什么是诺模图（nomogram，列线图），为何它值得了解。",
+    "https://news.ycombinator.com/item?id=48689398":
+        "Show HN：用 PyWA 库封装 WhatsApp Business API 的 MCP server。",
+
     # 2026-06-25 公司动态（RSS 缺 description）
     "https://www.anthropic.com/news/introducing-claude-tag":
         "Anthropic 推出 Claude Tag：把 Claude 变成 Slack 里的多人协作队友，可被 @ 进对话直接干活，并有主动参与的 ambient（环境）模式。",
@@ -2269,6 +2367,86 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-27 OpenAI / Simon Willison / Lilian Weng
+    "https://openai.com/index/previewing-gpt-5-6-sol":
+        "OpenAI 预览 GPT-5.6 Sol：在编码、科学与网络安全上能力更强的下一代旗舰模型，配套其最先进的安全栈；系列还含均衡款 Terra（性能接近 5.5 但便宜 2 倍）与低成本快速款 Luna，未来数周将逐步开放。",
+    "https://openai.com/index/how-agents-are-transforming-work":
+        "OpenAI 新研究论文展示 AI agent 如何改变工作：让模型能完成更长、更复杂的任务，并在各类岗位上扩大生产力。",
+    "https://simonwillison.net/2026/Jun/26/openai/#atom-everything":
+        "Simon 引述 OpenAI GPT-5.6 系列预览公告（旗舰 Sol、均衡 Terra、快速廉价 Luna），并提到 OpenAI 在发布前向美国政府预先通报了相关计划。",
+    "https://simonwillison.net/2026/Jun/25/ai-and-liability/#atom-everything":
+        "Simon 引述 Bruce Schneier 对德国判决（Google 须为其 AI 概览中的错误担责）的评论：AI agent 是部署方的代理人，法律应据此追责，不能让企业拿『AI 出错』当免责借口。",
+    "https://simonwillison.net/2026/Jun/25/datasette-export-database/#atom-everything":
+        "Simon 发布 datasette-export-database 0.3a2：一个极小的修复版，把 pyproject.toml 里写死的 datasette==1.0a27 改成 >=1.0a27，解除与其他 Datasette 版本的不兼容。",
+    "https://simonwillison.net/2026/Jun/24/browser-compat-db/#atom-everything":
+        "Simon 受 Mozilla 新 MDN MCP 服务启发，用 Claude Code for web（Opus 4.8）生成的 sqlite-utils 脚本，把 mdn/browser-compat-data 转成约 66MB 的 SQLite 数据库，并设法通过 GitHub CDN 带开放 CORS 头分发。",
+    "https://simonwillison.net/2026/Jun/24/tom-macwright/#atom-everything":
+        "Simon 引述 Tom MacWright：越来越多求职申请明显由 LLM 代写——简历、作品集站点、GitHub 项目乃至提交信息全是生成的，结果千篇一律、毫无个人真实信息，让招聘者无从了解这个人。",
+    "https://lilianweng.github.io/posts/2026-06-24-scaling-laws/":
+        "Lilian Weng 长文《Scaling Laws, Carefully》：把缩放定律视为描述算力、损失、模型规模与数据关系的框架，核心是如何在模型规模 N 与数据量 D 之间最优分配宝贵算力。",
+
+    # 2026-06-27 arXiv
+    "http://arxiv.org/abs/2606.27377v1":
+        "DanceOPD：面向 flow-matching 模型的在策略生成场蒸馏框架，把文生图、局部编辑、全局编辑统一进单一模型并化解三者相互冲突的训练难题。",
+    "http://arxiv.org/abs/2606.27369v1":
+        "RiVER：无需标准答案也能训练 LLM 的可验证强化学习框架，用确定性执行反馈作为连续值监督，并解决连续奖励下『尺度主导』等优化难题。",
+    "http://arxiv.org/abs/2606.27361v1":
+        "自回归玻尔兹曼生成器：用自回归模型替代归一化流来构建 Boltzmann Generator，兼顾表达力与可负担的精确似然，高效采样分子平衡态。",
+    "http://arxiv.org/abs/2606.27359v1":
+        "系统量化『序列概率高是否等于答案正确』：跨解码方法、模型与基准在四个层级上分析序列概率与正确性的对齐程度，给出何时『更可能的答案才更对』。",
+    "http://arxiv.org/abs/2606.27347v1":
+        "用全开源的多语言联合实体-关系抽取流水线，大规模绘制欧洲政治精英网络，替代昂贵的人工编码与简单共现方法。",
+    "http://arxiv.org/abs/2606.27342v1":
+        "研究领域感知的分布对齐在『预算受限实体匹配』中的表现：以 SOTA 方法 BEACON 为对象，分析其在不同数据约束与监督水平下的行为。",
+    "http://arxiv.org/abs/2606.27334v1":
+        "基于语言的数字孪生：用 LLM 结合文体线索与上下文元数据模拟老年人对话行为，作为非侵入式生物标志辅助轻度认知障碍（MCI）的早期检测。",
+    "http://arxiv.org/abs/2606.27330v1":
+        "PEEU：让 GUI agent 自主探索环境发现经验、并利用事后经验合成严格对齐的高质量规划数据，提升小型开源多模态模型的任务规划与跨网站泛化。",
+    "http://arxiv.org/abs/2606.27316v1":
+        "德国央行实践：用 LLM 从冗长、半结构化、常为双语的证券募集说明书中抽取抵押品合格性条款，克服传统 NER 在 OCR 噪声与语言变体上的局限。",
+    "http://arxiv.org/abs/2606.27314v1":
+        "提出面向机制的『间接语言编码（ILE）』分类法，抽象掉沟通目的、按意义编码与还原的底层操作归类算法黑话/委婉语/对抗性混淆，并将其嵌入 LLM 提示提升隐语检测。",
+    "http://arxiv.org/abs/2606.27306v1":
+        "多语言推理级联需要更多上下文：在『译成英文-用英文推理-译回』的级联中，额外把原问题、英译问题与推理链一并提供给翻译环节，免训练地减少信息丢失。",
+    "http://arxiv.org/abs/2606.27291v1":
+        "为『可迁移查询生成』设计奖励信号：以工业语义岗位搜索为案例，用 RLAIF 生成抽象掉求职者身份、保留通用资历的可迁移查询，并应对策略优化钻 LLM-as-judge 规则空子的对抗性奖励面。",
+    "http://arxiv.org/abs/2606.27288v1":
+        "在 67 个前沿模型上证明：路由/投票/混合 agent 等多模型组合的准确率上限被『所有模型在同一查询上同时出错』的共错率 β 锁死，而常用的平均成对相关 ρ 无法识别 β。",
+    "http://arxiv.org/abs/2606.27287v1":
+        "研究自动化简历筛选中的提示注入：候选人插入不增加真实资历的自我推销文本可在简历同质、少数人注入时稳定提升排名，但随注入者增多效果迅速崩塌。",
+    "http://arxiv.org/abs/2606.27275v1":
+        "把历史语言对 LLM 的『难度』拆解为分词成本、预测不确定性、语义鲁棒性与上下文敏感度四个维度，研究历史意大利语并提出简单缓解方法。",
+    "http://arxiv.org/abs/2606.27274v1":
+        "BetXplain：带解释标注的社交媒体『诱导性博彩广告』检测数据集，用于识别可能误导用户、鼓励冒险行为的劝导性广告。",
+    "http://arxiv.org/abs/2606.27268v1":
+        "E-TTS：面向机器人操作的具身测试时扩展框架，研究推理对策略的扩展机制并引入历史信息，解决长程序列任务中仅靠当前观测扩展动作的不足。",
+    "http://arxiv.org/abs/2606.27251v1":
+        "推进全模态具身 agent 从孤立技能走向日常物理自治：统一编排网络（API/IoT）与物理（操作/导航）工具，并在长时运行中自主从物理失败中恢复。",
+    "http://arxiv.org/abs/2606.27247v1":
+        "RSPC：用精神科医生对 1799 条 Reddit 异地恋帖子的标注，把心理健康困扰与关系触发因素一起建模的基准，超越将心理状况孤立看待的传统做法。",
+    "http://arxiv.org/abs/2606.27246v1":
+        "在可解析的高维 GAN 模型中研究有效协方差动力学，把生成器学习低维子空间的训练过程扩展到类相关、有相关性、非零均值的潜在结构。",
+    "http://arxiv.org/abs/2606.27242v1":
+        "『更新的几何』：在共享词表的 LLM 家族中，提出基于 Fisher 对齐的免训练源语料选择方法，解决科学字符串域（SMILES/蛋白质/基因组）中表示相似度失效、经典更新几何度量又算不动的难题。",
+    "http://arxiv.org/abs/2606.27237v1":
+        "把语言模型当作任务专属知识库的可解释性分析：行为与机制层面均显示 LM 以『任务特定』方式编码知识，同一事实在不同任务上常无法共现，并非单一真相源。",
+    "http://arxiv.org/abs/2606.27233v1":
+        "提出分析协作问题求解对话的概念框架，用分层双层编码刻画人-AI 与多 agent 协作中的对话动态，弥补现有分析方法的局限。",
+    "http://arxiv.org/abs/2606.27229v1":
+        "CARVE：内容感知、价值高效的分块并行线性注意力，修正主流 delta-rule 架构（GDN-2）『记忆盲门控』等三大缺陷，让门控在擦除记忆时能参考已存储内容。",
+    "http://arxiv.org/abs/2606.27226v1":
+        "BINEVAL：把评估标准拆成原子化的二元问题再聚合成可解释的多维分数，替代不透明的整体式 LLM 打分，用于可解释的 LLM 评测与自我改进。",
+    "http://arxiv.org/abs/2606.27210v1":
+        "主张安全分类器应把用户意图作为提示与标签之间的显式信号；构建 1724 条难样本数据集 AIMS（含意图描述与危害标签），证明意图感知训练在多种训练范式下都能提升安全分类。",
+    "http://arxiv.org/abs/2606.27199v1":
+        "用 LLM 做预测：通过稀疏自编码器检视内部状态，区分模型依赖『时间特异知识』还是『可泛化模式』，并用特征引导（feature steering）在跨域时提升泛化。",
+    "http://arxiv.org/abs/2606.27188v1":
+        "提出『流程外壳（process harness）』：在不替换底层工作流引擎的前提下，给确定性引擎套上策略治理的 agentic 层并在控制点注入推理与监督，把遗留工作流升级为 agentic BPM。",
+    "http://arxiv.org/abs/2606.27187v1":
+        "HarmVideoBench：有害视频理解基准，针对现有基准只做二分类、缺乏解释的缺陷，刻画有害视频的多层次特征并要求模型给出解释性理由。",
+    "http://arxiv.org/abs/2606.27180v1":
+        "用视觉语言模型引导自动化基于势能的奖励塑形（PBRS）：在稀疏奖励场景下由 VLM 给出势函数，既缓解探索困难又避免朴素奖励塑形导致的奖励黑客。",
+
     # 2026-06-25 OpenAI / Simon Willison
     "https://openai.com/index/openai-broadcom-jalapeno-inference-chip":
         "OpenAI 与博通联合推出代号 Jalapeño 的定制 AI 芯片，专为 LLM 推理打造，旨在提升 AI 系统的性能、能效与规模。",

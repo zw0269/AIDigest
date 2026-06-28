@@ -9,6 +9,96 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-06-28 GitHub Trending
+    "https://github.com/altic-dev/FluidVoice":
+        "FluidVoice：macOS 上的离线本地语音转文字应用，主打高速、隐私友好、无需云端。",
+    "https://github.com/HKUDS/Vibe-Trading":
+        "Vibe-Trading：面向个人交易者的 AI 交易 agent 项目，用自然语言与自动化流程辅助交易研究和执行。",
+    "https://github.com/Robbyant/lingbot-map":
+        "lingbot-map：一个前馈式 3D 基础模型，面向流式数据实时重建场景。",
+    "https://github.com/ByteByteGoHq/system-design-101":
+        "system-design-101：用图解和通俗文字讲复杂系统，帮助准备系统设计面试。",
+    "https://github.com/usestrix/strix":
+        "strix：开源 AI 黑客/安全 agent，用来发现并修复应用漏洞。",
+    "https://github.com/cupy/cupy":
+        "CuPy：在 GPU 上实现 NumPy/SciPy 风格数组计算的高性能 Python 库。",
+    "https://github.com/browser-use/video-use":
+        "video-use：让 coding agent 直接编辑视频的工具项目。",
+
+    # 2026-06-28 YouTube AI
+    "https://www.youtube.com/watch?v=65RvB3Xta0E":
+        "AI 周报：围绕 GPT-5.6、Claude Fable 5 限制、Claude Tag、NVIDIA 药物发现 AI、开源模型等 18 项更新做概览。",
+    "https://www.youtube.com/watch?v=Zzj0x1BuzgA":
+        "实测让 Claude 从零搭建 GTA 5 RP 的 FiveM 框架，展示服务器搭建、调试与核心功能生成过程。",
+    "https://www.youtube.com/watch?v=7c_ieWfAbrw":
+        "AI 新闻汇总：覆盖 GPT-5.6、Seedance 2.5、实时头像、脑部超声、芯片与多项新模型/工具发布。",
+    "https://www.youtube.com/watch?v=OEaM4GKM6mU":
+        "阿语 AI 新闻：解读 GPT-5.6 Sol/Terra/Luna 系列、美国限制、Aizawa 进展、PixelRAG、Mistral OCR 等动态。",
+    "https://www.youtube.com/watch?v=_AoyQcIoquA":
+        "解读 GPT-5.6 Sol 的受限预览、美国政府压力、编码与网络安全能力，以及 OpenAI 与 Broadcom 的 Jalapeno 自研芯片。",
+
+    # 2026-06-28 Hacker News Newest
+    "https://news.ycombinator.com/item?id=48706481":
+        "Show HN：忠实复刻 MUMPS 76 数据库实现，回顾这个早期 NoSQL 系统的历史。",
+    "https://news.ycombinator.com/item?id=48706559":
+        "面向普通读者解释 CORS 的文章，梳理浏览器跨域安全机制的基本概念。",
+    "https://news.ycombinator.com/item?id=48706444":
+        "Show HN：一个实验性的 Python 到 GCC/GAS 内联汇编桥接工具。",
+    "https://news.ycombinator.com/item?id=48706539":
+        "报道称 Claude Fable 5 可能在数日内重新开放，引发 HN 讨论。",
+    "https://news.ycombinator.com/item?id=48706643":
+        "介绍在设备端对语音录音进行降噪处理的技术方案。",
+    "https://news.ycombinator.com/item?id=48706538":
+        "论文/资料：介绍 Verse 编程语言及其超越传统函数式编程的设计思想。",
+    "https://news.ycombinator.com/item?id=48706483":
+        "Perceus：一种可复用、低垃圾产生的引用计数内存管理方法。",
+    "https://news.ycombinator.com/item?id=48706560":
+        "报道 Kids Act 可能要求用户通过年龄检查才能上网，引发隐私与监管争议。",
+    "https://news.ycombinator.com/item?id=48706554":
+        "火星生命证据讨论：新发现增加了线索，但仍未直接证明生命存在。",
+    "https://news.ycombinator.com/item?id=48706571":
+        "Tldr.fail：部分服务器实现有 bug，导致 TLS 中的后量子密钥交换兼容性破坏。",
+    "https://news.ycombinator.com/item?id=48706627":
+        "Cypherpunk Library：面向密码朋克思想与资料的在线文库。",
+    "https://news.ycombinator.com/item?id=48706502":
+        "Show HN：Warren 可在无容器、无 root 的情况下运行隔离的 CLI 工具实例。",
+    "https://news.ycombinator.com/item?id=48706544":
+        "文章讨论从单次提示词走向循环式 autonomous coding agents 的构建方式。",
+    "https://news.ycombinator.com/item?id=48706430":
+        "Yourbrowsercandoit：提供 64 个浏览器内文件工具，免上传、免注册、无追踪。",
+    "https://news.ycombinator.com/item?id=48706616":
+        "报道称荷兰对欧盟烟草规则的公众反馈中近四分之三由 AI 生成。",
+    "https://news.ycombinator.com/item?id=48706537":
+        "法国热浪导致约千人额外死亡的报道。",
+    "https://news.ycombinator.com/item?id=48706490":
+        "Show HN：Genius AI Detector，一个用于检测 AI 生成内容的工具。",
+    "https://news.ycombinator.com/item?id=48706486":
+        "GhostGrid：用 Ed25519 做漂移检测和边缘设备篡改证据的方案。",
+    "https://news.ycombinator.com/item?id=48706506":
+        "Policy Pulse 第 21 期：汇总 2026 年 6 月 27 日这一周的政策动态。",
+    "https://news.ycombinator.com/item?id=48706578":
+        "Ask HN：如果有人现在给你的创业公司投 10 万美元，你会如何使用？",
+    "https://news.ycombinator.com/item?id=48706455":
+        "Show HN：UnfoldCMS 是一次性付费、无订阅的自托管 Laravel CMS。",
+    "https://news.ycombinator.com/item?id=48706657":
+        "文章讨论用 quantum picturalism 超越传统符号代数的表达方式。",
+    "https://news.ycombinator.com/item?id=48706419":
+        "Ask HN：如何找到正确受众并验证产品市场匹配。",
+    "https://news.ycombinator.com/item?id=48706448":
+        "Flounder Mode：一篇围绕该模式/概念展开的分享，引发 HN 讨论。",
+    "https://news.ycombinator.com/item?id=48706521":
+        "Almavivo：一个把健康数据处理放在设备端完成的健康平台。",
+    "https://news.ycombinator.com/item?id=48706485":
+        "云播种专家称人工降雨并不能真正解决干旱问题。",
+    "https://news.ycombinator.com/item?id=48706449":
+        "特朗普威胁对征收数字税的欧洲国家加征 100% 关税。",
+    "https://news.ycombinator.com/item?id=48706628":
+        "Ask HN：原生 iOS/Swift 应用是否允许 OTA 热更新，社区讨论苹果规则边界。",
+    "https://news.ycombinator.com/item?id=48706498":
+        "介绍无需 React 也可使用的 shadcn/ui 组件方案。",
+    "https://news.ycombinator.com/item?id=48706493":
+        "《Imagine Telling Someone in 1999》：以 1999 年视角反观当代技术变化的随笔。",
+
     # 2026-06-27 GitHub Trending
     "https://github.com/NanmiCoder/MediaCrawler":
         "MediaCrawler：覆盖小红书、抖音、快手、B 站、微博、贴吧、知乎的多平台自媒体笔记/视频/评论爬虫合集。",
@@ -2367,6 +2457,18 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-06-28 Sebastian Raschka / Simon Willison
+    "https://magazine.sebastianraschka.com/p/using-local-coding-agents":
+        "Sebastian Raschka 介绍如何用本地 coding harness 搭配开放权重模型，作为 Claude Code / Codex 订阅之外的本地编码 agent 方案。",
+    "https://simonwillison.net/2026/Jun/26/dean-w-ball/#atom-everything":
+        "Simon 引述 Dean W. Ball：前沿模型发布延迟会压缩实验室回收训练成本的窗口，也会削弱面向全球市场建设 AI 基础设施的经济逻辑。",
+    "https://simonwillison.net/2026/Jun/26/timothy-b-lee/#atom-everything":
+        "Simon 引述 Timothy B. Lee：认为 LLM 没有学习曲线，就像说当经理不需要学习、员工会自动照做一样，是对使用技能的误解。",
+    "https://simonwillison.net/2026/Jun/26/hack-my-ai-assistant/#atom-everything":
+        "Simon 记录一次 OpenClaw 邮件攻击挑战：约 2000 人、6000 次尝试都未成功泄露 secret，显示前沿模型的抗提示注入训练已有明显进展。",
+    "https://simonwillison.net/2026/Jun/26/incident-report/#atom-everything":
+        "Simon 转发一篇讽刺性事故报告：两个 AI 代码审查 agent 围绕供应链包是否恶意陷入争论循环，最终烧掉巨额推理费用。",
+
     # 2026-06-27 OpenAI / Simon Willison / Lilian Weng
     "https://openai.com/index/previewing-gpt-5-6-sol":
         "OpenAI 预览 GPT-5.6 Sol：在编码、科学与网络安全上能力更强的下一代旗舰模型，配套其最先进的安全栈；系列还含均衡款 Terra（性能接近 5.5 但便宜 2 倍）与低成本快速款 Luna，未来数周将逐步开放。",

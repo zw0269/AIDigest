@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-07-10</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-07-10</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-07-10</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 94 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">94</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">10</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">46</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">8 条 · 3 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/government-national-security-partnerships" target="_blank" rel="noopener">Our approach to government and national security partnerships</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how OpenAI approaches government and national security partnerships, with principles for responsible AI use, democratic accountability, and public safety.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 说明其政府和国家安全合作原则，强调负责任 AI 使用、民主问责和公共安全。</div>
+        <div class="item-url">https://openai.com/index/government-national-security-partnerships</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/separating-signal-from-noise-coding-evaluations" target="_blank" rel="noopener">Separating signal from noise in coding evaluations</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A new analysis from OpenAI reveals issues in SWE-Bench Pro, a popular coding benchmark, raising concerns about reliability and accuracy in evaluating AI models.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 分析 SWE-Bench Pro 等编码评测中的可靠性问题，提醒热门基准可能含噪声并影响模型能力判断。</div>
+        <div class="item-url">https://openai.com/index/separating-signal-from-noise-coding-evaluations</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/k-12-educators-practical-skills" target="_blank" rel="noopener">Helping K–12 educators build practical AI skills</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI Academy and the Walton Family Foundation are bringing hands-on AI Skills Jams to help K–12 educators build practical AI skills for the classroom.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI Academy 与 Walton Family Foundation 为 K-12 教师提供 AI Skills Jams，帮助教师掌握课堂可用的实操 AI 技能。</div>
+        <div class="item-url">https://openai.com/index/k-12-educators-practical-skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-gpt-live" target="_blank" rel="noopener">Introducing GPT-Live</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A new generation of voice models for natural human-AI interaction, now powering ChatGPT Voice.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 发布 GPT-Live：面向自然人机语音交互的新一代语音模型，并用于新版 ChatGPT Voice。</div>
+        <div class="item-url">https://openai.com/index/introducing-gpt-live</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/australian-payments-plus" target="_blank" rel="noopener">Australian Payments Plus moves faster with ChatGPT and Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>See how Australian Payments Plus uses ChatGPT Enterprise and Codex to move faster through payments complexity. AP+ saves time, improves quality, and keeps human judgment central.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Australian Payments Plus 用 ChatGPT Enterprise 和 Codex 加速支付系统开发与运营，在复杂支付场景中节省时间并保持人工判断。</div>
+        <div class="item-url">https://openai.com/index/australian-payments-plus</div>
+      </div>
+    </div>
+    <div class="source-group" id="transformer-circuits">
+      <div class="source-header">
+        <div class="source-name">Transformer Circuits</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://transformer-circuits.pub/2026/workspace/index.html" target="_blank" rel="noopener">Verbalizable Representations Form a Global Workspace in Language Models</a>
+        <div class="item-summary">Transformer Circuits 论文提出：语言模型中可被 verbalize 的内部表征像『全局工作空间』，可被报告、调制并参与灵活推理。</div>
+        <div class="item-url">https://transformer-circuits.pub/2026/workspace/index.html</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/alberta-government-claude-cybersecurity" target="_blank" rel="noopener">Government of Alberta uses Claude to find and fix cybersecurity vulnerabilities across government systems</a>
+        <div class="item-summary">Anthropic 案例：阿尔伯塔政府用 Claude Code 在 20 小时内扫描 4.66 亿行代码，发现并修复政府系统中的安全漏洞。</div>
+        <div class="item-url">https://www.anthropic.com/news/alberta-government-claude-cybersecurity</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/reflect-with-claude" target="_blank" rel="noopener">Introducing a way to reflect on how you use Claude</a>
+        <div class="item-summary">Anthropic 推出 Claude 使用反思仪表盘，帮助用户回顾使用主题、时间模式和目标匹配度，并设置 quiet hours 等边界。</div>
+        <div class="item-url">https://www.anthropic.com/news/reflect-with-claude</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">10 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">10 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything" target="_blank" rel="noopener">Rewriting Bun in Rust</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Rewriting Bun in Rust
+Jarred Sumner has been promising this blog post (since May 9th) about his Zig to Rust rewrite of Bun for significantly longer than it took him to finish the rewrite.
+Honestly, it was worth the wait. This is a detailed description of an extremely sophisticated piece of agentic engineering, featuring dynamic workflows, trial ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 推荐 Jarred Sumner 讲述 Bun 从 Zig 重写到 Rust 的长文，重点是 agentic engineering、动态工作流、试跑和对抗式审查等方法。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/8/introducing-gptlive/#atom-everything" target="_blank" rel="noopener">Introducing GPT‑Live</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing GPT‑Live
+OpenAI finally upgraded the model used by ChatGPT voice mode!
+I&#x27;ve had preview access for a few weeks in the iPhone app, and the new model is very impressive. It also has the ability to spin off harder tasks to GPT-5.5:
+
+For questions that require web search, deeper reasoning, or more complex work, it delegates to our latest...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 试用 GPT-Live，认为新版 ChatGPT Voice 明显更强，可把复杂问题委派给 GPT-5.5 并保持语音对话流。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/8/introducing-gptlive/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/8/kenton-varda/#atom-everything" target="_blank" rel="noopener">Quoting Kenton Varda</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I just declared a moratorium against AI-written change descriptions (e.g. PR and commit messages, also issues/tickets) from my team.
+AI was writing change descriptions that were worse than useless to me as I tried to review PRs: outlining details of the code that could easily be seen by looking at the code, but omitting the higher-level framing ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 引述 Kenton Varda：团队暂停使用 AI 写 PR/commit/issue 描述，因为它常复述代码细节却缺少高层意图。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/8/kenton-varda/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/7/sqlite-utils-4/#atom-everything" target="_blank" rel="noopener">sqlite-utils 4.0, now with database schema migrations</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>This morning I released sqlite-utils 4.0, the 124th release of that project and the first major version bump since 3.0 in November 2020. In addition to some small but significant breaking changes (described in this upgrade guide), this version introduces three major features: database migrations, nested transactions (via a new db.atomic() method...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-utils 4.0：加入数据库 schema migrations、嵌套事务和复合外键支持，是 2020 年以来首次大版本升级。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/7/sqlite-utils-4/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/7/sqlite-migrate/#atom-everything" target="_blank" rel="noopener">sqlite-migrate 0.2</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: sqlite-migrate 0.2
+        The version that retires the library, instead implementing a compatibility shim against the new sqlite-utils 4.0 dependency.
+    
+    
+        Tags: sqlite-utils</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-migrate 0.2，把该库退役为基于 sqlite-utils 4.0 的兼容层。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/7/sqlite-migrate/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/7/github-code-component/#atom-everything" target="_blank" rel="noopener">github-code Web Component</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: github-code Web Component
+        An experimental Web Component built using GPT-5.5 and the following prompt:
+
+let&#x27;s build a Web Component for embedding code from GitHub
+&lt;github-code href=&quot;https://github.com/simonw/sqlite-ast/blob/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py#L9-L18&quot;&gt;&lt;/github-code&gt;
+It takes URLs like that, ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 用 GPT-5.5 做了 github-code Web Component，可从 GitHub URL 抓取指定代码行并嵌入网页展示。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/7/github-code-component/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/7/sqlite-utils/#atom-everything" target="_blank" rel="noopener">sqlite-utils 4.0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: sqlite-utils 4.0
+        See sqlite-utils 4.0, now with database schema migrations for details.
+    
+    
+        Tags: sqlite-utils</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-utils 4.0，并指向数据库 schema migrations 等详细说明。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/7/sqlite-utils/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/7/sqlite-utils-2/#atom-everything" target="_blank" rel="noopener">sqlite-utils 4.0rc4</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: sqlite-utils 4.0rc4
+        The last RC before the 4.0 stable release. Mainly implements feedback from a detailed review by Claude Fable 5.
+    
+    
+        Tags: sqlite-utils, claude-mythos-fable</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-utils 4.0rc4，这是稳定版前最后一个 RC，主要落实 Claude Fable 5 详细审查反馈。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/7/sqlite-utils-2/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/6/hy3/#atom-everything" target="_blank" rel="noopener">tencent/Hy3</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>tencent/Hy3
+New Apache 2.0 licensed model from Tencent in China:
+
+Hy3 is a 295B-parameter Mixture-of-Experts (MoE) model with 21B active parameters and 3.8B MTP layer parameters, developed by the Tencent Hy Team. Following the Hy3 Preview launch in late April, we gathered feedback from 50+ products and scaled up post-training with higher quality...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 介绍腾讯 Hy3：Apache 2.0 许可的 295B MoE 模型，21B 激活参数、256K 上下文，号称追平更大开源旗舰模型。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/6/hy3/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/6/sqlite-utils/#atom-everything" target="_blank" rel="noopener">sqlite-utils 4.0rc3</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: sqlite-utils 4.0rc3
+        I hoped to release sqlite-utils 4.0 stable this weekend, but as I worked through the backlog of issues and PRs with a combination of Claude Fable 5 and GPT-5.5 the changelog since rc2 kept getting bigger.
+The biggest new feature is support for introspecting and creating compound foreign keys - a feature that ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-utils 4.0rc3，加入复合外键 introspection/创建支持和大小写不敏感列名等稳定版前改动。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/6/sqlite-utils/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">46 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847885" target="_blank" rel="noopener">Ask HN: How can I keep kittens away from an electric car?</a>
+        <div class="item-summary">Ask HN：如何让小猫远离电动汽车，社区讨论车辆安全和动物行为问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847885</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848112" target="_blank" rel="noopener">Show HN: The OWASP Top: Which Risks Can Be Automated?</a>
+        <div class="item-summary">Show HN：围绕 OWASP Top 风险中哪些能被自动化检测/修复的工具或分析。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848112</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848117" target="_blank" rel="noopener">Getting Started with Anchor Positioning</a>
+        <div class="item-summary">介绍 CSS Anchor Positioning 的入门文章，讲解如何把元素锚定到其他元素。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848117</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847892" target="_blank" rel="noopener">Information Pressure: The Psychological Burden of the Information Age (2025)</a>
+        <div class="item-summary">文章讨论信息时代的『信息压力』及其带来的心理负担。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847892</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847807" target="_blank" rel="noopener">Questioneverything.ai – Explore any question through composable knowledge blocks</a>
+        <div class="item-summary">Questioneverything.ai：用可组合知识块探索任意问题的 AI 问答/研究工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847807</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847940" target="_blank" rel="noopener">AI Content Is Everywhere on Social Media, Especially LinkedIn</a>
+        <div class="item-summary">报道 AI 生成内容已大量出现在社交媒体上，尤其在 LinkedIn 上更明显。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847940</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848098" target="_blank" rel="noopener">Everyone gets faster. Not everyone gets more valuable</a>
+        <div class="item-summary">观点文：AI 让所有人更快，但不一定让每个人更有价值，重点在能力和判断力的差异。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848098</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847947" target="_blank" rel="noopener">Pair of &#x27;super-puff&#x27; planets are lighter than candy floss</a>
+        <div class="item-summary">天文报道：一对 super-puff 行星密度极低，比棉花糖还轻。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847947</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847815" target="_blank" rel="noopener">A2A Protocol</a>
+        <div class="item-summary">A2A Protocol：关于 agent-to-agent 协议或系统互操作的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847815</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847928" target="_blank" rel="noopener">Show HN: MCP Leaderboard that publishes and updates itself</a>
+        <div class="item-summary">Show HN：一个会自动发布并更新自身数据的 MCP Leaderboard。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847928</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848010" target="_blank" rel="noopener">Blog</a>
+        <div class="item-summary">一篇标题为 Blog 的文章/项目，HN 上引发讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848010</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847972" target="_blank" rel="noopener">Show HN: Where Were We</a>
+        <div class="item-summary">Show HN：Where Were We，一个帮助恢复上下文或协作状态的项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847972</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847840" target="_blank" rel="noopener">Dairy cows make their misery expensive (but their calves can&#x27;t)</a>
+        <div class="item-summary">文章讨论奶牛痛苦如何通过经济成本体现，而小牛的处境却难以被市场反映。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847840</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848111" target="_blank" rel="noopener">Auditory and spontaneous movement responses to music over first postnatal year</a>
+        <div class="item-summary">研究婴儿出生后第一年对音乐的听觉和自发运动反应。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848111</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847943" target="_blank" rel="noopener">The tiny cell that wasn&#x27;t there</a>
+        <div class="item-summary">《The tiny cell that wasn&#x27;t there》：关于一个不存在的小细胞的科学/技术故事。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847943</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847946" target="_blank" rel="noopener">Too Many Books?</a>
+        <div class="item-summary">Too Many Books?：围绕书太多、阅读管理或藏书取舍的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847946</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847887" target="_blank" rel="noopener">The C6 Days: Tools, Memory, and Bugs</a>
+        <div class="item-summary">The C6 Days：回顾工具、内存和 bug 的技术文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847887</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847832" target="_blank" rel="noopener">I asked Fable 5 to make me a lyric video [video]</a>
+        <div class="item-summary">视频：作者让 Claude Fable 5 制作歌词视频，展示 AI 创作流程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847832</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847888" target="_blank" rel="noopener">Big Burnham will be watching you</a>
+        <div class="item-summary">Big Burnham will be watching you：围绕监控、政治或公共空间治理的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847888</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847891" target="_blank" rel="noopener">Ask HN: When you have too many interests</a>
+        <div class="item-summary">Ask HN：兴趣太多时如何取舍和管理注意力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847891</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847834" target="_blank" rel="noopener">Show HN: Reverse-engineering web apps into agent tools</a>
+        <div class="item-summary">Show HN：把 Web 应用逆向成 agent 可调用工具的项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847834</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848046" target="_blank" rel="noopener">Browser-Memory</a>
+        <div class="item-summary">Browser-Memory：与浏览器端记忆/持久化上下文相关的项目或文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848046</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847899" target="_blank" rel="noopener">The Lazarus Heist (2021) [audio]</a>
+        <div class="item-summary">《The Lazarus Heist》音频：关于 Lazarus 黑客组织相关事件的调查故事。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847899</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848011" target="_blank" rel="noopener">Digital euro enters final round of EU negotiations</a>
+        <div class="item-summary">数字欧元进入欧盟最终谈判阶段的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848011</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847819" target="_blank" rel="noopener">New York Times-led group asks court to sanction OpenAI in US copyright dispute</a>
+        <div class="item-summary">纽约时报牵头团体要求法院在美国版权纠纷中制裁 OpenAI。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847819</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848041" target="_blank" rel="noopener">Australian Councils vote for polluter-pays climate compensation fund</a>
+        <div class="item-summary">澳大利亚地方议会投票支持污染者付费的气候赔偿基金。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848041</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48847930" target="_blank" rel="noopener">Show HN: AI-powered job application framework built on Claude Code</a>
+        <div class="item-summary">Show HN：基于 Claude Code 的 AI 求职申请框架。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48847930</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848034" target="_blank" rel="noopener">Farage left fighting a trash can as the UK populist&#x27;s election gamble backfires</a>
+        <div class="item-summary">报道英国民粹政治人物 Farage 的选举押注受挫。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848034</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848052" target="_blank" rel="noopener">Apache Kafka Performance</a>
+        <div class="item-summary">Apache Kafka 性能相关的技术文章或基准讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848052</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48848075" target="_blank" rel="noopener">Show HN: Ring Holders Club</a>
+        <div class="item-summary">Show HN：Ring Holders Club，一个围绕戒指/收藏或会员身份的项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48848075</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">11 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/wonderwhy-er/DesktopCommanderMCP" target="_blank" rel="noopener">wonderwhy-er /DesktopCommanderMCP — This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities</a>
+        <div class="item-summary">DesktopCommanderMCP：给 Claude 提供终端控制、文件系统搜索和 diff 编辑能力的 MCP server。</div>
+        <div class="item-url">https://github.com/wonderwhy-er/DesktopCommanderMCP</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/kyutai-labs/pocket-tts" target="_blank" rel="noopener">kyutai-labs /pocket-tts — A TTS that fits in your CPU (and pocket)</a>
+        <div class="item-summary">pocket-tts：Kyutai 的轻量 TTS 模型，可在 CPU 和小设备上运行。</div>
+        <div class="item-url">https://github.com/kyutai-labs/pocket-tts</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/iOfficeAI/OfficeCLI" target="_blank" rel="noopener">iOfficeAI /OfficeCLI — OfficeCLI is the first and best Office suite purpose-built for AI agents to read, edit, and automate Word, Excel, and PowerPoint files. Free, open-source, single binary, no Office installation required.</a>
+        <div class="item-summary">OfficeCLI：面向 AI agent 的开源单二进制 Office 工具，可读写和自动化 Word、Excel、PowerPoint，无需安装 Office。</div>
+        <div class="item-url">https://github.com/iOfficeAI/OfficeCLI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/VoltAgent/awesome-design-md" target="_blank" rel="noopener">VoltAgent /awesome-design-md — A collection of DESIGN.md files analysis by popular brand design systems. Drop one into your project and let coding agents generate a matching UI.</a>
+        <div class="item-summary">awesome-design-md：收集热门品牌设计系统的 DESIGN.md 分析文件，帮助 coding agent 生成匹配风格的 UI。</div>
+        <div class="item-url">https://github.com/VoltAgent/awesome-design-md</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/MadsLorentzen/ai-job-search" target="_blank" rel="noopener">MadsLorentzen /ai-job-search — AI-powered job application framework built on Claude Code. Fork it, fill in your profile, and let Claude evaluate jobs, tailor CVs, write cover letters, and prepare you for interviews.</a>
+        <div class="item-summary">ai-job-search：基于 Claude Code 的 AI 求职框架，可评估职位、定制简历、写求职信并准备面试。</div>
+        <div class="item-url">https://github.com/MadsLorentzen/ai-job-search</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/prisma/prisma" target="_blank" rel="noopener">prisma /prisma — Next-generation ORM for Node.js &amp; TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite, MongoDB and CockroachDB</a>
+        <div class="item-summary">Prisma：面向 Node.js 与 TypeScript 的下一代 ORM，支持 PostgreSQL、MySQL、SQLite、MongoDB 等多种数据库。</div>
+        <div class="item-url">https://github.com/prisma/prisma</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/bradautomates/claude-video" target="_blank" rel="noopener">bradautomates /claude-video — Give Claude the ability to watch any video. /watch downloads, extracts frames, transcribes, hands it all to Claude.</a>
+        <div class="item-summary">claude-video：给 Claude 增加看视频能力的工具，可下载视频、抽帧、转录并交给 Claude 分析。</div>
+        <div class="item-url">https://github.com/bradautomates/claude-video</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/vxcontrol/pentagi" target="_blank" rel="noopener">vxcontrol /pentagi — Fully autonomous AI Agents system capable of performing complex penetration testing tasks</a>
+        <div class="item-summary">PentAGI：可执行复杂渗透测试任务的全自主 AI agents 系统。</div>
+        <div class="item-url">https://github.com/vxcontrol/pentagi</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/imthenachoman/How-To-Secure-A-Linux-Server" target="_blank" rel="noopener">imthenachoman /How-To-Secure-A-Linux-Server — An evolving how-to guide for securing a Linux server.</a>
+        <div class="item-summary">How-To-Secure-A-Linux-Server：持续演进的 Linux 服务器加固指南。</div>
+        <div class="item-url">https://github.com/imthenachoman/How-To-Secure-A-Linux-Server</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/huxingyi/autoremesher" target="_blank" rel="noopener">huxingyi /autoremesher — Automatic quad remeshing tool</a>
+        <div class="item-summary">autoremesher：自动四边形重网格工具，用于把模型表面转换成更规则的 quad mesh。</div>
+        <div class="item-url">https://github.com/huxingyi/autoremesher</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/SmartlyDressedGames/U3-SDK" target="_blank" rel="noopener">SmartlyDressedGames /U3-SDK — Source code for Unturned, a free open-world zombie survival sandbox game.</a>
+        <div class="item-summary">U3-SDK：免费开放世界生存沙盒游戏 Unturned 的源码 SDK。</div>
+        <div class="item-url">https://github.com/SmartlyDressedGames/U3-SDK</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=XCunMF6frio" target="_blank" rel="noopener">Peter H. Diamandis — Claude is Conscious, Fable 5’s Gov’t Deal, and Sam Altman offers 5% of OpenAI | #269（81,212 次播放）</a>
+        <div class="item-summary">播客讨论 Anthropic Fable 5、AI 意识、政府/国家安全合作、AI 治理、OpenAI 股权提议和就业影响等最新动态。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=XCunMF6frio</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=9f-Ew_lDtxc" target="_blank" rel="noopener">OpenAI — The next generation of ChatGPT Voice（84,068 次播放）</a>
+        <div class="item-summary">OpenAI 团队介绍并演示新一代 ChatGPT Voice 语音模型。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=9f-Ew_lDtxc</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=U3uX115I9sY" target="_blank" rel="noopener">Theo - t3․gg — Oh no (the new Grok model is good)（79,903 次播放）</a>
+        <div class="item-summary">Theo 评测 Grok 4.5，认为它在价格和 token 效率上很强，表现接近 GPT-5.5、超过 Opus 4.8。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=U3uX115I9sY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=EAN5Cj347PY" target="_blank" rel="noopener">OpenAI — This is the new ChatGPT Voice, powered by GPT-Live（78,210 次播放）</a>
+        <div class="item-summary">OpenAI 短片展示由 GPT-Live 驱动的新 ChatGPT Voice 体验。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=EAN5Cj347PY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=CMjTfpTd-NY" target="_blank" rel="noopener">Wes Roth — Grok 4.5 just BEAT everyone...（40,619 次播放）</a>
+        <div class="item-summary">Wes Roth 实测 Grok 4.5 的 3D 游戏、SVG 等能力，并讨论其对 Claude 和 OpenAI 的竞争压力。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=CMjTfpTd-NY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07708v1" target="_blank" rel="noopener">Accurate, Interdisciplinary and Transparent Structure-property Understanding with Deep Native Structural Reasoning</a>
+        <div class="item-summary">SciReasoner：面向蛋白、小分子和无机晶体的多模态科学基础模型，用原生结构表征解释结构-性质关系并保持推理透明。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07708v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07707v1" target="_blank" rel="noopener">Co-LMLM: Continuous-Query Limited Memory Language Models</a>
+        <div class="item-summary">Co-LMLM：把事实知识外置到连续向量查询的知识库中，让有限记忆语言模型在生成时检索可归因文本知识，提升困惑度和事实精度。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07707v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07702v1" target="_blank" rel="noopener">From Noisy Traces to Root Causes: Structural Trajectory Analysis and Causal Extraction for Agent Optimization</a>
+        <div class="item-summary">STRACE：从长轨迹中挖掘代表性失败并定位因果根因，为反思式 agent 优化构造高信噪比上下文。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07702v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07696v1" target="_blank" rel="noopener">Breaking Database Lock-in: Agentic Regeneration of High Performance Storage Readers for Database Bypass</a>
+        <div class="item-summary">Jailbreak：用 LLM 根据数据库源码和文档生成高性能存储文件 reader，绕过 JDBC/ODBC 驱动直接读取 PostgreSQL/MySQL 数据。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07696v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07695v1" target="_blank" rel="noopener">Institutional Red-Teaming: Deployment Rules, Not Just Models, Causally Shape Multi-Agent AI Safety</a>
+        <div class="item-summary">Institutional Red-Teaming：固定多 agent 与任务状态、只改变部署规则，证明规则本身会因果性改变集体安全结果。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07695v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07693v1" target="_blank" rel="noopener">Selective Timestep Weighting and Advantage-Based Replay for Sample-Efficient Diffusion RLHF</a>
+        <div class="item-summary">面向 diffusion RLHF 的样本高效方法：选择性加权关键去噪 timestep，并用 advantage-based replay 复用高信息轨迹。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07693v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07690v1" target="_blank" rel="noopener">Agon: Competitive Cross-Model RL with Implicit Rival Grading of Reasoning</a>
+        <div class="item-summary">Agon：让两个可比模型互为竞争对手和隐式 grader，通过互相读解并超越对方来训练更好的推理过程。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07690v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07676v1" target="_blank" rel="noopener">SkillCenter: A Large-Scale Source-Grounded Skill Library for Autonomous AI Agents</a>
+        <div class="item-summary">SkillCenter：包含 216,938 个结构化技能的大规模 agent 技能库，结合来源引用、SkillGate 质量筛选和 SQLite FTS 离线检索。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07676v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07674v1" target="_blank" rel="noopener">Max Out GRPO Signal: Adaptive Trace Prefix Control for Hard Reasoning Problems</a>
+        <div class="item-summary">AdaPrefix-GRPO：动态给难题加入参考解前缀，把成功率控制在约 50% 以最大化 GRPO 信号，再逐步撤掉辅助。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07674v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07673v1" target="_blank" rel="noopener">MedPMC: A Systematic Framework for Scaling High-Fidelity Medical Multimodal Data for Foundation Models</a>
+        <div class="item-summary">MedPMC：从 610 万篇 PMC 文章中构建 1100 万医学图文对，为医学多模态基础模型提供高保真、可持续更新的数据基础设施。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07673v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07670v1" target="_blank" rel="noopener">Does Bielik Know What It Doesn&#x27;t Know? Activation Dispersion Separates Entity Familiarity from Factual Reliability Across Model Scale</a>
+        <div class="item-summary">研究 Bielik 模型激活分散度：单次前向即可区分已知/虚构实体，但熟悉度信号不等同于事实可靠性。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07670v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07669v1" target="_blank" rel="noopener">DiaLLM: An Investigation into the Robustness-Generation Gap in English Dialect Adaptation</a>
+        <div class="item-summary">DiaLLM：系统比较英语方言适配，发现模型理解方言和生成方言是分离问题，强奖励优化不一定得到人类偏好的方言输出。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07669v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07646v1" target="_blank" rel="noopener">RL Post-Training Builds Compositional Reasoning Strategies</a>
+        <div class="item-summary">受控重写语法实验表明 RL 后训练不只是放大已有技能，还能把原始能力组合成稳定复用的高阶推理策略。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07646v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07640v1" target="_blank" rel="noopener">ALER-TI: Aligned Latent Embedding Retrieval for Time Series Imputation</a>
+        <div class="item-summary">ALER-TI：时间序列插补的检索增强框架，用潜在嵌入对齐从历史模式中补充局部缺失上下文。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07640v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07626v1" target="_blank" rel="noopener">Future Confidence Distillation in Large Language Models</a>
+        <div class="item-summary">Future Confidence Distillation：用解答后的置信度探针蒸馏到解答前隐藏表征，使模型在生成前预测答案可靠性。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07626v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07612v1" target="_blank" rel="noopener">Towards Agentic AI Governance: A Preliminary Assessment</a>
+        <div class="item-summary">综述 agentic AI governance：梳理 agentic AI 相比传统系统的差异、治理优先级、机制和利益相关方角色。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07612v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07601v1" target="_blank" rel="noopener">CARLA-GS: Decoupling Representation, Reasoning, and Physics Simulation for Autonomous Driving Corner-Case Synthesis</a>
+        <div class="item-summary">CARLA-GS：把视觉表示、场景推理和物理仿真解耦结合，用于生成自动驾驶安全评估中的照片级 corner cases。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07601v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07557v1" target="_blank" rel="noopener">PALS: Percentile-Aware Layerwise Sparsity for LLM Pruning</a>
+        <div class="item-summary">PALS：按层 99 分位激活幅度调整 LLM 剪枝稀疏率，在 LLaMA-2-7B 上优于统一 Wanda 剪枝且几乎无额外成本。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07557v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07548v1" target="_blank" rel="noopener">Think Big, Search Small: Where Capacity Matters in Hierarchical Search Agents?</a>
+        <div class="item-summary">分层搜索 agent 容量研究：复杂问答中应把更强模型放在任务分解/delegation 角色，执行子 agent 可缩小以省 token。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07548v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07527v1" target="_blank" rel="noopener">A Unified Detection Framework for AI-Related Content and Artifacts</a>
+        <div class="item-summary">提出统一 AI 内容/产物检测框架，用 Mahalanobis 距离分数检测 LLM 文本、幻觉、水印和对抗样本。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07527v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07521v1" target="_blank" rel="noopener">Creativity from Friction: Human-AI Interaction for Exploratory Structural Design</a>
+        <div class="item-summary">结构设计中的人机共创研究：主张保留有益『摩擦』，让 AI 帮助探索方案而不是直接给最终答案。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07521v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07513v1" target="_blank" rel="noopener">Fast Rates for Semi-Supervised Learning via Data-Augmentation Graph Regularization</a>
+        <div class="item-summary">从理论上解释数据增强图正则为何能让半监督学习以更少标签达到更快收敛率，并把增强质量写入误差界。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07513v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07508v1" target="_blank" rel="noopener">Single-Rollout Asynchronous Optimization for Agentic Reinforcement Learning</a>
+        <div class="item-summary">SAO：面向长程 agentic RL 的单 rollout 异步优化，替代 group-wise GRPO 并改进稳定性和泛化。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07508v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07507v1" target="_blank" rel="noopener">HIVE: Understanding Post-Hallucination Reasoning in Vision Language Models</a>
+        <div class="item-summary">HIVE：研究视觉语言模型在幻觉语义进入上下文后的后续推理，比较真实 caption 与幻觉 caption 的任务影响。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07507v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07504v1" target="_blank" rel="noopener">Do LLM-Generated Skills Make Better AI Data Scientists? A Component Ablation Across Data-Science Workflows</a>
+        <div class="item-summary">数据科学工作流消融显示：LLM 自动生成的 skill 文件相较无 skill 提示并未带来可靠性能提升。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07504v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07498v1" target="_blank" rel="noopener">Reward-Adaptive Iterative Discovery: A Case Study on Automated Game Testing for NHL26</a>
+        <div class="item-summary">RAID：在 NHL26 守门员 AI 测试中用强化学习自动发现多样化得分漏洞，减少人工反复 playtest 成本。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07498v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07494v1" target="_blank" rel="noopener">GIFT: Geometry-Informed Low-precision Gradient Communication for LLM Pretraining</a>
+        <div class="item-summary">GIFT：用几何感知坐标做低精度梯度通信，降低 LLM 预训练通信瓶颈并更好保留梯度方向。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07494v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07492v1" target="_blank" rel="noopener">Search, Fail, Recover: A Training Framework for Correction-Aware Reasoning</a>
+        <div class="item-summary">Pyligent：把推理训练建模为可验证搜索树，显式监督 continue/finish/backtrack，教模型从失败分支恢复。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07492v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07474v1" target="_blank" rel="noopener">Beyond Attack-Success Rate: Action-Graded Severity Scale for Tool-Using AI Agents</a>
+        <div class="item-summary">提出工具型 AI agent 的 action-graded harm scale，用 7 级动作危害替代二元攻击成功率来衡量 red-team 风险。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07474v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2607.07469v1" target="_blank" rel="noopener">SynthAVE: Scalable Synthetic Labeling for E-Commerce with LLM-Arena Validation</a>
+        <div class="item-summary">SynthAVE：面向电商属性抽取的多语言大规模合成标注基准，用多 LLM arena 多数投票验证标签质量。</div>
+        <div class="item-url">http://arxiv.org/abs/2607.07469v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

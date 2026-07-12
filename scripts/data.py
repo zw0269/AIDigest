@@ -9,6 +9,110 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-07-12 HTML / GitHub Trending / YouTube AI / Hacker News Newest
+    "https://www.anthropic.com/news/hard-questions":
+        "Anthropic 发起『hard questions』公开沟通项目，邀请公众提出关于 AI 规则、就业、创造力、风险和社会影响的尖锐问题，并承诺展示回应过程。",
+    "https://www.anthropic.com/news/ben-bernanke":
+        "Anthropic 任命前美联储主席、诺奖经济学家 Ben Bernanke 加入 Long-Term Benefit Trust，参与监督公司长期公共利益使命。",
+    "https://www.anthropic.com/news/ust-claude":
+        "Anthropic 与 UST 合作把 Claude 用于 physical AI 场景，帮助半导体、汽车、制造和 IoT 工程团队读规格、写测试、验证设计并培训 2 万名员工。",
+    "https://github.com/PrefectHQ/prefect":
+        "Prefect：用于构建弹性 Python 数据流水线的 workflow orchestration 框架。",
+    "https://github.com/chen08209/FlClash":
+        "FlClash：基于 ClashMeta 的多平台代理客户端，开源、无广告，强调简单易用。",
+    "https://github.com/malisper/pgrust":
+        "pgrust：用 Rust 重写 Postgres 的实验项目，目前已通过 100% Postgres 回归测试。",
+    "https://github.com/Shubhamsaboo/awesome-llm-apps":
+        "awesome-llm-apps：收集 100+ 可实际运行的 AI Agent 与 RAG 应用，可克隆、定制和发布。",
+    "https://github.com/par274/sharpemu":
+        "sharpemu：实验性的 PlayStation 5 模拟器项目。",
+    "https://github.com/Dicklesworthstone/destructive_command_guard":
+        "destructive_command_guard：用于阻止 agent 执行危险 git 和 shell 命令的防护工具。",
+    "https://github.com/home-assistant/core":
+        "Home Assistant Core：本地控制与隐私优先的开源智能家居自动化核心。",
+    "https://github.com/virattt/ai-hedge-fund":
+        "ai-hedge-fund：模拟 AI 对冲基金团队的多 agent 投资研究项目。",
+    "https://github.com/pingdotgg/t3code":
+        "t3code：Ping.gg 相关的代码/开发工具项目（GitHub Trending 条目无描述）。",
+    "https://github.com/ColeMurray/background-agents":
+        "background-agents：开源后台 coding agents 系统，用于让 agent 在后台持续处理开发任务。",
+    "https://github.com/k1tbyte/Wand-Enhancer":
+        "Wand-Enhancer：面向 Wand/WeMod 应用的高级 UX 与互操作扩展。",
+    "https://github.com/davila7/claude-code-templates":
+        "claude-code-templates：用于配置和监控 Claude Code 的 CLI 工具与模板集合。",
+    "https://github.com/Nutlope/hallmark":
+        "hallmark：面向 Claude Code、Cursor 和 Codex 的反 AI-slop 设计 skill，帮助生成更精致的设计输出。",
+    "https://www.youtube.com/watch?v=Ti1V7OI2Rro":
+        "AI 新闻汇总：覆盖 GPT-5.6、Grok 4.5、GPT Live、Seedream 5、Muse Spark、机器人手术、世界模型和视频/图像模型等更新。",
+    "https://www.youtube.com/watch?v=mkWz2MOCTv8":
+        "AI 新闻视频：讨论疑似 Claude Opus 5/Honeycomb 泄露、GPT-6、Kimi K3、Fable 5.1、NEO Hands 等模型和产品动态。",
+    "https://www.youtube.com/watch?v=SkXbTrpTD7E":
+        "Easy Riders 用博士级数学题测试 200 美元档 GPT-5.6 Sol Pro，并与 GPT-5.5 做对比。",
+    "https://www.youtube.com/watch?v=VrJP9hmh4NQ":
+        "德语教程/评测：围绕 GPT-5.6 是否达到『Mythos 级别』展开，并引用 OpenAI 定价、GPT-5.6 和 Blender/MorphCook 基准。",
+    "https://www.youtube.com/watch?v=sFbdc7Ge3Tc":
+        "日语视频：围绕最新 GPT Live 对话体验做分享，强调语音对话表现令人惊讶。",
+    "https://news.ycombinator.com/item?id=48880152":
+        "Show HN：Dr. Wong，一个用于日记和自我反思的 AI 空间。",
+    "https://news.ycombinator.com/item?id=48880295":
+        "观点文：为什么 Cursor 对 agentic coding 初学者来说是最实用的选择。",
+    "https://news.ycombinator.com/item?id=48880247":
+        "报道大学里的 AI 反弹：法学院学生被禁止使用笔记本和手机。",
+    "https://news.ycombinator.com/item?id=48880167":
+        "Mnema：面向 AI agent 的本地加密记忆层。",
+    "https://news.ycombinator.com/item?id=48880311":
+        "The Clawd Grip：摆脱 Logitech G HUB 的硬件/软件改造项目或经验文。",
+    "https://news.ycombinator.com/item?id=48880105":
+        "文章讨论 AI agents 即将改变支付运营流程。",
+    "https://news.ycombinator.com/item?id=48880170":
+        "Terry Tao 文章/讨论：通过现代 coding agents 开发现有和新应用。",
+    "https://news.ycombinator.com/item?id=48880146":
+        "报道一伙窃贼实施了数百万美元的数据中心盗窃案。",
+    "https://news.ycombinator.com/item?id=48880139":
+        "介绍 Python 数据处理模式 gDS，以及用于测试并发系统的框架。",
+    "https://news.ycombinator.com/item?id=48880307":
+        "文章建议不要死记设计模式，而用决策树选择合适模式。",
+    "https://news.ycombinator.com/item?id=48880122":
+        "文章讨论智能手机如何改变儿童童年，引用 Louis de Bernières 的观点。",
+    "https://news.ycombinator.com/item?id=48880281":
+        "FreeCAD 新插件 Banana for Scale，用熟悉尺度辅助 3D 建模或可视化。",
+    "https://news.ycombinator.com/item?id=48880239":
+        "MRI Grid Viewer：用于查看 MRI 网格/影像数据的工具。",
+    "https://news.ycombinator.com/item?id=48880284":
+        "Jujutsu 版本控制工具发布 v0.43.0。",
+    "https://news.ycombinator.com/item?id=48880362":
+        "文章分享如何改进 PlantVillage 数据集并解决背景偏差问题。",
+    "https://news.ycombinator.com/item?id=48880227":
+        "文章讨论让人类显得愚蠢的因素或认知机制。",
+    "https://news.ycombinator.com/item?id=48880204":
+        "X for Y Programmers：面向熟悉某语言/工具的程序员学习另一技术的资源或文章。",
+    "https://news.ycombinator.com/item?id=48880165":
+        "文章讨论存储器厂商受制于周期性繁荣与萧条的行业规律。",
+    "https://news.ycombinator.com/item?id=48880215":
+        "视频/文章《On-call Engineer 2026》：展望或讽刺 2026 年值班工程师工作状态。",
+    "https://news.ycombinator.com/item?id=48880323":
+        "Agent Data Injection：针对 Web agents 的任意点击攻击研究。",
+    "https://news.ycombinator.com/item?id=48880117":
+        "报道科学家用 AI 和量子计算生成新肽，作为科研副业/新方向。",
+    "https://news.ycombinator.com/item?id=48880258":
+        "Waldi：一个安静写作和被阅读的在线空间。",
+    "https://news.ycombinator.com/item?id=48880269":
+        "Morosx MX88 Manet 视频：围绕该硬件/设备的展示或评测。",
+    "https://news.ycombinator.com/item?id=48880310":
+        "新闻称 Lindsey Graham 因突发疾病去世，HN 上引发讨论。",
+    "https://news.ycombinator.com/item?id=48880209":
+        "报道巴西一名女性被同一家族三代人奴役 55 年。",
+    "https://news.ycombinator.com/item?id=48880347":
+        "科学家称解开了『外星巨构』恒星异常现象的谜团。",
+    "https://news.ycombinator.com/item?id=48880233":
+        "报道 IT 管理员对微软『无用』应用和 Windows 11 感到厌烦。",
+    "https://news.ycombinator.com/item?id=48880361":
+        "一篇用不寻常方式推荐 Linux 发行版的文章。",
+    "https://news.ycombinator.com/item?id=48880158":
+        "文章讨论普京如何把日本变成间谍活动据点。",
+    "https://news.ycombinator.com/item?id=48880101":
+        "研究/报道称 25% 长篇社交媒体帖子看起来由 AI 生成。",
+
     # 2026-07-10 HTML / GitHub Trending / YouTube AI / Hacker News Newest
     "https://transformer-circuits.pub/2026/workspace/index.html":
         "Transformer Circuits 论文提出：语言模型中可被 verbalize 的内部表征像『全局工作空间』，可被报告、调制并参与灵活推理。",
@@ -2673,6 +2777,34 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-07-12 OpenAI / Simon Willison / Lilian Weng
+    "https://openai.com/index/deutsche-telekom":
+        "OpenAI 案例介绍 Deutsche Telekom 如何用 AI 改造电信业务，覆盖客服、员工工作流、网络运营和未来语音体验。",
+    "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot":
+        "OpenAI 宣布 GPT-5.6 成为 Microsoft 365 Copilot 首选模型，增强 Word、Excel、PowerPoint、Chat 和 Cowork 等场景的工作质量与速度。",
+    "https://openai.com/index/bio-bug-bounty":
+        "OpenAI 发布 GPT-5.5 Bio Bug Bounty 项目细节，鼓励外部发现生物安全相关模型风险。",
+    "https://openai.com/index/chatgpt-for-your-most-ambitious-work":
+        "OpenAI 推出 ChatGPT Work：可跨应用和文件行动、长时间跟进项目，并把目标推进成完成工作的 agent。",
+    "https://openai.com/index/gpt-5-6":
+        "OpenAI 发布 GPT-5.6 系列，强调每 token 更高智能、更强性价比，以及面向高难任务的 Luna/Terra/Sol 分层能力。",
+    "https://simonwillison.net/2026/Jul/11/sqlite-utils/#atom-everything":
+        "Simon 发布 sqlite-utils 4.1：新增 insert/upsert 的 --code 行生成、列类型覆盖、drop-index 命令等小功能。",
+    "https://simonwillison.net/2026/Jul/10/nilay-patel/#atom-everything":
+        "Simon 引述 Nilay Patel：真正可用的 AR 眼镜需要持续摄像和云端处理，这带来巨大隐私代价，社会也许不该接受这种权衡。",
+    "https://simonwillison.net/2026/Jul/10/openai/#atom-everything":
+        "Simon 引述 OpenAI 对 ChatGPT Work 云端/桌面线程和本地文件权限的说明，并认为这个澄清仍不够清楚。",
+    "https://simonwillison.net/2026/Jul/9/gpt-5-6/#atom-everything":
+        "Simon 梳理 GPT-5.6 Luna/Terra/Sol：百万上下文、128K 输出、不同价格档，并关注 OpenAI 关于长程 agentic 工作流和成本效率的基准说法。",
+    "https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything":
+        "Simon 介绍 Meta Muse Spark 1.1：首个提供 API 的 Spark 模型，改进 agentic tool calling 和 computer use，并发布 llm-meta-ai 插件试用。",
+    "https://simonwillison.net/2026/Jul/9/llm-meta-ai/#atom-everything":
+        "Simon 发布 llm-meta-ai 0.1，让 LLM 命令行工具可调用 Meta 的 muse-spark-1.1 模型。",
+    "https://simonwillison.net/2026/Jul/9/llm/#atom-everything":
+        "Simon 发布 llm 0.31.1，修复 OpenAI Chat Completions 端点在空 tool call arguments 下触发 JSON 错误的问题。",
+    "https://lilianweng.github.io/posts/2026-07-04-harness/":
+        "Lilian Weng 长文讨论用于自我改进的 harness engineering：把递归自我改进扩展到训练流水线、部署系统和模型迭代闭环。",
+
     # 2026-07-10 OpenAI / Simon Willison / arXiv
     "https://openai.com/index/government-national-security-partnerships":
         "OpenAI 说明其政府和国家安全合作原则，强调负责任 AI 使用、民主问责和公共安全。",

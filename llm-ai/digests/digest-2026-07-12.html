@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-07-12</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-07-12</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-07-12</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 64 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">64</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">48</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">7</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">8 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/deutsche-telekom" target="_blank" rel="noopener">How Deutsche Telekom is rewiring telecommunications with AI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 案例介绍 Deutsche Telekom 如何用 AI 改造电信业务，覆盖客服、员工工作流、网络运营和未来语音体验。</div>
+        <div class="item-url">https://openai.com/index/deutsche-telekom</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot" target="_blank" rel="noopener">GPT-5.6 is now the preferred model in Microsoft 365 Copilot</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how GPT-5.6 powers Microsoft 365 Copilot with stronger AI capabilities across Word, Excel, PowerPoint, Chat, and Cowork for faster, higher-quality work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 宣布 GPT-5.6 成为 Microsoft 365 Copilot 首选模型，增强 Word、Excel、PowerPoint、Chat 和 Cowork 等场景的工作质量与速度。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/bio-bug-bounty" target="_blank" rel="noopener">GPT-5.5 Bio Bug Bounty</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Details about the OpenAI Bio Bounty program</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 发布 GPT-5.5 Bio Bug Bounty 项目细节，鼓励外部发现生物安全相关模型风险。</div>
+        <div class="item-url">https://openai.com/index/bio-bug-bounty</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/chatgpt-for-your-most-ambitious-work" target="_blank" rel="noopener">ChatGPT is now a partner for your most ambitious work</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>ChatGPT Work is an agent that can take action across your apps and files, stay with a project for hours if needed, and turn a goal into finished work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 ChatGPT Work：可跨应用和文件行动、长时间跟进项目，并把目标推进成完成工作的 agent。</div>
+        <div class="item-url">https://openai.com/index/chatgpt-for-your-most-ambitious-work</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/gpt-5-6" target="_blank" rel="noopener">GPT-5.6: Frontier intelligence that scales with your ambition</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>More intelligence from every token, stronger performance per dollar, and more capability on demand for your hardest work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 发布 GPT-5.6 系列，强调每 token 更高智能、更强性价比，以及面向高难任务的 Luna/Terra/Sol 分层能力。</div>
+        <div class="item-url">https://openai.com/index/gpt-5-6</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/hard-questions" target="_blank" rel="noopener">Inviting hard questions</a>
+        <div class="item-summary">Anthropic 发起『hard questions』公开沟通项目，邀请公众提出关于 AI 规则、就业、创造力、风险和社会影响的尖锐问题，并承诺展示回应过程。</div>
+        <div class="item-url">https://www.anthropic.com/news/hard-questions</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/ben-bernanke" target="_blank" rel="noopener">Ben Bernanke appointed to Anthropic’s Long-Term Benefit Trust</a>
+        <div class="item-summary">Anthropic 任命前美联储主席、诺奖经济学家 Ben Bernanke 加入 Long-Term Benefit Trust，参与监督公司长期公共利益使命。</div>
+        <div class="item-url">https://www.anthropic.com/news/ben-bernanke</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/ust-claude" target="_blank" rel="noopener">UST is bringing Claude to physical AI</a>
+        <div class="item-summary">Anthropic 与 UST 合作把 Claude 用于 physical AI 场景，帮助半导体、汽车、制造和 IoT 工程团队读规格、写测试、验证设计并培训 2 万名员工。</div>
+        <div class="item-url">https://www.anthropic.com/news/ust-claude</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">8 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">7 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/11/sqlite-utils/#atom-everything" target="_blank" rel="noopener">sqlite-utils 4.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: sqlite-utils 4.1
+        The first dot-release since 4.0 a few days ago, introducing a number of minor new features.
+
+
+sqlite-utils insert and sqlite-utils upsert now accept a --code option for providing a block of Python code (or a path to a .py file) that defines a rows() function or rows iterable of rows to insert, as an alternative ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 sqlite-utils 4.1：新增 insert/upsert 的 --code 行生成、列类型覆盖、drop-index 命令等小功能。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/11/sqlite-utils/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/10/nilay-patel/#atom-everything" target="_blank" rel="noopener">Quoting Nilay Patel</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The reality is to make augmented reality glasses, you need to put a camera next to your eyes that is continuously recording everything you see and processing that to put information over it.
+There is not another way around it. And there&#x27;s certainly not a chip that can fit in the stem of a glasses that is both powerful enough and power miserly en...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 引述 Nilay Patel：真正可用的 AR 眼镜需要持续摄像和云端处理，这带来巨大隐私代价，社会也许不该接受这种权衡。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/10/nilay-patel/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/10/openai/#atom-everything" target="_blank" rel="noopener">Quoting OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>[...] Work on web and mobile runs in the cloud. Work in the desktop app can also use local files and desktop apps with your permission. At launch, cloud Work conversations do not appear in desktop Work; desktop Work threads and local files remain on that computer.
+— OpenAI, trying (unsuccessfully) to clarify ChatGPT Work
+
+    Tags: openai, chatg...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 引述 OpenAI 对 ChatGPT Work 云端/桌面线程和本地文件权限的说明，并认为这个澄清仍不够清楚。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/10/openai/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/9/gpt-5-6/#atom-everything" target="_blank" rel="noopener">The new GPT-5.6 family: Luna, Terra, Sol</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI&#x27;s latest flagship model hit general availability this morning, and comes in three sizes: Luna, Terra, and Sol (from smallest to largest).
+The new models are priced per 1M input/output tokens as Luna $1/$6, Terra $2.50/$15, Sol $5/$30. For comparison, the Claude Opus series are $5/$25 and the Claude Fable 5 is $10/$50, but price-per-millio...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 梳理 GPT-5.6 Luna/Terra/Sol：百万上下文、128K 输出、不同价格档，并关注 OpenAI 关于长程 agentic 工作流和成本效率的基准说法。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/9/gpt-5-6/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything" target="_blank" rel="noopener">Introducing Muse Spark 1.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Muse Spark 1.1
+Following Muse Spark in April, here&#x27;s Muse Spark 1.1 - the first Spark model to offer an API. Meta claim significant improvements in agentic tool calling and computer use.
+There are a lot more details are in the Muse Spark 1.1 Evaluation Report. The &quot;Attractor States in Self-Conversation&quot; part is fun, where having two ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 介绍 Meta Muse Spark 1.1：首个提供 API 的 Spark 模型，改进 agentic tool calling 和 computer use，并发布 llm-meta-ai 插件试用。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/9/llm-meta-ai/#atom-everything" target="_blank" rel="noopener">llm-meta-ai 0.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-meta-ai 0.1
+        Let&#x27;s LLM run prompts against the new muse-spark-1.1 model.
+    
+    
+        Tags: llm, meta</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 llm-meta-ai 0.1，让 LLM 命令行工具可调用 Meta 的 muse-spark-1.1 模型。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/9/llm-meta-ai/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/9/llm/#atom-everything" target="_blank" rel="noopener">llm 0.31.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.31.1
+        
+
+Fix for a bug with OpenAI Chat Completion endpoints where a tool call with empty arguments could result in a JSON error from some providers. #1521
+
+
+This bug came up when I was testing llm-meta-ai.
+    
+    
+        Tags: llm</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 llm 0.31.1，修复 OpenAI Chat Completions 端点在空 tool call arguments 下触发 JSON 错误的问题。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/9/llm/#atom-everything</div>
+      </div>
+    </div>
+    <div class="source-group" id="lilian-weng">
+      <div class="source-header">
+        <div class="source-name">Lilian Weng</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://lilianweng.github.io/posts/2026-07-04-harness/" target="_blank" rel="noopener">Harness Engineering for Self-Improvement</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The concept of recursive self-improvement (RSI) dates back to I. J. Good (1965), where he defined an “ultraintelligent machine” as a system that can surpass humans in all intellectual activities and design better machines to improve itself. Yudkowsky (2008) used the phrase “recursive self-improvement” for a specific feedback loop: an AI uses its...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Lilian Weng 长文讨论用于自我改进的 harness engineering：把递归自我改进扩展到训练流水线、部署系统和模型迭代闭环。</div>
+        <div class="item-url">https://lilianweng.github.io/posts/2026-07-04-harness/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">48 条 · 3 个来源</div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=Ti1V7OI2Rro" target="_blank" rel="noopener">AI Search — Girlfriend simulators, GPT 5.6, Grok 4.5, Seedream 5.0, GPT Live, robot surgery: AI NEWS（39,861 次播放）</a>
+        <div class="item-summary">AI 新闻汇总：覆盖 GPT-5.6、Grok 4.5、GPT Live、Seedream 5、Muse Spark、机器人手术、世界模型和视频/图像模型等更新。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=Ti1V7OI2Rro</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=mkWz2MOCTv8" target="_blank" rel="noopener">WorldofAI — Claude Opus 5 LEAKS, GPT-6 ALREADY, Kimi K3 Soon, Fable 5.1, NEO Hands, &amp; More! AI NEWS（23,669 次播放）</a>
+        <div class="item-summary">AI 新闻视频：讨论疑似 Claude Opus 5/Honeycomb 泄露、GPT-6、Kimi K3、Fable 5.1、NEO Hands 等模型和产品动态。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=mkWz2MOCTv8</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=SkXbTrpTD7E" target="_blank" rel="noopener">Easy Riders — We Tested $200 GPT-5.6 Sol on PhD Level Math（24,295 次播放）</a>
+        <div class="item-summary">Easy Riders 用博士级数学题测试 200 美元档 GPT-5.6 Sol Pro，并与 GPT-5.5 做对比。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=SkXbTrpTD7E</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=VrJP9hmh4NQ" target="_blank" rel="noopener">The Morpheus Tutorials — So, is GPT-5.6 at &quot;mythical&quot; level?（25,163 次播放）</a>
+        <div class="item-summary">德语教程/评测：围绕 GPT-5.6 是否达到『Mythos 级别』展开，并引用 OpenAI 定价、GPT-5.6 和 Blender/MorphCook 基准。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=VrJP9hmh4NQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=sFbdc7Ge3Tc" target="_blank" rel="noopener">哲理学作家さとうみつろう『神さまとのおしゃべり』チャンネル — The latest &quot;GPT Live&quot; conversation was insane.（108,507 次播放）</a>
+        <div class="item-summary">日语视频：围绕最新 GPT Live 对话体验做分享，强调语音对话表现令人惊讶。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=sFbdc7Ge3Tc</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880152" target="_blank" rel="noopener">Show HN: Dr. Wong – an AI space for journaling and self-reflection</a>
+        <div class="item-summary">Show HN：Dr. Wong，一个用于日记和自我反思的 AI 空间。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880152</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880295" target="_blank" rel="noopener">Why Cursor Is the Most Practical Choice for Beginners in Agentic Coding</a>
+        <div class="item-summary">观点文：为什么 Cursor 对 agentic coding 初学者来说是最实用的选择。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880295</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880247" target="_blank" rel="noopener">AI backlash hits university: laptops and phones banned for law students</a>
+        <div class="item-summary">报道大学里的 AI 反弹：法学院学生被禁止使用笔记本和手机。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880247</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880167" target="_blank" rel="noopener">Mnema: A local, encrypted memory layer for AI agents</a>
+        <div class="item-summary">Mnema：面向 AI agent 的本地加密记忆层。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880167</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880311" target="_blank" rel="noopener">The Clawd Grip: breaking free from Logitech G HUB</a>
+        <div class="item-summary">The Clawd Grip：摆脱 Logitech G HUB 的硬件/软件改造项目或经验文。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880311</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880105" target="_blank" rel="noopener">AI Agents Are About to Change Payments Operations</a>
+        <div class="item-summary">文章讨论 AI agents 即将改变支付运营流程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880105</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880170" target="_blank" rel="noopener">Old and new apps, via modern coding agents by Terry Tao</a>
+        <div class="item-summary">Terry Tao 文章/讨论：通过现代 coding agents 开发现有和新应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880170</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880146" target="_blank" rel="noopener">A Gang of Thieves Pulled Off a Multimillion-Dollar Data Center Heist</a>
+        <div class="item-summary">报道一伙窃贼实施了数百万美元的数据中心盗窃案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880146</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880139" target="_blank" rel="noopener">A Python data-handling pattern (gDS) &amp; framework for testing concurrent systems</a>
+        <div class="item-summary">介绍 Python 数据处理模式 gDS，以及用于测试并发系统的框架。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880139</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880307" target="_blank" rel="noopener">Stop Memorizing Design Patterns: Use This Decision Tree Instead</a>
+        <div class="item-summary">文章建议不要死记设计模式，而用决策树选择合适模式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880307</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880122" target="_blank" rel="noopener">Louis de Bernières children&#x27;s childhood ended the moment they got smartphones</a>
+        <div class="item-summary">文章讨论智能手机如何改变儿童童年，引用 Louis de Bernières 的观点。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880122</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880281" target="_blank" rel="noopener">FreeCAD: New Addon; Banana for Scale</a>
+        <div class="item-summary">FreeCAD 新插件 Banana for Scale，用熟悉尺度辅助 3D 建模或可视化。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880281</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880239" target="_blank" rel="noopener">MRI Grid Viewer</a>
+        <div class="item-summary">MRI Grid Viewer：用于查看 MRI 网格/影像数据的工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880239</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880284" target="_blank" rel="noopener">Jj v0.43.0 Released</a>
+        <div class="item-summary">Jujutsu 版本控制工具发布 v0.43.0。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880284</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880362" target="_blank" rel="noopener">Improving PlantVillage Dataset: How I Solved Background Bias</a>
+        <div class="item-summary">文章分享如何改进 PlantVillage 数据集并解决背景偏差问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880362</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880227" target="_blank" rel="noopener">What Makes Humans Stupid</a>
+        <div class="item-summary">文章讨论让人类显得愚蠢的因素或认知机制。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880227</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880204" target="_blank" rel="noopener">X for Y Programmers</a>
+        <div class="item-summary">X for Y Programmers：面向熟悉某语言/工具的程序员学习另一技术的资源或文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880204</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880165" target="_blank" rel="noopener">Memory makers are slaves to the boom-bust rollercoaster</a>
+        <div class="item-summary">文章讨论存储器厂商受制于周期性繁荣与萧条的行业规律。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880165</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880215" target="_blank" rel="noopener">On-call Engineer 2026 [video]</a>
+        <div class="item-summary">视频/文章《On-call Engineer 2026》：展望或讽刺 2026 年值班工程师工作状态。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880215</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880323" target="_blank" rel="noopener">Agent Data Injection: Arbitrary Click Attack Against Web Agents</a>
+        <div class="item-summary">Agent Data Injection：针对 Web agents 的任意点击攻击研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880323</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880117" target="_blank" rel="noopener">Scientists&#x27; Side Hustle? Using AI and Quantum Computing to Generate New Peptides</a>
+        <div class="item-summary">报道科学家用 AI 和量子计算生成新肽，作为科研副业/新方向。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880117</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880258" target="_blank" rel="noopener">Waldi: A quiet place to write, and to be read</a>
+        <div class="item-summary">Waldi：一个安静写作和被阅读的在线空间。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880258</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880269" target="_blank" rel="noopener">Morosx MX88 Manet [video]</a>
+        <div class="item-summary">Morosx MX88 Manet 视频：围绕该硬件/设备的展示或评测。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880269</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880310" target="_blank" rel="noopener">Lindsey Graham dies at 71 after sudden illness</a>
+        <div class="item-summary">新闻称 Lindsey Graham 因突发疾病去世，HN 上引发讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880310</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880209" target="_blank" rel="noopener">Woman in Brazil enslaved for 55 years by 3 generations of the same family</a>
+        <div class="item-summary">报道巴西一名女性被同一家族三代人奴役 55 年。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880209</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880347" target="_blank" rel="noopener">Scientists Solve Mystery of Bizarre &#x27;Alien Megastructure&#x27; Star</a>
+        <div class="item-summary">科学家称解开了『外星巨构』恒星异常现象的谜团。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880347</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880233" target="_blank" rel="noopener">IT administrators are &quot;fed up&quot; with Microsoft&#x27;s &quot;useless&quot; apps and Windows 11</a>
+        <div class="item-summary">报道 IT 管理员对微软『无用』应用和 Windows 11 感到厌烦。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880233</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880361" target="_blank" rel="noopener">An unusual way to recommend a Linux distro</a>
+        <div class="item-summary">一篇用不寻常方式推荐 Linux 发行版的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880361</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880158" target="_blank" rel="noopener">Putin Turned Japan into a Den of Spies</a>
+        <div class="item-summary">文章讨论普京如何把日本变成间谍活动据点。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880158</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=48880101" target="_blank" rel="noopener">25% long-form social media posts appear AI-generated</a>
+        <div class="item-summary">研究/报道称 25% 长篇社交媒体帖子看起来由 AI 生成。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=48880101</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">13 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/PrefectHQ/prefect" target="_blank" rel="noopener">PrefectHQ /prefect — Prefect is a workflow orchestration framework for building resilient data pipelines in Python.</a>
+        <div class="item-summary">Prefect：用于构建弹性 Python 数据流水线的 workflow orchestration 框架。</div>
+        <div class="item-url">https://github.com/PrefectHQ/prefect</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/chen08209/FlClash" target="_blank" rel="noopener">chen08209 /FlClash — A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.</a>
+        <div class="item-summary">FlClash：基于 ClashMeta 的多平台代理客户端，开源、无广告，强调简单易用。</div>
+        <div class="item-url">https://github.com/chen08209/FlClash</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/malisper/pgrust" target="_blank" rel="noopener">malisper /pgrust — Postgres rewritten in Rust, now passing 100% of the Postgres regression tests</a>
+        <div class="item-summary">pgrust：用 Rust 重写 Postgres 的实验项目，目前已通过 100% Postgres 回归测试。</div>
+        <div class="item-url">https://github.com/malisper/pgrust</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Shubhamsaboo/awesome-llm-apps" target="_blank" rel="noopener">Shubhamsaboo /awesome-llm-apps — 100+ AI Agent &amp; RAG apps you can actually run — clone, customize, ship.</a>
+        <div class="item-summary">awesome-llm-apps：收集 100+ 可实际运行的 AI Agent 与 RAG 应用，可克隆、定制和发布。</div>
+        <div class="item-url">https://github.com/Shubhamsaboo/awesome-llm-apps</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/par274/sharpemu" target="_blank" rel="noopener">par274 /sharpemu — An experimental PlayStation 5 emulator project.</a>
+        <div class="item-summary">sharpemu：实验性的 PlayStation 5 模拟器项目。</div>
+        <div class="item-url">https://github.com/par274/sharpemu</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Dicklesworthstone/destructive_command_guard" target="_blank" rel="noopener">Dicklesworthstone /destructive_command_guard — The Destructive Command Guard (dcg) is for blocking dangerous git and shell commands from being executed by agents.</a>
+        <div class="item-summary">destructive_command_guard：用于阻止 agent 执行危险 git 和 shell 命令的防护工具。</div>
+        <div class="item-url">https://github.com/Dicklesworthstone/destructive_command_guard</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/home-assistant/core" target="_blank" rel="noopener">home-assistant /core — 🏡 Open source home automation that puts local control and privacy first.</a>
+        <div class="item-summary">Home Assistant Core：本地控制与隐私优先的开源智能家居自动化核心。</div>
+        <div class="item-url">https://github.com/home-assistant/core</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/virattt/ai-hedge-fund" target="_blank" rel="noopener">virattt /ai-hedge-fund — An AI Hedge Fund Team</a>
+        <div class="item-summary">ai-hedge-fund：模拟 AI 对冲基金团队的多 agent 投资研究项目。</div>
+        <div class="item-url">https://github.com/virattt/ai-hedge-fund</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/pingdotgg/t3code" target="_blank" rel="noopener">pingdotgg /t3code</a>
+        <div class="item-summary">t3code：Ping.gg 相关的代码/开发工具项目（GitHub Trending 条目无描述）。</div>
+        <div class="item-url">https://github.com/pingdotgg/t3code</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/ColeMurray/background-agents" target="_blank" rel="noopener">ColeMurray /background-agents — An open-source background agents coding system</a>
+        <div class="item-summary">background-agents：开源后台 coding agents 系统，用于让 agent 在后台持续处理开发任务。</div>
+        <div class="item-url">https://github.com/ColeMurray/background-agents</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/k1tbyte/Wand-Enhancer" target="_blank" rel="noopener">k1tbyte /Wand-Enhancer — Advanced UX and interoperability extension for Wand (WeMod) app</a>
+        <div class="item-summary">Wand-Enhancer：面向 Wand/WeMod 应用的高级 UX 与互操作扩展。</div>
+        <div class="item-url">https://github.com/k1tbyte/Wand-Enhancer</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/davila7/claude-code-templates" target="_blank" rel="noopener">davila7 /claude-code-templates — CLI tool for configuring and monitoring Claude Code</a>
+        <div class="item-summary">claude-code-templates：用于配置和监控 Claude Code 的 CLI 工具与模板集合。</div>
+        <div class="item-url">https://github.com/davila7/claude-code-templates</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Nutlope/hallmark" target="_blank" rel="noopener">Nutlope /hallmark — Anti-AI-slop design skill for Claude Code, Cursor, and Codex.</a>
+        <div class="item-summary">hallmark：面向 Claude Code、Cursor 和 Codex 的反 AI-slop 设计 skill，帮助生成更精致的设计输出。</div>
+        <div class="item-url">https://github.com/Nutlope/hallmark</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

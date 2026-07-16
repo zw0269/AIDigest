@@ -9,6 +9,94 @@
 
 # 无 RSS 的 HTML 源（Anthropic, Dario Amodei, 以及个别 RSS 缺 description 的）
 MANUAL_SUMMARIES: dict[str, str] = {
+    # 2026-07-16 HTML / GitHub Trending / YouTube AI / Hacker News Newest
+    "https://www.anthropic.com/news/claude-for-teachers":
+        "Anthropic 推出面向美国 K-12 教师的 Claude for Teachers，提供高级功能、教学技能库和 Learning Commons 资源，帮助备课、差异化教学和课堂支持。",
+    "https://www.anthropic.com/news/canadian-ai-research":
+        "Anthropic 承诺向加拿大 AI 研究投入 1000 万加元，并与 Amii、Mila、Vector 等机构合作推动负责任和有益的 AI 研究。",
+    "https://github.com/OpenCut-app/OpenCut":
+        "OpenCut：开源版 CapCut 替代品，面向视频剪辑和创作工作流。",
+    "https://github.com/YimMenu/YimMenuV2":
+        "YimMenuV2：面向 GTA 5 Enhanced 的实验性菜单项目。",
+    "https://github.com/openinterpreter/openinterpreter":
+        "Open Interpreter：面向低成本模型的 coding agent，可在本地执行和自动化开发任务。",
+    "https://github.com/HKUDS/DeepTutor":
+        "DeepTutor：面向终身个性化学习的 AI tutor 项目，强调长期记忆和个性化辅导。",
+    "https://github.com/HenryNdubuaku/maths-cs-ai-compendium":
+        "maths-cs-ai-compendium：面向 AI/ML 研究工程师成长的数学、计算机科学与 AI 学习资料汇编。",
+    "https://github.com/hasaneyldrm/exercises-dataset":
+        "exercises-dataset：包含 1324 个健身动作、动画、缩略图、肌群、器械和多语言步骤说明的数据集。",
+    "https://www.youtube.com/watch?v=t6oV8FixkwE":
+        "意大利语视频评测/吐槽首个意大利 LLM，围绕 Emma、Egomnia 背景和项目现实问题展开。",
+    "https://www.youtube.com/watch?v=AEn-4HOwHck":
+        "视频对比 GPT-5.6、Claude Fable 和 Grok 4.5 在游戏、浏览器 Minecraft、广告生成和 AI 工作流上的表现。",
+    "https://www.youtube.com/watch?v=mUkDBxwMZ_c":
+        "日语视频讲解如何用 Claude Code 做 AI agency 服务，包括获客、筛选客户、无代码搭建和交付流程。",
+    "https://www.youtube.com/watch?v=7kWkUoR2bg0":
+        "Mo Bitar 讨论 OpenAI 与 GPT-5.6 的表现，质疑当前 AI 在部署安全和行为理解上的可靠性。",
+    "https://www.youtube.com/watch?v=juPDqb89dew":
+        "Riley Brown 介绍 Codex 和 Claude 的浏览器更新，重点是多标签浏览器、应用内工作流和 agent 自动化变化。",
+    "https://news.ycombinator.com/item?id=48928996":
+        "Tahr Security Skills：围绕安全技能或安全训练资源的 HN 讨论。",
+    "https://news.ycombinator.com/item?id=48929245":
+        "Telemedicina Para Venezuela：面向委内瑞拉的远程医疗项目或服务讨论。",
+    "https://news.ycombinator.com/item?id=48929036":
+        "文章讨论足球为什么好看，聚焦比赛节奏、团队协作和观赛体验。",
+    "https://news.ycombinator.com/item?id=48929052":
+        "视频称 AI 数据中心公司正在出售资产，讨论行业泡沫、资产清算和潜在崩盘风险。",
+    "https://news.ycombinator.com/item?id=48929236":
+        "ArcBrush 1.5：节点式图像编辑器更新，支持 OCIO、OpenEXR 和 97 个节点。",
+    "https://news.ycombinator.com/item?id=48928965":
+        "The New Private Asset：文章讨论一种新的私人资产形态及其商业/技术含义。",
+    "https://news.ycombinator.com/item?id=48929243":
+        "欧盟法院澄清广播禁令也适用于免费网站，涉及版权传播和在线访问边界。",
+    "https://news.ycombinator.com/item?id=48929025":
+        "Shapeshifting：关于形态变化、界面变化或技术隐喻的文章/项目讨论。",
+    "https://news.ycombinator.com/item?id=48929104":
+        "文章介绍把 27B 三值 LLM 的完整 decode 步骤融合进单个 CUDA kernel 的优化方法。",
+    "https://news.ycombinator.com/item?id=48929288":
+        "文章回顾 Web hosting 的发展历史，从早期托管到现代云和平台化服务。",
+    "https://news.ycombinator.com/item?id=48928998":
+        "Free Remote Desktop Without Servers：无需服务器的免费远程桌面方案或项目。",
+    "https://news.ycombinator.com/item?id=48929273":
+        "文章分享大规模执行虚拟机 live migration 的工程经验。",
+    "https://news.ycombinator.com/item?id=48929135":
+        "DoorDash CLI：围绕 DoorDash 命令行工具或内部开发工具的讨论。",
+    "https://news.ycombinator.com/item?id=48929280":
+        "报道一伙窃贼实施了数百万美元的数据中心盗窃案。",
+    "https://news.ycombinator.com/item?id=48929212":
+        "Syncthing for Dotfiles：讨论用 Syncthing 同步 dotfiles 与专门配置管理工具的取舍。",
+    "https://news.ycombinator.com/item?id=48928946":
+        "Show HN：Resultant Engineering Student Tools Site，一个面向工程学生的工具网站。",
+    "https://news.ycombinator.com/item?id=48929168":
+        "文章讨论如何重新评估 agent harness 演化，不只看最终答案也看测试与流程演进。",
+    "https://news.ycombinator.com/item?id=48929167":
+        "观点文认为生成式 AI 在工程实践中带来严重问题，围绕质量、维护和责任展开批评。",
+    "https://news.ycombinator.com/item?id=48928934":
+        "Show HN：MasterVault，用于防止 LLM context 文件随时间变旧的管理工具。",
+    "https://news.ycombinator.com/item?id=48928968":
+        "Hamilton 市议会否决限制数据中心开发的 bylaw，意味着当地不会禁止数据中心建设。",
+    "https://news.ycombinator.com/item?id=48929103":
+        "报道 IBM 预告业绩后股价大跌超过 25%，市场担忧其业绩表现。",
+    "https://news.ycombinator.com/item?id=48928918":
+        "Show HN：Throttle，本地 macOS Claude cockpit，现在支持远程控制。",
+    "https://news.ycombinator.com/item?id=48928924":
+        "AIcss：为 AI agents 生成和复用 UI components 的项目或组件库。",
+    "https://news.ycombinator.com/item?id=48929171":
+        "Manual Work Is a Bug：文章主张把手工流程视为待自动化的工程缺陷。",
+    "https://news.ycombinator.com/item?id=48928992":
+        "SQLite 官方文章讨论 flexible typing 的优势和适用场景。",
+    "https://news.ycombinator.com/item?id=48929021":
+        "Arbitration Information：关于仲裁信息、流程或法律资源的讨论。",
+    "https://news.ycombinator.com/item?id=48929155":
+        "文章批评 I2Coalition 对 DNS abuse 的分析遗漏，讨论域名滥用治理问题。",
+    "https://news.ycombinator.com/item?id=48929113":
+        "Skills Asset Protocol：围绕技能资产协议或 agent 技能分发机制的讨论。",
+    "https://news.ycombinator.com/item?id=48928987":
+        "关于 2024 年 Lionel Messi 与婴儿时期 Lamine Yamal 合照的讨论。",
+    "https://news.ycombinator.com/item?id=48928913":
+        "Asymmetric Apologies：文章讨论不对称道歉及其在人际、组织或公共沟通中的影响。",
+
     # 2026-07-12 HTML / GitHub Trending / YouTube AI / Hacker News Newest
     "https://www.anthropic.com/news/hard-questions":
         "Anthropic 发起『hard questions』公开沟通项目，邀请公众提出关于 AI 规则、就业、创造力、风险和社会影响的尖锐问题，并承诺展示回应过程。",
@@ -2777,6 +2865,108 @@ MANUAL_SUMMARIES: dict[str, str] = {
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-07-16 OpenAI / Google DeepMind / Simon Willison / arXiv
+    "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action":
+        "OpenAI 讨论美国 AI 安全治理中的州级与联邦行动，强调州法可为全国性的安全、民主 AI 框架提供实践基础。",
+    "https://openai.com/index/unlocking-self-improvement-gpt-red":
+        "OpenAI 介绍 GPT-Red：通过自动化红队和自博弈方式提升模型鲁棒性、对齐和抵御提示注入等安全风险的能力。",
+    "https://openai.com/index/managing-ai-investments-in-agentic-era":
+        "OpenAI 建议在 agentic era 用『每美元完成的有效工作』衡量 AI 投资，优先提升效率并扩展高价值工作流。",
+    "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/":
+        "Google 与 AIM 推出 ATL Saathi，用 Gemini 驱动的 AI 工具帮助印度教育者在 robotics labs 中设计、指导和评估学生创新项目。",
+    "https://openai.com/academy/getting-started":
+        "OpenAI Academy 发布 ChatGPT 入门指南，帮助新用户开始对话，并用于写作、头脑风暴、学习和解决问题。",
+    "https://simonwillison.net/2026/Jul/16/grok-mermaid/#atom-everything":
+        "Simon 发现 Grok CLI 开源代码里的 Rust Mermaid 终端渲染器，并基于 WASM 做了一个浏览器版 Mermaid 转 Unicode 框线工具。",
+    "https://simonwillison.net/2026/Jul/15/grok-build/#atom-everything":
+        "Simon 记录 xAI 开源 Grok Build：在整目录上传引发争议后，项目移除相关上传/保留逻辑并以 Apache 2.0 释出。",
+    "https://simonwillison.net/2026/Jul/15/claude-web-fetch-exfiltration/#atom-everything":
+        "Simon 介绍 Ayush Paul 发现的 Claude web_fetch 漏洞：嵌套抓取 URL 可绕过防护并外传敏感数据。",
+    "https://simonwillison.net/2026/Jul/14/github-changeling/#atom-everything":
+        "Simon 引述 GitHub Changelog：Dependabot 默认在新版本发布 3 天后才创建版本更新 PR，以减少供应链风险。",
+    "https://simonwillison.net/2026/Jul/14/pedalican/#atom-everything":
+        "Simon 用 Codex Desktop 和 GPT-5.6/gpt-image-2 做了自定义桌面宠物 pedalican，一只骑车的鹈鹕角色。",
+    "https://simonwillison.net/2026/Jul/14/lobsters-sqlite/#atom-everything":
+        "Simon 记录 Lobsters 从 MariaDB 迁移到 SQLite 后运行在单台 VPS 上，CPU、内存和成本都明显下降。",
+    "https://simonwillison.net/2026/Jul/14/armin-ronacher/#atom-everything":
+        "Simon 引述 Armin Ronacher：项目的共同语言来自概念、边界、不变量和所有权的共享理解，部分摩擦反而能同步团队和 agents。",
+    "https://simonwillison.net/2026/Jul/14/datasette/#atom-everything":
+        "Simon 发布 datasette 1.0a37，小幅改进权限性能和文档，并回滚了会破坏插件的 cosmetic API 变更。",
+    "https://simonwillison.net/2026/Jul/14/uvx-github-actions-cache/#atom-everything":
+        "Simon 分享在 GitHub Actions 中用 uvx 的缓存友好写法，通过 UV_EXCLUDE_NEWER 让依赖缓存键更稳定。",
+    "https://simonwillison.net/2026/Jul/13/doomql/#atom-everything":
+        "Simon 展示 GPT-5.6 Sol 生成的 DOOMQL：用 SQLite/SQL 实现移动、碰撞、敌人、战斗和 ray tracing 的 Doom 风格游戏。",
+    "https://simonwillison.net/2026/Jul/13/datasette-code-frequency/#atom-everything":
+        "Simon 用 GitHub code-frequency 图观察 datasette 开发峰值，并把它与 Opus 4.8、GPT-5.5、Fable 5 和 GPT-5.6 的发布时间联系起来。",
+    "https://simonwillison.net/2026/Jul/12/directly-responsible-individuals/#atom-everything":
+        "Simon 强调 AI agents 不应成为 DRI，因为责任、问责和最终判断仍必须由人承担。",
+    "https://simonwillison.net/2026/Jul/12/shot-scraper/#atom-everything":
+        "Simon 发布 shot-scraper 1.11，改进服务器启动等待、JS 文件参数和超时相关行为。",
+    "https://simonwillison.net/2026/Jul/12/bump/#atom-everything":
+        "Simon 记录 Anthropic 因 GPT-5.6 竞争压力延长 Fable 5 访问和速率限制，并认为 Fable 应继续保留。",
+    "https://simonwillison.net/2026/Jul/12/sqlite-utils/#atom-everything":
+        "Simon 发布 sqlite-utils 4.1.1，修复 table.transform() 在事务、外键和 ON DELETE 组合下的边界问题，并补充文档链接。",
+    "http://arxiv.org/abs/2607.14049v1":
+        "论文提出 Deep Interaction，让人直接编辑错误的 CoT 片段并把修正后的推理蒸馏进提示，从而更高效地改进大推理模型输出。",
+    "http://arxiv.org/abs/2607.14046v1":
+        "Earthquaker-AI 把 RAG、评分量规和 Lego WeDo2 机器人结合，用于小学地震教育中的安全知识学习与反馈。",
+    "http://arxiv.org/abs/2607.14044v1":
+        "论文提出端到端 AI 加速 upskilling 框架，覆盖知识获取、内容开发、评审、教学和评估，并用 CPE 学分和 NVIDIA 考试通过率验证。",
+    "http://arxiv.org/abs/2607.14040v1":
+        "论文提出面向长文档/语料上下文的 RAG 翻译方法，试图把 LLM 翻译能力从句子级扩展到整篇文本层面。",
+    "http://arxiv.org/abs/2607.14037v1":
+        "论文分析 2361 个 GitHub 项目的 25264 个 agentic PR，发现 agentic coding 采用集中在少数项目，但小项目参与度更高。",
+    "http://arxiv.org/abs/2607.14006v1":
+        "论文重新定义 AI 系统渗透测试，从资源攻陷转向通过提示、检索、记忆、工具和人机循环造成行为目标违规。",
+    "http://arxiv.org/abs/2607.14004v1":
+        "论文在 Terminal-Bench 2.0 上评估 agent optimizer 的连续学习能力，比较 GEPA、Meta Harness 和 RELAI-VCL 的收益能否跨任务复合。",
+    "http://arxiv.org/abs/2607.14001v1":
+        "论文把 Lyapunov 指数用作物理信息密集奖励，使强化学习 agent 发现倒立摆稳定控制策略，包括振荡和直立稳定。",
+    "http://arxiv.org/abs/2607.13998v1":
+        "DVM-HALL/NHAS 建模自主商务中人类情感忠诚、机器效用、信任和授权如何共同影响 AI agent 的购买决策。",
+    "http://arxiv.org/abs/2607.13988v1":
+        "TRACE 在工具调用边界估计长程 agent 的 turn-level credit，把奖励更细粒度地分配到多轮行动中。",
+    "http://arxiv.org/abs/2607.13978v1":
+        "论文把音乐到舞蹈生成拆成可解释的 atomic movements，通过动作分割、聚类和 LLM 重新标注提升结构化编舞能力。",
+    "http://arxiv.org/abs/2607.13977v1":
+        "CAVE-ABSA 用约束感知编辑生成方面级情感分析反事实样本，同时保持非目标方面、语义、流畅性和事实一致性。",
+    "http://arxiv.org/abs/2607.13940v1":
+        "HealthClaw 是自进化个人健康管理 agent，把安全规则和医学知识与私有长期记忆分离，并持续更新偏好、习惯和流程。",
+    "http://arxiv.org/abs/2607.13921v1":
+        "Generative Compilation 在代码生成过程中把部分程序转换为可编译诊断的完整程序，让编译器反馈实时指导 AI 生成。",
+    "http://arxiv.org/abs/2607.13920v1":
+        "DeepStress 用可控合成证据的可靠性、可信度、相关性和事实性变化，压力测试 deep search agents 的推理稳定性。",
+    "http://arxiv.org/abs/2607.13918v1":
+        "论文为部分相关 verifier cascades 建立理论，说明多重验证的可靠性增长会因相关性和 blind spot 而从指数变成多项式甚至饱和。",
+    "http://arxiv.org/abs/2607.13901v1":
+        "论文在巴斯克语、西班牙语和英语教育场景中研究高阶问题生成，比较 CER 和 Divergent Questioning 等框架对教师认可度的影响。",
+    "http://arxiv.org/abs/2607.13899v1":
+        "AIMO Interpretability Challenge 旨在用模型内部机制区分数学模型的稳健推理与脆弱捷径，并建立新的鲁棒性基准。",
+    "http://arxiv.org/abs/2607.13884v1":
+        "Experience Memory Graph 把 agent 失败恢复建模为图匹配问题，从成功/失败轨迹中提取可复用修正路径用于一次性纠错。",
+    "http://arxiv.org/abs/2607.13881v1":
+        "AgentHOI 是无需训练的人物-物体交互检测框架，调度多模态基础模型进行开放语义推理和空间 grounding。",
+    "http://arxiv.org/abs/2607.13880v1":
+        "论文提出 SVR-MARL，用于多 AUV 隐蔽协作任务中衡量感知信息对任务的真实价值，并在通信约束下优化共享。",
+    "http://arxiv.org/abs/2607.13854v1":
+        "SPyCE 让多模态 agent 的技能库与策略在强化学习中共同演化，把视觉工具使用轨迹蒸馏成可复用执行技能和工作流技能。",
+    "http://arxiv.org/abs/2607.13801v1":
+        "TA-RS 是面向 LLM 网络入侵检测的认证防御，只在攻击者可控流量特征子空间注入噪声以提升对流量扰动的鲁棒性。",
+    "http://arxiv.org/abs/2607.13770v1":
+        "Kaleido 利用视频扩散 Transformer latent space 的时空相关性做算法-硬件协同设计，通过通道级复用和专用加速器降低计算成本。",
+    "http://arxiv.org/abs/2607.13753v1":
+        "论文分析 SFT、RL 和 OPD 如何改变 CoT 前、中、后的置信度校准，并提出位置感知 PosConf 改进答案聚合。",
+    "http://arxiv.org/abs/2607.13737v1":
+        "论文比较量子和经典 topology-aligned 分子性质预测架构，显示按分子键图对齐的归纳偏置能在低数据场景提升参数效率。",
+    "http://arxiv.org/abs/2607.13721v1":
+        "论文用 WavLM 自监督表示和 DTW 比较学习者与母语者语音，为二语音素、节奏和语调评分提供低资源、无文本方案。",
+    "http://arxiv.org/abs/2607.13718v1":
+        "论文调研 21 个 AI agent 权限系统，梳理用户如何表达权限、系统如何转成内部策略并在运行时执行。",
+    "http://arxiv.org/abs/2607.13716v1":
+        "CAVA 为异构 agent runtime 的操作记录生成规范化 action object，支持审批绑定、收据完整性和跨运行时治理验证。",
+    "http://arxiv.org/abs/2607.13712v1":
+        "Groc-PO 针对多模态模型幻觉，把偏好优化细化到对象 grounding、上下文 grounding 和推理阶段，以减少早期 grounding 错误传播。",
+
     # 2026-07-12 OpenAI / Simon Willison / Lilian Weng
     "https://openai.com/index/deutsche-telekom":
         "OpenAI 案例介绍 Deutsche Telekom 如何用 AI 改造电信业务，覆盖客服、员工工作流、网络运营和未来语音体验。",

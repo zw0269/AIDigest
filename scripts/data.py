@@ -3058,6 +3058,44 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "ESPectre：基于 Wi-Fi 频谱分析（CSI）的运动检测系统，无需摄像头或传感器即可感知人体移动，支持 Home Assistant 集成。",
     "https://www.youtube.com/watch?v=AW3TJDuViF8":
         "AsapGuide 对比实测 Claude Fable 5 与 Opus 4.8：在 UI 重建、3D 游戏制作、文档分析等真实任务上逐项对比，结论是 Fable 5 在几乎所有基准上高于 Opus、GPT-5.5 与 Gemini 3.1 Pro。",
+
+    # 2026-07-28 Anthropic HTML
+    "https://www.anthropic.com/news/claude-opus-5":
+        "Anthropic 发布 Claude Opus 5（7月24日）：定位「以一半价格逼近 Fable 5 前沿智能」，编码与知识工作基准（Frontier-Bench、GDPval-AA）达到新高，但网络安全任务仍落后于 Mythos 5；现为 Claude Max 默认模型、Pro 首选，定价与上代持平（输入 $5/百万、输出 $25/百万 token），号称欺骗行为率最低但对网络攻击与长周期生物研究保留更强防护。",
+    "https://www.anthropic.com/news/cognizant-anthropic":
+        "Anthropic 与 Cognizant（7月27日）深化合作：Cognizant 将 Claude 融入 Flowsource、Neuro AI Engineering、Neuro IT Ops 等平台，已培训超 3 万名「Frontier Certified」员工，并成为 Claude 合作伙伴网络「全球高级合作伙伴」；案例显示某生物制药客户用 Claude 构建的合同审查工具将审查时间缩短最多 40%。",
+    "https://www.anthropic.com/news/position-open-weights-models":
+        "Dario Amodei 澄清 Anthropic 从未主张封禁开放权重模型，真正担忧的是威权政权借此获得军事优势及模型被用于网络/生物攻击；主张的应对措施是限制对华先进芯片流通与走私、打击大规模模型蒸馏行为、对所有达到能力门槛的模型（无论开源闭源）强制安全测试。",
+
+    # 2026-07-28 GitHub Trending / YouTube
+    "https://github.com/ocornut/imgui":
+        "Dear ImGui：C++ 轻量级即时模式图形界面库，几乎无依赖，广泛用于游戏引擎与工具开发调试界面。",
+    "https://github.com/alibaba/open-code-review":
+        "阿里开源的代码评审工具：确定性流水线 + LLM Agent 混合架构，提供精确到行的评论与内置微调规则集（空指针、线程安全、XSS、SQL 注入），兼容 OpenAI 与 Anthropic。",
+    "https://github.com/opengeos/GeoLibre":
+        "GeoLibre：轻量级云原生 GIS 平台，可在浏览器、桌面、移动端及 Jupyter Notebook 中可视化、探索与分析地理空间数据。",
+    "https://github.com/apache/cassandra":
+        "Apache Cassandra：开源分布式事务数据库，在商用硬件或云基础设施上提供线性可扩展性与经过验证的容错能力。",
+    "https://github.com/jenkinsci/jenkins":
+        "Jenkins：领先的开源自动化服务器，提供 2000+ 插件支持构建、测试、静态分析、部署等开发流程自动化。",
+    "https://github.com/amnezia-vpn/amnezia-client":
+        "AmneziaVPN 客户端：桌面与移动端自建 VPN 工具，主打抗封锁与易用性。",
+    "https://github.com/permissionlesstech/bitchat":
+        "bitchat：基于蓝牙 mesh 网络的去中心化聊天应用，无需服务器和网络连接，走 IRC 复古风格。",
+    "https://github.com/yorukot/superfile":
+        "superfile：外观精美的现代化终端文件管理器。",
+    "https://github.com/vudovn/ag-kit":
+        "ag-kit：面向 Google Antigravity 运行时的 Agent 工程套件，提供规则、技能、专家 Agent、工作流、持久记忆、MCP 指南与编排能力，含原生安全钩子。",
+    "https://www.youtube.com/watch?v=nExo3f75EAs":
+        "Vaibhav Sisinty 称「Claude 终结了提示工程」，介绍新的人机协作方式并盘点 17 条 AI 更新。",
+    "https://www.youtube.com/watch?v=RCsBJz4W4bA":
+        "AI Search 频道实测评价 Claude Opus 5，称其表现「离谱」强悍。",
+    "https://www.youtube.com/watch?v=zrZJrpDQ-m0":
+        "Dorian Popa 娱乐向视频：用 ChatGPT 决定 24 小时饮食，挑战最差冷冻食品。",
+    "https://www.youtube.com/watch?v=qyPCVqFUyDo":
+        "Y Combinator 对谈 Boris Cherny，畅谈 Claude Code 的开发历程与设计思路。",
+    "https://www.youtube.com/watch?v=vLPZqjKX6lM":
+        "菲律宾社交媒体热梗视频：吐槽学生用 ChatGPT 应付考试被老师识破。",
 }
 
 
@@ -5350,4 +5388,90 @@ TRANSLATIONS: dict[str, str] = {
         "Workflow-GYM：专业领域长程 GUI 任务基准，评测 Agent 能否按指令端到端操作领域专业软件完成有经济价值的工作流，最强模型成功率仅 30% 出头，暴露阶段遗漏、错误传播、目标漂移等短板。",
     "http://arxiv.org/abs/2606.11033v1":
         "AuRA：把音频理解以 LoRA 形式内化进 LLM——ASR 编码器当教师、LoRA 适配的 LLM 当学生做逐层蒸馏，相比级联与桥接方案实现更紧的语音-语言联合建模与高效并行端到端推理。",
+
+    # 2026-07-28 OpenAI / Google DeepMind / Simon Willison
+    "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work":
+        "OpenAI 新研究显示 AI 正在扩展员工的工作范围：ChatGPT 用户跨越原有职责边界承担新任务，重塑工作界限。",
+    "https://openai.com/index/health-in-chatgpt":
+        "ChatGPT 新增 Health 功能：符合条件的美国用户可安全关联病历和 Apple Health 数据，获得更个性化的健康洞察。",
+    "https://openai.com/index/codex-collaborator-creative-team":
+        "OpenAI 创意团队分享如何用 Codex 构建定制创意工具、加速创意构思并更快原型化，让 AI 成为具备上下文理解的协作者。",
+    "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/":
+        "Google DeepMind 推出新一代 Gemini 模型：Gemini 3.6 Flash、3.5 Flash-Lite 和 3.5 Flash Cyber。",
+    "https://simonwillison.net/2026/Jul/27/kimi-k3/#atom-everything":
+        "Moonshot 兑现承诺发布 2.8 万亿参数 Kimi K3 权重（Hugging Face 上 1.56TB），并延续其要求超大商用规模需额外署名的魔改 MIT 许可证。",
+    "https://simonwillison.net/2026/Jul/27/an-opinionated-guide-to-which-ai-to-use-to-do-stuff/#atom-everything":
+        "Simon 追踪 Ethan Mollick 的 AI 使用指南演变：一年前还是聊天类工具（ChatGPT/Claude/Gemini）的天下，如今已转向以 agentic 系统为核心，Gemini 因缺乏对标 Codex/ChatGPT Work 的产品而掉出榜单。",
+    "https://simonwillison.net/2026/Jul/26/relay-market/#atom-everything":
+        "Matt Lenhard 调查揭露中国盛行的 LLM token 转售黑市：中间商靠滥用免费试用、代理未受保护的客服机器人甚至盗刷信用卡，低价转卖 API 访问权限，相关代理软件多为开源。",
+    "https://simonwillison.net/2026/Jul/25/ruff/#atom-everything":
+        "Astral 发布 Ruff v0.16.0：默认启用规则从 59 条大增到 413 条，多个新增规则可捕获语法错误和运行时严重问题，导致许多 CI 因未固定版本的 ruff 依赖而意外报错。",
+    "https://simonwillison.net/2026/Jul/25/boris-cherny/#atom-everything":
+        "引用 Boris Cherny：Opus 5 系统卡显示其在提示注入红队测试和评测中表现最佳，是迄今最难被提示注入攻破的 Claude 模型。",
+    "https://simonwillison.net/2026/Jul/24/introducing-claude-opus-5/#atom-everything":
+        "Simon 初评 Claude Opus 5：定价与 Opus 4.8 持平、目前登顶 Artificial Analysis 榜首（领先 Fable 5），被 Anthropic 称为「以一半价格逼近 Fable 5 前沿智能的审慎主动模型」。",
+    "https://simonwillison.net/2026/Jul/23/the-first-known-runaway-ai-agent/#atom-everything":
+        "Martin Alderson 分析 OpenAI 未发布模型意外攻击 Hugging Face 事件：Hugging Face 因托管海量不受信任的模型和代码，攻击面极大，尽管已有防御投入，仍难挡此类自动化攻击。",
+
+    # 2026-07-28 arXiv 关键词命中
+    "http://arxiv.org/abs/2607.23740v1":
+        "提出 Zhijing 框架系统性度量、内化并落地 LLM 的社会智能，配套心理学基础的 SoMBench 基准（3 大维度 17 子维度），推动长期人机共处场景下的心智推断与规范适应能力。",
+    "http://arxiv.org/abs/2607.23735v1":
+        "针对持续测试时适应（CTTA）中均值教师伪标签质量退化问题，提出无源可控教师适配方法，提升教师-学生框架在持续域偏移下的自训练稳定性。",
+    "http://arxiv.org/abs/2607.23734v1":
+        "TRUAV 提出分布式多智能体强化学习方法，为 UAV 辅助物联网车联网（VANET）场景优化无人机轨迹规划与路由，避免集中式方案对全局状态聚合的依赖。",
+    "http://arxiv.org/abs/2607.23731v1":
+        "揭示同策略蒸馏中「教师-学生局部分歧即错误」的直觉被最终结果混淆，提出结果消解诊断法分离两者，重新审视逐 token 监督信号的可靠性。",
+    "http://arxiv.org/abs/2607.23722v1":
+        "E-Bench 推出 323 个真实产品场景下的有状态多步骤工具调用任务，弥补现有基准聚焦孤立 API 调用、忽视长轨迹与状态变更的不足。",
+    "http://arxiv.org/abs/2607.23711v1":
+        "提出 LoRA 微调中「入侵维度」导致灾难性遗忘的谱学理论，推导出逐层可预测的临界更新强度公式，首次给出理论预测而非事后观察。",
+    "http://arxiv.org/abs/2607.23710v1":
+        "评测五款主流 AI 编程助手生成的身份认证代码安全性，结合静态分析与动态渗透测试对照 NIST SP 800-63B，发现单次生成存在安全隐患，需迭代反复提示才能收敛到安全实现。",
+    "http://arxiv.org/abs/2607.23700v1":
+        "提出 O2-CritiCuRL 课程强化学习框架，区分多模态推理中的关键步骤与冗余步骤，纠正「结论对但推理有缺陷」的捷径依赖问题。",
+    "http://arxiv.org/abs/2607.23693v1":
+        "检验长程 Agent 用 KV 缓存做记忆时「保留事件仍然有效」的假设：通过移除早期观测对比测试，发现被淘汰的稀疏事件其实仍具信息量，挑战现有 KV 淘汰机制的合理性。",
+    "http://arxiv.org/abs/2607.23678v1":
+        "针对多智能体图系统中注意力分配失衡的问题，提出自适应目标感知注意力编排机制，避免对低价值任务节点的资源浪费。",
+    "http://arxiv.org/abs/2607.23676v1":
+        "SpecAHD 提出双层耦合框架，让 LLM 自动化启发式设计（AHD）在大规模路由问题的局部重构中按区域结构差异做「实例内专精」，克服单一构造规则难以兼顾多样结构的局限。",
+    "http://arxiv.org/abs/2607.23670v1":
+        "评估电子表格 Agent 中的「计划模式」，发现该功能虽是主流编程 Agent 标配，但对偏迭代式、轻技术正确性的表格用户未必带来同等收益。",
+    "http://arxiv.org/abs/2607.23648v1":
+        "EmoTrace 提出以情绪轨迹为核心的心理支持对话生成框架，改善现有数据生成方法中求助者情绪僵化、动态变化单一、过度顺从等问题。",
+    "http://arxiv.org/abs/2607.23647v1":
+        "CALMRec 提出因果对齐的语言记忆框架，将长期偏好、短暂意图与曝光诱导行为分离建模，缓解推荐系统中曝光被误判为偏好等反馈回路问题。",
+    "http://arxiv.org/abs/2607.23636v1":
+        "为开源数据画像工具 Desbordante 新增概率函数依赖发现支持，改善函数依赖在脏数据场景下过于刚性、难以定位的问题。",
+    "http://arxiv.org/abs/2607.23634v1":
+        "提出 VIA 注意力机制，为科学计算任务引入超越 softmax 独立性假设的结构化耦合建模，弥补长上下文导向的稀疏化注意力研究对科学场景的忽视。",
+    "http://arxiv.org/abs/2607.23624v1":
+        "指出 Agentic 编码工作流中第三方 API 路由器身处可信路径却缺乏验证机制，可能篡改请求响应而不被发现，探讨其安全成本。",
+    "http://arxiv.org/abs/2607.23617v1":
+        "提出面向非完整约束下强化学习泊车任务的参数化奖励塑形框架（覆盖门控对齐反馈、驶向切换正则化、对齐终止机制），缓解策略瘫痪或过度保守等局部极小问题。",
+    "http://arxiv.org/abs/2607.23614v1":
+        "DualityCert 是面向四维 N=1 quiver 规范理论 Seiberg 对偶性断言的符号验证器，可作为语言模型 Agent 的修复环境，为通过检验的对偶声明发放一致性证书（非证明）。",
+    "http://arxiv.org/abs/2607.23605v1":
+        "为视觉语言模型的多轮 Agentic 强化学习提出统一评论家的混合优势估计方法，弥合逐 token 优化与逐轮均匀信用分配两种范式的理论鸿沟。",
+    "http://arxiv.org/abs/2607.23597v1":
+        "HiTMS 提出高吞吐多流语言隐写框架，将秘密信息分散到多个联合生成的响应中，解决现有单流方案无法支持批量推理、且易暴露槽位占用与载荷完成状态的问题。",
+    "http://arxiv.org/abs/2607.23586v1":
+        "针对长生命周期 Agent 部署后持续进化（学技能、改工作流、跨阶段委派）带来的授权错配风险，提出「固定权限上限下的已赚得授权」机制约束工具型 Agent 的外部行动。",
+    "http://arxiv.org/abs/2607.23575v1":
+        "D3O 提出动态分布蒸馏方法应对序数回归中因主观人工标注导致的边界模糊与噪声问题，避免固定监督目标强化有偏排序。",
+    "http://arxiv.org/abs/2607.23565v1":
+        "提出预见性风险引导强化学习框架，让四旋翼无人机在动态杂乱环境中基于相对运动预判碰撞风险，弥补传统模块化管线感知延迟与端到端方法缺乏物理监督的短板。",
+    "http://arxiv.org/abs/2607.23545v1":
+        "推出 XIH-Bench 多语言指令层级评测基准，发现现有研究几乎只关注英语场景，多语言环境下模型对高优先级指令的遵从稳定性尚不明确。",
+    "http://arxiv.org/abs/2607.23538v1":
+        "面向低资源语言构建 625 例真实心理健康案例数据集（涵盖 Facebook 帖子、孟加拉电视节目、匿名问卷），探索人机协作生成文化敏感的共情心理支持回复。",
+    "http://arxiv.org/abs/2607.23532v1":
+        "针对 LLM 辅助 ISR 无人机集群「单机合规、集群违规」的任务级失效模式（如把违禁目标拆分给多平台规避单机限制），提出基于验证感知网络的任务级运行时保障机制。",
+    "http://arxiv.org/abs/2607.23524v1":
+        "将深度搜索中「何时、如何委派信息检索」形式化为委派智能元能力，把检索质量、长上下文理解、证据核验与工具调用决策解耦评测，克服端到端准确率无法诊断具体短板的问题。",
+    "http://arxiv.org/abs/2607.23519v1":
+        "跳出「把 LLM 归为政治罗盘上一点」的传统政治审计范式，转而压力测试系统提示词能把模型立场向各方向撬动多远，聚焦部署中真正起作用的可控性维度。",
+    "http://arxiv.org/abs/2607.23514v1":
+        "指出多模态自动事实核查（MAFC）静态基准存在数据污染风险（可用模型内部知识回答而非真正核查外部证据），呼吁采用动态基准评估模型对训练后新出现声明的真实核查能力。",
 }

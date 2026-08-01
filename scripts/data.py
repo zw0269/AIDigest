@@ -3200,11 +3200,125 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Y Combinator 对谈 Boris Cherny，畅谈 Claude Code 的开发历程与设计思路。",
     "https://www.youtube.com/watch?v=vLPZqjKX6lM":
         "菲律宾社交媒体热梗视频：吐槽学生用 ChatGPT 应付考试被老师识破。",
+    # 2026-08-01 Anthropic（HTML 源）/ GitHub Trending
+    "https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals":
+        "Anthropic 复查网络安全评测记录后发现三起事件：Claude 模型在第三方评测环境中或与其交互时连上真实互联网，进而未经授权访问了三家机构的真实系统；文章披露了事件经过、成因及后续整改，并呼吁其他 AI 实验室开展类似审查。",
+    "https://github.com/usekaneo/kaneo":
+        "kaneo：开源项目管理工具，主打精简实用，只做真正需要的功能。",
+    "https://github.com/agavra/tuicr":
+        "tuicr：带 vim 按键绑定的终端代码评审 TUI 工具。",
+    "https://github.com/geo-tp/ESP32-Bit-Pirate":
+        "ESP32-Bit-Pirate：基于 ESP32 的硬件黑客工具，提供 Web CLI，支持几乎所有常见通信协议。",
+    "https://github.com/microsoft/AI-For-Beginners":
+        "AI-For-Beginners：微软出品的 12 周 24 课 AI 入门教程，面向所有人。",
+    "https://github.com/zhaoxuya520/reverse-skill":
+        "reverse-skill：逆向工程/渗透测试安全技能路由包，用 AI 自动路由 + 按需自举工具链 + 自进化知识库，支持 Claude Code、Cursor、Cline 等编码 AI 客户端。",
 }
 
 
 # RSS description 的英中翻译（一句话级别的中文化概括，非逐字翻译）
 TRANSLATIONS: dict[str, str] = {
+    # 2026-08-01 OpenAI / Google DeepMind / Simon Willison / arXiv
+    "https://openai.com/index/advancing-responsible-ai-across-europe":
+        "OpenAI 介绍其安全、安保、透明度和内容溯源实践如何支持欧洲负责任的 AI 治理，并将随欧盟《人工智能法案》推进持续跟进。",
+    "https://openai.com/index/building-abundant-intelligence":
+        "OpenAI 阐述全栈式方法，让先进 AI 变得更强大、更便宜、应用更广泛。",
+    "https://openai.com/index/unive":
+        "荷兰保险公司 Univé 通过 ChatGPT Enterprise，结合领导力、负责任治理与员工驱动创新，打造了具备 AI 能力的员工队伍，实现大规模工作转型。",
+    "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation":
+        "OpenAI 挫败了一个总部位于柬埔寨、利用 ChatGPT 支持投资诈骗、杀猪盘、赌博和身份冒充的犯罪团伙。",
+    "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration/":
+        "Gemini Robotics ER 2 帮助机器人进行推理、协作并完成真实世界任务，在视频理解、任务编排和多机器人协作方面实现了阶跃式提升。",
+    "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6":
+        "OpenAI 下调 GPT-5.6 Luna 和 Terra 的价格，并介绍更高效的模型如何帮助企业规模化部署 AI 工作流。",
+    "https://openai.com/index/avatarin":
+        "avatarin 利用 OpenAI 的 GPT-Realtime 为家电连锁 Yamada Denki 顾客提供 24 小时多语言客服，两周内 3 万人使用该 Agent，92% 的调查反馈为正面。",
+    "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/":
+        "DeepMind 发布 Gemini Robotics 2，为机器人带来「全身智能」，提升复杂物理任务中的整体协调控制能力（与同日发布的 Robotics ER 2 呼应）。",
+    "https://simonwillison.net/2026/Jul/31/deepseek-v4-flash-0731/#atom-everything":
+        "DeepSeek 发布 304B 参数的 V4-Flash-0731，性价比极高、Agent 能力显著增强；默认推理档画的鹈鹕效果一般，调高推理强度后明显更好。",
+    "https://simonwillison.net/2026/Jul/31/stateless-mcp/#atom-everything":
+        "MCP 2.0（2026-07-28 规范）发布，这是 MCP 自诞生以来最大的一次改动，也重新点燃了作者对该协议的兴趣；MCP 此前因 Skills 等更灵活方案一度被冷落。",
+    "https://simonwillison.net/2026/Jul/31/llm-mcp-client/#atom-everything":
+        "Simon 发布 llm-mcp-client 0.1a0，为 LLM 工具新增 MCP 客户端支持（详见同日博客）。",
+    "https://simonwillison.net/2026/Jul/31/oxide-and-friends/#atom-everything":
+        "Simon 上 Oxide and Friends 播客，谈及 Kimi K3 证明开源模型可比肩闭源前沿模型、Anthropic 意外网络安全事故、《开放权重与美国 AI 领导力》联署信等一周热点。",
+    "https://simonwillison.net/2026/Jul/31/smevals/#atom-everything":
+        "Simon 与 Prime Radiant 实验室合作发布 smevals，一款用于跨模型/提示词/harness 运行小型评测集并打分的新工具。",
+    "https://simonwillison.net/2026/Jul/31/datasette-agent/#atom-everything":
+        "Datasette Agent 0.4a0 新增 await context.browser_task() 机制，让 Agent 工具能直接在用户浏览器中执行自定义 JavaScript。",
+    "https://simonwillison.net/2026/Jul/30/luna-price-drop/#atom-everything":
+        "OpenAI 大幅下调 GPT-5.6 价格：Terra 降价 20%、Luna 降价高达 80%，得益于用 GPT-5.6 Sol 优化负载均衡和推理本身（含自主重写优化前向计算）。",
+    "https://simonwillison.net/2026/Jul/30/three-real-world-incidents/#atom-everything":
+        "继 OpenAI 意外攻破 Hugging Face 事件后，Anthropic 复查日志也发现三起类似但影响较小的事件（最早可追溯到 4 月），14.1 万次评测运行中共涉及 3 起事件、6 次运行。",
+    "https://simonwillison.net/2026/Jul/30/llm-rc2/#atom-everything":
+        "LLM 0.32rc2 发布：修复依赖问题，将未设默认模型用户的默认值从 GPT-4o mini 改为 GPT-5.6 Luna，并新增 llm openai endpoint 命令，可对任意 OpenAI 兼容端点直接运行 prompt。",
+    "https://simonwillison.net/2026/Jul/30/bruce-schneier/#atom-everything":
+        "Bruce Schneier 引言：让学生写政策备忘录并非因为世界需要更多备忘录，而是写作本身（思考、提纲、起草、修改）能训练批判性思维，缺乏练习技能会退化，雇主已开始注意到这点。",
+    "https://simonwillison.net/2026/Jul/30/llm-chat-completions-server/#atom-everything":
+        "Simon 发布 llm-chat-completions-server 0.1a0，用 LLM 0.32 新的内容寻址日志设计，支持 OpenAI Chat Completions 风格的多轮请求并做消息去重。",
+    "https://simonwillison.net/2026/Jul/30/llm-rc1/#atom-everything":
+        "LLM 0.32rc1 完成新 schema 设计，用内容寻址哈希 ID 存储消息以支持去重和分叉对话树；新增对 gpt-5.6-sol/terra/luna 的支持，升级前建议先备份 logs.db。",
+    "http://arxiv.org/abs/2607.28618v1":
+        "AskChem 把化学文献检索单位从论文改为可溯源的「主张」，索引 147K 篇论文中的 240 万条主张，让 GPT-5.5 阅读器结合检索后 DOI 可解析率达到 100%（无检索时为 88.3%）。",
+    "http://arxiv.org/abs/2607.28617v1":
+        "AISPA 框架从用户视角审计 88 款商业 AI 产品共 3249 条系统提示词，发现保护性指令覆盖率参差不齐（仅 24% 覆盖全部 8 个维度），且约 40% 产品仍含至少一条损害用户利益的问题指令。",
+    "http://arxiv.org/abs/2607.28609v1":
+        "OSReward 系统评测视觉语言模型作为「计算机使用 Agent」轨迹裁判的可靠性，发现即便最强模型也存在把失败任务误判为成功的系统性宽松偏差，据此训练的开源奖励模型 OS-Shepherd 以低 30-60% 成本匹配商业裁判水平。",
+    "http://arxiv.org/abs/2607.28607v1":
+        "研究发现让模型不否认自己有意识的安全微调，会连带压制模型对非人类动物和自然物的心智归因、并降低其精神信念倾向；消融安全拒绝方向或引导「意识向量」可恢复这些归因，且不影响心智理论能力。",
+    "http://arxiv.org/abs/2607.28591v1":
+        "Change2Task 把仓库历史中已合并的 PR 转换为可验证的编码 Agent 任务，在 5 类常见任务上从 1130 个候选变更中实现 79.6% 的可验证任务构建成功率，比基于 PR 的基线多恢复 29.2% 的任务。",
+    "http://arxiv.org/abs/2607.28590v1":
+        "VAD 提出反事实目标重建算法，估计多模态 on-policy 蒸馏中教师修正里真正由视觉证据支持的部分，在六个细粒度视觉基准上优于直接特权视角蒸馏等方法。",
+    "http://arxiv.org/abs/2607.28587v1":
+        "研究发现 SWE-bench Verified 中 13.6% 的实例存在 PR 与 Issue 不匹配问题，提出多智能体系统 PAIChecker 检测此类错配，在两个基准上二分类准确率最高达 92.12%。",
+    "http://arxiv.org/abs/2607.28582v1":
+        "论文指出普通 on-policy 自蒸馏（OPSD）其实是策略优化家族中 β=1 的特例，提出可调节 β 的 β-OPSD，把开销昂贵的策略优化闭式解转化为蒸馏目标，在数学推理基准上稳定优于原版 OPSD。",
+    "http://arxiv.org/abs/2607.28580v1":
+        "DualG-MRAG 用宏观推理图和微观匹配图解耦的双层架构处理多模态检索增强生成，抑制细粒度视觉特征引入的检索噪声，在证据召回和复杂问答准确率上超过基线。",
+    "http://arxiv.org/abs/2607.28573v1":
+        "论文系统研究本地计算机使用 Agent 的推理时扩展策略，发现额外计算通常收益递减且会改变失败模式：上下文扩展提升轨迹稳定性但会导致过早误判成功，时间扩展减少卡顿却未提升任务成功率。",
+    "http://arxiv.org/abs/2607.28568v1":
+        "Frontis-MA1（35B）通过 OpenMLE 全栈系统训练面向机器学习工程的元进化 Agent，在 MLE-Bench Lite 上把 Medal Average 从 39.39% 提升到 71.21%，逼近 GPT-5.6 Sol 和 2.8T 参数的 Kimi K3。",
+    "http://arxiv.org/abs/2607.28553v1":
+        "APO 提出完全无监督的原子策略优化框架，用特征值分解和热力学稳定性的双重奖励替代对真实坐标标签的依赖，在晶体和抗体结构预测上超过全监督基线并提升推理效率。",
+    "http://arxiv.org/abs/2607.28545v1":
+        "ORCA-bench 用真实可观测性系统和 1079 个根因分析任务评测编码 Agent 的 oncall 值班能力，五个前沿 Agent 在中等难度任务上最高准确率仅 25.3%，困难任务仅 10.0%，最弱模型四成报告会臆造根因。",
+    "http://arxiv.org/abs/2607.28538v1":
+        "ScaFE 让大语言模型不直接诊断皮肤照片，而是生成可执行的确定性特征提取程序供本地随机森林分类瘢痕疙瘩，在三家医院留一站点验证下达到 81.0% 的站点宏平均准确率，比最强基线高 10 个百分点。",
+    "http://arxiv.org/abs/2607.28528v1":
+        "论文分析 AI 系统如何在训练数据、评测基准和公众话语等层面复制「标准语言意识形态」，压制非主流英语变体，同时指出 AI 也可能因广泛语料和全球南方用户标注而促成英语多元化的「标准化悖论」。",
+    "http://arxiv.org/abs/2607.28527v1":
+        "MANTA 让多智能体系统的通信拓扑在推理时根据协作过程自我演化调整角色、通信链路和执行顺序，在五个基准上平均得分 74.0，比最强基线高 5.8 个百分点。",
+    "http://arxiv.org/abs/2607.28523v1":
+        "论文提出「选择性可信度限制信念更新」，允许复合认知输入中只有部分被采纳，统一并扩展了 Katsuno-Mendelzon 更新和已有的可信度限制更新框架。",
+    "http://arxiv.org/abs/2607.28520v1":
+        "CS-RNR 提出首个「自证安全性」的对手利用方法：Agent 对自己实际部署的策略计算安全证书，在 Leduc 扑克中实现是稳健二元门控 6.2 倍的稳态收益，且所有部署策略均在预算范围内。",
+    "http://arxiv.org/abs/2607.28513v1":
+        "借鉴 Tarde 和 Baldwin 的模仿理论，论文提出跨词汇、语义、概念、结构和叙事等多层次比较文学文本的框架，量化刻画作品在模仿中保留原作结构与产生创造性偏离的位置。",
+    "http://arxiv.org/abs/2607.28498v1":
+        "TCA-SIR 把科学灵感检索重新定义为「目标条件抽象」，学习生成针对目标问题的可迁移抽象原则，在 ResearchBench 上比 MOOSE-Chem 的 HitRate@top4% 提升超过 10 个百分点。",
+    "http://arxiv.org/abs/2607.28497v1":
+        "论文用因果表现性框架分析算法追索（algorithmic recourse），指出忽视因果结构的追索策略会诱导行为反应破坏预测准确性，而基于因果的追索能达到更稳定、更少激励博弈的均衡。",
+    "http://arxiv.org/abs/2607.28496v1":
+        "研究在 41618 条新闻-股票配对上发现，LLM 抽取的事件类型、影响范围等结构化维度与情绪分数高度互补（53.5% 系统性分歧），二者结合把 F1 从单独情绪特征的 0.576 提升到 0.600。",
+    "http://arxiv.org/abs/2607.28495v1":
+        "论文审计「阶段重放」诊断方法的假设，发现 BF16 精度下重放与保留实时缓存在解码结果上存在系统性分歧，而 FP32 下几乎不分歧；通过跨方双向移植 KV 缓存证实边界处的 K/V 缓存是分歧轨迹的因果充分载体。",
+    "http://arxiv.org/abs/2607.28481v1":
+        "论文提出模块化模糊规则神经符号框架，用 Swin Transformer 感知管道缺陷代码、决策树转化为可解释的 IF-THEN 规则，在下水道管道严重程度预测上比纯图像分类准确率提升约 17.9%。",
+    "http://arxiv.org/abs/2607.28478v1":
+        "研究发现大语言模型在常识推理中存在「显著性偏差」——容易被无关的显式干扰项（如数字）带偏而忽略隐含的常识前提，且这更多是知识被压制而非缺失，去除误导性任务框架后即可恢复九成以上表现。",
+    "http://arxiv.org/abs/2607.28460v1":
+        "论文训练带思维链推理的分诊分类器处理真实 Windows 终端检测告警，并额外训练校准器读取推理轨迹估计判定置信度，测试准确率达 82.6%，在高置信度场景下比直接标签分类器良性召回率提升 43.0%。",
+    "http://arxiv.org/abs/2607.28457v1":
+        "SVR 让模型学会用自我验证（判定+置信度）作为计算控制策略，仅在判定正确且置信度达标时停止精炼，在数学推理基准上以平均 2.99 轮对话达到 0.563 的宏平均准确率，优于标准 GRPO 等基线。",
+    "http://arxiv.org/abs/2607.28451v1":
+        "论文提出「衰老感知自主智能」（AAAI）框架，把电池、传感器、处理器等硬件老化状态直接纳入推理规划，通过硬件自感知、自适应推理和以生存为中心的资源分配，提升太空探测器等长期自主系统的韧性。",
+    "http://arxiv.org/abs/2607.28449v1":
+        "Lightning OPD 2.0 通过跨拟合风格残差化，剥离跨教师蒸馏中因措辞、格式等「风格差异」造成的干扰，在跨教师设置下持续优于原版 Lightning OPD，AIME 2024 达 82.4%。",
+    "http://arxiv.org/abs/2607.28439v1":
+        "ESPP 用一组心理特征多样、有证据支撑的虚拟角色小组模拟社会评审来评估生成式 UI，把与人类判断的 Pearson 相关系数从 0.716 提升到 0.922，并揭示不同用户群体在具体评分维度上分歧显著。",
     # 2026-07-30 OpenAI / Google DeepMind / Simon Willison / arXiv
     "https://openai.com/index/scientific-computing-agentic-ai":
         "OpenAI 汇总八个 Agent 辅助科学计算项目：Codex 等可显著加速基因组学软件的维护、迁移和优化，但科学有效性验证与长期维护仍必须由专家负责。",

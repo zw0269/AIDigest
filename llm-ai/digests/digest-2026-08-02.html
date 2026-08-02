@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-02</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-02</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-02</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 7 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">7</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/ten-advances-in-mathematics" target="_blank" rel="noopener">Ten advances in mathematics and theoretical computer science</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI shares new results on long-standing open problems in mathematics and theoretical computer science, including advances in geometry, cryptography, and complexity.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 用内部版 Astra 模型攻克十个十年未解的数学与理论计算机科学难题，涉及几何、密码学与复杂性理论，称花费不到 2000 美元。</div>
+        <div class="item-url">https://openai.com/index/ten-advances-in-mathematics</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">6 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/2/open-letters/#atom-everything" target="_blank" rel="noopener">Open letters about AI development</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Open letters about AI development
+I wrote this summary of the past few weeks of open letters as a section of my sponsors-only newsletter but I&#x27;ve decided to share it here as well.
+Open Weights and American AI Leadership was shepherded by Microsoft, dated July 24th, and signed by 235 AI-adjacent companies including NVIDIA, Amazon, Y Combinator, T...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 汇总近期 AI 公开信：微软牵头、235 家公司联署的《开放权重与美国 AI 领导力》信，意在劝阻政府以「安全」为由限制开放权重模型。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/2/open-letters/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/2/july-newsletter/#atom-everything" target="_blank" rel="noopener">July 2026 newsletter</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The June edition of my sponsors-only monthly newsletter is out. If you are a sponsor (or if you start a sponsorship now) you can access it here.
+This month:
+
+Accidental cyberattacks by OpenAl and Anthropic models under test
+GPT-5.6 Sol, Terra, and Luna
+Claude Opus 5
+Kimi K3 and DeepSeek-V4-Flash-0731
+Open letters about Al development
+A fireside ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 付费简报预览：OpenAI/Anthropic 模型测试中的意外网络攻击、GPT-5.6 Sol/Terra/Luna、Claude Opus 5、Kimi K3、DeepSeek-V4-Flash 等本月要闻。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/2/july-newsletter/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything" target="_blank" rel="noopener">Quoting Greg Brockman</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>at openai, many people hook their chatgpt up to slack.
+people really don&#x27;t like when a coworker&#x27;s chatgpt contacts them asking for help with a task, even when they&#x27;d be perfectly happy doing that same work if asked by that coworker.
+reinforces how much people care about human relationships and helping each other, and want AI to give time back — ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 OpenAI 总裁 Greg Brockman：员工反感同事的 ChatGPT 代为联系求助，反映人们更看重人际关系，希望 AI 增进而非取代人与人的连接。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/1/datasette-apps/#atom-everything" target="_blank" rel="noopener">datasette-apps 0.2a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-apps 0.2a0
+        
+Changes that improve Datasette Apps when created and edited using Datasette Agent:
+
+New app_debug() tool allowing agent to open an app (invisibly) and test it using JavaScript. #33
+New app_list() tool for listing apps the user has permission to edit, so the agent can edit them. #36
+
+
+The app_debug() tool is...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-apps 0.2a0 发布，新增 app_debug()（用隐藏沙箱 iframe 让 Agent 测试应用）和 app_list() 工具，方便 Agent 调试和管理已有应用。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/1/datasette-apps/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/1/ten-advances-in-mathematics/#atom-everything" target="_blank" rel="noopener">Ten advances in mathematics and theoretical computer science</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Ten advances in mathematics and theoretical computer science
+A few days ago it was Anthropic discovering cryptographic weaknesses with Claude using Mythos Preview, spending $100,000 on tokens and with prompts that included &quot;again we are not looking for low hanging fruit, we want proper research to find genuinly hard findings.&quot;
+Now it&#x27;s OpenAI&#x27;s ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 点评 OpenAI 用内部版 Astra 攻克十个十年未解数学难题、声称花费不到 2000 美元，呼应此前 Anthropic 用 Claude 挖密码学漏洞的类似秀肌肉动作。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/1/ten-advances-in-mathematics/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Jul/31/slack-emoji-maker/#atom-everything" target="_blank" rel="noopener">Slack Emoji Maker</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Slack Emoji Maker
+        I wanted to create a new Slack emoji, and their tool recommends a square that&#x27;s 128x128 and has a transparent background... so I had Fable build me this simple image editor against those requirements.
+    
+    
+        Tags: tools, slack</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 用 Fable 做了个简单图片编辑器，专门按 Slack 表情要求的 128x128 透明背景规格快速生成自定义表情。</div>
+        <div class="item-url">https://simonwillison.net/2026/Jul/31/slack-emoji-maker/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

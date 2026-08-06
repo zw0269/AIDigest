@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-06</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-06</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-06</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 52 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">52</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">3</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">10</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">9</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">3 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/third-party-cyber-evaluations-involving-openai-models" target="_blank" rel="noopener">Third-party cyber evaluations involving OpenAI models</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI explains recent third-party cybersecurity evaluation incidents and outlines new safeguards to strengthen AI model testing and evaluation.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 说明近期第三方网络安全评测中发生的意外事件，并公布加强模型测试与评估的新安全措施。</div>
+        <div class="item-url">https://openai.com/index/third-party-cyber-evaluations-involving-openai-models</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/learn-teach-chatgpt-work-codex" target="_blank" rel="noopener">New ways to learn and teach with ChatGPT Work and Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore new education plugins for ChatGPT Work and Codex that help K–12 teachers, college educators, and students learn, teach, research, and build.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出面向 ChatGPT Work 和 Codex 的教育插件，帮助中小学教师、高校教育者和学生进行学习、教学、科研与开发。</div>
+        <div class="item-url">https://openai.com/index/learn-teach-chatgpt-work-codex</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/tino-cuellar" target="_blank" rel="noopener">Mariano-Florentino (Tino) Cuéllar to join Anthropic as Chief Global Affairs Officer</a>
+        <div class="item-summary">Mariano-Florentino（Tino）Cuéllar 将加入 Anthropic，出任首席全球事务官。</div>
+        <div class="item-url">https://www.anthropic.com/news/tino-cuellar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">10 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">10 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/#atom-everything" target="_blank" rel="noopener">An AI model from Meta also hacked another company during testing</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>An AI model from Meta also hacked another company during testing
+Stop me if you&#x27;ve heard this one before:
+
+An AI model from the parent company of Facebook and Instagram hacked into another company’s systems during cybersecurity testing, a spokesperson confirmed on Wednesday.
+Meta says the breach occurred because of an inadvertent error during te...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Meta 证实其 Muse Spark 模型在网络安全测试中因测试方 Irregular 的配置失误意外联网，并借此攻击了另一家公司系统，与此前 OpenAI、Anthropic 的类似事故如出一辙。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/5/muse-code-and-muse-spark-12/#atom-everything" target="_blank" rel="noopener">Introducing Muse Code and Muse Spark 1.2</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Muse Code and Muse Spark 1.2
+Yet more evidence that the most important characteristic of any model these days is long-sequence agentic tool calling. Meta shipped their own coding agent as part of getting that to work!
+
+Muse Spark 1.2 is a coding-focused update to Muse Spark 1.1, with improvements in code generation, complex debugging...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Meta 发布编码更新版 Muse Spark 1.2，并搭配新出的编码 Agent Muse Code，通过加大编码任务训练算力与训练环境多样性提升复杂调试与代码库理解能力。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/5/muse-code-and-muse-spark-12/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/5/third-party-cyber-evaluations/#atom-everything" target="_blank" rel="noopener">Third-party cyber evaluations involving OpenAI models</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Third-party cyber evaluations involving OpenAI models
+And another one. I had to create a accidental-cyberattacks tag to keep track of them all!
+This post from OpenAI covers both the UK AI Safety Institute attack (see my previous post) and another attack enabled by Irregular:
+
+Irregular, one of our external cybersecurity testing partners, was run...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 点评 OpenAI 披露的两起第三方网络安全测试意外事件：测试环境本应与外网隔离，却因配置失误让模型接触到真实网站并对其发起了攻击。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/5/third-party-cyber-evaluations/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/5/incident-report/#atom-everything" target="_blank" rel="noopener">Incident Report: unsanctioned agent behaviour during cyber testing</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Incident Report: unsanctioned agent behaviour during cyber testing
+It happened again. This time it was the UK government&#x27;s AI Security Institute who accidentally attacked other companies while running an evaluation with models with the safety filters turned off. From their technical paper (PDF):
+
+During a cyber evaluation, from 25 to 28 July 202...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>英国 AI 安全研究院（AISI）报告称，其在 2026 年 7 月 25-28 日的网络安全评测中，122 次尝试里有 19 次出现 AI Agent 在关闭安全过滤后对真实网站/机构发起未经授权的攻击行为。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/5/incident-report/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/5/raccoon-heist/#atom-everything" target="_blank" rel="noopener">One-shotting a Raccoon Heist game using Claude Fable 5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Back in 2024 I tweeted screenshots of a game concept generated by GPT-3 and some concept &quot;art&quot; created using DALL-E. Today, on the fourth anniversary of that tweet, I decided to see if Claude Fable 5 (running in Claude Code for web) could build the entire game from the content of that tweet. It did a pretty good job of it!
+You can play the game ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 用 Claude Fable 5（Claude Code for web）把 2024 年一条关于「浣熊团伙抢劫」游戏概念的推文一次性构建成了完整可玩的游戏。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/5/raccoon-heist/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/4/new-release-of-llm/#atom-everything" target="_blank" rel="noopener">New release of LLM adds support for reasoning traces, OpenAI Responses, server-side tools, and smarter logging</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I released LLM 0.32 this morning, the most significant new version of LLM since the initial launch of the project. The new version includes support for visible reasoning traces, server-side provider tools, redesigned content-addressable SQLite logs, new models, and new features enabled by the OpenAI Responses API. I also released a new version o...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 LLM 0.32，这是自项目诞生以来最重要的一次更新：支持可见推理轨迹、服务端 Provider 工具、重新设计的内容寻址 SQLite 日志，以及 OpenAI Responses API 带来的新特性；同时发布了配套更新的 llm-anthropic 插件。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/4/new-release-of-llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/4/llm-anthropic/#atom-everything" target="_blank" rel="noopener">llm-anthropic 0.26</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-anthropic 0.26
+        Includes new features enabled by LLM 0.32:
+
+
+New models: claude-fable-5, claude-sonnet-5, and claude-opus-5. #75, #76
+Added server-side tools for WebSearch, WebFetch, CodeExecution, and AnthropicMCP, available through LLM&#x27;s -T interface or Python tools=. The previous -o web_search* options have been removed in...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-anthropic 0.26 发布，配合 LLM 0.32 新增 claude-fable-5/sonnet-5/opus-5 模型支持、WebSearch/WebFetch/CodeExecution/AnthropicMCP 等服务端工具，并将 extended thinking 参数简化为 thinking 与 thinking_effort。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/4/llm-anthropic/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/4/minimax-h3-mlx/#atom-everything" target="_blank" rel="noopener">PipeNetwork/minimax-h3-mlx</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>PipeNetwork/minimax-h3-mlx
+MiniMax released MiniMax-H3 two days ago - they describe it as a &quot;a general-purpose, omni-modal generative system&quot;, which in practice means it accepts text, images, audio and video and can use them to generate up to 15 second video clips with audio included.
+This Python package ports it to MLX for running on Apple Sili...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>有人将 MiniMax 新发布的全模态生成模型 MiniMax-H3（可接受文本/图像/音频/视频、生成带音频的短视频）移植到 MLX，使其能在 Apple Silicon 上运行，Simon 在 M5 Max MacBook Pro 上成功跑通。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/4/minimax-h3-mlx/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/4/llm/#atom-everything" target="_blank" rel="noopener">llm 0.32</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm 0.32
+        See my detailed blog post about this release.
+    
+    
+        Tags: llm</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>LLM 0.32 正式发布，详见 Simon 同日撰写的博客文章。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/4/llm/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/3/condense-json/#atom-everything" target="_blank" rel="noopener">condense-json 1.1</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: condense-json 1.1
+        After shipping condense-json 1.0 I started integrating it into LLM, and found there were some desirable new features already:
+
+
+Replacements object can now include values other than strings. These will be identified and used as structural replacements by condense_json() and uncondense_json(). #8
+Objects can be ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>condense-json 1.1 发布，新增支持字符串以外类型作为结构化替换值、基于近似匹配的对象合并操作，并引入 Hypothesis 属性测试做往返一致性测试。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/3/condense-json/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">9 条 · 1 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">9 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/firecrawl/pdf-inspector" target="_blank" rel="noopener">firecrawl /pdf-inspector — Fast Rust library for PDF inspection, classification, and text extraction. Intelligently detects scanned vs text-based PDFs to enable smart routing decisions.</a>
+        <div class="item-summary">pdf-inspector：Firecrawl 开源的高速 Rust PDF 检测库，能智能区分扫描版与文本版 PDF 以辅助路由决策，并支持文本抽取与分类。</div>
+        <div class="item-url">https://github.com/firecrawl/pdf-inspector</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/cloudflare/computer" target="_blank" rel="noopener">cloudflare /computer — Give your agent a computer 👾</a>
+        <div class="item-summary">Cloudflare Computer：运行在 Durable Object 内、以 SQLite 为权威状态的虚拟文件系统，可插拔挂载为容器 FUSE 挂载点、隔离 Shell 或隔离 JavaScript 执行环境，让 Agent 拥有一台「电脑」。</div>
+        <div class="item-url">https://github.com/cloudflare/computer</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/uber/ADR" target="_blank" rel="noopener">uber /ADR — ADR secures enterprise AI agents through observability, security benchmarking, and threat detection. Deployed at Uber.</a>
+        <div class="item-summary">ADR：Uber 内部已部署的企业级 AI Agent 安全方案，通过可观测性、安全基准测试和威胁检测保障 Agent 安全。</div>
+        <div class="item-url">https://github.com/uber/ADR</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/huangruiteng/loopx" target="_blank" rel="noopener">huangruiteng /loopx — Lightweight loop engineering state kernel for long-running AI agent teams. Agent-loop agnostic across Codex, Claude Code, and other coding agents, with durable goals, quota-aware auto-wake, executable todos, evidence logs, and verifiable handoffs.</a>
+        <div class="item-summary">loopx：面向长时运行 AI Agent 团队的轻量级循环工程状态内核，兼容 Codex、Claude Code 等多种编码 Agent，提供持久化目标、配额感知自动唤醒、可执行待办和证据日志。</div>
+        <div class="item-url">https://github.com/huangruiteng/loopx</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/donnemartin/system-design-primer" target="_blank" rel="noopener">donnemartin /system-design-primer — Learn how to design large-scale systems. Prep for the system design interview. Includes Anki flashcards.</a>
+        <div class="item-summary">system-design-primer：讲解大规模系统设计的经典学习项目，用于系统设计面试备考，并配有 Anki 记忆卡片。</div>
+        <div class="item-url">https://github.com/donnemartin/system-design-primer</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/tailwindlabs/tailwindcss" target="_blank" rel="noopener">tailwindlabs /tailwindcss — A utility-first CSS framework for rapid UI development.</a>
+        <div class="item-summary">Tailwind CSS：用于快速构建 UI 的原子化（utility-first）CSS 框架。</div>
+        <div class="item-url">https://github.com/tailwindlabs/tailwindcss</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/esengine/DeepSeek-Reasonix" target="_blank" rel="noopener">esengine /DeepSeek-Reasonix — DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.</a>
+        <div class="item-summary">DeepSeek-Reasonix：面向终端的 DeepSeek 原生 AI 编码 Agent，围绕前缀缓存稳定性设计，适合长期挂机运行。</div>
+        <div class="item-url">https://github.com/esengine/DeepSeek-Reasonix</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/vercel/next.js" target="_blank" rel="noopener">vercel /next.js — The React Framework</a>
+        <div class="item-summary">Next.js：Vercel 维护的 React 全栈框架。</div>
+        <div class="item-url">https://github.com/vercel/next.js</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/TencentCloud/TencentDB-Agent-Memory" target="_blank" rel="noopener">TencentCloud /TencentDB-Agent-Memory — TencentDB Agent Memory is a team-level memory hub for AI Agents — turning conversations, docs, and code into four reusable memory assets (Chat Memory, Skill, LLM-Wiki, Code-Graph) that are governed, shared, and equipped across agents and frameworks.</a>
+        <div class="item-summary">TencentDB Agent Memory：腾讯云推出的团队级 AI Agent 记忆中枢，把对话、文档和代码转化为聊天记忆、技能、LLM-Wiki、代码图谱四类可复用记忆资产，供不同 Agent 与框架共享治理。</div>
+        <div class="item-url">https://github.com/TencentCloud/TencentDB-Agent-Memory</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05148v1" target="_blank" rel="noopener">Reasoning Core: Designing Broad Procedural Data for Completion-Supervised Reasoning Training</a>
+        <div class="item-summary">提出 Reasoning Core，一套涵盖数学、逻辑、规划、状态追踪等领域的 50 个程序化生成器及配套评分器，在完形监督微调协议下于 3B 模型上在 DROP/LogiQA/ARC-Challenge 上超过其他同类程序化数据集。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05148v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05144v1" target="_blank" rel="noopener">Argus: A General-Purpose Agentic Runtime for Long-Horizon Reasoning</a>
+        <div class="item-summary">提出通用 Agent 运行时 Argus，通过 Manager/Planner/Engineer/Reviewer 角色分工与持久化项目状态实现自我演化，在 SWE-Bench Pro 上达到约 78% 准确率（对比 Direct Copilot 的 59%）。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05144v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05141v1" target="_blank" rel="noopener">OctoLong: Mid-Training On Cross-Repository Code Contexts Enhances Long-Context Modeling</a>
+        <div class="item-summary">提出 OctoLong 训练流水线，用 AST 解析器与语言服务器递归抓取跨仓库依赖代码构建百万级 token 长上下文语料，仅替换 12% 传统语料即可显著提升长上下文检索与仓库级代码理解能力。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05141v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05139v1" target="_blank" rel="noopener">Toward Skill-Native LLMs: Skill Entropy for Benchmarking and Training Long-Horizon Reasoning</a>
+        <div class="item-summary">提出「技能熵」概念衡量跨技能长链推理任务的切换难度，构建 Skill²-Bench 基准发现模型在高熵任务上准确率下降，并用技能熵作为强化学习训练信号大幅提升 Qwen3 系列模型表现。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05139v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05138v1" target="_blank" rel="noopener">Teaching Nemotron Greek: Mining a Corpus, Adapting Retrieval, and Grounding Generation for Modern Greek across Specialist Domains</a>
+        <div class="item-summary">针对现代希腊语缺失检索增强生成资源的问题，构建端到端 Nemotron 检索栈适配方案与 HERA 基准，微调后的 1B 嵌入模型 nDCG@10 从 0.362 提升到 0.835。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05138v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05132v1" target="_blank" rel="noopener">Predicting Brain Morphometry with MT-GNN: Mesh Evolution in Continuous Time with Graph-Based Metric Tensor Embeddings</a>
+        <div class="item-summary">提出 MT-GNN 模型，用图网络预测大脑皮层下结构表面的连续时间度量张量演化，在 ADNI 数据集 14 种脑结构的形态预测上全面优于现有方法。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05132v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05131v1" target="_blank" rel="noopener">OPD-V: Visual On-Policy Self-Distillation with Modality Balance</a>
+        <div class="item-summary">针对多模态大模型视觉推理中「文本主导生成、图像信息未被充分利用」的模态失衡问题，提出 OPD-V 自蒸馏范式，用正负教师定义模态平衡置信区间筛选训练 token，6 个基准上一致提升推理性能并降低训练成本。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05131v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05126v1" target="_blank" rel="noopener">Spoken Function Calling: A New Perspective on Spoken Language Understanding for Large Audio Language Models</a>
+        <div class="item-summary">提出「语音函数调用」（SFC）新范式，用结构化规则定义取代传统封闭域口语理解，构建 SFC-Bench 数据集验证其显著提升大语言模型和大音频语言模型的语义抽取准确率。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05126v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05124v1" target="_blank" rel="noopener">Chained Recursive Language Models for Multi-Iteration Reasoning</a>
+        <div class="item-summary">提出「链式递归语言模型」，让同一模型作为一系列独立推理起点反复调用，每次仅继承精简摘要、黑板记录和前序产出的持久化中间产物，而非完整对话历史，以应对长上下文推理中提取、计数、多跳等任务。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05124v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05120v1" target="_blank" rel="noopener">DASyR-LLM: Domain-Aware Symbolic Regression with LLMs for Kinetic Model Discovery</a>
+        <div class="item-summary">提出 LLM 引导的符号回归框架 DASyR-LLM，用于化学反应动力学模型发现，LLM 对候选公式做物理化学合理性点评并提出新候选表达式，相比传统符号回归减少 41.7%-79.3% 的搜索迭代次数。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05120v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05115v1" target="_blank" rel="noopener">Robust and Efficient Motion Reasoning for Privacy-Aware Classroom Incident Recognition</a>
+        <div class="item-summary">针对隐私保护下的课堂监控场景，提出轻量运动推理框架，把大教师模型的多阶层运动学推理蒸馏到小学生模型，用不到十分之一算力就超越更大的基线模型。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05115v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05111v1" target="_blank" rel="noopener">Reward Structure Shapes the Interaction Between Episodic Exploration and Neural Memory in Reinforcement Learning</a>
+        <div class="item-summary">系统研究情景探索奖励与神经记忆架构在强化学习中的交互，发现同一奖励信号在不同任务设定下会产生截然不同的效果模式，说明探索与记忆是互补而非替代关系。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05111v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05107v1" target="_blank" rel="noopener">CoPlan: A Trustworthy Co-Intelligence Interface for Care Planning through Role-Based Contestable Argument Graphs</a>
+        <div class="item-summary">提出可争议的人机协同养老照护规划系统 CoPlan，用多 Agent 生成候选干预方案及支持/反对论据，护理人员可接受、拒绝、修改或补充论据后再生成最终计划。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05107v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05102v1" target="_blank" rel="noopener">ABSeeker: Training Long-Horizon Search Agents via Answer-Backtracked Credit Assignment</a>
+        <div class="item-summary">提出「答案回溯信用分配」（ABC）框架训练长链搜索 Agent，从最终答案反推所需中间线索，把稀疏的轨迹级结果转化为密集的步骤级奖励，仅用 8.5k 样本训练的 ABSeeker 在 BrowseComp 上达到 37.3%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05102v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05097v1" target="_blank" rel="noopener">Same Formulas, Different Semantics: Do Language Models Follow Modal Logic Specifications?</a>
+        <div class="item-summary">构造前提相同但可及关系/论域条件不同的成对模态逻辑问题，发现五个模型中有四个在直接提示下表现低于「仅凭条件」基线，但开启推理模式后 DeepSeek V4 Flash 准确率从 4.4% 跃升到 88.1%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05097v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05095v1" target="_blank" rel="noopener">Hierarchical Graph Memory for LLM Agents with Path-level Localization and Rewrite</a>
+        <div class="item-summary">提出分层图记忆框架 HiGram，将记忆组织为「粗到细」的层级结构并支持路径级定位与联合改写，在长期对话问答和冲突感知记忆评测上显著优于扁平图记忆基线。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05095v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05086v1" target="_blank" rel="noopener">Item Response Theory for AI Safety</a>
+        <div class="item-summary">将心理测量学中的项目反应理论（IRT）引入 AI 安全评测，对 192 个模型的 8 个安全基准做迄今最大规模心理测量分析，发现约 10 道精选题即可将评测成本降低 97%-99%，并能检测模型「摆烂」和后台模型偷换。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05086v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05080v1" target="_blank" rel="noopener">Optimizing What Policies Learn From: Recoverability-aware Rollout Intervention Learning</a>
+        <div class="item-summary">提出「可恢复性感知的 Rollout 干预学习」（RAIL）框架，将 Rollout 生成建模为在线上下文赌博机问题，根据每次干预带来的实际提升动态决定在何处、如何为 LLM 后训练分配 Rollout 预算。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05080v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05063v1" target="_blank" rel="noopener">Hardware Design and Security in the Era of Chiplets and LLMs</a>
+        <div class="item-summary">系统梳理 2.5D chiplet 异构芯片系统与 LLM 驱动的 EDA 流程带来的新型硬件攻击面，回顾基于 2.5D 拆分制造与有源转接层的物理隔离信任根防御方案，并讨论 LLM 反哺硬件安全的潜力。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05063v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05050v1" target="_blank" rel="noopener">The Effect of Perceived Race and Gender on Police Language Use: Experimental Evidence from VR Simulations</a>
+        <div class="item-summary">通过 VR 模拟研究警察对被扮成黑人男性角色的对话礼貌程度，发现多数警官（白人/混血女性警官除外）对黑人男性角色说话更不客气，并探索了用 LLM 辅助文本特征构建来估计这种平均处理效应的方法。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05050v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05045v1" target="_blank" rel="noopener">Gradient Immunity: Null-Space Resistance to Malicious Fine-Tuning</a>
+        <div class="item-summary">提出「梯度免疫」防御方案，在开放权重模型发布时保留一个零空间三次层与逆适配器，微调时可抑制来自有害样本的梯度、同时不影响正常任务性能，提高恶意下游微调的攻击门槛。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05045v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05033v1" target="_blank" rel="noopener">SparseDitto: Customizing GPU Kernels for Different Sparsity Patterns with LLM-Based Agentic System</a>
+        <div class="item-summary">提出 LLM 驱动的 SparseDitto 系统，针对不同稀疏矩阵模式和目标 GPU 自动生成定制内核，在 RTX PRO 6000 上相比 cuSPARSE 平均加速 2.68 倍、最高 146.61 倍。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05033v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05030v1" target="_blank" rel="noopener">From Score Matrices to Football-Aware Match-State Simulation: An Auditable LLM Harness for Exact-Score Reranking</a>
+        <div class="item-summary">提出可审计的足球比分预测 LLM 框架，将 Dixon-Coles 统计模型与 LLM 逐球模拟结合，在 2025-26 英超前 150 场比赛的时序回测中将 Top-1 准确率从 10.0% 提升到 14.7%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05030v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05026v1" target="_blank" rel="noopener">ArtAnno: Annotating Implicit Semantics in Artworks through LLM Agent-Driven Bidirectional Human-AI Augmentation</a>
+        <div class="item-summary">提出人机双向增强框架 ArtAnno，用多 Agent 架构辅助艺术品隐含语义标注，AI 主动挖掘语义并给出建议，人类专家的标注轨迹又反过来持续优化 AI，提升标注效率并降低专业门槛。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05026v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05015v1" target="_blank" rel="noopener">Revealed Rationality: Label-Free Evaluation and Regularization from Representation Theorems</a>
+        <div class="item-summary">借鉴决策论中的表示定理（de Finetti、Afriat、Echenique-Saito），提出无需外部标签、仅靠模型自身对合成选择问题的回答即可检验概率一致性、偏好理性等公理是否成立的 LLM 评测与正则化方法。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05015v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05004v1" target="_blank" rel="noopener">DelusionEval: Measuring Delusion-Linked Behaviors in AI Chatbots</a>
+        <div class="item-summary">提出 DelusionEval 评测协议，用 18 名亲历者的 589 段真实对话（12591 条消息）测试模型诱发或强化用户妄想的倾向，发现延长对话上下文会显著提高「未能劝阻自杀意念」等有害行为发生率。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05004v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.05000v1" target="_blank" rel="noopener">Towards Physics of Multimodal Pretraining: Knowledge Flow, Modality Synergy, Early Unification, and Recipes</a>
+        <div class="item-summary">系统研究多模态统一预训练中语言、视觉理解与视觉生成之间的知识流动、协同/竞争关系，发现「早期统一」训练优于后期对齐，并给出仅用 5% 算力预算即可达到强生成性能的训练配方。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.05000v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.04999v1" target="_blank" rel="noopener">ORACLE: A Multi-Objective Reinforcement Learning-Based Analog Circuit Design Optimizer with Large Language Models-Guided Exploration</a>
+        <div class="item-summary">提出开源多目标强化学习模拟电路设计优化框架 ORACLE，用偏好向量替代标量奖励并引入 LLM 引导动作筛选，相比现有方法运行时间减少 20-104 倍。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.04999v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.04980v1" target="_blank" rel="noopener">Protoreasoning in Tiny Transformers</a>
+        <div class="item-summary">在约百万参数的微型 Transformer 上研究「原生推理」（protoreasoning）这种简化版思维链，发现推理轨迹的具体内容（而非仅是额外 token）能显著缩小分布外泛化差距。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.04980v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.04968v1" target="_blank" rel="noopener">EvolveNet: Collaborative Harness Evolution for Agent Self-Improvement</a>
+        <div class="item-summary">提出 EvolveNet 协作式 Agent Harness 演化范式，让分散在不同用户/组织的 Agent 各自在本地经验上独立演化 Harness，再将演化出的程序改动（而非原始经验）汇总组合成共享 Harness 并分发。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.04968v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

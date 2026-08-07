@@ -3232,6 +3232,84 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Next.js：Vercel 维护的 React 全栈框架。",
     "https://github.com/TencentCloud/TencentDB-Agent-Memory":
         "TencentDB Agent Memory：腾讯云推出的团队级 AI Agent 记忆中枢，把对话、文档和代码转化为聊天记忆、技能、LLM-Wiki、代码图谱四类可复用记忆资产，供不同 Agent 与框架共享治理。",
+
+    # 2026-08-07 GitHub Trending / YouTube AI / Hacker News Newest
+    "https://github.com/goauthentik/authentik":
+        "authentik：开源身份认证与访问管理平台，可作为统一 SSO/IdP 粘合各类应用的登录入口。",
+    "https://github.com/google/guava":
+        "Guava：Google 维护的 Java 核心库集合，提供集合、缓存、并发、字符串处理等通用工具。",
+    "https://github.com/Significant-Gravitas/AutoGPT":
+        "AutoGPT：致力于让每个人都能使用与构建的开源自主 AI Agent 项目，提供工具与基础设施帮助开发者聚焦业务逻辑。",
+    "https://www.youtube.com/watch?v=DdqO_twsrfQ":
+        "香港媒体节目探讨中美在开源与闭源大模型路线上的博弈，围绕 OpenAI、Hugging Face、Kimi K3 等案例辩论 AI 自主攻击风险。",
+    "https://www.youtube.com/watch?v=y7mFMDxc1VM":
+        "科普视频对比 ChatGPT、Gemini 等主流 AI 工具，给出免费 AI 工具选择指南。",
+    "https://www.youtube.com/watch?v=17U6CzL52BU":
+        "日本财经节目讨论 Kimi K3 引发的开源模型冲击，探讨 OpenAI、Anthropic 等闭源厂商的商业模式危机及转向企业应用与操作系统的可能性。",
+    "https://www.youtube.com/watch?v=93MVsq0CDt4":
+        "视频对比 ChatGPT 与 Claude 从零编写 Minecraft Bedrock 版光影着色器的编程能力。",
+    "https://www.youtube.com/watch?v=i4odXOmgMLw":
+        "Anthropic 官方视频，介绍金融科技公司 Ramp 的工程师如何在开发全流程中借助 Claude 等 AI Agent 协作。",
+    "https://news.ycombinator.com/item?id=49206861":
+        "讨论为什么普通用户并未真正采用 AI Agent 类产品。",
+    "https://news.ycombinator.com/item?id=49206984":
+        "Ask HN 求助帖：作者反映自己无法在 Show HN 分类下发帖。",
+    "https://news.ycombinator.com/item?id=49206719":
+        "介绍工具 df，通过直接编辑 NTFS 的 MFT（主文件表）将创建 5000 个文件的耗时从 113 秒降到 4.9 秒。",
+    "https://news.ycombinator.com/item?id=49206942":
+        "Show HN 式分享一个免费全能 AI 求职平台，提供 AI 简历、AI 求职信等一站式功能。",
+    "https://news.ycombinator.com/item?id=49206839":
+        "分享一个面向开发者的 AI 主题 YouTube 频道。",
+    "https://news.ycombinator.com/item?id=49206963":
+        "报道科技公司高管在阿根廷购置牧场以应对「末日」的现象。",
+    "https://news.ycombinator.com/item?id=49206655":
+        "Show HN：分享 Seedance 2.5 视频生成 API，支持 30 秒一镜到底、50 张参考图与 4K 输出，托管于 Atlas Cloud。",
+    "https://news.ycombinator.com/item?id=49206811":
+        "Show HN 式分享号称首个免费整合 TTS、STT 与 LLM 三合一的产品。",
+    "https://news.ycombinator.com/item?id=49206892":
+        "呼吁释放香港媒体人黎智英（Jimmy Lai）的声援帖。",
+    "https://news.ycombinator.com/item?id=49206708":
+        "Show HN：分享 Catnip 工具，用于采集分析 GitHub 仓库统计数据，提供 TUI 界面并支持 Agent 推理。",
+    "https://news.ycombinator.com/item?id=49206945":
+        "Show HN：分享一个 Skill，用于在 GitHub 服务中断时阻止 AI Agent 陷入无限重试循环。",
+    "https://news.ycombinator.com/item?id=49206736":
+        "讣告：在 TikTok 上记录自己癌症经历的 Sydney Towle 去世，年仅 26 岁。",
+    "https://news.ycombinator.com/item?id=49206928":
+        "分享哲学家 Harry Frankfurt 2005 年关于其著作《论扯淡》(On Bullshit) 的讲座视频。",
+    "https://news.ycombinator.com/item?id=49206693":
+        "报道 Cloudflare 高管称未来「人类将成为互联网上的舍入误差」，指 AI/机器人流量将远超人类流量。",
+    "https://news.ycombinator.com/item?id=49206857":
+        "讨论某已部署「桥牌搭档」AI 系统中逐帧纠错机制的技术分享。",
+    "https://news.ycombinator.com/item?id=49206978":
+        "介绍为 Gigatron（纯 TTL 芯片手工制作的复古电脑）编程的技术文章。",
+    "https://news.ycombinator.com/item?id=49206759":
+        "Show HN 式分享 Specjudge 工具，根据任务类型推荐该用哪个模型。",
+    "https://news.ycombinator.com/item?id=49206876":
+        "关于 Bluesky 社交平台的讨论帖。",
+    "https://news.ycombinator.com/item?id=49206679":
+        "研究发现前沿模型的回答会随「提问者身份认知」而改变，即模型对不同用户身份给出不同回答。",
+    "https://news.ycombinator.com/item?id=49206728":
+        "Patrick McKenzie（Patio11）评论称 Hugging Face 遭黑客攻击事件是自 Morris 蠕虫以来最重要的安全事件。",
+    "https://news.ycombinator.com/item?id=49206907":
+        "分享长期使用 Emacs 编辑器的心得。",
+    "https://news.ycombinator.com/item?id=49206954":
+        "Show HN：分享 Pikabo，一个面向浏览器扩展的自动化测试工具。",
+    "https://news.ycombinator.com/item?id=49206767":
+        "OpenBGPD（OpenBSD 下的 BGP 路由守护进程）发布 9.2 版本。",
+    "https://news.ycombinator.com/item?id=49206637":
+        "Show HN：分享 Linkly，一种专为 LLM 设计、通过 MLIR 编译的编程语言。",
+    "https://news.ycombinator.com/item?id=49206992":
+        "讨论深色模式切换开关设计，主张两态（开/关）已经足够，无需跟随系统等第三态。",
+    "https://news.ycombinator.com/item?id=49206971":
+        "Show HN：分享 XSAF，一个极简轻量的 Agent 框架。",
+    "https://news.ycombinator.com/item?id=49206642":
+        "报道 AI 被用于设计新型病毒的研究，引发生物安全担忧。",
+    "https://news.ycombinator.com/item?id=49206729":
+        "分享将各类 CAD 系统模型转换为可交互 3D 网页可视化的技术方案。",
+    "https://news.ycombinator.com/item?id=49207005":
+        "报道多家餐厅和剧院开始禁止顾客佩戴 Meta 智能眼镜。",
+    "https://news.ycombinator.com/item?id=49206987":
+        "游戏开发者撰文称从未见过因美术进度慢而导致游戏项目失败的案例，讨论真正的失败原因。",
 }
 
 
@@ -5983,4 +6061,82 @@ TRANSLATIONS: dict[str, str] = {
         "在约百万参数的微型 Transformer 上研究「原生推理」（protoreasoning）这种简化版思维链，发现推理轨迹的具体内容（而非仅是额外 token）能显著缩小分布外泛化差距。",
     "http://arxiv.org/abs/2608.04968v1":
         "提出 EvolveNet 协作式 Agent Harness 演化范式，让分散在不同用户/组织的 Agent 各自在本地经验上独立演化 Harness，再将演化出的程序改动（而非原始经验）汇总组合成共享 Harness 并分发。",
+
+    # 2026-08-07 公司动态 / 个人 Blog
+    "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/":
+        "Google DeepMind 推出新一代 WeatherNext 天气预测模型，在飓风/气旋路径与强度预测上取得突破性进展，性能超越传统数值天气预报方法。",
+    "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt":
+        "ChatGPT 推出升级版 GPT-5.6 Sol，准确性和一致性均有提升，同时向免费用户扩大开放，并为 GPT-5.6 Luna 提供无限次日常对话。",
+    "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai":
+        "OpenAI 与美国心理学会（APA）合作，共同制定基于证据的指南、资源和防护措施，推动青少年心理健康领域的负责任 AI 使用。",
+    "https://openai.com/index/how-the-world-is-putting-chatgpt-to-work":
+        "OpenAI 发布最新 Signals 数据，展示全球用户如何使用 ChatGPT，并给出各国采用率、使用趋势与行为演变的洞察。",
+    "https://simonwillison.net/2026/Aug/6/datasette/#atom-everything":
+        "Datasette 1.0a38 发布，修复了一个 SQL 注入安全漏洞：在同一数据库中混合公开与私有表时，即使关闭 execute-sql 权限，拥有公开表访问权的用户此前仍可能借助原始 SQL 查询访问私有表。",
+    "https://simonwillison.net/2026/Aug/6/datasette-2/#atom-everything":
+        "Datasette 0.65.3 发布，将 1.0a38 中的 SQL 注入安全修复回移到该稳定分支。",
+    "https://simonwillison.net/2026/Aug/6/simon-willison-on-technical-blogging/#atom-everything":
+        "Simon Willison 分享今年 1 月接受 Cynthia Dunlop「Write that blog!」系列访谈的链接，谈了为什么写博客、写博客带来的意外影响，以及给新手博主的建议。",
+
+    # 2026-08-07 arXiv 新论文
+    "http://arxiv.org/abs/2608.06377v1":
+        "提出 MIST 基准与 SC2W 指标衡量模型是否会被误导性上下文带偏，并用 SCOPE 方法在干净/误导/正确上下文/无关上下文四类匹配条件上做均衡 DPO 训练，在降低误导敏感度的同时保持对可信上下文的利用能力。",
+    "http://arxiv.org/abs/2608.06370v1":
+        "在 BFCL v4 上对比程序化工具调用（用 Python 代码而非 JSON 调用工具）与传统 JSON 工具调用，14 个模型中 11 个表现持平或更优，GPT-5.6 系列提升达 10.6%，且在并行调用与长上下文退化场景下更稳健。",
+    "http://arxiv.org/abs/2608.06366v1":
+        "提出可溯源的心衰电子病历特征工程多智能体系统 nMAS，自动生成 132 个结构化特征与 70 个规则打分特征，将 HFrEF/HFpEF 表型判别 AUROC 分别提升至 0.963 和 0.910。",
+    "http://arxiv.org/abs/2608.06362v1":
+        "将方差缩减工具 AIVAT 与「随时有效置信序列」结合成 AV-AIVAT，用于德州扑克等不完全信息博弈中的 Agent 强弱评测，相比原始结果所需对局数中位数减少 74 倍，且可随时安全停止并保留统计有效性。",
+    "http://arxiv.org/abs/2608.06361v1":
+        "通过弹球撞墙、眨眼、状态切换三类可控视频任务系统评测视频语言模型的事件计数能力，发现 Gemini 3.6 Flash 在高频高数量场景下最终计数准确率仅 0.2%，提高采样率能拉高准确率，但事件序列本身的还原忠实度仍很低。",
+    "http://arxiv.org/abs/2608.06353v1":
+        "提出面向已部署 AI Agent 的持续参与式治理机制设计模型，通过治理货币出资、双阈值滞后授权门与硬件签名算力许可，把「治理权」转化为对算力预算的自我强制性控制。",
+    "http://arxiv.org/abs/2608.06352v1":
+        "提出 CalibForge 自主终端任务合成系统，通过多/对比求解器的「对抗式求解器校准」筛选出难度恰当的可执行终端任务，构建 5431 个校准任务后训练模型在 Terminal-Bench 2.0、SWE-bench Pro、Doc2Repo 上分别取得最高 24.71、27.68、30.04 个百分点的提升。",
+    "http://arxiv.org/abs/2608.06347v1":
+        "提出「推理枢轴」引导的在线自蒸馏方法 RP-OPSD，聚焦决定推理走向的关键 token（推理枢轴）而非全部 token 做特权蒸馏，在覆盖 17 种语言的数学推理基准上超过现有多语言推理迁移与 OPSD 变体基线。",
+    "http://arxiv.org/abs/2608.06346v1":
+        "提出长时程 Agent 轨迹错误溯源框架 TrajDebug，通过多粒度历史压缩与证据定位追踪每个错误的演化与最终影响，并构建 486 条人工标注失败轨迹的 TrajErrBench 基准，在多个 Agent 基准上取得最优错误定位效果。",
+    "http://arxiv.org/abs/2608.06331v1":
+        "提出交互式神经符号系统 TYTAN，结合数据库符号分析与 LLM 语义推断，自动从关系数据库构建分析用语义 Schema，遇歧义会向用户提问，八个数据库测试中实体/属性覆盖率达 100%，语义角色与专家标注一致率 92-100%。",
+    "http://arxiv.org/abs/2608.06329v1":
+        "提出无需参考答案、用 LLM 裁判评估对话式 Agent 基准本身质量（一致性、复杂度、策略覆盖度）的框架，并验证其能与人工标注一致，可用于诊断合成或人工构建基准的缺陷。",
+    "http://arxiv.org/abs/2608.06312v1":
+        "提出首个面向国家标准文档（如中国 GB/T 标准）结构化审查的基准 GB/T-Bench，含 25 类可诊断错误、7306 条可追溯审查错误实例，最强 LLM 得分 0.328 远低于专家的 0.664，提出的多 Agent 框架 GB/T-Reviewer 将最佳成绩提升到 0.509。",
+    "http://arxiv.org/abs/2608.06310v1":
+        "发现生成式奖励模型的比较式本质与现有 RL 标量打分范式不匹配，提出基于排序构建奖励的 RRC 方法（自比较排序 + 锚点引导排序），在开放对话与推理基准上显著提升生成式奖励模型驱动的 RL 训练效果。",
+    "http://arxiv.org/abs/2608.06305v1":
+        "在 780 页政府财报上证明传统「切块-嵌入-Top-K」检索对表格密集型长文档结构性失效（86.8% 内容是表格行，数字常与表头单位隔开 13 行），提出免嵌入的 Agent 式检索系统 READ，用词法检索+结构导航+定长读取三种确定性操作，准确率 58.8% 远超密集检索的 15.7%。",
+    "http://arxiv.org/abs/2608.06301v1":
+        "提出评测 LLM 自动优化「Agent 系统 harness」（提示词、工具、记忆、编排代码）能力的基准 HarnessOpt-Bench，在受信执行环境下用留出测试集评分，5 个前沿模型 111 次运行结果显示优化器能力差异远大于所用编码 harness 本身的差异。",
+    "http://arxiv.org/abs/2608.06296v1":
+        "提出无监督在线自蒸馏方法 U-OPSD，仅用模型自身多次采样通过自一致性多数投票构造伪解，再蒸馏纠正最长错误补全，在 AIME24/25、HMMT25 等基准上 Qwen3 4B/8B 非思考模式提升 8.5%-10.7%，媲美甚至超过有监督的 OPSD/GRPO。",
+    "http://arxiv.org/abs/2608.06294v1":
+        "提出量子增强时序模型 QuanTiMedAI，结合 Agentic LLM 做临床特征发现与紧凑量子循环网络做时序心脏骤停死亡率预测，在 MIMIC-IV 队列上仅用 605 个参数取得 0.852 的 AUROC，比现有最优基线提升约 2.9%。",
+    "http://arxiv.org/abs/2608.06292v1":
+        "提出神经符号 RAG 框架 NeSy-RAG，把检索到的文本块转成可归因的 Prolog 谓词模块并组合查询，同时引入符号化知识缺口检测主动追问用户缺失信息，在 ShARC 基准上零领域训练达到 61.1% 准确率，远超同模型 RAG 基线的 42.8%。",
+    "http://arxiv.org/abs/2608.06283v1":
+        "提出子梯度驯化 Langevin 采样算法 SG-TULA，直接在非光滑、超线性增长、非凸的势函数上做无需平滑处理的稳定采样，并在 GPT-2 系语言模型正则化预训练任务上验证其与 AdamW、Muon 微调具有竞争力的非渐近收敛保证。",
+    "http://arxiv.org/abs/2608.06270v1":
+        "通过因果图与三层干预审计多模态 LLM 的「看图思考」（裁剪缩放等视觉工具调用）能力，发现六个模型普遍存在「调用但未真看」和「看了但未规划」两种失配模式，整体准确率提升其实集中在一小部分「校准良好」的样本上，即视觉工具使用大多并非真正因果有效。",
+    "http://arxiv.org/abs/2608.06265v1":
+        "针对医疗合成基准「能过效用检查却仍不真实」的问题，提出在保持下游效用底线的约束下改进真实感的方法，在基于 Synthea 生成患者的护理缺口基准上，两种确定性修订大幅提升缺失结构、可操作行数比例等真实感指标，而简单密集化处理仍保留虚假模板痕迹。",
+    "http://arxiv.org/abs/2608.06253v1":
+        "提出代谢组学专用大语言模型 MetaboLLM（持续预训练+微调+结构化检索）及配套图神经网络 MetaboLLM-GIN，将模型生成的生化描述转为代谢物图用于患者级预测，在冠脉搭桥术后应激性高血糖预测（AUC 0.8616）和绝经后激素方案分类（AUC 0.8123）上超越传统模型。",
+    "http://arxiv.org/abs/2608.06246v1":
+        "提出按机制、目标、数据需求、持久性、结构范围、模型类型六个维度系统梳理微调、参数高效适配、对齐、检索增强、模型编辑、遗忘等训练后适配技术的分类法，用于支持模型变更追踪与 AI 治理分析。",
+    "http://arxiv.org/abs/2608.06243v1":
+        "针对在线自蒸馏（OPSD）对所有 token 局部散度一视同仁的问题，提出「散度自适应监督时域」DASH，依据每个 token 散度偏离序列均值的程度动态设置反向传播门控权重，在三个数学推理基准、三种模型规模上均稳定超过 OPSD 复现基线，且无需额外前向计算。",
+    "http://arxiv.org/abs/2608.06227v1":
+        "提出「全息数字孪生网络」（HDT-Net）框架，让数字孪生从被动镜像物理资产转变为主动推理的 Agent，通过因果马尔可夫毯确定协同边界、主动推理统一感知决策学习、范畴论保证跨异构 Agent 语义一致，为无线网络支撑物理世界实时 AI 协同提供理论架构。",
+    "http://arxiv.org/abs/2608.06223v1":
+        "提出面向时间序列预测的检索增强框架 TS-RAG，引入专门设计的参考 token 融合输入序列与检索到的相似历史序列信息，在多个真实世界预测基准上取得一致的最优表现。",
+    "http://arxiv.org/abs/2608.06216v1":
+        "综述持续学习从「参数为中心」向「系统级适配」转变的趋势，提出按「何时（预训练/后训练/推理时）、如何（离线策/在线策/超越梯度）、何处（内部参数 vs 外部记忆/技能库/交互协议）」三轴系统梳理持续学习方法演进。",
+    "http://arxiv.org/abs/2608.06202v1":
+        "用 BBQ 和 SafetyBench 两个安全基准共 401 条 prompt、4812 次响应，系统对比 ChatGPT 聊天界面与 OpenAI API、开启/关闭网页搜索四种条件下的表现，发现开启搜索可使准确率下降最多 8 个百分点甚至逆转模态优劣，同一 prompt 重复运行结果不一致比例最高达 21%。",
+    "http://arxiv.org/abs/2608.06197v1":
+        "提出「世界排演」式 Agent 强化学习方法 EnvACE，让策略模型交替扮演行动者和环境角色，用自生成的环境响应替代昂贵的真实/合成环境交互进行端到端联合优化，在 BFCL-v4、tau²-Bench 等基准上超越环境扩展基线，测试时还可先做「私下排演」进一步提升表现。",
+    "http://arxiv.org/abs/2608.06196v1":
+        "在 690 个技能构成的技能库上对比「混合排序检索」与「类型化知识图谱」两种 Agent 技能检索方案，发现混合排序器 top5 命中率达 73.5%，而按设计意图使用图谱反而显著更差（-11.2 个百分点），因为图谱候选边本就来自排序器已搜索过的嵌入邻域，未能扩展检索覆盖范围。",
 }

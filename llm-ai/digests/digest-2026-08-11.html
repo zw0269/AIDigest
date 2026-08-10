@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-11</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-11</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-11</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 63 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">63</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">9</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">11</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">43</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">9 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">8 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/building-an-ai-native-finance-function" target="_blank" rel="noopener">What building an AI-native finance function taught me</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI CFO Sarah Friar shares five lessons for building an AI-native finance function, from automated forecasting to stronger controls and AI ROI.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI CFO Sarah Friar 分享打造 AI 原生财务团队的五条经验，涵盖自动化预测、更强内控与 AI 投资回报评估。</div>
+        <div class="item-url">https://openai.com/index/building-an-ai-native-finance-function</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/responsible-ai-infrastructure-texas" target="_blank" rel="noopener">OpenAI’s letter to Governor Abbott on responsible AI infrastructure in Texas</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI sent Governor Greg Abbott a letter outlining its commitment to responsible AI infrastructure in Texas. The letter supports reliable, transparent growth that benefits Texans.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 致信德州州长 Greg Abbott，阐述其在德州负责任建设 AI 基础设施的承诺，支持透明、可靠且惠及德州民众的增长。</div>
+        <div class="item-url">https://openai.com/index/responsible-ai-infrastructure-texas</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/model-ml" target="_blank" rel="noopener">Model ML completes finance work more efficiently with GPT-5.6 Sol</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Model ML uses GPT-5.6 Sol to carry finance work from research and analysis through editable, traceable PowerPoint decks and Excel workbooks.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>金融软件公司 Model ML 借助 GPT-5.6 Sol，将财务研究分析自动串联为可编辑、可追溯的 PPT 和 Excel 成果。</div>
+        <div class="item-url">https://openai.com/index/model-ml</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands" target="_blank" rel="noopener">Putting frontier cyber models in more trusted hands</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Approved Daybreak partners can use OpenAI’s frontier cyber models to deliver authorized, governed cybersecurity services to customers.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 让通过 Daybreak 审核的合作伙伴使用其前沿网络安全模型，为客户提供经授权、受治理的网络安全服务。</div>
+        <div class="item-url">https://openai.com/index/putting-frontier-cyber-models-in-more-trusted-hands</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows" target="_blank" rel="noopener">Expanding Daybreak as the Cyber Defense Window Narrows</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Meet GPT-5.6-Cyber, OpenAI’s cybersecurity-specific model available through Daybreak Red for authorized vulnerability research, exploit validation, and security testing.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出网络安全专用模型 GPT-5.6-Cyber，通过 Daybreak Red 提供给授权方用于漏洞研究、漏洞利用验证和安全测试。</div>
+        <div class="item-url">https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/premium-seats-chatgpt-business" target="_blank" rel="noopener">Premium seats are coming to ChatGPT Business</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Premium seats are coming to ChatGPT Business. Sign up by August 20 to get $100 in workspace credits and unlock higher usage for your team&#x27;s most demanding work.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT Business 即将推出高级席位（Premium seats），8 月 20 日前报名可获 100 美元工作空间额度并解锁更高用量上限。</div>
+        <div class="item-url">https://openai.com/index/premium-seats-chatgpt-business</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/responding-next-frontier-critical-cyber-capabilities" target="_blank" rel="noopener">Responding to the next frontier of critical cyber capabilities</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI is sharing preliminary cybersecurity evaluations for Astra and the steps we’re taking to strengthen safeguards and security controls.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 公布 Astra 模型的初步网络安全评估结果，并说明正在采取的强化防护和安全管控措施。</div>
+        <div class="item-url">https://openai.com/index/responding-next-frontier-critical-cyber-capabilities</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/hsp-gruppe" target="_blank" rel="noopener">How HSP GRUPPE builds AI capabilities for tax advisory</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Discover how HSP GRUPPE uses ChatGPT Enterprise to boost productivity, improve work quality, and create more capacity for tax advisory and client service.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>税务咨询公司 HSP GRUPPE 介绍其如何用 ChatGPT Enterprise 提升生产力、改善工作质量并为税务咨询和客户服务腾出更多产能。</div>
+        <div class="item-url">https://openai.com/index/hsp-gruppe</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards" target="_blank" rel="noopener">Improving Fable 5&#x27;s biology safeguards</a>
+        <div class="item-summary">Anthropic 重写 Claude Fable 5 生物安全分类器规则并引入专家意见，将生物相关查询被误判打回 Opus 5 的比例降低约 85%，同时继续拦截病毒学、毒理学和分子设计等潜在大规模杀伤性风险请求。</div>
+        <div class="item-url">https://www.anthropic.com/news/improving-fable-5-s-biology-safeguards</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">11 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">11 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/10/openclaw/#atom-everything" target="_blank" rel="noopener">Quoting OpenClaw</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The API has zero authorisations checks on cancelling other people&#x27;s reservations … I tested this with the person in waitlist position #1 — and it actually went through. So you&#x27;ve moved from #4 to #3 already.
+— OpenClaw, hacking an Australian gym-booking website
+
+    Tags: ai-ethics, generative-ai, openclaw, ai, ai-security-research, llms</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 引用 OpenClaw 的安全研究：某澳大利亚健身房预订网站 API 对取消他人预约完全没有权限校验，借此候补排名从第 4 位跳到第 3 位。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/10/openclaw/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/9/claude-opus-5-system-prompt/#atom-everything" target="_blank" rel="noopener">Quoting Claude Opus 5 system prompt</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Claude Fable 5 and Claude Mythos 5 were first released on June 9, 2026. On June 12, 2026, Anthropic suspended access to both models to comply with U.S. Department of Commerce export controls; the Department lifted those controls on June 30, 2026, and Anthropic restored access on July 1, 2026 (Anthropic&#x27;s statement: https://www.anthropic.com/news...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 摘录 Claude Fable 5/Mythos 5 系统提示词片段：说明两模型曾因美国商务部出口管制于 6 月 12 日被暂停访问、7 月 1 日恢复，用于让模型如实回应相关提问。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/9/claude-opus-5-system-prompt/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/9/github-models-is-now-retired/#atom-everything" target="_blank" rel="noopener">GitHub Models is now retired</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GitHub Models is now retired
+I missed this news until today, when the GitHub Actions run for my simonw/research repository failed with this error message:
+
+GitHub Models is temporarily unavailable as part of a scheduled retirement brownout.
+
+That message is already stale, because the retirement has been completed.
+GitHub Models was an odd-shaped...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 记录 GitHub Models 服务正式退役：其 GitHub Actions 因此报错，并回顾了 GitHub Models 曾提供的跨 LLM 提供商统一 API 及 Actions 环境免配置调用的优势。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/9/github-models-is-now-retired/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/9/sqlite-text-history-prototype/#atom-everything" target="_blank" rel="noopener">SQLite compressed text-history prototypes</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Research: SQLite compressed text-history prototypes
+        I&#x27;m perennially interested in options for storing revision histories in relational databases. While out on a dog walk I had a new idea: how about taking the full text of every prior version in a big JSON array of strings and then applying zlib or zstd compression to the whole thing? Sur...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 分享用 SQLite 存储修订历史的新想法原型：把每个历史版本全文存入 JSON 数组后整体做 zlib/zstd 压缩，利用重复字符串获得很好压缩率。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/9/sqlite-text-history-prototype/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/8/auto-mode/#atom-everything" target="_blank" rel="noopener">Auto mode is now the default in Claude Code for Pro, Max, and Team plans</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Auto mode is now the default in Claude Code for Pro, Max, and Team plans
+Anthropic are really confident in Claude Code&#x27;s auto mode, to the point that they are making it the default setting for new sessions in most Claude Code plans starting on August 14th.
+This was one of the topics discussed in our Fireside Chat with Cat Wu and Thariq Shihipar ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 报道 Anthropic 将从 8 月 14 日起把 Auto 模式设为 Claude Code Pro/Max/Team 新会话的默认设置，并引用 Anthropic 内部几乎所有人都在用 Auto 模式应对 prompt injection 风险的说法。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/8/auto-mode/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/8/now-we-have-a-timeline-of-the-openai-accidental-attack-against-h/#atom-everything" target="_blank" rel="noopener">Now we have a timeline of the OpenAI accidental attack against Hugging Face</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on Now we have a timeline of the OpenAI accidental attack against Hugging Face — Hacker News.I think one of the most interesting details here might be tucked away in that first bulletin point:
+
+May 7: OpenAI starts a new training run for an experimental, unreleased model. (Do they mean an evaluation run? They say training run in the v...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 评论 OpenAI 意外攻击 Hugging Face 事件的时间线，认为最有意思的细节是 5 月 7 日 OpenAI 启动的一次未发布实验模型训练任务与该事件的关联。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/8/now-we-have-a-timeline-of-the-openai-accidental-attack-against-h/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/8/john-gruber/#atom-everything" target="_blank" rel="noopener">Quoting John Gruber</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Me, I try to get into the mindset of playing live music, not recording a studio album. Except when I’m writing a piece where I really want it to be an album. Those aren’t rare, per se, but they’re occasional. If I tried to make every post a hall-of-famer I’d never get anything out.
+I’m aiming for professionalism. I’m performing live in front of ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 引用 John Gruber 回应其博客写作建议的比喻：写作更像现场演奏而非录制专辑，追求专业但不要求每篇都是精品。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/8/john-gruber/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/7/openai-timeline/#atom-everything" target="_blank" rel="noopener">Now we have a timeline of the OpenAI accidental attack against Hugging Face</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI gave a last-minute presentation at the Black Hat security on Wednesday about &quot;the Hugging Face Incident&quot; (previously on this blog). The video was published yesterday. It&#x27;s short and information dense and well worth watching, in particular because it provides full details of what happened and how things played out inside OpenAI. I&#x27;ve used ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 依据 OpenAI 在 Black Hat 大会发布的视频，整理出 Hugging Face 攻击事件的完整时间线，指出 OpenAI 是在请求撤销自身凭证时才发现自己是攻击方。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/7/openai-timeline/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/7/moonlight-mayhem/#atom-everything" target="_blank" rel="noopener">Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)
+On Wednesday I wrote about One-shotting a Raccoon Heist game using Claude Fable 5, where I had Claude Fable 5 build a full working game from a premise I generated with GPT-3 and DALL-E four years ago.
+I decided to pose the exact same prompt to Codex Desktop running GPT-5.6 Sol Ultra...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 用同一份「浣熊抢劫」游戏创意分别喂给 Claude Fable 5 与 Codex Desktop（GPT-5.6 Sol Ultra 多子智能体模式），后者做出的 Moonlight &amp; Mayhem 游戏效果更好，代码与素材已开源。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/7/moonlight-mayhem/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything" target="_blank" rel="noopener">The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI
+There&#x27;s a fun anecdote from Accenture (apparently via leaked meeting audio recordings) in this 404 Media piece from June 24th:
+
+“We’re seeing from some of the data internally at least that it’s actually not our engineers that are driving the token consumption. It...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 转发 404 Media 报道：埃森哲内部录音显示，推动企业 AI token 消耗暴涨的其实主要是非工程岗位员工的使用行为，而非工程师。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/6/datasette-auth-tokens/#atom-everything" target="_blank" rel="noopener">datasette-auth-tokens 0.4a13</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-auth-tokens 0.4a13
+        Upgraded for compatibility with `sqlite-utils 4.
+    
+    
+        Tags: datasette</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 发布 datasette-auth-tokens 0.4a13，更新以兼容 sqlite-utils 4.x。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/6/datasette-auth-tokens/#atom-everything</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">43 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247959" target="_blank" rel="noopener">Collaboration</a>
+        <div class="item-summary">分享一条关于「协作」（Collaboration）主题的推文，内容较为简短。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247959</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247953" target="_blank" rel="noopener">LLMs and Humans Are Cognitive Cousins</a>
+        <div class="item-summary">讨论文章认为 LLM 与人类在认知上是「表亲」关系，比较二者思维方式的异同。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247953</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247965" target="_blank" rel="noopener">Scoping and curating AI eval datasets</a>
+        <div class="item-summary">讨论如何界定范围并构建高质量的 AI 评测（eval）数据集。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247965</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247907" target="_blank" rel="noopener">Students Skinned a Bear in a Dorm. Cornell Realized It Should Ban That</a>
+        <div class="item-summary">报道康奈尔大学学生在宿舍剥熊皮一事后，校方意识到应明确禁止此类行为。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247907</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247645" target="_blank" rel="noopener">Semiconductor Fabrication Basics – Home Chip Lab Tour [video]</a>
+        <div class="item-summary">视频参观一个自制半导体芯片实验室，介绍芯片制造的基础流程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247645</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247939" target="_blank" rel="noopener">Autopoietic Ethics</a>
+        <div class="item-summary">文章提出「自生系统伦理学」（Autopoietic Ethics）十条原则，借用控制论学者（Maturana、Varela 等）与 Michael Levin 的生物能动性研究，区分健康的「和谐」状态与病态的「俘获」「癌变」状态。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247939</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247628" target="_blank" rel="noopener">We&#x27;re not done with point clouds</a>
+        <div class="item-summary">讨论点云（point cloud）技术目前仍有待解决的问题和发展空间。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247628</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247729" target="_blank" rel="noopener">US court rules Meta, others must face lawsuits over social media addiction</a>
+        <div class="item-summary">报道美国法院裁定 Meta 等公司必须面对有关社交媒体成瘾的诉讼。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247729</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247684" target="_blank" rel="noopener">Hackers Take over Inflight WiFi</a>
+        <div class="item-summary">报道黑客攻陷飞机机上 WiFi 系统的事件。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247684</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247607" target="_blank" rel="noopener">KitBash Acquires ArtStation and Sketchfab</a>
+        <div class="item-summary">报道 KitBash 收购 ArtStation 和 Sketchfab 两大 3D 美术资源平台。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247607</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247537" target="_blank" rel="noopener">CVE-2026-65400: Apple macOS Screen Sharing authentication bypass</a>
+        <div class="item-summary">披露 CVE-2026-65400：苹果 macOS 屏幕共享功能存在身份验证绕过漏洞。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247537</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247569" target="_blank" rel="noopener">Why Are Rivers So Mathematical?</a>
+        <div class="item-summary">文章探讨河流形态为何呈现出数学规律性。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247569</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247792" target="_blank" rel="noopener">Theo Jaffee on Becoming AGI-Pilled</a>
+        <div class="item-summary">介绍 Theo Jaffee 谈自己如何转变为「AGI 信徒」（AGI-pilled）的心路历程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247792</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247557" target="_blank" rel="noopener">Zuckerberg makes a case for unleashing Pandora&#x27;s box</a>
+        <div class="item-summary">报道 Zuckerberg 为「开放潘多拉魔盒」式推进 AI 发展进行辩护。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247557</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247796" target="_blank" rel="noopener">IPython is all you need</a>
+        <div class="item-summary">文章主张只需 IPython 交互式环境即可满足大部分开发需求（「IPython is all you need」）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247796</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247646" target="_blank" rel="noopener">QaDiT: A 160M text-to-audio DiT trained with just 18 dollars</a>
+        <div class="item-summary">介绍 QaDiT：一个仅用 18 美元训练成本训练出的 1.6 亿参数文本转音频 DiT 模型。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247646</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247609" target="_blank" rel="noopener">A Mystery Avenger Escalates a War Against Scotland&#x27;s Parking Police</a>
+        <div class="item-summary">报道一名神秘「复仇者」持续针对苏格兰停车管理部门发起行动的离奇事件。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247609</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247631" target="_blank" rel="noopener">Young Men Are Being Sold Fake Belonging and Fake Wealth Online</a>
+        <div class="item-summary">讨论年轻男性在网络上被兜售虚假归属感和虚假财富承诺的现象。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247631</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247844" target="_blank" rel="noopener">The Deslop Stack Fallacy: Why Style Rules Hurt Thinking Quality</a>
+        <div class="item-summary">文章批评「去 slop 化」写作风格规则反而损害了思考质量，称之为「Deslop Stack 谬误」。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247844</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247815" target="_blank" rel="noopener">Sanders Calls on Tech Giants to Pause Development of Out-of-Control AI</a>
+        <div class="item-summary">报道 Sanders 呼吁科技巨头暂停开发「失控」AI。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247815</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247882" target="_blank" rel="noopener">Ask HN: New Projet Backup</a>
+        <div class="item-summary">Ask HN：作者请教如何为新项目做好备份方案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247882</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247801" target="_blank" rel="noopener">Hk ask: why I cant post here</a>
+        <div class="item-summary">用户询问为何自己无法在 HN 上发帖，寻求社区解答。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247801</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247593" target="_blank" rel="noopener">A.I. Agents Are Taking Online Courses for Cheating Students</a>
+        <div class="item-summary">报道有学生借助 AI Agent 代上网课作弊的现象。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247593</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247903" target="_blank" rel="noopener">AI Interviews Are Moving Hiring into the Middle of the Night</a>
+        <div class="item-summary">报道 AI 面试正把招聘流程推向深夜进行。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247903</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247570" target="_blank" rel="noopener">Deleted UK Government code repositories</a>
+        <div class="item-summary">报道英国政府删除了部分代码仓库。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247570</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247763" target="_blank" rel="noopener">I built a private travel journal for iPhone</a>
+        <div class="item-summary">Show HN：作者分享自己为 iPhone 打造的私人旅行日记应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247763</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247938" target="_blank" rel="noopener">Looking at Tarpit and LLM Maze Stats</a>
+        <div class="item-summary">文章分析用于对抗爬虫的 Tarpit 与「LLM 迷宫」相关统计数据。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247938</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247732" target="_blank" rel="noopener">I thought an LLM gateway was unnecessary. Then we added a second model provider</a>
+        <div class="item-summary">作者分享经历：原以为 LLM 网关没必要，直到接入第二个模型提供商后才发现其价值。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247732</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247730" target="_blank" rel="noopener">South Korea to launch $3.5B chip fund, speed development of semiconductor hubs</a>
+        <div class="item-summary">报道韩国将启动 35 亿美元芯片基金，加速半导体产业中心建设。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247730</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49247890" target="_blank" rel="noopener">You spend more when prices end in .99 (2018)</a>
+        <div class="item-summary">文章（2018）讨论「.99 结尾定价」为何会让消费者花更多钱的心理机制。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49247890</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=X8K1bW-XfL8" target="_blank" rel="noopener">WorldofAI — OpenAI&#x27;s GPT-6 &#x27;Doug&#x27;, Qwen 4.0 WILL BE INSANE, GPT-Image-3.0?, RIP Gemini, &amp; More! HUGE AI NEWS!（27,846 次播放）</a>
+        <div class="item-summary">WorldofAI 汇总一批 AI 圈传闻：OpenAI 内部代号「Doug」的 GPT-6、Qwen 4.0 预期强劲、GPT-Image-3.0 传闻及 Gemini 相关动态等热点新闻。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=X8K1bW-XfL8</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=dffmRlK8Ay4" target="_blank" rel="noopener">SBS 뉴스 — ChatGPT Now Free for Everyone: Latest &#x27;Luna&#x27; Model Released / News Brief / SBS Morning Wide Part 2（16,829 次播放）</a>
+        <div class="item-summary">SBS 新闻简报报道 ChatGPT 宣布对所有用户免费开放，并同步发布最新「Luna」模型。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=dffmRlK8Ay4</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=6V_b-IZS2Tk" target="_blank" rel="noopener">關鍵時刻 — 習近平臉被Kimi丟光！中國超級AI竟「自稱Claude」偷美國技術被抓包？「股市狂噴」市場恐慌看破手腳？【關鍵時刻】張炤和（15,391 次播放）</a>
+        <div class="item-summary">台湾节目《关键时刻》讨论中国 Kimi 大模型被曝在回答中「自称 Claude」、疑似套用美国技术一事，及其引发的相关中国科技股市场恐慌。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=6V_b-IZS2Tk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=lyTaWdtMtUQ" target="_blank" rel="noopener">Bharatavarsha — చాట్ GPT షాకింగ్ రిప్లై.. భారత్ ని నాశనం చేయడం ఎలా? | Shocking answer from charge GPT AI（22,682 次播放）</a>
+        <div class="item-summary">泰卢固语频道 Bharatavarsha 报道 ChatGPT 被问及「如何摧毁印度」时给出的回答引发争议，讨论该回复是否恰当。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=lyTaWdtMtUQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=WyJJFzbdjuY" target="_blank" rel="noopener">PAPAYA 電腦教室 — I Saved a Fortune on AI Subscriptions with This One Claude Skill! Stop Overpaying for Image and V...（35,912 次播放）</a>
+        <div class="item-summary">PAPAYA 电脑教室分享一个 Claude Skill，帮助用户省下大量 AI 图像与视频生成的订阅费用，避免为多个平台重复付费。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=WyJJFzbdjuY</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">8 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/PrimeIntellect-ai/prime-agent" target="_blank" rel="noopener">PrimeIntellect-ai /prime-agent — A self-improving RLM agent for coding workflows and long-running autonomous tasks.</a>
+        <div class="item-summary">PrimeIntellect-ai 开源 prime-agent：一个用于编程工作流和长时间自主任务的自我改进型 RLM Agent。</div>
+        <div class="item-url">https://github.com/PrimeIntellect-ai/prime-agent</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/google-deepmind/weathernext" target="_blank" rel="noopener">google-deepmind /weathernext</a>
+        <div class="item-summary">Google DeepMind 开源 WeatherNext 2 代码：新一代全球中程大气与气旋预报模型，并提供 Google Cloud、WeatherLab、OpenMeteo 等平台的每日数据接入方式。</div>
+        <div class="item-url">https://github.com/google-deepmind/weathernext</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/paperclipai/paperclip" target="_blank" rel="noopener">paperclipai /paperclip — The open-source app everyone uses to manage agents at work</a>
+        <div class="item-summary">paperclipai 开源 Paperclip：一款用于在工作场景中管理多个 AI Agent 的应用。</div>
+        <div class="item-url">https://github.com/paperclipai/paperclip</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/semantica-agi/semantica" target="_blank" rel="noopener">semantica-agi /semantica — Graph-Native Infrastructure for Context and Accountable AI Systems</a>
+        <div class="item-summary">semantica-agi 开源 Semantica：面向上下文管理和可追责 AI 系统的图原生（Graph-Native）基础设施。</div>
+        <div class="item-url">https://github.com/semantica-agi/semantica</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/danielmiessler/LifeOS" target="_blank" rel="noopener">danielmiessler /LifeOS — ⛰️A General Hill-climbing AI harness that helps you move from Current State to Ideal State in both Life and Work.</a>
+        <div class="item-summary">Daniel Miessler 开源 LifeOS：一套「爬坡式」AI 框架，帮助个人在生活和工作中从当前状态迈向理想状态。</div>
+        <div class="item-url">https://github.com/danielmiessler/LifeOS</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Comfy-Org/ComfyUI" target="_blank" rel="noopener">Comfy-Org /ComfyUI — The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.</a>
+        <div class="item-summary">Comfy-Org 的 ComfyUI：功能强大、模块化的扩散模型 GUI，提供图形化节点界面及配套 API 和后端。</div>
+        <div class="item-url">https://github.com/Comfy-Org/ComfyUI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/opa334/Dopamine" target="_blank" rel="noopener">opa334 /Dopamine — Dopamine is a semi-untethered jailbreak for iOS 15 to 26(.0.1)</a>
+        <div class="item-summary">opa334 开源 Dopamine：适用于 iOS 15 至 26(.0.1) 的半免砸壳（semi-untethered）越狱工具。</div>
+        <div class="item-url">https://github.com/opa334/Dopamine</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/vitali87/code-graph-rag" target="_blank" rel="noopener">vitali87 /code-graph-rag — The ultimate RAG for your monorepo. Query, understand, and edit multi-language codebases with the power of AI and knowledge graphs</a>
+        <div class="item-summary">vitali87 开源 code-graph-rag：结合知识图谱的多语言单体仓库 RAG 工具，支持查询、理解和编辑代码库。</div>
+        <div class="item-url">https://github.com/vitali87/code-graph-rag</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-15</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-15</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-15</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 10 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">10</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">3</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/claude-text-watermark" target="_blank" rel="noopener">How Claude’s text watermark works</a>
+        <div class="item-summary">Anthropic 宣布未来 Claude 模型生成的文本将带有水印，用于判断文本是否由 Claude 撰写；此举是为遵守欧盟 AI 法案，文章解答了水印原理及是否影响输出质量等常见问题。</div>
+        <div class="item-url">https://www.anthropic.com/news/claude-text-watermark</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">3 条 · 2 个来源</div>
+    <div class="source-group" id="sebastian-raschka">
+      <div class="source-header">
+        <div class="source-name">Sebastian Raschka</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://magazine.sebastianraschka.com/p/ai-detector-from-scratch" target="_blank" rel="noopener">Building an AI Text Detector From Scratch</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>An End-to-End Project With Dataset Construction, Model Training, Local Deployment, and RLVR</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Sebastian Raschka 分享从零构建 AI 文本检测器的完整实战项目，涵盖数据集构建、模型训练、本地部署，并用到 RLVR（可验证奖励强化学习）技术。</div>
+        <div class="item-url">https://magazine.sebastianraschka.com/p/ai-detector-from-scratch</div>
+      </div>
+    </div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/15/sighting-391300422/" target="_blank" rel="noopener">Northern Gannet</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Northern Gannet, in Pillar Point Harbor, CA, USThis is Morris.
+Morris is a local celebrity: the only known Northern Gannet (Morus bassanus) in the entire Pacific Ocean.
+He showed up in the Farallon Islands off the coast of San Francisco 14 years ago. He has since made Pillar Point harbor his home, where he&#x27;s quite easy to spot: the only white bi...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 分享观鸟随笔：在加州 Pillar Point 港口偶遇 Morris —— 太平洋地区已知唯一一只北方塘鹅，14 年前首现于法拉隆群岛，如今已是当地名鸟。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/15/sighting-391300422/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/14/dont-classify-hallucinate/" target="_blank" rel="noopener">Don&#x27;t classify. Hallucinate!</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Don&#x27;t classify. Hallucinate!
+I still have quite a bit of older content on my blog that I never got round to tagging. My blog has 1,856 tags - likely too many to feed to an LLM in one go and say &quot;which of these tags match the following content&quot;.
+Doug Turnbull has a neat solution. Tell the model to output tags without any details of the existing v...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 介绍 Doug Turnbull 的博客打标签技巧：让 LLM 在不知道现有标签体系的情况下自由「幻想」标签，再用向量嵌入匹配语料库中最接近的既有标签，从而在标签过多（1856 个）时也能高效分类。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/14/dont-classify-hallucinate/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">6 条 · 1 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener">public-apis /public-apis — A collective list of free APIs</a>
+        <div class="item-summary">public-apis：汇集大量免费公共 API 的合集仓库，方便开发者查找可直接调用的各类接口。</div>
+        <div class="item-url">https://github.com/public-apis/public-apis</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/cordiverse/cordis" target="_blank" rel="noopener">cordiverse /cordis — Meta-Framework of Spatiotemporal Composability</a>
+        <div class="item-summary">cordis：支持时空可组合性的元框架，用于构建插件化、可跨场景协同的应用架构。</div>
+        <div class="item-url">https://github.com/cordiverse/cordis</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/MakazhanAlpamys/Soup" target="_blank" rel="noopener">MakazhanAlpamys /Soup — Fine-tune LLMs from one YAML. Layer streaming trains an 8B model on a 4 GB laptop GPU.</a>
+        <div class="item-summary">Soup：仅用一份 YAML 配置即可微调 LLM，通过分层流式加载技术可在 4GB 显存的笔记本 GPU 上训练 8B 参数模型。</div>
+        <div class="item-url">https://github.com/MakazhanAlpamys/Soup</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/ToolJet/ToolJet" target="_blank" rel="noopener">ToolJet /ToolJet — ToolJet is the open-source foundation of ToolJet AI - the enterprise app generation platform for building internal tools, dashboard, business applications, workflows and AI agents 🚀</a>
+        <div class="item-summary">ToolJet：开源企业级应用生成平台的基础项目，用于构建内部工具、仪表盘、业务系统、工作流和 AI Agent。</div>
+        <div class="item-url">https://github.com/ToolJet/ToolJet</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/cursor/plugins" target="_blank" rel="noopener">cursor /plugins — Cursor plugin specification and official plugins</a>
+        <div class="item-summary">Cursor 插件规范与官方插件仓库，定义了 Cursor 编辑器插件的开发标准与实现示例。</div>
+        <div class="item-url">https://github.com/cursor/plugins</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/citrolabs/ego-lite" target="_blank" rel="noopener">citrolabs /ego-lite — The fastest browser for AI agents to run browser automation, built for sharing your logged-in browser state with your AI agents, like Codex or Claude Code, without disturbing you. Zero cost, zero config.</a>
+        <div class="item-summary">ego-lite：专为 AI Agent 浏览器自动化打造的高速浏览器，可将已登录的浏览器状态共享给 Codex、Claude Code 等 Agent，无需额外配置和费用。</div>
+        <div class="item-url">https://github.com/citrolabs/ego-lite</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

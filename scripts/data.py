@@ -3506,6 +3506,8 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "holaOS：开源全能 AI Agent 工作空间，可跨 Claude Code、Codex 等 Agent、100+ 集成/MCP、应用、浏览器和文件共享记忆，支持内置模型或自带 API Key。",
     "https://github.com/lightningpixel/modly":
         "Modly：桌面应用，用本地 AI 从图片生成 3D 模型，完全在本机 GPU 上运行。",
+    "https://www.anthropic.com/news/claude-text-watermark":
+        "Anthropic 宣布未来 Claude 模型生成的文本将带有水印，用于判断文本是否由 Claude 撰写；此举是为遵守欧盟 AI 法案，文章解答了水印原理及是否影响输出质量等常见问题。",
 }
 
 
@@ -6483,4 +6485,23 @@ TRANSLATIONS: dict[str, str] = {
         "论文针对 6G AI 原生网络中异构 AI Agent 的语义通信场景，提出「异构感知信念同步」框架：用部署在边缘服务器的潜空间翻译模型对齐不同 Agent 的信念，在无需联合训练的情况下降低同步开销和知识漂移。",
     "http://arxiv.org/abs/2608.13389v1":
         "TopoIntent 把安全意图自动编译为可执行、可合规检查的网络拓扑：通过模板检索和分阶段融合从自然语言需求生成拓扑，并导出为 Mininet 脚本进行可达性和访问控制测试，在保留集上将 CIS 合规满足率从 0.78 提升到 1.00。",
+    # 2026-08-15 Simon Willison / Sebastian Raschka / GitHub Trending
+    "https://simonwillison.net/2026/Aug/15/sighting-391300422/":
+        "Simon 分享观鸟随笔：在加州 Pillar Point 港口偶遇 Morris —— 太平洋地区已知唯一一只北方塘鹅，14 年前首现于法拉隆群岛，如今已是当地名鸟。",
+    "https://simonwillison.net/2026/Aug/14/dont-classify-hallucinate/":
+        "Simon 介绍 Doug Turnbull 的博客打标签技巧：让 LLM 在不知道现有标签体系的情况下自由「幻想」标签，再用向量嵌入匹配语料库中最接近的既有标签，从而在标签过多（1856 个）时也能高效分类。",
+    "https://magazine.sebastianraschka.com/p/ai-detector-from-scratch":
+        "Sebastian Raschka 分享从零构建 AI 文本检测器的完整实战项目，涵盖数据集构建、模型训练、本地部署，并用到 RLVR（可验证奖励强化学习）技术。",
+    "https://github.com/public-apis/public-apis":
+        "public-apis：汇集大量免费公共 API 的合集仓库，方便开发者查找可直接调用的各类接口。",
+    "https://github.com/cordiverse/cordis":
+        "cordis：支持时空可组合性的元框架，用于构建插件化、可跨场景协同的应用架构。",
+    "https://github.com/MakazhanAlpamys/Soup":
+        "Soup：仅用一份 YAML 配置即可微调 LLM，通过分层流式加载技术可在 4GB 显存的笔记本 GPU 上训练 8B 参数模型。",
+    "https://github.com/ToolJet/ToolJet":
+        "ToolJet：开源企业级应用生成平台的基础项目，用于构建内部工具、仪表盘、业务系统、工作流和 AI Agent。",
+    "https://github.com/cursor/plugins":
+        "Cursor 插件规范与官方插件仓库，定义了 Cursor 编辑器插件的开发标准与实现示例。",
+    "https://github.com/citrolabs/ego-lite":
+        "ego-lite：专为 AI Agent 浏览器自动化打造的高速浏览器，可将已登录的浏览器状态共享给 Codex、Claude Code 等 Agent，无需额外配置和费用。",
 }

@@ -3508,6 +3508,10 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Modly：桌面应用，用本地 AI 从图片生成 3D 模型，完全在本机 GPU 上运行。",
     "https://www.anthropic.com/news/claude-text-watermark":
         "Anthropic 宣布未来 Claude 模型生成的文本将带有水印，用于判断文本是否由 Claude 撰写；此举是为遵守欧盟 AI 法案，文章解答了水印原理及是否影响输出质量等常见问题。",
+    "https://github.com/akitaonrails/ai-memory":
+        "ai-memory 为编码 Agent CLI 提供长期记忆方案，方便在不同 Agent 厂商（如 Claude Code、Codex 等）之间无缝交接上下文。",
+    "https://github.com/basecamp/omarchy":
+        "omarchy 是 Basecamp 出品的一套美观、现代、强主张的 Linux 发行版/桌面配置方案。",
 }
 
 
@@ -6504,4 +6508,7 @@ TRANSLATIONS: dict[str, str] = {
         "Cursor 插件规范与官方插件仓库，定义了 Cursor 编辑器插件的开发标准与实现示例。",
     "https://github.com/citrolabs/ego-lite":
         "ego-lite：专为 AI Agent 浏览器自动化打造的高速浏览器，可将已登录的浏览器状态共享给 Codex、Claude Code 等 Agent，无需额外配置和费用。",
+    # 2026-08-16 Simon Willison
+    "https://simonwillison.net/2026/Aug/15/cors-chat/":
+        "Simon 用 GPT-5.6-Sol xhigh 一天写出 CORS Chat 工具：为在 LM Studio（M5 MacBook Pro / NVIDIA DGX Spark）上测试 Qwen 3.8 27B 等本地模型提供网页聊天界面，兼容 OpenAI Responses 格式，对话可导出 JSON，还能在流式输出时逐步渲染生成中的 SVG 图片。",
 }

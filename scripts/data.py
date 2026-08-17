@@ -3583,6 +3583,85 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Wes Roth 解读 Anthropic 一则被认为「证实了大众最担心之事」的最新表态。",
     "https://www.youtube.com/watch?v=IPV90it7UYU":
         "AI 新闻视频汇总 Claude Mythos 6（疑似对应 Model 2）的泄露信息，以及 DeepSeek v4 Pro、Gemini 3.7 Flash、Codex 2.0 等最新传闻。",
+    # 2026-08-17 Hacker News Newest / YouTube AI
+    "https://news.ycombinator.com/item?id=49330492":
+        "文章反思现代人被琐碎选择淹没，导致迟迟做不出真正重要的人生决定。",
+    "https://news.ycombinator.com/item?id=49330488":
+        "文章主张 AI Agent 的技能（skills）应该经过类似编译的处理，而不是被模型直接当纯文本读取。",
+    "https://news.ycombinator.com/item?id=49330480":
+        "Show HN：一个给美国任意社区打分（0-10）的小工具，附带背后的评分 API。",
+    "https://news.ycombinator.com/item?id=49330565":
+        "文章记录一次调试经历：作者最初笃定的根因（怀疑是 DFS 深度优先搜索算法）后来被证明是错的。",
+    "https://news.ycombinator.com/item?id=49330215":
+        "Show HN：一个推箱子（Sokoban）游戏的 AI 自动求解器。",
+    "https://news.ycombinator.com/item?id=49330381":
+        "文章介绍一种让 LLM 无需追问澄清即可识别讽刺语气的技能/提示词方法。",
+    "https://news.ycombinator.com/item?id=49330557":
+        "文章引述 Anthropic CEO Dario Amodei 的观点：公众对 AI 的不信任，根源是对企业和科技行业长期存在的信任危机，而非 AI 领袖发出的风险警告。",
+    "https://news.ycombinator.com/item?id=49330574":
+        "文章讲述滑板传奇 Rodney Mullen 发明 40 多种滑板招式却从未为任何一个申请专利的故事。",
+    "https://news.ycombinator.com/item?id=49330377":
+        "文章从物理/数学角度推导《超级马里奥》游戏中的跳跃与运动公式。",
+    "https://news.ycombinator.com/item?id=49330386":
+        "Show HN：让多个 LLM 各自用 10 万美元模拟股票交易，对照一套固定不变的规则策略，结果规则策略反而领先。",
+    "https://news.ycombinator.com/item?id=49330403":
+        "Show HN：Slivingdoc 是一个基于 S3 后端、能自动解决协作冲突的笔记本工具，供 AI Agent 使用。",
+    "https://news.ycombinator.com/item?id=49330231":
+        "文章介绍代码评审工具 Flirt 为 GitHub 和邮件列表两种协作方式实现后端支持的技术细节，该项目源自一篇高校毕业论文。",
+    "https://news.ycombinator.com/item?id=49330329":
+        "文章记录用价值 20 美元的工具修复一台变砖的 AMD 7040 系列 Framework 13 笔记本电脑的过程。",
+    "https://news.ycombinator.com/item?id=49330246":
+        "文章介绍如何优化 Plush（Ruby 虚拟机项目）垃圾回收器的性能。",
+    "https://news.ycombinator.com/item?id=49330227":
+        "《纽约客》文章讲述极端高温席卷欧洲各大城市，迫使这些从未为应对如此气候而建的历史名城加速改造基础设施。",
+    "https://news.ycombinator.com/item?id=49330503":
+        "Ask HN：讨论经典 AI 研究是否仍在继续，以及它对现代 AI 发展的助益。",
+    "https://news.ycombinator.com/item?id=49330460":
+        "文章链接维基百科关于「种群瓶颈」的词条，介绍这一遗传学概念。",
+    "https://news.ycombinator.com/item?id=49330313":
+        "文章建议提前预约会议，而不是等真正需要时才临时安排。",
+    "https://news.ycombinator.com/item?id=49330384":
+        "Ask HN：网友分享自己不再跟随教程学习编程后学到了什么。",
+    "https://news.ycombinator.com/item?id=49330358":
+        "文章评测 KYY X90D「Triple」便携显示器。",
+    "https://news.ycombinator.com/item?id=49330482":
+        "文章讲述作者用 AI 打造出能直接生成真实可编辑 PowerPoint 文件的工具。",
+    "https://news.ycombinator.com/item?id=49330322":
+        "文章报道 AI 生成的低质内容（AI slop）正大量涌入负责起草美国法律的众议院办公室。",
+    "https://news.ycombinator.com/item?id=49330174":
+        "Show HN：一个跟踪 DeepSWE 基准测试结果的 RSS 订阅源。",
+    "https://news.ycombinator.com/item?id=49330336":
+        "Show HN：Rainwatch 是一个面向家人朋友分享的降雨雷达小工具。",
+    "https://news.ycombinator.com/item?id=49330456":
+        "文章探讨西地那非同类药物「希爱力」（Cialis）除治疗勃起功能障碍外，是否也有助于延长寿命。",
+    "https://news.ycombinator.com/item?id=49330285":
+        "Show HN：一个面向 Claude Code 状态栏（status line）的社区共享组件库。",
+    "https://news.ycombinator.com/item?id=49330548":
+        "文章介绍 Firefox 154 新增的「Manage AI」快捷操作功能。",
+    "https://news.ycombinator.com/item?id=49330351":
+        "文章介绍 LTO Radar，一个追踪快餐限时优惠（LTO）的工具。",
+    "https://news.ycombinator.com/item?id=49330318":
+        "Show HN：RaisFast 是一个用 Rust 编写的单二进制 BaaS 与无头 CMS 系统。",
+    "https://news.ycombinator.com/item?id=49330197":
+        "文章探讨如何为支撑 AI（智能）运转的基础设施构建安全防护体系。",
+    "https://news.ycombinator.com/item?id=49330434":
+        "文章讲述作者与 AI Agent 协作的经历如何促使自己重新思考领导力的含义。",
+    "https://news.ycombinator.com/item?id=49330209":
+        "文章披露一个配置文件让 AI 代码审计工具在 10 次运行中都跳过了含 bug 的文件，暴露出 AI 代码审查存在可被规则文件绕过的盲区。",
+    "https://news.ycombinator.com/item?id=49330226":
+        "文章介绍美国 FDA 新近批准的 mRNA 流感疫苗相关信息。",
+    "https://news.ycombinator.com/item?id=49330423":
+        "文章介绍 ZLang，一个为 ZDOS 系统打造的「主权执行层」（sovereign execution layer）项目。",
+    "https://www.youtube.com/watch?v=Elwg-3Ql8u0":
+        "视频爆料称 OpenAI 下一代模型 GPT-6 Astra 全面碾压 Claude AI（属于未经证实的爆料向内容）。",
+    "https://www.youtube.com/watch?v=fAKiovVLbA4":
+        "视频是一个孩子对着自制 GPT 应用「Dheirya Gpt」发泄沮丧情绪的搞笑短片。",
+    "https://www.youtube.com/watch?v=5SGiP5VFFI4":
+        "CNN 西语频道报道：现在的自行车已经开始搭载 AI 和 ChatGPT 功能。",
+    "https://www.youtube.com/watch?v=ntdOq4XJmwc":
+        "视频吐槽 DeepSeek 的使用成本变得异常昂贵。",
+    "https://www.youtube.com/watch?v=pZSXaLpnMWk":
+        "视频认为应该放弃 hermes Agent，转而使用效果强 10 倍的 DeepSeek Harness 方案。",
 }
 
 
@@ -6582,4 +6661,21 @@ TRANSLATIONS: dict[str, str] = {
     # 2026-08-16 Simon Willison
     "https://simonwillison.net/2026/Aug/15/cors-chat/":
         "Simon 用 GPT-5.6-Sol xhigh 一天写出 CORS Chat 工具：为在 LM Studio（M5 MacBook Pro / NVIDIA DGX Spark）上测试 Qwen 3.8 27B 等本地模型提供网页聊天界面，兼容 OpenAI Responses 格式，对话可导出 JSON，还能在流式输出时逐步渲染生成中的 SVG 图片。",
+    # 2026-08-17 OpenAI / Simon Willison / GitHub Trending
+    "https://openai.com/index/the-defenders-window":
+        "文章探讨 AI 如何同时重塑攻防两端的网络安全格局，介绍 OpenAI 如何加强自身防御，以及安全团队现在可以采取的行动。",
+    "https://openai.com/index/openai-joins-ports-pike-project":
+        "OpenAI 宣布加入 PORTS-Pike 项目，扩大社区投资，支持俄亥俄州南部数千个就业岗位。",
+    "https://openai.com/index/new-policy-ideas-for-the-intelligence-age":
+        "OpenAI 资助 14 个独立项目，探索能在智能时代扩大经济机会、增强社会韧性的新政策构想。",
+    "https://simonwillison.net/2026/Aug/16/markdown-svg-upgrades/":
+        "Simon 升级了他的 markdown-svg-renderer 工具，用于分享包含 SVG 图片的 Markdown 转录内容，可粘贴文本或指向 CORS 友好 URL/GitHub Gist 生成可收藏链接。",
+    "https://simonwillison.net/2026/Aug/16/qwen-38-27b/":
+        "Simon 测评阿里 Qwen 团队新发布的 Apache 2 协议、27B 参数视觉多模态模型 Qwen 3.8 27B，认为效果优秀，但默认会过度思考。",
+    "https://simonwillison.net/2026/Aug/16/dario-amodei/":
+        "Simon 引用 Anthropic CEO Dario Amodei 的观点：公众对 AI 的负面看法根源是对企业和科技行业普遍存在的信任危机，而非 AI 领袖们的风险警告，真正的解药是拿出实际成果而非营销包装。",
+    "https://github.com/agalwood/Motrix":
+        "Motrix：功能全面的开源下载管理器，支持多协议下载任务管理。",
+    "https://github.com/nautechsystems/nautilus_trader":
+        "nautilus_trader：生产级 Rust 原生量化交易引擎，采用确定性事件驱动架构。",
 }

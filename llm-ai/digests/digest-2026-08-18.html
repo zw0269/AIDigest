@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-18</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-18</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-18</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 39 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">39</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/chatgpt-for-teens" target="_blank" rel="noopener">Introducing ChatGPT for Teens: Built for learning, backed by protections</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>ChatGPT for Teens helps teens learn, think critically, and use AI with confidence, with stronger built-in protections, healthy-use features, and additional controls for parents.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出面向青少年的 ChatGPT for Teens，帮助青少年学习和批判性思考，内置更强防护、健康使用功能及家长管控选项。</div>
+        <div class="item-url">https://openai.com/index/chatgpt-for-teens</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/partnering-with-codeai" target="_blank" rel="noopener">Partnering with CodeAI to prepare the first AI generation</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI and CodeAI are partnering to help students build AI literacy, think critically about AI, and develop the skills to use and shape it responsibly.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与 CodeAI 合作，帮助学生建立 AI 素养、批判性看待 AI，并培养负责任使用和塑造 AI 的能力。</div>
+        <div class="item-url">https://openai.com/index/partnering-with-codeai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/" target="_blank" rel="noopener">Qwen 3.8 27B scores 52 on the Artificial Analysis Intelligence Index</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Qwen 3.8 27B scores 52 on the Artificial Analysis Intelligence Index
+That&#x27;s the same score as GPT-5.6 Luna (max), and just one point behind GLM-5.2 (max) and DeepSeek V4 Pro 0813 (max) - that GLM is 753B and that DeepSeek is 1.7T parameters, and Luna is size unknown but presumably a whole lot bigger than 27B.
+Qwen 3.8 27B is a truly astonishing ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 指出 Qwen 3.8 27B 在 Artificial Analysis 智能指数上拿到 52 分，与 GPT-5.6 Luna（max）持平，仅落后 753B 参数的 GLM-5.2 和 1.7T 参数的 DeepSeek V4 Pro 一分，认为这个 27B 模型表现惊人。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/" target="_blank" rel="noopener">We Tracked a Shipment of Rare Books. It Ended at an Amazon AI Training Facility</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We Tracked a Shipment of Rare Books. It Ended at an Amazon AI Training Facility
+Excellent piece of reporting from 404 Media. For a while now there have been stories of book dealers receiving orders for large volumes of books from apparently price-insensitive anonymous customers, widely suspected to be companies looking to scan them for AI traini...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 转发 404 Media 的调查报道：书商收到疑似 AI 公司大批量收购稀有书籍用于训练的订单，记者在书中藏入 AirTag 追踪，最终发现货物送到了亚马逊的 AI 训练设施。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">4 条 · 1 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/volcengine/OpenViking" target="_blank" rel="noopener">volcengine /OpenViking — Self-evolving Context Database for AI Agents. Unify Agent Memory, Knowledge RAG and Skills.</a>
+        <div class="item-summary">OpenViking：面向 AI Agent 的自演化上下文数据库，统一 Agent 记忆、知识 RAG 与技能管理。</div>
+        <div class="item-url">https://github.com/volcengine/OpenViking</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/NawfalMotii79/PLFM_RADAR" target="_blank" rel="noopener">NawfalMotii79 /PLFM_RADAR — Open-source, low-cost 10.5 GHz PLFM phased array RADAR system</a>
+        <div class="item-summary">PLFM_RADAR：开源低成本 10.5 GHz 相控阵雷达系统。</div>
+        <div class="item-url">https://github.com/NawfalMotii79/PLFM_RADAR</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/chaitanyagiri/munder-difflin" target="_blank" rel="noopener">chaitanyagiri /munder-difflin — local multi-agent harness</a>
+        <div class="item-summary">munder-difflin：本地多智能体协作工具，把终端编程 CLI（Claude Code、Antigravity、Codex 等）变成可在后台持续工作的「分身」，多个 Agent 协同并以办公室场景可视化呈现。</div>
+        <div class="item-url">https://github.com/chaitanyagiri/munder-difflin</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/genlayerlabs/genlayer-project-boilerplate" target="_blank" rel="noopener">genlayerlabs /genlayer-project-boilerplate</a>
+        <div class="item-summary">genlayer-project-boilerplate：GenLayer 用例开发脚手架，以足球博彩智能合约为示例，包含 Web/LLM 集成、单元与端到端测试及 Next.js 前端模板。</div>
+        <div class="item-url">https://github.com/genlayerlabs/genlayer-project-boilerplate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关注作者</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="arxiv-yann-lecun">
+      <div class="source-header">
+        <div class="source-name">arXiv (Yann LeCun)</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16319v1" target="_blank" rel="noopener">Advancing Open and Reproducible Relational Learning: RelArena-$α$, TabPFN-Rel and RPI</a>
+        <div class="item-summary">Prior Labs 开源三件关系型学习工具：统一评测框架 RelArena-α、当前排名第一的关系型模型 TabPFN-Rel，以及模型无关的关系预测接口 RPI，推动关系型学习的可复现研究。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16319v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16889v1" target="_blank" rel="noopener">Don&#x27;t Drop the BATON: Long-Horizon Robot Manipulation via Agentic Subtask Exploration and Transition-aware Memory</a>
+        <div class="item-summary">提出 BATON 框架，把长时程机器人操作按子任务拆分探索并配合「转换感知记忆」，将指数级探索成本降为线性，在 RoboMemArena 基准上任务成功率提升 11.6%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16889v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16876v1" target="_blank" rel="noopener">AutoSR: Automatic Symbolic Regression by Searching Research States</a>
+        <div class="item-summary">AutoSR 用「研究状态」保留符号回归过程中的推理与证据，结合渐进加宽蒙特卡洛树搜索让 AI 从单纯拟合公式转向自动化科学探究，在多个基准上恢复出等价关系式。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16876v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16852v1" target="_blank" rel="noopener">What Do Compliance Detectors Read? An Audit of Activation Probes and Guard Models</a>
+        <div class="item-summary">研究发现现有合规检测器（Activation Probe / Guard Model）存在「规则盲视」——删除或替换所依据的规则并不影响其判断准确率，作者提出免训练的 Internal Compliance Score 用于审计。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16852v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16844v1" target="_blank" rel="noopener">Proteus: Incremental Memory Activation for Long-Context Sequence Modeling</a>
+        <div class="item-summary">提出 Proteus 机制：让长上下文记忆模型的有效容量随上下文增长而逐步扩大而非全程静态，减少早期 token 对记忆的「污染」，在多个记忆架构上一致提升长上下文效果。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16844v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16837v1" target="_blank" rel="noopener">HAF: Adapting Generalist VLAs to Humanoid Whole-Body Loco-manipulation via Hierarchical Action Flow and Spectral Latent RL</a>
+        <div class="item-summary">提出 HAF 框架，通过分层动作流生成与频谱隐空间强化学习，把通用视觉-语言-动作基础模型适配到人形机器人全身移动操作任务，在七项真实任务中超过单阶段 VLA 基线。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16837v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16834v1" target="_blank" rel="noopener">Model Hypnosis: Strong control of AI via additive subliminal effects</a>
+        <div class="item-summary">研究发现 AI 模型普遍存在「模型催眠」现象：提示词中看似无关的弱线索组合起来可强力操控模型行为，且能跨模型迁移，对 AI 安全和可解释性构成新挑战。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16834v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16831v1" target="_blank" rel="noopener">Policy Iteration with Human Feedback: Bringing Post-Training RL to In-context Learning</a>
+        <div class="item-summary">提出 Policy Iteration with Human Feedback（PIHF），用语言模型评论家与专家评审持续修订自然语言策略而非微调权重，在罕见病诊断基准上显著提升多个执行模型的 Recall@1。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16831v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16824v1" target="_blank" rel="noopener">GEO-Flag: Detecting and Measuring GEO-Optimized Web Content</a>
+        <div class="item-summary">构建 GEOFlagBench 基准评测生成式引擎优化（GEO）内容检测方法，提出 Intervention-Paired Training 提升检测器鲁棒性，并在真实搜索结果中估算 GEO 内容占比约 8.9%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16824v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16813v1" target="_blank" rel="noopener">Quipu: A Governed Bitemporal Knowledge Graph Store</a>
+        <div class="item-summary">提出 Quipu：一个面向 Agent 写入场景的「受治理双时态知识图谱」存储系统，通过写入门控、双时态记录和可组合信任格，解决传统知识图谱在多写入者场景下的治理缺陷。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16813v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16806v1" target="_blank" rel="noopener">When State Becomes an Attack Surface: State-Semantic Injection in LLM-Driven Embodied Agents</a>
+        <div class="item-summary">文章分析大语言模型驱动的具身 Agent 中，场景状态信息可能成为新的攻击面，梳理了 SayCan、Code as Policies、VoxPoser 等技术路线下状态语义注入的风险。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16806v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16804v1" target="_blank" rel="noopener">Cross-Sign Language Transfer Learning Using Domain Adaptation with Multi-scale Temporal Alignment</a>
+        <div class="item-summary">研究用迁移学习与 TA3N 域自适应方法进行手语识别，发现域自适应比传统神经网络迁移更有效，尤其在对齐较短时间尺度特征时能显著提升美国手语识别效果。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16804v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16801v1" target="_blank" rel="noopener">When Agents Coordinate: Measuring Coordination in Multi-Agent AI Coding</a>
+        <div class="item-summary">通过 1902 次运行的时序网络分析多智能体编程协作中的协调模式，发现共享文件可替代重复通信、节省约 42% token，而指定协调者并不能带来可靠的成功率提升。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16801v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16798v1" target="_blank" rel="noopener">ClawGym II: Exploring Black-Box RL on Agent Harness</a>
+        <div class="item-summary">提出统一黑盒强化学习框架，通过沙箱隔离和代理服务器捕获模型调用，让 Agent 能在复杂 Harness（如 OpenClaw、Claude Code）中稳定训练，显著提升 Pass@1。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16798v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16795v1" target="_blank" rel="noopener">Historical Backtesting for Scientific Question Discovery: A Protocol and Astronomy Pilot</a>
+        <div class="item-summary">提出「历史回测」方法评估科学问题生成系统：用历史截止前语料生成问题，再用后续文献判定是否被解答，发现基于证据结构的生成方法优于纯 LLM 提示。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16795v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16794v1" target="_blank" rel="noopener">Neurosymbolic Embodied Agents</a>
+        <div class="item-summary">提出神经符号 Agent，将具身长时程任务拆分为「视觉探索获取符号状态」和「受约束的符号规划」两阶段，在 VirtualHome 和 ALFWorld 上以更小模型取得超过 90% 的成功率。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16794v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16776v1" target="_blank" rel="noopener">GRIP: Grounded Reasoning via Information-Restricted Premises</a>
+        <div class="item-summary">提出 GRIP 方法解决检索增强生成中的「查询主导」问题：让解码器保留完整查询信息，同时对检索证据施加信息瓶颈，将幻觉率降低 73%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16776v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16775v1" target="_blank" rel="noopener">Topological Attribution Distance (TAD): Revealing Segment-Level RAG Influence on LLM Output Geometry for Incident Log Analysis</a>
+        <div class="item-summary">提出拓扑归因距离（TAD），用几何拓扑视角衡量检索证据对大模型输出的影响，为网络安全事件日志分析中的 RAG 可解释性和证据溯源提供工具。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16775v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16765v1" target="_blank" rel="noopener">TRACE-Bench: Decomposing and Diagnosing Multi-Reference Image Generation</a>
+        <div class="item-summary">构建 TRACE-Bench 基准，用「锚定-解耦-应用-组合」四种原子操作刻画多参考图像生成任务，发现当前模型的主要瓶颈在于属性解耦与绑定而非整体场景组合。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16765v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16763v1" target="_blank" rel="noopener">LAVA: Logic-Aware Validation and Augmentation Framework for Large-Scale Financial Document Auditing</a>
+        <div class="item-summary">提出 LAVA 框架，用多模态大模型完成金融文档审计中的规则检索、版式保留信息抽取、元数据增强与可审计的符号验证，在幻觉控制和边缘案例处理上优于基线。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16763v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16760v1" target="_blank" rel="noopener">On the Principles Behind Neural Network Optimizers</a>
+        <div class="item-summary">论文系统研究 Adam 优化器的收敛/发散相变及其在 Transformer 上优于 SGD 的 Hessian 结构成因，并据此提出显存减半、性能不减的新优化器 Adam-mini。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16760v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16747v1" target="_blank" rel="noopener">Would this change your answer? Evaluating Explanations of LLM Behavior In The Wild with Counterfactual Experiments</a>
+        <div class="item-summary">提出 CHIVE 流程，用反事实提示编辑自动挖掘并验证大模型行为的解释，发现现有可解释性技术对预测反事实行为并无提升，但用 CHIVE 生成的数据训练可泛化到分布外场景。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16747v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16742v1" target="_blank" rel="noopener">TDD-Agent: Test-Driven Reasoning for Code Generation</a>
+        <div class="item-summary">提出 TDD-Agent，把测试驱动开发范式引入代码生成：先让模型写测试再实现，并对代码与测试做迭代式双轨优化，在 LiveCodeBench 和仓库级基准 RepoEval 上均优于基线。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16742v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16739v1" target="_blank" rel="noopener">Le Critique: Privileged Value Functions for LLM Reinforcement Learning</a>
+        <div class="item-summary">针对 LLM 强化学习中的价值函数方法，提出 Privileged Value Functions 和 TETHER 两种策略注入任务相关的 token 级信号，在多个推理任务上优于标准价值函数基线，媲美或超过 GRPO。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16739v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16733v1" target="_blank" rel="noopener">GoalEvolve: From Handcrafted Algorithm Priors to Goal-Driven Evolution of Physical Design Algorithms</a>
+        <div class="item-summary">提出 GoalEvolve 框架，让物理设计算法的演化对齐最终多目标质量而非局部指标，通过定位关键瓶颈阶段指导 LLM 教师-学生 Agent 协同优化，在 ASAP7 设计上平均提升 TNS 30.67%。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16733v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16710v1" target="_blank" rel="noopener">The Ethical Decision Head: Operationalizing Normative Ethics in Autonomous Vehicles via Reinforcement Learning from Human Feedback</a>
+        <div class="item-summary">提出 Ethical Decision Head，用强化学习从人类反馈中训练自动驾驶的伦理决策，发现功利主义模型学到的是人类评分者实际奖励的「自我牺牲」倾向，而非理论上定义的伦理规则。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16710v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16709v1" target="_blank" rel="noopener">MIRROR: Multimodal Intelligent Radiology Reasoning and Observation Reporter</a>
+        <div class="item-summary">提出 MIRROR 系统，将放射科报告生成拆分为分类器、Grad-CAM 定位器和不接触图像的报告撰写器，使报告结论可与概率向量对照审计，避免语言模型编造未测得的诊断结论。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16709v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16707v1" target="_blank" rel="noopener">Semantic Bandits: In-Context Exploration-Exploitation is Biased by Semantic Priors</a>
+        <div class="item-summary">提出「语义赌博机」研究大模型 Agent 探索-利用行为如何被动作标签的语义先验影响，发现语义信息会削弱探索、且负向奖励比同等正向奖励更能激发探索。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16707v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16686v1" target="_blank" rel="noopener">Closing the Affective Loop: Multimodal Speaker-Listener Emotion-Dynamics-Aware Empathetic Social Robots</a>
+        <div class="item-summary">提出 AffectLoop 多模态情感感知对话机器人系统，让机器人同时追踪说话者情绪动态与自身情感状态并据此生成共情回应，试点实验显示比不建模双向情感的基线获得更好的共情评价。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16686v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16681v1" target="_blank" rel="noopener">Bridging the Gap between Labeled and Unlabeled Data via Unified Flow with Feature Memory Bank</a>
+        <div class="item-summary">针对遥感半监督语义分割，提出统一流（结合外部视觉基础模型与领域教师生成低偏差伪标签）与特征记忆库两项创新，缓解有标注数据主导训练导致伪标签质量下降的问题。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16681v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2608.16666v1" target="_blank" rel="noopener">Chronocooked: A Benchmark for Implicit Interval Timing in Reinforcement Learning Agents</a>
+        <div class="item-summary">提出 Chronocooked 强化学习基准，用类似《煮糊了》的烹饪场景测试 Agent 在时间信息不可观测但对决策至关重要时的隐式时间感知能力。</div>
+        <div class="item-url">http://arxiv.org/abs/2608.16666v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

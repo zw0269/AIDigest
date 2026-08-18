@@ -3662,6 +3662,15 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "视频吐槽 DeepSeek 的使用成本变得异常昂贵。",
     "https://www.youtube.com/watch?v=pZSXaLpnMWk":
         "视频认为应该放弃 hermes Agent，转而使用效果强 10 倍的 DeepSeek Harness 方案。",
+    # 2026-08-18 GitHub Trending
+    "https://github.com/volcengine/OpenViking":
+        "OpenViking：面向 AI Agent 的自演化上下文数据库，统一 Agent 记忆、知识 RAG 与技能管理。",
+    "https://github.com/NawfalMotii79/PLFM_RADAR":
+        "PLFM_RADAR：开源低成本 10.5 GHz 相控阵雷达系统。",
+    "https://github.com/chaitanyagiri/munder-difflin":
+        "munder-difflin：本地多智能体协作工具，把终端编程 CLI（Claude Code、Antigravity、Codex 等）变成可在后台持续工作的「分身」，多个 Agent 协同并以办公室场景可视化呈现。",
+    "https://github.com/genlayerlabs/genlayer-project-boilerplate":
+        "genlayer-project-boilerplate：GenLayer 用例开发脚手架，以足球博彩智能合约为示例，包含 Web/LLM 集成、单元与端到端测试及 Next.js 前端模板。",
 }
 
 
@@ -6678,4 +6687,76 @@ TRANSLATIONS: dict[str, str] = {
         "Motrix：功能全面的开源下载管理器，支持多协议下载任务管理。",
     "https://github.com/nautechsystems/nautilus_trader":
         "nautilus_trader：生产级 Rust 原生量化交易引擎，采用确定性事件驱动架构。",
+
+    # 2026-08-18 OpenAI / Simon Willison / arXiv
+    "https://openai.com/index/chatgpt-for-teens":
+        "OpenAI 推出面向青少年的 ChatGPT for Teens，帮助青少年学习和批判性思考，内置更强防护、健康使用功能及家长管控选项。",
+    "https://openai.com/index/partnering-with-codeai":
+        "OpenAI 与 CodeAI 合作，帮助学生建立 AI 素养、批判性看待 AI，并培养负责任使用和塑造 AI 的能力。",
+    "https://simonwillison.net/2026/Aug/17/qwen-38-27b-scores-52/":
+        "Simon 指出 Qwen 3.8 27B 在 Artificial Analysis 智能指数上拿到 52 分，与 GPT-5.6 Luna（max）持平，仅落后 753B 参数的 GLM-5.2 和 1.7T 参数的 DeepSeek V4 Pro 一分，认为这个 27B 模型表现惊人。",
+    "https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/":
+        "Simon 转发 404 Media 的调查报道：书商收到疑似 AI 公司大批量收购稀有书籍用于训练的订单，记者在书中藏入 AirTag 追踪，最终发现货物送到了亚马逊的 AI 训练设施。",
+    "http://arxiv.org/abs/2608.16319v1":
+        "Prior Labs 开源三件关系型学习工具：统一评测框架 RelArena-α、当前排名第一的关系型模型 TabPFN-Rel，以及模型无关的关系预测接口 RPI，推动关系型学习的可复现研究。",
+    "http://arxiv.org/abs/2608.16889v1":
+        "提出 BATON 框架，把长时程机器人操作按子任务拆分探索并配合「转换感知记忆」，将指数级探索成本降为线性，在 RoboMemArena 基准上任务成功率提升 11.6%。",
+    "http://arxiv.org/abs/2608.16876v1":
+        "AutoSR 用「研究状态」保留符号回归过程中的推理与证据，结合渐进加宽蒙特卡洛树搜索让 AI 从单纯拟合公式转向自动化科学探究，在多个基准上恢复出等价关系式。",
+    "http://arxiv.org/abs/2608.16852v1":
+        "研究发现现有合规检测器（Activation Probe / Guard Model）存在「规则盲视」——删除或替换所依据的规则并不影响其判断准确率，作者提出免训练的 Internal Compliance Score 用于审计。",
+    "http://arxiv.org/abs/2608.16844v1":
+        "提出 Proteus 机制：让长上下文记忆模型的有效容量随上下文增长而逐步扩大而非全程静态，减少早期 token 对记忆的「污染」，在多个记忆架构上一致提升长上下文效果。",
+    "http://arxiv.org/abs/2608.16837v1":
+        "提出 HAF 框架，通过分层动作流生成与频谱隐空间强化学习，把通用视觉-语言-动作基础模型适配到人形机器人全身移动操作任务，在七项真实任务中超过单阶段 VLA 基线。",
+    "http://arxiv.org/abs/2608.16834v1":
+        "研究发现 AI 模型普遍存在「模型催眠」现象：提示词中看似无关的弱线索组合起来可强力操控模型行为，且能跨模型迁移，对 AI 安全和可解释性构成新挑战。",
+    "http://arxiv.org/abs/2608.16831v1":
+        "提出 Policy Iteration with Human Feedback（PIHF），用语言模型评论家与专家评审持续修订自然语言策略而非微调权重，在罕见病诊断基准上显著提升多个执行模型的 Recall@1。",
+    "http://arxiv.org/abs/2608.16824v1":
+        "构建 GEOFlagBench 基准评测生成式引擎优化（GEO）内容检测方法，提出 Intervention-Paired Training 提升检测器鲁棒性，并在真实搜索结果中估算 GEO 内容占比约 8.9%。",
+    "http://arxiv.org/abs/2608.16813v1":
+        "提出 Quipu：一个面向 Agent 写入场景的「受治理双时态知识图谱」存储系统，通过写入门控、双时态记录和可组合信任格，解决传统知识图谱在多写入者场景下的治理缺陷。",
+    "http://arxiv.org/abs/2608.16806v1":
+        "文章分析大语言模型驱动的具身 Agent 中，场景状态信息可能成为新的攻击面，梳理了 SayCan、Code as Policies、VoxPoser 等技术路线下状态语义注入的风险。",
+    "http://arxiv.org/abs/2608.16804v1":
+        "研究用迁移学习与 TA3N 域自适应方法进行手语识别，发现域自适应比传统神经网络迁移更有效，尤其在对齐较短时间尺度特征时能显著提升美国手语识别效果。",
+    "http://arxiv.org/abs/2608.16801v1":
+        "通过 1902 次运行的时序网络分析多智能体编程协作中的协调模式，发现共享文件可替代重复通信、节省约 42% token，而指定协调者并不能带来可靠的成功率提升。",
+    "http://arxiv.org/abs/2608.16798v1":
+        "提出统一黑盒强化学习框架，通过沙箱隔离和代理服务器捕获模型调用，让 Agent 能在复杂 Harness（如 OpenClaw、Claude Code）中稳定训练，显著提升 Pass@1。",
+    "http://arxiv.org/abs/2608.16795v1":
+        "提出「历史回测」方法评估科学问题生成系统：用历史截止前语料生成问题，再用后续文献判定是否被解答，发现基于证据结构的生成方法优于纯 LLM 提示。",
+    "http://arxiv.org/abs/2608.16794v1":
+        "提出神经符号 Agent，将具身长时程任务拆分为「视觉探索获取符号状态」和「受约束的符号规划」两阶段，在 VirtualHome 和 ALFWorld 上以更小模型取得超过 90% 的成功率。",
+    "http://arxiv.org/abs/2608.16776v1":
+        "提出 GRIP 方法解决检索增强生成中的「查询主导」问题：让解码器保留完整查询信息，同时对检索证据施加信息瓶颈，将幻觉率降低 73%。",
+    "http://arxiv.org/abs/2608.16775v1":
+        "提出拓扑归因距离（TAD），用几何拓扑视角衡量检索证据对大模型输出的影响，为网络安全事件日志分析中的 RAG 可解释性和证据溯源提供工具。",
+    "http://arxiv.org/abs/2608.16765v1":
+        "构建 TRACE-Bench 基准，用「锚定-解耦-应用-组合」四种原子操作刻画多参考图像生成任务，发现当前模型的主要瓶颈在于属性解耦与绑定而非整体场景组合。",
+    "http://arxiv.org/abs/2608.16763v1":
+        "提出 LAVA 框架，用多模态大模型完成金融文档审计中的规则检索、版式保留信息抽取、元数据增强与可审计的符号验证，在幻觉控制和边缘案例处理上优于基线。",
+    "http://arxiv.org/abs/2608.16760v1":
+        "论文系统研究 Adam 优化器的收敛/发散相变及其在 Transformer 上优于 SGD 的 Hessian 结构成因，并据此提出显存减半、性能不减的新优化器 Adam-mini。",
+    "http://arxiv.org/abs/2608.16747v1":
+        "提出 CHIVE 流程，用反事实提示编辑自动挖掘并验证大模型行为的解释，发现现有可解释性技术对预测反事实行为并无提升，但用 CHIVE 生成的数据训练可泛化到分布外场景。",
+    "http://arxiv.org/abs/2608.16742v1":
+        "提出 TDD-Agent，把测试驱动开发范式引入代码生成：先让模型写测试再实现，并对代码与测试做迭代式双轨优化，在 LiveCodeBench 和仓库级基准 RepoEval 上均优于基线。",
+    "http://arxiv.org/abs/2608.16739v1":
+        "针对 LLM 强化学习中的价值函数方法，提出 Privileged Value Functions 和 TETHER 两种策略注入任务相关的 token 级信号，在多个推理任务上优于标准价值函数基线，媲美或超过 GRPO。",
+    "http://arxiv.org/abs/2608.16733v1":
+        "提出 GoalEvolve 框架，让物理设计算法的演化对齐最终多目标质量而非局部指标，通过定位关键瓶颈阶段指导 LLM 教师-学生 Agent 协同优化，在 ASAP7 设计上平均提升 TNS 30.67%。",
+    "http://arxiv.org/abs/2608.16710v1":
+        "提出 Ethical Decision Head，用强化学习从人类反馈中训练自动驾驶的伦理决策，发现功利主义模型学到的是人类评分者实际奖励的「自我牺牲」倾向，而非理论上定义的伦理规则。",
+    "http://arxiv.org/abs/2608.16709v1":
+        "提出 MIRROR 系统，将放射科报告生成拆分为分类器、Grad-CAM 定位器和不接触图像的报告撰写器，使报告结论可与概率向量对照审计，避免语言模型编造未测得的诊断结论。",
+    "http://arxiv.org/abs/2608.16707v1":
+        "提出「语义赌博机」研究大模型 Agent 探索-利用行为如何被动作标签的语义先验影响，发现语义信息会削弱探索、且负向奖励比同等正向奖励更能激发探索。",
+    "http://arxiv.org/abs/2608.16686v1":
+        "提出 AffectLoop 多模态情感感知对话机器人系统，让机器人同时追踪说话者情绪动态与自身情感状态并据此生成共情回应，试点实验显示比不建模双向情感的基线获得更好的共情评价。",
+    "http://arxiv.org/abs/2608.16681v1":
+        "针对遥感半监督语义分割，提出统一流（结合外部视觉基础模型与领域教师生成低偏差伪标签）与特征记忆库两项创新，缓解有标注数据主导训练导致伪标签质量下降的问题。",
+    "http://arxiv.org/abs/2608.16666v1":
+        "提出 Chronocooked 强化学习基准，用类似《煮糊了》的烹饪场景测试 Agent 在时间信息不可观测但对决策至关重要时的隐式时间感知能力。",
 }

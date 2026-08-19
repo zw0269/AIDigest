@@ -3671,6 +3671,77 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "munder-difflin：本地多智能体协作工具，把终端编程 CLI（Claude Code、Antigravity、Codex 等）变成可在后台持续工作的「分身」，多个 Agent 协同并以办公室场景可视化呈现。",
     "https://github.com/genlayerlabs/genlayer-project-boilerplate":
         "genlayer-project-boilerplate：GenLayer 用例开发脚手架，以足球博彩智能合约为示例，包含 Web/LLM 集成、单元与端到端测试及 Next.js 前端模板。",
+    # 2026-08-19 Hacker News Newest / YouTube AI
+    "https://news.ycombinator.com/item?id=49359961":
+        "Show HN：Idea Katalog 用 Fable 生成并调研了 200 个 B2B 软件创意，做成可浏览的创意目录网站。",
+    "https://news.ycombinator.com/item?id=49359750":
+        "文章报道中国部分银行开始依据企业的 AI 算力使用情况来发放贷款。",
+    "https://news.ycombinator.com/item?id=49359807":
+        "2021 年的研究揭示部分追踪器利用 CNAME 记录把追踪资源伪装成同站资源，从而绕过基于域名黑名单的反追踪机制，且这种手法正在高流量网站中快速蔓延。",
+    "https://news.ycombinator.com/item?id=49359703":
+        "Paplo 是一款主打「平静」体验、界面克制的数字笔记应用。",
+    "https://www.youtube.com/watch?v=XU2qCP9ssRs":
+        "Universe of AI 频道视频（未经证实的爆料向内容）称 Fable 5.1 正在秘密测试中，同时坐实了 GPT Astra 的存在。",
+    "https://www.youtube.com/watch?v=w-lkP9XcZfg":
+        "视频用 28 分钟浓缩讲解博主总结的 ChatGPT 使用经验与技巧。",
+    "https://news.ycombinator.com/item?id=49359767":
+        "文章报道 OpenAI 澄清此前那则「收购一名爱尔兰青少年创业公司」的公告只是玩笑，并非真实收购。",
+    "https://news.ycombinator.com/item?id=49359981":
+        "文章援引生物学家观点，认为生物学性别既非二元对立也非单一连续光谱，而是多维度的。",
+    "https://news.ycombinator.com/item?id=49359779":
+        "文章将演进式架构（evolutionary architecture）中的「适应度函数」（fitness function）概念扩展到 Agent 场景，探讨如何用适应度函数持续守护和评估由 AI Agent 驱动的架构演化。",
+    "https://news.ycombinator.com/item?id=49359786":
+        "文章通过对比 ESM 与 CommonJS 在绑定、求值顺序、缓存和循环引用等方面的不同契约，说明两套模块系统「看起来等价」的代码实际会产生不同结果。",
+    "https://news.ycombinator.com/item?id=49359822":
+        "维基百科词条介绍「诚实之声行动」（Operation Earnest Voice）——美军曾开发的马甲账号管理软件项目，用于在社交媒体上以虚假身份操纵舆论讨论。",
+    "https://news.ycombinator.com/item?id=49359849":
+        "论文提出 Quipu，一个面向 Agent 工作负载的可嵌入知识图谱存储：所有写入都要经过状态门控校验，数据、信任标签与治理规则本身都是双时态（bitemporal）的，用命名图作为信任与权限的最小单元，并让治理规范和审计轨迹本身也是可查询的存储事实。",
+    "https://news.ycombinator.com/item?id=49359937":
+        "文章报道加拿大国防企业正把目光投向闲置的汽车工厂，作为扩大生产的增长计划。",
+    "https://www.youtube.com/watch?v=6KtJk-MmhLE":
+        "视频探讨 DeepSeek Harness 方案是否会终结 Claude Code 和 Codex 的时代。",
+    "https://news.ycombinator.com/item?id=49359687":
+        "作者作为 Google Summer of Code 学生，为开源相册软件 DigiKam 的自然语言搜索功能对多个小模型做了基准测试。",
+    "https://news.ycombinator.com/item?id=49359931":
+        "Solaar 是一款开源的 Linux 罗技（Logitech）设备管理工具。",
+    "https://www.youtube.com/watch?v=4s-CA76dROQ":
+        "视频作者试用了 Claude Code 的设计能力并分享体验感受。",
+    "https://news.ycombinator.com/item?id=49359656":
+        "Ask HN 帖子请网友讨论：这个行业目前最缺少的是什么？",
+    "https://news.ycombinator.com/item?id=49359979":
+        "Ask HN 帖子讨论大家目前是如何访问 archive.today 网站的（该站常遇到访问受限问题）。",
+    "https://news.ycombinator.com/item?id=49359680":
+        "Show HN：Knownbase 是一个为 AI Agent 提供持久化记忆的 MCP 服务器。",
+    "https://news.ycombinator.com/item?id=49359847":
+        "文章续写作者在 Google Docs 里编辑表格时一步步踩坑、最终酿成误删的经历，用瑞士奶酪模型（多层防护漏洞恰好对齐才会导致事故）复盘这次连锁失误。",
+    "https://www.youtube.com/watch?v=An4_SCFo5-A":
+        "视频探讨 Qwen 3.8 27B 是否已成为新的本地大模型之王。",
+    "https://news.ycombinator.com/item?id=49359805":
+        "英国《金融时报》整理了一份史上最大交易亏损排行榜。",
+    "https://news.ycombinator.com/item?id=49359841":
+        "《时代》杂志文章探讨「这个世界是不是正在变得更丑」这一话题。",
+    "https://news.ycombinator.com/item?id=49359866":
+        "Show HN：作者开源了一套自建的聊天基础设施（chat infrastructure）。",
+    "https://news.ycombinator.com/item?id=49359714":
+        "文章介绍 PlugClaw 如何通过硬件级加密等机密计算手段，让 AI Agent 在访问你的邮件、文件、代码等完整数字工作空间时仍能保护隐私。",
+    "https://news.ycombinator.com/item?id=49359916":
+        "《纽约时报》文章带读者领略赫尔辛基建筑师埃利尔·萨里宁（Eliel Saarinen）梦幻般的新艺术风格建筑。",
+    "https://news.ycombinator.com/item?id=49359729":
+        "《华尔街日报》报道 Moderna 与默沙东合作的疫苗成功阻止黑色素瘤复发。",
+    "https://news.ycombinator.com/item?id=49359857":
+        "《纽约时报》文章指出硅谷高管虽然自己是科技产品的忠实拥趸，却在严格限制自家孩子使用这些产品。",
+    "https://news.ycombinator.com/item?id=49359856":
+        "文章总结了作者观察到的 AI 生成应用中常见的十大安全隐患。",
+    "https://news.ycombinator.com/item?id=49359791":
+        "报道称 OpenAI 第二季度营收增长乏力，相比之下 Anthropic 的增长更为强劲。",
+    "https://news.ycombinator.com/item?id=49359674":
+        "Show HN：Sofka 是用 Rust 编写的 k9s 替代品，运行速度更快。",
+    "https://news.ycombinator.com/item?id=49359720":
+        "文章认为 LLM 让「获得答案」变得几乎免费，真正的瓶颈转移到了如何把问题提得足够清晰（例如讲清约束条件），而不是靠提示词技巧。",
+    "https://news.ycombinator.com/item?id=49359914":
+        "《连线》杂志的调查报道称记者拿到了 Flock Safety 面向警方的强大 AI 工具的源代码。",
+    "https://news.ycombinator.com/item?id=49359846":
+        "《麻省理工科技评论》文章认为儿童监护类 App 的设计理念需要重新审视。",
 }
 
 
@@ -6759,4 +6830,17 @@ TRANSLATIONS: dict[str, str] = {
         "针对遥感半监督语义分割，提出统一流（结合外部视觉基础模型与领域教师生成低偏差伪标签）与特征记忆库两项创新，缓解有标注数据主导训练导致伪标签质量下降的问题。",
     "http://arxiv.org/abs/2608.16666v1":
         "提出 Chronocooked 强化学习基准，用类似《煮糊了》的烹饪场景测试 Agent 在时间信息不可观测但对决策至关重要时的隐式时间感知能力。",
+    # 2026-08-19 OpenAI / Simon Willison
+    "https://openai.com/index/chatgpt-ads-expands-across-europe":
+        "ChatGPT Ads 扩展至欧洲 31 个市场，帮助广告主在用户探索、比较和决策的过程中触达他们。",
+    "https://openai.com/index/strengthening-democratic-oversight-in-national-security":
+        "OpenAI 发起新计划，通过工具、培训和专业知识支持政府机构，加强国家安全领域 AI 使用的民主监督。",
+    "https://openai.com/index/pacing-model-development-cyber-capabilities":
+        "OpenAI 正在加强前沿模型的监控、对齐与安全防护，用新的安全措施来把控涉及网络安全相关能力的模型开发节奏。",
+    "https://openai.com/index/nvidia/chatgpt-work":
+        "NVIDIA 团队使用 ChatGPT Work 减少手动工作、连接快速变化的信号，并将行之有效的工作流推广到全球团队。",
+    "https://openai.com/index/asana":
+        "Asana 用 OpenAI Codex 在两周内替换了老旧的测试系统，完成了原本预计耗时五年、成本约 1.2 万美元的工程工作。",
+    "https://simonwillison.net/2026/Aug/18/mojo-is-now-open-source/":
+        "Mojo 编程语言正式开源：继上周发布 1.0 版本后，如今以 Apache 2 协议开源了编译器和工具链，兑现了自 2023 年以来的承诺；早先「成为 Python 超集」的目标已于 2025 年 8 月调整，转而依靠 AI 辅助编程工具帮助把 Python 代码迁移到 Mojo。",
 }

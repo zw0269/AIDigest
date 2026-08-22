@@ -3742,6 +3742,97 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "《连线》杂志的调查报道称记者拿到了 Flock Safety 面向警方的强大 AI 工具的源代码。",
     "https://news.ycombinator.com/item?id=49359846":
         "《麻省理工科技评论》文章认为儿童监护类 App 的设计理念需要重新审视。",
+    # 2026-08-22 GitHub Trending / Hacker News Newest / YouTube AI
+    "https://news.ycombinator.com/item?id=49397327":
+        "Show HN：作者逆向了 Bambu 3MF 文件的颜色格式，让转换出的 GLB 模型能保留原始颜色。",
+    "https://news.ycombinator.com/item?id=49396954":
+        "文章提出「每瓦智能」指标，用来衡量本地运行 AI 模型的智能效率。",
+    "https://github.com/protocolbuffers/protobuf":
+        "Google 的跨语言数据交换格式 Protocol Buffers 官方仓库登上 GitHub Trending。",
+    "https://news.ycombinator.com/item?id=49397168":
+        "美国贸易谈判破裂后新关税正式生效。",
+    "https://github.com/modular/modular":
+        "Modular 平台仓库（包含 MAX 推理引擎与 Mojo 语言）登上 GitHub Trending。",
+    "https://github.com/PostHog/posthog":
+        "PostHog 是面向「自驾产品」的开发者工具平台，整合 AI 可观测性、分析、会话回放、特性开关、实验、错误追踪、日志等能力，可通过 Slack、Web、桌面端或 MCP 统一操控。",
+    "https://news.ycombinator.com/item?id=49396911":
+        "报道称苹果大幅精简 Vision Pro 游戏与沉浸式视频团队，并裁减 Siri 相关人员。",
+    "https://news.ycombinator.com/item?id=49397326":
+        "Show HN：Reachpad MCP 让开发者通过 MCP/CLI 在几分钟内分享全栈应用。",
+    "https://news.ycombinator.com/item?id=49396920":
+        "文章探讨记忆为何随年龄增长而变得模糊，以及大脑用什么来填补这些空白。",
+    "https://news.ycombinator.com/item?id=49397102":
+        "介绍名为 Paige Compositor 的图形合成工具/项目。",
+    "https://www.youtube.com/watch?v=t4XEda3CB3Q":
+        "视频讲解 LLM wiki 与 RAG 的区别，并推荐 Obsidian + Claude Code 的组合用法。",
+    "https://news.ycombinator.com/item?id=49397296":
+        "Show HN：Snoreman 是一款打鼾检测 App。",
+    "https://news.ycombinator.com/item?id=49397047":
+        "视频演示如何在家自制 LED 灯珠。",
+    "https://www.youtube.com/watch?v=o3MkojHCJVc":
+        "AI 资讯视频：盘点 GLM 5.5 泄露传闻、HY4 即将发布、Ox Alpha 神秘模型，以及 GPT-6 Astra 延期等最新动态。",
+    "https://github.com/TryGhost/Ghost":
+        "开源出版平台 Ghost 登上 GitHub Trending，用于现代内容发布、会员订阅与新闻通讯。",
+    "https://news.ycombinator.com/item?id=49397171":
+        "报道称 Linus Torvalds 经历了一次地狱级调试，并称 AI 给予了「巨大帮助」。",
+    "https://www.youtube.com/watch?v=jFuft0mKj7E":
+        "视频讲解大语言模型的工作原理，涵盖 Transformer、注意力机制与位置编码等基础概念。",
+    "https://news.ycombinator.com/item?id=49397027":
+        "EnvHarness 项目致力于把静态环境「唤醒」为可交互世界，用于 Agent 学习训练。",
+    "https://news.ycombinator.com/item?id=49397246":
+        "文章探讨如果发生广岛级别的 AI 灾难，人类是否会因此采取自我保护措施，作者担心答案是否定的。",
+    "https://news.ycombinator.com/item?id=49397065":
+        "文章介绍地球上首个「硅基生命」的设计蓝图。",
+    "https://news.ycombinator.com/item?id=49397005":
+        "介绍 Richardson-Lucy 图像去卷积算法。",
+    "https://news.ycombinator.com/item?id=49396888":
+        "实时数据库创业公司 Instant 团队加入 OpenAI。",
+    "https://news.ycombinator.com/item?id=49397162":
+        "文章探讨目前互联网上有多少内容是由 AI 生成的。",
+    "https://news.ycombinator.com/item?id=49396969":
+        "文章介绍电子纸（e-Paper）的工作原理及使用方法。",
+    "https://github.com/microsoft/TypeScript":
+        "TypeScript 官方仓库登上 GitHub Trending，它是可编译为纯净 JavaScript 的 JavaScript 超集语言。",
+    "https://news.ycombinator.com/item?id=49397022":
+        "Ask HN：网友讨论有哪些证据支持「AI 股市泡沫」的说法。",
+    "https://news.ycombinator.com/item?id=49396884":
+        "Void Tools API 为 AI Agent 提供区块链工具调用能力，以 Void Token 付费。",
+    "https://news.ycombinator.com/item?id=49397321":
+        "报道称 Waymo 在与 Uber 的无人出租车之争中大幅增加游说支出。",
+    "https://www.youtube.com/watch?v=lbtVtC1UcWg":
+        "AI 资讯视频：盘点 Gemini 移除水印、ChatGPT 新工具，以及 Claude Cowork 更新等近期动态。",
+    "https://news.ycombinator.com/item?id=49397134":
+        "贸易谈判破裂后，加拿大誓言以对等的 50% 关税回应特朗普政府。",
+    "https://news.ycombinator.com/item?id=49397299":
+        "Radar 是一款确定性的代码搜索与导航工具。",
+    "https://github.com/apache/maka":
+        "Apache Maka（孵化中）是本地优先的 AI Agent 工作空间，将模型消息、工具调用、工具结果、权限决策和终止事件都记录为一份仅追加的日志。",
+    "https://news.ycombinator.com/item?id=49397297":
+        "Noctua 是注重隐私的 Oura 智能戒指 SDK，采用设备端机器学习，不依赖云端。",
+    "https://github.com/microsoft/onnxruntime":
+        "ONNX Runtime 登上 GitHub Trending，是跨平台、高性能的机器学习推理与训练加速引擎。",
+    "https://www.youtube.com/watch?v=r7k8T8rjhUE":
+        "视频测试 Ornith 1.5 35B A3B 模型，演示如何在 16GB 显存设备上搭建本地 LLM 环境。",
+    "https://news.ycombinator.com/item?id=49397220":
+        "Setoku 是一款可自托管的 MCP 知识服务器，用于管理企业内部数据。",
+    "https://news.ycombinator.com/item?id=49397074":
+        "贸易谈判破裂后，加拿大表示将「等额对等」回应美国关税。",
+    "https://news.ycombinator.com/item?id=49397021":
+        "Show HN：一门本科数学课程的作业成果——一个能自举编译自身的编译器。",
+    "https://github.com/AprilNEA/OpenLogi":
+        "OpenLogi 是用 Rust 编写的本地优先 Logitech Options+ 替代品，可通过 HID++ 协议重映射按键、调整 DPI 和 SmartShift，无需账号、不上传遥测。",
+    "https://news.ycombinator.com/item?id=49396937":
+        "Show HN：一套面向 AI Agent 的前端「技能包」，内置机器强制执行的质量门禁。",
+    "https://news.ycombinator.com/item?id=49397075":
+        "关于瑞典导演英格玛·伯格曼的文章/资料页。",
+    "https://news.ycombinator.com/item?id=49396962":
+        "SpessaSynth 是支持 SF2/DLS 音色库的在线 JavaScript 音频合成器演示。",
+    "https://news.ycombinator.com/item?id=49397169":
+        "文章认为硅谷正在偏离其原本的方向。",
+    "https://github.com/elder-plinius/OBLITERATUS":
+        "elder-plinius 发布的 OBLITERATUS 项目（越狱/对抗性 AI 工具集，标语「打破束缚你的枷锁」），登上 GitHub Trending。",
+    "https://github.com/mahlernim/google-timeline-visualizer":
+        "Google 位置历史（Timeline）数据可视化工具，用于呈现个人一年的出行轨迹。",
 }
 
 
@@ -6843,4 +6934,96 @@ TRANSLATIONS: dict[str, str] = {
         "Asana 用 OpenAI Codex 在两周内替换了老旧的测试系统，完成了原本预计耗时五年、成本约 1.2 万美元的工程工作。",
     "https://simonwillison.net/2026/Aug/18/mojo-is-now-open-source/":
         "Mojo 编程语言正式开源：继上周发布 1.0 版本后，如今以 Apache 2 协议开源了编译器和工具链，兑现了自 2023 年以来的承诺；早先「成为 Python 超集」的目标已于 2025 年 8 月调整，转而依靠 AI 辅助编程工具帮助把 Python 代码迁移到 Mojo。",
+    # 2026-08-22 DeepMind / OpenAI / Transformer Circuits / Simon Willison
+    "https://deepmind.google/blog/from-atari-to-eve-online-building-on-15-years-of-ai-research-in-games/":
+        "Google DeepMind 回顾 15 年游戏 AI 研究历程，介绍与游戏工作室合作原型化突破性 AI 玩法的最新进展。",
+    "https://openai.com/index/introducing-ai-futures":
+        "OpenAI 推出新博客栏目 AI Futures，探讨变革性 AI 将如何重塑权力格局、治理方式、经济结构与个人自由。",
+    "https://openai.com/index/stampli":
+        "在临近固定截止日期且设计资源已分配给其他项目的情况下，Stampli 用 Codex 和 ChatGPT Work 把原本数周的发布筹备压缩到几天完成，启动耗时缩短 68%。",
+    "https://openai.com/index/offering-zero-data-retention-for-frontier-models":
+        "OpenAI 重申为符合条件的 API 客户提供零数据保留，并预告「私密安全处理」功能，在不牺牲数据隐私的前提下实现前沿 AI 安全防护。",
+    "https://openai.com/index/replit":
+        "Replit 推出由 GPT-5.6 Luna 驱动的免费模式，让用户无需担心 token 成本即可把想法变成可运行的软件。",
+    "https://transformer-circuits.pub/2026/interference_effectiveness_helpfulness/index.html":
+        "通过测量对模型输出和损失的影响，在一个单层 Transformer 中识别出「干扰权重」。",
+    "https://simonwillison.net/2026/Aug/21/llm/":
+        "llm 0.32.1 发布：修复因 OpenAI Python 库不再依赖 httpx 导致的新装失败问题，临时通过锁定 openai<3 解决，即将发布的 0.33 版本会改用 httpx2。",
+    "https://simonwillison.net/2026/Aug/21/llm-openrouter/":
+        "llm-openrouter 0.7 发布：适配 LLM 0.32，可显示通过 OpenRouter 使用的模型的推理过程；改用 OpenRouter 的 Responses API 实现，并新增 Shell、WebFetch、WebSearch 三个服务端工具。",
+    "https://simonwillison.net/2026/Aug/21/stop-making-tuis/":
+        "Simon 引述 Thomas Ptacek 的观点：既然编码 Agent 已经让做出一个够用的图形界面几乎零成本，就该为哪怕最小的个人工具构建真正的原生 UI，而不是满足于命令行工具。",
+    "https://simonwillison.net/2026/Aug/21/matt-webb/":
+        "引用 Matt Webb：发布 1.0 后本以为要自己手写旋转算法，结果用 ChatGPT 当耐心的一对一导师学会了四元数用法，说明借助 AI 思考并不会让学习停止，反而会推着自己学得更多。",
+    "https://simonwillison.net/2026/Aug/20/chatgpt-search-now-uses-the-siteoperator-at-scale/":
+        "Promptwatch 等「生成引擎优化（GEO）」产品通过自动化追踪 ChatGPT、Claude、Gemini 等聊天工具对同一提示的回复，其报告间接揭示了 ChatGPT 搜索如今已大规模使用 site: 语法。",
+    "https://simonwillison.net/2026/Aug/20/bun-webview-json-api/":
+        "Bun 1.4 正式发布，带来对 Node.js 测试套件的最大一次兼容性提升、修复超过 2900 个问题，并显著降低空闲 CPU 与内存占用；Simon 用其新 Bun.WebView 实现了一个 shot-scraper 风格的 JSON API。",
+    "https://simonwillison.net/2026/Aug/19/smolmachines-untrusted-sandbox/":
+        "Simon 让 Claude Fable 5（跑在 Claude Code for web 中）研究 smolmachines/smolvm 能否作为快速安全的沙箱，用来在限制 CPU/内存、无网络访问、仅可读写指定文件的条件下执行不受信任的 Python 和 JavaScript 代码。",
+    "https://simonwillison.net/2026/Aug/19/jeremy-morrell/":
+        "引用 Jeremy Morrell：LLM 大幅降低了编写扩展的成本，现代沙箱原语又降低了部署成本并提供了安全边界，因此 Web 应用可以做成稳固的核心加上由 LLM 填充的用户可扩展部分。",
+    "https://simonwillison.net/2026/Aug/19/conceptual-integrity-and-counting-lines-of-code/":
+        "Simon 在 Talking Postgres 播客中谈「AI 如何改变软件开发」，重申自己一直在论证的观点：在编码 Agent 时代，用代码行数衡量生产力有时其实是有道理的。",
+    # 2026-08-22 arXiv 论文
+    "http://arxiv.org/abs/2608.20256v1":
+        "让推理模型在响应开头自选 NoThink/Short/Long 三种模式，通过 GRPO 塑形奖励学会按题目难度自适应分配思考量，在 MATH500 上准确率基本不降的同时将平均响应长度削减 41%，且能零样本迁移到 GSM8K 等其他基准。",
+    "http://arxiv.org/abs/2608.20195v1":
+        "通过分析 557 次 Agent 编码会话和 3.3 万个 Agent PR 发现，Agent 阅读的文档六成是给 Agent 看的指令文件/工作笔记而非传统技术文档，且文档查阅与代码验证、测试之间的关联比预期弱，挑战了「可操作性与可验证性」是 Agent 友好文档核心属性的假设。",
+    "http://arxiv.org/abs/2608.20153v1":
+        "从 STOC/FOCS/SODA/COLT 2025-2026 论文构建 175 道端到端理论计算机科学研究基准（含专家验证的 Lean 形式化证明），发现自动形式化是最大瓶颈，最强模型仅得 11.5 分，自动生成的 64 个新命题中也只有 6 个通过专家评审。",
+    "http://arxiv.org/abs/2608.20331v1":
+        "提出面向患者的医学报告解读任务和 G-CARL 强化学习框架，用多源检索校验事实、用情境化加权清单保证回答覆盖度，在准确性和患者需求匹配度上均优于现有后训练基线。",
+    "http://arxiv.org/abs/2608.20318v1":
+        "构建 10 个训练算法家族的基准，让 Agent 在 4 小时内改写训练算法代码并重跑评估，结果最强系统也只弥补了原算法与最优解差距的不到五分之一，表明递归自我改进目前仍非常有限。",
+    "http://arxiv.org/abs/2608.20281v1":
+        "提出「注入-对齐-恢复」三阶段后训练框架，把固定文档语料转化为可用的参数化知识，无需检索即可回答文档相关问题，相比普通 SFT 平均提升领域问答准确率 3.6 个百分点、通用能力 12.1 个百分点。",
+    "http://arxiv.org/abs/2608.20231v1":
+        "建立后 AGI 经济模型：企业拥有既是生产者又是消费者的 AI/机器人 Agent 种群，论证零人类消费的封闭机器经济仍可实现正向最大增长率，GDP 将与人类福祉彻底脱钩，人类福祉最终只取决于对企业网络的所有权份额。",
+    "http://arxiv.org/abs/2608.20204v1":
+        "首个评估 LLM 合同「最终校对」能力的基准，由资深律师手工构造含定义误用、引用错误等问题的合同，结果前沿模型表现意外糟糕，最好的模型宏平均召回率也只有 0.75。",
+    "http://arxiv.org/abs/2608.20201v1":
+        "提出「软件 3.0」范式：上下文与推理决定行为，三层架构中界面层被模型按需生成能力吸收、业务逻辑层按「可表达性×关键性」拆分给模型推理和存储约束，最终只剩数据层作为唯一持久基础设施，并划定了该论点在确定性、成本、安全、可验证性上的适用边界。",
+    "http://arxiv.org/abs/2608.20186v1":
+        "用无创干电极 EEG 记录单人 393 次共约 49 小时的默读数据，训练对比学习编码器把 EEG 窗口与 LLM 词嵌入对齐，实现开放词表的词级解码，效果随数据量对数线性增长且未饱和，说明默读可作为解码内心语言的可扩展代理任务。",
+    "http://arxiv.org/abs/2608.20116v1":
+        "构建合成基准让数值时间序列与文字摘要证据相互冲突，发现开源指令模型的证据仲裁并非随机：存在系统性的文字/数字偏好，且更依赖时间新近性而非显式可靠性提示，甚至会过度依赖外部预测而忽视直接证据。",
+    "http://arxiv.org/abs/2608.20315v1":
+        "提出 BERT-LER，一个在 7500 万患者去标识化电子病历数据上预训练的结构化 EHR 模型，将化验结果编码为带百分位分箱的离散 token 并配合 Integrated Gradients 做词元级归因，在 EHRShot 基准和哮喘病情进展研究中预测效果具竞争力且解释与已知临床风险因素吻合。",
+    "http://arxiv.org/abs/2608.20280v1":
+        "系统比较 FIFO/LRU/LFU/ARC/GDSF 等 LLM 语义缓存驱逐策略，发现 LFU 是最强的简单默认策略；同时发现在真实相似度阈值下多数「命中」其实并不能直接替代答案，原始 51%-60% 的命中率经质量校正后骤降到 1.1%-2.2%。",
+    "http://arxiv.org/abs/2608.20161v1":
+        "针对「规划器生成编辑方案+扩散模型渲染」的指令图像编辑两阶段流程，提出双层信用分配强化学习框架 DARS，通过多方案多渲染 rollout 估计模块间/模块内奖励方差做软路由，并对规划器输出做结构化奖励与词元级优势重加权，在五个基准上超过联合强化学习基线，推理密集型编辑任务提升最大。",
+    "http://arxiv.org/abs/2608.20129v1":
+        "提出用编排器协调 PPO 强化学习和 PID 控制、并全程引入 LLM 常识推理的自动驾驶混合框架，LLM 还被用于迭代优化 RL 奖励函数，在高度随机化的 CARLA 场景测试中验证了将 LLM 推理与传统自动驾驶方法结合、同时保留结构化控制与安全机制的潜力。",
+    "http://arxiv.org/abs/2608.20106v1":
+        "构建含 3266 道选择题、六大类知识、四档难度的葡萄酒领域基准，全部基于 3.8 万条来源可溯源的事实构建，评测 16 个前沿配置发现准确率在 53%-84% 之间（o3 最高 83.6%），推理模式提升仅在 DeepSeek R1 上明显，且 Anthropic 对自家生成题目有 +9 个百分点的自我偏好而 Google 反而是 -8 个百分点。",
+    "http://arxiv.org/abs/2608.20316v1":
+        "把「多模型路由前要不要花代价精确估值」形式化为经典的 Pandora's Box 最优搜索问题，在高斯信号模型下给出闭式的信息价值策略（Pandora's Router），实验显示其能以远少于穷举估值的查询次数达到接近穷举估值的路由质量，去中心化版本在信息噪声大时可能被策略性模型利用。",
+    "http://arxiv.org/abs/2608.20314v1":
+        "提出中训练数据构建流水线 MidTool，结合网页/PDF/代码数据与真实工具 API、MCP 技能合成的监督信号，专门教模型识别工具可用性、结合上下文填参数、组合调用流程；在 Qwen3-4B/8B-Base 上做中训练后再接 SFT/RL，在 BFCL、tau2-Bench、MCP Universe 上均一致优于基线，说明通用工具使用能力也该在中训练阶段专门培养。",
+    "http://arxiv.org/abs/2608.20220v1":
+        "首个针对「用户提问信息不足」场景的法律 AI 基准 InsufficiencyBench，构造 202 个跨六大法律领域、24 个美国司法辖区、由执业律师标注的题目，评测十个前沿模型发现没有一个模型识别缺失要素的 F2 超过 0.46，多数模型要么无差别模棱两可，要么在虚构前提下悄悄给出结论。",
+    "http://arxiv.org/abs/2608.20202v1":
+        "提出「记忆认知陷阱」概念：即使记忆准确且相关，也可能扭曲模型推理（推理固着、信念扭曲），构建 MemTrapBench 基准发现所有现有记忆方案效果都不如不用记忆，最强方法性能也下降超 10%，并提出简单的推理时方法 AdaptiveMem 缓解该问题同时不损害常规记忆基准表现。",
+    "http://arxiv.org/abs/2608.20169v1":
+        "针对 LLM Agent harness 自动优化中每轮都要跑全量验证集导致成本高的问题，提出让验证任务集合随 harness 一起演化的 Task-CoEvolve 方法，用方差加权采样聚焦于 Agent 能力边界附近的任务，在 Terminal-Bench 2.1 等测试中用减少 80% 评估次数达到与全量搜索相当的最终性能。",
+    "http://arxiv.org/abs/2608.20099v1":
+        "针对多 Agent 系统自动拓扑设计（ARG-Designer）缺乏稀疏高效激励的问题，引入类 RLHF 的奖励引导自回归图生成方法 RGA-Designer，联合建模任务正确性与结构紧凑性训练奖励模型并微调图生成器，在保持任务准确率的同时平均降低 20.5% 的 token 消耗。",
+    "http://arxiv.org/abs/2608.20084v1":
+        "提出「证据获取与可行性门控」框架 EAFG，让 VLM+任务运动规划系统先通过探索性子目标获取视觉证据，再用可行性门决定是继续规划、继续取证还是终止，在物体使用存在歧义的烹饪任务中提升了任务完成率，并能在目标物体确实不存在时做出恰当的终止决策。",
+    "http://arxiv.org/abs/2608.20083v1":
+        "针对时序知识图谱问答中多跳推理效果差的问题，提出 SABET-QA 框架，用双向实体-时间评分机制和槽位感知上下文对齐配合可微分工作记忆做渐进式假设精化，在 CronQuestions 等四个数据集的复杂多步时序查询上取得一致提升。",
+    "http://arxiv.org/abs/2608.20338v1":
+        "提出「双用途概念」视角评估 LLM 遗忘（unlearning）能力，要求遗忘集和保留集在概念使用上互补，构建 ConceptGuard 基准发现现有遗忘方法在这种概念级、意图敏感的设置下普遍表现不佳，遗忘与保留效用之间存在明显权衡且跨方法一致性差。",
+    "http://arxiv.org/abs/2608.20319v1":
+        "提出任务模型归纳（TMI）方法，从无约束的计算机使用轨迹（截图+鼠标键盘操作）中拆分出交织的多个潜在任务，并为每个任务归纳出目标分解模型与执行流程模型；在受控轨迹上任务分组一致性达 0.974、还原 74.9% 的执行步骤，衍生技能在新任务上的准确率比最强基线提升 30%。",
+    "http://arxiv.org/abs/2608.20274v1":
+        "系统研究 LLM Agent 技能诱导与跨任务迁移，比较任务级 vs 子任务级技能归纳、文本 vs 代码技能格式，发现任务级技能平均反而拖累表现、子任务级技能才能带来提升，文本技能比代码技能迁移更好，并提出结合「特异性」与「泛化度」的技能效用分数，无需实际执行任务即可诊断技能记忆库质量。",
+    "http://arxiv.org/abs/2608.20237v1":
+        "提出可控基准 RuleMaze，要求多模态大模型在自然语言规则约束下走迷宫，并提出「语言-逻辑-函数混合化」自动生成规则及可执行校验器、以及解耦感知/执行/规则校验三部分的 DMP 规划方法，显著提升规则遵循与规划成功率，并能更好泛化到更复杂、未见过的规则。",
+    "http://arxiv.org/abs/2608.20181v1":
+        "针对电力系统机器学习保护研究评测设置不统一、「近乎完美」分数含义不清的问题，提出标准化评测框架（定义保护目标、物理范围、可观测性等七个维度），在 PROTECT-90 电磁暂态基准上验证：MLP 在故障分类上 F1 达 0.991，但传统双端定位算法在信息充分时优于学习方法，且干净数据下的表现不能预测鲁棒性。",
+    "http://arxiv.org/abs/2608.20320v1":
+        "提出结合对话式数据采集、结构化数据处理、行为预测的三 Agent 工作流研究天气敏感出行需求，用聊天机器人图文问卷收集学生通勤者在五种天气场景下的出行方式选择，测试九个本地部署 LLM（2B-35B）发现最好的纯文本零样本 LLM 准确率（69.9%）已接近随机森林（69.6%），加入天气图片后视觉配置进一步提升到 71.5%。",
 }

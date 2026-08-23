@@ -3833,6 +3833,87 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "elder-plinius 发布的 OBLITERATUS 项目（越狱/对抗性 AI 工具集，标语「打破束缚你的枷锁」），登上 GitHub Trending。",
     "https://github.com/mahlernim/google-timeline-visualizer":
         "Google 位置历史（Timeline）数据可视化工具，用于呈现个人一年的出行轨迹。",
+    # 2026-08-23 社区动态
+    "https://github.com/Wei-Shaw/sub2api":
+        "Sub2API 是一站式开源中转服务，让 Claude、OpenAI、Gemini、Grok 等订阅统一接入，支持多人拼车共享分摊成本，且能无缝复用各家原生工具。",
+    "https://github.com/Tencent/AI-Infra-Guard":
+        "腾讯开源的全栈 AI 红队平台 AI-Infra-Guard，通过 Agent Scan、Skills Scan、MCP Scan、AI 基础设施扫描和 LLM 越狱评估等能力保护 AI 生态安全。",
+    "https://github.com/makeplane/plane":
+        "Plane 是开源的 Jira/Linear/Monday/ClickUp 替代品，一款现代化项目管理平台，用于管理任务、迭代、文档和问题分诊。",
+    "https://github.com/openai/codex":
+        "OpenAI Codex，一款可在终端中运行的轻量级编码 Agent。",
+    "https://github.com/n8n-io/n8n":
+        "n8n 是内置原生 AI 能力的公平代码（fair-code）工作流自动化平台，支持可视化搭建结合自定义代码，可自托管或用云服务，集成 400+ 应用。",
+    "https://news.ycombinator.com/item?id=49406924":
+        "Mojo by Example 是一份通过大量代码示例讲解 Mojo 编程语言语法与用法的教程网站。",
+    "https://news.ycombinator.com/item?id=49406713":
+        "视频回顾 Cliff Stoll 40 年前追踪黑客入侵、最终写成《杜鹃蛋》一书的经典网络安全故事。",
+    "https://news.ycombinator.com/item?id=49406951":
+        "Orelon 是一款面向电影级创作的 AI 视频生成工具。",
+    "https://news.ycombinator.com/item?id=49406811":
+        "ISO 24495 标准文档（PDF），该国际标准定义了「简明语言（Plain Language）」写作的基本原则与指南。",
+    "https://news.ycombinator.com/item?id=49406993":
+        "文章认为，试图打造「下一个 GitHub」这件事本身并不值得追逐。",
+    "https://news.ycombinator.com/item?id=49406926":
+        "作者开发了一款能从 YouTube 视频内容自动生成康奈尔笔记（Cornell Notes）的工具。",
+    "https://news.ycombinator.com/item?id=49406755":
+        "视频展示宇树 G1 人形机器人通过「观看」业余爱好者打网球来学习网球动作。",
+    "https://news.ycombinator.com/item?id=49406723":
+        "文章探讨多模态模型在逼近真实世界理解能力过程中存在的「渐近极限」。",
+    "https://news.ycombinator.com/item?id=49406873":
+        "文章提出一种用于检验 AI 系统是否具有意识的测试方法。",
+    "https://news.ycombinator.com/item?id=49406788":
+        "文章介绍一种无需左右分屏预览、也能舒适编辑 Markdown 的方式。",
+    "https://news.ycombinator.com/item?id=49406751":
+        "讣告：Linux 内核 SMB3/CIFS 文件系统维护者 Steve French 逝世。",
+    "https://news.ycombinator.com/item?id=49406896":
+        "Ksumiyo 是一款提供制作人级精细参数控制的 AI 音乐生成工具。",
+    "https://news.ycombinator.com/item?id=49407072":
+        "PureLiFi 发布号称 10 Gbps 的「Connectivity DNA」LiFi 无线光通信技术，用于弥补 5G 网络的覆盖缺口。",
+    "https://news.ycombinator.com/item?id=49406790":
+        "Show HN：Sol-Luna Orchestrator 让 Codex 自行判断某项任务是否应该委派给其他 Agent 执行。",
+    "https://news.ycombinator.com/item?id=49406994":
+        "Natural Number Game 是一款用游戏化方式教授自然数形式化证明（基于 Lean）的互动教学项目。",
+    "https://news.ycombinator.com/item?id=49406757":
+        "文章记录作者排查双核 Cortex-A9 芯片缓存不一致问题的过程。",
+    "https://news.ycombinator.com/item?id=49406975":
+        "作者用七块 ESP32 单片机组成集群，跑起了一个约 4 亿参数的 LLM。",
+    "https://news.ycombinator.com/item?id=49407052":
+        "视频用一种少见的直观方式讲解薛定谔方程。",
+    "https://news.ycombinator.com/item?id=49406661":
+        "视频介绍世界上唯一的「漂浮」国家公园。",
+    "https://news.ycombinator.com/item?id=49406881":
+        "文章仿照《Python 之禅》的形式，总结了一套使用/开发 AI 的格言准则。",
+    "https://news.ycombinator.com/item?id=49407060":
+        "文章深入对比多款支持上下文新闻搜索的 API，评估其在 AI、RAG 与研究场景中的适用性。",
+    "https://news.ycombinator.com/item?id=49406662":
+        "介绍「治外法权（Extraterritoriality）」这一法律概念的文章。",
+    "https://news.ycombinator.com/item?id=49406888":
+        "Python 官方文档现已推出俄语版本。",
+    "https://news.ycombinator.com/item?id=49406618":
+        "文章探讨策略类游戏设计与决策中「机会成本」这一概念的作用。",
+    "https://news.ycombinator.com/item?id=49406623":
+        "Show HN：Ditdah 是一款在终端里练习收发摩斯电码的应用。",
+    "https://news.ycombinator.com/item?id=49406916":
+        "Vale 是一款针对散文/文档写作风格与用词规范的 Lint 检查工具。",
+    "https://news.ycombinator.com/item?id=49406808":
+        "Show HN：Zuse 让一个 Agent 在多个 git worktree 中并行协调处理 20 个 Linear issue。",
+    "https://news.ycombinator.com/item?id=49406784":
+        "Show HN：作者正逐步开源自己的写作应用 MonsterWriter。",
+    "https://news.ycombinator.com/item?id=49407008":
+        "分享一份名为 VQL-Artifact.yaml 的查询语言相关产物/配置文件。",
+    "https://news.ycombinator.com/item?id=49406827":
+        "作者因 Chrome 占用内存过高拖垮了自己 8GB 内存的 Mac，于是写了一款体积仅 900KB 的轻量级 macOS 浏览器 Kestrel。",
+    "https://www.youtube.com/watch?v=4Qcwzt4JY48":
+        "视频对比 ChatGPT、Gemini、Claude 三款 AI 编写代码生成 Minecraft 生物的效果。",
+    "https://www.youtube.com/watch?v=-uPnURhpUww":
+        "视频教学生如何免费领取 12 个月 Google AI Pro/Plus（Gemini）学生优惠。",
+    "https://www.youtube.com/watch?v=icM0ewXGvAw":
+        "视频盘点「资深」用户在使用 Claude Code 时仍常犯的 19 个错误。",
+    "https://www.youtube.com/watch?v=m1xDyzQqAHI":
+        "视频介绍 Gemini 3.7 Flash 发布给 AI Agent 开发带来的变化。",
+    "https://www.youtube.com/watch?v=XTvY6dmQPFE":
+        "视频教巴基斯坦学生如何免费使用 Google Gemini 生成 AI 视频。",
 }
 
 
@@ -7026,4 +7107,13 @@ TRANSLATIONS: dict[str, str] = {
         "针对电力系统机器学习保护研究评测设置不统一、「近乎完美」分数含义不清的问题，提出标准化评测框架（定义保护目标、物理范围、可观测性等七个维度），在 PROTECT-90 电磁暂态基准上验证：MLP 在故障分类上 F1 达 0.991，但传统双端定位算法在信息充分时优于学习方法，且干净数据下的表现不能预测鲁棒性。",
     "http://arxiv.org/abs/2608.20320v1":
         "提出结合对话式数据采集、结构化数据处理、行为预测的三 Agent 工作流研究天气敏感出行需求，用聊天机器人图文问卷收集学生通勤者在五种天气场景下的出行方式选择，测试九个本地部署 LLM（2B-35B）发现最好的纯文本零样本 LLM 准确率（69.9%）已接近随机森林（69.6%），加入天气图片后视觉配置进一步提升到 71.5%。",
+    # 2026-08-22 个人 Blog
+    "https://simonwillison.net/2026/Aug/22/linus-torvalds/":
+        "Simon 引述 Linus Torvalds：一次地狱级调试中 AI 承担了大量体力活，虽多次断言「无解」想放弃，但在被坚持推动后仍老实地不断添加调试代码并分析结果，最终连提交信息都是 AI 所写。",
+    "https://simonwillison.net/2026/Aug/22/llm/":
+        "llm 0.33 发布：升级到 OpenAI Python 3.x 库并把 HTTP 客户端依赖从 httpx 换成 httpx2；llm embed/embed-multi 及对应 Python 方法新增 --key/key= 参数，可按调用传入密钥而不改变共享模型状态，旧插件无需修改仍可正常工作。",
+    "https://simonwillison.net/2026/Aug/22/more-than-just-code-review/":
+        "Simon 认为善用编码 Agent 的关键技能是能自信地指挥其修改代码、并自信地验证修改是否正确，逐行审查代码只是验证手段之一，从来都不是校验软件改动最有效的方式。",
+    "https://magazine.sebastianraschka.com/p/claude-watermarking":
+        "一段 48 分钟的视频，讲解 token 采样、水印检测与去除的原理，介绍 Claude 如何为 AI 生成文本加水印。",
 }

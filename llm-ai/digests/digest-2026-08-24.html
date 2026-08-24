@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-08-24</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-08-24</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-08-24</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 42 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">42</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">40</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/" target="_blank" rel="noopener">Anthropic’s best AI model struggles to attract users as cheaper tools thrive</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Anthropic’s best AI model struggles to attract users as cheaper tools thrive
+A few interesting numbers in this FT story gathered from &quot;people with knowledge of the matter&quot;:
+
+Anthropic&#x27;s &quot;annualized revenue&quot; for July is up to $65bn - it was $47bn in May, and I collected more historic numbers here.
+Anthropic expect Q3 to be profitable according to...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 引用 FT 报道数据：Anthropic 7 月年化营收升至 650 亿美元（5 月为 470 亿），有 6000 个年消费 10 万美元以上的客户；OpenAI 本季年化营收环比涨 35% 超过 400 亿美元，得益于 GPT 5.6 发布，文中还提到用 Ramp 账单数据统计的 AI 使用指数。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Aug/23/drew-breunig/" target="_blank" rel="noopener">Quoting Drew Breunig</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Prior to Fable, it felt silly to waste too much time improving your coding harness or context strategies. A new model would arrive at the same price (or cheaper!) and paper over most of your problems.
+But then Fable landed. It was (and still is!) incredible. But the cost was so high and Opus was good enough (as was 5.6, K3, and even GLM) for mos...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 转引 Drew Breunig 的观点：在 Fable 发布前，投入太多精力打磨编码工具或上下文策略显得没必要，因为新模型总会更便宜更好地解决问题；但 Fable 效果惊人却成本高昂，Opus、5.6、K3、GLM 等已够用，团队因此开始认真思考「什么工作该交给什么模型」。</div>
+        <div class="item-url">https://simonwillison.net/2026/Aug/23/drew-breunig/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">40 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417078" target="_blank" rel="noopener">Why Couples Therapists Are Sick of &#x27;Therapy-Speak&#x27;</a>
+        <div class="item-summary">文章探讨婚姻家庭治疗师为何开始厌倦「治疗腔」（therapy-speak）在日常生活中被滥用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417078</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417163" target="_blank" rel="noopener">Meta Deep Dive: Opportunity or a Trap?</a>
+        <div class="item-summary">文章深入分析 Meta 当前处境，讨论其究竟是机遇还是陷阱。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417163</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417261" target="_blank" rel="noopener">LLM Quantization Part 2.5: Do Floats Dream of Real Numbers?</a>
+        <div class="item-summary">LLM 量化系列文章第 2.5 篇，探讨浮点数表示与真实数值之间的关系。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417261</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417169" target="_blank" rel="noopener">Show HN: Split-Brain Portal – An Anti-Notion AI Journaling Engine</a>
+        <div class="item-summary">Show HN：Split-Brain Portal 是一款反 Notion 风格的 AI 日记引擎。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417169</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417115" target="_blank" rel="noopener">Women of the Bauhaus: See Hip, Avant-Garde Photographs at the Famous Art School</a>
+        <div class="item-summary">文章展示包豪斯女性艺术家在这所著名艺术学校拍摄的前卫摄影作品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417115</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417257" target="_blank" rel="noopener">LLM Quantization Part 3: Honey, I Shrunk the Numbers</a>
+        <div class="item-summary">LLM 量化系列文章第 3 篇，讲解如何进一步压缩模型数值精度。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417257</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417313" target="_blank" rel="noopener">We never use AI. For anything</a>
+        <div class="item-summary">作者讲述自己团队完全不使用 AI 工具的理由与实践。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417313</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417097" target="_blank" rel="noopener">Pokémon Bank will end service in February 2027</a>
+        <div class="item-summary">任天堂宣布 Pokémon Bank 云存储服务将于 2027 年 2 月终止。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417097</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417343" target="_blank" rel="noopener">Khinchin&#x27;s Constant</a>
+        <div class="item-summary">介绍连分数理论中的欣钦常数（Khinchin&#x27;s Constant）及其数学性质。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417343</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417363" target="_blank" rel="noopener">Best-Skills: Daily Agent Skills Rankings</a>
+        <div class="item-summary">Best-Skills 提供每日 Agent Skills 排行榜，追踪热门技能包。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417363</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417312" target="_blank" rel="noopener">Show HN: FutureOS – One AI agent across terminal, desktop, mobile and chat apps</a>
+        <div class="item-summary">Show HN：FutureOS 是一个可在终端、桌面、移动端和聊天应用间统一使用的 AI Agent。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417312</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417354" target="_blank" rel="noopener">How would you benchmark Wan 3.0 against Seedance 2.0?</a>
+        <div class="item-summary">讨论帖：如何为阿里 Wan 3.0 与字节 Seedance 2.0 两款视频生成模型设计对比评测。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417354</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417381" target="_blank" rel="noopener">Kit-Bin – 60 PDF/image/audio/video/data tools that run in the browser</a>
+        <div class="item-summary">Kit-Bin 收录 60 款可在浏览器本地运行的 PDF/图片/音频/视频/数据处理工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417381</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417159" target="_blank" rel="noopener">A new &quot;stealth&quot; LLM was launched offering 100T tokens per day</a>
+        <div class="item-summary">一款身份神秘的「隐身」LLM 上线，宣称可提供每日 100 万亿 token 的处理能力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417159</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417307" target="_blank" rel="noopener">A Robot Dog Trained on Dog&#x27;s Video</a>
+        <div class="item-summary">研究者用真实狗的视频训练一只机器狗模仿其动作。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417307</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417071" target="_blank" rel="noopener">Ask HN: Enable web search for my local Qwen?</a>
+        <div class="item-summary">Ask HN：提问如何为本地部署的 Qwen 模型接入网页搜索能力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417071</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417109" target="_blank" rel="noopener">An AI job boom? Here&#x27;s what the tedious, temp work in data labelling is like</a>
+        <div class="item-summary">文章揭示所谓「AI 就业热潮」背后，数据标注临时工作枯燥、待遇有限的真实状况。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417109</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417079" target="_blank" rel="noopener">FDA Authorizes First-of-Its-Kind Robotic Blood Draw Device</a>
+        <div class="item-summary">美国 FDA 批准首款全自动机器人抽血设备上市。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417079</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417298" target="_blank" rel="noopener">Monzo Stand-In</a>
+        <div class="item-summary">介绍英国数字银行 Monzo 内部名为 Stand-In 的项目/工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417298</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417043" target="_blank" rel="noopener">The Penny Gap (2007)</a>
+        <div class="item-summary">2007 年经典文章「The Penny Gap」，讨论免费与哪怕一分钱付费之间用户行为的巨大差异。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417043</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417176" target="_blank" rel="noopener">Illustrative Reforms of Federal Tax and Spending Programs</a>
+        <div class="item-summary">文章列举美国联邦税收与财政支出项目的若干示例性改革方案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417176</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417087" target="_blank" rel="noopener">Anarchist Therapy (1981)</a>
+        <div class="item-summary">1981 年文章，探讨「无政府主义疗法」这一另类心理治疗理念。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417087</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417285" target="_blank" rel="noopener">How to Design an Animation</a>
+        <div class="item-summary">文章介绍设计动画效果的思路与方法论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417285</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417247" target="_blank" rel="noopener">Show HN: Unlock HiDPI for any monitor with native macOS tools</a>
+        <div class="item-summary">Show HN：仅用 macOS 原生工具即可为任意显示器解锁 HiDPI（高分辨率）模式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417247</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417294" target="_blank" rel="noopener">Less Is More</a>
+        <div class="item-summary">文章阐述「少即是多」的设计与工程理念。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417294</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417210" target="_blank" rel="noopener">UUID in Manticore: a single ID for the primary database and Manticore</a>
+        <div class="item-summary">文章介绍如何用统一的 UUID 同时标识主数据库记录与 Manticore 搜索引擎中的对应文档。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417210</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417383" target="_blank" rel="noopener">Even with an Edge, You Lose?</a>
+        <div class="item-summary">文章讨论即便拥有优势（edge），为何仍可能在某些博弈或竞争中落败。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417383</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417267" target="_blank" rel="noopener">LLM Quantization Part 2: You&#x27;re Gonna Need a Bigger VRAM</a>
+        <div class="item-summary">LLM 量化系列文章第 2 篇，说明为何某些场景下反而需要更大显存。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417267</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417156" target="_blank" rel="noopener">PsychoBench</a>
+        <div class="item-summary">PsychoBench 是一个评测 LLM 心理学/性格特质表现的基准测试。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417156</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49417207" target="_blank" rel="noopener">A For-Profit Hospital Slashed Costs. Then a Patient Froze to Death on Its Roof</a>
+        <div class="item-summary">调查报道：一家营利性医院大幅削减成本后，一名患者被困在医院屋顶冻死。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49417207</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=iWpVcm6Zj20" target="_blank" rel="noopener">Carol Capel — VOCÊ VAI TER QUE REZAR PARA O CHAT GPT! A insanidade das RELIGIÕES de inteligência artificial（42,693 次播放）</a>
+        <div class="item-summary">视频（葡萄牙语）讨论围绕 ChatGPT 等 AI 兴起的「人工智能宗教」现象及其荒诞之处。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=iWpVcm6Zj20</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=vYQkvQoFe7Y" target="_blank" rel="noopener">BridgeMind — I Ranked Every AI Model（15,346 次播放）</a>
+        <div class="item-summary">视频作者对市面上主流 AI 模型进行了整体排名点评。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=vYQkvQoFe7Y</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=JkuWYbIbo28" target="_blank" rel="noopener">Droider — Anthropic READ Claude&#x27;s thoughts, it turns out HE WAS THINKING ABOUT...（80,454 次播放）</a>
+        <div class="item-summary">视频介绍 Anthropic 用可解释性技术「读取」Claude 内部思维过程的实验结果。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=JkuWYbIbo28</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=DH09bOh2Qoo" target="_blank" rel="noopener">Неслабо Нервный — DARK REPORT #4: ChatGPT planned a murder | Death over a &quot;Barny&quot; biscuit | Organization &quot;764&quot;（68,516 次播放）</a>
+        <div class="item-summary">视频（俄语）报道一起涉及 ChatGPT「策划谋杀」情节及邪教组织「764」的黑暗事件。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=DH09bOh2Qoo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=S67wXtKvV0U" target="_blank" rel="noopener">ATN News and 2 more — এআই’র কাছে যে পরামর্শগুলো কখনোই চাওয়া উচিৎ না | AI | Chat GPT | Technology | ATN News（23,298 次播放）</a>
+        <div class="item-summary">视频（孟加拉语）盘点几类绝不应该向 AI/ChatGPT 寻求建议的问题类型。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=S67wXtKvV0U</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/block/buzz" target="_blank" rel="noopener">block /buzz — A hive mind communication platform</a>
+        <div class="item-summary">buzz 是 Block 公司开源的「群体思维」通信协作平台。</div>
+        <div class="item-url">https://github.com/block/buzz</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener">dani-garcia /vaultwarden — Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs</a>
+        <div class="item-summary">vaultwarden 是用 Rust 编写的非官方 Bitwarden 兼容密码管理服务端（原名 bitwarden_rs）。</div>
+        <div class="item-url">https://github.com/dani-garcia/vaultwarden</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/anthropics/claude-plugins-community" target="_blank" rel="noopener">anthropics /claude-plugins-community — Community plugin marketplace for Claude Cowork and Claude Code. Read-only mirror — submit plugins at clau.de/plugin-directory-submission.</a>
+        <div class="item-summary">claude-plugins-community 是 Anthropic 面向 Claude Cowork 与 Claude Code 的社区插件市场只读镜像，插件提交需前往 clau.de/plugin-directory-submission。</div>
+        <div class="item-url">https://github.com/anthropics/claude-plugins-community</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/freestylefly/awesome-gpt-image-2" target="_blank" rel="noopener">freestylefly /awesome-gpt-image-2 — Prompt as Code | GPT-Image2 工业级提示词引擎与模板库，530+ 个案例逆向工程，20+ 套工业级模板，并提炼出Skills，持续更新中</a>
+        <div class="item-summary">awesome-gpt-image-2 是「Prompt as Code」提示词工程库，汇集 530+ 逆向工程案例、20+ 套工业级模板并提炼出可复用的 Skills，持续更新。</div>
+        <div class="item-url">https://github.com/freestylefly/awesome-gpt-image-2</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/VoltAgent/awesome-agent-skills" target="_blank" rel="noopener">VoltAgent /awesome-agent-skills — A curated collection of 1000+ agent skills from official dev teams and the community, compatible with Claude Code, Codex, Gemini CLI, Cursor, and more.</a>
+        <div class="item-summary">awesome-agent-skills 收录 1000+ 条来自官方开发团队与社区的 Agent Skills，兼容 Claude Code、Codex、Gemini CLI、Cursor 等工具。</div>
+        <div class="item-url">https://github.com/VoltAgent/awesome-agent-skills</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

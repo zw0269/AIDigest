@@ -3914,6 +3914,87 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "视频介绍 Gemini 3.7 Flash 发布给 AI Agent 开发带来的变化。",
     "https://www.youtube.com/watch?v=XTvY6dmQPFE":
         "视频教巴基斯坦学生如何免费使用 Google Gemini 生成 AI 视频。",
+    # 2026-08-24 GitHub Trending / YouTube AI / Hacker News Newest
+    "https://github.com/block/buzz":
+        "buzz 是 Block 公司开源的「群体思维」通信协作平台。",
+    "https://github.com/dani-garcia/vaultwarden":
+        "vaultwarden 是用 Rust 编写的非官方 Bitwarden 兼容密码管理服务端（原名 bitwarden_rs）。",
+    "https://github.com/anthropics/claude-plugins-community":
+        "claude-plugins-community 是 Anthropic 面向 Claude Cowork 与 Claude Code 的社区插件市场只读镜像，插件提交需前往 clau.de/plugin-directory-submission。",
+    "https://github.com/freestylefly/awesome-gpt-image-2":
+        "awesome-gpt-image-2 是「Prompt as Code」提示词工程库，汇集 530+ 逆向工程案例、20+ 套工业级模板并提炼出可复用的 Skills，持续更新。",
+    "https://github.com/VoltAgent/awesome-agent-skills":
+        "awesome-agent-skills 收录 1000+ 条来自官方开发团队与社区的 Agent Skills，兼容 Claude Code、Codex、Gemini CLI、Cursor 等工具。",
+    "https://www.youtube.com/watch?v=iWpVcm6Zj20":
+        "视频（葡萄牙语）讨论围绕 ChatGPT 等 AI 兴起的「人工智能宗教」现象及其荒诞之处。",
+    "https://www.youtube.com/watch?v=vYQkvQoFe7Y":
+        "视频作者对市面上主流 AI 模型进行了整体排名点评。",
+    "https://www.youtube.com/watch?v=JkuWYbIbo28":
+        "视频介绍 Anthropic 用可解释性技术「读取」Claude 内部思维过程的实验结果。",
+    "https://www.youtube.com/watch?v=DH09bOh2Qoo":
+        "视频（俄语）报道一起涉及 ChatGPT「策划谋杀」情节及邪教组织「764」的黑暗事件。",
+    "https://www.youtube.com/watch?v=S67wXtKvV0U":
+        "视频（孟加拉语）盘点几类绝不应该向 AI/ChatGPT 寻求建议的问题类型。",
+    "https://news.ycombinator.com/item?id=49417078":
+        "文章探讨婚姻家庭治疗师为何开始厌倦「治疗腔」（therapy-speak）在日常生活中被滥用。",
+    "https://news.ycombinator.com/item?id=49417163":
+        "文章深入分析 Meta 当前处境，讨论其究竟是机遇还是陷阱。",
+    "https://news.ycombinator.com/item?id=49417261":
+        "LLM 量化系列文章第 2.5 篇，探讨浮点数表示与真实数值之间的关系。",
+    "https://news.ycombinator.com/item?id=49417169":
+        "Show HN：Split-Brain Portal 是一款反 Notion 风格的 AI 日记引擎。",
+    "https://news.ycombinator.com/item?id=49417115":
+        "文章展示包豪斯女性艺术家在这所著名艺术学校拍摄的前卫摄影作品。",
+    "https://news.ycombinator.com/item?id=49417257":
+        "LLM 量化系列文章第 3 篇，讲解如何进一步压缩模型数值精度。",
+    "https://news.ycombinator.com/item?id=49417313":
+        "作者讲述自己团队完全不使用 AI 工具的理由与实践。",
+    "https://news.ycombinator.com/item?id=49417097":
+        "任天堂宣布 Pokémon Bank 云存储服务将于 2027 年 2 月终止。",
+    "https://news.ycombinator.com/item?id=49417343":
+        "介绍连分数理论中的欣钦常数（Khinchin's Constant）及其数学性质。",
+    "https://news.ycombinator.com/item?id=49417363":
+        "Best-Skills 提供每日 Agent Skills 排行榜，追踪热门技能包。",
+    "https://news.ycombinator.com/item?id=49417312":
+        "Show HN：FutureOS 是一个可在终端、桌面、移动端和聊天应用间统一使用的 AI Agent。",
+    "https://news.ycombinator.com/item?id=49417354":
+        "讨论帖：如何为阿里 Wan 3.0 与字节 Seedance 2.0 两款视频生成模型设计对比评测。",
+    "https://news.ycombinator.com/item?id=49417381":
+        "Kit-Bin 收录 60 款可在浏览器本地运行的 PDF/图片/音频/视频/数据处理工具。",
+    "https://news.ycombinator.com/item?id=49417159":
+        "一款身份神秘的「隐身」LLM 上线，宣称可提供每日 100 万亿 token 的处理能力。",
+    "https://news.ycombinator.com/item?id=49417307":
+        "研究者用真实狗的视频训练一只机器狗模仿其动作。",
+    "https://news.ycombinator.com/item?id=49417071":
+        "Ask HN：提问如何为本地部署的 Qwen 模型接入网页搜索能力。",
+    "https://news.ycombinator.com/item?id=49417109":
+        "文章揭示所谓「AI 就业热潮」背后，数据标注临时工作枯燥、待遇有限的真实状况。",
+    "https://news.ycombinator.com/item?id=49417079":
+        "美国 FDA 批准首款全自动机器人抽血设备上市。",
+    "https://news.ycombinator.com/item?id=49417298":
+        "介绍英国数字银行 Monzo 内部名为 Stand-In 的项目/工具。",
+    "https://news.ycombinator.com/item?id=49417043":
+        "2007 年经典文章「The Penny Gap」，讨论免费与哪怕一分钱付费之间用户行为的巨大差异。",
+    "https://news.ycombinator.com/item?id=49417176":
+        "文章列举美国联邦税收与财政支出项目的若干示例性改革方案。",
+    "https://news.ycombinator.com/item?id=49417087":
+        "1981 年文章，探讨「无政府主义疗法」这一另类心理治疗理念。",
+    "https://news.ycombinator.com/item?id=49417285":
+        "文章介绍设计动画效果的思路与方法论。",
+    "https://news.ycombinator.com/item?id=49417247":
+        "Show HN：仅用 macOS 原生工具即可为任意显示器解锁 HiDPI（高分辨率）模式。",
+    "https://news.ycombinator.com/item?id=49417294":
+        "文章阐述「少即是多」的设计与工程理念。",
+    "https://news.ycombinator.com/item?id=49417210":
+        "文章介绍如何用统一的 UUID 同时标识主数据库记录与 Manticore 搜索引擎中的对应文档。",
+    "https://news.ycombinator.com/item?id=49417383":
+        "文章讨论即便拥有优势（edge），为何仍可能在某些博弈或竞争中落败。",
+    "https://news.ycombinator.com/item?id=49417267":
+        "LLM 量化系列文章第 2 篇，说明为何某些场景下反而需要更大显存。",
+    "https://news.ycombinator.com/item?id=49417156":
+        "PsychoBench 是一个评测 LLM 心理学/性格特质表现的基准测试。",
+    "https://news.ycombinator.com/item?id=49417207":
+        "调查报道：一家营利性医院大幅削减成本后，一名患者被困在医院屋顶冻死。",
 }
 
 
@@ -7116,4 +7197,9 @@ TRANSLATIONS: dict[str, str] = {
         "Simon 认为善用编码 Agent 的关键技能是能自信地指挥其修改代码、并自信地验证修改是否正确，逐行审查代码只是验证手段之一，从来都不是校验软件改动最有效的方式。",
     "https://magazine.sebastianraschka.com/p/claude-watermarking":
         "一段 48 分钟的视频，讲解 token 采样、水印检测与去除的原理，介绍 Claude 如何为 AI 生成文本加水印。",
+    # 2026-08-24 个人 Blog
+    "https://simonwillison.net/2026/Aug/23/anthropics-best-ai-model-struggles-to-attract-users-as-cheaper-t/":
+        "Simon 引用 FT 报道数据：Anthropic 7 月年化营收升至 650 亿美元（5 月为 470 亿），有 6000 个年消费 10 万美元以上的客户；OpenAI 本季年化营收环比涨 35% 超过 400 亿美元，得益于 GPT 5.6 发布，文中还提到用 Ramp 账单数据统计的 AI 使用指数。",
+    "https://simonwillison.net/2026/Aug/23/drew-breunig/":
+        "Simon 转引 Drew Breunig 的观点：在 Fable 发布前，投入太多精力打磨编码工具或上下文策略显得没必要，因为新模型总会更便宜更好地解决问题；但 Fable 效果惊人却成本高昂，Opus、5.6、K3、GLM 等已够用，团队因此开始认真思考「什么工作该交给什么模型」。",
 }

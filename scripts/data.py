@@ -3995,6 +3995,92 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "PsychoBench 是一个评测 LLM 心理学/性格特质表现的基准测试。",
     "https://news.ycombinator.com/item?id=49417207":
         "调查报道：一家营利性医院大幅削减成本后，一名患者被困在医院屋顶冻死。",
+
+    # 2026-08-27 Anthropic / GitHub Trending / Hacker News Newest / YouTube AI
+    "https://www.anthropic.com/news/wellbeing-research-grants":
+        "Anthropic 推出 500 万美元资助计划，资助独立研究者构建开源评测方法，衡量 AI 模型对用户心理健康的影响，并邀请临床医生、心理学家等外部专家参与，为涉及情感低落或寻求陪伴等细腻场景建立评估标准；申请截止 9 月 21 日，10 月 5 日前通知结果。",
+    "https://github.com/DietrichGebert/ponytail":
+        "Ponytail 让 AI 编程 Agent 像「团队里最懒的资深工程师」一样思考：最好的代码就是从未写过的代码。",
+    "https://github.com/browser-use/browser-use":
+        "Browser-use 让网站对 AI Agent 更友好可用，方便在线自动化各类任务。",
+    "https://github.com/AgriciDaniel/claude-obsidian":
+        "Claude-obsidian 是面向 Obsidian + Claude Code 的自组织 AI 第二大脑：丢入任意资料，Claude 会自动阅读、关联并归档进一个纯 Markdown 知识图谱，借鉴了 Karpathy 的 LLM Wiki 模式。",
+    "https://github.com/ConardLi/garden-skills":
+        "ConardLi 开源的 Skills 合集，涵盖网页设计、知识检索、图像生成等多种 Claude Skills。",
+    "https://github.com/marin-community/marin":
+        "Marin 是用于基础模型研发的开源框架。",
+    "https://github.com/tt-a1i/archify":
+        "Archify 是一款生成美观、可验证的架构图/流程图/时序图/数据流图的 Agent Skill，产出带动效的自包含 HTML，导出清晰。",
+    "https://news.ycombinator.com/item?id=49451919":
+        "美国联邦部门平等就业机会新规（NPRM）PDF 文件讨论。",
+    "https://news.ycombinator.com/item?id=49451827":
+        "《JavaScript 的深处》系列文章：用 247 字节实现的扫雷游戏。",
+    "https://news.ycombinator.com/item?id=49451703":
+        "西班牙拟要求数据中心每小时用电 80% 来自可再生能源，否则不予并网。",
+    "https://news.ycombinator.com/item?id=49451870":
+        "文章分析 H-1B 签证带来的经济效益。",
+    "https://news.ycombinator.com/item?id=49451702":
+        "Show HN：花 1 美元检测/展示你网站的 DR（域名评级）。",
+    "https://news.ycombinator.com/item?id=49451733":
+        "Show HN：Llmcanvas.chat，一款基于无限画布、树状结构的 LLM 对话工具。",
+    "https://news.ycombinator.com/item?id=49451906":
+        "印度尼西亚向马来西亚人工降雨技术团队开放领空。",
+    "https://news.ycombinator.com/item?id=49451801":
+        "Ask HN：你们如何使用（如 Claude 的）artifacts 功能，它对项目有何帮助？",
+    "https://news.ycombinator.com/item?id=49451685":
+        "《Surprise and Shine》一文的讨论帖。",
+    "https://news.ycombinator.com/item?id=49451809":
+        "蒂姆·柯蒂（Tim Curry）逝世，享年 80 岁。",
+    "https://news.ycombinator.com/item?id=49451785":
+        "蒂姆·柯蒂逝世相关的另一条讨论帖（重复话题）。",
+    "https://news.ycombinator.com/item?id=49451750":
+        "文章探讨安全措施为何反而促使人们承担更多风险。",
+    "https://news.ycombinator.com/item?id=49451972":
+        "文章讨论本地部署 AI 需要更多耐心。",
+    "https://news.ycombinator.com/item?id=49452011":
+        "文章倡导「选择无聊技术」的工程理念。",
+    "https://news.ycombinator.com/item?id=49451927":
+        "Show HN：无需服务器、基于 iOS 签名权限实现的家庭数据同步方案。",
+    "https://news.ycombinator.com/item?id=49451853":
+        "本周 AI 论文精选合集帖。",
+    "https://news.ycombinator.com/item?id=49451798":
+        "警方在美国国会大厦附近发现断头台后逮捕一名加州男子。",
+    "https://news.ycombinator.com/item?id=49451789":
+        "Show HN：Have You Heard，通过浏览器通知推送精选商品。",
+    "https://news.ycombinator.com/item?id=49451720":
+        "文章讨论在 AI 时代阅读（和教授）赛博朋克作品的重要性。",
+    "https://news.ycombinator.com/item?id=49451820":
+        "帖子讲述一次持续进行的 AI 实验。",
+    "https://news.ycombinator.com/item?id=49451675":
+        "FDA 批准首个针对转移性胰腺癌的同类靶向疗法。",
+    "https://news.ycombinator.com/item?id=49451896":
+        "SurveyorBench 项目讨论帖。",
+    "https://news.ycombinator.com/item?id=49451724":
+        "文章戏称「算力有个火鸡问题」，探讨算力投入背后的隐忧。",
+    "https://news.ycombinator.com/item?id=49451932":
+        "帖子讨论「我可以移民去哪个国家」的话题。",
+    "https://news.ycombinator.com/item?id=49451765":
+        "文章评论 Alex Karp 的观点：你并不拥有你自己的数据。",
+    "https://news.ycombinator.com/item?id=49451833":
+        "面向儿童的 AI 应用 Askie，用于学习、创作与探索。",
+    "https://news.ycombinator.com/item?id=49451916":
+        "Pi-Duplex 项目讨论帖。",
+    "https://news.ycombinator.com/item?id=49451982":
+        "Show HN：适配电子墨水屏的漫画阅读工具 Kindle Comic Converter（兼容 Kobo/KOreader）。",
+    "https://news.ycombinator.com/item?id=49451718":
+        "CowCode，一个界面仿 ChatGPT/Claude Desktop 的 OpenCode 分支。",
+    "https://news.ycombinator.com/item?id=49451904":
+        "Airtxt，一款支持设备端语音转文字与 AI 清理润色的 iPhone 听写工具。",
+    "https://www.youtube.com/watch?v=DKNmrpppgfw":
+        "视频讨论一款正在引发热议的神秘新 LLM「0x Alpha」。",
+    "https://www.youtube.com/watch?v=Im2c-7jvKz8":
+        "视频认为 OpenAI 的最新动作一夜之间颠覆了整个行业格局。",
+    "https://www.youtube.com/watch?v=9MIkJHcMtVA":
+        "OpenAI 官方视频介绍 ChatGPT 文字对话不再设限。",
+    "https://www.youtube.com/watch?v=Fys9ua-x0A0":
+        "视频完整解析 Anthropic 新发布的 Claude Memory 2.0 记忆功能。",
+    "https://www.youtube.com/watch?v=HUDtLSOcWiU":
+        "视频讲解苹果 M5 Ultra 芯片：本地大模型推理速度提升 50%，性能达到 4 倍，苹果芯片王者归来。",
 }
 
 
@@ -7202,4 +7288,88 @@ TRANSLATIONS: dict[str, str] = {
         "Simon 引用 FT 报道数据：Anthropic 7 月年化营收升至 650 亿美元（5 月为 470 亿），有 6000 个年消费 10 万美元以上的客户；OpenAI 本季年化营收环比涨 35% 超过 400 亿美元，得益于 GPT 5.6 发布，文中还提到用 Ramp 账单数据统计的 AI 使用指数。",
     "https://simonwillison.net/2026/Aug/23/drew-breunig/":
         "Simon 转引 Drew Breunig 的观点：在 Fable 发布前，投入太多精力打磨编码工具或上下文策略显得没必要，因为新模型总会更便宜更好地解决问题；但 Fable 效果惊人却成本高昂，Opus、5.6、K3、GLM 等已够用，团队因此开始认真思考「什么工作该交给什么模型」。",
+
+    # 2026-08-27 OpenAI / Simon Willison
+    "https://openai.com/index/loveholidays":
+        "介绍旅游电商 loveholidays 如何使用 OpenAI Codex，让软件开发能力覆盖到全公司各团队，帮助更快把想法变成产品。",
+    "https://openai.com/index/the-full-stack-behind-abundant-intelligence":
+        "OpenAI CFO Sarah Friar 阐述芯片、算力、模型与产品等环节的进步如何叠加，以更低成本、更大规模提供更有用的智能。",
+    "https://openai.com/index/jalapeno-first-results":
+        "Jalapeño 是 OpenAI 自研的推理专用芯片，首批结果显示其推理速度更快、能效更高，具备更高吞吐与更低延迟。",
+    "https://openai.com/index/introducing-admin-plugin":
+        "ChatGPT Work 和 Codex 新增 Admin 插件，可用于分析团队用量、管理成员与权限、调整额度并处理管理员请求。",
+    "https://openai.com/index/disrupting-malicious-uses-of-ai-influence-campaign-russia":
+        "OpenAI 封禁了一批源自俄罗斯的账号，这些账号利用 AI 推广一个虚假的「以色列智库」及一份吹捧俄罗斯、批评西方的「主权」指数。",
+    "https://openai.com/index/gpt-5-6-in-kiro":
+        "GPT-5.6 现已登陆 Kiro，帮助开发者以更好的性价比完成规划、构建、审查与测试工作。",
+    "https://simonwillison.net/2026/Aug/26/paul-dix/":
+        "Simon 引用 Paul Dix 的观点：AI 写出 100 万行代码并在随后几个月打磨成可靠软件、如今运行在数百万开发者机器上，这件事本身就令人震撼，只要能搭建验证系统并给出恰当指引，AI 就能产出高度复杂精细的软件并持续改进。",
+    "https://simonwillison.net/2026/Aug/25/eve-online-move-to-python-3/":
+        "Simon 关注 EVE Online 启动 Python 3 迁移：这款游戏 2003 年上线后一直跑在 Stackless Python 上，上次大升级还是 16 年前到 Stackless Python 2.7，此次将用 futurize 脚本处理 240 万行代码，再人工审查约 2 万处 Python 2/3 行为差异点。",
+    "https://simonwillison.net/2026/Aug/24/llm-anthropic/":
+        "Simon 发布 llm-anthropic 0.27，主要是为兼容刚发布的 anthropic v1.0.0 Python 库（从 httpx 切换到 httpx2）而更新，OpenAI 两周前的 v3.0.0 也做了同样的改动。",
+    "https://simonwillison.net/2026/Aug/24/your-executable-is-a-sqlite-database/":
+        "Simon 介绍 Farid Zakaria 的巧妙 Linux 技巧：把 SQLite 数据库文件直接做成可执行文件，通过把 SQLite 应用 ID 设为「SELF」并将 ELF 可执行格式的各部分拆分存入多张 SQLite 表来实现。",
+
+    # 2026-08-27 arXiv 论文
+    "http://arxiv.org/abs/2608.24876v1":
+        "提出 Recuris 架构，用「工作记忆」跟踪任务进度并指导从「经验记忆」中选取技能，让长程 Agent 在历史记录不断增长时仍能锚定当前任务状态，避免技能调用与真实需求脱节。",
+    "http://arxiv.org/abs/2608.24870v1":
+        "针对异步 Agentic RL 中不必等待同组其余轨迹完成的 SPO 方法，指出其轨迹级归一化未能对齐 token 级别的优势量，提出 SPO++ 通过重新标准化优势来修正这一偏差。",
+    "http://arxiv.org/abs/2608.24865v1":
+        "研究两层输入凸神经网络（ICNN）Lipschitz 常数计算的参数化复杂度，将其转化为在 zonotope 上做 Lp 范数最大化问题，分析该问题在不同 p 下的可计算性。",
+    "http://arxiv.org/abs/2608.24848v1":
+        "提出 BrowserForge，用并行浏览器沙盒规模化生成网页 Agent 训练所需的高质量交互轨迹，突破以往数据集局限于少量固定网站的问题。",
+    "http://arxiv.org/abs/2608.24846v1":
+        "提出 FedV-KGQA 框架，用于跨机构、按关系纵向切分的知识图谱上做多跳问答，让共享实体、各自拥有不同关系集合的组织能协同完成多跳推理而无需集中数据。",
+    "http://arxiv.org/abs/2608.24842v1":
+        "研究发现 LLM 作为金融分析师在长上下文中存在「检索-使用」鸿沟：能检索到风险披露信息，但该信息对最终投资判断的影响会随无关上下文增多而被稀释，说明「读到」不等于「用上」。",
+    "http://arxiv.org/abs/2608.24825v1":
+        "针对大规模测评中自动生成题目导致的「非构念相关内容重复」问题，提出双维度 LLM 框架，比传统 BLEU/余弦相似度更能捕捉题目间结构与语义层面的重复。",
+    "http://arxiv.org/abs/2608.24824v1":
+        "针对 LLM 做知识图谱问答时容易答案脱离图谱事实的问题，提出一种介于「完全解析成 SPARQL」和「纯 LLM 推理」之间的约束实体选择方法，在保持鲁棒性的同时提供更强的正确性保障。",
+    "http://arxiv.org/abs/2608.24809v1":
+        "提出 Crase，一种有边界、可检查的学术深度检索方法：只调用一次搜索引擎获取种子论文，沿引用网络扩展 1.5 跳，剪除缺乏蕴含支持的引用边，再用考虑时效性的随机游走排序，让候选集合、保留理由和停止条件都提前明确、可解释。",
+    "http://arxiv.org/abs/2608.24807v1":
+        "提出 MCTidy，用 LLM 把现有模型卡片重新整理成统一模板以提升可读性与可比性，并为缺失模型卡片的模型自动生成规范化内容。",
+    "http://arxiv.org/abs/2608.24804v1":
+        "提出 StarHarness 框架，在模型权重不变的前提下演化面向特定企业环境的 Agent 执行框架（提示词、工具接口、技能、MCP 提供方、子 Agent 结构等），通过按基线失败模式分层构建演化任务池来提升效果。",
+    "http://arxiv.org/abs/2608.24795v1":
+        "提出 LION，一种基于 Clifford 代数的神经网络范式，用于多模态属性图学习，解决现有方法在跨模态对齐时忽视上下文信息等局限。",
+    "http://arxiv.org/abs/2608.24794v1":
+        "提出 CAFE 框架，将纠正性反馈作为可学习的轨迹内干预引入自我提升的检索 Agent 训练，让 Agent 学会何时请求反馈、评论者学会从结果导向的轨迹中给出有效纠正，二者协同演化。",
+    "http://arxiv.org/abs/2608.24790v1":
+        "通过 30 种临床导向的扰动操作（如严重程度反转、否定翻转、人口统计学替换、证据消融）审计医学链式思维推理，发现可见的推理链条常常只是「装饰」，未必真正反映模型得出正确诊断的依据。",
+    "http://arxiv.org/abs/2608.24777v1":
+        "提出 StepGuard，一种步骤级别的守护模型，可在工具调用真正执行前审查每一步动作是否安全，弥补现有防护措施只能事后评估完整轨迹、无法提前拦截风险操作的不足。",
+    "http://arxiv.org/abs/2608.24764v1":
+        "提出「证据盲视」概念：LLM Agent 直接与语料库交互时，证据可能因未被检索到、检索到但未被打开、或打开后关键片段未被识别而在多个环节渐进流失；提出 AtlasNav 持续导航方法量化并缓解这一问题。",
+    "http://arxiv.org/abs/2608.24763v1":
+        "提出 MoTE，一种面向多任务视频理解（动作识别、预测、流程预测等）的任务专家混合（MoE）解码器，用任务级路由替代 token 级路由，避免不同任务的能力互相纠缠。",
+    "http://arxiv.org/abs/2608.24758v1":
+        "提出 RACE 统计框架，通过前向传播的扰动实验大规模评估 Transformer 神经元在整个领域内的功能一致性，弥补现有方法依赖实例级估计或计算成本过高的不足。",
+    "http://arxiv.org/abs/2608.24753v1":
+        "提出统一贝叶斯评估框架 RAT，联合建模检索成功率、拒答行为与答案正确性，按 RAG 系统的信息流拆解误差来源，区分「生成器是否给出正确答案」与其他环节的责任。",
+    "http://arxiv.org/abs/2608.24747v1":
+        "提出 SkillForge，针对现有技能库（如 SkillRL）只增不验证的问题，为强化学习 Agent 的技能库加入有效性验证机制，使可复用技能能被持续检验和淘汰，而非无限累积。",
+    "http://arxiv.org/abs/2608.24735v1":
+        "提出 Meta^n 方法，让自我提升 Agent 不再局限于固定的元层级（此前受限于约 2 层），而是让同一元操作反复作用于自身产物，读取求解器堆栈的执行轨迹来递归提升元层级深度。",
+    "http://arxiv.org/abs/2608.24727v1":
+        "研究在固定计算预算下，仅更新 9% 参数的参数高效自监督适配方法能否让 EEG 基础模型在不同临床数据集间保持可迁移性，为资源受限的临床场景提供全量微调之外的选择。",
+    "http://arxiv.org/abs/2608.24707v1":
+        "发布首个多语言语音幻觉检测基准，覆盖英语、俄语、哈萨克语共 1.2 万余条新闻样本，附带受控生成的三类三级幻觉，填补语音端幻觉检测（相对于文本端）研究不足的空白。",
+    "http://arxiv.org/abs/2608.24696v1":
+        "研究将「可验证奖励强化学习」（任务级稀疏反馈）与「在线策略蒸馏」（token 级密集指导但受限于教师模型水平）结合，让两者优势互补以提升大模型后训练效果。",
+    "http://arxiv.org/abs/2608.24691v1":
+        "用一个隐藏信息的国际象棋变体测试 Agent 的「行动时刻信心」是否真的与正确性挂钩：每回合让 Agent 对隐藏的「王」在哪个棋子上给出概率分布，再与事后可验证的真相比对，发现信心与正确性之间存在系统性错配。",
+    "http://arxiv.org/abs/2608.24662v1":
+        "指出现有对 LLM 行为的评估默认其仅由权重、训练数据、对齐流程和用户提示决定，但推理管线可能在采样前系统性地修改概率分布，形成一层未披露的「隐形编辑层」，论文将这种推理时引导、概率调整与责任归属问题加以形式化。",
+    "http://arxiv.org/abs/2608.24660v1":
+        "用滑动窗口从单条符号音乐序列中估计局部转移核的演化轨迹，以德彪西《西琳克斯》(1913) 的 273 个音符事件为例，检验传统 A-B-A' 曲式解读是否能从数据驱动的局部核演化中自然浮现。",
+    "http://arxiv.org/abs/2608.24658v1":
+        "提出 Parason 系统，在「子任务并行」之外揭示 LLM 推理中的「试验并行」潜力：不仅将高层任务拆解为可并行子块，还可对同一（子）任务并行尝试多条推理路径，缓解长推理轨迹带来的严重延迟。",
+    "http://arxiv.org/abs/2608.24650v1":
+        "提出 Simthesizer，一个 Agent 驱动的仿真框架，用于探索 LLM 服务系统（涵盖 Agentic 工作流、解耦式服务等新型机制）的设计空间，避免每次新机制出现都要重写整个仿真流水线。",
+    "http://arxiv.org/abs/2608.24644v1":
+        "提出面向人类与机器 Agent 协作的「文学编程」环境，包含可执行程序论文的语法、把名称当作一等对象的解析器，以及关联散文、名称与可执行产物的内部名称图，让代码与其最相关的自然语言/结构化上下文共处一处。",
 }

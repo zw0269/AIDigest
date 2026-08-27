@@ -4081,6 +4081,87 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "视频完整解析 Anthropic 新发布的 Claude Memory 2.0 记忆功能。",
     "https://www.youtube.com/watch?v=HUDtLSOcWiU":
         "视频讲解苹果 M5 Ultra 芯片：本地大模型推理速度提升 50%，性能达到 4 倍，苹果芯片王者归来。",
+    # 2026-08-27 第二批 GitHub Trending / Hacker News Newest / YouTube AI
+    "https://news.ycombinator.com/item?id=49464558":
+        "Plaud 新款耳机搭配 eSIM 通话盒，可直接与 AI 智能体语音对话。",
+    "https://github.com/JetBrains/go-modern-guidelines":
+        "JetBrains 开源的 Go 语言现代编码规范，帮助 AI 编码智能体写出符合现代惯例的 Go 代码。",
+    "https://github.com/zedeus/nitter":
+        "Nitter：轻量级、注重隐私的 Twitter/X 替代前端。",
+    "https://news.ycombinator.com/item?id=49464474":
+        "Mljar Studio 定位为「数据科学版 Claude Code」，一款面向数据科学工作流的 AI 编程工具。",
+    "https://news.ycombinator.com/item?id=49464448":
+        "Cohere 推出 Parse：面向企业的规模化文档智能解析服务。",
+    "https://www.youtube.com/watch?v=msZSLygOdHE":
+        "视频爆料称 GPT-6 全新基座模型与 Gemini 4 的相关信息已泄露。",
+    "https://news.ycombinator.com/item?id=49464387":
+        "Show HN：BirthdayVideoAI，用 AI 制作生日祝福、邀请函视频的工具。",
+    "https://github.com/actions/checkout":
+        "GitHub 官方 Action：用于在工作流中检出仓库代码。",
+    "https://news.ycombinator.com/item?id=49464520":
+        "HN 讨论帖：Sunshine（开源自托管游戏串流主机项目）。",
+    "https://news.ycombinator.com/item?id=49464287":
+        "讨论如何判断一个古代文明是否已经拥有「零」这一数字概念。",
+    "https://news.ycombinator.com/item?id=49464291":
+        "讲解 2024 年提出的泊松限流（Poisson Rate Limiting）算法。",
+    "https://news.ycombinator.com/item?id=49464310":
+        "Confdiff：一款针对 JSON/YAML/TOML 配置文件的语义化 diff 工具，能自动脱敏密钥等敏感信息。",
+    "https://www.youtube.com/watch?v=bg0C-2iUUqM":
+        "视频实测对比 Claude Code 与 Codex 在设计类任务上的表现，作者认为差距明显。",
+    "https://news.ycombinator.com/item?id=49464504":
+        "讨论欧盟在关键矿产竞赛中进一步落后于中美两国。",
+    "https://news.ycombinator.com/item?id=49464421":
+        "HN 讨论 DeepMind 试点全球首个双盲 AI 评测的博客文章。",
+    "https://news.ycombinator.com/item?id=49464282":
+        "讨论汽车配备巨大触摸屏是否真的是好设计的争议话题。",
+    "https://github.com/google/googletest":
+        "GoogleTest：谷歌出品的 C++ 测试与 Mock 框架。",
+    "https://news.ycombinator.com/item?id=49464351":
+        "Hot Chips 2026 大会解读：富士通 Monaka CPU 架构详解。",
+    "https://news.ycombinator.com/item?id=49464368":
+        "作者分享没有编程背景的情况下搭建自己第一个 SaaS 产品的经历。",
+    "https://news.ycombinator.com/item?id=49464278":
+        "Show HN：MP4 to Transcript，在线将 MP4 视频转换为文字稿的工具。",
+    "https://news.ycombinator.com/item?id=49464447":
+        "Show HN：KnotQ，一款日历与日程整理规划工具。",
+    "https://www.youtube.com/watch?v=hNpC5clEbp4":
+        "视频演示 Claude 在动效设计上的能力，作者认为已解决此前「AI 生成动效很粗糙」的问题。",
+    "https://news.ycombinator.com/item?id=49464404":
+        "介绍一款可自托管的 MCP 服务，统一管理各类连接、记忆、技能与密钥。",
+    "https://news.ycombinator.com/item?id=49464543":
+        "Emacs 31 非官方指南：介绍新增的 Markdown-ts-mode 模式。",
+    "https://news.ycombinator.com/item?id=49464305":
+        "又一个网页截图与 OG 图片生成 API 服务。",
+    "https://news.ycombinator.com/item?id=49464445":
+        "作者反思自己本不打算让 AI 接管待办事项管理，却逐渐演变成这样。",
+    "https://news.ycombinator.com/item?id=49464343":
+        "Hot Chips 2026 大会解读：英特尔 Crescent Island 芯片详解。",
+    "https://news.ycombinator.com/item?id=49464459":
+        "Show HN：RealDiff，面向 PR 的运行时行为差异检测工具，支持六种语言。",
+    "https://www.youtube.com/watch?v=Wl9tcoVuLjA":
+        "视频深度实测 OpenAI 新协议 WebMCP：让网站主动向 AI Agent 暴露可调用工具，并测试新版浏览器插件将 Codex 接入 Chrome 侧边栏后的论文分析、图像理解、网页翻译等实际效果。",
+    "https://news.ycombinator.com/item?id=49464292":
+        "讨论卫星轨道倾角会带来哪些实际影响。",
+    "https://news.ycombinator.com/item?id=49464464":
+        "探讨为什么大语言模型在「大五人格测试」中的表现总是不理想。",
+    "https://news.ycombinator.com/item?id=49464391":
+        "美国政府将 Noblogs.org 托管方列为「全球恐怖分子」，引发争议。",
+    "https://news.ycombinator.com/item?id=49464315":
+        "文章讨论移动平均策略「两次都赢不了」的现象。",
+    "https://news.ycombinator.com/item?id=49464314":
+        "MIT 成立特别委员会，专门研究教学、学习与科研训练中的 AI 使用规范。",
+    "https://www.youtube.com/watch?v=sIakce3-sPU":
+        "视频汇总近期 AI 圈爆料：GPT-6「Bel」大量泄露信息、Fable 5.1 是否今日发布、Opus 5 更新、Qwen 4、GLM 5.3 Flash 等最新动态。",
+    "https://github.com/thedotmack/claude-mem":
+        "claude-mem：为各类 AI 编码智能体（Claude Code、Codex、Gemini 等）提供跨会话持久记忆，自动捕获会话内容、用 AI 压缩后注入后续会话上下文。",
+    "https://news.ycombinator.com/item?id=49464414":
+        "面向「先天缺乏视觉想象力」（Aphantasia）人群的入门指南。",
+    "https://news.ycombinator.com/item?id=49464312":
+        "Shieldprompt：一个零依赖、用于测试 LLM 抗提示注入能力的小工具。",
+    "https://news.ycombinator.com/item?id=49464290":
+        "HN 讨论帖：Coming Soon（占位页面/预告内容）。",
+    "https://news.ycombinator.com/item?id=49464446":
+        "怀旧游戏影像：Commodore 版《Alien Breed》35 周年纪念合集回顾视频。",
 }
 
 
@@ -7372,4 +7453,81 @@ TRANSLATIONS: dict[str, str] = {
         "提出 Simthesizer，一个 Agent 驱动的仿真框架，用于探索 LLM 服务系统（涵盖 Agentic 工作流、解耦式服务等新型机制）的设计空间，避免每次新机制出现都要重写整个仿真流水线。",
     "http://arxiv.org/abs/2608.24644v1":
         "提出面向人类与机器 Agent 协作的「文学编程」环境，包含可执行程序论文的语法、把名称当作一等对象的解析器，以及关联散文、名称与可执行产物的内部名称图，让代码与其最相关的自然语言/结构化上下文共处一处。",
+    "http://arxiv.org/abs/2608.25937v1":
+        "研究多智能体系统中「候选答案已存在但最终报错」的现象，发现正确答案常常已被生成却未被选中；结合答案出现频率与 LLM 裁判打分可将准确率从 63.82% 提升到约 71%，主要靠从多数错误中「捞回」正确答案。",
+    "http://arxiv.org/abs/2608.26091v1":
+        "提出 PlanSightRAG，一种直接在工程图纸图像上检索推理的「视觉优先」多模态 RAG 框架，用于土木工程合规性自动审查，在五个州 DOT 标准图纸构建的基准上零样本 Recall@5 达 91.47%。",
+    "http://arxiv.org/abs/2608.26053v1":
+        "提出 R^3，把 VLM 训练成能用自然语言推理来指导底层机器人操作策略的「机器人推理器」：先用专家推理轨迹中训练，再用基于评分规则的单步强化学习优化，在长时程操作任务上显著超越纯模仿学习基线。",
+    "http://arxiv.org/abs/2608.26043v1":
+        "提出 Robust CurveMoE，用低损失路径连接针对不同扰动范数（L1/L2/L∞ 等）专门训练的模型，通过混合专家结构复用其互补的鲁棒性，在 CIFAR-100/ImageNet-100 上以更低训练成本取得更好的多范数联合鲁棒准确率。",
+    "http://arxiv.org/abs/2608.26036v1":
+        "提出「轨迹完整性」（Trace Integrity）概念，指出结构化数据任务中「答案正确」不等于「计算过程可信」，并用 CAIT（正确答案但轨迹无效）指标揭示：即便准确率仅 20%-24%，仍有高达 45%-59% 的答案背后是站不住脚的推理过程。",
+    "http://arxiv.org/abs/2608.26008v1":
+        "提出一种自我进化的多智能体越狱防御框架：攻击成功后将其抽象为「方法级」规则（针对攻击的结构套路而非具体有害话题）存入持久记忆，使一次学习可泛化到整个攻击家族，且无需更新模型参数。",
+    "http://arxiv.org/abs/2608.25990v1":
+        "从频谱视角解释为何 Muon 优化器优于 Adam：训练轨迹中动量矩阵的奇异值方向呈现「头部脆弱、主体宽容」的稳定结构，据此提出 SAMuon/SAMuon-lite，在保持 Muon 收敛性的同时减少 13%-24% 的训练 token 需求。",
+    "http://arxiv.org/abs/2608.25973v1":
+        "提出 SciMIF 基准，基于 5 大科学学科 22 类任务构建 10 组约束分类体系，系统评测多模态大模型遵循复杂科学指令的能力，发现化学领域挑战最大，且模型规模增大并不能提升对细粒度约束的遵循度。",
+    "http://arxiv.org/abs/2608.25960v1":
+        "提出 LivingRAG，给图检索增强生成加上「可写可复用」的经验存储：把之前查询中验证过的图信号和推理摘要保存下来供后续相关查询复用，在多跳问答基准上既提升准确率又降低 token 消耗。",
+    "http://arxiv.org/abs/2608.25944v1":
+        "从理论与实验两方面分析免训练 LLM 文本检测中的「频谱」机制，将频谱能量与代理对数概率轨迹的方差联系起来，发现频谱信号在长而连续的生成文本中最清晰，短文本/混合编辑场景则需结合置信度等互补信号。",
+    "http://arxiv.org/abs/2608.26105v1":
+        "提出 VBVR-Pro，一套可扩展、可验证的「原生视觉推理」测试平台，将视觉生成本身作为推理媒介，包含 300 个程序化生成任务、基于确定性规则的可验证奖励评分器，并支持跨 30 余种图像/视频生成器的机制对比研究。",
+    "http://arxiv.org/abs/2608.26013v1":
+        "提出 VISA，一个将多模态指令数据合成重构为自我进化循环的智能体框架：每轮从图像发现新的可验证约束、用工具与 LLM 裁判验证样本、失败样本触发诊断式修复，持续扩展约束空间并聚焦模型薄弱点。",
+    "http://arxiv.org/abs/2608.25999v1":
+        "通过分别扰乱短篇叙事中的「概念」信息和「指代」信息，对比人类自主阅读与 LLM 处理的动态差异：概念扰乱在人类和模型中都产生局部集中且快速衰减的代价，指代扰乱则影响更弱、更渐进，揭示两类语义处理的不同动力学。",
+    "http://arxiv.org/abs/2608.25941v1":
+        "系统研究模型剪枝对稀疏自编码器（SAE）可解释性的影响，证明幅值剪枝因忽视激活几何而扭曲表示空间、损害 SAE 功能，而 Wanda、SparseGPT 等激活感知方法更稳健；并发现中间层对剪枝最敏感，据此提出分层稀疏度分配策略。",
+    "http://arxiv.org/abs/2608.25935v1":
+        "提出 TAU-Agent，一个用于交通异常理解的智能体式检索增强框架，由中心检索智能体调度视频描述与开放词汇追踪两个视觉工具获取证据，再交给微调过的视觉语言模型推理作答，在 AI City Challenge 2026 多个赛道取得前列名次。",
+    "http://arxiv.org/abs/2608.25970v1":
+        "提出 PANDA，一种两阶段原型锚定对齐框架，在推理时无需辅助模态输入即可把辅助模态信息迁移给主模态模型，在阿尔茨海默病 MRI 分类和 TCGA 病理生存预测任务上，即使配对率为零也能显著提升效果。",
+    "http://arxiv.org/abs/2608.25968v1":
+        "针对具有线性定义不确定性集合的鲁棒马尔可夫决策过程（RMDP），首次给出奇偶性目标（ω-正则目标）的精确定量求解方法：证明智能体与环境都存在纯无记忆最优策略，并给出多项式时间算法与策略迭代方案。",
+    "http://arxiv.org/abs/2608.25936v1":
+        "对「在策略自蒸馏」（OPSD，模型用特权信息自我做教师）做批判性综述，指出其核心失败模式「坍塌」（推理路径逐渐收窄）可归结为三个可调杠杆：信号施加位置、教师所见特权信息种类、信号随时间的动态变化。",
+    "http://arxiv.org/abs/2608.25922v1":
+        "针对基于 GNN 的知识图谱问答（KGQA）四阶段流水线，提出「阶段隔离」协议定位对抗攻击的真正失效环节：发现子图检索阶段贡献了超过 99% 的端到端崩溃，即使金标准答案仍在检索到的子图中也无法被利用。",
+    "http://arxiv.org/abs/2608.26093v1":
+        "让 AI 编码智能体完全自主设计小区边缘功率控制的机器学习算法（架构、损失函数、训练方案全交给智能体），在 26 小时内跑完 81 组无人值守实验，达到收敛参考解 99.5% 的效果且推理成本降低约 600 倍。",
+    "http://arxiv.org/abs/2608.26081v1":
+        "提出 SwarmWorld，让最初同质的 LLM 智能体在共享空间环境中无预设角色、无固定流程自组织，通过「共识」（stigmergy）方式协作构建技术制品，发现共享社会比强力的独立最佳搜索基线发展出更广泛、更具韧性的技术组合。",
+    "http://arxiv.org/abs/2608.25934v1":
+        "对自动事实核查系统做跨基准评测，涵盖 9 个模型在科学、开放网络、气候四个数据集上的表现，发现系统排名严重依赖领域和评测指标（同一模型在不同数据集上 F1 从 0.70 掉到 0.31），且用金标准证据替代检索结果能提升 14-22 个百分点，说明检索仍是主要瓶颈。",
+    "http://arxiv.org/abs/2608.25927v1":
+        "提出 Code World Model，将世界演化与视觉呈现解耦：用编码智能体作为「世界大脑」推理事件后果并生成可执行代码维护持久世界状态，再通过代理表示驱动视频模型渲染出高保真画面，实现开放式世界模型的新路径。",
+    "http://arxiv.org/abs/2608.26094v1":
+        "提出 MyoMechanix，首个对齐运动与肌肉活动的多模态动作质量评估生态：38 名受试者 20 个负重动作 7500+ 样本，同步多视角 RGB、3D 姿态、表面肌电信号，并配套健身知识图谱与 CUBIST 推理引擎实现细粒度错误归因。",
+    "http://arxiv.org/abs/2608.26086v1":
+        "提出 TraceML，把人类与 AI 智能体在同一 Kaggle 竞赛上的开发过程按版本级 schema 对齐比较，发现人类专家会交替进行数据处理、验证、模型调整并重启被搁置的方案，而 Codex、MLEvolve 等智能体则陷入狭窄的重复调参循环。",
+    "http://arxiv.org/abs/2608.26070v1":
+        "提出 Prefix Sliding，让模型在长链推理时只保留提示前缀和最近若干千 token 的窗口、丢弃中间大部分推理 token，从而把内存占用与推理长度解耦，免训练即可提速 3 倍，结合强化学习训练还能支持超十万 token 的推理链。",
+    "http://arxiv.org/abs/2608.26004v1":
+        "提出 AsymSpec，一种非对称投机解码框架：轻量草稿模型读取完整未压缩上下文，大验证模型只看压缩后的上下文，通过对比式 logit 融合与感知分歧的接受门控，在保持约 90% 全上下文准确率的同时获得 1.3-1.7 倍吞吐提升。",
+    "http://arxiv.org/abs/2608.25992v1":
+        "提出 ProgRouter，一个按任务进展在线路由不同 LLM 智能体的多智能体工作流编排框架，结合多视角任务进展打分器与自适应元门控机制，在代码生成、数学推理、检索增强问答等任务上以更低成本保持强性能。",
+    "http://arxiv.org/abs/2608.25986v1":
+        "提出多粒度上下文增强的多模态知识图谱（CEMMKG）构建方法，在局部和全局两个层次为图谱中的每张图片补充相关文本上下文，弥合图文语义鸿沟，提升基于多模态知识图谱的 RAG 效果。",
+    "http://arxiv.org/abs/2608.25977v1":
+        "对不同量化精度（4-bit 的 GPTQ/AWQ、2-bit 的 AQLM 等）下开源 LLM 的 MBTI 人格特质做逐层分析，发现 ENFJ 型人格在各模型家族和精度下都占主导，4-bit 量化基本保留人格结构，而 2-bit 量化会破坏细粒度提示一致性，人格决策主要出现在模型上层。",
+    # 2026-08-27 第二批：OpenAI / DeepMind / Simon Willison
+    "https://deepmind.google/blog/piloting-the-worlds-first-double-blind-ai-evaluations/":
+        "DeepMind 试点全球首个「双盲」AI 评测：评测方与被测模型互不知晓对方身份，减少评测偏差。",
+    "https://openai.com/index/expanding-our-presence-in-brazil":
+        "OpenAI 扩大在巴西的业务布局，加强与当地开发者、企业和社区的合作以推动 AI 落地。",
+    "https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe/":
+        "DeepMind 推出 Gemini 3.5 Transcribe，提供更智能的语音转文字能力。",
+    "https://openai.com/index/bringing-chatgpt-for-teachers-to-more-us-school-districts":
+        "ChatGPT for Teachers 扩展至美国 55 个学区，为超过 10 万名教育工作者提供安全的 AI 工具、培训与支持。",
+    "https://openai.com/index/learning-never-stops":
+        "OpenAI 新报告探讨学生和教师如何使用 ChatGPT 让学习延伸到课堂之外、变得更加持续。",
+    "https://openai.com/index/hugging-face-incident-and-the-road-ahead":
+        "OpenAI 分享 Hugging Face 安全事件的调查结果，及后续加强模型安全、监控与对齐的具体举措。",
+    "https://openai.com/index/introducing-intelligence-age":
+        "OpenAI 推出新博客栏目「Intelligence Age」，探讨变革性 AI 将如何重塑权力结构、治理方式、经济与个人自由。",
+    "https://simonwillison.net/2026/Aug/26/qwen38-flash-next/":
+        "Simon Willison 试玩阿里 Qwen 新开源的 Qwen3.8-Flash-Next：一个多模态 MoE 模型，也是 Qwen4 架构的早期预览，总参数 125B 但仅激活 6B，他在 DGX Spark 上用 Unsloth 量化版本实测生成效果。",
 }

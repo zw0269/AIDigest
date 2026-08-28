@@ -4162,6 +4162,96 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "HN 讨论帖：Coming Soon（占位页面/预告内容）。",
     "https://news.ycombinator.com/item?id=49464446":
         "怀旧游戏影像：Commodore 版《Alien Breed》35 周年纪念合集回顾视频。",
+
+    # 2026-08-28 Anthropic / GitHub Trending / YouTube AI / Hacker News Newest
+    "https://www.anthropic.com/news/model-hardware-standard-research-preview":
+        "Anthropic 联合 HHMI Janelia 推出 Model Hardware Standard（MHS）研究预览，为 AI Agent 安全操作显微镜、液体处理仪、机械臂等实验室/制造硬件提供统一规范，用标准化驱动把原本耗时数周的定制集成缩短到几小时，生物科技、机器人和量子计算领域的早期合作方已用它加速实验搭建、实现实时故障恢复和多设备协同。",
+    "https://www.anthropic.com/news/expanding-support-for-scientists":
+        "Anthropic 扩大对科研人员的支持：面向全球科学家开放 1 万个 Claude 订阅席位，一年内免费或折扣使用（标准席位免费，高级席位 15 美元/月）；同时将 AI for Science 计划扩展到生物学之外的更多研究领域，为高算力科研项目提供最高 5 万美元的额度，并继续推进与政府合作的生命科学专业人士深度模型访问计划。",
+    "https://github.com/livekit/agents":
+        "LiveKit Agents：用于构建实时语音 AI Agent 的开源框架。",
+    "https://github.com/tashfeenahmed/freellmapi":
+        "freellmapi：聚合 34 家免费 LLM 提供商、635 个免费模型端点，统一成单一 /v1 接口并支持智能路由、自动故障切换和密钥加密，每月可用 74 亿 token（仅限个人实验用途）。",
+    "https://github.com/NationalSecurityAgency/ghidra":
+        "Ghidra：美国国家安全局开源的软件逆向工程框架。",
+    "https://github.com/bilawalsidhu/gods-eye-view":
+        "God's Eye View：一款运行在浏览器里的间谍卫星模拟器，但数据是真实的——基于逼真 3D 地球呈现开源空间情报。",
+    "https://github.com/abhigyanpatwari/GitNexus":
+        "GitNexus：完全在浏览器端运行的零服务器代码智能引擎，导入 Git 仓库或 ZIP 包即可生成可交互的知识图谱，并内置 Graph RAG Agent 辅助代码探索。",
+    "https://github.com/abi/screenshot-to-code":
+        "screenshot-to-code：把网页截图一键转换成干净的 HTML/Tailwind/React/Vue 代码。",
+    "https://github.com/tailscale/tailcat":
+        "tailcat：类似 netcat 的工具，但直接跑在 Tailscale 的数据平面上，不依赖其控制平面。",
+    "https://www.youtube.com/watch?v=7TkaubRrV4U":
+        "视频对比 Boldin、Claude、ChatGPT 和 Gemini 四款工具在退休规划测算上的表现，评测谁给出的数据最靠谱。",
+    "https://www.youtube.com/watch?v=sbuwHi1Sz6k":
+        "视频对 OpenAI Codex 和 Claude 两款编程 Agent 做了一次诚实的横向对比评测。",
+    "https://www.youtube.com/watch?v=nVImVgKpoOY":
+        "视频探讨 LLM 与 AI Agent 基准测试成绩和真实应用表现之间的落差，分析 AI 应用在实际场景中为何频频「翻车」。",
+    "https://www.youtube.com/watch?v=lutXy2LbwzA":
+        "视频结合《崩坏：星穹铁道》4.6 版本内容，测评游戏内 AI 助手 Pearl GPT 的实际表现如何。",
+    "https://www.youtube.com/watch?v=joc9E-3NQ0Y":
+        "作者放手让 Claude AI 自主决策，尝试用它尽可能多地赚钱，记录实测过程与结果。",
+    "https://news.ycombinator.com/item?id=49477195":
+        "Show HN：Wolfpack，为编码 Agent 终端提供私密浏览器控制的工具。",
+    "https://news.ycombinator.com/item?id=49476880":
+        "讨论人类是否只差几步就会造出失控的 AI。",
+    "https://news.ycombinator.com/item?id=49476929":
+        "报道韩国「全民 AI」计划向每位公民免费开放 AI 服务。",
+    "https://news.ycombinator.com/item?id=49477055":
+        "美国法官裁定五角大楼将 Anthropic 列入黑名单的做法违法。",
+    "https://news.ycombinator.com/item?id=49476949":
+        "报道美国企业界曾向特朗普大笔捐款，如今 CEO 们担心因此收到传票。",
+    "https://news.ycombinator.com/item?id=49477157":
+        "HN 讨论帖：httpx2（Python HTTP 客户端库的新版本）。",
+    "https://news.ycombinator.com/item?id=49476894":
+        "Show HN：SubSmith，把自己拍的视频转换成语言学习素材的工具。",
+    "https://news.ycombinator.com/item?id=49477159":
+        "Show HN：Sitemap.site，一款免费的 XML 站点地图生成、检查与校验工具。",
+    "https://news.ycombinator.com/item?id=49476898":
+        "介绍 LibreOffice 开源办公软件的资金来源与运作模式。",
+    "https://news.ycombinator.com/item?id=49477212":
+        "讨论 OpenAI 将内部服务迁移到 HTTPX2 客户端库的相关动态。",
+    "https://news.ycombinator.com/item?id=49476983":
+        "吐槽智能电视功能臃肿，呼吁「让电视回归电视本分」。",
+    "https://news.ycombinator.com/item?id=49476875":
+        "美国法官裁定五角大楼将 Anthropic 列入黑名单的做法违法。",
+    "https://news.ycombinator.com/item?id=49476953":
+        "Show HN：作者联合专业日本漫画编辑打造的漫画点评网站。",
+    "https://news.ycombinator.com/item?id=49477081":
+        "谷歌研究人员称 AI 为飓风预报带来显著提升。",
+    "https://news.ycombinator.com/item?id=49476905":
+        "MIT Technology Review 专栏：深挖 OpenAI 遭遇的 Hugging Face 入侵事件，以及一款新电动车进入美国市场。",
+    "https://news.ycombinator.com/item?id=49476981":
+        "Ask HN：网友求推荐好用的实体打印机。",
+    "https://news.ycombinator.com/item?id=49477031":
+        "Show HN：面向创作者和产品的付费排名排行榜平台。",
+    "https://news.ycombinator.com/item?id=49477088":
+        "文章提出面向 AI 原生开发的软件生命周期（SDLC）实践指南。",
+    "https://news.ycombinator.com/item?id=49477029":
+        "Show HN：经典游戏《文明 2：MGE》的 HTML5 移植版。",
+    "https://news.ycombinator.com/item?id=49476960":
+        "Ask HN：网友探讨怎样的开源 UI 组件库才值得采用。",
+    "https://news.ycombinator.com/item?id=49477194":
+        "文章介绍小腿肌肉状况如何反映心脏健康。",
+    "https://news.ycombinator.com/item?id=49477070":
+        "Ask HN：网友分享自己上次因 AI Agent 写的代码不可用而被迫扔掉的经历，以及哪里出了问题。",
+    "https://news.ycombinator.com/item?id=49477043":
+        "物理学家测量到已关闭核反应堆残留的「余晖」辐射信号。",
+    "https://news.ycombinator.com/item?id=49476991":
+        "Show HN：PitchBin，把收到的推销冷邮件整理成供应商数据库的小工具。",
+    "https://news.ycombinator.com/item?id=49477162":
+        "HN 招聘帖：Sovereign Tech Agency 招聘技术总监。",
+    "https://news.ycombinator.com/item?id=49476928":
+        "文章解析橄榄球运动为何会导致脑部疾病。",
+    "https://news.ycombinator.com/item?id=49477063":
+        "Ask HN：网友询问 2026 年本地运行开放权重大模型的最佳开源方案。",
+    "https://news.ycombinator.com/item?id=49477217":
+        "Show HN：Texttile，一款支持多人协作写作的博客引擎。",
+    "https://news.ycombinator.com/item?id=49477158":
+        "代码统计工具 scc 发布 4.0 版本，新增找出「最需要关注」文件的功能。",
+    "https://news.ycombinator.com/item?id=49476957":
+        "文章讨论系统论中的「POSIWID」原则——一个系统的目的就是它实际做的事。",
 }
 
 
@@ -7530,4 +7620,76 @@ TRANSLATIONS: dict[str, str] = {
         "OpenAI 推出新博客栏目「Intelligence Age」，探讨变革性 AI 将如何重塑权力结构、治理方式、经济与个人自由。",
     "https://simonwillison.net/2026/Aug/26/qwen38-flash-next/":
         "Simon Willison 试玩阿里 Qwen 新开源的 Qwen3.8-Flash-Next：一个多模态 MoE 模型，也是 Qwen4 架构的早期预览，总参数 125B 但仅激活 6B，他在 DGX Spark 上用 Unsloth 量化版本实测生成效果。",
+
+    # 2026-08-28 OpenAI / Google DeepMind / Simon Willison / arXiv
+    "https://openai.com/index/supporting-next-generation-ai-startups-thailand":
+        "OpenAI 与泰国高等教育部（MHESI）联合推出为期八周的加速器项目，帮助 10 家健康、养生和教育领域的初创公司把 AI 原型打造成可信赖的产品。",
+    "https://openai.com/index/what-students-gain-from-chatgpt-critical-thinking-training":
+        "一项覆盖 1000 多名学生的随机对照研究考察了 ChatGPT 使用、批判性思维训练与原创性对学生在真实大学作业中表现的影响。",
+    "https://deepmind.google/blog/gemini-omni-1-1-flash-lets-you-build-with-more-control/":
+        "Gemini Omni 1.1 Flash 面向 Gemini API 和 AI Studio 推出生产级更新，支持将视频片段延展到累计 40 秒、参考最长 10 秒的先前上下文以保持连贯性，并可指定首尾帧、生成低成本 360p 预览草稿，再将最终成品放大到 1080p 或 4K。",
+    "https://simonwillison.net/2026/Aug/27/breaking-claude-code-opus-5-auto-mode/":
+        "Simon 介绍安全研究员 Johann Rehberger 找到攻破 Claude Code Auto Mode 的方法（声称 80% 成功率）：诱导其下载解压 zip 包并执行隐藏的 struct.py，从而绕过对 prompt injection 的防护；更严重的是，即便 Claude 察觉到被入侵并尝试终止恶意进程，Auto Mode 有时反而会阻止这条清理命令，安全机制本身成了失败的一环。Simon 认同 Johann 的结论：唯一安全的做法是把 Auto Mode 视为尚不可信的防线。",
+    "http://arxiv.org/abs/2608.27395v1":
+        "LeVJEPA 用 LeJEPA 的免崩塌目标训练单一视频编码器，去掉了 EMA 目标网络、停止梯度和容量受限预测器等架构技巧，仅靠不变性损失加 SIGReg 正则即可防止表征坍缩；在相同数据和轮次下，用 5.6-20.8 倍更少的预训练算力就能匹配或超过 V-JEPA 2，且因编码器无需分支不对称，可直接用块因果注意力训练而不损失精度。",
+    "http://arxiv.org/abs/2608.27455v1":
+        "CritICL 把小模型的失败模式转化为推理时的批判式上下文示例，让大模型从「弱模型犯过的错」中学习指导，用远少于测试时扩展的生成次数和 token 成本达到与之相当或更优的推理性能。",
+    "http://arxiv.org/abs/2608.27454v1":
+        "WikiSkill 让 Agent 技能与一个持久化知识 wiki 共同演化，把原始执行经验、沉淀知识和可执行技能分离并不断写回 wiki，供后续技能迭代复用；实验显示其技能演化效果全面超过现有方法，且演化出的技能可跨模型迁移，小模型配合技能甚至能反超更大的无技能模型。",
+    "http://arxiv.org/abs/2608.27449v1":
+        "SWE-Prime 提出两阶段、多粒度的 SFT 数据筛选方法，先在轨迹层按过程质量、结果质量和代表性筛出优质轨迹子集，再在片段层评估每段对最终解的贡献、可学性和风险，只用挑出的片段计算损失；仅用 10% 的轨迹训练即可在 SWE-Bench Pro 和 Verified 上分别取得最高 12.2% 和 24.2% 的相对提升。",
+    "http://arxiv.org/abs/2608.27448v1":
+        "TTPO 针对无标签测试时训练场景，发现「与多数投票伪标签不一致的 rollout 通常是错的」这一不对称规律，据此对一致样本用蒸馏、对不一致样本用分组 RL 惩罚，在完全无标签的情况下就能匹敌有标签监督方法，把 Qwen3-1.7B 的测试时训练准确率从 38.0% 提到 45.2%。",
+    "http://arxiv.org/abs/2608.27442v1":
+        "MCR-Bench 是首个面向真实多轮代码评审的缺陷状态感知基准，涵盖 5 种语言、2269 个带细粒度缺陷标注和跨轮次状态标签的评审任务；实验发现主流大模型在缺陷检测和生命周期追踪上表现有限，且随交互轮数增加显著退化，语义复杂或不显著的缺陷更容易被漏检。",
+    "http://arxiv.org/abs/2608.27439v1":
+        "RedEvoAgent 是一种黑盒红队 Agent，把跨案例的攻击轨迹提炼成简洁、人类可读的攻击技能，并通过工具有效性画像和「决策-工具归因」持续演化，只保留能提升验证效果的更新；在多个基准、目标模型和执行框架上均超过固定式和现有 Agent 型红队基线，且可跨模型迁移。",
+    "http://arxiv.org/abs/2608.27429v1":
+        "MAELLE 把化学反应建模为电子占据空间上的离散流匹配，用连续时间马尔可夫链刻画反应物到产物在成键、非成键和氢位点上的电子重排，用最优传输构造可机理解释的编辑轨迹；在 USPTO-480K 上与主流反应预测模型性能相当，且在结构复杂度和反应类型的分布外测试中更稳健，还能自然预测副产物。",
+    "http://arxiv.org/abs/2608.27427v1":
+        "论文提出「人格-执行分离」（PES）架构模式，让受监管组织中的 LLM Agent 人格（指令、语气、自我呈现）可以自由演化，同时把有状态、需审计的执行部分放在独立且可追溯的信任域，通过受管控的契约桥接两者；在一个受监管数字员工平台的试点案例中验证了该模式，并指出未做架构分离的实现存在人格扰动下执行侧未重新校验等风险。",
+    "http://arxiv.org/abs/2608.27420v1":
+        "论文发现 RLVR 训练常因策略熵下降导致推理覆盖收窄、大 k 下 pass@k 变差，提出让目标模型基于弱小模型生成的部分推理前缀继续生成，用「陌生前缀」打破过度自信、鼓励探索不同推理路径，在多个数学基准上稳定优于原版 RLVR，且增益随 k 增大更明显。",
+    "http://arxiv.org/abs/2608.27409v1":
+        "论文系统比较三种整合多领域专家模型能力的融合范式——合并任务向量（Merge）、混合数据做 RL（Mix RL）、多教师同策略蒸馏（MOPD），发现三者平均性能差距不超过 1.4 分但单个基准最多相差 8.6 分，并给出实用选择准则：已有专家且要求低成本融合选 Merge，无专家从零训练统一模型选 Mix RL，看重保留领域专长则选 MOPD。",
+    "http://arxiv.org/abs/2608.27406v1":
+        "CLAP 是跨本体（cross-embodiment）动作条件视频世界模型，通过末端执行器姿态、语言指令和潜在动作统一不同机器人平台及人类视频中差异巨大的动作表示，先用无标注视频学习基础物理先验，再落地到末端执行器动作空间实现零样本部署；在 DROID 等高难度环境上逼近甚至超过单一本体的专用视频模型。",
+    "http://arxiv.org/abs/2608.27402v1":
+        "研究训练六个独立线性探针分别对应道德基础理论的六个维度，发现大语言模型内部的道德表征既不会坍缩成单一「道德检测器」，也不会完全独立，而是共享一个道德特异的公共成分，且这种整合结构在预训练早期就已出现；面对道德困境时，模型编码的更多是「冲突本身」而非提前算好的判断。",
+    "http://arxiv.org/abs/2608.27397v1":
+        "CAST 用稀疏自编码器从 Transformer 中间层激活里提取人类可审计的特征，借助 LLM 辅助标注和 ICD-10 检索约束标记出「伪影」特征（如模板、分隔符等与病情无关的痕迹），训练时通过残差减法抑制这些伪影，让临床语言模型在 MIMIC-IV 死亡率预测上既保持竞争力，又能提供逐概念的可审计归因。",
+    "http://arxiv.org/abs/2608.27394v1":
+        "RATIO 基准把科研文献检索按「灵感操作」类型拆成三类——直接给出解法（Address）、抽象出更普适的表述（Broaden）、给出具体实例（Specify），并把原本只用于分类的话语标记远程监督方法扩展到语料级检索规模；实验表明按操作类型专门微调能显著提升检索器效果，但仍有很大改进空间。",
+    "http://arxiv.org/abs/2608.27391v1":
+        "CorporateBench 构建了一个覆盖超过 23 万份文档、模拟企业级通信网络的人工校验问答基准，通过四家规模从 12 到 1 万人不等的合成公司评测大模型的信息抽取和知识库查询能力；测出五款模型的表现随输入规模逼近真实企业规模而明显下降。",
+    "http://arxiv.org/abs/2608.27367v1":
+        "论文提出「渐进容量增长」（SCG），让 JEPA 世界模型的视觉编码器从极小规模（1 个注意力头、2 层、28.3 万参数）出发，按任务复杂度自动决定在宽度还是深度上扩容，并通过保持功能不变的扩展方式安全试错、不达标即回滚；在多物体动态任务上比固定小模型提升 20.3% 的预测误差，参数效率是固定大模型的 56 倍。",
+    "http://arxiv.org/abs/2608.27364v1":
+        "研究基于某大型企业 8 个月内近 4000 名后台员工产生的 71.4 万条 AI 提问记录，发现资深员工使用生成式 AI 更「老练」（专业经验能与 AI 能力互补），战略、数字创新和项目管理等强调全公司性战略工作的部门用得最讲究；但这种「老练度」既不会随时间自然提升，正式 AI 培训后的改善也难以持续。",
+    "http://arxiv.org/abs/2608.27351v1":
+        "论文系统研究进化策略（ES）作为大模型推理后训练范式的优化行为，从理论和实验上证明 ES 相比 GRPO 能带来更广的推理覆盖（验证器投影的种群多样性有助于提升 Pass@K），且不会像 GRPO 那样出现熵崩塌；进一步提出结合 GRPO 的 Pass@1 优势和 ES 的 Pass@K 增益的序贯训练策略。",
+    "http://arxiv.org/abs/2608.27348v1":
+        "论文提出 INTENT-AS-A-TOOL，给模型加入专门表达「意图承诺」的工具调用通道，用调用该工具的概率作为无需裁判、细粒度的意图信号，弥补事后思维链标注过粗、无法反映推理过程中意图变化的问题，能更早发现 Agent 走向有害行为的关键步骤，用于追踪 Agent 的失准行为。",
+    "http://arxiv.org/abs/2608.27345v1":
+        "PAWBench 针对「世界模型应重现多种合理结果分布，而非单一轨迹」这一「概率对齐」要求，提出把重复视频生成结果转成经验分布的评测协议 PAWEval；在 50 个场景、11 个现有视频生成系统上测试发现，没有一个模型能在保持结果多样性的同时稳定匹配参考概率分布。",
+    "http://arxiv.org/abs/2608.27343v1":
+        "论文研究如何从零散的文本重用证据中恢复十八世纪苏格兰哲学家休谟（David Hume）散文在书籍与报纸间的整篇转载与重用关系，把任务定义为「对证据碎片的成对整合」而非单纯的碎片检索；在已标注数据上纯特征聚合就能拿到 0.948 的 F1，最终工作流在精确率-召回率权衡上最优，直接让大模型判断反而会产生大量误报。",
+    "http://arxiv.org/abs/2608.27334v1":
+        "BTS-AgentBench 提出把工业现场只读遥测日志编译成可执行多轮 Agent 任务的确定性、可回放流水线，规范化元数据和历史记录为只读工具库，构建带工具派生黄金答案与证据的静态任务，再提升为有类型、有边界的操作员场景；532 条数据在两次独立构建间完全可复现，迁移到 XAI4HEAT 场景同样有效。",
+    "http://arxiv.org/abs/2608.27311v1":
+        "HarnessLens 提出预算感知的框架自动演化 Agent 执行框架（harness），联合探索任务空间与可配置组件，从执行轨迹中提炼候选修改，并用「可归因证据门」只在与该改动相关的任务上做验证，避免在无关任务上浪费评测预算或被聚合分数掩盖局部退化；在三种框架、四个基准上平均提升 7.6%-13.6% 的留出集表现，同时评测开销显著更低。",
+    "http://arxiv.org/abs/2608.27309v1":
+        "论文指出用「双重差分」审计 LLM 裁判偏见时，评分量表的上下限截断会让「偏好差异」和「量表压缩差异」相互混淆——只要两个被比较回答被截断的程度不同，即便真实偏好完全一致也会「制造」出虚假的交互效应；在一次预注册的教学裁判审计中证明其登记的显著交互项有 79%-85% 可由这种截断伪影解释，而非真实偏好。",
+    "http://arxiv.org/abs/2608.27296v1":
+        "研究测试大模型能否为库存控制、排队网络控制和货架优化等运营研究问题直接设计算法，仅给一次未调优的提示词加 Python 沙盒，最强模型 gpt-5.6-sol 在几乎所有测例上就能匹配甚至超过现有最优方法，即便只给出问题类描述就要求返回通用算法（而非单例解）也是如此，且这一能力在不到八个月内的模型迭代中提升明显。",
+    "http://arxiv.org/abs/2608.27291v1":
+        "研究验证「专家乐评人明确关联的两位音乐人」这一网络关系是否真的植根于音乐声学本身：把艺术家表示为 80 个 Essentia 声学描述符上的经验分布，用最优传输距离衡量相似度，在冷启动、艺术家不重叠的划分下用声学特征就能以 0.767 的 AUC 还原评论家给出的关联关系，且评论共识越强还原度越高，说明乐评关联既有可复原的「声学核心」也有社会学层面的成分。",
+    "http://arxiv.org/abs/2608.27286v1":
+        "MM-Spectrum 是面向多模态多光谱数据的分子结构解析框架，用稀疏混合专家架构和「模态感知路由」直接把光谱身份信息暴露给路由器，并引入共享/交互专家和异构专家容量来提取模态独有及跨模态协同信息，缓解直接拼接多光谱序列时因模态间高度异构导致的性能异常下降，在全模态、双模态及缺模态场景下均取得稳定提升。",
+    "http://arxiv.org/abs/2608.27268v1":
+        "BrailleBench 是评测大模型盲文理解能力的基准，整合五个数据集共 5570 条覆盖数学、常识和多跳问答的英文/一级/二级盲文实例，考察模型能否理解盲文输入、用盲文表达答案并完成端到端盲文交互；测试六款主流大模型发现盲文能力普遍落后于印刷体英文能力，二级盲文在输入侧尤其脆弱，全程用盲文交互时表现进一步下降。",
+    "http://arxiv.org/abs/2608.27266v1":
+        "论文提出「朴素提示词优化」（NPO），只用一个教师模型基于 rollout 反馈迭代改写提示词的单链路轻量方法，用更少 rollout 就达到与更复杂的 GEPA 相当或更优的效果，且教师模型越强优势越明显，说明更强的教师推理能力可以部分替代优化器侧的复杂搜索；优化后的提示词还能直接迁移给同系列的其他学生模型。",
+    "http://arxiv.org/abs/2608.27265v1":
+        "SCIT（后缀缓存置换测试）是一种因果检验协议，通过构造精确的源-接收方反事实、置换声明的缓存片段，定位隐式思维链模型中真正承载推理计算的 Transformer 对象；在 CODI-GPT2 等模型上发现反事实的算术计算主要通过「值缓存后缀轨迹」传递，而非隐藏状态或键缓存，且不同规模/能力的模型存在不同的「载体机制」（如大模型更多依赖 prompt 前缀或全缓存 KV）。",
 }

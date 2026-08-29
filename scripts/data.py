@@ -4252,6 +4252,80 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "代码统计工具 scc 发布 4.0 版本，新增找出「最需要关注」文件的功能。",
     "https://news.ycombinator.com/item?id=49476957":
         "文章讨论系统论中的「POSIWID」原则——一个系统的目的就是它实际做的事。",
+
+    # 2026-08-29 GitHub Trending / YouTube AI / Hacker News Newest
+    "https://github.com/swoole/typephp":
+        "typephp：把 PHP 代码编译成原生二进制可执行文件的项目。",
+    "https://www.youtube.com/watch?v=EDxVn1q8udE":
+        "视频演示如何在 10 分钟内搭建一套基于 DeepSeek、免费可用的「Claude Code」式编程 Agent 环境。",
+    "https://www.youtube.com/watch?v=GBg_3gEtNYI":
+        "视频介绍 Claude Code 2.0 的重大升级更新内容。",
+    "https://www.youtube.com/watch?v=ZdaJ7QA6QDA":
+        "视频实测 Unsloth Studio，探讨 Ollama 和 LM Studio 是否已经过时。",
+    "https://www.youtube.com/watch?v=QMtWXu_M3dg":
+        "视频介绍 Qwen3.8-Flash-Next 模型，称其终结了大模型对显存的瓶颈限制。",
+    "https://www.youtube.com/watch?v=TWCSvvTfJNU":
+        "视频盘点本周 GitHub 热门 Top 10 仓库，包括 2282 个 Claude 插件合集和免费 Codex 等。",
+    "https://news.ycombinator.com/item?id=49490416":
+        "Show HN：有人向 IETF 递交了一份格式完全仿照正式 RFC、内容却全是「喵喵」猫叫声的恶搞草案 draft-meow-mrrp-00，讽刺 IETF 的 Internet-Draft 系统谁都能提交、格式再规范也不代表内容有实质意义。",
+    "https://news.ycombinator.com/item?id=49490372":
+        "Cloudflare Workers 介绍其「请求合并」（Request Collapsing）机制：把并发的重复请求合并成一次源站请求，降低后端负载。",
+    "https://news.ycombinator.com/item?id=49490605":
+        "Show HN：作者写了个小工具，用随机算法从待读文章堆里帮自己决定下一篇读什么，解决文章太多读不完的问题。",
+    "https://news.ycombinator.com/item?id=49490595":
+        "报道冰岛就是否重启加入欧盟谈判举行全民公投。",
+    "https://news.ycombinator.com/item?id=49490478":
+        "文章吐槽 Google 翻译生成的文字比作者自己写得还好。",
+    "https://news.ycombinator.com/item?id=49490327":
+        "Ask HN：网友询问大家是否愿意把自己遇到的最离奇的 Agent 日志分享给 AI 安全研究者用于研究。",
+    "https://news.ycombinator.com/item?id=49490588":
+        "文章提出一种基于点击行为、由人气驱动排序的简单评分方法「Let the Clicks Speak」。",
+    "https://news.ycombinator.com/item?id=49490453":
+        "介绍小米新推出的磁吸蓝牙音箱，兼具 iPhone MagSafe 支架和音箱功能。",
+    "https://news.ycombinator.com/item?id=49490432":
+        "分享一则 SMBC 漫画，借哲学家诺齐克提出的「体验机」（Experience Machine）思想实验开玩笑。",
+    "https://news.ycombinator.com/item?id=49490517":
+        "News-deframe 项目对比不同新闻媒体如何用不同叙事框架报道同一事件。",
+    "https://news.ycombinator.com/item?id=49490389":
+        "文章讨论马尔可夫链在什么条件下会收敛。",
+    "https://news.ycombinator.com/item?id=49490594":
+        "文章介绍 QDay Algebra 项目称能在纳秒级时间内完成 200 万级规模的素因子分解演示。",
+    "https://news.ycombinator.com/item?id=49490482":
+        "文章讲解事件驱动系统的基本原理。",
+    "https://news.ycombinator.com/item?id=49490404":
+        "报道在数据中心建设争议中，蓝领岗位正成为新的矛盾焦点。",
+    "https://news.ycombinator.com/item?id=49490545":
+        "HN 帖子分享维基百科上「Quis custodiet ipsos custodes？」（谁来监督监督者）这一政治哲学格言的词条内容。",
+    "https://news.ycombinator.com/item?id=49490589":
+        "介绍一个体量极小的世界模型项目 Tiny World Model。",
+    "https://news.ycombinator.com/item?id=49490400":
+        "与密码学学者 Chris Peikert 探讨用 AI 辅助生成格密码学（lattice cryptography）证明。",
+    "https://news.ycombinator.com/item?id=49490475":
+        "作者讲述自己在泡澡时意外发现两个 Shopify 插件零日漏洞的经历。",
+    "https://news.ycombinator.com/item?id=49490339":
+        "文章为屏幕时间管理 App Island 做推广，主张不靠强制封锁应用，而是靠强化用户自身的健康动机来减少沉迷。",
+    "https://news.ycombinator.com/item?id=49490470":
+        "OpenLake 项目介绍其面向 LLM 推理和训练场景设计的高性能、持久化存储系统。",
+    "https://news.ycombinator.com/item?id=49490461":
+        "SwarmWorld 研究 LLM Agent 群体中类似「迹迹通讯」（stigmergy）的技术演化现象。",
+    "https://news.ycombinator.com/item?id=49490466":
+        "文章介绍希腊悲剧人物安提戈涅（Antigone）——这位 2500 年前的「反抗者」。",
+    "https://news.ycombinator.com/item?id=49490498":
+        "文章讲述「魔眼管」（magic eye tube）的历史，称其是最早的 RF「调试器」。",
+    "https://news.ycombinator.com/item?id=49490460":
+        "文章分析为什么大家都讨厌 Palantir。",
+    "https://news.ycombinator.com/item?id=49490620":
+        "作者发布 Firefox 扩展，给 Hacker News 帖子加上一个「摘要」链接。",
+    "https://news.ycombinator.com/item?id=49490446":
+        "ELPI 是一个可嵌入的 Lambda Prolog 解释器项目。",
+    "https://news.ycombinator.com/item?id=49490368":
+        "文章指出「维修权」相关州法律持续增多，但实际执法几乎形同虚设。",
+    "https://news.ycombinator.com/item?id=49490410":
+        "BoqCalc 是一套 AI 流水线，能在不产生幻觉报价的前提下为 500 行的工程量清单（BOQ）计价。",
+    "https://news.ycombinator.com/item?id=49490315":
+        "作者分享用 Gemini Notebook 辅助读研的使用心得。",
+    "https://news.ycombinator.com/item?id=49490336":
+        "作者讲述 Hugging Face 遭遇的攻击事件为何让自己感到意外。",
 }
 
 
@@ -7692,4 +7766,10 @@ TRANSLATIONS: dict[str, str] = {
         "论文提出「朴素提示词优化」（NPO），只用一个教师模型基于 rollout 反馈迭代改写提示词的单链路轻量方法，用更少 rollout 就达到与更复杂的 GEPA 相当或更优的效果，且教师模型越强优势越明显，说明更强的教师推理能力可以部分替代优化器侧的复杂搜索；优化后的提示词还能直接迁移给同系列的其他学生模型。",
     "http://arxiv.org/abs/2608.27265v1":
         "SCIT（后缀缓存置换测试）是一种因果检验协议，通过构造精确的源-接收方反事实、置换声明的缓存片段，定位隐式思维链模型中真正承载推理计算的 Transformer 对象；在 CODI-GPT2 等模型上发现反事实的算术计算主要通过「值缓存后缀轨迹」传递，而非隐藏状态或键缓存，且不同规模/能力的模型存在不同的「载体机制」（如大模型更多依赖 prompt 前缀或全缓存 KV）。",
+
+    # 2026-08-29 OpenAI / Simon Willison
+    "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex":
+        "OpenAI 宣布将终止向 Cursor 提供模型的合作合同，原因是 Cursor 已被 SpaceX 收购。",
+    "https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/":
+        "剑桥计算机科学教授、OCaml 编译器核心维护者 Anil Madhavapeddy 发现，如今只要公开讨论区提到一点漏洞线索，自动化探测就能在几分钟内跟进尝试利用（此前通常要等几天）；Simon 认为这反映现代编程 Agent 已经强到只需一丝暗示就能找到并复现漏洞。",
 }

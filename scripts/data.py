@@ -4416,6 +4416,84 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "文章分享作者如何用一个统一的 Nix flake 管理所有项目的环境配置。",
     "https://news.ycombinator.com/item?id=49497784":
         "视频讲解三次函数中一个鲜为人知的隐藏比例几何/代数性质。",
+
+    # 2026-08-31 社区动态
+    "https://github.com/jingyaogong/minimind":
+        "开源项目 MiniMind：可在约 2 小时内从零训练出一个 6400 万参数的小型语言模型。",
+    "https://github.com/kaifcodec/user-scanner":
+        "user-scanner 是一款邮箱与用户名 OSINT 工具，整合 465+ 种扫描手段（175+ 邮箱 / 290+ 用户名），面向安全研究、调查取证与数字足迹分析场景。",
+    "https://github.com/Osmantic/ODS":
+        "ODS 可将 PC/Mac/Linux 电脑变成本地 AI 服务器，一站式支持 LLM 推理、聊天界面、语音、Agent、工作流、RAG 与图像生成。",
+    "https://www.youtube.com/watch?v=1TTmYLXIOvw":
+        "博主介绍 Claude Desktop 现已免费且无限制使用，并演示配合 Ollama 等工具实现聊天、协作与自动化任务（为博主个人解读，信息请以官方为准）。",
+    "https://www.youtube.com/watch?v=szWcvEMGSq8":
+        "视频分析 ChatGPT「品牌之旅」引发的争议，认为公众对 AI 的排斥情绪其实比只针对 ChatGPT 更具普遍性。",
+    "https://www.youtube.com/watch?v=uRtlIzePS90":
+        "视频汇总本周 Linux/开源动态：加州年龄验证法规下 Linux 相关胜诉、AI/LLM 相关补丁给内核维护者带来混乱、Debian 的 AI 议题投票结果等。",
+    "https://www.youtube.com/watch?v=YYAMwM-F30o":
+        "博主测评一款号称性能击败 Claude 的新晋高排行榜免费 AI 模型，并盘点其余约 21 条 AI 资讯动态（标题为博主观点，非官方结论，视频发布后标题曾被作者修改）。",
+    "https://www.youtube.com/watch?v=c9AnqCeyxbI":
+        "面向初学者的教程：不使用框架、不用第三方工具，纯 Python 从零构建一个可运行的 AI Agent。",
+    "https://news.ycombinator.com/item?id=49509319":
+        "一篇关于时间流逝与人生取舍的随笔式反思文章。",
+    "https://news.ycombinator.com/item?id=49509416":
+        "大峡谷地区因山洪暴发，所有酒店关闭且尚无重新开放日期。",
+    "https://news.ycombinator.com/item?id=49509445":
+        "科学家造出无需马达、仅靠声波驱动即可飞行的微型机器人。",
+    "https://news.ycombinator.com/item?id=49509374":
+        "视频探讨制约游戏行业发展的隐性结构性因素。",
+    "https://news.ycombinator.com/item?id=49509271":
+        "文章论述企业可能需要更换客户身份与访问管理（CIAM）服务商的理由。",
+    "https://news.ycombinator.com/item?id=49509222":
+        "印度语音 AI 市场陷入低价竞争，通话价格已降至每分钟 0.15 美分。",
+    "https://news.ycombinator.com/item?id=49509243":
+        "深入讲解 Apache Iceberg 表格式原理的技术文章。",
+    "https://news.ycombinator.com/item?id=49509433":
+        "讨论「检测到风险后触发终止开关」这一条件概率式 AI 安全机制的文章。",
+    "https://news.ycombinator.com/item?id=49509291":
+        "OpenAI、Anthropic 等百余家公司联合呼吁采取行动防范失控 AI。",
+    "https://news.ycombinator.com/item?id=49509375":
+        "视频分析中国日常生活类 vlogger 在 YouTube 上爆红的原因。",
+    "https://news.ycombinator.com/item?id=49509446":
+        "Ember 机构报告指出非洲太阳能装机正快速增长，但官方统计数据尚未体现这一趋势。",
+    "https://news.ycombinator.com/item?id=49509336":
+        "探讨局部理性决策为何会累加成整体次优结果的系统性问题。",
+    "https://news.ycombinator.com/item?id=49509167":
+        "Show HN：在浏览器中还原出一个可运行的 iOS 4 系统界面。",
+    "https://news.ycombinator.com/item?id=49509410":
+        "Ask HN：请教如何改善 AI Agent 输出内容的可读性。",
+    "https://news.ycombinator.com/item?id=49509132":
+        "探讨美国西部水资源短缺下，畜牧业与人类用水之间的取舍矛盾。",
+    "https://news.ycombinator.com/item?id=49509326":
+        "一款可将任意数字音频工作站（DAW）界面转换为 3D 呈现的插件。",
+    "https://news.ycombinator.com/item?id=49509199":
+        "Show HN：一款每日更新的花卉主题逻辑益智游戏。",
+    "https://news.ycombinator.com/item?id=49509390":
+        "一篇讲述历时十二年、以一把剑、一次投降与一条短信收尾的探索故事。",
+    "https://news.ycombinator.com/item?id=49509437":
+        "Ask HN：寻找处理长 HTML 页面时不会出错的翻译流水线方案。",
+    "https://news.ycombinator.com/item?id=49509230":
+        "报道蒂姆·库克卸任苹果 CEO 的最后一天。",
+    "https://news.ycombinator.com/item?id=49509312":
+        "一篇关于扩大 AI 普惠使用的里程碑式进展报道。",
+    "https://news.ycombinator.com/item?id=49509283":
+        "探讨人类负重搬运这一逐渐失传的传统技艺。",
+    "https://news.ycombinator.com/item?id=49509428":
+        "辨析「取消」（cancelation）一词及相关术语用法的文章。",
+    "https://news.ycombinator.com/item?id=49509316":
+        "介绍名为 Instinct.co 的产品/网站。",
+    "https://news.ycombinator.com/item?id=49509142":
+        "Show HN：Decispher 为编程 AI Agent 提供持久化的工程上下文与记忆能力。",
+    "https://news.ycombinator.com/item?id=49509174":
+        "作者测评了多种转录文本说话人标注方案，寻找最佳做法。",
+    "https://news.ycombinator.com/item?id=49509217":
+        "PyDPainter 是一款用 Python 编写、可实际使用的像素画绘制程序。",
+    "https://news.ycombinator.com/item?id=49509414":
+        "numba-enzyme 为 Numba 编译的函数提供自动微分能力。",
+    "https://news.ycombinator.com/item?id=49509163":
+        "Show HN：一个用于查找、测试和托管 LLM 适配器（adapter）的专用平台。",
+    "https://news.ycombinator.com/item?id=49509270":
+        "介绍跳伞消防员（smokejumper）这一对抗野火的特殊技艺。",
 }
 
 
@@ -7866,4 +7944,8 @@ TRANSLATIONS: dict[str, str] = {
     # 2026-08-30 Simon Willison
     "https://simonwillison.net/2026/Aug/29/hy4/":
         "Simon Willison 介绍腾讯新开源的 Hy4 Preview 大模型：770B 总参数、49B 激活参数、100 万 token 上下文窗口，体量比 7 月发布的 Hy3（295B 总/21B 激活/25.6 万上下文）大幅提升；他还研究了其 chat template，发现推理强度只有 high 和 no_think 两档可选。",
+
+    # 2026-08-31 Simon Willison
+    "https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/":
+        "Simon Willison 拆解 OpenAI 新产品 ChatGPT Work：它其实是两个产品——运行在云端的 Work Cloud（chatgpt.com / 手机应用）和运行在桌面本地、前身是 Codex 的 Work Local；目前仅限每月 20 美元及以上订阅用户使用，作者重点分析了该产品与常规 Chat 模式该如何取舍使用。",
 }

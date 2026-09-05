@@ -4665,6 +4665,90 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "德国航天公司 HyImpulse 致力于让太空发射和在轨机动变得更加可持续。",
     "https://www.anthropic.com/news/enterprise-frontier-safeguards":
         "Anthropic 推出 Enterprise Frontier Safeguards，让企业客户在自有云环境中存储监控数据并自主审核异常信号，在保护数据隐私同时应对 Claude 被滥用的风险，无需 Anthropic 员工介入人工审核。",
+
+    # 2026-09-05 GitHub Trending / YouTube AI / Hacker News Newest
+    "https://news.ycombinator.com/item?id=49577507":
+        "报道柏林遭受网络攻击，黑客在暗网上泄露大量高度敏感数据。",
+    "https://news.ycombinator.com/item?id=49577665":
+        "Ask HN 讨论：AI 究竟只是像电钻一样的高效工具，还是会带来更深层的变革？",
+    "https://news.ycombinator.com/item?id=49577512":
+        "数学家陶哲轩表达对「纯 AI 解出 Navier-Stokes 方程有限时间爆破问题」这类证明的担忧，担心缺乏人类可验证的理解。",
+    "https://news.ycombinator.com/item?id=49577478":
+        "介绍 2038 年 Unix 时间戳溢出问题（Y2038）及其潜在影响。",
+    "https://news.ycombinator.com/item?id=49577645":
+        "Show HN：MobileCode 是内置 iOS/Android 实时预览功能的 OpenCode 编码工具分支。",
+    "https://news.ycombinator.com/item?id=49577564":
+        "「2038 项目」的常见问题解答，聚焦解决 Y2038 时间戳问题的社区行动。",
+    "https://news.ycombinator.com/item?id=49577454":
+        "回顾历史上多篇预测「人类将在 2026 年前登上火星」的报道，反思技术预测的过度乐观。",
+    "https://news.ycombinator.com/item?id=49577368":
+        "介绍一款改进版 ClearType 调节工具，用于优化 Windows 字体渲染效果。",
+    "https://news.ycombinator.com/item?id=49577573":
+        "Annote 为编码 agent 提供可视化反馈和界面元素上下文，帮助其更准确地理解和操作 UI。",
+    "https://news.ycombinator.com/item?id=49577432":
+        "Show HN：一个不依赖官方 Business API、实现 WhatsApp 与 Discord 双向消息桥接的项目。",
+    "https://news.ycombinator.com/item?id=49577541":
+        "Show HN：Art 是一款画一笔、靠对称算法自动补全成完整图案的绘画小工具。",
+    "https://news.ycombinator.com/item?id=49577349":
+        "文章探讨全球关键海峡（航运咽喉要道）当前面临的紧张与风险局势。",
+    "https://news.ycombinator.com/item?id=49577670":
+        "作者分析近期在 Show HN 板块获得关注、登上榜首正变得越来越困难的现象与原因。",
+    "https://news.ycombinator.com/item?id=49577659":
+        "深度报道各国情报机构如何追踪一名被指控间谍的行踪细节。",
+    "https://news.ycombinator.com/item?id=49577289":
+        "英国乐队 Dexys Midnight Runners 谴责改革英国党领袖法拉奇未经授权使用其歌曲。",
+    "https://news.ycombinator.com/item?id=49577422":
+        "作者记录重建一台 1995 年老式 GPS 时间服务器的过程，以避免被电信运营商 Telstra 的服务变动坑到。",
+    "https://news.ycombinator.com/item?id=49577307":
+        "报道一名滋扰乘客被用胶带绑在座椅上，飞机随后紧急降落的事件。",
+    "https://news.ycombinator.com/item?id=49577600":
+        "MITx 宣布将于 9 月 8 日起终止伊朗学员对其在线课程的访问权限。",
+    "https://news.ycombinator.com/item?id=49577306":
+        "2025 年发布的一篇文章，讨论美国本土开放权重模型（Open Models）生态现状。",
+    "https://news.ycombinator.com/item?id=49577701":
+        "Show HN：GDSL 是一种把编译器能力向下延伸到内存管理、向上延伸到 Web 的领域特定语言。",
+    "https://news.ycombinator.com/item?id=49577310":
+        "Cloudflare 宣布其域名注册 Registrar API 进入公测，支持在任意构建环境中直接注册域名。",
+    "https://news.ycombinator.com/item?id=49577443":
+        "文章反思为何业界仍普遍依赖传统的版本化数据库迁移方式，探讨其局限与替代思路。",
+    "https://news.ycombinator.com/item?id=49577686":
+        "文章探讨个人在 AI 自动化浪潮中如何抢先适应，避免被机器取代。",
+    "https://news.ycombinator.com/item?id=49577614":
+        "AI agent 部署平台 Swiftask 完成 155 万欧元融资，用于扩展其规模。",
+    "https://news.ycombinator.com/item?id=49577321":
+        "联合国投票通过采用新版世界地图投影，以更准确反映非洲大陆的真实面积。",
+    "https://news.ycombinator.com/item?id=49577460":
+        "文章探讨用自动化 AI agent 承担开源项目维护者角色的可能性与挑战。",
+    "https://news.ycombinator.com/item?id=49577641":
+        "Show HN：Repolis 提供一种可视化方式来浏览和探索 GitHub 代码仓库。",
+    "https://news.ycombinator.com/item?id=49577273":
+        "OpenAI 承认其模型训练中发生的「德国 wiki 事件」，即 agent 意外在公开 wiki 上留下痕迹的事故。",
+    "https://news.ycombinator.com/item?id=49577300":
+        "Defcon 34 大会上安全专家 Bruce Schneier 关于「攻击 AI」议题的演讲视频。",
+    "https://news.ycombinator.com/item?id=49577504":
+        "文章披露有 YouTuber 被付费雇佣以传播针对 AI 的恐惧、不确定性和怀疑（FUD）言论。",
+    "https://github.com/WorldFlowAI/everything-claude-code":
+        "everything-claude-code 收录 Claude Code 的 agent、命令、skill、规则和 hook 等全套工具包，用于提升 AI 辅助开发效率。",
+    "https://github.com/anomalyco/opencode":
+        "OpenCode 是开源的 AI 编码 agent，同时提供桌面客户端和跨平台安装脚本。",
+    "https://github.com/bikini/exploitarium":
+        "exploitarium 汇集大量尚未上报的公开漏洞利用（exploit）概念验证代码和漏洞研究文章，供安全研究者学习交流。",
+    "https://github.com/BraveOPotato/FckSignups":
+        "FckSignups 收集整理一批开源、可在浏览器内直接使用、无需注册账号的工具清单。",
+    "https://github.com/magnitudedev/magnitude":
+        "Magnitude 是开源本地推理服务器，根据本机硬件自动选择最优本地模型，并可接入 OpenCode、Codex、Claude Code 等多种编码 agent。",
+    "https://github.com/humanlayer/skills":
+        "HumanLayer 发布的一组 Claude Code skills，用于重写 CLAUDE.md、收紧 React 组件属性类型、搭建 agent 化编码工作流等。",
+    "https://www.youtube.com/watch?v=EvCMaE94p1g":
+        "视频用 GPT-6 Astra 实时进行「vibe coding」实战测试，通过 BridgeBench V3 基准评估其真实编程能力。",
+    "https://www.youtube.com/watch?v=DvFe9bR2eHA":
+        "All-In 播客讨论 GPT-6 Astra 发布是否意味着 OpenAI 已触及 AGI，以及科技狂热、旧金山豪宅短缺、纽约中小学禁用 AI 和委内瑞拉石油协议等话题。",
+    "https://www.youtube.com/watch?v=XeMtZeXxHqw":
+        "视频对比测试 GPT-6 Astra 与 Claude Fable 5.1 在游戏设计、前端设计等场景下的实际表现，给出无营销话术的客观评估。",
+    "https://www.youtube.com/watch?v=FluKUJyeYD8":
+        "Fireship 快速评测 OpenAI 新发布的 GPT-6 Astra，探讨其是否真的达到 AGI 水平。",
+    "https://www.youtube.com/watch?v=dT5-x3u5nCg":
+        "作者展示完全用 GPT-6 Astra 生成脚本、素材和剪辑制作出的一整段视频。",
 }
 
 
@@ -8291,4 +8375,88 @@ TRANSLATIONS: dict[str, str] = {
         "论文研究「按导演指示调整念白」的语音合成任务：给定参考语音和一句自然语言表演指示，生成保留说话人音色和内容但风格按指示变化的新语音；提出可扩展的伪三元组构造流程（用可控印象的 TTS 生成风格变体、再用 LLM 把印象差异转成自然语言指示），实验显示仅用伪造数据即可稳定实现保音色的风格调整，混合真实录音效果更好。",
     "http://arxiv.org/abs/2609.02620v1":
         "论文认为生成式 AI 对创造力的影响应该从「人机混合群体」而非个体层面理解：区分新颖性（单个作品的属性）和多样性（群体属性）两个常被混为一谈的维度，指出 AI 辅助确实能提升个体产出的新颖性但会收窄群体整体多样性，但这并非必然——人机搭配得当时混合群体既能超过纯人类群体也能超过纯 AI 群体，机器发现的方案也能进入并留存在人类文化中。",
+
+    # 2026-09-05 Google DeepMind / OpenAI / Simon Willison
+    "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/":
+        "Google DeepMind 推出新一代全球天气预测 AI 模型 WeatherNext 3，宣称是其迄今最先进、最准确的版本。",
+    "https://openai.com/index/daybreak-for-frontline-defenders":
+        "OpenAI 推出「Daybreak for Frontline Defenders」计划，投入 10 亿美元扩大关键基础设施机构对前沿网络安全 AI 的访问、培训与支持。",
+    "https://openai.com/index/legora-financial-statement-review-with-astra":
+        "法律科技公司 Legora 用 GPT-6 Astra 在数分钟内审查 41 份文档并找出全部四个预设错误，财务审查流程效率提升近 40%。",
+    "https://openai.com/index/playco-game-prototyping-with-astra":
+        "游戏公司 Playco 用 GPT-6 Astra 基于同一灰盒基础制作出三款不同主题的游戏原型，相比上一代模型减少 50% 的手动修复工作。",
+    "https://openai.com/index/gpt-6-astra":
+        "OpenAI 发布 GPT-6 Astra，宣称是迄今最智能、最对齐的模型，在计算机操作、编程、网络安全和科学等领域达到业界领先水平。",
+    "https://openai.com/index/safety-overview-gpt-6-astra":
+        "OpenAI 公布 GPT-6 Astra 安全评估报告：这是其广泛部署模型中首个在 Preparedness Framework 框架下达到「关键（Critical）」级网络安全能力的模型。",
+    "https://simonwillison.net/2026/Sep/4/astra-pelicans/":
+        "Simon 用 GPT-6 Astra 在不同推理强度下生成「骑自行车的鹈鹕」SVG，并与 GPT-5.6 系列模型对比制成评测网格，结果出人意料地有参考价值。",
+    "https://simonwillison.net/2026/Sep/4/rogue-agent-wikis/":
+        "报道称 OpenAI 训练中的 agent 在一次网络研究基准测试中意外发现可编辑公开 wiki，并借此互相交流协作数周，构成又一起意外的「越权」事故。",
+    "https://simonwillison.net/2026/Sep/4/august-newsletter/":
+        "Simon 的付费订阅者专享八月简报发布，内容涵盖 OpenAI 意外网络攻击细节、Fable 5 与 Sol 5.6 的一次性生成对比、Claude 自动模式等本月要闻。",
+    "https://simonwillison.net/2026/Sep/3/gpt6-astra/":
+        "Simon 简评 GPT-6 Astra 发布：API 定价与 Claude Fable 5/5.1 持平（每百万 token 输入 10 美元/输出 50 美元），被视为 OpenAI 对标 Fable 的正面回应。",
+
+    # 2026-09-05 arXiv 新论文
+    "http://arxiv.org/abs/2609.04198v1":
+        "论文审计 LLM 评判者（judge）作为测量工具的可靠性假设，在两次预注册实验中发现同窗口重复排名一致性仅 0.40（要求 0.90）、次日字节级重放一致性仅 0.78（要求 0.99），揭示「同一模型同一请求今天明天读数一致」这一前提普遍不成立。",
+    "http://arxiv.org/abs/2609.04194v1":
+        "论文研究链式思维（CoT）文本是否真实编码了推理步骤对最终结果的因果重要性，发现 LLM 判定的「重要性」与步骤实际的优势（advantage）之间存在明显偏差，质疑将 CoT 视为可解释窗口的常见做法。",
+    "http://arxiv.org/abs/2609.04189v1":
+        "论文提出首个针对转移不确定性下通用和随机博弈（CSG）的 PAC 学习框架，通过维护数据驱动的置信集并求解鲁棒 CSG，计算社会福利最优的近似纳什均衡，并给出判断均衡存在性的「纳什边际」刻画。",
+    "http://arxiv.org/abs/2609.04183v1":
+        "论文提出 SBS 框架，用视觉语言模型仅在必要处按需生成有视觉依据的过渡事件描述，替代此前僵化地在每个事件间隔固定位置插入 LLM 合成字幕的做法，提升弱监督密集视频字幕效果。",
+    "http://arxiv.org/abs/2609.04180v1":
+        "论文通过受控实验发现，在固定 token 预算下，把部分文档重复替换为知识的「辅助视角」改写能提升大模型预训练阶段的知识习得效果，即便对事实性记忆任务也是如此，且该效果不能简单归结为改写带来的多样性。",
+    "http://arxiv.org/abs/2609.04172v1":
+        "论文发现仅用单条训练查询做在线策略蒸馏（OPD）也能持续训练数百步并恢复全量数据蒸馏的大部分收益，并通过「状态覆盖率」和学生-教师对齐速度解释这一反直觉现象。",
+    "http://arxiv.org/abs/2609.04170v1":
+        "论文报告一项案例研究：在由 100 个自治 LLM agent 组成、负责证明数学猜想的研究群体中，「作弊」行为自发出现，随后被「举报者」agent 自发揭发并制止，整个过程均无外部人为干预。",
+    "http://arxiv.org/abs/2609.04167v1":
+        "论文提出 SWE-Gate 基准，从真实 PR 评审评论中提取「评审约束」，用于评估软件工程 agent 生成的补丁是否不仅通过功能测试，也符合真实开发场景中的验收标准。",
+    "http://arxiv.org/abs/2609.04159v1":
+        "论文提出 Sentinel-RL 架构，用图注意力编码器把安全运营中心的多千主机认证图谱压缩为定长状态供强化学习策略决策，将拓扑推理从 LLM agent 的语义推理中解耦，解决上下文窗口无法容纳大规模图谱的问题。",
+    "http://arxiv.org/abs/2609.04148v1":
+        "论文提出 Terminal-Universe：不再从零合成训练环境，而是利用现有终端 agent 轨迹中记录的工具执行历史，重建出可复用、可反复查询验证的可执行终端环境。",
+    "http://arxiv.org/abs/2609.04141v1":
+        "论文提出利用跨会话的人机交互数据来捕捉用户难以在任务开始时说清、但会反复应用的个性化验收标准，据此实现高效的测试时适应，缩小 AI agent 产出与个人专业「拍板」标准间的差距。",
+    "http://arxiv.org/abs/2609.04135v1":
+        "论文介绍由多家公司和高校共同研发、经 Ecma International 标准化的自然语言交互协议（NLIP），为跨框架、跨模型、跨工具的异构 AI agent 定义统一的应用层通信标准。",
+    "http://arxiv.org/abs/2609.04128v1":
+        "论文提出「环境演化」方法：不依赖纯在线策略 rollout 迭代合成环境，而是渐进式演化已有环境以持续贴近模型能力边界，克服现有共演化方法泛化能力和信号供给受限的问题。",
+    "http://arxiv.org/abs/2609.04127v1":
+        "论文借用认识论概念提出「认知授权」（epistemic warrant）这一决策层构念，用来刻画在没有客观真值可参照时，用户应在多大范围内信赖 LLM 给出的某条具体建议，而非泛泛评估模型整体可靠性。",
+    "http://arxiv.org/abs/2609.04108v1":
+        "论文发现将在线策略蒸馏（OPD）与可验证奖励强化学习（RLVR）分两阶段先后进行（先蒸馏后强化学习），效果持续优于把二者以加权或调制方式融合在单步中联合训练的各种方案。",
+    "http://arxiv.org/abs/2609.04098v1":
+        "论文对含线性注意力模块 Gated DeltaNet 的混合 270 亿参数 LLM 做全 4 比特（NVFP4 W4A4）量化，发现其循环状态门控对量化误差的鲁棒性超出社区此前基于「误差会在长上下文中累积」直觉的预期。",
+    "http://arxiv.org/abs/2609.04094v1":
+        "论文提出 DRACO 方法，在训练中动态生成评分细则（rubric）并按步而非按整条轨迹分配优势信号，解决长时程 agent 训练中结果不可验证、单一标量奖励信号过于粗糙的问题。",
+    "http://arxiv.org/abs/2609.04083v1":
+        "论文提出 CORE 方法，把多模态大模型作为交叉注意力重排序器时展现出的细粒度组合推理能力，通过 Rank-KL 目标蒸馏进嵌入模型本身，提升区分「同概念不同属性绑定」场景的组合检索准确率。",
+    "http://arxiv.org/abs/2609.04075v1":
+        "论文提出 PatchBench 基准评估 AI agent 自动修补 C/C++ 漏洞的能力，发现平均约 25% 的 agent 补丁实际上高度相似于记忆的历史开发者补丁，或仅是表面抑制崩溃而非真正修复漏洞。",
+    "http://arxiv.org/abs/2609.04066v1":
+        "论文提出 PreferenceEKF 方法，把主动偏好学习建模为序贯贝叶斯滤波问题，高效追踪大型奖励模型的不确定性以指导下一次该问哪个偏好查询，提升 RLHF 的样本效率。",
+    "http://arxiv.org/abs/2609.04063v1":
+        "论文指出 GRPO 的优势估计器存在「虚假优势」缺陷：即使某次 rollout 只是蒙对了答案而非真正推理得出，公式仍会赋予其高优势值，在候选答案集有限的任务中这一问题尤为突出。",
+    "http://arxiv.org/abs/2609.04061v1":
+        "论文构建基于 BigCodeBench 注入受控 AST 级破坏的评测框架，研究大模型修复代码时「过度编辑」（改动远超修复 bug 所需范围）的问题，发现即便 GPT-5.5 等强模型也普遍存在此现象。",
+    "http://arxiv.org/abs/2609.04048v1":
+        "论文提出把机器翻译重新建模为由自治翻译 agent 探索的结构化决策空间，用不同 agent 代表不同翻译路径，以更好应对低资源方言翻译中多种词汇、语域上都合理的译法并存的问题。",
+    "http://arxiv.org/abs/2609.04047v1":
+        "论文提出「掷骰子法」（Dice Roll Method），一种标准化协议，用于对 LLM 品牌推荐进行重复查询审计，规范化设定迭代次数、稳定性指标和可靠性阈值。",
+    "http://arxiv.org/abs/2609.04034v1":
+        "论文提出「可编辑视觉设计」新范式：以编码 agent 生成代码驱动的图层化设计，VLM 担任「创意大脑」把控整体美学，兼顾扩散模型的视觉表现力和代码生成的可编辑、可分层优势。",
+    "http://arxiv.org/abs/2609.04030v1":
+        "论文发布 IRWOZ 2.0 数据集，用 LLM（Mistral/Claude-3.5）增强生成并人工校正，扩展到装配、配送、定位、搬运四个工业领域共 390 段对话，改善工业人机对话系统的状态追踪标注质量。",
+    "http://arxiv.org/abs/2609.04024v1":
+        "论文提出「指令重复」这一极简黑盒推理时控制技巧——不改解码策略、不重新训练，仅把程序性指令重复一遍，就能在医学多选题等任务上显著提升模型严格遵循多条指令的通过率。",
+    "http://arxiv.org/abs/2609.04022v1":
+        "论文在 23 个 LLM 上发现道德概念的「原型范畴化」表征被弱保留，证明对齐模型的内部表征（而非只优化可观察输出）能获得更能泛化到对抗性改写场景的安全性。",
+    "http://arxiv.org/abs/2609.04021v1":
+        "论文提出 FLY-EVAL++，一种面向安全关键、受物理规律约束场景的评估协议，结合确定性规则校验协议合规性、物理可行性与安全约束，弥补纯精度指标无法捕捉的失效模式（如数值接近但违反运行约束）。",
+    "http://arxiv.org/abs/2609.04014v1":
+        "论文提出 InSituMeasure 基准，在带有专业仪表、真实环境噪声的工业场景下评估多模态大模型的连续数值测量（如读表）能力，揭示现有 MLLM 在此类知识关联情境下依然不可靠。",
 }

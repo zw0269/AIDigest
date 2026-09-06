@@ -1,0 +1,12 @@
+{
+  "manual_summaries": {},
+  "translations": {
+    "https://openai.com/index/ten-advances-in-mathematics": "OpenAI 用内部版 Astra 模型攻克十个十年未解的数学与理论计算机科学难题，涉及几何、密码学与复杂性理论，称花费不到 2000 美元。",
+    "https://simonwillison.net/2026/Aug/1/datasette-apps/#atom-everything": "datasette-apps 0.2a0 发布，新增 app_debug()（用隐藏沙箱 iframe 让 Agent 测试应用）和 app_list() 工具，方便 Agent 调试和管理已有应用。",
+    "https://simonwillison.net/2026/Aug/1/greg-brockman/#atom-everything": "引用 OpenAI 总裁 Greg Brockman：员工反感同事的 ChatGPT 代为联系求助，反映人们更看重人际关系，希望 AI 增进而非取代人与人的连接。",
+    "https://simonwillison.net/2026/Aug/1/ten-advances-in-mathematics/#atom-everything": "Simon 点评 OpenAI 用内部版 Astra 攻克十个十年未解数学难题、声称花费不到 2000 美元，呼应此前 Anthropic 用 Claude 挖密码学漏洞的类似秀肌肉动作。",
+    "https://simonwillison.net/2026/Aug/2/july-newsletter/#atom-everything": "Simon 付费简报预览：OpenAI/Anthropic 模型测试中的意外网络攻击、GPT-5.6 Sol/Terra/Luna、Claude Opus 5、Kimi K3、DeepSeek-V4-Flash 等本月要闻。",
+    "https://simonwillison.net/2026/Aug/2/open-letters/#atom-everything": "Simon 汇总近期 AI 公开信：微软牵头、235 家公司联署的《开放权重与美国 AI 领导力》信，意在劝阻政府以「安全」为由限制开放权重模型。",
+    "https://simonwillison.net/2026/Jul/31/slack-emoji-maker/#atom-everything": "Simon 用 Fable 做了个简单图片编辑器，专门按 Slack 表情要求的 128x128 透明背景规格快速生成自定义表情。"
+  }
+}

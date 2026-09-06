@@ -102,7 +102,7 @@ companies:
     # link_pattern: "^/blog/[^/]+$"   # 正则匹配 anchor href
 ```
 
-改完先 `verify`，没问题再 `run`。新源若是 HTML 且文章无 RSS description，需要在 `scripts/data.py` 的 `MANUAL_SUMMARIES` 加中文摘要；RSS 有英文 description 时，`TRANSLATIONS` 加中文翻译。
+改完先 `verify`，没问题再 `run`。新源若是 HTML 且文章无 RSS description，需要在 `data/translations/{date}.json` 的 `manual_summaries` 加中文摘要；RSS 有英文 description 时，`translations` 加中文翻译。
 
 ## 调 arXiv
 

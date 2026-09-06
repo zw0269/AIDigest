@@ -74,9 +74,10 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 **渲染日报中每个条目都必须有 `中文:` 行 — 包括 arXiv 论文。**
 
-- **公司动态 / 个人 Blog（RSS）**：若 RSS 给出英文 description，必须在 `scripts/data.py` 的 `TRANSLATIONS` 中补上中文翻译/概括（一句话级别，不必逐字翻译）。
-- **HTML 源（无 RSS description）**：在 `MANUAL_SUMMARIES` 中加中文摘要。
-- **arXiv 论文**：标题虽是英文但 report 不带 abstract，必须用 `arxiv` 库按 ID 拉到 `summary` 后写一句中文核心要点，加进 `TRANSLATIONS`（key 为 `result.entry_id`，含 `v1` 后缀）。
+- **公司动态 / 个人 Blog（RSS）**：若 RSS 给出英文 description，必须在 `data/translations/{date}.json` 的 `translations` 里补上中文翻译/概括（一句话级别，不必逐字翻译），`{date}` 为该条目所在 report 的日期。
+- **HTML 源（无 RSS description）**：在同一文件的 `manual_summaries` 里加中文摘要。
+- **arXiv 论文**：标题虽是英文但 report 不带 abstract，必须用 `arxiv` 库按 ID 拉到 `summary` 后写一句中文核心要点，加进 `translations`（key 为 `result.entry_id`，含 `v1` 后缀）。
+- 数据按日期拆分在 `data/translations/` 下，一天一个 JSON 文件；`data/seen.sqlite` 保证同一 URL 只会被抓一次，所以新条目不需要跨历史文件查重，直接写进当天文件即可。
 - 仅有中文摘要的条目（Anthropic、Dario Amodei 等中文源）无需补英文。
 - 渲染前必须抽查：`grep "中文:" llm-ai/digests/digest-YYYY-MM-DD.md | wc -l` 应等于当日条目总数；缺失先补再渲染，不要发只有英文/只有标题的 digest。
 

@@ -327,9 +327,10 @@ footer {
       <h3>6. 所有英文条目必须附中文注释（含论文）</h3>
       <p><strong>渲染日报中每个条目都必须有 <code>中文:</code> 行 — 包括 arXiv 论文。</strong></p>
 <ul>
-<li><strong>公司动态 / 个人 Blog（RSS）</strong>：若 RSS 给出英文 description，必须在 <code>scripts/data.py</code> 的 <code>TRANSLATIONS</code> 中补上中文翻译/概括（一句话级别，不必逐字翻译）。</li>
-<li><strong>HTML 源（无 RSS description）</strong>：在 <code>MANUAL_SUMMARIES</code> 中加中文摘要。</li>
-<li><strong>arXiv 论文</strong>：标题虽是英文但 report 不带 abstract，必须用 <code>arxiv</code> 库按 ID 拉到 <code>summary</code> 后写一句中文核心要点，加进 <code>TRANSLATIONS</code>（key 为 <code>result.entry_id</code>，含 <code>v1</code> 后缀）。</li>
+<li><strong>公司动态 / 个人 Blog（RSS）</strong>：若 RSS 给出英文 description，必须在 <code>data/translations/{date}.json</code> 的 <code>translations</code> 里补上中文翻译/概括（一句话级别，不必逐字翻译），<code>{date}</code> 为该条目所在 report 的日期。</li>
+<li><strong>HTML 源（无 RSS description）</strong>：在同一文件的 <code>manual_summaries</code> 里加中文摘要。</li>
+<li><strong>arXiv 论文</strong>：标题虽是英文但 report 不带 abstract，必须用 <code>arxiv</code> 库按 ID 拉到 <code>summary</code> 后写一句中文核心要点，加进 <code>translations</code>（key 为 <code>result.entry_id</code>，含 <code>v1</code> 后缀）。</li>
+<li>数据按日期拆分在 <code>data/translations/</code> 下，一天一个 JSON 文件；<code>data/seen.sqlite</code> 保证同一 URL 只会被抓一次，所以新条目不需要跨历史文件查重，直接写进当天文件即可。</li>
 <li>仅有中文摘要的条目（Anthropic、Dario Amodei 等中文源）无需补英文。</li>
 <li>渲染前必须抽查：<code>grep &quot;中文:&quot; llm-ai/digests/digest-YYYY-MM-DD.md | wc -l</code> 应等于当日条目总数；缺失先补再渲染，不要发只有英文/只有标题的 digest。</li>
 </ul>

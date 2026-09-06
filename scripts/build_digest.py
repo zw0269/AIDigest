@@ -8,6 +8,7 @@
     build_digest.py [<date>]      # 不带参数 = 全部 reports
 """
 
+import json
 import re
 import sys
 from html import escape, unescape
@@ -18,14 +19,19 @@ import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
-
-from scripts.data import MANUAL_SUMMARIES, TRANSLATIONS  # noqa: E402
-
 
 REPORTS = ROOT / "reports"
 CONFIG = ROOT / "config" / "sources.yaml"
 DIGESTS = ROOT / "llm-ai" / "digests"
+TRANSLATIONS_DIR = ROOT / "data" / "translations"
+
+
+def load_translations(date: str) -> tuple[dict, dict]:
+    path = TRANSLATIONS_DIR / f"{date}.json"
+    if not path.exists():
+        return {}, {}
+    obj = json.loads(path.read_text())
+    return obj.get("manual_summaries", {}), obj.get("translations", {})
 
 
 CSS = """
@@ -231,7 +237,7 @@ def rss_index() -> dict[str, str]:
     return index
 
 
-def enrich(items: list[dict]) -> list[dict]:
+def enrich(items: list[dict], manual_summaries: dict, translations: dict) -> list[dict]:
     """Add 'en' (RSS desc) and 'zh' (translation/manual) fields."""
     rss = rss_index()
     out = []
@@ -239,11 +245,11 @@ def enrich(items: list[dict]) -> list[dict]:
         u = it["url"]
         u_norm = u.rstrip("/")
         en, zh = "", ""
-        if u in MANUAL_SUMMARIES:
-            zh = MANUAL_SUMMARIES[u]
+        if u in manual_summaries:
+            zh = manual_summaries[u]
         else:
             en = rss.get(u_norm, "")
-            zh = TRANSLATIONS.get(u, "")
+            zh = translations.get(u, "")
         out.append({**it, "en": en, "zh": zh})
     return out
 
@@ -397,7 +403,8 @@ def date_from_report(p: Path) -> str:
 def build_one(report_path: Path) -> tuple[Path, Path]:
     date = date_from_report(report_path)
     items = parse_report(report_path)
-    items = enrich(items)
+    manual_summaries, translations = load_translations(date)
+    items = enrich(items, manual_summaries, translations)
     DIGESTS.mkdir(parents=True, exist_ok=True)
     md_path = DIGESTS / f"digest-{date}.md"
     html_path = DIGESTS / f"digest-{date}.html"

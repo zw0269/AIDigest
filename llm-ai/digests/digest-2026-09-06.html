@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-09-06</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-09-06</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-09-06</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 45 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">45</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">41</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">4 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/6/the-purpose-of-dns-is-to-spread-scams/" target="_blank" rel="noopener">The purpose of DNS is to spread scams</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The purpose of DNS is to spread scams
+Terence Eden shares some daunting statistics in support of his take that &quot;the Domain Name System&#x27;s purpose seems to be a vector for criminals to run scams on people at a terrifyingly high rate&quot;.
+On this Interisle report (via Andrew Campling), Terence says:
+
+It says 85 million new registrations of gTLDs were ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 转述 Terence Eden 引用 Interisle 报告的数据：2025 年新注册的通用顶级域名中约一至两成最终被用于诈骗，感叹 DNS 系统正沦为犯罪分子的诈骗工具。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/6/the-purpose-of-dns-is-to-spread-scams/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/6/zach-kehs/" target="_blank" rel="noopener">Quoting Zach Kehs</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>If you continue to add floors and rooms to a building forever, it will collapse. Software faces no such constraint. The code can always get worse. There can always be a new layer of indirection or a reduction in performance.
+— Zach Kehs, There&#x27;s No Limit to How Bad Code Can Get
+
+    Tags: technical-debt</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 引用 Zach Kehs 的一句话：建筑物加盖楼层会因物理限制而倒塌，但代码没有这种约束，可以无止境地变得更糟。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/6/zach-kehs/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/5/introducing-gpt-6-astra-for-developers/" target="_blank" rel="noopener">Introducing GPT-6 Astra for developers</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing GPT-6 Astra for developers
+Blink and you&#x27;ll miss it, but there&#x27;s a familiar creature at 1m59s:
+
+Across the board, Astra has more attention to detail, better understanding of the user&#x27;s prompt, and can build more sophisticated outputs. In particular, it excels at building 3D models. I&#x27;ve seen it make incredible renderings of gardens, ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 评论 OpenAI 面向开发者介绍 GPT-6 Astra 的视频：模型在细节把控、理解用户意图和生成 3D 模型方面明显进步，并在演示中延续了「骑自行车的鹈鹕」传统梗。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/5/introducing-gpt-6-astra-for-developers/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/" target="_blank" rel="noopener">Using Blender with coding agents on macOS</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>TIL: Using Blender with coding agents on macOS
+        I&#x27;ve been having fun with Blender in ChatGPT Codex on my Mac recently. Getting it to work with coding agents is really easy: install the full Mac application from blender.org and run a prompt like this:
+
+Use the already install /Applications/Blender to render a scene of a pelican riding a bi...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 分享在 macOS 上把 Blender 与编码 agent（如 ChatGPT Codex）结合使用的技巧：只需安装官方 Blender 应用，用简单提示词就能让 agent 调用其 Python API 生成并迭代渲染场景。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">41 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49586988" target="_blank" rel="noopener">Speculative Programmatic Tool Calling</a>
+        <div class="item-summary">文章介绍「推测式程序化工具调用」技术，让 LLM 提前推测并批量准备工具调用以降低延迟。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49586988</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587142" target="_blank" rel="noopener">Show HN: A local, Apple Intelligence meeting assistant</a>
+        <div class="item-summary">Show HN：一款基于 Apple Intelligence、完全本地运行的会议助手工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587142</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587110" target="_blank" rel="noopener">AI made it worth building games for our game nights</a>
+        <div class="item-summary">作者分享 AI 如何让为家庭游戏之夜制作游戏这件事变得值得投入。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587110</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587356" target="_blank" rel="noopener">Frontier AI faces pricing reckoning as token volume explodes 25-fold</a>
+        <div class="item-summary">文章分析前沿 AI 模型 token 用量暴涨 25 倍后，行业即将面临的定价重构压力。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587356</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587014" target="_blank" rel="noopener">Computer Science Achievement and Writing Skills Predict Vibe Coding Proficiency</a>
+        <div class="item-summary">研究发现计算机科学成绩和写作能力可以预测一个人使用 AI「vibe coding」的熟练程度。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587014</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587150" target="_blank" rel="noopener">The universe may have been building rocky planets almost from the start</a>
+        <div class="item-summary">天文研究认为宇宙几乎从诞生之初就已经开始形成岩石行星。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587150</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587070" target="_blank" rel="noopener">Dirty Coding Tricks, part 3</a>
+        <div class="item-summary">系列文章「肮脏的编程技巧」第三篇，分享一些实用但不太规范的编程手法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587070</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587115" target="_blank" rel="noopener">Feather Atlas</a>
+        <div class="item-summary">Feather Atlas 是一个用于识别羽毛种类的图鉴类项目/网站。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587115</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587078" target="_blank" rel="noopener">The Garage Where Silicon Valley Began</a>
+        <div class="item-summary">文章讲述硅谷起源地——那间著名车库的历史故事。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587078</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587091" target="_blank" rel="noopener">Release 0.12.10 · astral-sh/uv</a>
+        <div class="item-summary">Python 包管理工具 uv 发布 0.12.10 版本更新说明。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587091</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587298" target="_blank" rel="noopener">Beeline: Enforcing application-layer policies in eBPF</a>
+        <div class="item-summary">Beeline 项目介绍如何用 eBPF 在应用层强制执行网络策略。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587298</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587203" target="_blank" rel="noopener">A recruiter who placed creative talent told me the truth</a>
+        <div class="item-summary">一位从事创意人才招聘的猎头分享行业内幕真相。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587203</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587040" target="_blank" rel="noopener">Recreating Minecraft Is Not a Benchmark</a>
+        <div class="item-summary">文章认为「重新实现 Minecraft」不应被当作衡量编码 agent 能力的基准测试。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587040</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587265" target="_blank" rel="noopener">Too much efficiency makes everything worse</a>
+        <div class="item-summary">文章探讨过度追求效率反而会让许多事情变得更糟的现象。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587265</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587218" target="_blank" rel="noopener">Acer Relaunches Packard Bell with Full New Lifestyle Collection: Tech It Easy</a>
+        <div class="item-summary">Acer 宣布复活经典品牌 Packard Bell，推出全新生活方式产品系列。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587218</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587029" target="_blank" rel="noopener">Mirror of your own self – on AI sycophancy and getting what we asked for</a>
+        <div class="item-summary">文章讨论 AI 谄媚倾向如何让它变成用户自我的镜子，只给出人们想听的答案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587029</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587244" target="_blank" rel="noopener">Show HN: XHFS starting from 0.6.x is now fully CoW</a>
+        <div class="item-summary">Show HN：文件系统 XHFS 从 0.6.x 版本起实现完整的写时复制（CoW）支持。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587244</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587209" target="_blank" rel="noopener">Unlimited Free DeepSeek API</a>
+        <div class="item-summary">讨论一个号称无限免费使用的 DeepSeek API 服务。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587209</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587302" target="_blank" rel="noopener">Self-hosted job scraper that scores listings against your CV</a>
+        <div class="item-summary">Show HN：一款自托管的求职信息抓取工具，能根据个人简历给招聘信息打分排序。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587302</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587018" target="_blank" rel="noopener">Artificial Intelligence as a Judge Advocate&#x27;s Force Multiplier</a>
+        <div class="item-summary">文章探讨人工智能作为军法官（Judge Advocate）工作的效率倍增器的应用前景。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587018</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587198" target="_blank" rel="noopener">Was Huawei&#x27;s rise built on crime? A Brooklyn jury will decide</a>
+        <div class="item-summary">报道华为崛起是否建立在犯罪行为之上，此案将由布鲁克林陪审团裁决。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587198</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587263" target="_blank" rel="noopener">Liveness Proofs in Veil, Part I: The First Step</a>
+        <div class="item-summary">系列文章第一篇，介绍在形式化验证工具 Veil 中构造活性（liveness）证明的方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587263</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587217" target="_blank" rel="noopener">Research acceleration: The view inside OpenAI</a>
+        <div class="item-summary">文章从 OpenAI 内部视角讲述其研究加速的过程与经验。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587217</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49586970" target="_blank" rel="noopener">Over 60k arrested for communication offences as trivial as viewing TikTok videos</a>
+        <div class="item-summary">报道超过 6 万人因观看 TikTok 视频等轻微通讯行为被逮捕。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49586970</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587312" target="_blank" rel="noopener">Hardening Container Images</a>
+        <div class="item-summary">文章介绍加固容器镜像安全性的实践方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587312</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587121" target="_blank" rel="noopener">Douglas Hofstadter: Analogy as the Core of Cognition [video]</a>
+        <div class="item-summary">认知科学家侯世达（Douglas Hofstadter）关于「类比是认知核心」主题的演讲视频。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587121</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587128" target="_blank" rel="noopener">I Feel about AI</a>
+        <div class="item-summary">作者分享自己对当下 AI 发展的个人感受。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587128</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587285" target="_blank" rel="noopener">Alberta (Canada) slaps punitive tax on solar panels</a>
+        <div class="item-summary">加拿大阿尔伯塔省对太阳能板征收惩罚性税收。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587285</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587318" target="_blank" rel="noopener">Nebula&#x27;s Policy on AI</a>
+        <div class="item-summary">视频平台 Nebula 公布其关于 AI 使用的官方政策。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587318</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=49587099" target="_blank" rel="noopener">Show HN: 188M Hindi encoder, 28B tokens, 8K context, 1× RTX 4090</a>
+        <div class="item-summary">Show HN：一个 1.88 亿参数的印地语编码器模型，用 280 亿 token 训练、支持 8K 上下文，单张 RTX 4090 即可训练。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=49587099</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">6 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/aipoch/open-science" target="_blank" rel="noopener">aipoch /open-science — Open Science by AIPOCH is an open-source, local-first, model-agnostic AI research workbench for macOS, Windows, and Linux, with scientific agents, Python/R notebooks, data connectors, and reproducible provenance.</a>
+        <div class="item-summary">Open Science 是 AIPOCH 推出的开源、本地优先、模型无关的 AI 科研工作台，内置科研 agent、Python/R notebook、数据连接器和可复现溯源功能。</div>
+        <div class="item-url">https://github.com/aipoch/open-science</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/The-Swarm-Corporation/AutoHedge" target="_blank" rel="noopener">The-Swarm-Corporation /AutoHedge — Build your autonomous hedge fund in minutes. AutoHedge harnesses the power of swarm intelligence and AI agents to automate market analysis, risk management, and trade execution.</a>
+        <div class="item-summary">AutoHedge 利用群体智能和 AI agent，帮助用户在几分钟内搭建自动化对冲基金，实现市场分析、风险管理和交易执行自动化。</div>
+        <div class="item-url">https://github.com/The-Swarm-Corporation/AutoHedge</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/llvm/llvm-project" target="_blank" rel="noopener">llvm /llvm-project — The LLVM Project is a collection of modular and reusable compiler and toolchain technologies.</a>
+        <div class="item-summary">LLVM Project 是模块化、可复用的编译器与工具链技术集合，是当前最主流的开源编译器基础设施之一。</div>
+        <div class="item-url">https://github.com/llvm/llvm-project</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/openai/skills" target="_blank" rel="noopener">openai /skills — Skills Catalog for Codex</a>
+        <div class="item-summary">openai/skills 是 Codex 的 Skills 目录仓库（已标注废弃，建议转用 OpenAI Plugins 仓库），收录可被 agent 发现和复用的技能包。</div>
+        <div class="item-url">https://github.com/openai/skills</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Stremio/stremio-web" target="_blank" rel="noopener">Stremio /stremio-web — Stremio - Freedom to Stream</a>
+        <div class="item-summary">Stremio Web 是流媒体中心 Stremio 的官方网页端界面，通过插件聚合影视目录，支持多设备同步、投屏和字幕定制。</div>
+        <div class="item-url">https://github.com/Stremio/stremio-web</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/OpenWhispr/openwhispr" target="_blank" rel="noopener">OpenWhispr /openwhispr — Voice-to-text dictation app with local (Nvidia Parakeet/Whisper) and cloud models (BYOK). Privacy-first and available cross-platform.</a>
+        <div class="item-summary">OpenWhispr 是一款语音转文字听写应用，支持本地模型（Nvidia Parakeet/Whisper）与自带密钥的云端模型，注重隐私且跨平台。</div>
+        <div class="item-url">https://github.com/OpenWhispr/openwhispr</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ngyFRCNq0Yc" target="_blank" rel="noopener">AI Search — GPT 6 Astra, Claude Fable 5.1, Gemini 3.8, realtime Minimax, new world models: AI NEWS（204,322 次播放）</a>
+        <div class="item-summary">视频汇总近期 AI 大事：GPT-6 Astra、Claude Fable 5.1、Gemini 3.8、实时版 Minimax 及多个新世界模型发布动态。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ngyFRCNq0Yc</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=nk6iwzemQHk" target="_blank" rel="noopener">ohnepixel raw — ohnepixel shocked by OpenAI&#x27;s GPT-6 Astra... (we are doomed)（117,665 次播放）</a>
+        <div class="item-summary">主播对 OpenAI 新发布的 GPT-6 Astra 预告片表达震惊反应，认为其能力表现十分惊人。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=nk6iwzemQHk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=qnDLKvHldks" target="_blank" rel="noopener">Bart Slodyczka — I Made GPT-6 Astra and Fable 5.1 Build the Same App (RAW RESULTS)（117,584 次播放）</a>
+        <div class="item-summary">作者用同样的五个提示词让 GPT-6 Astra 和 Claude Fable 5.1 分别构建 CRM、Notion 克隆、品牌商店、3D 模型和游戏复刻，对比原始结果。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=qnDLKvHldks</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=2dRvcgskIxY" target="_blank" rel="noopener">Ishan Sharma — GPT-6 Astra Is Coming for Jobs. Here&#x27;s What to Do（138,269 次播放）</a>
+        <div class="item-summary">视频分析 GPT-6 Astra 在操控电脑、编程和完成复杂多步任务上的能力将如何冲击就业市场，并给出应对建议。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=2dRvcgskIxY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=1DB_QDiviH4" target="_blank" rel="noopener">Peter H. Diamandis — Anthropic&#x27;s Fable 5.1 Hits 60.9% on Humanity&#x27;s Last Exam, GPT-6 Astra Drops, &amp; the Cybercab Takeover（200,558 次播放）</a>
+        <div class="item-summary">嘉宾与 Emad Mostaque 讨论 GPT-6 Astra 在 ARC-AGI-3 上的表现、Anthropic Fable 5.1 前沿成果、特斯拉 Cybercab 及 AI 网络安全与超级智能禁令争论等话题。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=1DB_QDiviH4</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

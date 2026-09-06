@@ -4749,6 +4749,90 @@ MANUAL_SUMMARIES: dict[str, str] = {
         "Fireship 快速评测 OpenAI 新发布的 GPT-6 Astra，探讨其是否真的达到 AGI 水平。",
     "https://www.youtube.com/watch?v=dT5-x3u5nCg":
         "作者展示完全用 GPT-6 Astra 生成脚本、素材和剪辑制作出的一整段视频。",
+
+    # 2026-09-06 GitHub Trending / YouTube AI / Hacker News Newest
+    "https://news.ycombinator.com/item?id=49586988":
+        "文章介绍「推测式程序化工具调用」技术，让 LLM 提前推测并批量准备工具调用以降低延迟。",
+    "https://news.ycombinator.com/item?id=49587142":
+        "Show HN：一款基于 Apple Intelligence、完全本地运行的会议助手工具。",
+    "https://news.ycombinator.com/item?id=49587110":
+        "作者分享 AI 如何让为家庭游戏之夜制作游戏这件事变得值得投入。",
+    "https://news.ycombinator.com/item?id=49587356":
+        "文章分析前沿 AI 模型 token 用量暴涨 25 倍后，行业即将面临的定价重构压力。",
+    "https://news.ycombinator.com/item?id=49587014":
+        "研究发现计算机科学成绩和写作能力可以预测一个人使用 AI「vibe coding」的熟练程度。",
+    "https://news.ycombinator.com/item?id=49587150":
+        "天文研究认为宇宙几乎从诞生之初就已经开始形成岩石行星。",
+    "https://news.ycombinator.com/item?id=49587070":
+        "系列文章「肮脏的编程技巧」第三篇，分享一些实用但不太规范的编程手法。",
+    "https://news.ycombinator.com/item?id=49587115":
+        "Feather Atlas 是一个用于识别羽毛种类的图鉴类项目/网站。",
+    "https://news.ycombinator.com/item?id=49587078":
+        "文章讲述硅谷起源地——那间著名车库的历史故事。",
+    "https://news.ycombinator.com/item?id=49587091":
+        "Python 包管理工具 uv 发布 0.12.10 版本更新说明。",
+    "https://news.ycombinator.com/item?id=49587298":
+        "Beeline 项目介绍如何用 eBPF 在应用层强制执行网络策略。",
+    "https://news.ycombinator.com/item?id=49587203":
+        "一位从事创意人才招聘的猎头分享行业内幕真相。",
+    "https://news.ycombinator.com/item?id=49587040":
+        "文章认为「重新实现 Minecraft」不应被当作衡量编码 agent 能力的基准测试。",
+    "https://news.ycombinator.com/item?id=49587265":
+        "文章探讨过度追求效率反而会让许多事情变得更糟的现象。",
+    "https://news.ycombinator.com/item?id=49587218":
+        "Acer 宣布复活经典品牌 Packard Bell，推出全新生活方式产品系列。",
+    "https://news.ycombinator.com/item?id=49587029":
+        "文章讨论 AI 谄媚倾向如何让它变成用户自我的镜子，只给出人们想听的答案。",
+    "https://news.ycombinator.com/item?id=49587244":
+        "Show HN：文件系统 XHFS 从 0.6.x 版本起实现完整的写时复制（CoW）支持。",
+    "https://news.ycombinator.com/item?id=49587209":
+        "讨论一个号称无限免费使用的 DeepSeek API 服务。",
+    "https://news.ycombinator.com/item?id=49587302":
+        "Show HN：一款自托管的求职信息抓取工具，能根据个人简历给招聘信息打分排序。",
+    "https://news.ycombinator.com/item?id=49587018":
+        "文章探讨人工智能作为军法官（Judge Advocate）工作的效率倍增器的应用前景。",
+    "https://news.ycombinator.com/item?id=49587198":
+        "报道华为崛起是否建立在犯罪行为之上，此案将由布鲁克林陪审团裁决。",
+    "https://news.ycombinator.com/item?id=49587263":
+        "系列文章第一篇，介绍在形式化验证工具 Veil 中构造活性（liveness）证明的方法。",
+    "https://news.ycombinator.com/item?id=49587217":
+        "文章从 OpenAI 内部视角讲述其研究加速的过程与经验。",
+    "https://news.ycombinator.com/item?id=49586970":
+        "报道超过 6 万人因观看 TikTok 视频等轻微通讯行为被逮捕。",
+    "https://news.ycombinator.com/item?id=49587312":
+        "文章介绍加固容器镜像安全性的实践方法。",
+    "https://news.ycombinator.com/item?id=49587121":
+        "认知科学家侯世达（Douglas Hofstadter）关于「类比是认知核心」主题的演讲视频。",
+    "https://news.ycombinator.com/item?id=49587128":
+        "作者分享自己对当下 AI 发展的个人感受。",
+    "https://news.ycombinator.com/item?id=49587285":
+        "加拿大阿尔伯塔省对太阳能板征收惩罚性税收。",
+    "https://news.ycombinator.com/item?id=49587318":
+        "视频平台 Nebula 公布其关于 AI 使用的官方政策。",
+    "https://news.ycombinator.com/item?id=49587099":
+        "Show HN：一个 1.88 亿参数的印地语编码器模型，用 280 亿 token 训练、支持 8K 上下文，单张 RTX 4090 即可训练。",
+    "https://github.com/aipoch/open-science":
+        "Open Science 是 AIPOCH 推出的开源、本地优先、模型无关的 AI 科研工作台，内置科研 agent、Python/R notebook、数据连接器和可复现溯源功能。",
+    "https://github.com/The-Swarm-Corporation/AutoHedge":
+        "AutoHedge 利用群体智能和 AI agent，帮助用户在几分钟内搭建自动化对冲基金，实现市场分析、风险管理和交易执行自动化。",
+    "https://github.com/llvm/llvm-project":
+        "LLVM Project 是模块化、可复用的编译器与工具链技术集合，是当前最主流的开源编译器基础设施之一。",
+    "https://github.com/openai/skills":
+        "openai/skills 是 Codex 的 Skills 目录仓库（已标注废弃，建议转用 OpenAI Plugins 仓库），收录可被 agent 发现和复用的技能包。",
+    "https://github.com/Stremio/stremio-web":
+        "Stremio Web 是流媒体中心 Stremio 的官方网页端界面，通过插件聚合影视目录，支持多设备同步、投屏和字幕定制。",
+    "https://github.com/OpenWhispr/openwhispr":
+        "OpenWhispr 是一款语音转文字听写应用，支持本地模型（Nvidia Parakeet/Whisper）与自带密钥的云端模型，注重隐私且跨平台。",
+    "https://www.youtube.com/watch?v=ngyFRCNq0Yc":
+        "视频汇总近期 AI 大事：GPT-6 Astra、Claude Fable 5.1、Gemini 3.8、实时版 Minimax 及多个新世界模型发布动态。",
+    "https://www.youtube.com/watch?v=nk6iwzemQHk":
+        "主播对 OpenAI 新发布的 GPT-6 Astra 预告片表达震惊反应，认为其能力表现十分惊人。",
+    "https://www.youtube.com/watch?v=qnDLKvHldks":
+        "作者用同样的五个提示词让 GPT-6 Astra 和 Claude Fable 5.1 分别构建 CRM、Notion 克隆、品牌商店、3D 模型和游戏复刻，对比原始结果。",
+    "https://www.youtube.com/watch?v=2dRvcgskIxY":
+        "视频分析 GPT-6 Astra 在操控电脑、编程和完成复杂多步任务上的能力将如何冲击就业市场，并给出应对建议。",
+    "https://www.youtube.com/watch?v=1DB_QDiviH4":
+        "嘉宾与 Emad Mostaque 讨论 GPT-6 Astra 在 ARC-AGI-3 上的表现、Anthropic Fable 5.1 前沿成果、特斯拉 Cybercab 及 AI 网络安全与超级智能禁令争论等话题。",
 }
 
 
@@ -8459,4 +8543,14 @@ TRANSLATIONS: dict[str, str] = {
         "论文提出 FLY-EVAL++，一种面向安全关键、受物理规律约束场景的评估协议，结合确定性规则校验协议合规性、物理可行性与安全约束，弥补纯精度指标无法捕捉的失效模式（如数值接近但违反运行约束）。",
     "http://arxiv.org/abs/2609.04014v1":
         "论文提出 InSituMeasure 基准，在带有专业仪表、真实环境噪声的工业场景下评估多模态大模型的连续数值测量（如读表）能力，揭示现有 MLLM 在此类知识关联情境下依然不可靠。",
+
+    # 2026-09-06 Simon Willison
+    "https://simonwillison.net/2026/Sep/6/the-purpose-of-dns-is-to-spread-scams/":
+        "Simon 转述 Terence Eden 引用 Interisle 报告的数据：2025 年新注册的通用顶级域名中约一至两成最终被用于诈骗，感叹 DNS 系统正沦为犯罪分子的诈骗工具。",
+    "https://simonwillison.net/2026/Sep/6/zach-kehs/":
+        "Simon 引用 Zach Kehs 的一句话：建筑物加盖楼层会因物理限制而倒塌，但代码没有这种约束，可以无止境地变得更糟。",
+    "https://simonwillison.net/2026/Sep/5/introducing-gpt-6-astra-for-developers/":
+        "Simon 评论 OpenAI 面向开发者介绍 GPT-6 Astra 的视频：模型在细节把控、理解用户意图和生成 3D 模型方面明显进步，并在演示中延续了「骑自行车的鹈鹕」传统梗。",
+    "https://simonwillison.net/2026/Sep/5/blender-coding-agents-macos/":
+        "Simon 分享在 macOS 上把 Blender 与编码 agent（如 ChatGPT Codex）结合使用的技巧：只需安装官方 Blender 应用，用简单提示词就能让 agent 调用其 Python API 生成并迭代渲染场景。",
 }

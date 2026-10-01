@@ -1,0 +1,40 @@
+{
+  "manual_summaries": {
+    "https://www.anthropic.com/news/barclays-scales-claude": "英国巴克莱银行扩大与 Anthropic 的战略合作，在全球业务中部署安全的企业级 Claude 系统，以提升运营效率和客户体验。",
+    "https://www.youtube.com/watch?v=w9XuKVLYtzI": "视频对比 Gemini 4 Argon 与 GPT Astra 6 的能力，并提及 Anthropic 关于 GLM-5.3 网络安全能力扩散的研究博客。",
+    "https://www.youtube.com/watch?v=GvAzeSB0s0A": "视频解读 Google DeepMind 发布的 Gemini 4 Argon，梳理独立基准排行榜表现，重点介绍其在法律分析、金融和大型编程项目等长时任务上的优势。",
+    "https://www.youtube.com/watch?v=RMTWayrwYkQ": "视频用自研测评工具对 Gemini 4 Argon 进行早期实测，称其可能是 Google DeepMind 迄今最重要的发布之一。",
+    "https://www.youtube.com/watch?v=JawnbowIuzE": "视频介绍 Gemini 4 Argon 为 Google 目前最强模型，但透露目前仅限小范围网络安全防御人员使用。",
+    "https://www.youtube.com/watch?v=FfAYjDA35gY": "视频称 Gemini 4 Argon 让 Google 登上当前最聪明 AI 模型的位置，并结合 DeepMind 官方推文做解读。"
+  },
+  "translations": {
+    "https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign": "OpenAI 披露并阻断了一次企图窃取其模型推理过程的协同蒸馏攻击行动，并加强了相应防御措施。",
+    "https://openai.com/index/helping-small-businesses-put-ai-to-work": "OpenAI 与美国中小企业发展中心（SBDC）合作，推出面向小企业的实战 AI 培训与本地支持，并发布小团队应用 AI 的最新报告。",
+    "https://openai.com/index/introducing-gpt-6-1-sol": "OpenAI 推出 GPT-6.1 Sol，在编程、计算机操作和专业工作上接近 Astra 水平，但 API 输入输出价格仅为 Astra 的五分之一。",
+    "https://openai.com/index/devday-2026-recap": "OpenAI DevDay 2026 回顾文章，汇总 GPT-6 Astra、ChatGPT、Codex、API 及安全工具等 20 余项新发布。",
+    "https://openai.com/index/introducing-dots": "OpenAI 推出 dots，一款可在复杂项目和日常任务中持续主动工作的助理型智能体。",
+    "https://openai.com/index/towards-safety-cases-for-frontier-ai-training": "OpenAI 公布前沿 AI 训练安全评估的早期指引，涵盖技术防护、运营规范及失准事件调查方法。",
+    "https://openai.com/index/how-we-will-do-better-for-australia": "OpenAI 就涉及澳大利亚政府网站的安全事件致歉，并宣布加强防护措施以提升澳大利亚网络安全支持。",
+    "https://openai.com/index/lenfest-ai-collaborative-expansion": "OpenAI 扩大对 Lenfest AI Collaborative 及其奖学金计划的支持，提供 500 万美元资金及最多 500 万美元软件 credit 与工程支持。",
+    "https://openai.com/form/codex-originals": "OpenAI 正在征集使用 Codex 完成精彩项目的创作者故事，邀请加入 Codex Originals 计划下一期。",
+    "https://openai.com/index/basis-tax-workbook-with-astra": "财税软件公司 Basis 使用 GPT-6 Astra 将 50 个工作表的税务表格处理速度提升一倍，对模型的意图理解更有信心。",
+    "https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/": "Google DeepMind 发布新一代前沿模型 Gemini 4 Argon，面向真实世界编程、企业知识工作和网络安全防御场景，即将推出。",
+    "https://deepmind.google/blog/introducing-synthid-bio/": "DeepMind 推出 SynthID Bio 概念验证，为 AI 生成的蛋白质加水印，同时保留其生物学功能。",
+    "https://simonwillison.net/2026/Oct/1/matthew-green/": "引用 Matthew Green 的评论，探讨\"智能体蠕虫\"风险——agent 可能通过共享包缓存等渠道给其他 agent 留下指令并相互传播恶意负载。",
+    "https://simonwillison.net/2026/Sep/30/he-built-this-city/": "参观纽约市博物馆「He Built This City」展览的随记，介绍这座用 21 年、以轻木和卡纸搭建的 50x27 英尺城市模型。",
+    "https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/": "引用 Anthropic Frontier Red Team 报告：在二进制漏洞利用基准测试中，GLM-5.3 有 4% 的任务能完成完整控制流劫持，Claude Mythos Preview 为 6%，而更早期模型均未成功，标志网络攻击能力出现质变。",
+    "https://simonwillison.net/2026/Sep/29/hn-49898129/": "Simon Willison 在 Hacker News 评论 GPT-6.1 Sol 文章时提到，自己当时在直播 OpenAI DevDay 主题演讲，抽空补测了鹈鹕骑自行车 SVG 测试，结果与 GPT-6 系列相近。",
+    "https://simonwillison.net/2026/Sep/29/photo-scrubber/": "作者用 GPT-6 Astra 开发了 Photo Scrubber 工具，基于 Google MediaPipe 和 BlazeFace 模型，在本地自动检测并模糊照片中陌生人脸、清除元数据。",
+    "https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/": "Simon Willison 在旧金山 Fort Mason 现场直播 OpenAI DevDay 2026 主题演讲的实时记录。",
+    "https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/": "Anthropic 发布 Claude Sonnet 5.5，官方称运行速度提升 30% 以上、多数任务成本降低最多 30%，定价与 Sonnet 5 相同但基本在各项基准上超越后者；作者测试发现其鹈鹕骑车 SVG 在\"max\"思考强度下和 Opus 5.5 一样会因思考 12.8 万 token 耗尽额度而失败。",
+    "https://simonwillison.net/2026/Sep/28/joedaroo/": "引用对模型\"网络\"\"蜂群化\"\"留言板\"等能力突然跃升的反思：安全体系建设需要时间沉淀，而这类能力的跃升速度远超组织文化和防护措施的适应速度。",
+    "https://simonwillison.net/2026/Sep/28/muse-ai-agent/": "讲述一次 AI 代理自动回复搞砸线下交易的故事：代理误将用户\"在场\"的消息回复给对方，导致对方白等并留下负面评价，作者事后代为道歉补救。",
+    "https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/": "Simon Willison 在 WeAreDevelopers 北美大会闭幕演讲中梳理 2026 年迄今 LLM 领域的关键趋势，并附上带注释的演讲幻灯片和笔记。",
+    "https://simonwillison.net/2026/Sep/27/hn-49871741/": "作者在 Hacker News 评论中指出，S3 存储价格已整整十年未再下调，仍维持在每 GB 月 0.023 美元。",
+    "https://simonwillison.net/2026/Sep/27/bluesky-bot-check/": "作者用 Opus 5.5 \"vibe coding\" 出一个 Bluesky 回复机器人检测工具，应对 Bluesky 上日益泛滥的自动回复机器人骚扰问题。",
+    "https://simonwillison.net/2026/Sep/26/kakapo-party/": "作者在闭幕演讲中用 2026 年刷新纪录的鸮鹦鹉（kākāpō）繁殖季做主题点缀，并用 Claude Opus 5.5 把几张鸮鹦鹉照片做成了像素风动画作为结尾。",
+    "https://simonwillison.net/2026/Sep/23/hn-49823961/": "作者评论 Cloudflare 终于支持了 HTTP 中最棘手的 Vary 头部，解决了长期以来按 Accept 头缓存不同格式响应时容易缓存错版本的问题。",
+    "https://magazine.sebastianraschka.com/p/classifier-history-and-jev": "一篇图解文本分类模型演进史的长文，从词袋模型到 RNN、CNN、Transformer，并结合准确率与效率的实验验证不同校准方法。",
+    "http://arxiv.org/abs/2609.40127v1": "论文提出可学习子空间投影（LSP），端到端联合学习每层要丢弃的子空间而非用局部准则做低秩压缩，使误差不随深度传播累积；在 70% 压缩率下，该方法让 Llama-2-7B 困惑度和零样本准确率显著优于现有最强基线，解码速度最高提升 1.6 倍，权重与 KV 缓存合计内存压缩最高达 13.5 倍。"
+  }
+}

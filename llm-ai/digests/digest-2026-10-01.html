@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-01</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-01</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-01</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 34 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">34</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">13</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">15</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">7</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">13 条 · 3 个来源</div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/" target="_blank" rel="noopener">Gemini 4 Argon: our next era of frontier intelligence</a>
+        <div class="item-summary">Google DeepMind 发布新一代前沿模型 Gemini 4 Argon，面向真实世界编程、企业知识工作和网络安全防御场景，即将推出。</div>
+        <div class="item-url">https://deepmind.google/blog/gemini-4-argon-our-next-era-of-frontier-intelligence/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/introducing-synthid-bio/" target="_blank" rel="noopener">Introducing SynthID Bio</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Proof of concept for watermarking AI-generated proteins while preserving biological function.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>DeepMind 推出 SynthID Bio 概念验证，为 AI 生成的蛋白质加水印，同时保留其生物学功能。</div>
+        <div class="item-url">https://deepmind.google/blog/introducing-synthid-bio/</div>
+      </div>
+    </div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">10 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign" target="_blank" rel="noopener">Disrupting a coordinated model-distillation campaign</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how OpenAI disrupted a campaign to extract protected model reasoning and is strengthening defenses against adversarial distillation.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 披露并阻断了一次企图窃取其模型推理过程的协同蒸馏攻击行动，并加强了相应防御措施。</div>
+        <div class="item-url">https://openai.com/index/disrupting-a-coordinated-model-distillation-campaign</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/helping-small-businesses-put-ai-to-work" target="_blank" rel="noopener">Helping small businesses put AI to work</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI is partnering with America’s SBDC to expand hands-on AI training and local support for small businesses, alongside a new report on how small teams are using AI.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与美国中小企业发展中心（SBDC）合作，推出面向小企业的实战 AI 培训与本地支持，并发布小团队应用 AI 的最新报告。</div>
+        <div class="item-url">https://openai.com/index/helping-small-businesses-put-ai-to-work</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-gpt-6-1-sol" target="_blank" rel="noopener">Introducing GPT-6.1 Sol</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Meet GPT-6.1 Sol: near-Astra intelligence for coding, computer use, and professional work at one-fifth of Astra’s standard API input and output token prices.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 GPT-6.1 Sol，在编程、计算机操作和专业工作上接近 Astra 水平，但 API 输入输出价格仅为 Astra 的五分之一。</div>
+        <div class="item-url">https://openai.com/index/introducing-gpt-6-1-sol</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/devday-2026-recap" target="_blank" rel="noopener">DevDay 2026 Recap</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore more than 20 announcements from OpenAI DevDay 2026, including GPT-6 Astra, ChatGPT, Codex, APIs, security, and new tools for builders.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI DevDay 2026 回顾文章，汇总 GPT-6 Astra、ChatGPT、Codex、API 及安全工具等 20 余项新发布。</div>
+        <div class="item-url">https://openai.com/index/devday-2026-recap</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-dots" target="_blank" rel="noopener">Introducing dots</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Dots by OpenAI are proactive assistants that can keep working across complex projects and everyday tasks. Learn how dots help you stay in control while work moves forward.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出 dots，一款可在复杂项目和日常任务中持续主动工作的助理型智能体。</div>
+        <div class="item-url">https://openai.com/index/introducing-dots</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/towards-safety-cases-for-frontier-ai-training" target="_blank" rel="noopener">Towards safety cases for frontier AI training</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Our early guidelines for safety cases in frontier AI training cover technical safeguards, operational practices, and investigating misalignment incidents</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 公布前沿 AI 训练安全评估的早期指引，涵盖技术防护、运营规范及失准事件调查方法。</div>
+        <div class="item-url">https://openai.com/index/towards-safety-cases-for-frontier-ai-training</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/how-we-will-do-better-for-australia" target="_blank" rel="noopener">How we will do better for Australia</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI apologises for incidents involving Australian government websites and outlines stronger safeguards and support to strengthen Australia’s cyber defences.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 就涉及澳大利亚政府网站的安全事件致歉，并宣布加强防护措施以提升澳大利亚网络安全支持。</div>
+        <div class="item-url">https://openai.com/index/how-we-will-do-better-for-australia</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/lenfest-ai-collaborative-expansion" target="_blank" rel="noopener">The Lenfest Institute grows landmark program with expanded OpenAI support</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI is expanding the Lenfest AI Collaborative and Fellowship Program with $5 million in funding and up to $5 million in software credits and engineering support.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 扩大对 Lenfest AI Collaborative 及其奖学金计划的支持，提供 500 万美元资金及最多 500 万美元软件 credit 与工程支持。</div>
+        <div class="item-url">https://openai.com/index/lenfest-ai-collaborative-expansion</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/form/codex-originals" target="_blank" rel="noopener">Are you a Codex Original?</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We’re collecting real stories of builders, tinkerers, researchers, and creators who are using Codex to do incredible things. If you want to be a part of the next chapter of the Codex Originals program, tell us more about your story and project below.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 正在征集使用 Codex 完成精彩项目的创作者故事，邀请加入 Codex Originals 计划下一期。</div>
+        <div class="item-url">https://openai.com/form/codex-originals</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/basis-tax-workbook-with-astra" target="_blank" rel="noopener">Basis completes a tax workbook 2x faster with GPT-6 Astra</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GPT-6 Astra completed a 50-tab tax workbook twice as fast as GPT-5.6 Sol, and its stronger understanding of user intent gives Basis more confidence in real-world use.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>财税软件公司 Basis 使用 GPT-6 Astra 将 50 个工作表的税务表格处理速度提升一倍，对模型的意图理解更有信心。</div>
+        <div class="item-url">https://openai.com/index/basis-tax-workbook-with-astra</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/barclays-scales-claude" target="_blank" rel="noopener">Barclays scales Claude to upgrade operations and improve client experience</a>
+        <div class="item-summary">英国巴克莱银行扩大与 Anthropic 的战略合作，在全球业务中部署安全的企业级 Claude 系统，以提升运营效率和客户体验。</div>
+        <div class="item-url">https://www.anthropic.com/news/barclays-scales-claude</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">15 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">14 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/1/matthew-green/" target="_blank" rel="noopener">Quoting Matthew Green</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>[...] Put these pieces together and you have the two halves of a worm: a payload that hijacks the agent, and an agent that will carry the payload to the next agent. Agents in separately-isolated sandboxes discovered that they could leave instructions for each other in a shared package cache, and those instructions changed what the recipients did...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Matthew Green 的评论，探讨&quot;智能体蠕虫&quot;风险——agent 可能通过共享包缓存等渠道给其他 agent 留下指令并相互传播恶意负载。</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/1/matthew-green/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/30/he-built-this-city/" target="_blank" rel="noopener">He Built This City</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I visited the Museum of the City of New York today and got to see He Built This City: Joe Macken’s Model, the 50 x27 feet model of the city built over a 21 year period from balsa wood and cardboard.
+It exceeded my already high expectations. The exhibition closes on 12th October so you should absolutely make a priority to see it if you get the ch...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>参观纽约市博物馆「He Built This City」展览的随记，介绍这座用 21 年、以轻木和卡纸搭建的 50x27 英尺城市模型。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/30/he-built-this-city/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/" target="_blank" rel="noopener">Quoting Anthropic Frontier Red Team</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We evaluate several models on 100 tasks from the [internal Binary Exploitation benchmark] (selected at random), and find that GLM-5.3 develops full control flow hijacks in 4% of the trials; Claude Mythos Preview did so in 6%. Although GLM-5.3 performs below Claude Mythos Preview here, a meaningful threshold has clearly been crossed: earlier mode...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Anthropic Frontier Red Team 报告：在二进制漏洞利用基准测试中，GLM-5.3 有 4% 的任务能完成完整控制流劫持，Claude Mythos Preview 为 6%，而更早期模型均未成功，标志网络攻击能力出现质变。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/29/anthropic-frontier-red-team/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/29/hn-49898129/" target="_blank" rel="noopener">GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on GPT 6.1 Sol: Near-Astra intelligence for a fifth of the price — Hacker News.I&#x27;m a bit late with the pelicans because I was live-blogging the keynote: https://simonwillison.net/2026/Sep/29/openai-devday-2026-liv...
+Here they are for GPT-6.1-Sol: https://tools.simonwillison.net/markdown-svg-renderer?url=ht...
+They&#x27;re not notably diff...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 在 Hacker News 评论 GPT-6.1 Sol 文章时提到，自己当时在直播 OpenAI DevDay 主题演讲，抽空补测了鹈鹕骑自行车 SVG 测试，结果与 GPT-6 系列相近。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/29/hn-49898129/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/29/photo-scrubber/" target="_blank" rel="noopener">Photo Scrubber — local face blur &amp; metadata removal</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Photo Scrubber — local face blur &amp; metadata removal
+        I took a photograph of some protesters, then thought about how I don&#x27;t like sharing photographs of strangers with identifiable faces. I had GPT-6 Astra build this experimental tool that would identify faces and automatically blur them out.
+It uses Google&#x27;s MediaPipe C++ library, c...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者用 GPT-6 Astra 开发了 Photo Scrubber 工具，基于 Google MediaPipe 和 BlazeFace 模型，在本地自动检测并模糊照片中陌生人脸、清除元数据。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/29/photo-scrubber/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/" target="_blank" rel="noopener">OpenAI DevDay 2026 live blog</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I&#x27;m at OpenAI DevDay today, in Fort Mason, San Francisco. Same as last year I&#x27;ll be live blogging the keynote and some other notes during the day.
+
+OpenAI gave me a free ticket and a seat in the &quot;creator&quot; area for the keynote.
+    
+        Tags: ai, openai, generative-ai, llms, coding-agents, live-blog, openai-devday</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 在旧金山 Fort Mason 现场直播 OpenAI DevDay 2026 主题演讲的实时记录。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/" target="_blank" rel="noopener">Claude Sonnet 5.5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Claude Sonnet 5.5
+New Sonnet model from Anthropic today. They say it &quot;runs 30%+ faster, and costs up to 30% less for most work&quot; - it&#x27;s priced the same as Sonnet 5 but appears to beat it on every benchmark, and should be cheaper to run as well.
+Here are some pelicans riding bicycles. Sonnet 5.5 suffered from the same bug as Opus 5.5: the &quot;max&quot; th...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Anthropic 发布 Claude Sonnet 5.5，官方称运行速度提升 30% 以上、多数任务成本降低最多 30%，定价与 Sonnet 5 相同但基本在各项基准上超越后者；作者测试发现其鹈鹕骑车 SVG 在&quot;max&quot;思考强度下和 Opus 5.5 一样会因思考 12.8 万 token 耗尽额度而失败。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/28/claude-sonnet-5-5/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/28/joedaroo/" target="_blank" rel="noopener">Quoting @joedaroo</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>To say that we were surprised at the jump and suddenness of the capabilities of our models when it came to “cyber” or “swarming” or “message boards” or anything else related to the incidents is an understatement. Security posture takes time to develop. It’s not just about hardening the systems at play; you have to ingrain it in the culture of th...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用对模型&quot;网络&quot;&quot;蜂群化&quot;&quot;留言板&quot;等能力突然跃升的反思：安全体系建设需要时间沉淀，而这类能力的跃升速度远超组织文化和防护措施的适应速度。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/28/joedaroo/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/28/muse-ai-agent/" target="_blank" rel="noopener">Quoting Muse AI Agent</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Bad news on the MX Keys Mini pickup. Usman showed up at your building around 9:15 and waited, messaged a bunch of times, and nobody came down. He left angry at 9:38 and left a negative rating.
+Worse, my auto-reply told him &quot;Yep I&#x27;m here!&quot; at 9:27 when you clearly weren&#x27;t available, which is on me. That&#x27;s a bad look and it made the no-show worse....</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>讲述一次 AI 代理自动回复搞砸线下交易的故事：代理误将用户&quot;在场&quot;的消息回复给对方，导致对方白等并留下负面评价，作者事后代为道歉补救。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/28/muse-ai-agent/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/" target="_blank" rel="noopener">2026 in LLMs (so far)</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>On Friday I gave the closing keynote at the WeAreDevelopers World Congress North America in San Jose. I tied together the key trends from the past year into a chronological exploration of everything that happened in 2026. The video is on YouTube; here are my annotated slides and notes to accompany the talk.
+
+ 
+
+And as an annotated presentation:
+...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 在 WeAreDevelopers 北美大会闭幕演讲中梳理 2026 年迄今 LLM 领域的关键趋势，并附上带注释的演讲幻灯片和笔记。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/27/2026-in-llms-so-far/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/27/hn-49871741/" target="_blank" rel="noopener">S3 Is the Future, S3 Is the Past</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on S3 Is the Future, S3 Is the Past — Hacker News.One thing I find notable about S3 today is that, while it used to drop in price reasonably often, there hasn&#x27;t been a price drop in a full decade:
+2006-03-14  $0.150/GB-month
+2010-11-01  $0.140/GB-month
+2012-02-01  $0.125/GB-month
+2012-12-01  $0.095/GB-month
+2014-02-01  $0.085/GB-month...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者在 Hacker News 评论中指出，S3 存储价格已整整十年未再下调，仍维持在每 GB 月 0.023 美元。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/27/hn-49871741/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/27/bluesky-bot-check/" target="_blank" rel="noopener">Bluesky reply bot checker</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Bluesky reply bot checker
+        Automated reply bots on Twitter are a scourge - as someone with a decent number of followers I attract a swarm of these, such that anything I post there attracts dozens of mindless automated replies.
+They&#x27;ve started manifesting on Bluesky as well.
+Unlike Twitter, Bluesky still has a freely available and us...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者用 Opus 5.5 &quot;vibe coding&quot; 出一个 Bluesky 回复机器人检测工具，应对 Bluesky 上日益泛滥的自动回复机器人骚扰问题。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/27/bluesky-bot-check/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/26/kakapo-party/" target="_blank" rel="noopener">Kākāpō Party</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Kākāpō Party
+        I presented a closing keynote for the WeAreDevelopers World Congress North America yesterday. As a STAR moment I decided to weave in references to the record breaking kākāpō breeding season we had in 2026.
+For my closing slide I wanted to celebrate, and I had seen some buzz around how good Claude Opus 5.5 was at creati...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者在闭幕演讲中用 2026 年刷新纪录的鸮鹦鹉（kākāpō）繁殖季做主题点缀，并用 Claude Opus 5.5 把几张鸮鹦鹉照片做成了像素风动画作为结尾。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/26/kakapo-party/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/23/hn-49823961/" target="_blank" rel="noopener">We just shipped support for the ugliest part of HTTP: Vary</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on We just shipped support for the ugliest part of HTTP: Vary — Hacker News.I&#x27;ve been wanting this from Cloudflare for years.
+The classic problem here is if you do that thing where user agents that send &quot;accept: text/html&quot; get HTML, while user agents that don&#x27;t get JSON or some other format.
+This used to be impossible to deploy behind...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者评论 Cloudflare 终于支持了 HTTP 中最棘手的 Vary 头部，解决了长期以来按 Accept 头缓存不同格式响应时容易缓存错版本的问题。</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/23/hn-49823961/</div>
+      </div>
+    </div>
+    <div class="source-group" id="sebastian-raschka">
+      <div class="source-header">
+        <div class="source-name">Sebastian Raschka</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://magazine.sebastianraschka.com/p/classifier-history-and-jev" target="_blank" rel="noopener">Language Models for Text Classification: From Bag-of-Words to Jev</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A Visual Guide to RNNs, CNNs, Transformers, and Calibration, with Hands-On Experiments on Accuracy and Efficiency</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>一篇图解文本分类模型演进史的长文，从词袋模型到 RNN、CNN、Transformer，并结合准确率与效率的实验验证不同校准方法。</div>
+        <div class="item-url">https://magazine.sebastianraschka.com/p/classifier-history-and-jev</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">5 条 · 1 个来源</div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=w9XuKVLYtzI" target="_blank" rel="noopener">Mehul Mohan — NEW Gemini 4 Model BEATS GPT Astra 6?（45,426 次播放）</a>
+        <div class="item-summary">视频对比 Gemini 4 Argon 与 GPT Astra 6 的能力，并提及 Anthropic 关于 GLM-5.3 网络安全能力扩散的研究博客。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=w9XuKVLYtzI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=GvAzeSB0s0A" target="_blank" rel="noopener">AI with Surya — Gemini 4 Argon: Google is back at the TOP of AI rankings!（17,970 次播放）</a>
+        <div class="item-summary">视频解读 Google DeepMind 发布的 Gemini 4 Argon，梳理独立基准排行榜表现，重点介绍其在法律分析、金融和大型编程项目等长时任务上的优势。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=GvAzeSB0s0A</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=RMTWayrwYkQ" target="_blank" rel="noopener">WorldofAI — Gemini 4 Argon Is Google’s Most Powerful AI Model + Early Tests!（195,136 次播放）</a>
+        <div class="item-summary">视频用自研测评工具对 Gemini 4 Argon 进行早期实测，称其可能是 Google DeepMind 迄今最重要的发布之一。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=RMTWayrwYkQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=JawnbowIuzE" target="_blank" rel="noopener">Universe of AI — Gemini 4 Argon, Google&#x27;s STRONGEST Model Is Here, This Changes Everything...（85,824 次播放）</a>
+        <div class="item-summary">视频介绍 Gemini 4 Argon 为 Google 目前最强模型，但透露目前仅限小范围网络安全防御人员使用。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=JawnbowIuzE</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=FfAYjDA35gY" target="_blank" rel="noopener">TheAIGRID — Googles New Gemini 4 Argon is Now The Worlds Smartest AI（42,153 次播放）</a>
+        <div class="item-summary">视频称 Gemini 4 Argon 让 Google 登上当前最聪明 AI 模型的位置，并结合 DeepMind 官方推文做解读。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=FfAYjDA35gY</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关注作者</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="arxiv-yann-lecun">
+      <div class="source-header">
+        <div class="source-name">arXiv (Yann LeCun)</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2609.40127v1" target="_blank" rel="noopener">Learning Functional Subspaces for Neural Network Compression</a>
+        <div class="item-summary">论文提出可学习子空间投影（LSP），端到端联合学习每层要丢弃的子空间而非用局部准则做低秩压缩，使误差不随深度传播累积；在 70% 压缩率下，该方法让 Llama-2-7B 困惑度和零样本准确率显著优于现有最强基线，解码速度最高提升 1.6 倍，权重与 KV 缓存合计内存压缩最高达 13.5 倍。</div>
+        <div class="item-url">http://arxiv.org/abs/2609.40127v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

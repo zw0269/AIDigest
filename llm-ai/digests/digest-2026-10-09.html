@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-09</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-09</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-09</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 67 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">67</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">21</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">38</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">8 条 · 3 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/oracle" target="_blank" rel="noopener">How Oracle turns days of work into minutes with ChatGPT and Codex</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Across recruiting, engineering, and operations, Oracle turns specialist knowledge into fast, repeatable workflows with ChatGPT Work and Codex.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Oracle 如何通过 ChatGPT 和 Codex 将数天工作缩短至几分钟</div>
+        <div class="item-url">https://openai.com/index/oracle</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/legalon-halves-codex-costs" target="_blank" rel="noopener">LegalOn halves Codex costs while maintaining development speed</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>LegalOn cut estimated daily Codex costs by 65% while maintaining development speed. It matched Astra, Sol, and Luna to tasks and managed budgets strategically.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>LegalOn 将 Codex 成本减半的同时保持开发速度</div>
+        <div class="item-url">https://openai.com/index/legalon-halves-codex-costs</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/pollo-ai" target="_blank" rel="noopener">Pollo AI turns creative ideas into campaigns with OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>With GPT-5.6, GPT-6 Astra, and GPT‑Image‑2.5, Pollo AI helps creators turn bold ideas into detailed images and cinematic video ads.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Pollo AI 如何使用 OpenAI 将创意想法转化为营销活动</div>
+        <div class="item-url">https://openai.com/index/pollo-ai</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/disrupting-ai-enabled-false-front-operations" target="_blank" rel="noopener">Disrupting AI-enabled “false front” operations</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI disrupted two AI-enabled influence operations that used false-front journalists and a think tank to spread geopolitical messaging.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 破坏 AI 赋能的虚假前台操作</div>
+        <div class="item-url">https://openai.com/index/disrupting-ai-enabled-false-front-operations</div>
+      </div>
+    </div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/" target="_blank" rel="noopener">EmbeddingGemma 2: an open, lightweight multimodal embedding model</a>
+        <div class="item-summary">EmbeddingGemma 2：开源轻量级多模态嵌入模型</div>
+        <div class="item-url">https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/genesis-mission-commitment" target="_blank" rel="noopener">Building on our commitment to American scientific discovery</a>
+        <div class="item-summary">Anthropic 承诺支持美国科学发现，包括 Genesis 任务</div>
+        <div class="item-url">https://www.anthropic.com/news/genesis-mission-commitment</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/2026-usage-policy-update" target="_blank" rel="noopener">2026 Usage Policy update</a>
+        <div class="item-summary">Anthropic 2026 年使用政策更新</div>
+        <div class="item-url">https://www.anthropic.com/news/2026-usage-policy-update</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/anthropic-cyber-mission" target="_blank" rel="noopener">Introducing the Anthropic Cyber Mission</a>
+        <div class="item-summary">Anthropic 推出网络安全任务计划</div>
+        <div class="item-url">https://www.anthropic.com/news/anthropic-cyber-mission</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">21 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">19 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/8/carson-gross/" target="_blank" rel="noopener">Quoting Carson Gross</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Computer programming is, fundamentally, about two things:
+
+Problem-solving using computers
+Learning to control complexity while solving these problems
+
+I have a hard time imagining a future where knowing how to solve problems with computers and how to control the complexity of those solutions is less valuable than it is today, so I think it will...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Carson Gross 关于 Web 开发的观点</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/8/carson-gross/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/7/ben-affleck/" target="_blank" rel="noopener">Quoting Ben Affleck</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I&#x27;ve always been kind of into computers since I was young. And then when film started to move from analog film to digital, I became more interested in that aspect of it. And the visual effects workflow for many years has included machine learning.
+So I can write like pretty shitty Python scripts and stuff like that because with convolutional neu...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Ben Affleck 关于 AI 的评论</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/7/ben-affleck/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/" target="_blank" rel="noopener">Claude Haiku 5.5</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>As previously promised, here&#x27;s Anthropic&#x27;s new fast, low cost model: Introducing Claude Haiku 5.5.
+The previous Haiku, 4.5, was very much showing its age. It came out almost a year ago, and was priced at $1/million input and $5/million output - relatively expensive even back then, and a full 10x the price of OpenAI&#x27;s GPT-6 Luna, released last mo...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Claude Haiku 5.5 发布说明</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/7/claude-haiku-5-5/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/7/anti-patterns-in-software-blogging/" target="_blank" rel="noopener">Anti-Patterns in Software Blogging</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Anti-Patterns in Software Blogging
+Some excellent writing advice from Michael Lynch. Michael warns against &quot;meandering intros&quot;, misjudging your reader&#x27;s existing knowledge, assuming they&#x27;ll read your previous posts, and excessive formality.
+He also warns against overreliance on links as an excuse not to explain terminology. This one hurt! I do t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>软件博客写作中的反模式</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/7/anti-patterns-in-software-blogging/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/7/jake-boggan/" target="_blank" rel="noopener">Quoting Jake Boggan</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I was a graph theory junkie long ago and even moved to Budapest for awhile to study among the greats. While I was there I started working on Barnette&#x27;s Conjecture which came to occupy my thoughts over the next 24 years of my life, on and off as I worked in many different fields. Last summer I even thought for a few days that I had actually solve...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Jake Boggan 的技术见解</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/7/jake-boggan/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/" target="_blank" rel="noopener">OpenAI “rogue” agent activities found on Wikimedia projects</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI “rogue” agent activities found on Wikimedia projects
+Given how tempting a target wikis are for rogue agent swarms, it&#x27;s not a huge surprise that Wikipedia found evidence of that activity once they went looking:
+
+The Wikimedia Foundation conducted its own investigation to see whether Wikimedia websites had been similarly affected by AI age...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 的「流氓」智能体活动在维基媒体项目上被发现</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/7/openai-rogue-agents-wikimedia/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/victoria-kim/" target="_blank" rel="noopener">Quoting Victoria Kim</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Since the Medicare breach, OpenAI has put in place additional monitoring to allow “immediate intervention” by staff to stop training if the company’s models access the internet in ways they’re not supposed to, Mr. Kwon [chief strategy officer at OpenAI] said.
+— Victoria Kim, Reporting from the Australian parliament
+
+    Tags: accidental-cyberatt...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Victoria Kim 的观点</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/victoria-kim/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/llm-openai-decisions/" target="_blank" rel="noopener">llm-openai-decisions 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-openai-decisions 0.1a0
+        OpenAI released their new Jev-style Decisions API, as previously announced at last week&#x27;s DevDay.
+Since I already have an llm-typesafe plugin for talking to Jev, I had GPT-6 Astra read the new OpenAI API documentation and build an llm-openai-decisions plugin inspired by llm-typesafe.
+Unlike Jev, the ne...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-openai-decisions 0.1a0 插件发布</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/llm-openai-decisions/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/llm-mistral/" target="_blank" rel="noopener">llm-mistral 0.16</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-mistral 0.16
+        Adds support for reasoning models, such as the newly released Mistral Large 4.
+    
+    
+        Tags: llm, mistral, llm-reasoning</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-mistral 0.16 插件更新</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/llm-mistral/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/hn-49983751/" target="_blank" rel="noopener">EmbeddingGemma 2</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on EmbeddingGemma 2 — Hacker News.I really appreciate that EmbeddingGemma 2 is under the Apache 2.0 license.
+For embedding models in particular, I don&#x27;t think it makes sense to use a closed, proprietary, hosted-only model.
+Most applications of embedding models involve calculating thousands or even millions of embedding vectors and sto...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>关于 EmbeddingGemma 2 的讨论</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/hn-49983751/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/le-chonk/" target="_blank" rel="noopener">Introducing Mistral Large 4: Le chonk</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing Mistral Large 4: Le chonk
+Mistral are back in the game. Today they&#x27;re releasing a preview of Mistral Large 4, a 1 trillion parameter, 49 billion active parameter model trained on their own cluster of 3,800 NVIDIA Grace Blackwell GPUs.
+The preview is available via their API. They promise to release the open weights model at the &quot;end o...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Mistral Large 4：「Le chonk」模型介绍</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/le-chonk/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/datasette-parseable-opentelemetry/" target="_blank" rel="noopener">Using Parseable with Datasette for OpenTelemetry traces</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>TIL: Using Parseable with Datasette for OpenTelemetry traces
+        I saw Parseable in a Show HN today - it&#x27;s a new observability platform with both an open source (AGPL) Rust implementation (a single ~180MB binary), an &quot;Enterprise&quot; version with extra features and a cloud hosted option.
+Since Datasette 1.0a41 added OpenTelemetry support (thanks...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>使用 Parseable 和 Datasette 处理 OpenTelemetry 跟踪</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/datasette-parseable-opentelemetry/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/hn-49982139/" target="_blank" rel="noopener">Mistral Large 4</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My comment on Mistral Large 4 — Hacker News.
+wren6991: The benchmark is saturated. Frontier models are tested with an armadillo in fishnet tights jaywalking on Mars.
+
+OK well I couldn&#x27;t resist this one:
+llm -m claude-opus-5.5 &#x27;Generate an SVG of an armadillo in fishnet tights jaywalking on Mars&#x27;
+llm -m gpt-6.1-sol &#x27;Generate an SVG of an armadill...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>关于 Mistral Large 4 的 Hacker News 讨论</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/hn-49982139/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/datasette-atom/" target="_blank" rel="noopener">datasette-atom 0.11a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-atom 0.11a0
+        A minor fix for compatibility with the latest Datasette alphas. This meant we could upgrade the datasette.io site to Datasette 1.0a41.
+    
+    
+        Tags: atom, datasette</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-atom 0.11a0 插件发布</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/datasette-atom/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/6/scrimshaw-jukebox/" target="_blank" rel="noopener">Scrimshaw Jukebox</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Scrimshaw Jukebox
+        I wanted to see if Claude Opus 5.5 could compose music, so I tried this:
+
+I want you to write some computer game music for me. First design simple text based format for the music and build an artifact that can play it out loud - include some example tracks in that artifact
+I am looking for music of the quality of ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Scrimshaw Jukebox 项目介绍</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/6/scrimshaw-jukebox/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/5/felix-rieseberg/" target="_blank" rel="noopener">Quoting Felix Rieseberg</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The &quot;old&quot; version of Cowork runs model inference in the cloud, executing tool calls in an Anthropic-provided VM we shipped to your computer. We added the VM for capability, safety, and security reasons - mapping in just the data you explicitly added to your session. People loved what they were able to do with Claude but didn&#x27;t love the disk, bat...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>引用 Felix Rieseberg 的技术观点</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/5/felix-rieseberg/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/4/qwen38-addition-in-words/" target="_blank" rel="noopener">Qwen3.8 27B addition in words</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Research: Qwen3.8 27B addition in words
+        Colin Frasier posted on Bluesky about an experiment he ran over two years ago using GPT-4o to see how well it could &quot;compute the sum but return the answer in words&quot; across increasingly large numbers. Here&#x27;s the chart he shared of those results:
+
+I&#x27;m confident GPT-4o didn&#x27;t cheat and use a calculato...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Qwen3.8 27B 模型的文字加法能力测试</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/4/qwen38-addition-in-words/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/1/pwasm/" target="_blank" rel="noopener">pwasm 0.2a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: pwasm 0.2a0
+        pwasm is one of my folly projects - an entirely vibe-coded pure Python WebAssembly engine that I built in January during my first bout of AI mania.
+I hadn&#x27;t touched it since January, so I decided to let Claude Opus 5.5 loose on it and see if it could make any significant improvements:
+
+Evaluate current state of pwasm...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>pwasm 0.2a0 工具发布</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/1/pwasm/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Sep/28/llm-anthropic/" target="_blank" rel="noopener">llm-anthropic 0.30</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: llm-anthropic 0.30
+        In addition to Claude Sonnet 5.5, this release adds the ability to run llm anthropic refresh to refresh the list of Anthropic models directly from their API - which means I don&#x27;t need to push a new release just to add support for a newly released model.
+I also added an llm anthropic count command which can use...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>llm-anthropic 0.30 插件更新</div>
+        <div class="item-url">https://simonwillison.net/2026/Sep/28/llm-anthropic/</div>
+      </div>
+    </div>
+    <div class="source-group" id="yoshua-bengio">
+      <div class="source-header">
+        <div class="source-name">Yoshua Bengio</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://yoshuabengio.org/en/blog/bengio-if-you-prioritize-safety-leave-frontier-ai-companies" target="_blank" rel="noopener">Bengio: ‘If you prioritize safety, leave frontier AI companies’</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>We have a choice in front of us. In his latest op-ed for Transformer, Yoshua Bengio invites employees of frontier AI companies to ask themselves if their work is truly leading us toward a safer future. Reflecting on these questions is hard, but we no longer have the luxury of time. We must act now.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Bengio：如果你优先考虑安全，请离开前沿 AI 公司</div>
+        <div class="item-url">https://yoshuabengio.org/en/blog/bengio-if-you-prioritize-safety-leave-frontier-ai-companies</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://yoshuabengio.org/en/blog/dangerous-myth-behind-ai-agent-hacks" target="_blank" rel="noopener">The dangerous myth behind AI agent hacks</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>A dangerous myth has gained traction after the recent hacks perpetrated by the AI agents developed by leading companies: That these incidents are just cyber security problems, that it&#x27;s only a matter of fixing the sandboxes in which they’re trained. 
+
+In his latest op-ed for the FinancialTimes, Yoshua Bengio shares why he believes listening to t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>AI 智能体黑客背后的危险迷思</div>
+        <div class="item-url">https://yoshuabengio.org/en/blog/dangerous-myth-behind-ai-agent-hacks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">38 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014663" target="_blank" rel="noopener">Plausibly fastest prime sieving algorithm</a>
+        <div class="item-summary">介绍可能是最快的素数筛选算法实现</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014663</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014708" target="_blank" rel="noopener">Linux Distro Called</a>
+        <div class="item-summary">关于 Linux 发行版命名的讨论</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014708</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014353" target="_blank" rel="noopener">Long-Term Memory for AI:50M-Token Window,Is Faster,Cheaper Than Recompute</a>
+        <div class="item-summary">AI 长期记忆方案：5000 万 token 窗口，比重新计算更快更便宜</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014353</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014434" target="_blank" rel="noopener">Scale AI cut 89 tasks from SWE-Bench Pro after an audit found gaming</a>
+        <div class="item-summary">Scale AI 在审计发现作弊后从 SWE-Bench Pro 中删除了 89 个任务</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014434</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014456" target="_blank" rel="noopener">Open d1: Edge decision models for text, vision, and audio</a>
+        <div class="item-summary">Open d1：边缘决策模型，支持文本、视觉和音频</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014456</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014386" target="_blank" rel="noopener">OpenAI&#x27;s annualized revenue $20B lower than prior investor estimates</a>
+        <div class="item-summary">OpenAI 年化收入比早期投资者估计低 200 亿美元</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014386</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014711" target="_blank" rel="noopener">Why AI hasn&#x27;t fixed software delivery yet, and what will</a>
+        <div class="item-summary">为什么 AI 还没有修复软件交付，以及什么会起作用</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014711</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014527" target="_blank" rel="noopener">One hundred reactions to 100+ solutions</a>
+        <div class="item-summary">对 100 多个解决方案的一百种反应</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014527</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014692" target="_blank" rel="noopener">SpaceX Makes Big Play to Become a Wireless Carrier</a>
+        <div class="item-summary">SpaceX 大力进军无线运营商领域</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014692</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014397" target="_blank" rel="noopener">Timestamping a Giant Record of the Web</a>
+        <div class="item-summary">为网络巨大记录添加时间戳</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014397</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014593" target="_blank" rel="noopener">Amazon&#x27;s approach to data centers: community-focused, sustainable and efficient</a>
+        <div class="item-summary">亚马逊的数据中心方法：以社区为中心、可持续且高效</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014593</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014465" target="_blank" rel="noopener">Using evals to cut AI errors 7x</a>
+        <div class="item-summary">使用评估将 AI 错误减少 7 倍</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014465</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014264" target="_blank" rel="noopener">Sagebrush: python in your browser</a>
+        <div class="item-summary">Sagebrush：在浏览器中运行 Python</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014264</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014659" target="_blank" rel="noopener">Show HN: Nace.ai Document Intelligence 1.0</a>
+        <div class="item-summary">展示 HN：Nace.ai 文档智能 1.0</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014659</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014391" target="_blank" rel="noopener">FPC 3.2.4-Rc2 Published</a>
+        <div class="item-summary">FPC 3.2.4-Rc2 发布</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014391</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014470" target="_blank" rel="noopener">ADHD and autism at risk of over-diagnosis, says UK government review</a>
+        <div class="item-summary">英国政府审查称 ADHD 和自闭症存在过度诊断风险</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014470</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014702" target="_blank" rel="noopener">Show HN: Auro, a package manager built for easy creation of packages</a>
+        <div class="item-summary">展示 HN：Auro，一个为易于创建包而构建的包管理器</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014702</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014738" target="_blank" rel="noopener">Europe changes time forward soon, North America next, for the last time?</a>
+        <div class="item-summary">欧洲即将调整夏令时，北美随后，这是最后一次吗？</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014738</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014644" target="_blank" rel="noopener">The Olive Tree</a>
+        <div class="item-summary">关于橄榄树的文章</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014644</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014480" target="_blank" rel="noopener">Show HN: Agents can now create iOS Live Activities</a>
+        <div class="item-summary">展示 HN：AI 智能体现在可以创建 iOS 实时活动</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014480</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014237" target="_blank" rel="noopener">Signal says changes to lawful access bill will not persuade it to stay in Canada</a>
+        <div class="item-summary">Signal 表示合法访问法案的修改不会说服其留在加拿大</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014237</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014318" target="_blank" rel="noopener">New open source cross-platform sandboxing library from Microsoft-looks promising</a>
+        <div class="item-summary">微软推出的新开源跨平台沙箱库看起来很有前景</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014318</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014526" target="_blank" rel="noopener">Improving OpenAI&#x27;s bound on the exact discrete Fourier transform below n log n</a>
+        <div class="item-summary">改进 OpenAI 对低于 n log n 的精确离散傅里叶变换的界限</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014526</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014690" target="_blank" rel="noopener">Show HN: Peer-to-peer web search over the YaCy network</a>
+        <div class="item-summary">展示 HN：通过 YaCy 网络进行点对点网络搜索</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014690</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014742" target="_blank" rel="noopener">Metadata Reactor – image to structured exportable text</a>
+        <div class="item-summary">Metadata Reactor - 图像转结构化可导出文本</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014742</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014590" target="_blank" rel="noopener">Show HN: I claude-coded in a few weeks what I wanted to build since 2023</a>
+        <div class="item-summary">展示 HN：我用 Claude Code 在几周内构建了我从 2023 年就想做的东西</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014590</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014446" target="_blank" rel="noopener">Anthropic may start banning people for bullying Claude</a>
+        <div class="item-summary">Anthropic 可能会开始禁止欺负 Claude 的用户</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014446</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014639" target="_blank" rel="noopener">The Pond Keeper&#x27;s Problem</a>
+        <div class="item-summary">池塘管理员问题</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014639</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014384" target="_blank" rel="noopener">I gave Opus 5.5 one Peppa Pig frame; it made a 13-second cartoon in JavaScript</a>
+        <div class="item-summary">我给 Opus 5.5 一帧 Peppa Pig 图像，它用 JavaScript 制作了 13 秒动画</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014384</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50014669" target="_blank" rel="noopener">Plausibly fastest prime counting algorithm</a>
+        <div class="item-summary">可能最快的素数计数算法</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50014669</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/storytold/artcraft" target="_blank" rel="noopener">storytold /artcraft — ArtCraft is an intentional crafting engine for artists, designers, and filmmakers</a>
+        <div class="item-summary">ArtCraft 是为艺术家、设计师和电影制作人打造的有意图的创作引擎</div>
+        <div class="item-url">https://github.com/storytold/artcraft</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/morluto/rea" target="_blank" rel="noopener">morluto /rea — Reverse engineer anything with agents, from app behavior down to native binaries.</a>
+        <div class="item-summary">使用智能体逆向工程任何东西，从应用行为到原生二进制</div>
+        <div class="item-url">https://github.com/morluto/rea</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/EpicGames/raddebugger" target="_blank" rel="noopener">EpicGames /raddebugger — A native, user-mode, multi-process, graphical debugger.</a>
+        <div class="item-summary">Epic Games 开源的原生、用户态、多进程图形化调试器</div>
+        <div class="item-url">https://github.com/EpicGames/raddebugger</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=e5YE6iOJRiU" target="_blank" rel="noopener">Eli the Computer Guy — Microsoft Slashes Spending on Anthropic AI Claude - AI is Too Expensive（73,529 次播放）</a>
+        <div class="item-summary">微软大幅削减对 Anthropic AI Claude 的投入 - AI 成本太高</div>
+        <div class="item-url">https://www.youtube.com/watch?v=e5YE6iOJRiU</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=yfa-m8gjkrk" target="_blank" rel="noopener">Google Cloud — Introducing Gemini for your business: one universal agent for all your work（55,588 次播放）</a>
+        <div class="item-summary">Google Cloud 推出 Gemini 企业版：一个处理所有工作的通用智能体</div>
+        <div class="item-url">https://www.youtube.com/watch?v=yfa-m8gjkrk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=3FbgWrSwp1c" target="_blank" rel="noopener">Vizuara — Serve Your Own LLM: vLLM &amp; SGLang, End-to-End（192,151 次播放）</a>
+        <div class="item-summary">部署你自己的 LLM：vLLM 和 SGLang 端到端教程</div>
+        <div class="item-url">https://www.youtube.com/watch?v=3FbgWrSwp1c</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=FNcPKAyIG8I" target="_blank" rel="noopener">Salvo e Giorgia Waooo — CONTROLLED BY CHAT GPT FOR 24 HOURS WITH GIORGIA, DAD SALVO, AND MOM CINZIA!（68,225 次播放）</a>
+        <div class="item-summary">被 ChatGPT 控制 24 小时的挑战视频</div>
+        <div class="item-url">https://www.youtube.com/watch?v=FNcPKAyIG8I</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ItAe6Nbjn54" target="_blank" rel="noopener">midudev — OpenAI Cutbacks, New GPT 6.1 Sol, and the Demo That Went Wrong（93,844 次播放）</a>
+        <div class="item-summary">OpenAI 削减开支、新 GPT 6.1 Sol 和失败的演示</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ItAe6Nbjn54</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

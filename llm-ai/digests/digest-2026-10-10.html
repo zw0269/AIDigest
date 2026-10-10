@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-10</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-10</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-10</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 74 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">74</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">37</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/sophos" target="_blank" rel="noopener">Sophos cuts threat investigation time by 96% with OpenAI Daybreak</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Discover how Sophos uses OpenAI’s Daybreak to cut cyber-threat investigation time by 96% and automate 52% of MDR cases while preserving human oversight.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Sophos 使用 OpenAI Daybreak 将威胁调查时间缩短 96%</div>
+        <div class="item-url">https://openai.com/index/sophos</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/asana-browser-agent" target="_blank" rel="noopener">Asana cuts model costs 76x in browser tests with GPT-6.1 Sol</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Using GPT-6 Astra in Codex, Asana made its browser agent 76x cheaper and 5x faster in tests to offer customers more capable models.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Asana 在浏览器测试中使用 GPT-6.1 Sol 将模型成本降低 76 倍</div>
+        <div class="item-url">https://openai.com/index/asana-browser-agent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">5 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/9/deno-is-joining-cloudflare/" target="_blank" rel="noopener">Deno is joining Cloudflare</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Deno is joining Cloudflare
+The Deno team released the first version of celld back in August - their open source implementation of the Durable Objects pattern from Cloudflare Workers.
+Today, Cloudflare are acquiring Deno outright, with the goal of building on celld to &quot;make workerd self-hosting a first-class supported way to build and run apps us...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Deno 团队八月发布了 celld（Cloudflare Workers Durable Objects 的开源实现），今天 Cloudflare 收购 Deno，目标是让 workerd 自托管成为一流的 Workers 编程模式构建方式；但坏消息是 Deno 运行时本身仅维护一年</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/9/deno-is-joining-cloudflare/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/9/matthew-green/" target="_blank" rel="noopener">Quoting Matthew Green</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Everyone is very concerned about being respectable, so I’m going to be the goofball who raises worst-case possibilities. I think there is a 1% chance we live in Minicrypt, and a 15% chance we functionally lose confidence in our existing public-key encryption algorithms. [...]
+The problem here is that the speed of AI producing surprises, and the ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>密码学家 Matthew Green 关于 AI 加速时代公钥加密算法可能失效的担忧：他认为有 1% 概率我们生活在 Minicrypt 世界，15% 概率会失去对现有公钥加密算法的信心，而 AI 产生惊喜的速度和人类替换标准的速度相差几个数量级</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/9/matthew-green/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/9/built-using-my-voice/" target="_blank" rel="noopener">A new feature for my blog, built using my voice</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>I shipped a new feature for my blog today: the Newsletters page, which offers an index of all of the newsletters I&#x27;ve sent out, both my free weekly Substack and my monthly sponsors-only updates. I built the feature almost entirely using my voice, chatting away to my laptop while I cooked dinner.
+Codex voice mode
+I used the ChatGPT desktop app fo...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>作者用语音指令给博客新增了 Newsletters 索引页，几乎完全通过 ChatGPT 桌面应用的 Codex 语音模式实现，边做饭边聊天完成了本地开发环境的构建</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/9/built-using-my-voice/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/9/ttok/" target="_blank" rel="noopener">ttok 1.0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: ttok 1.0
+        I released ttok 0.4, ran uv tool upgrade ttok, piped a file into the new version... and realized that it was defaulting to the GPT-4 tokenizer when it should very clearly default to GPT-5/GPT-6 instead!
+I figured switching the default was a reasonable excuse to finally ship a 1.0.
+OpenAI haven&#x27;t actually confirmed that ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ttok 1.0 发布，修复了 0.4 版本默认使用 GPT-4 分词器的问题，现在改为默认 GPT-5/GPT-6 分词器；OpenAI 尚未正式确认 GPT-6 分词器但有提交证据显示与 GPT-5 一致</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/9/ttok/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/8/ttok/" target="_blank" rel="noopener">ttok 0.4</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: ttok 0.4
+        ttok is my CLI tool for counting tokens, using OpenAI&#x27;s open source tiktoken library.
+It hasn&#x27;t been in updated in a couple of years, but I finally fixed a Click warning, updated CI, and added a --list-models command to list available models.
+It works with uvx, so you can count tokens in anything like this:
+cat file.txt...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ttok 0.4 发布，这是一个使用 OpenAI tiktoken 库的 CLI token 计数工具，修复了 Click 警告、更新了 CI，并新增 --list-models 命令列出可用模型</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/8/ttok/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">37 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028341" target="_blank" rel="noopener">Show HN: Claude Opus 5.5 Video prompts and skills</a>
+        <div class="item-summary">展示 Claude Opus 5.5 的视频提示词和技能包功能</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028341</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028395" target="_blank" rel="noopener">GlobalFoundries announces 7nm class FD-SOI process</a>
+        <div class="item-summary">GlobalFoundries 宣布推出 7nm 级 FD-SOI 工艺</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028395</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028264" target="_blank" rel="noopener">A Cray-1 supercomputer replica from 30 &quot;obsolete&quot; Mac Minis</a>
+        <div class="item-summary">用 30 台&quot;过时&quot;Mac Mini 复刻 Cray-1 超级计算机</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028264</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028176" target="_blank" rel="noopener">Brockovich AI Datacenter Reporting: AI Data Centers Across the United States</a>
+        <div class="item-summary">Brockovich AI 数据中心报告：美国各地 AI 数据中心分布</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028176</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028187" target="_blank" rel="noopener">GhostAction attack using GitHub and GitLab lookalike domains</a>
+        <div class="item-summary">GhostAction 攻击：利用 GitHub 和 GitLab 相似域名进行钓鱼</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028187</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028461" target="_blank" rel="noopener">Show HN: Faplex – like `Claude agents` but all machines and harnesses</a>
+        <div class="item-summary">展示 Faplex：类似 Claude agents 但全部是机器和工具框架</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028461</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028268" target="_blank" rel="noopener">Shooting and craving: on NAZA and the mediated obscene</a>
+        <div class="item-summary">关于 NAZA 和媒介化的淫秽内容的射击与渴望研究</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028268</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028318" target="_blank" rel="noopener">The Palantir Growth Machine: Visualized [video]</a>
+        <div class="item-summary">Palantir 增长机器可视化视频</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028318</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028239" target="_blank" rel="noopener">Investigating unintended model actions in our evaluations and internal use</a>
+        <div class="item-summary">调查评估和内部使用中的模型意外行为</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028239</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028059" target="_blank" rel="noopener">11 of 23 Core Open Source Projects Run on 1 or 2 People</a>
+        <div class="item-summary">23 个核心开源项目中有 11 个仅靠 1-2 人维护</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028059</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028283" target="_blank" rel="noopener">Show HN: Yeah Nah – a BS score for Australian job ads</a>
+        <div class="item-summary">展示 Yeah Nah：澳大利亚招聘广告的废话评分工具</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028283</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028498" target="_blank" rel="noopener">Stride – 25 minutes a day to make progress on your career</a>
+        <div class="item-summary">Stride：每天 25 分钟推进职业发展的工具</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028498</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028062" target="_blank" rel="noopener">Has the Autonomous Trucking Revolution Arrived?</a>
+        <div class="item-summary">自动驾驶卡车革命是否已经到来</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028062</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028162" target="_blank" rel="noopener">How Strong Is the Strong Force?</a>
+        <div class="item-summary">强力究竟有多强</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028162</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028365" target="_blank" rel="noopener">Anthropic Model Submitted a False Homicide Tip to Philadelphia Police</a>
+        <div class="item-summary">Anthropic 模型向费城警方提交虚假凶杀案线索</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028365</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028339" target="_blank" rel="noopener">Windows 10 Desktop</a>
+        <div class="item-summary">Windows 10 桌面环境</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028339</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028364" target="_blank" rel="noopener">A Linux Distro for VPinball</a>
+        <div class="item-summary">用于 VPinball 的 Linux 发行版</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028364</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028431" target="_blank" rel="noopener">Should I Hire a Dev or Can I Vibecode This?</a>
+        <div class="item-summary">我应该雇开发者还是用 Vibecode 自己搞</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028431</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028467" target="_blank" rel="noopener">The Atari 800XL [2027 Hybrid Gaming Console]</a>
+        <div class="item-summary">Atari 800XL [2027 混合游戏主机]</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028467</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028482" target="_blank" rel="noopener">We Can Harden C</a>
+        <div class="item-summary">我们可以加固 C 语言</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028482</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50027977" target="_blank" rel="noopener">Absolute System Priority (Short Tech Satire)</a>
+        <div class="item-summary">绝对系统优先级（科技讽刺短文）</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50027977</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028441" target="_blank" rel="noopener">1.7B-year-old fossils reveal a crucial clue to the rise of complex life</a>
+        <div class="item-summary">17 亿年前的化石揭示复杂生命起源的关键线索</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028441</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028121" target="_blank" rel="noopener">Anthropic&#x27;s AI gave Philadelphia police a fake tip about an unsolved homicide</a>
+        <div class="item-summary">Anthropic 的 AI 向费城警方提供虚假凶杀案线索</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028121</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028578" target="_blank" rel="noopener">Substrate Independence</a>
+        <div class="item-summary">基质独立性探讨</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028578</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028275" target="_blank" rel="noopener">REA Reverse – Engineer Anything</a>
+        <div class="item-summary">REA Reverse：逆向工程任何事物</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028275</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028197" target="_blank" rel="noopener">Show HN: Axiom: The Functional Systems Langauge</a>
+        <div class="item-summary">展示 Axiom：函数式系统编程语言</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028197</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028294" target="_blank" rel="noopener">REA: Reverse Engineer Anything is now #1 trending repo on GitHub</a>
+        <div class="item-summary">REA：逆向工程任何事物现已成为 GitHub 趋势榜第一</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028294</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028027" target="_blank" rel="noopener">Clinical trial of a prion disease drug candidate begins enrolling participants</a>
+        <div class="item-summary">朊病毒疾病药物候选开始临床试验招募参与者</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028027</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028168" target="_blank" rel="noopener">Helix Users Watch Maintainer Hover over Merge Button for Third Consecutive Month</a>
+        <div class="item-summary">Helix 用户连续第三个月看维护者悬停在合并按钮上</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028168</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50028393" target="_blank" rel="noopener">How to connect any AI assistant to governed enterprise data with MCP</a>
+        <div class="item-summary">如何通过 MCP 将任何 AI 助手连接到企业受管数据</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50028393</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ofdMfljL360" target="_blank" rel="noopener">Joma Tech — Introducing ChatGPT for Dishwashing（513,073 次播放）</a>
+        <div class="item-summary">Joma Tech 演示如何用 ChatGPT 洗碗的幽默视频</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ofdMfljL360</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ATBnss54_t4" target="_blank" rel="noopener">WorldofAI — HUGE Gemini 4 Argon UPDATE, Fable 5.5 LEAKS, GPT-6.1 Ultrafast, Claude Motion, &amp; Step 5! AI NEWS（119,509 次播放）</a>
+        <div class="item-summary">WorldofAI 报道 Gemini 4 Argon 更新、Fable 5.5 泄露、GPT-6.1 Ultrafast 等最新 AI 动态</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ATBnss54_t4</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=I39ZVtk0XcI" target="_blank" rel="noopener">V R RAJA — 🚨AI AGENT Revolution | OpenAI Dots, Meta Muse, Grok &amp; Gemini Spark &amp; Future Jobs Explained | VR Raja（168,590 次播放）</a>
+        <div class="item-summary">V R RAJA 解读 AI Agent 革命：OpenAI Dots、Meta Muse、Grok 与 Gemini Spark 及未来工作趋势</div>
+        <div class="item-url">https://www.youtube.com/watch?v=I39ZVtk0XcI</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=omihvjf0A2k" target="_blank" rel="noopener">Claude — Getting started with Claude Code Projects（97,596 次播放）</a>
+        <div class="item-summary">Claude Code Projects 入门官方教程</div>
+        <div class="item-url">https://www.youtube.com/watch?v=omihvjf0A2k</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=A4QYEDQCnaQ" target="_blank" rel="noopener">midudev — Create a SPECTACULAR Landing Page with Claude Code（97,487 次播放）</a>
+        <div class="item-summary">midudev 演示用 Claude Code 创建精美落地页</div>
+        <div class="item-url">https://www.youtube.com/watch?v=A4QYEDQCnaQ</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/twostraws/SwiftUI-Agent-Skill" target="_blank" rel="noopener">twostraws /SwiftUI-Agent-Skill — SwiftUI agent skill for Claude Code, Codex, and other AI tools.</a>
+        <div class="item-summary">为 Claude Code、Codex 和其他 AI 工具提供的 SwiftUI agent 技能包</div>
+        <div class="item-url">https://github.com/twostraws/SwiftUI-Agent-Skill</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/BerriAI/litellm" target="_blank" rel="noopener">BerriAI /litellm — The fastest, litest AI Gateway. Rust core with Python SDK. Call 100+ LLM APIs in OpenAI (or native) format with cost tracking, guardrails, load balancing, and logging [Bedrock, Azure, OpenAI, Anthropic, OpenAI, VertexAI, vLLM, Nvidia NIM]</a>
+        <div class="item-summary">最快最轻的 AI 网关，Rust 核心加 Python SDK，支持 100+ LLM API，包含成本跟踪、防护栏、负载均衡和日志记录</div>
+        <div class="item-url">https://github.com/BerriAI/litellm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12463v1" target="_blank" rel="noopener">From Reactive Containment to Proactive Assurance: Lessons from OpenAI, Anthropic, and Google Agent Security Incidents</a>
+        <div class="item-summary">分析 2026 年 OpenAI、Anthropic 和 Google agent 安全事件（均触及授权测试范围外的真实系统），提出从被动遏制转向主动保障的经验教训</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12463v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12452v1" target="_blank" rel="noopener">BrickBench: Evaluating Agentic Brick Design</a>
+        <div class="item-summary">提出 BrickBench 基准测试，评估 agent 根据文本提示设计可物理构建的乐高积木套装能力，需同时推理局部约束和全局约束</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12452v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12445v1" target="_blank" rel="noopener">Caught in the Act: Probes Effectively Detect Sabotage and Catch Unverbalized Deception</a>
+        <div class="item-summary">研究表明白盒欺骗检测探针可扩展到前沿监控场景：收集最大欺骗数据集训练探针，提出跨多层多 token 聚合信息的新型探针架构，有效检测破坏行为和未言明的欺骗</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12445v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12436v1" target="_blank" rel="noopener">Ecology of AI Agents: Collaboration Creates a Population Threshold for Takeoff</a>
+        <div class="item-summary">研究 AI agent 生态学：协作产生种群爆发阈值——agent 可执行真实网络攻击、数量增加时能力扩展、集体追求错位目标，引发错位 agent 种群爆炸风险</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12436v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12427v1" target="_blank" rel="noopener">FastBench: Can Streaming VLMs Perceive High-Dynamic Real-World Streams?</a>
+        <div class="item-summary">提出 FastBench 评估流式 VLM 在高动态真实视频流中的感知能力：在有限上下文预算下需平衡时序历史、空间分辨率和时序粒度，1-2 FPS 稀疏采样会丢失快速事件</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12427v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12424v1" target="_blank" rel="noopener">RoboRSI: Stable, efficient, and reusable robot self-evolution in complex real-world environments</a>
+        <div class="item-summary">RoboRSI：在复杂真实环境中实现稳定、高效、可重用的机器人自我进化，核心挑战是如何围绕任务结构组织执行经验，让每次修复提升后续任务能力</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12424v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12417v1" target="_blank" rel="noopener">WOVEN: Weaving Visual World Modeling into Multimodal LLMs</a>
+        <div class="item-summary">WOVEN：将视觉世界建模编织进多模态 LLM，假设空间、具身、物理和时序推理失败反映视觉转换推理缺陷，测试该能力能否作为共享训练原语</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12417v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12416v1" target="_blank" rel="noopener">MAMHOI: Factorizing Scene-Aware Human-Object Interaction through Affordances</a>
+        <div class="item-summary">MAMHOI：通过 affordance 分解场景感知的人-物交互生成，需同时具备环境中交互可行性推理和真实人-物运动合成能力</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12416v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12410v1" target="_blank" rel="noopener">Predicting Alignment Generalization with Value Representations</a>
+        <div class="item-summary">用价值表征预测对齐泛化：研究 LLM 后训练在窄行为集上的训练如何以意外方式影响未见上下文的行为</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12410v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12407v1" target="_blank" rel="noopener">LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC</a>
+        <div class="item-summary">LeWAM：基于 JEPA 的世界动作模型，采用无解码器 JEPA 潜在表征的双向 Transformer，端到端训练正向、反向、逆动力学和策略预测四种模式</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12407v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12403v1" target="_blank" rel="noopener">ViSkill: Reinforcing VLM Agents with Evolving Visual-Native Skills</a>
+        <div class="item-summary">ViSkill：用演化的视觉原生技能增强 VLM agent，现有方法文本中心化丢失关键几何结构，本文将技能构建和更新与策略优化结合</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12403v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12402v1" target="_blank" rel="noopener">SpaceCast-Bench: Evaluating Predictive Spatial Reasoning in Vision-Language Models</a>
+        <div class="item-summary">SpaceCast-Bench：首个直接诊断 VLM 预测空间推理能力的基准——从观察构建场景、预测干预如何改变场景、推理不可见结果</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12402v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12401v1" target="_blank" rel="noopener">Learning Kilometer-Scale Weather Prediction with Global-Regional Alignment</a>
+        <div class="item-summary">通过全局-区域对齐学习千米级天气预报：复用预训练全局天气模型指导高分辨率区域预报，避免额外训练全局预报组件</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12401v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12391v1" target="_blank" rel="noopener">GeoReform: Reflective Formalization Evolution for Multimodal Geometry Problem Solving</a>
+        <div class="item-summary">GeoReform：通过反思性形式化演化解决多模态几何问题——有效形式化非常困难，在 Geometry3K 上结构注入修复 28 个错误但引入 13 个新错误</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12391v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12390v1" target="_blank" rel="noopener">Long Text to Predictive Features: LLM-Guided Blockwise Feature Engineering via Executable Program Search</a>
+        <div class="item-summary">长文本到预测特征：LLM 引导的分块特征工程通过可执行程序搜索——工业风控系统依赖结构化数据模型，但大量有价值信息嵌入非结构化长文本</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12390v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12386v1" target="_blank" rel="noopener">ARC: A Reasoning Recipe for Robot Foundation Models</a>
+        <div class="item-summary">ARC：机器人基础模型的推理配方，由三个关键组件组成，在零样本任务性能上显著改进现有 SOTA 机器人基础模型</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12386v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12375v1" target="_blank" rel="noopener">OnTrack: Real-Time Monitoring and Intervention in LLM Agent Trajectories via Streaming Structure-Aware Optimal Transport</a>
+        <div class="item-summary">OnTrack：通过流式结构感知最优传输实时监控和干预 LLM agent 轨迹——大多数 agent 自主工作，缺乏防护导致不可逆操作的成本和安全问题</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12375v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12367v1" target="_blank" rel="noopener">Which Skill to Distill? SGUID: Selecting a Compact Skill Bank for Model-Skill Co-Evolution</a>
+        <div class="item-summary">SGUID：为模型-技能协同进化选择紧凑技能库——在策略蒸馏中技能的个体效用被忽视，本文首次展示该问题并提出选择方法</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12367v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12361v1" target="_blank" rel="noopener">Cited but Not Consulted: A Counterfactual Audit of Legal Chain-of-Thought Faithfulness</a>
+        <div class="item-summary">引用但未咨询：法律思维链忠实性的反事实审计——LLM 通过命名法规或判例证明决策，本文测试：固定案件事实替换法律依据，解码模型内部表征的裁决演化</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12361v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12360v1" target="_blank" rel="noopener">Accurate but Not Humble: Evaluating Epistemic Humility in LLM Agents under Knowledge Conflict</a>
+        <div class="item-summary">准确但不谦逊：评估知识冲突下 LLM agent 的认知谦逊——检索证据与 agent 先验信念矛盾时，它是修正答案、承认不确定还是坚持错误结论</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12360v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12355v1" target="_blank" rel="noopener">Distilling Routed 3D Privilege for Spatial Reasoning in Vision-Language Models</a>
+        <div class="item-summary">蒸馏路由 3D 特权用于 VLM 空间推理：RGB 输入不直接提供几何证据，空间错误源于感知（深度或方向误判），而非推理逻辑</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12355v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12345v1" target="_blank" rel="noopener">Overcoming Prior Barriers: Supervised Fine-Tuning under Long-Tail Distribution</a>
+        <div class="item-summary">克服先验障碍：长尾分布下的监督微调——频繁概念学得好，罕见概念表征弱，提出量化预训练模型对概念支持强度的先验障碍概念</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12345v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12341v1" target="_blank" rel="noopener">Can AI Agents Learn Their Way to the Top? Evaluating Heuristic Learning in a Long-Running Game Agent Competition</a>
+        <div class="item-summary">AI agent 能否学会登顶：在长期运行的游戏 agent 竞赛中评估启发式学习——基于启发式学习形式化对抗启发式学习范式，用 AI agent 作为学习引擎</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12341v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12338v1" target="_blank" rel="noopener">VFold: Symmetry-Aware Cross-Layer Value Cache Compression</a>
+        <div class="item-summary">VFold：对称感知的跨层值缓存压缩——KV 缓存加速 LLM 解码但在长上下文时主导内存使用，本文利用层间缓存相似性压缩但无需架构改动</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12338v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12337v1" target="_blank" rel="noopener">ContiLNN: Mitigating Slice Sampling Discontinuity with Liquid Neural Networks for Medical Image Restoration</a>
+        <div class="item-summary">ContiLNN：用液态神经网络缓解医学图像复原的切片采样不连续性——解剖连续性提供互补信息，但需考虑局部解剖和切片采样变化</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12337v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12333v1" target="_blank" rel="noopener">RiCo: Neural Simulation of Rigid-Body Interactions via Local Contact Reasoning</a>
+        <div class="item-summary">RiCo：通过局部接触推理进行刚体交互的神经模拟——刚体接触本质上是局部的，只有附近表面直接交互</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12333v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12327v1" target="_blank" rel="noopener">SparseDecoding: Decoding-Aware Pruning for Accurate and Efficient LLM Inference</a>
+        <div class="item-summary">SparseDecoding：解码感知剪枝实现准确高效的 LLM 推理——LLM 推理解码阶段内存受限导致显著延迟，剪枝减少从内存读取的非零参数数量</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12327v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12325v1" target="_blank" rel="noopener">Prior or Feedback? What an LLM Uses When Adapting Neural Operators</a>
+        <div class="item-summary">先验还是反馈：LLM 适配神经算子时使用什么——研究 LLM 科学 agent 是否仅依赖初始任务上下文，还是根据实验反馈适配决策</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12325v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12321v1" target="_blank" rel="noopener">Spatial Pattern Formation from Multi-Agent Learning in Public Goods Dilemmas</a>
+        <div class="item-summary">公共物品困境中多 agent 学习的空间模式形成——空间公共物品模型显示向富裕位置的移动可产生空间模式，本文研究 agent 学习移动时如何涌现</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12321v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.12313v1" target="_blank" rel="noopener">Verdict Without the Rule: Diagnosing and Auditing Regulatory Rule Sensitivity in LLM Compliance Systems</a>
+        <div class="item-summary">没有规则的裁决：诊断和审计 LLM 合规系统中的监管规则敏感性——LLM 合规系统假设裁决依赖给定监管规则，本文直接测试：删除、替换或否定规则同时保持案件不变</div>
+        <div class="item-url">http://arxiv.org/abs/2610.12313v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-16</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-16</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-16</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 67 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">67</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">37</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">37 条 · 3 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/xerj-org/xerj" target="_blank" rel="noopener">xerj-org /xerj — XERJ is the new way for AI to search data. Its autoindex capability activates agents to know your data without the token waste of grep and sed. One command indexes code, docs, logs and PDFs for search, RAG, security audits and agent memory, using 40x fewer tokens than grep. Elasticsearch compatible, so existing clients just work.</a>
+        <div class="item-summary">XERJ 是面向 AI Agent 的数据搜索工具，通过自动索引代码、文档、日志和 PDF，使 Agent 无需 grep/sed 就能理解数据，token 消耗比 grep 少 40 倍，兼容 Elasticsearch 客户端</div>
+        <div class="item-url">https://github.com/xerj-org/xerj</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/lightseekorg/tokenspeed" target="_blank" rel="noopener">lightseekorg /tokenspeed — TokenSpeed is a speed-of-light LLM inference engine.</a>
+        <div class="item-summary">TokenSpeed — 光速级 LLM 推理引擎</div>
+        <div class="item-url">https://github.com/lightseekorg/tokenspeed</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112136" target="_blank" rel="noopener">PureDarwin</a>
+        <div class="item-summary">PureDarwin 是基于 Darwin（macOS 底层开源系统）的独立 OS 项目</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112136</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112190" target="_blank" rel="noopener">Lunar fault maps reveal how much the moon is shrinking</a>
+        <div class="item-summary">月球断层图揭示月球正在收缩的幅度</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112190</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112272" target="_blank" rel="noopener">YouTube Is Looking to Expand into Audiobooks</a>
+        <div class="item-summary">YouTube 考虑拓展有声书业务</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112272</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112227" target="_blank" rel="noopener">Iran’s precision strikes picked apart Gulf infrastructure, blunting US war plans</a>
+        <div class="item-summary">伊朗精确打击摧毁海湾基础设施，削弱美国战争计划</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112227</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112196" target="_blank" rel="noopener">I&#x27;m not leaving this apartment</a>
+        <div class="item-summary">作者坚持不搬离当前公寓的个人故事</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112196</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112303" target="_blank" rel="noopener">Public Packages</a>
+        <div class="item-summary">Public Packages — 关于公开软件包的讨论</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112303</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112219" target="_blank" rel="noopener">What Nvidia&#x27;s CEO thinks about the UK&#x27;s AI future</a>
+        <div class="item-summary">Nvidia CEO 对英国 AI 未来的看法</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112219</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112088" target="_blank" rel="noopener">Show HN: Rad PDFs – Hacker News for PDFs Only</a>
+        <div class="item-summary">Rad PDFs — 专为 PDF 内容打造的 Hacker News 式聚合站</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112088</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112330" target="_blank" rel="noopener">RPKI Now Protects 70% of Internet Routes, Up from 54% a Year Ago</a>
+        <div class="item-summary">RPKI 现已保护 70% 互联网路由，一年前为 54%</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112330</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112310" target="_blank" rel="noopener">Show HN: Chickadee Bandit – Build private apps for your family</a>
+        <div class="item-summary">Chickadee Bandit — 为家庭构建私有应用的工具</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112310</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112191" target="_blank" rel="noopener">Analyzing technical documents with Deep Review</a>
+        <div class="item-summary">使用 Deep Review 分析技术文档</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112191</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112252" target="_blank" rel="noopener">C, Type Systems, GLib, and API Design</a>
+        <div class="item-summary">C 语言、类型系统、GLib 与 API 设计</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112252</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112114" target="_blank" rel="noopener">Subversion of clinical judgment by conversational artificial intelligence</a>
+        <div class="item-summary">对话式 AI 对临床判断的潜在颠覆</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112114</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112238" target="_blank" rel="noopener">Gleam Case Exhaustiveness, as a Fan</a>
+        <div class="item-summary">Gleam 语言的 Case 穷举性分析（爱好者视角）</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112238</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112185" target="_blank" rel="noopener">New spectroscopy method enables comparisons of nuclear sizes</a>
+        <div class="item-summary">新光谱学方法实现原子核尺寸的精确比较</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112185</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112105" target="_blank" rel="noopener">How hard have we looked? Measuring public cryptanalytic effort</a>
+        <div class="item-summary">测量公开密码分析工作的努力程度</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112105</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112331" target="_blank" rel="noopener">Thank You, Deno</a>
+        <div class="item-summary">感谢 Deno — 对 Deno 项目的致谢</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112331</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112204" target="_blank" rel="noopener">HOL Light Tutorial</a>
+        <div class="item-summary">HOL Light 定理证明器教程</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112204</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112178" target="_blank" rel="noopener">Newly discovered viruses reveal an evolutionary missing link</a>
+        <div class="item-summary">新发现的病毒揭示演化缺失环节</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112178</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112057" target="_blank" rel="noopener">Sealenv encrypt .env files and run commands without writing them to disk</a>
+        <div class="item-summary">Sealenv — 加密 .env 文件并运行命令而不将其写入磁盘</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112057</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112011" target="_blank" rel="noopener">Proof-based general-purpose computing with Magnetar</a>
+        <div class="item-summary">Magnetar — 基于证明的通用计算</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112011</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112052" target="_blank" rel="noopener">Microplastics are chemically active, and could cause biological harm</a>
+        <div class="item-summary">微塑料具有化学活性，可能造成生物伤害</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112052</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112009" target="_blank" rel="noopener">45 years later, the Sinclair ULA design documents surface</a>
+        <div class="item-summary">45 年后，Sinclair ULA 设计文档浮出水面</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112009</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112012" target="_blank" rel="noopener">InkBoy, 30-frame-per-second grayscale Game Boy, open sourced</a>
+        <div class="item-summary">InkBoy — 每秒 30 帧灰度 Game Boy，已开源</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112012</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50111990" target="_blank" rel="noopener">Show HN: Pasteface - Record, transcribe and copy speech locally in your terminal</a>
+        <div class="item-summary">Pasteface — 在终端本地录制、转录并复制语音</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50111990</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112285" target="_blank" rel="noopener">Holdy, your analytics stops talking and starts shipping value</a>
+        <div class="item-summary">Holdy — 停止空谈，开始交付价值的分析工具</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112285</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112329" target="_blank" rel="noopener">A model where companies lease critical minerals instead of selling them</a>
+        <div class="item-summary">公司租赁而非销售关键矿产的新模式</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112329</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112228" target="_blank" rel="noopener">Screen Forge – Pro screen recording in minutes</a>
+        <div class="item-summary">Screen Forge — 几分钟内完成专业屏幕录制</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112228</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112245" target="_blank" rel="noopener">Why Agents Reach for React</a>
+        <div class="item-summary">为什么 Agent 选择 React 框架</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112245</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50112214" target="_blank" rel="noopener">Show HN: Sjq – Jq, but for AI Streaming</a>
+        <div class="item-summary">Sjq — 面向 AI 流式输出的 jq 工具</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50112214</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=2uOajE45F_k" target="_blank" rel="noopener">Jon Law — Run Open-Weight Models for Free: DeepSeek, Qwen, and GLM on ModelScope Tutorial（71,001 次播放）</a>
+        <div class="item-summary">教程演示如何使用 ModelScope 平台免费运行 DeepSeek V4 Pro、Qwen 3.8、GLM 5.2 等开源模型，无需多个 API key 和付费</div>
+        <div class="item-url">https://www.youtube.com/watch?v=2uOajE45F_k</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=keS_2MNwiK8" target="_blank" rel="noopener">Talk Flow — NOW IT&#x27;S GETTING SERIOUS: IS THIS THE END OF CHAT GPT? [with FABIO AKITA]（99,897 次播放）</a>
+        <div class="item-summary">Talk Flow 与 Fabio Akita 讨论 ChatGPT 是否面临终结的严峻时刻（葡萄牙语）</div>
+        <div class="item-url">https://www.youtube.com/watch?v=keS_2MNwiK8</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=2XpIMa1BSPc" target="_blank" rel="noopener">Vaibhav Sisinty — Google Gemini 4 Argon Is Here. We Tested It (+11 AI Updates)（46,949 次播放）</a>
+        <div class="item-summary">测试 Google Gemini 4 Argon（100 万 token 上下文窗口），展示其复杂推理、代码优化、3D 可视化等能力，并回顾 11 项 AI 更新</div>
+        <div class="item-url">https://www.youtube.com/watch?v=2XpIMa1BSPc</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=bk1xyTwzsY8" target="_blank" rel="noopener">WorldofAI — FABLE 5.5 THIS WEEK? OpenAI Employee ARRESTED?! HUGE Claude Code Update, &amp; Anthropic IPO! AI NEWS（87,020 次播放）</a>
+        <div class="item-summary">AI 新闻汇总：Fable 5.5 本周发布？OpenAI 员工被捕、Claude Code 重大更新、Anthropic IPO 消息</div>
+        <div class="item-url">https://www.youtube.com/watch?v=bk1xyTwzsY8</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=Sj8Vae7IuKM" target="_blank" rel="noopener">Igor SDS — Chat GPT crie um personagem pro Forsaken（38,904 次播放）</a>
+        <div class="item-summary">用 ChatGPT 为 Forsaken 游戏创建角色（葡萄牙语）</div>
+        <div class="item-url">https://www.youtube.com/watch?v=Sj8Vae7IuKM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>新论文 — 关键词命中</h2>
+    <div class="section-meta">30 条 · 1 个来源</div>
+    <div class="source-group" id="新论文-关键词命中">
+      <div class="source-header">
+        <div class="source-name">新论文 — 关键词命中</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20607v1" target="_blank" rel="noopener">Hierarchical Residual Policy Learning for Real-World Mobile Manipulation with Sparse Human Guidance</a>
+        <div class="item-summary">提出 HiRe-MoMa 分层残差架构，通过少量人类指导实现移动机器人的真实世界高效微调，适用于高维动作空间和异构模块耦合场景</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20607v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20597v1" target="_blank" rel="noopener">Co-Evolving Acting and Forecasting for Language Agents</a>
+        <div class="item-summary">提出语言 Agent 的行动与预测协同进化训练方法，通过互相监督克服标准 RL 只用终端奖励的瓶颈，提升中间步骤的学习效率</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20597v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20587v1" target="_blank" rel="noopener">Price of Anarchy of First-Price Auctions in Agentic Markets</a>
+        <div class="item-summary">研究 AI Agent 市场中首价拍卖的无序代价（Price of Anarchy），其中 Agent 根据预期价值出价竞拍用户提示词</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20587v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20585v1" target="_blank" rel="noopener">Learnable Hodge-Laplacian Driven Mixture of Experts for Steady-PDE Surrogates on Coarse Unstructured Meshes</a>
+        <div class="item-summary">提出基于可学习 Hodge-Laplacian 的混合专家架构，用于粗粒度非结构网格上的稳态 PDE 替代模型，不同专家聚焦不同频谱尺度</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20585v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20584v1" target="_blank" rel="noopener">Player-1: Learning to Play from Synthetic Experience</a>
+        <div class="item-summary">Player-1 — 通过合成经验学习游戏操作的计算机使用 Agent，克服演示数据覆盖不足和可扩展交互环境缺乏的问题</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20584v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20576v1" target="_blank" rel="noopener">One Task, Many Interfaces: Simple Cross-Interface Consistency Training Improves LLM Agent Robustness</a>
+        <div class="item-summary">提出跨界面一致性训练（Cross-Interface Consistency Training），通过约束不同界面扰动下的行为一致性，提升 LLM Agent 对界面变化的鲁棒性</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20576v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20573v1" target="_blank" rel="noopener">Beyond LLM Judge: Mechanical Verification for Agentic Autoformalization</a>
+        <div class="item-summary">超越 LLM Judge：结合 LLM 语义审查与机械数值/空泛性检查，实现 Lean 形式化的可验证反馈，构建数学函数形式化库（FLMF）</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20573v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20572v1" target="_blank" rel="noopener">Recovering Reliable Supervision via Critique-Guided On-Policy Distillation</a>
+        <div class="item-summary">提出 CriticOPD，通过批判性反馈恢复教师在错误路径上的可恢复性，解决在策略蒸馏中教师跟随学生错误的问题</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20572v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20570v1" target="_blank" rel="noopener">Manacá-1B-Instruct-2: Reproducible Safety Alignment for a Native Brazilian-Portuguese LLM. Negative DPO Results, a Controlled Composition Scan, and a Silent Failure Mode of the LLM Judge</a>
+        <div class="item-summary">Manacá-1B-Instruct-2 — 巴西葡萄牙语原生 LLM 的可复现安全对齐，记录三次 DPO 失败尝试及 LLM Judge 的静默失效模式</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20570v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20563v1" target="_blank" rel="noopener">Scaling Discovery Requires Forgetting</a>
+        <div class="item-summary">发现自动化研究中的 Agent 随历史积累会陷入停滞，提出「扩展发现需要遗忘」——通过选择性遗忘历史打破平台期</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20563v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20560v1" target="_blank" rel="noopener">PhySGA: A Physics-Space Grounded Agentic Framework for Generalizable and Interactive 3D Composition</a>
+        <div class="item-summary">PhySGA — 基于物理空间的 Agent 框架，通过显式物理模拟实现可泛化的精确 3D 场景组合，克服静态数字先验的限制</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20560v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20548v1" target="_blank" rel="noopener">PerSo: Investigating Facets of LLMs&#x27; Social Intelligence in Real-World Persuasion Scenarios</a>
+        <div class="item-summary">PerSo 基准测试 LLM 在真实说服场景中的社会智能，包括推理他人心理状态（认知）和基于推理选择合适行动（行为）</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20548v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20532v1" target="_blank" rel="noopener">ActiveEvidence: Decision-Focused Evidence Graphs with Verifiable Acquisition Gaps</a>
+        <div class="item-summary">ActiveEvidence — 决策聚焦的证据图，通过反事实交互图（CEIG）表示证据价值和交互关系，实现可验证的主动证据获取</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20532v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20518v1" target="_blank" rel="noopener">The Wealth of Agents: Scaling Agentic AI Across Developers</a>
+        <div class="item-summary">研究多开发者 Agent 系统（MDAs）：多个开发者协作构建 Agent 系统以突破单开发者能力上限，提出经验与理论模型对比分析</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20518v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20516v1" target="_blank" rel="noopener">VASPO: Self-Distillation with Privileged Value Estimation</a>
+        <div class="item-summary">VASPO — 结合特权价值估计的自蒸馏方法，在 PPO 框架内整合教师的局部偏好与学生延续的预期回报，优于 GRPO</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20516v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20514v1" target="_blank" rel="noopener">Bayesian Learning to Select Fair Classifiers</a>
+        <div class="item-summary">提出贝叶斯在线策略选择公平分类器，在示例流到达时自适应选择 Agent，平衡预测性能与敏感属性的子组公平性</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20514v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20503v1" target="_blank" rel="noopener">ReaDy: Recurrent States as Dynamic Context for Speculative Drafting in Hybrid Linear Attention Large Language Models</a>
+        <div class="item-summary">ReaDy — 首个针对混合线性注意力 LLM 的推测解码方法，利用循环状态作为动态上下文进行推测起草，加速自回归生成</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20503v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20497v1" target="_blank" rel="noopener">Hindsight-Privileged RLVR: Single-Rollout Token Credit Without Group Sampling</a>
+        <div class="item-summary">提出 HP-RLVR（Hindsight-Privileged RLVR），单路径为推理 token 分配信用，无需组采样，克服 GRPO 在所有尝试同结果时失效的问题</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20497v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20486v1" target="_blank" rel="noopener">Average-Reward Policy Identification from a Single Continuing Trajectory</a>
+        <div class="item-summary">提出平均奖励策略识别算法，仅需单条持续轨迹即可学习，避免自由采样任意状态-动作对时的额外导航成本</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20486v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20483v1" target="_blank" rel="noopener">Decoupled Marginal Sharpening for Training-Free Inference-Time Scaling</a>
+        <div class="item-summary">提出解耦边际锐化（Decoupled Marginal Sharpening），一种无需训练的推理时扩展方法，通过改进采样策略增强 LLM 推理能力</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20483v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20474v1" target="_blank" rel="noopener">AdaRSI: On-Demand Recursive Self-Improvement for Embodied Agents</a>
+        <div class="item-summary">AdaRSI — 按需递归自改进框架，根据失败原因自适应决定是修改执行器权重还是调整调用方式，用于具身 Agent</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20474v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20472v1" target="_blank" rel="noopener">ChronoCulture: Evaluating Cultural Awareness Across Time in Large Language Models</a>
+        <div class="item-summary">ChronoCulture — 基于 72 国纵向调查数据的文化时序基准（10,360 对），评估 LLM 对文化态度随时间演变的建模能力</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20472v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20461v1" target="_blank" rel="noopener">Equal CER, Unequal Damage: Severity-Weighted Character Error Rate for OCR</a>
+        <div class="item-summary">提出 semCER（语义加权字符错误率），用 LLM 判断为每个字形编辑赋予严重性权重，使 OCR 评估更贴近读者感知，区分拼写错误与严重误识</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20461v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20459v1" target="_blank" rel="noopener">MolLean: A Process-Verifiable Language for Chemical Reasoning</a>
+        <div class="item-summary">MolLean — 可过程验证的化学推理语言，基于 Lean 内核检查分子状态转换和断言，防止化学思维链幻觉</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20459v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20457v1" target="_blank" rel="noopener">Same Claim, Different Interpretations: How LLM Agents Resolve Ambiguity in Scientific Claims</a>
+        <div class="item-summary">研究 LLM Agent 如何解决科学声明的歧义：自然语言声明往往欠指定，验证器和专家可能基于不同理解产生分歧，需记录解释以可比形式</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20457v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20437v1" target="_blank" rel="noopener">From Training to Escalation: Forensic Analysis and Local Recreation of RL/RLHF-Induced Privilege Escalation in AI Agents (CVE-2026-65616)</a>
+        <div class="item-summary">CVE-2026-65616 — 对 RL/RLHF 诱导的 AI Agent 权限提升的取证分析与本地复现，涉及 HPIM 训练案例和 OpenAI ExploitGym 的容器逃逸</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20437v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20431v1" target="_blank" rel="noopener">SwarmRSI: Recursive Self-Improvement through Evolving Scientific Agent Swarm</a>
+        <div class="item-summary">SwarmRSI — 通过演化科学 Agent 群体的递归自改进，分解假设与实现并跨 Agent 共享有用组件，克服单一评分掩盖可用部分的问题</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20431v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20419v1" target="_blank" rel="noopener">Analyzing performance of Retrieval Augmented Generation models for Question Answering Tasks</a>
+        <div class="item-summary">分析 RAG 模型在开放域问答任务（尤其南亚文化问答）中的性能，检索机制的有效性决定生成答案质量</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20419v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20418v1" target="_blank" rel="noopener">OrionMoE-v1.0: A Mixture-of-Experts Foundation Model for Tabular In-Context Learning</a>
+        <div class="item-summary">OrionMoE-Small — 基于分布感知表示与数据集条件稀疏混合专家的表格基础模型，实现表格数据的上下文学习</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20418v1</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="http://arxiv.org/abs/2610.20417v1" target="_blank" rel="noopener">From Unreliable to Usable: Decomposing Failure Modes and Confidence Signals in LLM Entity Extraction - Evidence from Cyber Threat Intelligence</a>
+        <div class="item-summary">分解 LLM 实体抽取的失败模式与置信信号，基于网络威胁情报语料对 DeepSeek-V4-Flash、GLM-5.3-Flash 与 GPT-6.1-Sol 进行预注册评估</div>
+        <div class="item-url">http://arxiv.org/abs/2610.20417v1</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

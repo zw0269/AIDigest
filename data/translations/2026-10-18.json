@@ -1,0 +1,43 @@
+{
+  "manual_summaries": {
+    "https://news.ycombinator.com/item?id=50138652": "HIV 研究新发现：ADAM17 蛋白是广谱 HIV-1 限制因子，但会被病毒 Nef 蛋白靶向抑制",
+    "https://news.ycombinator.com/item?id=50138383": "航天飞机奋进号的运输过程记录",
+    "https://news.ycombinator.com/item?id=50138363": "两只虎鲸兄弟猎杀大白鲨的神秘行为研究",
+    "https://www.youtube.com/watch?v=hZPs633_58Q": "Claude Fable 5.5 展示惊人能力：用纯代码生成交互式 3D 世界和复杂模拟，被称为「婴儿 AGI」",
+    "https://news.ycombinator.com/item?id=50138462": "普林斯顿博士申请 2300 个职位仍未获聘，反映学术就业市场困境",
+    "https://news.ycombinator.com/item?id=50138306": "Show HN: Parents Inbox — 学校与家长沟通的指南工具",
+    "https://www.youtube.com/watch?v=H3jeT0IGUKw": "使用 Claude Opus 5.5 和 ForgeGUI 从零开始制作病毒式传播的 Roblox 恐怖游戏 NOCLIP",
+    "https://news.ycombinator.com/item?id=50138511": "美国 10 万亿美元 AI 基础设施热潮开始出现裂痕",
+    "https://news.ycombinator.com/item?id=50138558": "Show HN: JSynth — Julia 语言的可视化编程编辑器",
+    "https://news.ycombinator.com/item?id=50138533": "可探索解释（Explorable Explanations）交互式教学方法介绍",
+    "https://news.ycombinator.com/item?id=50138531": "DeepSeek 推出搜索和抓取服务，每 1000 次成功请求收费 0.75 美元",
+    "https://news.ycombinator.com/item?id=50138278": "KVM 虚拟化逃逸漏洞 PwnEscape（CVE-2026-99999）从客户机逃逸到宿主机",
+    "https://news.ycombinator.com/item?id=50138594": "研究论文：一次错误运行就能让程序性记忆养成坏习惯",
+    "https://news.ycombinator.com/item?id=50138369": "新软件的循环：关于操作性仿像（Operative Simulacra）的思考",
+    "https://news.ycombinator.com/item?id=50138539": "Show HN: Guidedog — 支持 reStructuredText 和 Markdown 的开源静态站点生成器",
+    "https://news.ycombinator.com/item?id=50138229": "大语言模型已经进入芯片制造厂，为什么还没解决核心问题？",
+    "https://news.ycombinator.com/item?id=50138371": "人脸识别中算法相似性与证明极限的法律和技术探讨",
+    "https://news.ycombinator.com/item?id=50138327": "想要轻松发布项目吗？项目发布工具和流程讨论",
+    "https://news.ycombinator.com/item?id=50138585": "Jetson Thor Orin Nano 设备和数千个预构建 AI 模型发布",
+    "https://news.ycombinator.com/item?id=50138528": "《Real World Haskell》现代化版本发布",
+    "https://www.youtube.com/watch?v=U3Jkr2Pz86Y": "日语将棋视频：与 GPT-6 Astra 对弈，AI 预测胜率仅 1%",
+    "https://news.ycombinator.com/item?id=50138543": "神经网络并不是天然干净的（关于神经网络鲁棒性的讨论）",
+    "https://news.ycombinator.com/item?id=50138242": "用 Rust 编写的操作系统内核，既能在浏览器中运行也能在真实计算机上运行",
+    "https://news.ycombinator.com/item?id=50138450": "零点击间谍软件通过定向广告感染手机",
+    "https://news.ycombinator.com/item?id=50138548": "所有权优先开发（Ownership-First Development）的案例",
+    "https://news.ycombinator.com/item?id=50138496": "贺建奎事件回顾：基因编辑婴儿争议",
+    "https://www.youtube.com/watch?v=0TUrpEqoSqQ": "AI 融资危机警报：Anthropic 芯片融资协议提供超 10% 回报率，成本飙升引发担忧",
+    "https://www.youtube.com/watch?v=tDWtcyeNNew": "AI 新闻汇总：量子计算突破、Gemini 4 Argon、MOSS Image、KLING 4、OpenAI 间谍事件、Muse Wonder 等",
+    "https://news.ycombinator.com/item?id=50138490": "日本宇宙航空研究开发机构（JAXA）即将执行火卫一样本返回任务",
+    "https://news.ycombinator.com/item?id=50138637": "X11appjail v2.0.0 发布：测试 D-Bus 代理和 Linux-brave",
+    "https://news.ycombinator.com/item?id=50138286": "TurboScribe AI：免费的视频转文字和音频转文字转换器",
+    "https://news.ycombinator.com/item?id=50138411": "加密技术正在受到各方面的挤压",
+    "https://news.ycombinator.com/item?id=50138318": "Anthropic 聘请律师帮助 AI 代理达成交易",
+    "https://news.ycombinator.com/item?id=50138285": "中国初创公司展示 EUV 光源原型，但距离实用化仍需数年",
+    "https://news.ycombinator.com/item?id=50138557": "积分与形状的数学探讨"
+  },
+  "translations": {
+    "https://simonwillison.net/2026/Oct/17/document-currentscript/": "介绍使用 document.currentScript 属性的巧妙技巧，可以用内联 script 标签在页面加载时替换自身，实现微型模板语言",
+    "https://simonwillison.net/2026/Oct/17/web-edit/": "web-edit 0.1a2 版本发布，新增复制到剪贴板功能（支持文本和图片），方便在不同机器间通过 Tailscale 编辑文件"
+  }
+}

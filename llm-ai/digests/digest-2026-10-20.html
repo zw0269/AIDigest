@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-20</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-20</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-20</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 40 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">40</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">37</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/low-resource-programming-languages" target="_blank" rel="noopener">Advancing coding in low‑resource programming languages</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Learn how OpenAI is improving ChatGPT across low-resource programming languages, with new evaluations for software engineering, SQLite, and COBOL migration.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 介绍如何改进 ChatGPT 在低资源编程语言上的表现，新增了针对软件工程、SQLite 和 COBOL 迁移场景的评测。</div>
+        <div class="item-url">https://openai.com/index/low-resource-programming-languages</div>
+      </div>
+    </div>
+    <div class="source-group" id="anthropic">
+      <div class="source-header">
+        <div class="source-name">Anthropic</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.anthropic.com/news/public-benefit-fund" target="_blank" rel="noopener">Investing in the public benefit</a>
+        <div class="item-summary">Anthropic 宣布投资其公益基金（Public Benefit Fund），推进其作为公益公司的使命承诺。</div>
+        <div class="item-url">https://www.anthropic.com/news/public-benefit-fund</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/" target="_blank" rel="noopener">My obituary for programming</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>My obituary for programming
+Jeremy Scheff poignantly captures the key loss caused by coding agents for career programmers who enjoyed the puzzle of developing code:
+
+Programming turned into one of the greatest jobs you could imagine. You got paid to work on tricky little logic puzzles. The trickier the puzzle, the more you got paid. But even pre...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison 转述 Jeremy Scheff 的观点，探讨编程这份靠解谜获得报酬和掌控感的工作，正因 AI 编程助手的普及而失去原有的乐趣和价值。</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/19/my-obituary-for-programming/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">37 条 · 3 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/withmarbleapp/os-taxonomy" target="_blank" rel="noopener">withmarbleapp /os-taxonomy</a>
+        <div class="item-summary">一份开放的 K12 课程知识图谱，把小学到初中阶段要学的内容拆成 1591 个细粒度知识点，并标注 3225 条先修关系，对齐国家课程标准。</div>
+        <div class="item-url">https://github.com/withmarbleapp/os-taxonomy</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/headroomlabs-ai/headroom" target="_blank" rel="noopener">headroomlabs-ai /headroom — Compress tool outputs, logs, files, and RAG chunks before they reach the LLM. 20% fewer tokens for coding agents, 60-95% fewer tokens for JSON, same answers. Library, proxy, MCP server.</a>
+        <div class="item-summary">在工具输出、日志、文件和 RAG 片段进入 LLM 前先压缩，编码场景可省 20% token，JSON 类场景可省 60-95% token，同时保持答案质量不变，提供库、代理和 MCP 服务器三种接入方式。</div>
+        <div class="item-url">https://github.com/headroomlabs-ai/headroom</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160198" target="_blank" rel="noopener">Show HN: Lights-on software factory boilerplate for Claude Code</a>
+        <div class="item-summary">一个为 Claude Code 设计的「随时可上线」软件工厂脚手架项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160198</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160017" target="_blank" rel="noopener">Foreigners in CA arrested, charged with fraudulently registering/voting in US [video]</a>
+        <div class="item-summary">加州多名外国人因在美国欺诈性登记选民并投票被逮捕起诉。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160017</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160292" target="_blank" rel="noopener">Built a Compiler from Scratch for Agent Swarms</a>
+        <div class="item-summary">作者从零手写了一个编译器，专门用于编排和执行多智能体（Agent Swarm）程序。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160292</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160114" target="_blank" rel="noopener">Back to school for a new ABC [pdf]</a>
+        <div class="item-summary">一篇关于设计新版英文字母表（ABC）教学方式的讨论，PDF 格式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160114</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160116" target="_blank" rel="noopener">Ask HN: Dark mode for HN please? (2026)</a>
+        <div class="item-summary">有人请求 Hacker News 官方上线深色模式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160116</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160055" target="_blank" rel="noopener">It Could Be Otherwise: Science in the Age of Uncertainty</a>
+        <div class="item-summary">讨论科学在不确定性时代如何运作的一本书/文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160055</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160135" target="_blank" rel="noopener">Developing Taste</a>
+        <div class="item-summary">一篇关于如何培养「品味」（审美判断力）的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160135</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160239" target="_blank" rel="noopener">The United States of Israel [video]</a>
+        <div class="item-summary">一段关于美国与以色列关系的视频内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160239</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50159963" target="_blank" rel="noopener">Investors temper Anthropic IPO valuation expectations over growth slowdown</a>
+        <div class="item-summary">投资者因增长放缓下调了对 Anthropic IPO 估值的预期。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50159963</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160241" target="_blank" rel="noopener">What Is the Karakoram Anomaly?</a>
+        <div class="item-summary">探讨喀喇昆仑山脉冰川异常现象（Karakoram Anomaly）的成因。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160241</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160157" target="_blank" rel="noopener">Anyone migrate off Google Voice?</a>
+        <div class="item-summary">讨论是否该从 Google Voice 迁移到其他电话服务的帖子。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160157</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160102" target="_blank" rel="noopener">Show HN: Self-hosted AI spend attribution</a>
+        <div class="item-summary">一个自托管的 AI 支出归因（spend attribution）工具展示。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160102</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160064" target="_blank" rel="noopener">The Land Within Us: How People Shape the Earth–and Are Shaped in Return</a>
+        <div class="item-summary">一本探讨人类如何塑造地球、又被地球反过来塑造的书。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160064</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50159914" target="_blank" rel="noopener">Google&#x27;s selfie video sign-in puts your face on its servers</a>
+        <div class="item-summary">Google 新的自拍视频登录方式会把用户的人脸信息上传到其服务器，引发隐私担忧。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50159914</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160293" target="_blank" rel="noopener">Popular WordPress Backup Tool Breached</a>
+        <div class="item-summary">一款热门 WordPress 备份工具被曝存在安全漏洞遭入侵。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160293</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160317" target="_blank" rel="noopener">2026 is a year for the Rust compiler (and me)</a>
+        <div class="item-summary">作者回顾 2026 年 Rust 编译器以及自己这一年的历程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160317</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160110" target="_blank" rel="noopener">Show HN: A legal assistant that refuses to cite law it can&#x27;t verify</a>
+        <div class="item-summary">一个法律助手工具，设计上拒绝引用它无法验证来源的法律条文，以避免编造。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160110</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160267" target="_blank" rel="noopener">Elizabeth Holmes doc &#x27;You Can See Everything&#x27; Nets $15M in opening weekend</a>
+        <div class="item-summary">关于 Elizabeth Holmes 的纪录片《You Can See Everything》首映周末票房达 1500 万美元。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160267</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160203" target="_blank" rel="noopener">How Did Life Arise? Three Turning Points in Early Evolution</a>
+        <div class="item-summary">探讨生命起源过程中三个关键演化转折点的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160203</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160249" target="_blank" rel="noopener">AI experts to school Congress wanted</a>
+        <div class="item-summary">讨论是否应该让 AI 专家去给国会议员做科普培训。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160249</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160151" target="_blank" rel="noopener">Andreessen Horowitz lays off majority of portfolio recruiting team</a>
+        <div class="item-summary">风投机构 Andreessen Horowitz 裁撤了旗下投资组合招聘团队的大部分人员。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160151</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160001" target="_blank" rel="noopener">Evals for 3D CAD</a>
+        <div class="item-summary">讨论针对 3D CAD 场景的模型评测（Evals）方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160001</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50159993" target="_blank" rel="noopener">Lula supporters protest against Meta to denounce its &#x27;electoral interference&#x27;</a>
+        <div class="item-summary">巴西卢拉总统的支持者抗议 Meta，谴责其「干预选举」行为。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50159993</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160289" target="_blank" rel="noopener">Novo Nordisk, Eli Lilly Report GLP-1 Signals of Slowed Biological Aging at ARDD</a>
+        <div class="item-summary">诺和诺德和礼来公布数据显示 GLP-1 类药物可能有延缓生物学衰老信号的作用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160289</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50159980" target="_blank" rel="noopener">SeditionDAW: A free, browser based Ableton alternative</a>
+        <div class="item-summary">SeditionDAW 是一款免费、基于浏览器的 Ableton 替代品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50159980</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160127" target="_blank" rel="noopener">Sourcey&#x27;s open startup-credit registry: twelve dated records with provenance</a>
+        <div class="item-summary">Sourcey 建立了一个开放的创业信贷登记簿，记录十二笔带来源证明的历史记录。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160127</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160184" target="_blank" rel="noopener">Found archive.today debug dump glitch</a>
+        <div class="item-summary">有人发现了 archive.today 的一个调试转储（debug dump）漏洞。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160184</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160072" target="_blank" rel="noopener">Self-hosted AI spend attribution</a>
+        <div class="item-summary">一个自托管的 AI 支出归因工具（与另一条 HN 帖子重复内容）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160072</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160270" target="_blank" rel="noopener">Letter from Paris – A status check on the French and American left</a>
+        <div class="item-summary">来自巴黎的观察，分析法国与美国左翼政治的现状对比。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160270</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50160306" target="_blank" rel="noopener">US banning Chinese AI DeepSeek from government agency IT systems</a>
+        <div class="item-summary">美国政府机构的 IT 系统将禁止使用中国 AI 公司 DeepSeek 的产品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50160306</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=69q-GCLIiZQ" target="_blank" rel="noopener">Futboleador — Chat GPT Picks My Team!（52,250 次播放）</a>
+        <div class="item-summary">博主用 ChatGPT 来帮自己选择梦幻足球阵容的娱乐向视频。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=69q-GCLIiZQ</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=mEulEkuxCnM" target="_blank" rel="noopener">OpenAI — UK: This is the new ChatGPT Voice, powered by GPT Live（96,771 次播放）</a>
+        <div class="item-summary">OpenAI 英国团队介绍新版 ChatGPT 语音功能，由 GPT Live 模型驱动。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=mEulEkuxCnM</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ZATGYwehDm0" target="_blank" rel="noopener">조코딩 JoCoding — AI News - DeepSeek is Insane, Gemini 4, Muse Wonder, Spark Open, OpenAI Spy, GPT-Live-1.1, Fish A...（56,212 次播放）</a>
+        <div class="item-summary">韩语 AI 新闻汇总：DeepSeek V4.1 Flash、Gemini 4、Muse Wonder 等多个模型和产品动态速览。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ZATGYwehDm0</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=kyMBuFbt5f4" target="_blank" rel="noopener">НейроЧел+ — THE MOST POWERFUL AI MODELS CREATE BATTLEFIELD FROM SCRATCH | Claude vs GPT vs Gemini vs Muse in ...（48,863 次播放）</a>
+        <div class="item-summary">视频测评 Claude、GPT、Gemini、Muse 等模型在 Godot 引擎中从零制作战场游戏场景的能力对比。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=kyMBuFbt5f4</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=L3saZLsifOo" target="_blank" rel="noopener">Kingy AI — Nano Banana 2.1 vs GPT Image 2.5: Same Prompts, Big Difference（46,455 次播放）</a>
+        <div class="item-summary">用相同提示词对比测试 Google Nano Banana 2.1 与 OpenAI GPT Image 2.5 两款图像生成模型的效果差异。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=L3saZLsifOo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

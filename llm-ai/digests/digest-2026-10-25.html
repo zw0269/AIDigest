@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-10-25</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-10-25</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-10-25</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 42 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">42</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">40</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">2 条 · 2 个来源</div>
+    <div class="source-group" id="sebastian-raschka">
+      <div class="source-header">
+        <div class="source-name">Sebastian Raschka</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://magazine.sebastianraschka.com/p/building-reasoning-models" target="_blank" rel="noopener">Building Reasoning Models from the Ground Up: A Full Video Course</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Over 11 hours of coding videos on evaluation, inference-time scaling, reinforcement learning, and distillation, with Python and PyTorch.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>提供超过 11 小时的 Python/PyTorch 编程课程，从评估、推理时扩展到强化学习和蒸馏，系统讲解推理模型构建。</div>
+        <div class="item-url">https://magazine.sebastianraschka.com/p/building-reasoning-models</div>
+      </div>
+    </div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Oct/24/battledrones/" target="_blank" rel="noopener">battledrones v14: Compass Rose, a four player map</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: battledrones v14: Compass Rose, a four player map
+        I added four player online mode to Battledrones - previous maps were limited to two.
+Here&#x27;s the initial prompt I used:
+
+Add a new map for a four player battle - four way rotational symmetry, up to four AI players, works with the WebSocket non-audio based multiplayer mode so up t...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>借助 Claude 为 Battledrones 加入四人对战地图 Compass Rose，并扩展 WebSocket 联机功能，支持真人与 AI 混合参战。</div>
+        <div class="item-url">https://simonwillison.net/2026/Oct/24/battledrones/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">40 条 · 3 个来源</div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/JetBrains/thinkrail" target="_blank" rel="noopener">JetBrains /thinkrail — Vibe code with pi in a lightweight, real IDE that customises itself around the way you work — The Vibe You Need</a>
+        <div class="item-summary">JetBrains 推出的轻量 IDE，集成 pi 编程智能体，围绕用户工作方式定制 AI 辅助开发体验。</div>
+        <div class="item-url">https://github.com/JetBrains/thinkrail</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/pollen-robotics/microduck" target="_blank" rel="noopener">pollen-robotics /microduck — A Tiny biped duck robot 🦆</a>
+        <div class="item-summary">开源微型双足鸭形机器人项目，展示小型仿生机器人的设计与实现。</div>
+        <div class="item-url">https://github.com/pollen-robotics/microduck</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/coollabsio/coolify" target="_blank" rel="noopener">coollabsio /coolify — An open-source, self-hostable PaaS alternative to Vercel, Heroku &amp; Netlify that lets you easily deploy static sites, databases, full-stack applications and 360+ one-click services on your own servers.</a>
+        <div class="item-summary">开源自托管 PaaS，可在自己的服务器部署静态网站、数据库和全栈应用，支持大量一键服务。</div>
+        <div class="item-url">https://github.com/coollabsio/coolify</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/AgriciDaniel/claude-seo" target="_blank" rel="noopener">AgriciDaniel /claude-seo — Universal SEO skill for Claude Code. 26 sub-skills + 19 sub-agents covering technical SEO, E-E-A-T, schema, GEO/AEO, agent readiness (Lighthouse Agentic Browsing, WebMCP, llms.txt), backlinks, local SEO, e-commerce, international SEO, Google APIs, and PDF/Excel reporting. 9 optional extensions for live SEO data.</a>
+        <div class="item-summary">面向 Claude Code 的 SEO 技能集合，涵盖技术 SEO、结构化数据、生成式搜索优化及报告等任务。</div>
+        <div class="item-url">https://github.com/AgriciDaniel/claude-seo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/makecindy/cindy" target="_blank" rel="noopener">makecindy /cindy — Consider it done. The open-source AI agent that works out of the box · 想到，就能做到。开源、开箱即用的 AI Agent。</a>
+        <div class="item-summary">开源、开箱即用的 AI 智能体，面向直接交付任务结果的使用场景。</div>
+        <div class="item-url">https://github.com/makecindy/cindy</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230674" target="_blank" rel="noopener">Nops: Read SOPS-encrypted secrets in .NET without the sops binary</a>
+        <div class="item-summary">Nops 让 .NET 应用直接读取 SOPS 加密的机密配置，无需安装 sops 命令行程序。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230674</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230411" target="_blank" rel="noopener">Posthuman Mimesis</a>
+        <div class="item-summary">介绍“后人类模仿”这一概念，讨论后人类主义视角下的模仿问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230411</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230738" target="_blank" rel="noopener">MoltenVK (Vulkan on Metal) was deprecated in favor of KosmicKrisp</a>
+        <div class="item-summary">分享 MoltenVK 被弃用并转向 KosmicKrisp 的消息，涉及通过 Metal 运行 Vulkan 的技术路线变化。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230738</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230653" target="_blank" rel="noopener">We&#x27;re heading past 1.5°C</a>
+        <div class="item-summary">讨论全球升温超过 1.5°C 的趋势及其气候影响。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230653</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230362" target="_blank" rel="noopener">Bye Bye Brotli? Google&#x27;s Compression Library Is a Security Mess</a>
+        <div class="item-summary">文章质疑 Google Brotli 压缩库的安全状况，讨论相关安全问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230362</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230292" target="_blank" rel="noopener">Balloting has completed for C++26. Unfortunately it was Disapproved</a>
+        <div class="item-summary">分享 C++26 标准投票完成但未获批准的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230292</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230473" target="_blank" rel="noopener">Who to build for, now that vibecoding makes software cheap</a>
+        <div class="item-summary">探讨当氛围编程降低软件开发成本后，开发者应为哪些用户和需求构建产品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230473</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230679" target="_blank" rel="noopener">Buy into the Emacs Platform (2018)</a>
+        <div class="item-summary">回顾 2018 年关于将 Emacs 作为统一工作平台的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230679</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230696" target="_blank" rel="noopener">4-Dna.com</a>
+        <div class="item-summary">提供基于个人 DNA 的健康洞察与分析服务，强调隐私与个性化解读。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230696</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230808" target="_blank" rel="noopener">Love, Impending Doom, and the Drake Equation</a>
+        <div class="item-summary">将爱情、末日预期与德雷克方程联系起来，探讨人类处境和外星文明问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230808</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230311" target="_blank" rel="noopener">From World-Wide Web to Super-Brain (1995)</a>
+        <div class="item-summary">回顾 1995 年关于万维网向“超级大脑”演进的构想。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230311</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230775" target="_blank" rel="noopener">Mozilla reported HTTP2Shell with proof of RCE in April</a>
+        <div class="item-summary">分享 Mozilla 早在 4 月报告 HTTP2Shell 并提供远程代码执行证明的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230775</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230704" target="_blank" rel="noopener">Three things you should know about permafrost</a>
+        <div class="item-summary">介绍理解永久冻土所需掌握的三个关键知识点。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230704</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230294" target="_blank" rel="noopener">&quot;This American Life&quot; Reveals Coca-Cola&#x27;s Secret Recipe (Ingredient List) (2011)</a>
+        <div class="item-summary">回顾《This American Life》在 2011 年披露可口可乐配方成分表的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230294</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230290" target="_blank" rel="noopener">Researchers identify the main factors in pornography use among adolescents</a>
+        <div class="item-summary">介绍关于青少年色情内容使用行为及主要影响因素的研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230290</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230742" target="_blank" rel="noopener">How to make your own Steelpan? (1992) [pdf]</a>
+        <div class="item-summary">分享 1992 年的钢鼓制作资料，介绍自行制作这种打击乐器的方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230742</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230702" target="_blank" rel="noopener">Show HN: Find overlapping Rust tests with mutation testing</a>
+        <div class="item-summary">利用变异测试识别 Rust 测试之间的覆盖重叠，帮助发现可能冗余的测试。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230702</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230354" target="_blank" rel="noopener">Lindt got chocolate price hikes wrong, chairman says after CEO&#x27;s ouster</a>
+        <div class="item-summary">报道 Lindt 董事长在 CEO 离任后承认巧克力涨价策略出现失误。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230354</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230731" target="_blank" rel="noopener">Report on alpha school, AI-based education</a>
+        <div class="item-summary">分享关于 Alpha School 的报告，讨论其以 AI 为基础的教育模式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230731</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230384" target="_blank" rel="noopener">fheroes2: A recreation of Heroes of Might and Magic II game engine</a>
+        <div class="item-summary">fheroes2 重现《魔法门之英雄无敌 II》游戏引擎，让经典策略游戏在现代环境中运行。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230384</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230226" target="_blank" rel="noopener">The Years We Can&#x27;t Hire Back</a>
+        <div class="item-summary">指出减少初级工程师招聘可能切断人才培养路径，即使未来需求恢复，也难以补回失去的实践经验。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230226</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230641" target="_blank" rel="noopener">Open Source Charging Monitor for Android</a>
+        <div class="item-summary">介绍用于 Android 的开源充电监测工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230641</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230414" target="_blank" rel="noopener">New Spencerian Compendium</a>
+        <div class="item-summary">分享《New Spencerian Compendium》斯宾塞体书法资料的数字化档案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230414</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230689" target="_blank" rel="noopener">Partial Operator Precedence</a>
+        <div class="item-summary">Zig 为容易混淆的运算符组合强制要求括号，以减少优先级误读，并提供格式化升级工具辅助迁移。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230689</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230557" target="_blank" rel="noopener">Show HN: EdgePad – tool for configuring edge touchpad gestures on Linux laptops</a>
+        <div class="item-summary">EdgePad 为 Linux 笔记本提供触控板边缘手势配置工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230557</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230261" target="_blank" rel="noopener">An open, structured taxonomy of what children learn across the primary years</a>
+        <div class="item-summary">提供覆盖小学阶段学习内容的开放结构化分类体系。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230261</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230512" target="_blank" rel="noopener">Covely – An offline personal finance app for Mac, Windows and Linux</a>
+        <div class="item-summary">Covely 是支持 Mac、Windows 和 Linux 的离线个人财务管理应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230512</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230693" target="_blank" rel="noopener">Show HN: Shrinking my 159-byte x86-64 Hello World ELF to 153 bytes</a>
+        <div class="item-summary">展示将 x86-64 平台 Hello World ELF 程序从 159 字节进一步缩小到 153 字节的优化过程。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230693</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230818" target="_blank" rel="noopener">Unicorn Benefits of Rust/Go Tooling in PHP</a>
+        <div class="item-summary">主张以 Rust/Go 构建 PHP 开发工具，通过减少依赖冲突和加速分析、重构，提升开发者与 AI 智能体的迭代效率。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230818</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50230698" target="_blank" rel="noopener">Grok Bot: The cycle of productivity tools repeats itself in AI</a>
+        <div class="item-summary">借 Grok Bot 讨论 AI 智能体如何重演生产力工具的发展周期。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50230698</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=3TwbE7gv6qo" target="_blank" rel="noopener">Tech With Tim — Learn 99% Of Claude Code in One Video（47,851 次播放）</a>
+        <div class="item-summary">系统讲解 Claude Code 的主要功能与使用方法，帮助开发者上手 AI 编程工作流。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=3TwbE7gv6qo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=Q1m25CQrjFY" target="_blank" rel="noopener">Brock Mesarich | AI for Non Techies — Grok Bot Drops Artifacts, Claude Duet, Security Issues + more (AI News)（27,674 次播放）</a>
+        <div class="item-summary">汇总 Grok Bot 的 Artifacts、Claude Duet 以及 AI 产品安全等相关新闻。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=Q1m25CQrjFY</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=aZMKzHhlTh8" target="_blank" rel="noopener">WorldofAI — HUGE GPT-7 BEL UPDATE! Claude REA BANNED, Gemini 4 Carbon Is INSANE, Qwen 4 LEAKS, &amp; More! AI NEWS（72,175 次播放）</a>
+        <div class="item-summary">视频汇总关于 GPT-7、Claude、Gemini 和 Qwen 的更新及传闻；标题中的性能评价与泄露说法属于视频观点。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=aZMKzHhlTh8</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=fF3XslvK4YM" target="_blank" rel="noopener">AI Revolution — DeepSeek Fires Again! (New #1 Open Source Coder Beats Claude)（34,053 次播放）</a>
+        <div class="item-summary">视频介绍 DeepSeek 编程模型，并讨论其相对 Claude 的表现及开源编程模型竞争。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=fF3XslvK4YM</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=MvV1kFJ-Clw" target="_blank" rel="noopener">DenTrave — What humans couldn&#x27;t do in 21 years, it did in 2 days: 7 chilling stories about the new GPT-6 Astra（170,645 次播放）</a>
+        <div class="item-summary">视频用七个故事讨论 GPT-6 Astra 的能力，并提出其在部分任务中大幅缩短耗时的说法。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=MvV1kFJ-Clw</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "manual_summaries": {
+    "https://www.anthropic.com/news/s1-sec": "Anthropic 向美国 SEC 提交拟首次公开募股的 S-1 注册声明，计划以 ANT 为代码在纳斯达克上市；发行规模和价格区间尚未确定。",
+    "https://www.youtube.com/watch?v=QDEFSbl8BxY": "作者分享利用 Claude Code 在 14 天内帮助其 YouTube 频道实现变现的经历。",
+    "https://www.youtube.com/watch?v=82RE9muYozI": "视频讨论代号 Bel 的下一代 AI 系统及超越 GPT-6 的相关传闻。",
+    "https://www.youtube.com/watch?v=iF3kd8Yl0VA": "视频讨论 Claude 未经授权获取美国选举数据的事件，以及 AI 权限和安全边界问题。",
+    "https://www.youtube.com/watch?v=y1j3O5NBeKw": "视频介绍 GPT-6.1 Terra 的发布及用户需要了解的要点。",
+    "https://github.com/alchaincyf/huashu-design": "面向 Claude Code、Codex 等智能体的设计技能，可从自然语言生成网页、App 原型、可编辑 PPTX、动画和信息图，并提供风格库与设计检查。",
+    "https://github.com/gitroomhq/postiz-app": "开源社交媒体排程工具，支持以智能体辅助管理内容发布。",
+    "https://github.com/nightly-labs/openbot": "以本地优先桌面工作区运行持久 AI 队友，为 Codex、Claude 和 Grok 提供独立工作空间、任务队列、文件共享、浏览器控制及协作功能。",
+    "https://www.youtube.com/watch?v=fAKAdFFdsJU": "视频解读 Anthropic 的新 AI 智能体，讨论其定位和使用方式。"
+  },
+  "translations": {
+    "https://openai.com/index/greptile-code-review-codex-astra": "Greptile 使用 GPT-6 Astra 测试用户工作流，以 Daybreak 加强安全检查，并借助 Codex 减少返工，将缺陷检测扩展到代码审查之外。",
+    "https://openai.com/index/building-scientific-understanding-with-academic-communities": "OpenAI 分享模型在挂谷猜想、指数时间假设和量子色动力学上的结果，并介绍研究者如何验证和继续推进相关工作。",
+    "https://openai.com/index/gpt-6-1-sol-coderabbit-code-security": "CodeRabbit 使用 GPT-6.1 Sol 调查复杂代码库中的安全风险，其安全智能体帮助开发者审阅发现的问题和修复建议。",
+    "https://openai.com/index/chatgpt-expanding-world-of-work": "OpenAI Signals 数据覆盖近百个国家的 165 类工作活动，展示人们如何将 ChatGPT 用于工作及使用方式随时间的变化。",
+    "https://openai.com/index/fanatics-streamline-fan-experience": "Fanatics 使用 OpenAI 支持 Shop the Look 球迷穿搭购物功能，在约三万件 MLB 商品上的测试显示参与度提高 10%。",
+    "https://openai.com/index/openai-cut-incident-investigation": "OpenAI 工程师使用 Codex Ultrafast 将事件调查从数小时缩短至数分钟，并用于安全分析、代码重构及日常工作。",
+    "https://openai.com/index/introducing-gpt-6-1-terra": "OpenAI 发布 GPT-6.1 Terra，主打快速且具备较强能力的计算机操作体验。",
+    "http://arxiv.org/abs/2610.34021v1": "提出 DeepSciReasoner，将结构感知谱解码与保持约束的物理推理结合，在电子和声子态密度、XANES 及拉曼光谱预测中兼顾精度与物理一致性。",
+    "http://arxiv.org/abs/2610.34012v1": "发布俄英双语可逆假名化基准与引擎，在合成文档上减少发送给外部大模型的隐私泄露，但俄语姓名恢复率仍未达标，且尚未验证真实文档。",
+    "http://arxiv.org/abs/2610.34009v1": "提出语义、几何、拓扑与人类意图四层联邦对齐架构；在合成临床网络中验证前三层可改善少数节点表现，同时保持主要节点效用。",
+    "http://arxiv.org/abs/2610.34005v1": "提出 ST-OPSD，通过引导教师隐藏状态抑制引用不可见参考答案并鼓励复核，在 AIME 和 HMMT 上提高自蒸馏推理准确率，学生推理时无需引导。"
+  }
+}

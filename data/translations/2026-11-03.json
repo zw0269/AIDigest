@@ -1,0 +1,16 @@
+{
+  "manual_summaries": {
+    "https://www.youtube.com/watch?v=0Kw6_DTZPrY": "视频讨论 Amodei、Altman 关于模型可控性的言论及 Gemini Carbon 动态。",
+    "https://www.youtube.com/watch?v=KigQBKBDSxA": "视频作者尝试制作比 GPT-6 Astra 所生成作品更好的游戏。",
+    "https://www.youtube.com/watch?v=tcKfgtDC4-k": "视频汇总新 AI 模型、实时虚拟世界及 ChatGPT、Claude、Gemini 功能动态。",
+    "https://www.youtube.com/watch?v=u2AXS9KHUro": "视频演示作者所称的使用 Claude 免费方案制作动态图形视频的方法。",
+    "https://github.com/vercel-labs/agent-desktop": "agent-desktop 为 AI 智能体提供操作电脑的命令行接口。",
+    "https://github.com/karpathy/nanochat": "nanochat 是 Karpathy 发布的聊天模型项目，以约一百美元预算构建 ChatGPT 类体验为目标。",
+    "https://www.youtube.com/watch?v=L7opnQdpdMY": "视频汇总作者所称的 Claude Mythos、Fable、GPT-6.2 Astra 与 Gemini 新模型爆料，属于视频作者的解读。"
+  },
+  "translations": {
+    "https://deepmind.google/blog/speeding-up-planning-decisions-with-ai/": "Google DeepMind 与英国政府合作，利用 AI 缩短规划申请的评估时间。",
+    "https://simonwillison.net/2026/Nov/2/llm/": "LLM 0.37 增加模型及兼容端点配置命令，改进多模态嵌入支持，并汇集社区提交的功能与修复。",
+    "https://simonwillison.net/2026/Nov/2/census-bureau-super-intelligence/": "Simon 重绘美国企业 AI 采用率，指出调查从“生产商品或服务”改为“任何业务功能”后数据不可直接比较，并讨论改称“超级智能”的潜在影响。"
+  }
+}

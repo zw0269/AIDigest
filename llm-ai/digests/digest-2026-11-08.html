@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-11-08</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-11-08</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-11-08</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 41 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">41</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">40</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/7/link-rel-next/" target="_blank" rel="noopener">datasette #3046: Don&#x27;t serve link: rel=next HTTP headers to Firefox for HTML pages</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>datasette #3046: Don&#x27;t serve link: rel=next HTTP headers to Firefox for HTML pages
+I was looking at the Firefox network panel today when I noticed that requests to a Datasette table page were triggering an HTTP prefetch to the next page of rows in that table.
+This was happening because Datasette pages serve an HTTP link header like this:
+link: &lt;...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发现 Firefox 会根据 Datasette HTML 响应中的 rel=next 链接头预取表格下一页，增加不必要的网络请求和服务器渲染，因而提出对 Firefox 的 HTML 页面停发该响应头。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/7/link-rel-next/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">40 条 · 3 个来源</div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=FZObiJh7Oj0" target="_blank" rel="noopener">Tech Jarves — Claude Code on a $100 Used Phone… I Didn’t Expect This💀（24,737 次播放）</a>
+        <div class="item-summary">视频展示在一部约 100 美元的二手手机上使用 Claude Code 的体验。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=FZObiJh7Oj0</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=isihMWsgOik" target="_blank" rel="noopener">Maitis — Claude Code Is Dead? China Is Giving AI Away for FREE (Qwen + OpenCode)（25,272 次播放）</a>
+        <div class="item-summary">视频讨论将 Qwen 与 OpenCode 组合使用的成本和体验。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=isihMWsgOik</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=fqG6P7CSZDw" target="_blank" rel="noopener">Jaso — I tested Claude Opus’s $194 mathematically impossible to 3 star base..（70,656 次播放）</a>
+        <div class="item-summary">视频实测 Claude Opus 设计的游戏基地，检验它是否如所称那样无法被三星攻破。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=fqG6P7CSZDw</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=LAX9RAlzSIA" target="_blank" rel="noopener">Benjamín Cordero — Anthropic Just Launched Claude 2.1 (Master It in 17 Minutes)（44,844 次播放）</a>
+        <div class="item-summary">视频讲解作者所称的 Claude 2.1 更新与使用方法。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=LAX9RAlzSIA</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ctG8_EAeaXY" target="_blank" rel="noopener">Stefan 3D AI — Best AI Models Creating Fortnite from Scratch in Unity（37,616 次播放）</a>
+        <div class="item-summary">视频比较 AI 模型在 Unity 中从头复现《堡垒之夜》玩法的表现。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ctG8_EAeaXY</div>
+      </div>
+    </div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410249" target="_blank" rel="noopener">ISponsorBlockTV: SponsorBlock client for all YouTube TV clients</a>
+        <div class="item-summary">ISponsorBlockTV 将 SponsorBlock 的赞助片段跳过功能带到 YouTube TV 客户端。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410249</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410337" target="_blank" rel="noopener">JobRequester: I built this free Chrome extension that tracks job applications</a>
+        <div class="item-summary">JobRequester 是作者开发的免费 Chrome 扩展，用来跟踪求职申请。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410337</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410293" target="_blank" rel="noopener">Le Salon Client IRCv3 natif en Rust – interface GPU avec GPUI</a>
+        <div class="item-summary">Le Salon 是用 Rust 编写的原生 IRCv3 客户端，采用 GPUI 提供 GPU 加速界面。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410293</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410473" target="_blank" rel="noopener">PolyNotes App</a>
+        <div class="item-summary">分享 PolyNotes 应用。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410473</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410454" target="_blank" rel="noopener">Show HN: Gimbap – A themeable replacement for the macOS Dock</a>
+        <div class="item-summary">Gimbap 是支持自定义主题的 macOS Dock 替代工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410454</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410416" target="_blank" rel="noopener">Sony World Photography Awards Honors James Barnor, Ghana&#x27;s First Photojournalist</a>
+        <div class="item-summary">索尼世界摄影奖表彰被称为加纳首位摄影记者的 James Barnor。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410416</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410352" target="_blank" rel="noopener">Bringing Your Muse to Life</a>
+        <div class="item-summary">分享题为《Bringing Your Muse to Life》的内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410352</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410242" target="_blank" rel="noopener">Show HN: Reges Town – a 3D city run by AI citizens, in the browser</a>
+        <div class="item-summary">Reges Town 是一个在浏览器运行、由 AI 居民活动驱动的三维城市。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410242</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410429" target="_blank" rel="noopener">Show HN: Reges Code – a free AI code editor that runs on local models</a>
+        <div class="item-summary">Reges Code 是支持本地模型的免费 AI 代码编辑器。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410429</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410369" target="_blank" rel="noopener">Is &quot;GPU-hour per user&quot; a sane way to price LLM inference?</a>
+        <div class="item-summary">讨论以每位用户消耗的 GPU 小时为基础给大模型推理定价是否合理。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410369</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410517" target="_blank" rel="noopener">Sequoia shutting down its Scouts program marks the end of an era</a>
+        <div class="item-summary">分享红杉资本结束 Scouts 项目的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410517</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410259" target="_blank" rel="noopener">MiniToolDesk Tools</a>
+        <div class="item-summary">介绍 MiniToolDesk 工具集。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410259</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410329" target="_blank" rel="noopener">Simon Winchester, Author of &#x27;The Professor and the Madman,&#x27; Has Died</a>
+        <div class="item-summary">分享《教授与疯子》作者 Simon Winchester 去世的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410329</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410279" target="_blank" rel="noopener">I Use Development-Driven Specs, Not Spec-Driven Development</a>
+        <div class="item-summary">作者主张让开发实践推动规格演进，并介绍自己的做法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410279</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410480" target="_blank" rel="noopener">My Two Front Teeth</a>
+        <div class="item-summary">分享题为《My Two Front Teeth》的内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410480</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410427" target="_blank" rel="noopener">The SideWinder Game Pad, Microsoft&#x27;s first game controller</a>
+        <div class="item-summary">回顾微软的首款游戏控制器 SideWinder Game Pad。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410427</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410282" target="_blank" rel="noopener">Breaking the Decade-Long Trump Fever</a>
+        <div class="item-summary">分享一篇回顾特朗普在过去十年如何影响美国政治的评论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410282</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410387" target="_blank" rel="noopener">Our software engineering interviews are changing (a little)</a>
+        <div class="item-summary">分享一则软件工程面试流程调整说明。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410387</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410356" target="_blank" rel="noopener">New type of architecture for agentic memory</a>
+        <div class="item-summary">讨论一种面向智能体记忆的新架构。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410356</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410321" target="_blank" rel="noopener">Four shark killings in 1916 led to a tsunami of hysteria and Spielberg&#x27;s &quot;Jaws&quot;</a>
+        <div class="item-summary">文章回顾 1916 年四起致命鲨鱼袭击引发的恐慌，并讨论它们与电影《大白鲨》的关系。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410321</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410359" target="_blank" rel="noopener">Kirlian Photography: Building Your Own Equipment</a>
+        <div class="item-summary">介绍自制克里安摄影设备的方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410359</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410488" target="_blank" rel="noopener">Next bcachefs release will be 100% Rust</a>
+        <div class="item-summary">分享 bcachefs 下一版本计划完全采用 Rust 的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410488</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410236" target="_blank" rel="noopener">Ocarina of Time (Switch 2) PC Recompilation</a>
+        <div class="item-summary">分享将 Switch 2 版《时之笛》重新编译到 PC 的项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410236</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410270" target="_blank" rel="noopener">Elephant-Goldfish Model (Agent Skill)</a>
+        <div class="item-summary">分享名为 Elephant-Goldfish Model 的智能体技能。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410270</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410388" target="_blank" rel="noopener">Are Passkeys a Trap?</a>
+        <div class="item-summary">讨论采用通行密钥可能带来的限制和风险。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410388</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410460" target="_blank" rel="noopener">The Loss of Positive Friction</a>
+        <div class="item-summary">文章讨论一些有益的使用门槛为何正在消失。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410460</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410253" target="_blank" rel="noopener">Show HN: Maple – Sub-2-BPW Moe Pruning to Run Gemma 4 26B at 45 TPS on a 6GB GPU</a>
+        <div class="item-summary">Maple 项目声称通过低于每权重 2 比特的 MoE 剪枝，让 Gemma 4 26B 在 6 GB 显卡上达到每秒约 45 个令牌。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410253</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410522" target="_blank" rel="noopener">Indirect Change</a>
+        <div class="item-summary">分享题为《Indirect Change》的内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410522</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410342" target="_blank" rel="noopener">Gossip penalty hits men harder than woman at work</a>
+        <div class="item-summary">分享一项关于职场传八卦对男女产生不同负面影响的研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410342</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50410477" target="_blank" rel="noopener">Show HN: We Build Shareable Context Layer for Agent Teams</a>
+        <div class="item-summary">作者展示一个供多个智能体共享上下文的工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50410477</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/meta/astryx" target="_blank" rel="noopener">meta /astryx — An open source design system that&#x27;s fully customizable and agent ready</a>
+        <div class="item-summary">Astryx 是 Meta 开源的可定制设计系统，支持 AI 智能体参与界面开发。</div>
+        <div class="item-url">https://github.com/meta/astryx</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/sherlock-project/sherlock" target="_blank" rel="noopener">sherlock-project /sherlock — Hunt down social media accounts by username across social networks</a>
+        <div class="item-summary">Sherlock 可按用户名在多个社交平台查找账户。</div>
+        <div class="item-url">https://github.com/sherlock-project/sherlock</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/ranxianglei/billion-context" target="_blank" rel="noopener">ranxianglei /billion-context — A context-compression plugin for month-long single sessions (billions of tokens) ,small context windows (a 100K context is enough) and token savings (5x fewer tokens) .上下文压缩插件，月级长会话会话， 兼顾小窗口(100k上下文足矣)省token(省5倍token) . billion-context is all you need</a>
+        <div class="item-summary">billion-context 压缩长会话上下文，旨在让较小的上下文窗口容纳更长的交互历史并减少令牌用量。</div>
+        <div class="item-url">https://github.com/ranxianglei/billion-context</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/dsx-ai-factory/nvke" target="_blank" rel="noopener">dsx-ai-factory /nvke — NVIDIA Kubernetes Engine (NVKE). A management plane for GPU Kubernetes on bare metal.</a>
+        <div class="item-summary">NVKE 为裸金属环境中的 GPU Kubernetes 集群提供管理平面。</div>
+        <div class="item-url">https://github.com/dsx-ai-factory/nvke</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/mbillow/localthings" target="_blank" rel="noopener">mbillow /localthings — Control your Samsung appliances from Home Assistant over your home network, with no cloud account.</a>
+        <div class="item-summary">localthings 让 Home Assistant 在局域网中控制三星家电，无需云端账户。</div>
+        <div class="item-url">https://github.com/mbillow/localthings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

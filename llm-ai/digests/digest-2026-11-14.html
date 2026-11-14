@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-11-14</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-11-14</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-11-14</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 43 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">43</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">39</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-chatgpt-wallet" target="_blank" rel="noopener">Introducing ChatGPT Wallet</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Introducing ChatGPT Wallet, a secure way for agents in ChatGPT Work, Codex, and dots to complete purchases with user approval and existing card protections.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>ChatGPT Wallet 支持 ChatGPT Work、Codex 和 dots 中的智能体在用户批准后完成购买，并保留现有银行卡保障。</div>
+        <div class="item-url">https://openai.com/index/introducing-chatgpt-wallet</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/business/customer-stories/shield" target="_blank" rel="noopener">Shield helps technicians hand off legacy portal work with OpenAI</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Shield uses OpenAI to help IT technicians hand off work in legacy portals. Its Forge agents navigate systems so technicians can focus on issues needing their judgment.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Shield 的 Forge 智能体通过 OpenAI 技术操作旧式门户，帮助 IT 技术人员将精力集中到需要人工判断的问题。</div>
+        <div class="item-url">https://openai.com/business/customer-stories/shield</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/13/datasette-cluster-map/" target="_blank" rel="noopener">datasette-cluster-map 0.19</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-cluster-map 0.19
+        One of the oldest Datasette plugins, and still one of my favorites. It now works with Datasette 1.0a42, and depends on the new datasette-leaflet to ensure OpenStreetMap tiles are requested with a referrer header.
+Here&#x27;s a map of power plants owned by California&#x27;s PG&amp;amp;E, also demonstrating Datasette&#x27;s recently redesigned facets:
+
+    
+    
+        Tags: datasette, geospatial, openstreetmap</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-cluster-map 0.19 兼容 Datasette 1.0a42，并依赖更新后的 Leaflet 插件确保地图瓦片请求携带来源信息。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/13/datasette-cluster-map/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/13/datasette-leaflet/" target="_blank" rel="noopener">datasette-leaflet 0.3</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-leaflet 0.3
+        OpenStreetMap have a very reasonable policy that hits to their hosted tile server should send a referrer header. Datasette table pages used the Referrer-Policy: no-referrer HTTP header, causing plugins that loaded tiles from OpenStreetMap to violate that policy.
+datasette-leaflet is the plugin that loads a bundled Leaflet so other Datasette plugins can depend on it. It now sets the referrer policy on the tile requests themselves to strict-origin-when-cross-origin, passing the host but not the full path to the page.
+    
+    
+        Tags: leaflet, datasette, openstreetmap</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-leaflet 0.3 为 OpenStreetMap 瓦片请求设置来源策略，发送站点来源而不暴露完整页面路径。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/13/datasette-leaflet/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">39 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493661" target="_blank" rel="noopener">Israel&#x27;s VCs see opportunity for challengers in Nvidia&#x27;s turmoil</a>
+        <div class="item-summary">报道以色列风险投资者认为英伟达动荡可能为竞争者带来机会。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493661</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493679" target="_blank" rel="noopener">Neuron turns model into conspiracy theorist</a>
+        <div class="item-summary">分享关于特定神经元如何诱发模型输出阴谋论内容的研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493679</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493291" target="_blank" rel="noopener">Before His Ouster, Jensen Huang Belittled the Executive Replacing Him</a>
+        <div class="item-summary">分享涉及黄仁勋与接任高管关系的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493291</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493622" target="_blank" rel="noopener">Faster Scientific Simulations with New FP64 Algorithms in Nvidia cuBLAS</a>
+        <div class="item-summary">介绍 NVIDIA cuBLAS 中用于加速科学模拟的新 FP64 算法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493622</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493416" target="_blank" rel="noopener">Martin van den Brink: His contributions in ASML [video]</a>
+        <div class="item-summary">视频回顾 Martin van den Brink 对 ASML 的贡献。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493416</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493418" target="_blank" rel="noopener">Show HN: Geocode the planet(630M addresses), indexed in 5h on a 9 GB RAM budget</a>
+        <div class="item-summary">作者展示全球约 6.3 亿地址的地理编码索引，称可在 9 GB 内存预算下于五小时完成构建。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493418</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493765" target="_blank" rel="noopener">Elon should hire Jensen to run Terafab</a>
+        <div class="item-summary">作者提出由黄仁勋负责 Terafab 的建议。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493765</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493733" target="_blank" rel="noopener">Pax Silica</a>
+        <div class="item-summary">分享 Pax Silica 相关内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493733</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493478" target="_blank" rel="noopener">Obscura is so obscure it is practically unique</a>
+        <div class="item-summary">分享对 Obscura 特点与独特性的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493478</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493464" target="_blank" rel="noopener">Show HN: Browserr – An MCP-first browser for AI agents (one Rust binary)</a>
+        <div class="item-summary">Browserr 是面向 AI 智能体、以 MCP 为核心的浏览器，以单个 Rust 二进制文件提供。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493464</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493638" target="_blank" rel="noopener">Agent Distraction</a>
+        <div class="item-summary">文章讨论智能体偏离当前任务的问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493638</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493498" target="_blank" rel="noopener">Ask HN: OpenAI Astra post-launch slump?</a>
+        <div class="item-summary">HN 用户讨论 OpenAI Astra 发布后是否出现表现下降。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493498</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493725" target="_blank" rel="noopener">Dusk OS Sales Pitch</a>
+        <div class="item-summary">分享 Dusk OS 的项目介绍。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493725</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493251" target="_blank" rel="noopener">Nvidia Allegedly Engineered Scarcity by Funding AI Startups to Buy Its GPUs</a>
+        <div class="item-summary">分享一则指控英伟达通过资助 AI 初创公司购买 GPU 来制造稀缺的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493251</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493668" target="_blank" rel="noopener">MathHelm: A Place to discuss AI-generated papers</a>
+        <div class="item-summary">MathHelm 提供讨论 AI 生成论文的平台。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493668</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493695" target="_blank" rel="noopener">Ask HN: What use are the non-major cryptocurrencies?</a>
+        <div class="item-summary">HN 用户讨论非主流加密货币的用途。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493695</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493538" target="_blank" rel="noopener">Show HN: Back endskills – agent skills for safer auth, data and migration code</a>
+        <div class="item-summary">作者展示面向后端开发的智能体技能，用于改善认证、数据及迁移代码的安全性。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493538</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493301" target="_blank" rel="noopener">Pax Silica</a>
+        <div class="item-summary">分享另一条 Pax Silica 相关讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493301</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493740" target="_blank" rel="noopener">Searching for exotic scalars at fusion reactors (2025)</a>
+        <div class="item-summary">分享 2025 年关于在聚变反应堆中寻找奇异标量粒子的研究。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493740</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493656" target="_blank" rel="noopener">An open letter to the Nvidia Board of Directors</a>
+        <div class="item-summary">分享致英伟达董事会的公开信。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493656</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493731" target="_blank" rel="noopener">Run Cloudflare Workers Anywhere</a>
+        <div class="item-summary">介绍在不同环境中运行 Cloudflare Workers 的方案。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493731</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493395" target="_blank" rel="noopener">App Basics for Firefox OS (2013)</a>
+        <div class="item-summary">分享 2013 年的 Firefox OS 应用开发基础资料。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493395</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493764" target="_blank" rel="noopener">What Are Metal Organic Frameworks (MOFs)?</a>
+        <div class="item-summary">介绍金属有机框架材料及其基本概念。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493764</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493275" target="_blank" rel="noopener">Microsoft 365 Crawls Back to Life After a 24-Hour Outage</a>
+        <div class="item-summary">分享 Microsoft 365 在约 24 小时服务中断后恢复的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493275</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493444" target="_blank" rel="noopener">MathHelm: A Place to discuss AI-generated papers</a>
+        <div class="item-summary">分享另一条关于 AI 论文讨论平台 MathHelm 的帖子。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493444</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493774" target="_blank" rel="noopener">Keeping video layers in place across aspect ratios</a>
+        <div class="item-summary">介绍在切换画面宽高比时保持视频图层位置的方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493774</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493789" target="_blank" rel="noopener">Home Sales in October Plummet to 16-Year Low</a>
+        <div class="item-summary">分享十月房屋销售降至十六年来低位的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493789</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493534" target="_blank" rel="noopener">Cancer society issues updated prostate cancer screening guidelines</a>
+        <div class="item-summary">分享癌症协会更新前列腺癌筛查指南的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493534</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493383" target="_blank" rel="noopener">Quahuru: An original dice strategy board game</a>
+        <div class="item-summary">Quahuru 是一款原创骰子策略桌游。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493383</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50493352" target="_blank" rel="noopener">A Financial Timeline of Jensen&#x27;s Ousting</a>
+        <div class="item-summary">分享从财务角度梳理黄仁勋离任事件的时间线。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50493352</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener">louislam /uptime-kuma — A fancy self-hosted monitoring tool</a>
+        <div class="item-summary">Uptime Kuma 是可自行部署的服务状态监控工具。</div>
+        <div class="item-url">https://github.com/louislam/uptime-kuma</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/backnotprop/plannotator" target="_blank" rel="noopener">backnotprop /plannotator — The workspace to stay in the loop and on top of agents - shape, decide, plan, annotate, review code, share with team, and send all feedback to agents with one click.</a>
+        <div class="item-summary">Plannotator 提供智能体协作工作区，支持规划、批注、代码审查及将反馈发送给智能体。</div>
+        <div class="item-url">https://github.com/backnotprop/plannotator</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/Likely7/Veyra-NRVideo" target="_blank" rel="noopener">Likely7 /Veyra-NRVideo — Bring PS5 GTA6 to 120FPS with DLSS 5. An advanced Windows video player and capture enhancement tool featuring real-time preview for videos, images, and capture card sources. Combine AI-powered Super Resolution, DLSS5 image enhancement, and Frame Generation to deliver a next-generation visual experience.</a>
+        <div class="item-summary">Veyra-NRVideo 是 Windows 视频播放与采集增强工具，结合超分辨率、图像增强和插帧改善实时预览。</div>
+        <div class="item-url">https://github.com/Likely7/Veyra-NRVideo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/tradermonty/claude-trading-skills" target="_blank" rel="noopener">tradermonty /claude-trading-skills — Claude Code skills for equity investors and traders — market analysis, technical charting, economic calendars, screeners, and trading strategy development.</a>
+        <div class="item-summary">claude-trading-skills 提供面向股票投资与交易的 Claude Code 技能，涵盖市场分析、图表与策略开发。</div>
+        <div class="item-url">https://github.com/tradermonty/claude-trading-skills</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=1KtXDpSYedo" target="_blank" rel="noopener">WorldofAI — Anthropic SLOWING DOWN!?, Gemini 4 HYDROGEN IS INSANE, OpenAI&#x27;s NEW Model, &amp; NVIDIA FIRES Jensen!（63,371 次播放）</a>
+        <div class="item-summary">视频汇总 Anthropic、Gemini 4 Hydrogen、OpenAI 模型及英伟达高管变动相关动态。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=1KtXDpSYedo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=WqDVl2t01Hk" target="_blank" rel="noopener">DenTrave — A Model More Powerful Than GPT-6 Astra Compressed Into Gemini 4 Hydrogen: Why Google&#x27;s Report Is ...（94,092 次播放）</a>
+        <div class="item-summary">视频解读 Gemini 4 Hydrogen 的能力及 Google 报告，并与 GPT-6 Astra 比较。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=WqDVl2t01Hk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=HCJvnek8zZM" target="_blank" rel="noopener">Krish Naik — My ASUS AI Agent Computer: Local LLMs, Coding &amp; Agent Demos（19,378 次播放）</a>
+        <div class="item-summary">视频展示 ASUS 电脑上的本地语言模型、编程及智能体运行示例。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=HCJvnek8zZM</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=_BjMCeHFle0" target="_blank" rel="noopener">Stefan 3D AI — I Tested Gemini 4 Carbon vs Claude Fable 5.2 to Build a Game（46,035 次播放）</a>
+        <div class="item-summary">作者用游戏开发任务比较 Gemini 4 Carbon 与 Claude Fable 5.2。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=_BjMCeHFle0</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=rloMMrPNDPU" target="_blank" rel="noopener">Internet of Bugs — The New AI Security Nightmare: Undetectable LLM Backdoors（35,265 次播放）</a>
+        <div class="item-summary">视频讨论难以检测的大语言模型后门及其安全影响。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=rloMMrPNDPU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<p>抓取说明：arXiv 关键词查询返回 HTTP 503，Geoffrey Hinton 与 Yann LeCun 作者查询返回 HTTP 429；本期论文来源抓取不完整，不能据此判断无新增论文。Simon Willison RSS 首次连接失败后已补抓成功。</p>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-11-16</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-11-16</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-11-16</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 47 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">47</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">2</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">39</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">6</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">2 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">2 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/step-toward-defining-the-standard-model" target="_blank" rel="noopener">A step toward defining the Standard Model on a lattice</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Explore a candidate nonperturbative lattice definition of the Standard Model and how GPT-6 Astra helped turn the idea into a detailed proof.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 介绍标准模型的一种候选非微扰格点定义，以及 GPT-6 Astra 协助将构想发展为详细证明的过程。</div>
+        <div class="item-url">https://openai.com/index/step-toward-defining-the-standard-model</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/our-new-blog-for-science" target="_blank" rel="noopener">Our new blog for science</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The OpenAI science blog shares new findings, practical methods, and firsthand accounts from researchers using AI to advance scientific discovery.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 推出科学博客，分享新发现、实用方法及研究人员使用 AI 推进科学探索的经历。</div>
+        <div class="item-url">https://openai.com/index/our-new-blog-for-science</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">6 条 · 2 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/15/datasette-maplibre/" target="_blank" rel="noopener">datasette-maplibre 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-maplibre 0.1a0
+        The first new Datasette geospatial plugin in quite a while! This one combines the excellent MapLibre GL library with OpenFreeMap, the free vector map server operated by Zsolt Ero (you should sponsor Zsolt on GitHub.)
+I built most of this with a single prompt to Claude Fable 5.2:
+
+Look at datasette-cluste...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-maplibre 首个测试版将 MapLibre GL 与 OpenFreeMap 结合，为 Datasette 提供矢量地图功能。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/15/datasette-maplibre/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/15/datasette/" target="_blank" rel="noopener">datasette 1.0a43</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette 1.0a43
+        I&#x27;ve been leaning hard into Claude Fable 5.2 to help knock things off the 1.0 milestone, which is now 53% complete.
+The biggest 1.0 item in this release is streaming support for output renderers - the built-in TSV and CSV export mechanisms now use this as well, and plugins can register themselves as capable of s...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Datasette 1.0a43 为输出渲染器增加流式支持，内置 TSV、CSV 导出及插件均可使用。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/15/datasette/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/15/datasette-2/" target="_blank" rel="noopener">datasette 0.65.6</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette 0.65.6
+        I backported a minor security fix from 1.0a43:
+
+Fixed a security issue where a database registered using add_database(db, name=..., route=...) with a route that differs from its name could be downloaded from /&lt;route&gt;.db by actors who were denied access to it. [...]
+
+    
+    
+        Tags: security, datasette</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Datasette 0.65.6 回移安全修复，防止数据库名称与路由不一致时绕过访问限制下载数据库。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/15/datasette-2/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/15/datasette-apps/" target="_blank" rel="noopener">datasette-apps 0.4a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-apps 0.4a0
+        Datasette Apps are sandboxed HTML and JavaScript applications that live inside Datasette - think Claude Artifacts, but these ones can run SQL queries against your data.
+0.4a0 adds support for linking: you can link to an app with #fragments in the URL and the app can see and use those, plus supported URL sche...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-apps 0.4a0 改善应用链接能力，支持通过 URL 片段向 Datasette 内的沙箱应用传递信息。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/15/datasette-apps/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/15/datasette-agent/" target="_blank" rel="noopener">datasette-agent 0.6a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-agent 0.6a0
+        Accumulated small fixes for Datasette Agent, my agent plugin for Datasette that lets you ask questions about your data. Most notably, it now adds an agent prompt directly to the Datasette homepage, with support for hash-mentions of tables and queries:
+
+    
+    
+        Tags: datasette-agent, llm, datasette...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>datasette-agent 0.6a0 将智能体提问入口加入 Datasette 首页，并支持用井号引用表与查询。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/15/datasette-agent/</div>
+      </div>
+    </div>
+    <div class="source-group" id="sebastian-raschka">
+      <div class="source-header">
+        <div class="source-name">Sebastian Raschka</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://magazine.sebastianraschka.com/p/understanding-positional-embeddings" target="_blank" rel="noopener">Understanding Positional Embeddings in Modern LLMs</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>The Methods Behind How LLMs Represent Token Positions</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Sebastian Raschka 讲解现代大语言模型表示令牌位置的位置嵌入方法。</div>
+        <div class="item-url">https://magazine.sebastianraschka.com/p/understanding-positional-embeddings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">39 条 · 3 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512779" target="_blank" rel="noopener">Nimony: A New Compiler for Nim</a>
+        <div class="item-summary">介绍 Nim 的新编译器 Nimony。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512779</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512685" target="_blank" rel="noopener">Show HN: Gavel, an open source local code review tool</a>
+        <div class="item-summary">Gavel 是一款本地运行的开源代码审查工具。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512685</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512607" target="_blank" rel="noopener">Vulcan rocket fails during launch, dealing major blow to SpaceX competitors</a>
+        <div class="item-summary">分享 Vulcan 火箭发射失败及其对 SpaceX 竞争者影响的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512607</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512682" target="_blank" rel="noopener">&#x27;It&#x27;s like the Wild West&#x27;: how AI has rocked the literary world</a>
+        <div class="item-summary">文章讨论 AI 对文学创作与出版行业带来的冲击。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512682</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512545" target="_blank" rel="noopener">10-tonne-class electric aircraft completed first manned flight</a>
+        <div class="item-summary">分享十吨级电动飞机完成首次载人飞行的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512545</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512741" target="_blank" rel="noopener">Keytrace – One identity, many proofs</a>
+        <div class="item-summary">介绍围绕单一身份及多种证明方式设计的 Keytrace。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512741</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512794" target="_blank" rel="noopener">DroidPath – Stream Android UI Trees at 60Hz over TCP (Bypassing ADB)</a>
+        <div class="item-summary">DroidPath 支持绕过 ADB，以 TCP 持续传输 Android 界面树，项目称可达 60Hz。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512794</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512632" target="_blank" rel="noopener">Book review of the DSM-5 (2013)</a>
+        <div class="item-summary">分享一篇发表于 2013 年的 DSM-5 书评。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512632</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512448" target="_blank" rel="noopener">Dawn of the Super Agent</a>
+        <div class="item-summary">文章讨论“超级智能体”的发展。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512448</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512339" target="_blank" rel="noopener">Itzma, an embedded vector database backed by object storage</a>
+        <div class="item-summary">Itzma 是以对象存储为后端的嵌入式向量数据库。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512339</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512441" target="_blank" rel="noopener">Tor Project Issues Rapid-Response DoS-Defense Fix Amid Sustained DDoS Attack</a>
+        <div class="item-summary">报道 Tor 在持续 DDoS 攻击期间发布紧急防御修复。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512441</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512735" target="_blank" rel="noopener">Show HN: Small service for moving invoices from Cliniko to QuickBooks</a>
+        <div class="item-summary">作者展示将 Cliniko 发票转移到 QuickBooks 的小型服务。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512735</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512567" target="_blank" rel="noopener">Tracing the news coverage against Jensen</a>
+        <div class="item-summary">作者梳理涉及黄仁勋的新闻报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512567</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512742" target="_blank" rel="noopener">Bringing fast wireless connectivity to the world</a>
+        <div class="item-summary">分享面向全球提供高速无线连接的相关内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512742</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512383" target="_blank" rel="noopener">CrowdGPT – AI Owned by Everyone</a>
+        <div class="item-summary">CrowdGPT 探索由大众共同拥有的 AI。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512383</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512667" target="_blank" rel="noopener">Evolution Design a Chess Army [video]</a>
+        <div class="item-summary">视频展示用演化方法设计国际象棋军队的尝试。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512667</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512601" target="_blank" rel="noopener">Flaming Hydra&#x27;s new Kickstarter rethinks e-book ownership and digital lending</a>
+        <div class="item-summary">Flaming Hydra 的众筹项目探索电子书所有权与数字借阅的新方式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512601</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512677" target="_blank" rel="noopener">Librsvg 2.62.3: a C library that renders SVG to Cairo</a>
+        <div class="item-summary">介绍 Librsvg 2.62.3，这一库支持将 SVG 渲染到 Cairo。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512677</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512675" target="_blank" rel="noopener">Amazon MadPot: Honeypot for AI Agents</a>
+        <div class="item-summary">介绍面向 AI 智能体的 Amazon MadPot 蜜罐相关内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512675</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512554" target="_blank" rel="noopener">1st place in the OpenAI × Citadel Securities × Sequoia Castle Challenge</a>
+        <div class="item-summary">作者分享在 OpenAI、Citadel Securities 和 Sequoia 联合 Castle Challenge 中获得第一名的经历。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512554</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512429" target="_blank" rel="noopener">Making Websites in 2026</a>
+        <div class="item-summary">文章讨论 2026 年的网站开发方式。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512429</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512541" target="_blank" rel="noopener">The Fundamental Flaw in the Race to AGI</a>
+        <div class="item-summary">文章批评通向通用人工智能的竞赛中存在的根本问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512541</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512421" target="_blank" rel="noopener">Perplexity partners with Nvidia to launch Portable Computer</a>
+        <div class="item-summary">分享 Perplexity 与英伟达合作推出 Portable Computer 的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512421</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512615" target="_blank" rel="noopener">The SaaSpocalypse was more like a RenaiSaaS</a>
+        <div class="item-summary">文章认为 SaaS 行业经历的变化更接近复兴，而非彻底衰落。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512615</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512576" target="_blank" rel="noopener">The Fossils That Haunted Lovecraft</a>
+        <div class="item-summary">文章探讨对洛夫克拉夫特产生影响的化石。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512576</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512733" target="_blank" rel="noopener">The Legion of PCAST</a>
+        <div class="item-summary">分享题为《The Legion of PCAST》的文章。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512733</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512280" target="_blank" rel="noopener">The first ping from Tonga (1997)</a>
+        <div class="item-summary">回顾 1997 年来自汤加的首次网络 ping。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512280</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512796" target="_blank" rel="noopener">Show HN: MIB Viewer Desktop – SNMP MIB Browser with 20k MIBs</a>
+        <div class="item-summary">MIB Viewer Desktop 是桌面 SNMP MIB 浏览器，项目提供约两万份 MIB。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512796</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512296" target="_blank" rel="noopener">Skydio&#x27;s asymmetrical F10 Lightrunner solves a problem with fixed-wing drones</a>
+        <div class="item-summary">介绍 Skydio 非对称 F10 Lightrunner 如何解决固定翼无人机的某类问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512296</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50512299" target="_blank" rel="noopener">Microsoft 365 outage leads to chlorine gas poisoning of 15 hotel guests</a>
+        <div class="item-summary">分享一则将 Microsoft 365 服务中断与酒店住客氯气中毒事件联系起来的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50512299</div>
+      </div>
+    </div>
+    <div class="source-group" id="github-trending">
+      <div class="source-header">
+        <div class="source-name">GitHub Trending</div>
+        <div class="source-count">4 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/elementalsouls/Claude-BugHunter" target="_blank" rel="noopener">elementalsouls /Claude-BugHunter — A Claude Code skill bundle for bug hunting and external red-team work - 82 skills, 15 slash commands, 681 disclosed-report patterns curated across 24 core vulnerability classes, plus enterprise identity + infrastructure attack matrices.</a>
+        <div class="item-summary">Claude-BugHunter 是面向漏洞研究与外部红队工作的 Claude Code 技能集合，包含漏洞模式与攻击矩阵。</div>
+        <div class="item-url">https://github.com/elementalsouls/Claude-BugHunter</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/ggml-org/ggml" target="_blank" rel="noopener">ggml-org /ggml — Tensor library for machine learning</a>
+        <div class="item-summary">ggml 是用于机器学习的张量计算库。</div>
+        <div class="item-url">https://github.com/ggml-org/ggml</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/NVIDIA/SkillEvaluator" target="_blank" rel="noopener">NVIDIA /SkillEvaluator — Multi-tier framework for evaluating AI agent skills with quality gates, semantic overlap detection, synthetic evaluation dataset generation, and live agent evaluation that measures how skills affect agent behavior.</a>
+        <div class="item-summary">NVIDIA SkillEvaluator 通过质量检查、语义重叠检测、合成评估数据及实际智能体运行，评估技能对行为的影响。</div>
+        <div class="item-url">https://github.com/NVIDIA/SkillEvaluator</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://github.com/google-labs-code/stitch-skills" target="_blank" rel="noopener">google-labs-code /stitch-skills — A library of Agent Skills designed to work with the Stitch MCP server. Each skill follows the Agent Skills open standard, for compatibility with coding agents such as Antigravity, Gemini CLI, Claude Code, Cursor.</a>
+        <div class="item-summary">stitch-skills 提供适配 Stitch MCP 服务的开放标准智能体技能，可用于多种编码智能体。</div>
+        <div class="item-url">https://github.com/google-labs-code/stitch-skills</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ChYnZwJS498" target="_blank" rel="noopener">Tim Fairley — Claude Fable 5.2 for Construction — Should you switch from Opus?（32,075 次播放）</a>
+        <div class="item-summary">视频讨论建筑行业使用 Claude Fable 5.2 的体验，并与 Opus 比较。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ChYnZwJS498</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=iXvttGCoc1g" target="_blank" rel="noopener">WorldofAI — Gemini 4 Krypton BEATS FABLE 5.2!?, GPT-6.2 Preview, GLM-5.5 LEAKED &amp; Claude Code UPDATE! AI NEWS（112,257 次播放）</a>
+        <div class="item-summary">视频汇总 Gemini、GPT、GLM 与 Claude Code 动态及相关发布传闻。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=iXvttGCoc1g</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=Gu9lO8oqGYU" target="_blank" rel="noopener">Jacksons AI — I Made VIRAL 3D Animation Videos Using ONLY Claude AI (FREE Plugin)（48,214 次播放）</a>
+        <div class="item-summary">视频介绍借助 Claude AI 与免费插件制作三维动画的方法。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=Gu9lO8oqGYU</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=FjnFJ4lcIEw" target="_blank" rel="noopener">株の買い時を考えるチャンネル — Stocks Picked by the Rumored-to-be-Amazing Claude [Claude vs. GPT Stock Battle]（114,423 次播放）</a>
+        <div class="item-summary">视频比较 Claude 与 GPT 的选股结果。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=FjnFJ4lcIEw</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=_l6gzItCF80" target="_blank" rel="noopener">Everlast AI — Claude Fable 5.2: What It REALLY Can Do! + The Consequences of the NVIDIA Drama | AI NEWS（92,415 次播放）</a>
+        <div class="item-summary">视频评测 Claude Fable 5.2 的能力，并讨论英伟达相关争议的影响。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=_l6gzItCF80</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+<p>抓取说明：arXiv 关键词查询返回 HTTP 503，Yann LeCun 与 Ilya Sutskever 作者查询返回 HTTP 429；Geoffrey Hinton 查询成功。本期论文来源抓取不完整，不能据此判断无新增论文。</p>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

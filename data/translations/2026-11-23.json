@@ -1,0 +1,43 @@
+{
+  "manual_summaries": {
+    "https://news.ycombinator.com/item?id=50605963": "HN：询问黑五有哪些值得入手的 VPS（云服务器）优惠。",
+    "https://news.ycombinator.com/item?id=50605918": "HN：文章观点——成功的创业公司会区分面向企业（B2B）和面向消费者（B2C）两种生意。",
+    "https://news.ycombinator.com/item?id=50606072": "HN：运营 1000 个 API 的认证（auth）系统所得到的经验总结。",
+    "https://news.ycombinator.com/item?id=50605859": "HN：原生 HTML 与 CSS 渲染器项目。",
+    "https://www.youtube.com/watch?v=1APea4j471c": "Green Code 频道：用 110 万个 YouTube 视频训练一个大语言模型的实验。",
+    "https://news.ycombinator.com/item?id=50605985": "HN：2026 亚洲实力指数，称亚洲力量格局处于脆弱平衡。",
+    "https://news.ycombinator.com/item?id=50605978": "HN（Show HN）：Taskcue 工具，显示你的 Claude Code 和 Codex 会话中哪些在等你处理。",
+    "https://news.ycombinator.com/item?id=50605988": "HN：报道美国在英伟达（Nvidia）事件期间追踪 Alice Huang 与中国情报机构的联系。",
+    "https://news.ycombinator.com/item?id=50605885": "HN：基于公开税务登记数据整理的美国最大土地持有者榜单。",
+    "https://news.ycombinator.com/item?id=50606270": "HN：LiberNT，借助 AI 开发的 ReactOS 分支，目标是兼容 Windows 11。",
+    "https://news.ycombinator.com/item?id=50606062": "HN：“Hack 定律”一文。",
+    "https://news.ycombinator.com/item?id=50606073": "HN：赛博朋克主题的阅读地图。",
+    "https://news.ycombinator.com/item?id=50606210": "HN：报道称高盛（Goldman）的 SpaceX 方案有助于缓解 AI 债务难题。",
+    "https://news.ycombinator.com/item?id=50606249": "HN：讨论 AI 将取代许多工作，孩子现在该学什么。",
+    "https://news.ycombinator.com/item?id=50606171": "HN：GoVault，用 Go 写的原生 Bitwarden 客户端，带兼容 bw 的命令行。",
+    "https://news.ycombinator.com/item?id=50606100": "HN：作者表示分不清各种编程大模型之间的差别。",
+    "https://news.ycombinator.com/item?id=50605840": "HN（Show HN）：AgentDE，面向终端 AI agent 的小型原生 macOS 工作环境。",
+    "https://www.youtube.com/watch?v=bj3JTd-ezYg": "AI Search 频道：AI 新闻汇总，标题提到黎曼猜想被解、实时 AI 角色、纳维-斯托克斯方程、新 GPT 与 Gemini Neon。",
+    "https://news.ycombinator.com/item?id=50606237": "HN：Podtracker 项目（仅有名称，疑为播客追踪工具）。",
+    "https://news.ycombinator.com/item?id=50605994": "HN（视频）：讲解 FBI 被黑事件为何与有过枪支背景审查的人相关。",
+    "https://news.ycombinator.com/item?id=50606224": "HN：Anthropic 可能在 RLWE（格密码学基础难题）上发现了量子攻击方法。",
+    "https://news.ycombinator.com/item?id=50605928": "HN（Show HN）：Lotlark，每日瓦片拼图游戏，所有人面对相同选项。",
+    "https://news.ycombinator.com/item?id=50605864": "HN：超算管理员讲述为什么热爱这份工作。",
+    "https://news.ycombinator.com/item?id=50605964": "HN：《素数的音乐》执行摘要。",
+    "https://news.ycombinator.com/item?id=50606192": "HN：用 Internet Archive 被遗忘的视频搭建的免费替代电视网络。",
+    "https://news.ycombinator.com/item?id=50606209": "HN（Show HN）：用 Fable 做的开源 80 年代风格 Skyrim 浏览器游戏。",
+    "https://news.ycombinator.com/item?id=50606059": "HN：帖子标题声称黎曼猜想已被证明并给出完整证明（属未经验证的声称）。",
+    "https://news.ycombinator.com/item?id=50606146": "HN（Show HN）：Mangap，在终端里用真实图像看漫画。",
+    "https://www.youtube.com/watch?v=ZPDxEPWvpmk": "Universe of AI 频道：讨论 Gemini 5 已现身，称谷歌进展快而 OpenAI 吃力。",
+    "https://news.ycombinator.com/item?id=50606261": "HN：美国农业部（USDA）确认贷款软件遭网络威胁，系统大范围中断。",
+    "https://www.youtube.com/watch?v=v6iW8YGtaz4": "simon42 频道：演示让 Claude Code 开发一个 Home Assistant 集成。",
+    "https://news.ycombinator.com/item?id=50605987": "HN：分析 4.7 万家公司披露文件，揭示 AI 技术栈的构成。",
+    "https://news.ycombinator.com/item?id=50606176": "HN（Show HN）：BreakingChips，切削加工参考站，每个数字都附出处。",
+    "https://news.ycombinator.com/item?id=50606135": "HN：关于困惑度（perplexity）与预训练语料配比的讨论。",
+    "https://www.youtube.com/watch?v=OMfU5iq8Eik": "Jay E | RoboNuggets 频道：15 分钟讲解 Anthropic 新发布的 7 个 Claude 功能。"
+  },
+  "translations": {
+    "https://openai.com/index/perplexity-and-intelligence": "OpenAI：介绍困惑度（perplexity）如何衡量 AI 模型进步，以及它如何帮助开发者建立评估新能力的统一方法。",
+    "https://simonwillison.net/2026/Nov/22/select-styling/": "Simon Willison：对 HTML select 下拉框在各浏览器外观不一致感到不满，让 Claude Fable 5.2 生成展示所有样式写法的页面，并给出他最喜欢的 CSS。"
+  }
+}

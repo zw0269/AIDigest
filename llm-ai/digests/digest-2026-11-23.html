@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-11-23</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-11-23</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-11-23</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 37 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">37</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">1</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">35</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/perplexity-and-intelligence" target="_blank" rel="noopener">Perplexity and Intelligence</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>How perplexity measures progress in AI models, and why it could help developers establish a shared approach to evaluating emerging capabilities.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI：介绍困惑度（perplexity）如何衡量 AI 模型进步，以及它如何帮助开发者建立评估新能力的统一方法。</div>
+        <div class="item-url">https://openai.com/index/perplexity-and-intelligence</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">1 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/22/select-styling/" target="_blank" rel="noopener">Select Styling Specimens</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Tool: Select Styling Specimens
+        I got frustrated at how HTML &lt;select&gt; boxes default to looking different in different browsers, and are (I think) quite ugly in Chrome:
+
+So I had Claude Fable 5.2 build me this page showing all of the ways they can be styled:
+
+Build an HTML page that shows all of the ways a select box can be styled, I plan ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon Willison：对 HTML select 下拉框在各浏览器外观不一致感到不满，让 Claude Fable 5.2 生成展示所有样式写法的页面，并给出他最喜欢的 CSS。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/22/select-styling/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">35 条 · 2 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605963" target="_blank" rel="noopener">Ask HN: Any VPS deals worth grabbing this Black Friday?</a>
+        <div class="item-summary">HN：询问黑五有哪些值得入手的 VPS（云服务器）优惠。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605963</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605918" target="_blank" rel="noopener">Successful startups differentiate between businesses and consumers</a>
+        <div class="item-summary">HN：文章观点——成功的创业公司会区分面向企业（B2B）和面向消费者（B2C）两种生意。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605918</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606072" target="_blank" rel="noopener">What we learned operating auth for 1k APIs</a>
+        <div class="item-summary">HN：运营 1000 个 API 的认证（auth）系统所得到的经验总结。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606072</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605859" target="_blank" rel="noopener">Native HTML and CSS Renderer</a>
+        <div class="item-summary">HN：原生 HTML 与 CSS 渲染器项目。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605859</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605985" target="_blank" rel="noopener">2026 Asia Power Index: A precarious balance</a>
+        <div class="item-summary">HN：2026 亚洲实力指数，称亚洲力量格局处于脆弱平衡。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605985</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605978" target="_blank" rel="noopener">Show HN: Taskcue – see which of your Claude Code and Codex sessions need you</a>
+        <div class="item-summary">HN（Show HN）：Taskcue 工具，显示你的 Claude Code 和 Codex 会话中哪些在等你处理。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605978</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605988" target="_blank" rel="noopener">U.S. Tracked Alice Huang&#x27;s Contacts with China Spy Agency During Nvidia Affair</a>
+        <div class="item-summary">HN：报道美国在英伟达（Nvidia）事件期间追踪 Alice Huang 与中国情报机构的联系。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605988</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605885" target="_blank" rel="noopener">Who Owns America – Largest US landholders from public tax rolls</a>
+        <div class="item-summary">HN：基于公开税务登记数据整理的美国最大土地持有者榜单。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605885</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606270" target="_blank" rel="noopener">LiberNT: An AI-Fueled Fork of ReactOS Focused on Windows 11 Compatibility</a>
+        <div class="item-summary">HN：LiberNT，借助 AI 开发的 ReactOS 分支，目标是兼容 Windows 11。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606270</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606062" target="_blank" rel="noopener">Hack&#x27;s Law</a>
+        <div class="item-summary">HN：“Hack 定律”一文。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606062</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606073" target="_blank" rel="noopener">Cyberpunk Reading Map</a>
+        <div class="item-summary">HN：赛博朋克主题的阅读地图。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606073</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606210" target="_blank" rel="noopener">Goldman&#x27;s SpaceX pitch helps solve AI debt puzzle</a>
+        <div class="item-summary">HN：报道称高盛（Goldman）的 SpaceX 方案有助于缓解 AI 债务难题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606210</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606249" target="_blank" rel="noopener">AI will eliminate many jobs. What should your children study now?</a>
+        <div class="item-summary">HN：讨论 AI 将取代许多工作，孩子现在该学什么。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606249</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606171" target="_blank" rel="noopener">GoVault – A native Bitwarden client in Go, with a bw-compatible CLI</a>
+        <div class="item-summary">HN：GoVault，用 Go 写的原生 Bitwarden 客户端，带兼容 bw 的命令行。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606171</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606100" target="_blank" rel="noopener">I can&#x27;t tell the difference between all these coding models</a>
+        <div class="item-summary">HN：作者表示分不清各种编程大模型之间的差别。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606100</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605840" target="_blank" rel="noopener">Show HN: AgentDE – A small, native macOS home for your terminal agents</a>
+        <div class="item-summary">HN（Show HN）：AgentDE，面向终端 AI agent 的小型原生 macOS 工作环境。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605840</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606237" target="_blank" rel="noopener">Podtracker</a>
+        <div class="item-summary">HN：Podtracker 项目（仅有名称，疑为播客追踪工具）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606237</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605994" target="_blank" rel="noopener">You Had a Gun Background Check? Here&#x27;s Why the FBI Hack Matters [video]</a>
+        <div class="item-summary">HN（视频）：讲解 FBI 被黑事件为何与有过枪支背景审查的人相关。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605994</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606224" target="_blank" rel="noopener">Possible quantum attack find by Anthropic on RLWE problem</a>
+        <div class="item-summary">HN：Anthropic 可能在 RLWE（格密码学基础难题）上发现了量子攻击方法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606224</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605928" target="_blank" rel="noopener">Show HN: Lotlark, a daily tile puzzle where everyone gets the same choices</a>
+        <div class="item-summary">HN（Show HN）：Lotlark，每日瓦片拼图游戏，所有人面对相同选项。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605928</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605864" target="_blank" rel="noopener">Supercomputer admin on why he loves the job</a>
+        <div class="item-summary">HN：超算管理员讲述为什么热爱这份工作。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605864</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605964" target="_blank" rel="noopener">The Music of the Primes: Executive Summary</a>
+        <div class="item-summary">HN：《素数的音乐》执行摘要。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605964</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606192" target="_blank" rel="noopener">Free alternative TV network built from the Internet Archive&#x27;s forgotten videos</a>
+        <div class="item-summary">HN：用 Internet Archive 被遗忘的视频搭建的免费替代电视网络。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606192</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606209" target="_blank" rel="noopener">Show HN: I used Fable to make an open source 80s-style Skyrim browser game</a>
+        <div class="item-summary">HN（Show HN）：用 Fable 做的开源 80 年代风格 Skyrim 浏览器游戏。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606209</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606059" target="_blank" rel="noopener">The Riemann Hypothesis Is Proved. Here Is the Whole Proof</a>
+        <div class="item-summary">HN：帖子标题声称黎曼猜想已被证明并给出完整证明（属未经验证的声称）。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606059</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606146" target="_blank" rel="noopener">Show HN: Mangap, read manga in your terminal with real images</a>
+        <div class="item-summary">HN（Show HN）：Mangap，在终端里用真实图像看漫画。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606146</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606261" target="_blank" rel="noopener">USDA Confirms Cyberthreat on Loan Software Amid Widespread Systems Outages</a>
+        <div class="item-summary">HN：美国农业部（USDA）确认贷款软件遭网络威胁，系统大范围中断。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606261</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50605987" target="_blank" rel="noopener">What 47,000 Companies&#x27; Disclosures Reveal About the AI Stack</a>
+        <div class="item-summary">HN：分析 4.7 万家公司披露文件，揭示 AI 技术栈的构成。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50605987</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606176" target="_blank" rel="noopener">Show HN: BreakingChips – a machining reference that cites every number</a>
+        <div class="item-summary">HN（Show HN）：BreakingChips，切削加工参考站，每个数字都附出处。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606176</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50606135" target="_blank" rel="noopener">Perplexity, intelligence and pretraining corpus mix</a>
+        <div class="item-summary">HN：关于困惑度（perplexity）与预训练语料配比的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50606135</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=1APea4j471c" target="_blank" rel="noopener">Green Code — I Trained an LLM on 1.1M YouTube Videos（102,719 次播放）</a>
+        <div class="item-summary">Green Code 频道：用 110 万个 YouTube 视频训练一个大语言模型的实验。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=1APea4j471c</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=bj3JTd-ezYg" target="_blank" rel="noopener">AI Search — Riemann solved, realtime waifus, unforced Navier-Stokes, new GPT, Gemini Neon: AI NEWS（186,722 次播放）</a>
+        <div class="item-summary">AI Search 频道：AI 新闻汇总，标题提到黎曼猜想被解、实时 AI 角色、纳维-斯托克斯方程、新 GPT 与 Gemini Neon。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=bj3JTd-ezYg</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=ZPDxEPWvpmk" target="_blank" rel="noopener">Universe of AI — Gemini 5 Already?! Google Is Cooking While OpenAI Struggles（56,954 次播放）</a>
+        <div class="item-summary">Universe of AI 频道：讨论 Gemini 5 已现身，称谷歌进展快而 OpenAI 吃力。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=ZPDxEPWvpmk</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=v6iW8YGtaz4" target="_blank" rel="noopener">simon42 — I had Claude Code build a Home Assistant integration!（51,221 次播放）</a>
+        <div class="item-summary">simon42 频道：演示让 Claude Code 开发一个 Home Assistant 集成。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=v6iW8YGtaz4</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=OMfU5iq8Eik" target="_blank" rel="noopener">Jay E | RoboNuggets — Anthropic Just Dropped 7 MASSIVE Claude Features (Master them in 15 mins)（322,536 次播放）</a>
+        <div class="item-summary">Jay E | RoboNuggets 频道：15 分钟讲解 Anthropic 新发布的 7 个 Claude 功能。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=OMfU5iq8Eik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>

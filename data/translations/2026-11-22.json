@@ -1,0 +1,43 @@
+{
+  "manual_summaries": {
+    "https://news.ycombinator.com/item?id=50595940": "HN：讨论现有措施不足以遏制 AI 驱动的网络攻击（“AI 网络病毒”）扩散。",
+    "https://news.ycombinator.com/item?id=50596067": "HN：探讨机器人在创造力上超过人类的可能性。",
+    "https://news.ycombinator.com/item?id=50595816": "HN：Together.ai 请求中的提示词（prompt）泄漏问题。",
+    "https://news.ycombinator.com/item?id=50596026": "HN：MaldocTrace，通过模拟运行恶意 Office/OneNote 文档来查看其会执行什么。",
+    "https://news.ycombinator.com/item?id=50595928": "HN：介绍机器学习的“语言”，即入门概念与术语。",
+    "https://www.youtube.com/watch?v=FK_9h7nJ11w": "葡语频道访谈：嘉宾自己使用 Claude，讨论是否会买 Anthropic 股票。",
+    "https://news.ycombinator.com/item?id=50596056": "HN：称 X 昨日的静默更新让第三方抓取管线失效。",
+    "https://news.ycombinator.com/item?id=50596041": "HN Ask：你是否准备好向 AI 厂商“租用智能”？讨论对供应商的依赖。",
+    "https://news.ycombinator.com/item?id=50596105": "HN：标题为 Mirage 的项目/文章，仅有标题，无更多描述。",
+    "https://news.ycombinator.com/item?id=50595902": "HN：把旧 MacBook 升级改造成家用服务器。",
+    "https://news.ycombinator.com/item?id=50596112": "HN：文章谈“五种组织债务”，类比技术债。",
+    "https://www.youtube.com/watch?v=xPNjhouJ6ko": "俄语频道：让 AI 做 GTA 6，并对比 GPT 6.2 Astra、Gemini 4 Neon 与 Fable 5.2。",
+    "https://news.ycombinator.com/item?id=50595913": "HN：被黑后加固 NixOS 的经验。",
+    "https://news.ycombinator.com/item?id=50595867": "HN：donatemonero.org 一个月新增 130 条收款列表。",
+    "https://news.ycombinator.com/item?id=50595828": "HN Show：对 Go 语言的现代化改进尝试。",
+    "https://news.ycombinator.com/item?id=50596107": "HN：日式风格的俄罗斯方块游戏。",
+    "https://news.ycombinator.com/item?id=50595931": "HN Show：“System 1.5”模型 Inkling-2-Mini 的决策演示。",
+    "https://www.youtube.com/watch?v=WiIMnyGHnZ8": "DenTrave：让 GPT-6 Astra 在机器人身体上获得触觉的新实验结果。",
+    "https://news.ycombinator.com/item?id=50596086": "HN：讨论什么样的表现才算“超级智能”。",
+    "https://news.ycombinator.com/item?id=50596012": "HN Ask：AI 网络攻击时代如何打印文档。",
+    "https://news.ycombinator.com/item?id=50595864": "HN：对 Alpöge–Claude 黎曼猜想（黎曼 zeta 函数）证明的讲解 PDF。",
+    "https://news.ycombinator.com/item?id=50595889": "HN：Windows 下快速增量 iPhone 备份工具。",
+    "https://news.ycombinator.com/item?id=50596020": "HN：UPS 创始人这位怪才如何改变世界。",
+    "https://news.ycombinator.com/item?id=50595885": "HN Show：Hikari.ImGui，纯 C# 重写的 Dear ImGui。",
+    "https://news.ycombinator.com/item?id=50595945": "HN：AI 能否自行做制造决策。",
+    "https://news.ycombinator.com/item?id=50595995": "HN Show：GitHub Plays Linux，在 GitHub 上跑 Linux 的项目。",
+    "https://news.ycombinator.com/item?id=50595818": "HN：报道首例因特殊自慰行为引发直肠爆炸的死亡记录（医学案例）。",
+    "https://news.ycombinator.com/item?id=50595812": "HN：回看一年前提出的“若 AI 解决了黎曼猜想会怎样”这一问题。",
+    "https://news.ycombinator.com/item?id=50596082": "HN：医疗行业的产品市场契合（market fit）有何不同。",
+    "https://www.youtube.com/watch?v=a36atq-Dy8A": "WorldofAI AI 新闻：GLM 5.5 即将发布、Claude 破解 167 年数学难题、Google Loop 等。",
+    "https://news.ycombinator.com/item?id=50595978": "HN：非正式验证（Informal Verification）相关文章。",
+    "https://news.ycombinator.com/item?id=50596013": "HN：加州一项研究措施被指让某亿万富翁的“心头项目”获益。",
+    "https://news.ycombinator.com/item?id=50595964": "HN：一名少年玩家和母亲帮助救出失踪女孩。",
+    "https://www.youtube.com/watch?v=BhhEhfJ4ao0": "Kai：用 AirLLM 在 4GB 显存笔记本上运行 400B+ 大模型（逐层加载，速度较慢）。",
+    "https://news.ycombinator.com/item?id=50595962": "HN：Two Hands in a Local Box，用 SQLite 状态门控与“负面溯源”约束 LLM。"
+  },
+  "translations": {
+    "https://simonwillison.net/2026/Nov/21/muru/": "Graham Dumpleton（mod_wsgi 作者）用 AI 辅助开发的 Rust 服务器 Muru，用于开发和生产中运行 ASGI/WSGI Python 应用，并详细公开开发过程。",
+    "https://simonwillison.net/2026/Nov/20/llm-gemini/": "llm-gemini 0.38.1：修复 Gemini 4 Hydrogen/Neon 支持 xhigh 推理档位的问题（Carbon 仅 low/medium/high）；Hydrogen 用 xhigh 输出 token 与成本显著增加。"
+  }
+}

@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDigest — 2026-11-24</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-warm: #f6f5f4;
+  --text: rgba(0,0,0,0.95);
+  --text-muted: #615d59;
+  --text-dim: #a39e98;
+  --blue: #0075de;
+  --blue-active: #005bab;
+  --focus: #097fe8;
+  --badge-bg: #f2f9ff;
+  --badge-text: #097fe8;
+  --whisper: 1px solid rgba(0,0,0,0.1);
+  --shadow-card: rgba(0,0,0,0.04) 0 4px 18px,
+                 rgba(0,0,0,0.027) 0 2.025px 7.84688px,
+                 rgba(0,0,0,0.02) 0 0.8px 2.925px,
+                 rgba(0,0,0,0.01) 0 0.175px 1.04062px;
+  --font: "NotionInter", Inter, -apple-system, system-ui, "Segoe UI", Helvetica,
+          "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); font-size: 16px; line-height: 1.5;
+  color: var(--text); background: var(--bg);
+  font-feature-settings: "lnum", "locl";
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+.topnav {
+  padding: 20px 24px; border-bottom: var(--whisper);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 14px; font-weight: 500;
+}
+.topnav a.back {
+  color: var(--text-muted);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.topnav a.back:hover { color: var(--blue); }
+
+.hero { padding: 80px 24px 56px; text-align: center; background: var(--bg); }
+.hero-eyebrow {
+  display: inline-block; padding: 4px 10px;
+  background: var(--badge-bg); color: var(--badge-text);
+  border-radius: 9999px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.125px; margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 64px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -2.125px; color: var(--text); margin-bottom: 16px;
+}
+.hero p.lead {
+  font-size: 18px; font-weight: 400; line-height: 1.4;
+  color: var(--text-muted); max-width: 720px; margin: 0 auto 36px;
+}
+.hero-meta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.metric {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 14px 22px; min-width: 120px; box-shadow: var(--shadow-card);
+}
+.metric-value {
+  font-size: 28px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.metric-label {
+  font-size: 12px; font-weight: 500; color: var(--text-muted);
+  margin-top: 6px; letter-spacing: 0.125px;
+}
+
+section.section { padding: 72px 0; }
+section.section.alt { background: var(--bg-warm); }
+section.section h2 {
+  font-size: 44px; font-weight: 700; line-height: 1.0;
+  letter-spacing: -1.4px; color: var(--text); margin-bottom: 10px;
+}
+section.section .section-meta {
+  font-size: 14px; font-weight: 500; color: var(--text-muted); margin-bottom: 40px;
+}
+
+.source-group { margin-bottom: 48px; }
+.source-group:last-child { margin-bottom: 0; }
+.source-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: var(--whisper);
+}
+.source-name {
+  font-size: 24px; font-weight: 700; line-height: 1.23;
+  letter-spacing: -0.5px; color: var(--text);
+}
+.source-count {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.125px;
+  color: var(--badge-text); background: var(--badge-bg);
+  padding: 4px 8px; border-radius: 9999px;
+}
+
+.item {
+  background: var(--bg); border: var(--whisper); border-radius: 12px;
+  padding: 18px 22px; margin-bottom: 12px; transition: box-shadow 0.15s ease;
+}
+.item:hover { box-shadow: var(--shadow-card); }
+section.alt .item { background: var(--bg); }
+.item-title {
+  font-size: 19px; font-weight: 600; line-height: 1.4;
+  letter-spacing: -0.125px; color: var(--text);
+  display: block; margin-bottom: 10px;
+}
+.item-title:hover { color: var(--blue); text-decoration: none; }
+.item-summary {
+  font-size: 15px; font-weight: 400; line-height: 1.55;
+  color: var(--text-muted); margin-bottom: 6px;
+}
+.item-summary:last-child { margin-bottom: 0; }
+.item-summary.zh {
+  color: var(--text); font-size: 15px;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.07);
+}
+.item-summary .lang-tag {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 0.5px;
+  margin-right: 8px; padding: 1px 5px; border-radius: 3px;
+  background: var(--bg-warm); vertical-align: 2px;
+}
+.item-url {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-dim); letter-spacing: 0.125px;
+  margin-top: 10px; word-break: break-all;
+}
+
+footer {
+  padding: 48px 24px 64px; border-top: var(--whisper);
+  text-align: center; color: var(--text-muted); font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .hero { padding: 56px 24px 40px; }
+  .hero h1 { font-size: 38px; letter-spacing: -1.2px; }
+  section.section { padding: 56px 0; }
+  section.section h2 { font-size: 30px; letter-spacing: -0.9px; }
+  .source-name { font-size: 20px; }
+  .item { padding: 14px 16px; }
+  .item-title { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div><a href="../index.html" class="back">← 返回首页</a></div>
+  <div style="color:var(--text-muted)">AIDigest · 2026-11-24</div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">2026-11-24</span>
+  <h1>AI 内容摘要</h1>
+  <p class="lead">当日抓取 42 条 · 英文摘要附中文翻译 · 中文摘要直接展示</p>
+  <div class="hero-meta">
+    <div class="metric"><div class="metric-value">42</div><div class="metric-label">条目总数</div></div>
+    <div class="metric"><div class="metric-value">4</div><div class="metric-label">公司动态</div></div>
+    <div class="metric"><div class="metric-value">3</div><div class="metric-label">个人 Blog</div></div>
+    <div class="metric"><div class="metric-value">35</div><div class="metric-label">社区动态</div></div>
+    <div class="metric"><div class="metric-value">5</div><div class="metric-label">信源</div></div>
+  </div>
+</div>
+
+<section class="section alt">
+  <div class="container">
+    <h2>公司动态</h2>
+    <div class="section-meta">4 条 · 2 个来源</div>
+    <div class="source-group" id="openai">
+      <div class="source-header">
+        <div class="source-name">OpenAI</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/index/introducing-shirudo" target="_blank" rel="noopener">OpenAI and Cisco introduce Shirudo</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与 Cisco 发布开源 Linux 运行时 Shirudo，帮助团队在部署补丁期间保护正在运行的系统。</div>
+        <div class="item-url">https://openai.com/index/introducing-shirudo</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/business/learn/connected-intelligence-for-in-house-legal" target="_blank" rel="noopener">Connected intelligence for in-house legal</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Watch OpenAI’s Stacey Wang and Craig Bruney, Mary O’Carroll of LECG, and Cooley’s Richard Segal explore how AI can help in-house legal teams connect business context, build reusable workflows and get more from outside counsel.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>OpenAI 与法律行业人士讨论如何让企业法务结合业务背景、建立可复用流程，并更有效地与外部律师合作。</div>
+        <div class="item-url">https://openai.com/business/learn/connected-intelligence-for-in-house-legal</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://openai.com/business/customer-stories/richpanel-ai-customer-support" target="_blank" rel="noopener">Richpanel helps companies automate 50% of support in 30 days</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Richpanel uses GPT-6 Astra and GPT-6.1 Sol to equip its AI support agents with tools and procedures, and GPT-6 Luna for their conversations.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Richpanel 用不同 OpenAI 模型分别为客服智能体准备工具和流程、处理客户对话，案例称可在三十天内自动处理一半客服工作。</div>
+        <div class="item-url">https://openai.com/business/customer-stories/richpanel-ai-customer-support</div>
+      </div>
+    </div>
+    <div class="source-group" id="google-deepmind">
+      <div class="source-header">
+        <div class="source-name">Google DeepMind</div>
+        <div class="source-count">1 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/" target="_blank" rel="noopener">Finding faster quantum algorithms with agents and formal verification</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Using agent teams and formal verification to improve quantum algorithms for fusion and chemistry.</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Google DeepMind 用智能体团队改进聚变与化学相关的量子算法，并通过形式化验证——用数学证明检查正确性——检验结果。</div>
+        <div class="item-url">https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>个人 Blog</h2>
+    <div class="section-meta">3 条 · 1 个来源</div>
+    <div class="source-group" id="simon-willison">
+      <div class="source-header">
+        <div class="source-name">Simon Willison</div>
+        <div class="source-count">3 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/23/glm-54/" target="_blank" rel="noopener">GLM-5.4: Toward Generalized Coding with Our First Loop Transformer</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>GLM-5.4: Toward Generalized Coding with Our First Loop Transformer
+GLM 5.4 is now available from Chinese AI lab Z.ai. It&#x27;s their first model to use a looped transformer architecture, which they describe like this:
+
+In a standard Transformer, each layer runs once per forward pass. In a Loop Transformer, a group of weight-shared layers runs for mu...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 介绍 Z.ai 的 GLM-5.4：它采用循环 Transformer，让共享参数的一组网络层重复计算，而非每层只运行一次。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/23/glm-54/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/23/ladybird/" target="_blank" rel="noopener">Ladybird&#x27;s first alpha release</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Ladybird is an astonishingly ambitious project: a new browser, in 2026, with its own implementation of most of the key components - HTML parsing, CSS engine, layout, JavaScript, even WebAssembly. It still uses a few external components - things like HarfBuzz for text shaping, Skia for 2D graphics, ffmpeg for video, and SQLite for the things you ...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 介绍 Ladybird 浏览器首个测试版；该项目自行实现 HTML 解析、CSS、排版和 JavaScript 等核心组件。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/23/ladybird/</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://simonwillison.net/2026/Nov/23/datasette-charts/" target="_blank" rel="noopener">datasette-charts 0.1a0</a>
+        <div class="item-summary"><span class="lang-tag">EN</span>Release: datasette-charts 0.1a0
+        I&#x27;ve been thinking about this problem for over a year now, but on Sunday I finally fired up Claude Fable 5.2 to build an initial prototype. The prototype went so well that this is now a full plugin.
+You can try it out in Datasette Lite here. It looks like this:
+
+The new charts plugin works against any tabl...</div>
+        <div class="item-summary zh"><span class="lang-tag">中文</span>Simon 发布 datasette-charts 首个测试版，将借助 Claude 构建的图表原型发展为 Datasette 插件。</div>
+        <div class="item-url">https://simonwillison.net/2026/Nov/23/datasette-charts/</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2>社区动态</h2>
+    <div class="section-meta">35 条 · 2 个来源</div>
+    <div class="source-group" id="hacker-news-newest">
+      <div class="source-header">
+        <div class="source-name">Hacker News Newest</div>
+        <div class="source-count">30 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622809" target="_blank" rel="noopener">Coworker rejects PR (one month in) because it does not meet his standards</a>
+        <div class="item-summary">作者分享一项持续约一个月的代码修改因不符合同事标准而被拒绝合并的经历。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622809</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622854" target="_blank" rel="noopener">Declare is a UI language for you and your AI</a>
+        <div class="item-summary">Declare 是面向开发者与 AI 的用户界面描述语言。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622854</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622804" target="_blank" rel="noopener">Rune: Rust VM for Emacs</a>
+        <div class="item-summary">Rune 探索用 Rust 实现 Emacs 虚拟机。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622804</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622769" target="_blank" rel="noopener">New York Bans Subscription and Post-Purchase Fees on Cars</a>
+        <div class="item-summary">分享纽约禁止汽车订阅费和购车后附加费用的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622769</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622631" target="_blank" rel="noopener">Toolfence-scan – static checks for Cursor/Claude/Copilot skills</a>
+        <div class="item-summary">Toolfence-scan 对 Cursor、Claude 和 Copilot 的技能文件进行静态检查，即不运行代码就检查其中的问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622631</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622703" target="_blank" rel="noopener">Hurricane Electric NYC to T-Mobile NYC routing via Denver: Packet loss 10%</a>
+        <div class="item-summary">作者报告纽约两家网络之间的流量绕经丹佛，并出现约 10% 的丢包。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622703</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622896" target="_blank" rel="noopener">US adds Megaspeed to trade blacklist</a>
+        <div class="item-summary">分享美国将 Megaspeed 列入贸易黑名单的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622896</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622700" target="_blank" rel="noopener">The Sopranos</a>
+        <div class="item-summary">分享与《黑道家族》有关的内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622700</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622774" target="_blank" rel="noopener">New York Bans Subscription and Post-Purchase Fees on Cars</a>
+        <div class="item-summary">另一条关于纽约禁止汽车订阅费和购车后附加费用的讨论。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622774</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622668" target="_blank" rel="noopener">WSJ Editorial: Restoring Huang as CEO will have major NatSec and political costs</a>
+        <div class="item-summary">分享《华尔街日报》社论，讨论恢复黄仁勋首席执行官职务可能带来的国家安全及政治影响。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622668</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622579" target="_blank" rel="noopener">What VP ≠ VNP Means (In 3 Minutes)</a>
+        <div class="item-summary">文章用简短说明介绍 VP 与 VNP 不相等这一代数计算复杂性命题的含义。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622579</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622950" target="_blank" rel="noopener">Apple Releases New AI Health App</a>
+        <div class="item-summary">分享苹果发布新 AI 健康应用的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622950</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622863" target="_blank" rel="noopener">A Deterministic Linear Time Algorithm for Minimum Spanning Tree</a>
+        <div class="item-summary">分享一项关于确定性线性时间最小生成树算法的工作；最小生成树用于以最小总成本连接图中所有节点。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622863</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622717" target="_blank" rel="noopener">Composable isolated desktop boxes for agents</a>
+        <div class="item-summary">介绍可组合、彼此隔离的智能体桌面运行环境。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622717</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622816" target="_blank" rel="noopener">Curt Trig (2020)</a>
+        <div class="item-summary">分享 2020 年的《Curt Trig》内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622816</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622867" target="_blank" rel="noopener">Show HN: I stole a math joke from Xkcd and made art with it</a>
+        <div class="item-summary">作者把 xkcd 的数学笑话转化为艺术作品。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622867</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622623" target="_blank" rel="noopener">Show HN: Agent-first-browse – Web automation with delta snapshots and LangGraph</a>
+        <div class="item-summary">Agent-first-browse 用页面变化快照与 LangGraph 实现网页自动化，减少重复处理未变化内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622623</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622638" target="_blank" rel="noopener">GTA 6 Recomp (Leonida) banned from GitHub while lead dev was in school</a>
+        <div class="item-summary">分享 GTA 6 Recomp（Leonida）项目被 GitHub 封禁的消息。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622638</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622607" target="_blank" rel="noopener">Throwing Headcount at the Problem</a>
+        <div class="item-summary">文章讨论单纯增加人员是否能解决工作中的问题。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622607</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622931" target="_blank" rel="noopener">App Store Connect</a>
+        <div class="item-summary">分享 App Store Connect 相关内容。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622931</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622726" target="_blank" rel="noopener">AI is massively speeding up AI research</a>
+        <div class="item-summary">文章讨论 AI 如何加快 AI 研究本身的进展。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622726</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622842" target="_blank" rel="noopener">Homeostatic Awakening: A Possible Solution to the Fermi Paradox? (2022)</a>
+        <div class="item-summary">分享 2022 年以“稳态觉醒”解释费米悖论的假说；费米悖论指宇宙可能存在大量文明，却缺乏明确观测证据的矛盾。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622842</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622766" target="_blank" rel="noopener">Trump Posts AI Meme of Jensen Huang Holding Up a Bra</a>
+        <div class="item-summary">分享特朗普发布涉及黄仁勋的 AI 生成戏仿图片的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622766</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622733" target="_blank" rel="noopener">Americans Trust Neither Republicans nor Democrats to Protect Free Speech</a>
+        <div class="item-summary">分享美国民众对两大政党保护言论自由的信任状况的报道。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622733</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622567" target="_blank" rel="noopener">Fewer Rungs, New Bridges: How AI is realigning the career ladder</a>
+        <div class="item-summary">文章讨论 AI 如何改变职业晋升路径与转岗机会。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622567</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622588" target="_blank" rel="noopener">Incognide, the AI-native IDE for research and development, reaches 500 gh stars</a>
+        <div class="item-summary">Incognide 是面向研发工作的 AI 集成开发环境，帖子介绍其 GitHub 关注度达到五百星。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622588</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622934" target="_blank" rel="noopener">Making a dumb TV just smart enough</a>
+        <div class="item-summary">作者分享为传统电视增加适量智能功能的做法。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622934</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622612" target="_blank" rel="noopener">Aristotle Formally Verifies Celeste Speedrun Optimality</a>
+        <div class="item-summary">分享 Aristotle 对《蔚蓝》游戏速通最优性进行形式化验证的工作，即用数学证明检查路线是否最优。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622612</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622935" target="_blank" rel="noopener">The Brother-Sister Duo Who Want to Keep Anthropic Weird</a>
+        <div class="item-summary">文章介绍希望保留 Anthropic 独特文化的兄妹搭档。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622935</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://news.ycombinator.com/item?id=50622976" target="_blank" rel="noopener">Phytochemical and genetic analyses of ancient cannabis from Central Asia (2008) [pdf]</a>
+        <div class="item-summary">分享 2008 年对中亚古代大麻样本进行植物化学与遗传分析的论文。</div>
+        <div class="item-url">https://news.ycombinator.com/item?id=50622976</div>
+      </div>
+    </div>
+    <div class="source-group" id="youtube-ai">
+      <div class="source-header">
+        <div class="source-name">YouTube AI</div>
+        <div class="source-count">5 条</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=mAxH12u54-k" target="_blank" rel="noopener">Inteligencia Artificial — AI NEWS: Gemini 4 Neon is wild! Google beats all expectations（75,674 次播放）</a>
+        <div class="item-summary">视频评价 Gemini 4 Neon，并讨论作者认为超出预期的能力。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=mAxH12u54-k</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=7n3cZzR0tVE" target="_blank" rel="noopener">WorldofAI — GEMINI 5 LEAKED?! GLM 5.4 Is Out, OpenAI GPT-7 Bel, Nano Banana Pro 2 &amp; MORE! AI NEWS（104,923 次播放）</a>
+        <div class="item-summary">视频汇总 GLM-5.4 等模型动态，以及 Gemini 5、GPT-7 等相关传闻。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=7n3cZzR0tVE</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=H2dh6P_TYPE" target="_blank" rel="noopener">Luke&#x27;s Dev Lab — Inkling 2 Mini tested - 16GB Local LLM setup（34,956 次播放）</a>
+        <div class="item-summary">视频测试 Inkling 2 Mini，并演示 16GB 内存环境中的本地语言模型配置。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=H2dh6P_TYPE</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=y0WVOisJ6Js" target="_blank" rel="noopener">AI News &amp; Strategy Daily | Nate B Jones — GPT-6.2 Astra is Getting Called &quot;Unusable,&quot; but OpenAI and Google aren&#x27;t even Building the Same AI.（45,419 次播放）</a>
+        <div class="item-summary">视频讨论用户对 GPT-6.2 Astra 的批评，并比较 OpenAI 与 Google 的 AI 产品方向。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=y0WVOisJ6Js</div>
+      </div>
+      <div class="item">
+        <a class="item-title" href="https://www.youtube.com/watch?v=1jPdehG3Hms" target="_blank" rel="noopener">Two Minute Papers — Claude AI Solved The Secret Of Black Holes（180,045 次播放）</a>
+        <div class="item-summary">视频讨论 Claude 参与黑洞研究的工作，标题将其表述为“解开黑洞秘密”。</div>
+        <div class="item-url">https://www.youtube.com/watch?v=1jPdehG3Hms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  AIDigest · 内容来自原作者，链接版权归各来源所有
+</footer>
+</body>
+</html>
